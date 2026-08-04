@@ -2,10 +2,13 @@
 
 The hackable [**Silkroad Online**](http://www.joymax.com/silkroad/) world map.
 
+![map](map.png)
+
 ## Features
 
 - Explore the world map, dungeons and navmeshes
 - Search objects (NPCs, teleporters)
+- [NavLink](https://github.com/Silkroad-Developer-Community/Silkroad-NavLink) integration
 - Teleport actions, displays
 - Show coordinates, region on hover
 - Cachable zoom levels
@@ -26,7 +29,7 @@ deno install
 
 ### 2. Extracting Client Files (.pk2)
 
-To extract the necessary game assets from your Silkroad Online client, you can use the [pk2_mate tool binary](https://github.com/Egezenn/pk2/releases/tag/untagged-2ba35ece888b03e5ff9a) or build it from [source via cargo](https://github.com/Veykril/pk2).
+To extract the necessary game assets from your Silkroad Online client, you can use the [pk2_mate tool binary](https://github.com/Veykril/pk2/releases).
 
 Extract the PK2 archives into the `game_source` folder:
 
@@ -34,7 +37,7 @@ Extract the PK2 archives into the `game_source` folder:
 mkdir game_source
 pk2_mate extract --archive "C:\Games\SRO\Media.pk2" --out game_source/Media
 pk2_mate extract --archive "C:\Games\SRO\Data.pk2" --out game_source/Data
-pk2_mate extract --archive "C:\Games\SRO\Map.pk2" --out game_source/Data
+pk2_mate extract --archive "C:\Games\SRO\Map.pk2" --out game_source/Map
 ```
 
 ### 3. Processing Silkroad Assets
@@ -47,8 +50,6 @@ uv run scripts/generate_game_data.py
 ```
 
 ### 4. Run the Development Server
-
-Start the local Vite server:
 
 ```shell
 deno task dev
@@ -64,11 +65,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## TODO
 
+- Teleporter imports
 - Opacity sliders for layers
-- Drawing features
-- NavLink display
-- Zoom level tuning
-- OasisBot connection
 - Deployment
-- OpenSilkroadMap-Explorer Dungeon integration
-  - Need to quantize heights on dungeon regions so that they don't render on top of each other
+- OasisBot connection
+  - Dungeon integration (on NavLink display, need to quantize heights on dungeon regions so that they don't render on top of each other)

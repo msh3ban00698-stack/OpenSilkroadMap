@@ -22,6 +22,27 @@ import {
 import { convertSROToMap } from "./coord";
 import { TELEPORT_TYPES } from "./styles";
 import { PMTilesDB } from "./pmtiles_db";
+import { getNavlinkData, downloadAndCacheNavlink } from "./navlink";
+import { navlinkLayer, updateNavlinkViz } from "./navlink_viz";
+import {
+  initEditor,
+  setEditorEnabled,
+  setMode,
+  exportNavlink,
+  resetEdits,
+  loadCustomFile,
+  editorEnabled,
+  isDirty,
+  getMode,
+  setOnChange,
+  refreshEditorData,
+  getEditActions,
+  revertEditAction,
+  saveCheckpoint,
+  getCheckpoints,
+  loadCheckpoint,
+  deleteCheckpoint,
+} from "./navlink_editor";
 
 // Handle map tiles toggle change
 const mapTilesToggle = document.getElementById("maptiles-toggle") as HTMLInputElement | null;
@@ -111,6 +132,17 @@ if (toggleAllBtn) {
 const layerSelect = document.getElementById("layer-select") as HTMLSelectElement | null;
 if (layerSelect) {
   layerSelect.addEventListener("change", (e) => {
+    // Disable editor if active, warn on dirty
+    if (editorEnabled) {
+      if (isDirty && !confirm("Switch layer? Unsaved edits will be lost.")) {
+        layerSelect.value = currentLayerKey;
+        return;
+      }
+      if (editorToggle) editorToggle.checked = false;
+      setEditorEnabled(false);
+      updateEditorUI();
+    }
+
     const target = e.target as HTMLSelectElement;
     setCurrentLayerKey(target.value);
 
@@ -119,9 +151,10 @@ if (layerSelect) {
     mapLayer.setSource(null);
     mapLayer.setSource(tileSource);
 
-    // Redraw markers & navmeshes
+    // Redraw markers, navmeshes & navlink
     updateMarkers(currentLayerKey);
     updateNavmesh(map, currentLayerKey);
+    updateNavlinkViz(currentLayerKey);
     updateCoordsVal();
 
     // Re-center maps
@@ -338,8 +371,7 @@ if (searchInput && searchResults) {
   });
 }
 
-const precacheBtn = document.getElementById("precache-btn");
-const precacheIcon = document.getElementById("precache-icon");
+const precacheToggle = document.getElementById("precache-toggle") as HTMLInputElement | null;
 const precacheProgress = document.getElementById("precache-progress");
 const precachePercent = document.getElementById("precache-percent");
 const precacheCount = document.getElementById("precache-count");
@@ -362,81 +394,402 @@ const ARCHIVE_KEYS = [
   "32785",
 ];
 
-async function updateCacheStatusIcon() {
-  if (!precacheIcon) return;
-  let allCached = true;
-  for (const key of ARCHIVE_KEYS) {
-    const hasArchive = await PMTilesDB.has(key);
-    if (!hasArchive) {
-      allCached = false;
-      break;
-    }
+if (precacheToggle && precacheProgress && precachePercent && precacheCount) {
+  const savedPrecache = localStorage.getItem("precache-toggle");
+  if (savedPrecache !== null) {
+    precacheToggle.checked = savedPrecache === "true";
   }
-  precacheIcon.textContent = allCached ? "check_box" : "check_box_outline_blank";
-}
 
-if (precacheBtn && precacheProgress && precachePercent && precacheCount) {
-  updateCacheStatusIcon();
+  precacheToggle.addEventListener("change", async () => {
+    localStorage.setItem("precache-toggle", String(precacheToggle.checked));
 
-  precacheBtn.addEventListener("click", async () => {
-    precacheBtn.setAttribute("disabled", "true");
-    precacheBtn.style.opacity = "0.6";
-    precacheBtn.style.cursor = "not-allowed";
-    precacheProgress.style.display = "block";
+    if (precacheToggle.checked) {
+      precacheToggle.disabled = true;
+      precacheProgress.style.display = "block";
 
-    try {
-      let completedCount = 0;
-      for (const key of ARCHIVE_KEYS) {
-        precachePercent.textContent = `Downloading ${key}...`;
-        precacheCount.textContent = `${completedCount}/${ARCHIVE_KEYS.length}`;
+      try {
+        let completedCount = 0;
+        for (const key of ARCHIVE_KEYS) {
+          precachePercent.textContent = `Downloading ${key}...`;
+          precacheCount.textContent = `${completedCount}/${ARCHIVE_KEYS.length}`;
 
-        const url = `/assets/${key}.pmtiles`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`Failed to fetch ${key}`);
+          const url = `/assets/${key}.pmtiles`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`Failed to fetch ${key}`);
 
-        const contentLength = res.headers.get("content-length");
-        const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
-        let loadedBytes = 0;
+          const contentLength = res.headers.get("content-length");
+          const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+          let loadedBytes = 0;
 
-        const reader = res.body!.getReader();
-        const chunks: Uint8Array[] = [];
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          if (value) {
-            chunks.push(value);
-            loadedBytes += value.length;
-            if (totalBytes > 0) {
-              const pct = Math.round((loadedBytes / totalBytes) * 100);
-              precachePercent.textContent = `Downloading ${key}: ${pct}%`;
+          const reader = res.body!.getReader();
+          const chunks: Uint8Array[] = [];
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (value) {
+              chunks.push(value);
+              loadedBytes += value.length;
+              if (totalBytes > 0) {
+                const pct = Math.round((loadedBytes / totalBytes) * 100);
+                precachePercent.textContent = `Downloading ${key}: ${pct}%`;
+              }
             }
           }
+
+          const fullBlob = new Blob(chunks as BlobPart[], { type: "application/octet-stream" });
+          await PMTilesDB.set(key, fullBlob);
+
+          if (key === "navmesh_world") {
+            registerCachedNavmesh(fullBlob);
+          } else {
+            registerCachedPMTiles(key, fullBlob);
+          }
+
+          completedCount++;
+          precacheCount.textContent = `${completedCount}/${ARCHIVE_KEYS.length}`;
         }
 
-        const fullBlob = new Blob(chunks, { type: "application/octet-stream" });
-        await PMTilesDB.set(key, fullBlob);
-
-        // Instantly register blob inside Map/Navmesh to bypass network range fetches
-        if (key === "navmesh_world") {
-          registerCachedNavmesh(fullBlob);
-        } else {
-          registerCachedPMTiles(key, fullBlob);
-        }
-
-        completedCount++;
-        precacheCount.textContent = `${completedCount}/${ARCHIVE_KEYS.length}`;
+        precachePercent.textContent = "100% (Done)";
+        precacheCount.textContent = `Cached ${ARCHIVE_KEYS.length} archives`;
+      } catch (e) {
+        precachePercent.textContent = "Error caching";
+        precacheCount.textContent = String(e);
+        precacheToggle.checked = false;
+        localStorage.setItem("precache-toggle", "false");
+      } finally {
+        precacheToggle.disabled = false;
       }
-
-      precachePercent.textContent = "100% (Done)";
-      precacheCount.textContent = `Cached ${ARCHIVE_KEYS.length} archives`;
-    } catch (e) {
-      precachePercent.textContent = "Error caching";
-      precacheCount.textContent = String(e);
-    } finally {
-      precacheBtn.removeAttribute("disabled");
-      precacheBtn.style.opacity = "1";
-      precacheBtn.style.cursor = "pointer";
-      updateCacheStatusIcon();
+    } else {
+      for (const key of ARCHIVE_KEYS) {
+        await PMTilesDB.delete(key);
+      }
+      precacheProgress.style.display = "none";
+      precachePercent.textContent = "0%";
+      precacheCount.textContent = "0/0";
     }
   });
 }
+
+// Navigation Linkage toggle
+const navlinkToggle = document.getElementById("navlink-toggle") as HTMLInputElement | null;
+const navlinkProgress = document.getElementById("navlink-progress");
+const navlinkPercent = document.getElementById("navlink-percent");
+
+if (navlinkToggle && navlinkProgress && navlinkPercent) {
+  const savedNavlink = localStorage.getItem("navlink-toggle");
+  if (savedNavlink !== null) {
+    navlinkToggle.checked = savedNavlink === "true";
+  }
+
+  navlinkToggle.addEventListener("change", async () => {
+    localStorage.setItem("navlink-toggle", String(navlinkToggle.checked));
+
+    if (navlinkToggle.checked) {
+      navlinkToggle.disabled = true;
+      navlinkProgress.style.display = "block";
+      navlinkPercent.textContent = "Starting...";
+
+      try {
+        const result = await downloadAndCacheNavlink((percent, message) => {
+          if (percent >= 0) {
+            navlinkPercent.textContent = `${percent}% - ${message}`;
+          } else {
+            navlinkPercent.textContent = message;
+          }
+        });
+
+        if (result) {
+          navlinkPercent.textContent = "100% - Navigation linkage loaded";
+          updateNavlinkVizToggleState();
+          updateNavlinkViz(currentLayerKey);
+        } else {
+          navlinkPercent.textContent = "Failed to download";
+          navlinkToggle.checked = false;
+          localStorage.setItem("navlink-toggle", "false");
+        }
+      } catch (e) {
+        navlinkPercent.textContent = `Error: ${e}`;
+        navlinkToggle.checked = false;
+        localStorage.setItem("navlink-toggle", "false");
+      } finally {
+        navlinkToggle.disabled = false;
+      }
+    } else {
+      await PMTilesDB.delete("navigation_linkage");
+      navlinkProgress.style.display = "none";
+      updateNavlinkVizToggleState();
+      updateNavlinkViz(currentLayerKey);
+    }
+  });
+}
+
+// Handle navlink visualization toggle
+const navlinkVizToggle = document.getElementById("navlink-viz-toggle") as HTMLInputElement | null;
+if (navlinkVizToggle) {
+  const savedNavlinkViz = localStorage.getItem("navlink-viz-toggle");
+  if (savedNavlinkViz !== null) {
+    navlinkVizToggle.checked = savedNavlinkViz === "true";
+  }
+  navlinkLayer.setVisible(navlinkVizToggle.checked);
+  navlinkVizToggle.addEventListener("change", () => {
+    localStorage.setItem("navlink-viz-toggle", String(navlinkVizToggle.checked));
+    navlinkLayer.setVisible(navlinkVizToggle.checked);
+  });
+}
+
+async function updateNavlinkVizToggleState() {
+  if (!navlinkVizToggle) return;
+  const hasData = await PMTilesDB.has("navigation_linkage");
+  navlinkVizToggle.disabled = !hasData;
+  if (!hasData) {
+    navlinkVizToggle.checked = false;
+    localStorage.setItem("navlink-viz-toggle", "false");
+    navlinkLayer.setVisible(false);
+  }
+}
+
+updateNavlinkVizToggleState();
+
+// Load cached navlink data and render on initial load
+getNavlinkData().then((data) => {
+  if (data) {
+    if (navlinkVizToggle) navlinkLayer.setVisible(navlinkVizToggle.checked);
+    updateNavlinkViz(currentLayerKey);
+  }
+  initEditor(map);
+  if (editorEnabled) {
+    refreshEditorData();
+  }
+});
+
+// Drawing Tools Editor
+const editorToggle = document.getElementById("editor-toggle") as HTMLInputElement | null;
+const editorToolbar = document.getElementById("editor-toolbar") as HTMLDivElement | null;
+const editorStatus = document.getElementById("editor-status") as HTMLDivElement | null;
+const editorExportBtn = document.getElementById("editor-export-btn") as HTMLButtonElement | null;
+const editorResetBtn = document.getElementById("editor-reset-btn") as HTMLButtonElement | null;
+const editorImportBtn = document.getElementById("editor-import-btn") as HTMLButtonElement | null;
+const editorFileInput = document.getElementById("editor-file-input") as HTMLInputElement | null;
+
+const editorStatusMessages: Record<string, string> = {
+  view: "Extend (default) · S=Move · D=Delete · Esc=idle",
+  extend: "Click a source node, then click on the map to extend (50m segments) · Esc to idle",
+  delete: "Click a node or edge to delete it · Esc to idle",
+  move: "Drag any node to reposition it · Esc to idle",
+};
+
+function updateEditorUI() {
+  if (!editorToolbar || !editorStatus) return;
+
+  editorToolbar.style.display = editorEnabled ? "block" : "none";
+
+  if (editorEnabled) {
+    const mode = getMode();
+    editorStatus.textContent = editorStatusMessages[mode] || "";
+    document.querySelectorAll(".editor-mode-btn").forEach((btn) => {
+      const el = btn as HTMLElement;
+      el.classList.toggle("active", el.dataset.mode === mode);
+    });
+  }
+}
+
+const editorSaveBtn = document.getElementById("editor-save-btn") as HTMLButtonElement | null;
+const editActionsList = document.getElementById("edit-actions-list") as HTMLDivElement | null;
+const historyEmpty = document.getElementById("history-empty") as HTMLDivElement | null;
+const checkpointsList = document.getElementById("checkpoints-list") as HTMLDivElement | null;
+const checkpointsEmpty = document.getElementById("checkpoints-empty") as HTMLDivElement | null;
+const historyToggle = document.getElementById("history-toggle") as HTMLElement | null;
+
+function refreshEditActionsList() {
+  if (!editActionsList || !historyEmpty) return;
+  const actions = getEditActions();
+  editActionsList.innerHTML = "";
+  if (actions.length === 0) {
+    historyEmpty.style.display = "block";
+    return;
+  }
+  historyEmpty.style.display = "none";
+  for (const action of actions) {
+    const item = document.createElement("div");
+    item.className = "saved-navlink-item";
+    item.textContent = `${action.timestamp} - ${action.description}`;
+
+    const revertBtn = document.createElement("span");
+    revertBtn.className = "delete-btn";
+    revertBtn.textContent = "\u21a9";
+    revertBtn.title = "Revert this edit";
+    revertBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isDirty && !confirm(`Revert "${action.description}"?`)) return;
+      revertEditAction(action.id);
+      refreshEditActionsList();
+    });
+    item.appendChild(revertBtn);
+
+    editActionsList.appendChild(item);
+  }
+}
+
+async function refreshCheckpointsList() {
+  if (!checkpointsList || !checkpointsEmpty) return;
+  const entries = await getCheckpoints();
+  checkpointsList.innerHTML = "";
+  if (entries.length === 0) {
+    checkpointsEmpty.style.display = "block";
+    return;
+  }
+  checkpointsEmpty.style.display = "none";
+  for (const entry of entries) {
+    const label = `${entry.timestamp} - ${entry.walkEdgeCount}+${entry.teleportEdgeCount}/${entry.nodeCount} - ${entry.newWalkCount}/${entry.newTeleportCount}`;
+    const item = document.createElement("div");
+    item.className = "saved-navlink-item";
+    item.textContent = label;
+
+    const delBtn = document.createElement("span");
+    delBtn.className = "delete-btn";
+    delBtn.textContent = "\u00d7";
+    delBtn.title = "Delete this checkpoint";
+    delBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await deleteCheckpoint(entry.id);
+      refreshCheckpointsList();
+    });
+    item.appendChild(delBtn);
+
+    item.addEventListener("click", async () => {
+      if (isDirty && !confirm("Discard current edits and load this checkpoint?")) return;
+      try {
+        if (editorStatus) editorStatus.textContent = "Loading checkpoint...";
+        await loadCheckpoint(entry.id);
+        if (editorStatus) editorStatus.textContent = "Checkpoint loaded";
+      } catch (e: any) {
+        if (editorStatus) editorStatus.textContent = `Error: ${e.message}`;
+      }
+    });
+
+    checkpointsList.appendChild(item);
+  }
+}
+
+if (editorToggle && editorToolbar) {
+  const savedEditor = localStorage.getItem("editor-toggle");
+  if (savedEditor !== null) {
+    editorToggle.checked = savedEditor === "true";
+  }
+
+  editorToggle.addEventListener("change", () => {
+    localStorage.setItem("editor-toggle", String(editorToggle.checked));
+    setEditorEnabled(editorToggle.checked);
+    updateEditorUI();
+    if (editorToggle.checked) {
+      refreshEditActionsList();
+      refreshCheckpointsList();
+    }
+  });
+
+  if (editorToggle.checked) {
+    setEditorEnabled(true);
+    updateEditorUI();
+    refreshEditActionsList();
+    refreshCheckpointsList();
+  }
+}
+
+document.querySelectorAll(".editor-mode-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (!editorEnabled) return;
+    const mode = (btn as HTMLElement).dataset.mode as string;
+    if (mode) {
+      setMode(mode as any);
+      updateEditorUI();
+    }
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "F1") {
+    e.preventDefault();
+    if (editorToggle) {
+      editorToggle.checked = !editorToggle.checked;
+      localStorage.setItem("editor-toggle", String(editorToggle.checked));
+      setEditorEnabled(editorToggle.checked);
+      updateEditorUI();
+      if (editorToggle.checked) {
+        refreshEditActionsList();
+        refreshCheckpointsList();
+      }
+    }
+    return;
+  }
+  if (!editorEnabled) return;
+  if (e.key === "Escape") {
+    setMode("view");
+    updateEditorUI();
+    return;
+  }
+  const keyMode: Record<string, string> = { e: "extend", s: "move", d: "delete" };
+  const mode = keyMode[e.key.toLowerCase()];
+  if (mode) {
+    setMode(mode as any);
+    updateEditorUI();
+  }
+});
+
+if (editorSaveBtn) {
+  editorSaveBtn.addEventListener("click", async () => {
+    try {
+      if (editorStatus) editorStatus.textContent = "Saving checkpoint...";
+      await saveCheckpoint();
+      if (editorStatus) editorStatus.textContent = "Checkpoint saved";
+      refreshCheckpointsList();
+    } catch (e: any) {
+      if (editorStatus) editorStatus.textContent = `Error: ${e.message}`;
+    }
+  });
+}
+
+if (editorExportBtn) {
+  editorExportBtn.addEventListener("click", () => {
+    exportNavlink();
+  });
+}
+
+if (editorResetBtn) {
+  editorResetBtn.addEventListener("click", async () => {
+    if (isDirty && !confirm("Reset all edits? This cannot be undone.")) return;
+    await resetEdits();
+  });
+}
+
+if (editorImportBtn && editorFileInput) {
+  editorImportBtn.addEventListener("click", () => {
+    editorFileInput.click();
+  });
+  editorFileInput.addEventListener("change", async () => {
+    const file = editorFileInput.files?.[0];
+    if (!file) return;
+    try {
+      if (editorStatus) editorStatus.textContent = "Loading file...";
+      await loadCustomFile(file);
+    } catch (e: any) {
+      if (editorStatus) editorStatus.textContent = `Error: ${e.message}`;
+    }
+    editorFileInput.value = "";
+  });
+}
+
+// History panel collapse toggle
+if (historyToggle) {
+  historyToggle.addEventListener("click", () => {
+    historyToggle.classList.toggle("collapsed");
+  });
+}
+
+setOnChange(() => {
+  updateEditorUI();
+  refreshEditActionsList();
+});
+
+// Initialize on page load
+refreshEditActionsList();
+refreshCheckpointsList();

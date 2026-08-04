@@ -1,13 +1,16 @@
 {
   "tasks": {
     "dev": "deno run -A npm:vite",
-    "build": "deno run -A npm:tsc && deno run -A npm:vite build",
+    "build": "deno run -A npm:typescript/tsc && deno run -A npm:vite build",
     "preview": "deno run -A npm:vite preview"
   },
   "imports": {
     "vite": "npm:vite@^5.0.0",
     "ol/": "npm:ol@^9.2.4/",
-    "pmtiles": "npm:pmtiles@^3.2.0"
+    "pmtiles": "npm:pmtiles@^3.2.0",
+    "tailwindcss": "npm:tailwindcss@^3.4.0",
+    "autoprefixer": "npm:autoprefixer@^10.4.0",
+    "postcss": "npm:postcss@^8.4.0"
   },
   "nodeModulesDir": "auto"
 }

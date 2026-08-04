@@ -9,9 +9,13 @@ import Overlay from "ol/Overlay";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { Style, Stroke, Fill, Text } from "ol/style";
+import DragPan from "ol/interaction/DragPan";
+import DoubleClickZoom from "ol/interaction/DoubleClickZoom";
 import { sroProjection, tileGrid, convertMapToSRO, convertSROToMap } from "./coord";
 import { markerLayer, connectionLayer, updateMarkers, npcsData, teleportsData } from "./markers";
-import { LAYER_URLS, WORLD_BOUNDS_Z9, TELEPORT_TYPES } from "./styles";
+import { navlinkLayer, navlinkSource } from "./navlink_viz";
+import { editorEnabled, getMode } from "./navlink_editor";
+import { WORLD_BOUNDS_Z9, TELEPORT_TYPES } from "./styles";
 import { PMTiles } from "pmtiles";
 import { PMTilesDB, BlobSource } from "./pmtiles_db";
 import { updateNavmesh, getDungeonFloorKey } from "./navmesh";
@@ -163,7 +167,7 @@ export const overlay = new Overlay({
 closer.onclick = () => {
   overlay.setPosition(undefined);
   closer.blur();
-  if (selectedFeature && selectedFeature.get("isConnection")) {
+  if (selectedFeature && (selectedFeature.get("isConnection") || selectedFeature.get("isNavlinkEdge"))) {
     selectedFeature.set("highlighted", false);
     selectedFeature = null;
   }
@@ -173,7 +177,7 @@ closer.onclick = () => {
 // OpenLayers core Map setup
 export const map = new Map({
   target: "map",
-  layers: [mapLayer, regionOverlayLayer, connectionLayer, markerLayer],
+  layers: [mapLayer, regionOverlayLayer, connectionLayer, navlinkLayer, markerLayer],
   overlays: [overlay],
   view: new View({
     projection: sroProjection,
@@ -190,6 +194,12 @@ export const map = new Map({
     })(),
   }),
 });
+
+map.addInteraction(new DragPan({ condition: (e) => e.originalEvent.button === 1 }));
+map.getViewport().addEventListener("mousedown", (e) => {
+  if (e.button === 1) e.preventDefault();
+});
+map.getInteractions().getArray().filter((i) => i instanceof DoubleClickZoom).forEach((i) => map.removeInteraction(i));
 
 // Coordinates DOM panel
 const coordsVal = document.getElementById("coords-val");
@@ -286,11 +296,11 @@ map.on("pointermove", (event) => {
     const pixel = map.getEventPixel(event.originalEvent);
     const hitFeature = map.forEachFeatureAtPixel(pixel, (f) => f) as Feature | null;
     const isClickable =
-      hitFeature && (hitFeature.getGeometry()?.getType() === "Point" || hitFeature.get("isConnection"));
+      hitFeature && (hitFeature.getGeometry()?.getType() === "Point" || hitFeature.get("isConnection") || hitFeature.get("isNavlinkEdge"));
     map.getTargetElement().style.cursor = isClickable ? "pointer" : "";
 
     // Handle connection lines hover transitions
-    if (hitFeature && hitFeature.get("isConnection")) {
+    if (hitFeature && (hitFeature.get("isConnection") || hitFeature.get("isNavlinkEdge"))) {
       if (hoveredFeature !== hitFeature) {
         if (hoveredFeature && hoveredFeature !== selectedFeature) {
           hoveredFeature.set("highlighted", false);
@@ -313,17 +323,111 @@ map.on("pointermove", (event) => {
 
 // Event listener for click details popup (singleclick)
 map.on("singleclick", (evt) => {
+  if (editorEnabled && getMode() !== "view") return;
+
   const feature = map.forEachFeatureAtPixel(evt.pixel, (f) => f) as Feature | null;
 
   // Restore style of previously selected line feature
-  if (selectedFeature && selectedFeature.get("isConnection") && selectedFeature !== feature) {
+  if (selectedFeature && (selectedFeature.get("isConnection") || selectedFeature.get("isNavlinkEdge")) && selectedFeature !== feature) {
     selectedFeature.set("highlighted", false);
     selectedFeature = null;
   }
 
   if (feature) {
-    const geomType = feature.getGeometry()?.getType();
-    if (geomType === "Point") {
+    const linkType = feature.get("linkType") as string | undefined;
+
+    // NavLink node popup
+    if (linkType === "node") {
+      const coordinates = (feature.getGeometry() as Point).getCoordinates();
+      const nodeId = feature.get("nodeId") as string;
+
+      const parts = nodeId.split("_");
+      const nodeX = parseFloat(parts[0]);
+      const nodeY = parseFloat(parts[1]);
+      const nodeRegion = parseInt(parts[2], 10);
+
+      // Find connected edges from navlinkSource (includes edits)
+      const connectedEdges: any[] = [];
+      const allFeatures = navlinkSource.getFeatures();
+      for (const f of allFeatures) {
+        const ft = f.get("linkType") as string;
+        if (ft === "walk" || ft === "teleport") {
+          const from = f.get("from") as string;
+          const to = f.get("to") as string;
+          if (from === nodeId || to === nodeId) {
+            connectedEdges.push({ from, to, type: ft, npc: f.get("npc"), dest: f.get("dest") });
+          }
+        }
+      }
+
+      const walkEdges = connectedEdges.filter((e) => e.type === "walk");
+      const teleportEdges = connectedEdges.filter((e) => e.type === "teleport");
+
+      const regionStr = `Region: ${nodeRegion} (${nodeRegion & 0xff},${nodeRegion >> 8})`;
+
+      content.innerHTML = `
+        <div class="popup-title">NavLink Node</div>
+        <div class="popup-detail" style="font-size: 11px; word-break: break-all;">ID: ${nodeId}</div>
+        <div class="popup-detail">X: ${nodeX}</div>
+        <div class="popup-detail">Y: ${nodeY}</div>
+        <div class="popup-detail">${regionStr}</div>
+        <div class="popup-detail" style="margin-top: 8px; border-top: 1px solid #444; padding-top: 6px; font-weight: bold; color: #a0a0a0;">Connected Edges:</div>
+        <div class="popup-detail" style="color: #888;">Walk: ${walkEdges.length}</div>
+        <div class="popup-detail" style="color: #03dac6;">Teleport: ${teleportEdges.length}</div>
+        ${teleportEdges.length > 0
+          ? `<div class="popup-detail" style="margin-top: 4px; border-top: 1px solid #333; padding-top: 4px; font-weight: bold; color: #03dac6; font-size: 12px;">Teleport Connections:</div>
+              <div style="max-height: 150px; overflow-y: auto;">
+              ${teleportEdges
+            .map((e) => {
+              const other = e.from === nodeId ? e.to : e.from;
+              return `<div class="popup-detail" style="font-size: 11px; padding: 2px 0; border-bottom: 1px solid #2a2a2a;">
+                    → ${other}${e.npc ? `<br><span style="color: #888;">NPC: ${e.npc}</span>` : ""}${e.dest ? `<br><span style="color: #888;">Dest: ${e.dest}</span>` : ""}
+                  </div>`;
+            })
+            .join("")}
+              </div>`
+          : ""
+        }
+        ${walkEdges.length > 0
+          ? `<div style="margin-top: 4px; border-top: 1px solid #333; padding-top: 4px; max-height: 200px; overflow-y: auto;">
+              ${walkEdges
+            .map((e) => {
+              const other = e.from === nodeId ? e.to : e.from;
+              return `<div class="popup-detail" style="font-size: 10px; color: #666; padding: 1px 0;">→ ${other}</div>`;
+            })
+            .join("")}
+              </div>`
+          : ""
+        }
+      `;
+      overlay.setPosition(coordinates);
+
+      // NavLink edge popup
+    } else if (feature.get("isNavlinkEdge")) {
+      selectedFeature = feature;
+      feature.set("highlighted", true);
+      const fromId = feature.get("from") as string;
+      const toId = feature.get("to") as string;
+      const edgeType = feature.get("linkType") as string;
+      const npc = feature.get("npc") as string | null;
+      const dest = feature.get("dest") as number | null;
+      const steps = feature.get("steps") as number | null;
+
+      const typeLabel = edgeType === "teleport" ? "Teleport" : "Walk Path";
+
+      content.innerHTML = `
+        <div class="popup-title" style="color: ${edgeType === "teleport" ? "#03dac6" : "#a0a0a0"};">NavLink ${typeLabel}</div>
+        <div class="popup-detail" style="font-size: 11px; word-break: break-all; margin-bottom: 4px;">From: ${fromId}</div>
+        <div class="popup-detail" style="font-size: 11px; word-break: break-all;">To: ${toId}</div>
+        ${npc ? `<div class="popup-detail" style="margin-top: 4px;">NPC: ${npc}</div>` : ""}
+        ${dest !== null && dest !== undefined ? `<div class="popup-detail">Destination ID: ${dest}</div>` : ""}
+        ${steps !== null && steps !== undefined ? `<div class="popup-detail">Steps: ${steps}</div>` : ""}
+        <div class="popup-detail" style="margin-top: 4px; color: #888; font-size: 11px;">Type: ${edgeType}</div>
+      `;
+      overlay.setPosition(evt.coordinate);
+
+      // Marker point popup
+    } else if (feature.getGeometry()?.getType() === "Point") {
       const coordinates = (feature.getGeometry() as Point).getCoordinates();
       const name = feature.get("name") || "Unknown Feature";
 
@@ -341,9 +445,8 @@ map.on("singleclick", (evt) => {
         <div class="popup-detail">X: ${sro.x}</div>
         <div class="popup-detail">Y: ${sro.y}</div>
         <div class="popup-detail">Region: ${regionString}</div>
-        ${
-          teleport.length > 0
-            ? `
+        ${teleport.length > 0
+          ? `
           <div class="popup-detail" style="margin-top: 8px; border-top: 1px solid #444; padding-top: 6px; font-weight: bold; color: #03dac6;">Teleport Destinations:</div>
           ${teleport
             .map((d: any) => {
@@ -359,7 +462,7 @@ map.on("singleclick", (evt) => {
             })
             .join("")}
         `
-            : ""
+          : ""
         }
       `;
       overlay.setPosition(coordinates);
@@ -456,9 +559,8 @@ content.addEventListener("click", (e) => {
     <div class="popup-detail">X: ${destSro.x}</div>
     <div class="popup-detail">Y: ${destSro.y}</div>
     <div class="popup-detail">Region: ${regionString}</div>
-    ${
-      teleportList.length > 0
-        ? `
+    ${teleportList.length > 0
+      ? `
       <div class="popup-detail" style="margin-top: 8px; border-top: 1px solid #444; padding-top: 6px; font-weight: bold; color: #03dac6;">Teleport Destinations:</div>
       ${teleportList
         .map((d: any) => {
@@ -474,7 +576,7 @@ content.addEventListener("click", (e) => {
         })
         .join("")}
     `
-        : ""
+      : ""
     }
   `;
   overlay.setPosition(coords);

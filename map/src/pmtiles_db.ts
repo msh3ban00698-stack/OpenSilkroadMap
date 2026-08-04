@@ -51,6 +51,21 @@ export const PMTilesDB = {
     }
   },
 
+  async delete(key: string): Promise<void> {
+    try {
+      const db = await getDB();
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(storeName, "readwrite");
+        const store = transaction.objectStore(storeName);
+        store.delete(key);
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = (e) => reject(e);
+      });
+    } catch (e) {
+      console.error("Failed to delete archive from IndexedDB:", e);
+    }
+  },
+
   async has(key: string): Promise<boolean> {
     const blob = await this.get(key);
     return blob !== null;

@@ -42,7 +42,7 @@ export function convertMapToSRO(secX: number, secY: number, layerKey: string) {
 }
 
 export function convertSROToMap(x: number, y: number, region: number): number[] {
-  const isDungeon = region > 32767;
+  const isDungeon = region > 32767 || region < 0;
   if (isDungeon) {
     const secX = 128 + x / 1920;
     const secY = 127 + y / 1920;

@@ -1,5 +1,8 @@
-/* OpenLayers stylesheet import via Vite */
 @import url("ol/ol.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   box-sizing: border-box;
@@ -8,143 +11,98 @@
 }
 
 body {
-  background-color: #121212;
-  color: #e0e0e0;
-  font-family: Roboto, sans-serif;
   height: 100vh;
   overflow: hidden;
   width: 100vw;
 }
 
-/* Map container */
 .map {
-  height: 100%;
+  height: 100vh;
   left: 0;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 1;
 }
 
-/* Material Panel base */
 .material-panel {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 4px;
-  box-shadow:
-    0 3px 5px -1px rgb(0 0 0 / 20%),
-    0 6px 10px 0 rgb(0 0 0 / 14%),
-    0 1px 18px 0 rgb(0 0 0 / 12%);
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 10;
+  @apply bg-[#1e1e1e] border border-[#333] rounded shadow-lg flex flex-col fixed z-10;
 }
 
-/* Layer panel placement */
 .layer-panel {
-  left: 16px;
-  padding: 16px;
-  top: 16px;
-  width: 320px;
+  @apply left-4 top-4 p-4 w-80;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.history-panel {
+  @apply p-4 right-4 top-4 w-80;
+  max-height: calc(100vh - 32px);
+}
+
+#history-toggle.collapsed + #history-body {
+  display: none;
+}
+
+#history-toggle.collapsed .collapse-icon {
+  transform: rotate(180deg);
 }
 
 .panel-header {
-  align-items: center;
-  color: #bb86fc;
-  display: flex;
-  margin-bottom: 12px;
+  @apply flex items-center text-accent-purple mb-3;
 }
 
 .panel-header .material-icons {
-  font-size: 20px;
-  margin-right: 8px;
+  @apply text-xl mr-2;
 }
 
 .panel-header h2 {
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.15px;
+  @apply text-base font-medium tracking-wide;
 }
 
-/* Select element styling */
 .select-container {
-  position: relative;
-  width: 100%;
+  @apply relative w-full;
 }
 
 .material-select {
-  background-color: #2d2d2d;
-  border: 1px solid #444;
-  border-radius: 4px;
-  color: #e0e0e0;
-  cursor: pointer;
-  font-family: Roboto, sans-serif;
-  font-size: 14px;
-  outline: none;
-  padding: 10px 12px;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
-  width: 100%;
+  @apply bg-[#2d2d2d] border border-[#444] rounded text-text-primary font-sans cursor-pointer text-sm outline-none w-full px-3 py-2.5;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .material-select:focus {
-  border-color: #bb86fc;
-  box-shadow: 0 0 0 2px rgb(187 134 252 / 20%);
+  @apply border-accent-purple;
+  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
 }
 
 .material-select optgroup {
-  background-color: #1e1e1e;
-  color: #bb86fc;
-  font-weight: 500;
+  @apply bg-[#1e1e1e] text-accent-purple font-medium;
 }
 
 .material-select option {
-  background-color: #2d2d2d;
-  color: #e0e0e0;
-  padding: 4px;
+  @apply bg-[#2d2d2d] text-text-primary p-1;
 }
 
-/* Coordinates overlay */
 .coords-panel {
-  align-items: center;
-  bottom: 16px;
-  flex-direction: row;
-  left: 50%;
-  padding: 8px 16px;
-  pointer-events: none; /* Let clicks pass through to map */
-  transform: translateX(-50%);
+  @apply flex flex-row items-center bottom-4 left-4 px-4 py-2;
+  pointer-events: none;
 }
 
 .coord-item {
-  align-items: center;
-  display: flex;
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  white-space: nowrap;
+  @apply flex items-center text-sm tracking-wide whitespace-nowrap;
 }
 
 .coord-item .material-icons {
-  color: #03dac6;
-  font-size: 18px;
-  margin-right: 8px;
+  @apply text-accent-teal text-lg mr-2;
 }
 
 .coord-item .label {
-  color: #a0a0a0;
-  font-weight: 500;
-  margin-right: 6px;
+  @apply text-text-secondary font-medium mr-1.5;
 }
 
 .coord-item .value {
-  color: #fff;
-  font-family: monospace;
-  font-size: 14px;
-  font-weight: bold;
+  @apply text-white font-bold font-mono text-sm;
 }
 
-/* Custom styles to match OpenLayers standard controls with dark material */
 .ol-zoom {
   left: auto !important;
   right: 16px !important;
@@ -152,31 +110,18 @@ body {
 }
 
 .ol-control button {
-  background-color: #1e1e1e !important;
-  border: 1px solid #444 !important;
-  border-radius: 4px !important;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 20%) !important;
-  color: #e0e0e0 !important;
-  font-weight: bold !important;
+  @apply bg-[#1e1e1e] border border-[#444] rounded text-text-primary font-bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .ol-control button:hover {
-  background-color: #2d2d2d !important;
-  color: #bb86fc !important;
+  @apply bg-[#2d2d2d] text-accent-purple;
 }
 
-/* Popup styles */
 .ol-popup {
-  background-color: #1e1e1e;
-  border: 1px solid #444;
-  border-radius: 4px;
+  @apply bg-[#1e1e1e] border border-[#444] rounded text-text-primary text-sm;
   bottom: 12px;
-  box-shadow:
-    0 3px 5px -1px rgb(0 0 0 / 20%),
-    0 6px 10px 0 rgb(0 0 0 / 14%),
-    0 1px 18px 0 rgb(0 0 0 / 12%);
-  color: #e0e0e0;
-  font-size: 14px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   left: -50px;
   min-width: 220px;
   padding: 16px;
@@ -210,34 +155,20 @@ body {
 }
 
 .ol-popup-closer {
-  color: #a0a0a0;
-  font-size: 18px;
-  font-weight: bold;
-  position: absolute;
-  right: 10px;
-  text-decoration: none;
-  top: 6px;
+  @apply text-text-secondary text-lg font-bold absolute right-2.5 top-1.5 no-underline;
 }
 
 .ol-popup-closer:hover {
-  color: #bb86fc;
+  @apply text-accent-purple;
 }
 
 .popup-title {
-  border-bottom: 1px solid #333;
-  color: #bb86fc;
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  @apply text-accent-purple text-[15px] font-bold border-b border-[#333] mb-2 pb-1;
   margin-right: 12px;
-  padding-bottom: 4px;
 }
 
 .popup-detail {
-  color: #c0c0c0;
-  font-family: monospace;
-  font-size: 13px;
-  margin-top: 4px;
+  @apply text-[#c0c0c0] font-mono text-[13px] mt-1;
 }
 
 #toggle-all-conn:hover {
@@ -248,26 +179,8 @@ body {
   max-height: 80vh;
 }
 
-.search-result-item {
-  border-bottom: 1px solid #3c3c3c;
-  color: #e0e0e0;
-  cursor: pointer;
-  font-size: 13px;
-  padding: 8px 12px;
-  transition: background-color 0.2s;
-}
-
-.search-result-item:hover {
-  background-color: #3d3d3d;
-  color: #bb86fc;
-}
-
-.search-result-item:last-child {
-  border-bottom: none;
-}
-
 #search-results details {
-  border-bottom: 1px solid #3c3c3c;
+  @apply border-b border-[#333];
 }
 
 #search-results details:last-child {
@@ -275,27 +188,66 @@ body {
 }
 
 #search-results summary {
-  background-color: #242424;
-  color: #03dac6;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  outline: none;
-  padding: 10px 12px;
+  @apply bg-[#242424] text-accent-teal text-sm font-medium outline-none cursor-pointer select-none px-3 py-2.5;
   transition: background-color 0.2s;
-  user-select: none;
 }
 
 #search-results summary:hover {
-  background-color: #2d2d2d;
-  color: #bb86fc;
+  @apply bg-[#2d2d2d] text-accent-purple;
 }
 
 #search-results details[open] summary {
-  border-bottom: 1px solid #3c3c3c;
-  color: #bb86fc;
+  @apply border-b border-[#333] text-accent-purple;
+}
+
+.search-result-item {
+  @apply text-text-primary text-[13px] cursor-pointer border-b border-[#333] px-3 py-2;
+  transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+  @apply bg-[#3d3d3d] text-accent-purple;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
 }
 
 #search-results .search-result-item {
   padding-left: 24px;
+}
+
+.editor-mode-btn.active {
+  @apply bg-accent-pink text-surface-dark font-bold border-accent-pink;
+}
+
+.editor-mode-btn:hover {
+  filter: brightness(1.3);
+}
+
+.editor-mode-btn {
+  user-select: none;
+}
+
+.saved-navlink-item {
+  @apply bg-[#242424] border border-[#333] rounded text-[#c0c0c0] cursor-pointer text-xs font-mono mb-1 px-2 py-1.5;
+  user-select: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.saved-navlink-item:hover {
+  @apply bg-[#2d2d2d] border-accent-purple text-text-primary;
+}
+
+.saved-navlink-item.selected {
+  @apply bg-[#333] border-accent-teal text-white;
+}
+
+.saved-navlink-item .delete-btn {
+  @apply float-right text-[#cf6679] text-sm leading-none cursor-pointer px-0.5;
+  opacity: 0.6;
+}
+
+.saved-navlink-item .delete-btn:hover {
+  opacity: 1;
 }
