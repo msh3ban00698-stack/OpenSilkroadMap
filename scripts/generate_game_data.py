@@ -54,37 +54,34 @@ def main():
 
     print("Step 2: Loading object translations...")
     translations = {}
-    obj_files = glob.glob(os.path.join(base_dir, "textdata_object_*.txt"))
+    obj_files = glob.glob(os.path.join(base_dir, "textdata_object*.txt"))
     for filepath in obj_files:
         try:
             with open(filepath, "r", encoding="utf-16", errors="replace") as f:
                 for line in f:
                     parts = line.strip().split("\t")
-                    if len(parts) >= 4 and parts[0] == "1":
-                        key = parts[2]
-                        val = parts[3]
-                        # Column 9 contains the English translation if present
-                        if len(parts) > 9 and parts[9] not in ("0", "xxx", ""):
-                            val = parts[9]
+                    if len(parts) >= 2 and parts[0] == "1":
+                        key = parts[1]
+                        val = parts[8] if len(parts) > 8 and parts[8] not in ("0", "xxx", "") else (
+                            parts[3] if len(parts) > 3 else key
+                        )
                         translations[key] = val
         except Exception as e:
             print(f"  Warning: failed to read translations from {filepath}: {e}")
 
     print("Step 3: Loading zone translations...")
     zone_translations = {}
-    zone_files = glob.glob(os.path.join(base_dir, "textzonename_*.txt"))
+    zone_files = glob.glob(os.path.join(base_dir, "textzonename*.txt"))
     for filepath in zone_files:
         try:
             with open(filepath, "r", encoding="utf-16", errors="replace") as f:
                 for line in f:
                     parts = line.strip().split("\t")
-                    if len(parts) >= 4 and parts[0] == "1":
-                        # region ID is at parts[2]
-                        # Korean name at parts[3], English name at parts[9]
-                        reg_id = parts[2]
-                        val = parts[3]
-                        if len(parts) > 9 and parts[9] not in ("0", "xxx", ""):
-                            val = parts[9]
+                    if len(parts) >= 2 and parts[0] == "1":
+                        reg_id = parts[1]
+                        val = parts[8] if len(parts) > 8 and parts[8] not in ("0", "xxx", "") else (
+                            parts[3] if len(parts) > 3 else reg_id
+                        )
                         zone_translations[reg_id] = val
         except Exception as e:
             print(f"  Warning: failed to read zone translations from {filepath}: {e}")
@@ -300,6 +297,19 @@ def main():
         json.dump(npcs_output, f, indent=2)
     with open(os.path.join("map", "public", "assets", "teleports.json"), "w", encoding="utf-8") as f:
         json.dump(teleports_output, f, indent=2)
+    regionnames = {}
+    for reg_id, val in zone_translations.items():
+        try:
+            ival = int(reg_id)
+        except ValueError:
+            continue
+        if ival < 0:
+            ival += 65536
+        if val not in ("0", "xxx", ""):
+            regionnames[str(ival)] = val
+    with open(os.path.join("map", "public", "assets", "regionnames.json"), "w", encoding="utf-8") as f:
+        json.dump(regionnames, f, indent=2)
+    print(f"Wrote {len(regionnames)} region names to regionnames.json.")
 
     print("Done! game data files successfully generated.")
 

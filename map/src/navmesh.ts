@@ -55,7 +55,7 @@ const navmeshTileSource = new XYZ({
     const tileGridZ = tileCoord[0];
     const x = tileCoord[1];
     const y = -tileCoord[2];
-    const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 9;
+    const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 8;
 
     if (currentLayerKeyTemp === "world") {
       const scale = Math.pow(2, 9 - z);
@@ -73,7 +73,7 @@ const navmeshTileSource = new XYZ({
       const tileGridZ = tileCoord[0];
       const x = tileCoord[1];
       const y = -tileCoord[2];
-      const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 9;
+      const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 8;
 
       getNavmeshPMTiles().then((pmtilesInstance) => {
         pmtilesInstance
@@ -173,6 +173,11 @@ export function getDungeonFloorKey(rawX: number, rawY: number, region: number): 
     return rawX >= f.minX && rawX <= f.maxX && rawY >= f.minZ && rawY <= f.maxZ;
   });
   if (floor) {
+    // Single-floor regions use the bare region ID as layer key (e.g. "32785");
+    // multi-floor regions use "{region}_{floor}" (1-based, e.g. "32769_1").
+    if (floorList.length === 1) {
+      return `${region}`;
+    }
     return `${region}_${floor.floor + 1}`;
   }
   return `${region}_1`;

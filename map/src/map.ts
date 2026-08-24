@@ -19,6 +19,7 @@ import { WORLD_BOUNDS_Z9, TELEPORT_TYPES } from "./styles";
 import { PMTiles } from "pmtiles";
 import { PMTilesDB, BlobSource } from "./pmtiles_db";
 import { updateNavmesh, getDungeonFloorKey } from "./navmesh";
+import { getRegionName } from "./regionnames";
 
 export const regionOverlaySource = new VectorSource();
 export const regionOverlayLayer = new VectorLayer({
@@ -28,6 +29,7 @@ export const regionOverlayLayer = new VectorLayer({
     const xSector = feature.get("xSector") as number;
     const ySector = feature.get("ySector") as number;
     const hex = "0x" + regionId.toString(16).toUpperCase();
+    const zoneName = getRegionName(regionId);
     return new Style({
       stroke: new Stroke({
         color: "rgba(187, 134, 252, 0.4)",
@@ -38,7 +40,9 @@ export const regionOverlayLayer = new VectorLayer({
       }),
       text: new Text({
         font: "bold 16px Roboto, monospace",
-        text: `ID: ${regionId}\nHex: ${hex}\n[${xSector}, ${ySector}]`,
+        text: zoneName
+          ? `${zoneName}\nID: ${regionId}\nHex: ${hex}\n[${xSector}, ${ySector}]`
+          : `ID: ${regionId}\nHex: ${hex}\n[${xSector}, ${ySector}]`,
         fill: new Fill({
           color: "#e0e0e0",
         }),
@@ -99,7 +103,7 @@ export const tileSource = new XYZ({
     const tileGridZ = tileCoord[0];
     const x = tileCoord[1];
     const y = -tileCoord[2];
-    const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 9;
+    const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 8;
 
     // Bounds check for world map to optimize requests
     if (currentLayerKey === "world") {
@@ -118,7 +122,7 @@ export const tileSource = new XYZ({
       const tileGridZ = tileCoord[0];
       const x = tileCoord[1];
       const y = -tileCoord[2];
-      const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 9;
+      const z = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 8;
 
       getPMTilesForLayer(currentLayerKey).then((pmtilesInstance) => {
         pmtilesInstance
@@ -211,7 +215,7 @@ export function updateCoordsVal() {
   const zoom = map.getView().getZoom() ?? 0;
   const resolution = map.getView().getResolution() ?? 0;
   const tileGridZ = tileGrid.getZForResolution(resolution);
-  const extrapolatedFrom = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 9;
+  const extrapolatedFrom = tileGridZ === 0 ? 3 : tileGridZ === 1 ? 6 : 8;
 
   let coordText = "";
   if (lastCoordinate) {
@@ -219,7 +223,8 @@ export function updateCoordsVal() {
     const sro = convertMapToSRO(secX, secY, currentLayerKey);
     const regionString =
       currentLayerKey === "world" ? `${sro.region} (${sro.region & 0xff},${sro.region >> 8})` : `${sro.region}`;
-    coordText = `X: ${sro.x}, Y: ${sro.y}, R: ${regionString} | `;
+    const zoneName = getRegionName(sro.region);
+    coordText = `X: ${sro.x}, Y: ${sro.y}, R: ${zoneName ? zoneName + " " : ""}(${regionString}) | `;
   }
 
   coordsVal.textContent = `${coordText}Zoom: ${zoom.toFixed(1)} (extrapolated from L${extrapolatedFrom})`;
@@ -434,6 +439,7 @@ map.on("singleclick", (evt) => {
       const sro = convertMapToSRO(coordinates[0], coordinates[1], currentLayerKey);
       const regionString =
         currentLayerKey === "world" ? `${sro.region} (${sro.region & 0xff},${sro.region >> 8})` : `${sro.region}`;
+      const zoneName = getRegionName(sro.region);
 
       const type = feature.get("type");
       const typeString = type !== undefined ? TELEPORT_TYPES[type] || "Unknown Category" : null;
@@ -444,6 +450,7 @@ map.on("singleclick", (evt) => {
         ${typeString ? `<div class="popup-detail">Type: ${typeString}</div>` : ""}
         <div class="popup-detail">X: ${sro.x}</div>
         <div class="popup-detail">Y: ${sro.y}</div>
+        ${zoneName ? `<div class="popup-detail">Zone: ${zoneName}</div>` : ""}
         <div class="popup-detail">Region: ${regionString}</div>
         ${teleport.length > 0
           ? `
@@ -551,6 +558,7 @@ content.addEventListener("click", (e) => {
     currentLayerKey === "world"
       ? `${destSro.region} (${destSro.region & 0xff},${destSro.region >> 8})`
       : `${destSro.region}`;
+  const destZone = getRegionName(destSro.region);
 
   // Update popup content for target
   content.innerHTML = `
@@ -558,6 +566,7 @@ content.addEventListener("click", (e) => {
     ${typeString ? `<div class="popup-detail">Type: ${typeString}</div>` : ""}
     <div class="popup-detail">X: ${destSro.x}</div>
     <div class="popup-detail">Y: ${destSro.y}</div>
+    ${destZone ? `<div class="popup-detail">Zone: ${destZone}</div>` : ""}
     <div class="popup-detail">Region: ${regionString}</div>
     ${teleportList.length > 0
       ? `

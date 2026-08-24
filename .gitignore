@@ -8,4 +8,5 @@ map/public/assets/*
 !map/public/assets/icons
 !map/public/assets/img
 !map/public/assets/*.pmtiles
+!map/public/assets/*.json
 node_modules

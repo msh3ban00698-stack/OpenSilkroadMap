@@ -11,7 +11,7 @@ import os
 from PIL import Image
 
 
-def convert_ddj_to_webp(input_path, output_path):
+def convert_ddj_to_webp(input_path, output_path, quality=80):
     try:
         with open(input_path, "rb") as f:
             # Skip 20-byte JMX header
@@ -24,7 +24,7 @@ def convert_ddj_to_webp(input_path, output_path):
         img = img.convert("RGB")
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        img.save(output_path, "WEBP", quality=80)
+        img.save(output_path, "WEBP", quality=quality)
         return True
     except Exception as e:
         print(f"  [!] Error converting {input_path}: {e}")

@@ -10,7 +10,7 @@ export const sroProjection = new Projection({
   extent: SRO_EXTENT,
 });
 
-export const resolutions = [1 / Math.pow(2, 3), 1 / Math.pow(2, 6), 1 / Math.pow(2, 9)];
+export const resolutions = [1 / Math.pow(2, 3), 1 / Math.pow(2, 6), 1 / Math.pow(2, 8)];
 
 export const tileGrid = new TileGrid({
   origin: [SRO_ORIGIN[0], SRO_ORIGIN[1]],
