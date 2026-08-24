@@ -11,7 +11,7 @@ import { TouchControls } from "./player_control";
 import { buildHud, type Hud, type HudWorldState } from "./hud";
 import { buildInventoryPanel, type InventoryPanel } from "./inventory_panel";
 import { CharacterViewerScreen } from "./character_viewer_screen";
-import { getClassStats, START_REGION } from "./game_data";
+import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, START_REGION } from "./game_data";
 import { getItem, isEquippable } from "./items";
 import type { EquipSlot, GameCharacter } from "./types";
 
@@ -22,6 +22,8 @@ const emptyState: HudWorldState = {
   maxMp: 1,
   gold: 0,
   level: 1,
+  exp: 0,
+  expToNext: 0,
   name: "",
   className: "",
   dead: false,
@@ -163,7 +165,10 @@ class GameFlow {
       this.worldContainer.style.display = "block";
 
       const persist = (): void => {
-        if (this.currentChar) saveCharacter(this.currentChar);
+        if (this.currentChar) {
+          this.recomputeStats(this.currentChar);
+          saveCharacter(this.currentChar);
+        }
       };
 
       this.hud = buildHud({
@@ -173,6 +178,11 @@ class GameFlow {
         onMenu: () => this.showPause(),
         onToggleInventory: () => this.toggleInventory(),
         onUsePotion: () => this.useBestPotion(),
+        onUseSkill: (code, name) => this.world?.useSkill(code, name),
+        onLevelUp: (level) => {
+          this.hud?.log(`Level up! You reached level ${level}.`);
+          this.hud?.showLevelUp(level);
+        },
         getState: () => (this.world ? this.world.getState() as unknown as HudWorldState : emptyState),
       });
       document.getElementById("game-root")!.appendChild(this.hud.root);
@@ -239,9 +249,10 @@ class GameFlow {
     this.inventory?.hide();
   }
 
-  private recomputeMaxHp(char: GameCharacter): void {
-    const base = getClassStats(char.classId).hp;
-    let maxHp = base;
+  private recomputeStats(char: GameCharacter): void {
+    const base = getClassStats(char.classId);
+    let maxHp = base.hp + (char.level - 1) * HP_PER_LEVEL;
+    let maxMp = base.mp + (char.level - 1) * MP_PER_LEVEL;
     for (const slot of ["weapon", "armor", "accessory"] as const) {
       const id = char.equipment[slot];
       if (!id) continue;
@@ -249,7 +260,9 @@ class GameFlow {
       if (item?.hpBonus) maxHp += item.hpBonus;
     }
     char.maxHp = maxHp;
+    char.maxMp = maxMp;
     if (char.hp > maxHp) char.hp = maxHp;
+    if (char.mp > maxMp) char.mp = maxMp;
   }
 
   private equipItem(itemId: string): void {
@@ -270,7 +283,7 @@ class GameFlow {
       else char.inventory.push({ id: current, count: 1 });
     }
     char.equipment[item.slot] = itemId;
-    this.recomputeMaxHp(char);
+    this.recomputeStats(char);
     this.world?.applyEquipment(char.equipment);
     saveCharacter(char);
     this.inventory?.refresh();
@@ -286,7 +299,7 @@ class GameFlow {
     if (existing) existing.count += 1;
     else char.inventory.push({ id, count: 1 });
     char.equipment[slot] = null;
-    this.recomputeMaxHp(char);
+    this.recomputeStats(char);
     this.world?.applyEquipment(char.equipment);
     saveCharacter(char);
     const item = getItem(id);
@@ -297,7 +310,7 @@ class GameFlow {
   private useBestPotion(): boolean {
     const char = this.currentChar;
     if (!char) return false;
-    for (const id of ["potion_hp", "potion_small"]) {
+    for (const id of ["hp_potion_02", "hp_potion_01"]) {
       const stack = char.inventory.find((s) => s.id === id && s.count > 0);
       if (stack) {
         const ok = this.world?.usePotion(id);

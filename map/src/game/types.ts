@@ -27,6 +27,7 @@ export interface GameCharacter {
   mp: number;
   maxHp: number;
   maxMp: number;
+  exp: number;
   inventory: InventoryItem[];
   equipment: Record<EquipSlot, string | null>;
 }

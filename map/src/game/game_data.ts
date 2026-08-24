@@ -13,12 +13,12 @@ export interface ClassDef {
 // Race assignment per class is inferred from the class set (not a verified
 // translation); the UI marks it "(inferred)".
 export const VERIFIED_CLASSES: ClassDef[] = [
-  { id: "warrior", name: "Warrior", race: "Chinese", desc: "Melee fighter; blade, spear or blade masteries." },
-  { id: "rogue", name: "Rogue", race: "Chinese", desc: "Fast physical attacker; knife or bow masteries." },
-  { id: "cleric", name: "Cleric", race: "Chinese", desc: "Support caster; healing and buffs." },
-  { id: "warlock", name: "Warlock", race: "Chinese", desc: "Curses and dark magic." },
-  { id: "wizard", name: "Wizard", race: "European", desc: "Elemental damage magic." },
-  { id: "bard", name: "Bard", race: "European", desc: "Song magic; buffs the party." },
+  { id: "warrior", name: "Warrior", race: "Chinese", desc: "Chinese melee fighter. Verified masteries: Sword + Lightning." },
+  { id: "rogue", name: "Rogue", race: "Chinese", desc: "Chinese physical fighter. Verified masteries: Spear + Cold." },
+  { id: "cleric", name: "Cleric", race: "Chinese", desc: "Chinese support caster. Verified masteries: Bow + Fire, plus the Water healing line." },
+  { id: "warlock", name: "Warlock", race: "European", desc: "European caster. No skill data for this class exists in the package." },
+  { id: "wizard", name: "Wizard", race: "European", desc: "European elemental caster. Verified mastery: European Wizard (Force)." },
+  { id: "bard", name: "Bard", race: "European", desc: "European support class. No skill data for this class exists in the package." },
 ];
 
 export function getClass(id: string): ClassDef | undefined {
@@ -45,7 +45,9 @@ export const REGION_NPCS = [
 ];
 
 // Base combat stats per class. HP/MP numbers are gameplay tuning (not
-// extracted game values); regenerations are per second.
+// extracted game values); no verified player-stat table is present in the
+// package's server_dep textdata (characterdata_all contains only NPC/mob/COS
+// templates). Regenerations are per second.
 export interface ClassStats {
   hp: number;
   mp: number;
@@ -66,12 +68,22 @@ export function getClassStats(classId: string): ClassStats {
   return CLASS_STATS[classId] ?? CLASS_STATS.warrior;
 }
 
+// Per-level stat growth (gameplay tuning; no verified player table exists).
+export const HP_PER_LEVEL = 6;
+export const MP_PER_LEVEL = 3;
+
 export const STARTING_GOLD = 100;
 
-// Starter gear. The sword is pre-equipped so the character visibly carries the
-// real sword mesh; armor + ring start in the bag so equipping them changes HP.
+// Starter gear, using verified level-1 items from itemdata_5000.txt:
+//   sword_01_a        ITEM_CH_SWORD_01_A        Copper Sword
+//   m_heavy_01_ba_a   ITEM_CH_M_HEAVY_01_BA_A  Copper Armor
+//   ring_01_a         ITEM_CH_RING_01_A        Ume Copper Ring
+//   hp_potion_01      ITEM_ETC_HP_POTION_01    HP Recovery Herb
+//   hp_potion_02      ITEM_ETC_HP_POTION_02    HP Recovery Potion (Small)
+// The sword is pre-equipped so the character visibly carries the real sword
+// mesh; armor + ring start in the bag so equipping them changes HP.
 export const STARTER_EQUIPMENT: Record<"weapon" | "armor" | "accessory", string | null> = {
-  weapon: "sword_training",
+  weapon: "sword_01_a",
   armor: null,
   accessory: null,
 };
@@ -89,21 +101,21 @@ export const STARTER_KITS: StarterKit[] = [
   {
     id: "kit_blade",
     name: "Blade Kit",
-    desc: "Leather Armor + Guard Ring in bag, plus 2 Small HP Potions.",
+    desc: "Copper Armor + Ume Copper Ring in bag, plus 2 HP Recovery Herbs and 1 Small HP Potion.",
     bag: [
-      { id: "armor_leather", count: 1 },
-      { id: "ring_guard", count: 1 },
-      { id: "potion_small", count: 2 },
-      { id: "potion_hp", count: 1 },
+      { id: "m_heavy_01_ba_a", count: 1 },
+      { id: "ring_01_a", count: 1 },
+      { id: "hp_potion_01", count: 2 },
+      { id: "hp_potion_02", count: 1 },
     ],
   },
   {
     id: "kit_survival",
     name: "Survival Kit",
-    desc: "No armor or ring, but 4 Small HP Potions + 2 HP Potions.",
+    desc: "No armor or ring, but 4 HP Recovery Herbs + 2 Small HP Potions.",
     bag: [
-      { id: "potion_small", count: 4 },
-      { id: "potion_hp", count: 2 },
+      { id: "hp_potion_01", count: 4 },
+      { id: "hp_potion_02", count: 2 },
     ],
   },
 ];

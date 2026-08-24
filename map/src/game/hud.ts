@@ -1,5 +1,6 @@
 import type { GameCharacter } from "./types";
 import { getClass, START_REGION_NAME } from "./game_data";
+import { getClassSkills, getClassMasteryName } from "./data_loader";
 
 export interface NpcDialogInfo {
   id: string;
@@ -15,6 +16,8 @@ export interface HudWorldState {
   maxMp: number;
   gold: number;
   level: number;
+  exp: number;
+  expToNext: number;
   name: string;
   className: string;
   dead: boolean;
@@ -34,6 +37,8 @@ export interface HudOptions {
   onMenu: () => void;
   onToggleInventory: () => void;
   onUsePotion: () => boolean;
+  onUseSkill: (code: string, name: string) => void;
+  onLevelUp: (level: number) => void;
   getState: () => HudWorldState;
 }
 
@@ -43,6 +48,7 @@ export interface Hud {
   joystickKnob: HTMLElement;
   log(msg: string): void;
   showNpcDialog(npc: NpcDialogInfo): void;
+  showLevelUp(level: number): void;
   dispose(): void;
 }
 
@@ -50,14 +56,36 @@ const MINIMAP_SIZE = 160;
 const MINIMAP_RADIUS = 250;
 const MINIMAP_POLL_MS = 150;
 
+// Compact slot label derived from the verified skill code, e.g.
+// SKILL_CH_SWORD_SMASH_A_01 -> "SMASH A".
+function shortSkillLabel(code: string): string {
+  const parts = code.replace(/^SKILL_/, "").split("_").filter((p) => !/^\d+$/.test(p));
+  return parts.slice(-2).join(" ");
+}
+
 export function buildHud(opts: HudOptions): Hud {
   const cls = getClass(opts.character.classId);
+  const classSkills = getClassSkills(opts.character.classId);
+  const masteryName = getClassMasteryName(opts.character.classId);
+  const slots = [
+    `<button class="hud-slot" data-skill="atk" title="Basic Attack"><span class="hud-slot-key">1</span>ATK</button>`,
+    `<button class="hud-slot" data-skill="potion" title="Use the best HP potion in your bag"><span class="hud-slot-key">2</span>POT</button>`,
+  ];
+  classSkills.forEach((s, i) => {
+    slots.push(`
+      <button class="hud-slot hud-slot-skill" data-skill="${s.code}" data-name="${s.name}" title="${s.name} (${s.code})">
+        <span class="hud-slot-key">${i + 3}</span>${shortSkillLabel(s.code)}
+      </button>`);
+  });
+  for (let i = classSkills.length; i < 4; i++) {
+    slots.push(`<button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">${i + 3}</span>--</button>`);
+  }
   const root = document.createElement("div");
   root.className = "game-hud";
   root.innerHTML = `
     <div class="hud-plate">
       <div class="hud-name">${opts.character.name}</div>
-      <div class="hud-meta">Lv.${opts.character.level} ${cls ? cls.name : opts.character.classId}</div>
+      <div class="hud-meta">Lv.${opts.character.level} ${cls ? cls.name : opts.character.classId}${masteryName ? ` · ${masteryName}` : ""}</div>
       <div class="hud-bars">
         <div class="hud-bar-row">
           <div class="hud-bar hp"><div class="hud-bar-fill" id="hud-hp-fill"></div></div>
@@ -66,6 +94,20 @@ export function buildHud(opts: HudOptions): Hud {
         <div class="hud-bar-row">
           <div class="hud-bar mp"><div class="hud-bar-fill" id="hud-mp-fill"></div></div>
           <div class="hud-bar-num" id="hud-mp-num"></div>
+        </div>
+        <div class="hud-bar-row">
+          <div class="hud-bar exp"><div class="hud-bar-fill" id="hud-exp-fill"></div></div>
+          <div class="hud-bar-num" id="hud-exp-num"></div>
+        </div>
+      </div>
+    </div>
+        <div class="hud-bar-row">
+          <div class="hud-bar mp"><div class="hud-bar-fill" id="hud-mp-fill"></div></div>
+          <div class="hud-bar-num" id="hud-mp-num"></div>
+        </div>
+        <div class="hud-bar-row">
+          <div class="hud-bar exp"><div class="hud-bar-fill" id="hud-exp-fill"></div></div>
+          <div class="hud-bar-num" id="hud-exp-num"></div>
         </div>
       </div>
     </div>
@@ -89,13 +131,9 @@ export function buildHud(opts: HudOptions): Hud {
       <div class="hud-target-dist" id="hud-target-dist"></div>
     </div>
     <div class="hud-skillbar" id="hud-skillbar">
-      <button class="hud-slot" data-skill="atk"><span class="hud-slot-key">1</span>ATK</button>
-      <button class="hud-slot" data-skill="potion"><span class="hud-slot-key">2</span>POT</button>
-      <button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">3</span>--</button>
-      <button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">4</span>--</button>
-      <button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">5</span>--</button>
-      <button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">6</span>--</button>
+      ${slots.join("")}
     </div>
+    <div class="hud-levelup" id="hud-levelup" style="display:none"></div>
     <div class="hud-log" id="hud-log"></div>
     <div class="hud-joystick" id="joy-base">
       <div class="hud-joystick-knob" id="joy-knob"></div>
@@ -125,6 +163,9 @@ export function buildHud(opts: HudOptions): Hud {
   const mpFill = root.querySelector("#hud-mp-fill") as HTMLElement;
   const hpNum = root.querySelector("#hud-hp-num") as HTMLElement;
   const mpNum = root.querySelector("#hud-mp-num") as HTMLElement;
+  const expFill = root.querySelector("#hud-exp-fill") as HTMLElement;
+  const expNum = root.querySelector("#hud-exp-num") as HTMLElement;
+  const levelUpEl = root.querySelector("#hud-levelup") as HTMLElement;
   const goldEl = root.querySelector("#hud-gold") as HTMLElement;
   const targetEl = root.querySelector("#hud-target") as HTMLElement;
   const targetNameEl = root.querySelector("#hud-target-name") as HTMLElement;
@@ -204,6 +245,8 @@ export function buildHud(opts: HudOptions): Hud {
     const s = opts.getState();
     setBar(hpFill, hpNum, s.hp, s.maxHp);
     setBar(mpFill, mpNum, s.mp, s.maxMp);
+    setBar(expFill, expNum, s.exp, s.expToNext);
+    if (s.expToNext <= 0) expNum.textContent = "MAX";
     goldEl.textContent = String(s.gold);
 
     if (s.selected) {
@@ -243,11 +286,25 @@ export function buildHud(opts: HudOptions): Hud {
         opts.onAttack();
       } else if (skill === "potion") {
         opts.onUsePotion();
+      } else if (skill && skill !== "locked") {
+        opts.onUseSkill(skill, (el as HTMLElement).dataset.name ?? skill);
       } else {
         log("Skill locked: no skill data is available for this class yet.");
       }
     });
   });
+
+  let levelUpTimer = 0;
+  const showLevelUp = (level: number): void => {
+    levelUpEl.textContent = `LEVEL UP! Lv.${level}`;
+    levelUpEl.style.display = "flex";
+    levelUpEl.classList.add("hud-levelup-show");
+    window.clearTimeout(levelUpTimer);
+    levelUpTimer = window.setTimeout(() => {
+      levelUpEl.classList.remove("hud-levelup-show");
+      levelUpEl.style.display = "none";
+    }, 2400);
+  };
 
   const pollTimer = window.setInterval(refresh, MINIMAP_POLL_MS);
   refresh();
@@ -294,8 +351,10 @@ export function buildHud(opts: HudOptions): Hud {
     joystickKnob: root.querySelector("#joy-knob")!,
     log,
     showNpcDialog,
+    showLevelUp,
     dispose: () => {
       window.clearInterval(pollTimer);
+      window.clearTimeout(levelUpTimer);
       closeDialog();
       if (root.parentElement) root.parentElement.removeChild(root);
     },

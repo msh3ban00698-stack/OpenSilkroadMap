@@ -1,0 +1,144 @@
+{
+  "source": "game_source/Media/server_dep/silkroad/textdata/skilldata_5000.txt + skilldata_10000.txt + textdata_equip&skill.txt",
+  "note": "Level-1 skills per class, resolved from verified skill codes and official names. warlock and bard have no mastery/skill data in this package (their class names exist only in the UI strings).",
+  "classes": {
+    "warrior": {
+      "masteryId": "257",
+      "mastery": "Sword",
+      "skills": [
+        {
+          "id": 174,
+          "code": "SKILL_CH_SWORD_SMASH_A_01",
+          "name": "Strike Smash",
+          "levelReq": 1,
+          "masteryId": 257,
+          "nameKey": "SN_SKILL_CH_SWORD_SMASH_A"
+        },
+        {
+          "id": 175,
+          "code": "SKILL_CH_SWORD_SMASH_B_01",
+          "name": "Stab Smash",
+          "levelReq": 1,
+          "masteryId": 257,
+          "nameKey": "SN_SKILL_CH_SWORD_SMASH_B"
+        },
+        {
+          "id": 176,
+          "code": "SKILL_CH_SWORD_SMASH_C_01",
+          "name": "Crosswise Smash",
+          "levelReq": 1,
+          "masteryId": 257,
+          "nameKey": "SN_SKILL_CH_SWORD_SMASH_C"
+        }
+      ]
+    },
+    "rogue": {
+      "masteryId": "258",
+      "mastery": "Spear",
+      "skills": [
+        {
+          "id": 196,
+          "code": "SKILL_CH_SPEAR_PIERCE_A_01",
+          "name": "Wolf Bite Spear",
+          "levelReq": 1,
+          "masteryId": 258,
+          "nameKey": "SN_SKILL_CH_SPEAR_PIERCE_A"
+        },
+        {
+          "id": 210,
+          "code": "SKILL_CH_SPEAR_CHAIN_A_1S_01",
+          "name": "Chain Spear - Tiger",
+          "levelReq": 1,
+          "masteryId": 258,
+          "nameKey": "SN_SKILL_CH_SPEAR_CHAIN_A"
+        },
+        {
+          "id": 202,
+          "code": "SKILL_CH_SPEAR_FRONTAREA_A_01",
+          "name": "Dancing Demon Spear",
+          "levelReq": 1,
+          "masteryId": 258,
+          "nameKey": "SN_SKILL_CH_SPEAR_FRONTAREA_A"
+        }
+      ]
+    },
+    "cleric": {
+      "masteryId": "276",
+      "mastery": "Water",
+      "skills": [
+        {
+          "id": 296,
+          "code": "SKILL_CH_WATER_HEAL_A_01",
+          "name": "Heal - Medical Hand",
+          "levelReq": 1,
+          "masteryId": 276,
+          "nameKey": "SN_SKILL_CH_WATER_HEAL_A"
+        },
+        {
+          "id": 290,
+          "code": "SKILL_CH_WATER_SELFHEAL_A_01",
+          "name": "Self Breathe Heal",
+          "levelReq": 1,
+          "masteryId": 276,
+          "nameKey": "SN_SKILL_CH_WATER_SELFHEAL_A"
+        },
+        {
+          "id": 293,
+          "code": "SKILL_CH_WATER_CURE_A_01",
+          "name": "Force Cure - Poison",
+          "levelReq": 1,
+          "masteryId": 276,
+          "nameKey": "SN_SKILL_CH_WATER_CURE_A"
+        }
+      ]
+    },
+    "wizard": {
+      "masteryId": "514",
+      "mastery": "European Wizard",
+      "skills": [
+        {
+          "id": 636,
+          "code": "SKILL_EU_WIZARD_MENTALA_DAMAGEUP_A_01",
+          "name": "Life Control",
+          "levelReq": 1,
+          "masteryId": 514,
+          "nameKey": "SN_SKILL_EU_WIZARD_MENTALA_DAMAGEUP_A"
+        },
+        {
+          "id": 635,
+          "code": "SKILL_EU_WIZARD_MANAP_RANGE_A_01",
+          "name": "Magic Bound",
+          "levelReq": 1,
+          "masteryId": 514,
+          "nameKey": "SN_SKILL_EU_WIZARD_MANAP_RANGE_A"
+        },
+        {
+          "id": 638,
+          "code": "SKILL_EU_WIZARD_SPIRITP_EARTH_A_01",
+          "name": "Earth Spirit",
+          "levelReq": 1,
+          "masteryId": 514,
+          "nameKey": "SN_SKILL_EU_WIZARD_SPIRITP_EARTH_A"
+        },
+        {
+          "id": 634,
+          "code": "SKILL_EU_WIZARD_MANAP_DECREASE_A_01",
+          "name": "Intelligence",
+          "levelReq": 1,
+          "masteryId": 514,
+          "nameKey": "SN_SKILL_EU_WIZARD_MANAP_DECREASE_A"
+        }
+      ]
+    },
+    "warlock": {
+      "masteryId": null,
+      "mastery": null,
+      "skills": []
+    },
+    "bard": {
+      "masteryId": null,
+      "mastery": null,
+      "skills": []
+    }
+  }
+}

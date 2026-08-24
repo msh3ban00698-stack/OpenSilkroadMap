@@ -1,0 +1,134 @@
+{
+  "source": "game_source/Media/server_dep/silkroad/textdata/skillmasterydata.txt + learnablemastery.txt",
+  "note": "The official mastery name strings (UIIT_STT_MASTERY_*) are not present in the server_dep textdata translations; names are derived from the verified skill-code grouping. learnablemastery maps character refs 1831/1832/1833/1838 (Chinese) and 1873-1876 (European) to the mastery ids below.",
+  "masteries": [
+    {
+      "id": "257",
+      "code": "SWORD",
+      "name": "SWORD",
+      "officialKey": "UIIT_STT_MASTERY_VI",
+      "officialName": null
+    },
+    {
+      "id": "258",
+      "code": "SPEAR",
+      "name": "SPEAR",
+      "officialKey": "UIIT_STT_MASTERY_HEUK",
+      "officialName": null
+    },
+    {
+      "id": "259",
+      "code": "BOW",
+      "name": "BOW",
+      "officialKey": "UIIT_STT_MASTERY_PA",
+      "officialName": null
+    },
+    {
+      "id": "273",
+      "code": "COLD",
+      "name": "COLD",
+      "officialKey": "UIIT_STT_MASTERY_HAN",
+      "officialName": null
+    },
+    {
+      "id": "274",
+      "code": "LIGHTNING",
+      "name": "LIGHTNING",
+      "officialKey": "UIIT_STT_MASTERY_PUNG",
+      "officialName": null
+    },
+    {
+      "id": "275",
+      "code": "FIRE",
+      "name": "FIRE",
+      "officialKey": "UIIT_STT_MASTERY_HWA",
+      "officialName": null
+    },
+    {
+      "id": "276",
+      "code": "WATER",
+      "name": "WATER",
+      "officialKey": "UIIT_STT_MASTERY_GI",
+      "officialName": null
+    },
+    {
+      "id": "513",
+      "code": "EU_WARRIOR",
+      "name": "European WARRIOR",
+      "officialKey": "UIIT_STT_WARRIOR",
+      "officialName": "Warrior"
+    },
+    {
+      "id": "514",
+      "code": "EU_WIZARD",
+      "name": "European WIZARD",
+      "officialKey": "UIIT_STT_WIZARD",
+      "officialName": "Wizard"
+    },
+    {
+      "id": "515",
+      "code": "EU_ROGUE",
+      "name": "European ROGUE",
+      "officialKey": "UIIT_STT_ROG",
+      "officialName": "Rogue"
+    }
+  ],
+  "learnableMastery": [
+    {
+      "charRefId": "1831",
+      "masteryId": "257"
+    },
+    {
+      "charRefId": "1831",
+      "masteryId": "274"
+    },
+    {
+      "charRefId": "1832",
+      "masteryId": "258"
+    },
+    {
+      "charRefId": "1832",
+      "masteryId": "273"
+    },
+    {
+      "charRefId": "1833",
+      "masteryId": "259"
+    },
+    {
+      "charRefId": "1833",
+      "masteryId": "275"
+    },
+    {
+      "charRefId": "1838",
+      "masteryId": "276"
+    },
+    {
+      "charRefId": "1873",
+      "masteryId": "274"
+    },
+    {
+      "charRefId": "1873",
+      "masteryId": "257"
+    },
+    {
+      "charRefId": "1874",
+      "masteryId": "258"
+    },
+    {
+      "charRefId": "1874",
+      "masteryId": "273"
+    },
+    {
+      "charRefId": "1875",
+      "masteryId": "259"
+    },
+    {
+      "charRefId": "1875",
+      "masteryId": "275"
+    },
+    {
+      "charRefId": "1876",
+      "masteryId": "276"
+    }
+  ]
+}

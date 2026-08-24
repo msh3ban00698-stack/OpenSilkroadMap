@@ -47,6 +47,7 @@ uv run scripts/convert_ddjs.py
 uv run scripts/generate_tiles.py
 uv run scripts/generate_navmesh.py
 uv run scripts/generate_game_data.py
+uv run scripts/generate_phase_h_data.py
 ```
 
 ### 4. Run the Development Server

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import type { EquipSlot, GameCharacter } from "./types";
 import { getClass, getClassStats, REGION_NPCS, START_REGION_NAME } from "./game_data";
+import { expToNext, MAX_LEVEL } from "./data_loader";
 import type { RegionAssets } from "./region_loader";
 import { CharacterRig } from "./character_rig";
 import { getItem } from "./items";
@@ -19,6 +20,7 @@ export interface GameWorldOptions {
   onLog: (msg: string) => void;
   onInteractNpc?: (npc: NpcInstance) => void;
   onCharacterMutated?: () => void;
+  onLevelUp?: (level: number) => void;
 }
 
 // Character visual scale (0.15 => ~2.4 world units, the Phase E viewer scale).
@@ -43,6 +45,9 @@ const RETALIATE_CHANCE = 0.3;
 const RETALIATE_MIN = 6;
 const RETALIATE_MAX = 14;
 const DUMMY_GOLD_REWARD = { min: 6, max: 18 };
+// EXP gain per dummy kill (gameplay tuning; no verified exp reward table exists
+// in the package's server_dep textdata). ~6 kills per level at Lv.1.
+const DUMMY_EXP_REWARD = 20;
 
 const SWORD_PART_ID = "sword_01";
 
@@ -71,6 +76,7 @@ export class GameWorld {
   private onLog: (msg: string) => void;
   private onInteractNpc?: (npc: NpcInstance) => void;
   private onCharacterMutated?: () => void;
+  private onLevelUp?: (level: number) => void;
 
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
@@ -114,6 +120,7 @@ export class GameWorld {
     this.onLog = opts.onLog;
     this.onInteractNpc = opts.onInteractNpc;
     this.onCharacterMutated = opts.onCharacterMutated;
+    this.onLevelUp = opts.onLevelUp;
 
     this.playerHp = this.character.hp;
     this.playerMp = this.character.mp;
@@ -207,6 +214,7 @@ export class GameWorld {
         this.rig.group.rotation.y = y;
       },
       attack: () => this.attack(),
+      useSkill: (code: string, name: string) => this.useSkill(code, name),
       dummy: () => ({
         x: this.dummy.group.position.x,
         z: this.dummy.group.position.z,
@@ -239,6 +247,8 @@ export class GameWorld {
       maxMp: this.character.maxMp,
       gold: this.character.gold,
       level: this.character.level,
+      exp: this.character.exp,
+      expToNext: expToNext(this.character.level),
       name: this.character.name,
       classId: this.character.classId,
       className: cls ? cls.name : this.character.classId,
@@ -747,12 +757,37 @@ export class GameWorld {
       d.respawnT = DUMMY_RESPAWN_MS;
       const reward = DUMMY_GOLD_REWARD.min + Math.floor(Math.random() * (DUMMY_GOLD_REWARD.max - DUMMY_GOLD_REWARD.min));
       this.character.gold += reward;
+      this.gainExp(DUMMY_EXP_REWARD);
       this.onCharacterMutated?.();
-      this.onLog(`The training dummy has been defeated (${this.dummyHits} hits)! +${reward} gold.`);
+      this.onLog(`The training dummy has been defeated (${this.dummyHits} hits)! +${reward} gold, +${DUMMY_EXP_REWARD} exp.`);
       return;
     }
     this.onLog(`You hit the training dummy for ${damage} damage. (${d.hp}/${d.maxHp})`);
     this.maybeRetaliate();
+  }
+
+  private gainExp(amount: number): void {
+    if (this.character.level >= MAX_LEVEL) return;
+    this.character.exp += amount;
+    let leveled = false;
+    while (this.character.level < MAX_LEVEL && this.character.exp >= expToNext(this.character.level)) {
+      this.character.exp -= expToNext(this.character.level);
+      this.character.level += 1;
+      leveled = true;
+    }
+    if (this.character.level >= MAX_LEVEL) this.character.exp = 0;
+    if (leveled) {
+      this.onCharacterMutated?.();
+      this.playerHp = this.character.maxHp;
+      this.playerMp = this.character.maxMp;
+      this.onLevelUp?.(this.character.level);
+      this.makeFloatingText("LEVEL UP!", "#ffe082");
+    }
+  }
+
+  useSkill(code: string, name: string): void {
+    this.attack();
+    this.onLog(`[skill] ${name} (${code}) - skill effects are placeholder; no damage/heal tables were extracted.`);
   }
 
   private maybeRetaliate(): void {

@@ -1,0 +1,1056 @@
+{
+  "source": "game_source/Media/server_dep/silkroad/textdata/leveldata.txt",
+  "note": "expToNext = leveldata col1 (official level EXP requirement to advance from this level).",
+  "levels": [
+    {
+      "level": 1,
+      "expToNext": 118,
+      "spColumn2": 1,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 2,
+      "expToNext": 470,
+      "spColumn2": 1,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 3,
+      "expToNext": 1058,
+      "spColumn2": 1,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 4,
+      "expToNext": 1880,
+      "spColumn2": 2,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 5,
+      "expToNext": 2938,
+      "spColumn2": 2,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 6,
+      "expToNext": 5640,
+      "spColumn2": 4,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 7,
+      "expToNext": 9048,
+      "spColumn2": 5,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 8,
+      "expToNext": 13160,
+      "spColumn2": 6,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 9,
+      "expToNext": 17978,
+      "spColumn2": 7,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 10,
+      "expToNext": 23500,
+      "spColumn2": 9,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 11,
+      "expToNext": 34898,
+      "spColumn2": 12,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 12,
+      "expToNext": 47940,
+      "spColumn2": 15,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 13,
+      "expToNext": 62628,
+      "spColumn2": 18,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 14,
+      "expToNext": 78960,
+      "spColumn2": 21,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 15,
+      "expToNext": 96938,
+      "spColumn2": 24,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 16,
+      "expToNext": 127840,
+      "spColumn2": 30,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 17,
+      "expToNext": 161798,
+      "spColumn2": 35,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 18,
+      "expToNext": 198810,
+      "spColumn2": 41,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 19,
+      "expToNext": 238878,
+      "spColumn2": 47,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 20,
+      "expToNext": 282000,
+      "spColumn2": 53,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 21,
+      "expToNext": 351231,
+      "spColumn2": 62,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 22,
+      "expToNext": 427755,
+      "spColumn2": 71,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 23,
+      "expToNext": 512196,
+      "spColumn2": 80,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 24,
+      "expToNext": 605232,
+      "spColumn2": 89,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 25,
+      "expToNext": 707587,
+      "spColumn2": 98,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 26,
+      "expToNext": 820046,
+      "spColumn2": 108,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 27,
+      "expToNext": 943453,
+      "spColumn2": 117,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 28,
+      "expToNext": 1078717,
+      "spColumn2": 126,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 29,
+      "expToNext": 1226815,
+      "spColumn2": 135,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 30,
+      "expToNext": 1388803,
+      "spColumn2": 144,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 31,
+      "expToNext": 1595229,
+      "spColumn2": 158,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 32,
+      "expToNext": 1818827,
+      "spColumn2": 172,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 33,
+      "expToNext": 2060796,
+      "spColumn2": 185,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 34,
+      "expToNext": 2322414,
+      "spColumn2": 199,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 35,
+      "expToNext": 2605043,
+      "spColumn2": 212,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 36,
+      "expToNext": 2910129,
+      "spColumn2": 226,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 37,
+      "expToNext": 3239210,
+      "spColumn2": 239,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 38,
+      "expToNext": 3593924,
+      "spColumn2": 253,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 39,
+      "expToNext": 3976012,
+      "spColumn2": 266,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 40,
+      "expToNext": 4387323,
+      "spColumn2": 280,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 41,
+      "expToNext": 4869381,
+      "spColumn2": 299,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 42,
+      "expToNext": 5382982,
+      "spColumn2": 318,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 43,
+      "expToNext": 5929882,
+      "spColumn2": 336,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 44,
+      "expToNext": 6511920,
+      "spColumn2": 355,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 45,
+      "expToNext": 7131034,
+      "spColumn2": 374,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 46,
+      "expToNext": 7789258,
+      "spColumn2": 393,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 47,
+      "expToNext": 8488730,
+      "spColumn2": 412,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 48,
+      "expToNext": 9231697,
+      "spColumn2": 431,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 49,
+      "expToNext": 10020519,
+      "spColumn2": 449,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 50,
+      "expToNext": 10857676,
+      "spColumn2": 468,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 51,
+      "expToNext": 11857343,
+      "spColumn2": 494,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 52,
+      "expToNext": 12913686,
+      "spColumn2": 520,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 53,
+      "expToNext": 14029449,
+      "spColumn2": 546,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 54,
+      "expToNext": 15207495,
+      "spColumn2": 571,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 55,
+      "expToNext": 16450818,
+      "spColumn2": 597,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 56,
+      "expToNext": 17762545,
+      "spColumn2": 623,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 57,
+      "expToNext": 19145941,
+      "spColumn2": 649,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 58,
+      "expToNext": 20604414,
+      "spColumn2": 675,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 59,
+      "expToNext": 22141527,
+      "spColumn2": 700,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 60,
+      "expToNext": 23760997,
+      "spColumn2": 726,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 61,
+      "expToNext": 25933410,
+      "spColumn2": 770,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 62,
+      "expToNext": 28214785,
+      "spColumn2": 813,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 63,
+      "expToNext": 30609702,
+      "spColumn2": 856,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 64,
+      "expToNext": 39747505,
+      "spColumn2": 1079,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 65,
+      "expToNext": 51493509,
+      "spColumn2": 1358,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 66,
+      "expToNext": 55474876,
+      "spColumn2": 1420,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 67,
+      "expToNext": 59648780,
+      "spColumn2": 1482,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 68,
+      "expToNext": 64023195,
+      "spColumn2": 1545,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 69,
+      "expToNext": 68606389,
+      "spColumn2": 1607,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 70,
+      "expToNext": 73406955,
+      "spColumn2": 1670,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 71,
+      "expToNext": 79345238,
+      "spColumn2": 1752,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 72,
+      "expToNext": 85573753,
+      "spColumn2": 1834,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 73,
+      "expToNext": 92104572,
+      "spColumn2": 1917,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 74,
+      "expToNext": 98950215,
+      "spColumn2": 1999,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 75,
+      "expToNext": 106123703,
+      "spColumn2": 2082,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 76,
+      "expToNext": 113638552,
+      "spColumn2": 2164,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 77,
+      "expToNext": 121508783,
+      "spColumn2": 2247,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 78,
+      "expToNext": 129748946,
+      "spColumn2": 2329,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 79,
+      "expToNext": 138374168,
+      "spColumn2": 2412,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 80,
+      "expToNext": 147400127,
+      "spColumn2": 2494,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 81,
+      "expToNext": 158227752,
+      "spColumn2": 2600,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 82,
+      "expToNext": 169572387,
+      "spColumn2": 2705,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 83,
+      "expToNext": 181455292,
+      "spColumn2": 2810,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 84,
+      "expToNext": 193898546,
+      "spColumn2": 2915,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 85,
+      "expToNext": 206925087,
+      "spColumn2": 3021,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 86,
+      "expToNext": 220558723,
+      "spColumn2": 3126,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 87,
+      "expToNext": 234824141,
+      "spColumn2": 3231,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 88,
+      "expToNext": 249746989,
+      "spColumn2": 3336,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 89,
+      "expToNext": 265353867,
+      "spColumn2": 3442,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 90,
+      "expToNext": 281672373,
+      "spColumn2": 3547,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 91,
+      "expToNext": 369337595,
+      "spColumn2": 4515,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 92,
+      "expToNext": 473538898,
+      "spColumn2": 5621,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 93,
+      "expToNext": 430636533,
+      "spColumn2": 7087,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 94,
+      "expToNext": 688586209,
+      "spColumn2": 8373,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 95,
+      "expToNext": 686078166,
+      "spColumn2": 8693,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 96,
+      "expToNext": 630281734,
+      "spColumn2": 9013,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 97,
+      "expToNext": 843249355,
+      "spColumn2": 9333,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 98,
+      "expToNext": 963955058,
+      "spColumn2": 10811,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 99,
+      "expToNext": 1322659532,
+      "spColumn2": 12765,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 100,
+      "expToNext": 1406035568,
+      "spColumn2": 13174,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 101,
+      "expToNext": 1507651756,
+      "spColumn2": 13715,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 102,
+      "expToNext": 1614099432,
+      "spColumn2": 14256,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 103,
+      "expToNext": 1725577160,
+      "spColumn2": 14796,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 104,
+      "expToNext": 1842290785,
+      "spColumn2": 15337,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 105,
+      "expToNext": 1964454143,
+      "spColumn2": 15878,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 106,
+      "expToNext": 2232028247,
+      "spColumn2": 16418,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 107,
+      "expToNext": 2639178042,
+      "spColumn2": 16959,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 108,
+      "expToNext": 3090465239,
+      "spColumn2": 17500,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 109,
+      "expToNext": 3588823339,
+      "spColumn2": 18040,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 110,
+      "expToNext": 4044607839,
+      "spColumn2": 18581,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 111,
+      "expToNext": 4456751915,
+      "spColumn2": 19297,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 112,
+      "expToNext": 4958953578,
+      "spColumn2": 20012,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 113,
+      "expToNext": 5513124347,
+      "spColumn2": 20728,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 114,
+      "expToNext": 6142844405,
+      "spColumn2": 21444,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 115,
+      "expToNext": 6790545257,
+      "spColumn2": 22159,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 116,
+      "expToNext": 7318001174,
+      "spColumn2": 23138,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 117,
+      "expToNext": 7945563314,
+      "spColumn2": 24116,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 118,
+      "expToNext": 8553759314,
+      "spColumn2": 25094,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 119,
+      "expToNext": 9663913517,
+      "spColumn2": 26072,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 120,
+      "expToNext": 10856262156,
+      "spColumn2": 27050,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 121,
+      "expToNext": 11912370495,
+      "spColumn2": 28466,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 122,
+      "expToNext": 13022074743,
+      "spColumn2": 29882,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 123,
+      "expToNext": 14187639915,
+      "spColumn2": 31297,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 124,
+      "expToNext": 15411418657,
+      "spColumn2": 32713,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 125,
+      "expToNext": 16695855794,
+      "spColumn2": 34129,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 126,
+      "expToNext": 18043488114,
+      "spColumn2": 35544,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 127,
+      "expToNext": 19456952321,
+      "spColumn2": 36960,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 128,
+      "expToNext": 20938984914,
+      "spColumn2": 38376,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 129,
+      "expToNext": 22492429041,
+      "spColumn2": 39791,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 130,
+      "expToNext": 24120234048,
+      "spColumn2": 41207,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 131,
+      "expToNext": 25825464827,
+      "spColumn2": 44373,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 132,
+      "expToNext": 27611301442,
+      "spColumn2": 47539,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 133,
+      "expToNext": 29481044735,
+      "spColumn2": 50704,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 134,
+      "expToNext": 31438122432,
+      "spColumn2": 53870,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 135,
+      "expToNext": 33486090755,
+      "spColumn2": 57036,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 136,
+      "expToNext": 35628643264,
+      "spColumn2": 68951,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 137,
+      "expToNext": 37869612718,
+      "spColumn2": 80867,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 138,
+      "expToNext": 40212975181,
+      "spColumn2": 92783,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 139,
+      "expToNext": 42662856947,
+      "spColumn2": 104698,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 140,
+      "expToNext": 45223539054,
+      "spColumn2": 116614,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 141,
+      "expToNext": 988885688167604,
+      "spColumn2": 115677,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 142,
+      "expToNext": 1020530030188968,
+      "spColumn2": 126401,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 143,
+      "expToNext": 1053186991155015,
+      "spColumn2": 137125,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 144,
+      "expToNext": 1086888974871975,
+      "spColumn2": 147849,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 145,
+      "expToNext": 1121669422067878,
+      "spColumn2": 158573,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 146,
+      "expToNext": 1157562843574051,
+      "spColumn2": 169297,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 147,
+      "expToNext": 1194604854568420,
+      "spColumn2": 180021,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 148,
+      "expToNext": 1232832209914610,
+      "spColumn2": 190745,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 149,
+      "expToNext": 1272282840631877,
+      "spColumn2": 201470,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    },
+    {
+      "level": 150,
+      "expToNext": 1312995891532097,
+      "spColumn2": 212194,
+      "masteryColumn3": 0,
+      "masteryColumn4": 0
+    }
+  ]
+}

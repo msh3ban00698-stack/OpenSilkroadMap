@@ -1,0 +1,90 @@
+{
+  "source": "game_source/Media/server_dep/silkroad/textdata/itemdata_5000.txt + textdata_equip&skill.txt + textdata_object.txt",
+  "note": "Level-1 starter items with names resolved from the official translations. rawCol13 / rawCol26 / rawCol27 / rawCol28 are direct itemdata_5000 columns; their meaning is item-type specific (for HP potions, rawCol26 is the restore amount per SRO convention). Gameplay tuning lives in the client item defs.",
+  "items": [
+    {
+      "id": "hp_potion_01",
+      "refId": 4,
+      "code": "ITEM_ETC_HP_POTION_01",
+      "name": "HP Recovery Herb",
+      "levelReq": 0,
+      "slot": "consumable",
+      "rawCol13": 180000,
+      "rawCol26": 60,
+      "rawCol27": 0,
+      "rawCol28": 0
+    },
+    {
+      "id": "hp_potion_02",
+      "refId": 5,
+      "code": "ITEM_ETC_HP_POTION_02",
+      "name": "HP Recovery Potion (Small)",
+      "levelReq": 0,
+      "slot": "consumable",
+      "rawCol13": 180000,
+      "rawCol26": 110,
+      "rawCol27": 0,
+      "rawCol28": 0
+    },
+    {
+      "id": "sword_01_a",
+      "refId": 71,
+      "code": "ITEM_CH_SWORD_01_A",
+      "name": "Copper Sword",
+      "levelReq": 1,
+      "slot": "weapon",
+      "rawCol13": 180000,
+      "rawCol26": 890,
+      "rawCol27": 198,
+      "rawCol28": 297
+    },
+    {
+      "id": "blade_01_a",
+      "refId": 107,
+      "code": "ITEM_CH_BLADE_01_A",
+      "name": "Copper Blade",
+      "levelReq": 1,
+      "slot": "weapon",
+      "rawCol13": 180000,
+      "rawCol26": 890,
+      "rawCol27": 198,
+      "rawCol28": 297
+    },
+    {
+      "id": "spear_01_a",
+      "refId": 143,
+      "code": "ITEM_CH_SPEAR_01_A",
+      "name": "Crescent",
+      "levelReq": 1,
+      "slot": "weapon",
+      "rawCol13": 180000,
+      "rawCol26": 990,
+      "rawCol27": 192,
+      "rawCol28": 288
+    },
+    {
+      "id": "m_heavy_01_ba_a",
+      "refId": 395,
+      "code": "ITEM_CH_M_HEAVY_01_BA_A",
+      "name": "Copper Armor",
+      "levelReq": 1,
+      "slot": "armor",
+      "rawCol13": 180000,
+      "rawCol26": 520,
+      "rawCol27": 116,
+      "rawCol28": 173
+    },
+    {
+      "id": "ring_01_a",
+      "refId": 1799,
+      "code": "ITEM_CH_RING_01_A",
+      "name": "Ume Copper Ring",
+      "levelReq": 1,
+      "slot": "accessory",
+      "rawCol13": 180000,
+      "rawCol26": 365,
+      "rawCol27": 0,
+      "rawCol28": 0
+    }
+  ]
+}

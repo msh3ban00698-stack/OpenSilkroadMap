@@ -1,12 +1,16 @@
 import type { EquipSlot } from "./types";
+import { getRealItem } from "./data_loader";
 
 export type ItemSlot = EquipSlot | "consumable";
 
 export interface ItemDef {
   id: string;
+  code: string;
+  refId: number;
   name: string;
   slot: ItemSlot;
   desc: string;
+  levelReq: number;
   color: string;
   attack?: number;
   defense?: number;
@@ -44,56 +48,84 @@ function potionSvg(fill: string): string {
   );
 }
 
+// Items mirror verified entries from itemdata_5000.txt (extracted in
+// scripts/generate_phase_h_data.py and loaded via data_loader.ts). Names,
+// codes, refId and levelReq come from that file; heal amounts are the
+// game's ItemLifeColumn value (rawCol26). Attack/defense/hpBonus/value and
+// colors are gameplay tuning; icons are generated SVG placeholders.
+const REAL = {
+  sword: getRealItem("sword_01_a"),
+  armor: getRealItem("m_heavy_01_ba_a"),
+  ring: getRealItem("ring_01_a"),
+  herb: getRealItem("hp_potion_01"),
+  potion: getRealItem("hp_potion_02"),
+};
+
 export const ITEMS: Record<string, ItemDef> = {
-  sword_training: {
-    id: "sword_training",
-    name: "Training Sword",
+  sword_01_a: {
+    id: "sword_01_a",
+    code: REAL.sword?.code ?? "ITEM_CH_SWORD_01_A",
+    refId: REAL.sword?.refId ?? 5000,
+    name: REAL.sword?.name ?? "Copper Sword",
     slot: "weapon",
-    desc: "A worn practice blade. Reflects on the chinaman_fighter model as its real sword (mesh part 15).",
+    desc: "The copper sword. Reflects on the chinaman_fighter model as its real sword (mesh part 15).",
     color: "#c9a86a",
     attack: 8,
     value: 25,
+    levelReq: REAL.sword?.levelReq ?? 1,
     icon: bladeSvg("#c9a86a"),
   },
-  armor_leather: {
-    id: "armor_leather",
-    name: "Leather Armor",
+  m_heavy_01_ba_a: {
+    id: "m_heavy_01_ba_a",
+    code: REAL.armor?.code ?? "ITEM_CH_M_HEAVY_01_BA_A",
+    refId: REAL.armor?.refId ?? 5001,
+    name: REAL.armor?.name ?? "Copper Armor",
     slot: "armor",
-    desc: "Sturdy leather tunic. +20 max HP. No distinct 3D model is available, so only stats change.",
+    desc: "Copper heavy armor. +20 max HP. No distinct 3D model is available, so only stats change.",
     color: "#7a5c2e",
     defense: 4,
     hpBonus: 20,
     value: 30,
+    levelReq: REAL.armor?.levelReq ?? 1,
     icon: shieldSvg("#7a5c2e"),
   },
-  ring_guard: {
-    id: "ring_guard",
-    name: "Guard Ring",
+  ring_01_a: {
+    id: "ring_01_a",
+    code: REAL.ring?.code ?? "ITEM_CH_RING_01_A",
+    refId: REAL.ring?.refId ?? 5002,
+    name: REAL.ring?.name ?? "Ume Copper Ring",
     slot: "accessory",
-    desc: "A simple iron ring. +2 defense. No distinct 3D model is available, so only stats change.",
+    desc: "A simple copper ring. +2 defense. No distinct 3D model is available, so only stats change.",
     color: "#d4a437",
     defense: 2,
     value: 18,
+    levelReq: REAL.ring?.levelReq ?? 1,
     icon: ringSvg("#d4a437"),
   },
-  potion_small: {
-    id: "potion_small",
-    name: "Small HP Potion",
+  hp_potion_01: {
+    id: "hp_potion_01",
+    code: REAL.herb?.code ?? "ITEM_ETC_HP_POTION_01",
+    refId: REAL.herb?.refId ?? 5003,
+    name: REAL.herb?.name ?? "HP Recovery Herb",
     slot: "consumable",
-    desc: "Restores 40 HP.",
+    desc: "Restores 60 HP.",
     color: "#e05252",
-    heal: 40,
+    heal: REAL.herb?.rawCol26 ?? 60,
     value: 8,
+    levelReq: REAL.herb?.levelReq ?? 1,
     icon: potionSvg("#e05252"),
   },
-  potion_hp: {
-    id: "potion_hp",
-    name: "HP Potion",
+  hp_potion_02: {
+    id: "hp_potion_02",
+    code: REAL.potion?.code ?? "ITEM_ETC_HP_POTION_02",
+    refId: REAL.potion?.refId ?? 5004,
+    name: REAL.potion?.name ?? "HP Recovery Potion (Small)",
     slot: "consumable",
-    desc: "Restores 90 HP.",
+    desc: "Restores 110 HP.",
     color: "#ff6b6b",
-    heal: 90,
+    heal: REAL.potion?.rawCol26 ?? 110,
     value: 16,
+    levelReq: REAL.potion?.levelReq ?? 1,
     icon: potionSvg("#ff6b6b"),
   },
 };

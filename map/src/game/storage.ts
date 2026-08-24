@@ -32,6 +32,7 @@ function normalizeCharacter(c: GameCharacter): GameCharacter {
     mp: typeof c.mp === "number" && c.mp > 0 ? Math.min(c.mp, maxMp) : maxMp,
     maxHp,
     maxMp,
+    exp: typeof c.exp === "number" && c.exp > 0 ? c.exp : 0,
     inventory: Array.isArray(c.inventory)
       ? c.inventory.filter((i) => i && typeof i.id === "string")
       : getStarterKit("kit_blade").bag.map((i) => ({ ...i })),
@@ -97,6 +98,7 @@ export function createCharacter(input: {
     mp: stats.mp,
     maxHp: stats.hp,
     maxMp: stats.mp,
+    exp: 0,
     inventory: kit.bag.map((i) => ({ ...i })),
     equipment: { ...STARTER_EQUIPMENT },
   };
