@@ -6,4 +6,6 @@ dist
 game_source
 map/public/assets/*
 !map/public/assets/icons
+!map/public/assets/img
+!map/public/assets/*.pmtiles
 node_modules
