@@ -207,6 +207,7 @@ export class CharacterRig {
       }
     }
     const skeleton = new THREE.Skeleton(bones);
+    root.updateMatrixWorld(true);
     skeleton.calculateInverses();
     return skeleton;
   }
