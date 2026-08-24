@@ -120,6 +120,27 @@ export class CharacterRig {
     return q;
   }
 
+  findPartIndex(id: string): number {
+    if (!this.assets) return -1;
+    return this.assets.meshes.findIndex((m) => m.id === id);
+  }
+
+  setPartVisible(id: string, visible: boolean): void {
+    const idx = this.findPartIndex(id);
+    if (idx < 0) return;
+    const mesh = this.meshes[idx];
+    if (mesh) mesh.visible = visible;
+  }
+
+  setPartTint(id: string, colorHex: string | null): void {
+    const idx = this.findPartIndex(id);
+    if (idx < 0) return;
+    const mesh = this.meshes[idx];
+    if (!mesh) return;
+    const mat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+    if (mat) (mat as THREE.MeshStandardMaterial).color.set(colorHex ?? "#ffffff");
+  }
+
   applyPose(timeMs: number): void {
     const anim = this.currentAnim;
     if (!anim || !this.skeleton) return;

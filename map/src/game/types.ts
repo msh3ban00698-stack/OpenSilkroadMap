@@ -5,6 +5,13 @@ export interface Appearance {
   outfitColor: string;
 }
 
+export type EquipSlot = "weapon" | "armor" | "accessory";
+
+export interface InventoryItem {
+  id: string;
+  count: number;
+}
+
 export interface GameCharacter {
   id: string;
   name: string;
@@ -15,6 +22,13 @@ export interface GameCharacter {
   lastPlayedAt: number;
   region: number;
   position: { x: number; y: number; z: number };
+  gold: number;
+  hp: number;
+  mp: number;
+  maxHp: number;
+  maxMp: number;
+  inventory: InventoryItem[];
+  equipment: Record<EquipSlot, string | null>;
 }
 
 export type GameState =

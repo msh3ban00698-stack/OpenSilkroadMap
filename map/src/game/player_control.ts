@@ -4,9 +4,11 @@ export interface ControlsOptions {
   joystickKnob: HTMLElement;
   onMove: (x: number, z: number) => void;
   onRotate: (dx: number, dy: number) => void;
+  onSelect?: (clientX: number, clientY: number) => void;
 }
 
 const JOY_RADIUS = 42;
+const TAP_MAX_MOVE = 6;
 const INTERACTIVE_SELECTOR = ".game-btn, .hud-btn, #joy-base, #joy-knob";
 
 export class TouchControls {
@@ -15,6 +17,9 @@ export class TouchControls {
   private camPointer: number | null = null;
   private lastCamX = 0;
   private lastCamY = 0;
+  private tapStartX = 0;
+  private tapStartY = 0;
+  private tapMoved = false;
   private joyCenter = { x: 0, y: 0 };
   private keys = new Set<string>();
 
@@ -51,10 +56,14 @@ export class TouchControls {
     const target = e.target as HTMLElement | null;
     const isInteractive = !!target && !!target.closest(INTERACTIVE_SELECTOR);
     if (this.camPointer === null && !isInteractive) {
-      // Start camera drag anywhere that isn't a joystick or button.
+      // Start a potential tap / camera drag anywhere that isn't a joystick or
+      // button. A short press selects a world target; a drag orbits the camera.
       this.camPointer = e.pointerId;
       this.lastCamX = e.clientX;
       this.lastCamY = e.clientY;
+      this.tapStartX = e.clientX;
+      this.tapStartY = e.clientY;
+      this.tapMoved = false;
       this.container.setPointerCapture(e.pointerId);
     }
   };
@@ -65,11 +74,21 @@ export class TouchControls {
     const dy = e.clientY - this.lastCamY;
     this.lastCamX = e.clientX;
     this.lastCamY = e.clientY;
-    this.opts.onRotate(dx, dy);
+    if (!this.tapMoved) {
+      const total = Math.hypot(e.clientX - this.tapStartX, e.clientY - this.tapStartY);
+      if (total > TAP_MAX_MOVE) this.tapMoved = true;
+    }
+    if (this.tapMoved) {
+      this.opts.onRotate(dx, dy);
+    }
   };
 
   private onPointerUp = (e: PointerEvent): void => {
-    if (e.pointerId === this.camPointer) this.camPointer = null;
+    if (e.pointerId !== this.camPointer) return;
+    this.camPointer = null;
+    if (!this.tapMoved && this.opts.onSelect) {
+      this.opts.onSelect(e.clientX, e.clientY);
+    }
   };
 
   private onKeyDown = (e: KeyboardEvent): void => {

@@ -1,4 +1,4 @@
-import { VERIFIED_CLASSES, getClass } from "./game_data";
+import { VERIFIED_CLASSES, getClass, STARTER_KITS } from "./game_data";
 import type { GameCharacter } from "./types";
 
 export interface ScreensCallbacks {
@@ -17,6 +17,7 @@ export interface ScreensCallbacks {
     skinTone: string;
     hairColor: string;
     outfitColor: string;
+    kit: string;
   }) => void;
 }
 
@@ -141,6 +142,14 @@ export class GameScreens {
     const outfitOptions = OUTFIT_COLORS.map(
       (c, i) => `<button class="game-color-btn" data-outfit="${c}" data-i="${i}"></button>`,
     ).join("");
+    const kitOptions = STARTER_KITS.map(
+      (k) => `
+        <button class="game-kit-btn" data-kit="${k.id}">
+          <div class="game-kit-name">${k.name}</div>
+          <div class="game-kit-desc">${k.desc}</div>
+        </button>
+      `,
+    ).join("");
 
     this.shell(
       "Create Character",
@@ -153,6 +162,10 @@ export class GameScreens {
         <div class="game-field">
           <label>Class</label>
           <div class="game-class-grid">${classOptions}</div>
+        </div>
+        <div class="game-field">
+          <label>Starter Kit <span class="game-inferred">(inventory choice)</span></label>
+          <div class="game-kit-grid">${kitOptions}</div>
         </div>
         <div class="game-field">
           <label>Gender <span class="game-inferred">(visual only)</span></label>
@@ -185,6 +198,7 @@ export class GameScreens {
     const nameInput = this.root.querySelector("#gc-name") as HTMLInputElement;
     const errorEl = this.root.querySelector("#gc-name-error") as HTMLElement;
     let classId = VERIFIED_CLASSES[0].id;
+    let kit = STARTER_KITS[0].id;
     let gender: "male" | "female" = "male";
     let skinTone = SKIN_TONES[0];
     let hairColor = HAIR_COLORS[0];
@@ -195,17 +209,29 @@ export class GameScreens {
         (el as HTMLElement).classList.toggle("active", (el as HTMLElement).dataset.class === id);
       });
     };
+    const markKit = (id: string) => {
+      this.root.querySelectorAll(".game-kit-btn").forEach((el) => {
+        (el as HTMLElement).classList.toggle("active", (el as HTMLElement).dataset.kit === id);
+      });
+    };
     const markColor = (selector: string, value: string) => {
       this.root.querySelectorAll(selector).forEach((el) => {
         (el as HTMLElement).classList.toggle("active", (el as HTMLElement).dataset.i === value);
       });
     };
     markClass(classId);
+    markKit(kit);
 
     this.root.querySelectorAll(".game-class-btn").forEach((el) => {
       el.addEventListener("click", () => {
         classId = (el as HTMLElement).dataset.class!;
         markClass(classId);
+      });
+    });
+    this.root.querySelectorAll(".game-kit-btn").forEach((el) => {
+      el.addEventListener("click", () => {
+        kit = (el as HTMLElement).dataset.kit!;
+        markKit(kit);
       });
     });
     this.root.querySelectorAll(".game-gender-btn").forEach((el) => {
@@ -234,7 +260,7 @@ export class GameScreens {
         errorEl.textContent = error;
         return;
       }
-      this.cb.onConfirmCreate({ name: name.trim(), classId, gender, skinTone, hairColor, outfitColor });
+      this.cb.onConfirmCreate({ name: name.trim(), classId, kit, gender, skinTone, hairColor, outfitColor });
     });
     this.root.querySelector("#gc-cancel")!.addEventListener("click", () => this.cb.onCancelCreate());
   }

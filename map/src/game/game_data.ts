@@ -43,3 +43,71 @@ export const REGION_NPCS = [
     z: -864.29,
   },
 ];
+
+// Base combat stats per class. HP/MP numbers are gameplay tuning (not
+// extracted game values); regenerations are per second.
+export interface ClassStats {
+  hp: number;
+  mp: number;
+  regenHp: number;
+  regenMp: number;
+}
+
+export const CLASS_STATS: Record<string, ClassStats> = {
+  warrior: { hp: 140, mp: 60, regenHp: 2.4, regenMp: 1.2 },
+  rogue: { hp: 110, mp: 80, regenHp: 2.0, regenMp: 1.5 },
+  cleric: { hp: 100, mp: 90, regenHp: 1.8, regenMp: 1.8 },
+  warlock: { hp: 90, mp: 100, regenHp: 1.6, regenMp: 2.0 },
+  wizard: { hp: 80, mp: 110, regenHp: 1.4, regenMp: 2.2 },
+  bard: { hp: 90, mp: 90, regenHp: 1.6, regenMp: 1.8 },
+};
+
+export function getClassStats(classId: string): ClassStats {
+  return CLASS_STATS[classId] ?? CLASS_STATS.warrior;
+}
+
+export const STARTING_GOLD = 100;
+
+// Starter gear. The sword is pre-equipped so the character visibly carries the
+// real sword mesh; armor + ring start in the bag so equipping them changes HP.
+export const STARTER_EQUIPMENT: Record<"weapon" | "armor" | "accessory", string | null> = {
+  weapon: "sword_training",
+  armor: null,
+  accessory: null,
+};
+
+export interface StarterKit {
+  id: string;
+  name: string;
+  desc: string;
+  bag: { id: string; count: number }[];
+}
+
+// The blade kit is the "balanced" start; the survival kit trades armor/ring for
+// extra potions. Only the sword has a real 3D appearance (see items.ts).
+export const STARTER_KITS: StarterKit[] = [
+  {
+    id: "kit_blade",
+    name: "Blade Kit",
+    desc: "Leather Armor + Guard Ring in bag, plus 2 Small HP Potions.",
+    bag: [
+      { id: "armor_leather", count: 1 },
+      { id: "ring_guard", count: 1 },
+      { id: "potion_small", count: 2 },
+      { id: "potion_hp", count: 1 },
+    ],
+  },
+  {
+    id: "kit_survival",
+    name: "Survival Kit",
+    desc: "No armor or ring, but 4 Small HP Potions + 2 HP Potions.",
+    bag: [
+      { id: "potion_small", count: 4 },
+      { id: "potion_hp", count: 2 },
+    ],
+  },
+];
+
+export function getStarterKit(id: string): StarterKit {
+  return STARTER_KITS.find((k) => k.id === id) ?? STARTER_KITS[0];
+}

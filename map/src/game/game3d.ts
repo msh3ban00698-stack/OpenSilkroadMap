@@ -1,14 +1,24 @@
 import * as THREE from "three";
-import type { GameCharacter } from "./types";
-import { getClass, REGION_NPCS, START_REGION_NAME } from "./game_data";
+import type { EquipSlot, GameCharacter } from "./types";
+import { getClass, getClassStats, REGION_NPCS, START_REGION_NAME } from "./game_data";
 import type { RegionAssets } from "./region_loader";
 import { CharacterRig } from "./character_rig";
+import { getItem } from "./items";
+
+export interface NpcInstance {
+  id: string;
+  name: string;
+  x: number;
+  z: number;
+}
 
 export interface GameWorldOptions {
   container: HTMLElement;
   character: GameCharacter;
   assets: RegionAssets;
   onLog: (msg: string) => void;
+  onInteractNpc?: (npc: NpcInstance) => void;
+  onCharacterMutated?: () => void;
 }
 
 // Character visual scale (0.15 => ~2.4 world units, the Phase E viewer scale).
@@ -28,13 +38,39 @@ const ATTACK_IMPACT_FRACTION = 0.42;
 const DUMMY_HP = 100;
 const DUMMY_RESPAWN_MS = 5000;
 
+const PLAYER_DEATH_MS = 3500;
+const RETALIATE_CHANCE = 0.3;
+const RETALIATE_MIN = 6;
+const RETALIATE_MAX = 14;
+const DUMMY_GOLD_REWARD = { min: 6, max: 18 };
+
+const SWORD_PART_ID = "sword_01";
+
 type AnimState = "idle" | "walk" | "run" | "attack";
+
+interface Selection {
+  kind: "npc" | "dummy";
+  id: string;
+  name: string;
+  x: number;
+  z: number;
+}
+
+interface NpcGroup {
+  group: THREE.Group;
+  id: string;
+  name: string;
+  x: number;
+  z: number;
+}
 
 export class GameWorld {
   private container: HTMLElement;
   private character: GameCharacter;
   private assets: RegionAssets;
   private onLog: (msg: string) => void;
+  private onInteractNpc?: (npc: NpcInstance) => void;
+  private onCharacterMutated?: () => void;
 
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
@@ -46,7 +82,7 @@ export class GameWorld {
   private rig: CharacterRig;
   private rigReady = false;
   private labels: THREE.Group;
-  private npcGroups: { group: THREE.Group; name: string; x: number; z: number }[] = [];
+  private npcGroups: NpcGroup[] = [];
 
   private yaw = 0.5;
   private pitch = 0.32;
@@ -63,11 +99,24 @@ export class GameWorld {
   private lastDamage = 0;
   private dummyHits = 0;
 
+  private playerHp = 100;
+  private playerMp = 100;
+  private playerDead = false;
+  private respawnDeadline = 0;
+  private selected: Selection | null = null;
+  private selectionRing: THREE.Mesh;
+  private raycaster = new THREE.Raycaster();
+
   constructor(opts: GameWorldOptions) {
     this.container = opts.container;
     this.character = opts.character;
     this.assets = opts.assets;
     this.onLog = opts.onLog;
+    this.onInteractNpc = opts.onInteractNpc;
+    this.onCharacterMutated = opts.onCharacterMutated;
+
+    this.playerHp = this.character.hp;
+    this.playerMp = this.character.mp;
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -108,6 +157,10 @@ export class GameWorld {
     this.scene.add(this.rig.group);
     this.placePlayerAtSpawn();
 
+    this.selectionRing = this.buildSelectionRing();
+    this.selectionRing.visible = false;
+    this.scene.add(this.selectionRing);
+
     const playerLight = new THREE.PointLight(0xffd9a0, 40, 60, 2);
     playerLight.position.set(0, 8, 0);
     this.rig.group.add(playerLight);
@@ -117,6 +170,7 @@ export class GameWorld {
       .then(() => {
         this.rigReady = true;
         this.rig.play("idle");
+        this.applyEquipment(this.character.equipment);
         this.onLog(`Welcome to ${START_REGION_NAME}, ${this.character.name}.`);
         this.onLog("A training dummy stands in front of you. Attack it (ATK) when close.");
       })
@@ -162,7 +216,161 @@ export class GameWorld {
         hits: this.dummyHits,
         lastDamage: this.lastDamage,
       }),
+      getState: () => this.getState(),
+      pick: (x: number, y: number) => this.pick(x, y),
+      selectTarget: (kind: string, id: string) => this.selectTarget(kind as Selection["kind"], id),
+      clearTarget: () => this.selectTarget(null, ""),
+      interact: () => this.interact(),
+      damagePlayer: (amount: number) => this.damagePlayer(amount),
     };
+  }
+
+  // --- Public gameplay API -------------------------------------------------
+
+  getState(): Record<string, unknown> {
+    const cls = getClass(this.character.classId);
+    const target = this.selected
+      ? { kind: this.selected.kind, id: this.selected.id, name: this.selected.name, x: this.selected.x, z: this.selected.z }
+      : null;
+    return {
+      hp: Math.max(0, Math.round(this.playerHp)),
+      mp: Math.max(0, Math.round(this.playerMp)),
+      maxHp: this.character.maxHp,
+      maxMp: this.character.maxMp,
+      gold: this.character.gold,
+      level: this.character.level,
+      name: this.character.name,
+      classId: this.character.classId,
+      className: cls ? cls.name : this.character.classId,
+      dead: this.playerDead,
+      respawnIn: Math.max(0, Math.round(this.respawnDeadline - performance.now())),
+      selected: target,
+      pos: { x: this.rig.group.position.x, y: this.rig.group.position.y, z: this.rig.group.position.z },
+      yaw: this.rig.group.rotation.y,
+      npcs: REGION_NPCS.map((n) => ({
+        id: n.id,
+        name: n.name,
+        x: n.x,
+        z: n.z,
+        selected: this.selected?.kind === "npc" && this.selected.id === n.id,
+      })),
+      dummy: {
+        x: this.dummy.group.position.x,
+        z: this.dummy.group.position.z,
+        alive: this.dummy.alive,
+        hp: this.dummy.hp,
+        maxHp: this.dummy.maxHp,
+        selected: this.selected?.kind === "dummy",
+      },
+      bounds: this.boundsBox,
+      weaponsInWorld: this.character.equipment.weapon ? 1 : 0,
+    };
+  }
+
+  pick(clientX: number, clientY: number): boolean {
+    const rect = this.renderer.domElement.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return false;
+    const ndc = new THREE.Vector2(
+      ((clientX - rect.left) / rect.width) * 2 - 1,
+      -(((clientY - rect.top) / rect.height) * 2 - 1),
+    );
+    this.raycaster.setFromCamera(ndc, this.camera);
+    const pickables: { object: THREE.Object3D; sel: Selection }[] = [];
+    for (const npc of this.npcGroups) {
+      pickables.push({
+        object: npc.group,
+        sel: { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z },
+      });
+    }
+    pickables.push({
+      object: this.dummy.group,
+      sel: {
+        kind: "dummy",
+        id: "dummy",
+        name: "Training Dummy",
+        x: this.dummy.group.position.x,
+        z: this.dummy.group.position.z,
+      },
+    });
+    const hits = this.raycaster.intersectObjects(
+      pickables.map((p) => p.object),
+      true,
+    );
+    if (hits.length === 0) {
+      this.selectTarget(null, "");
+      return false;
+    }
+    const hit = hits[0];
+    let root: THREE.Object3D | null = hit.object;
+    while (root && root.parent && root.parent !== this.scene) root = root.parent;
+    const found = pickables.find((p) => p.object === root);
+    if (found) {
+      this.selectTarget(found.sel.kind, found.sel.id, found.sel.name);
+      return true;
+    }
+    this.selectTarget(null, "");
+    return false;
+  }
+
+  selectTarget(kind: Selection["kind"] | null, id: string, name?: string): void {
+    if (!kind) {
+      this.selected = null;
+      this.selectionRing.visible = false;
+      return;
+    }
+    if (kind === "npc") {
+      const npc = REGION_NPCS.find((n) => n.id === id);
+      if (!npc) return;
+      this.selected = { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z };
+    } else {
+      this.selected = { kind: "dummy", id: "dummy", name: name ?? "Training Dummy", x: this.dummy.group.position.x, z: this.dummy.group.position.z };
+    }
+    this.selectionRing.visible = true;
+    this.selectionRing.position.set(this.selected.x, 0.05, this.selected.z);
+  }
+
+  usePotion(itemId: string): boolean {
+    const item = getItem(itemId);
+    if (!item || item.slot !== "consumable" || !item.heal) return false;
+    if (this.playerDead) return false;
+    const heal = Math.min(item.heal, this.character.maxHp - this.playerHp);
+    if (heal <= 0) return false;
+    this.playerHp += heal;
+    this.makeFloatingText(`+${Math.round(heal)}`, "#7fe07f");
+    this.onLog(`You drink ${item.name} and recover ${Math.round(heal)} HP.`);
+    this.consumeItem(itemId);
+    return true;
+  }
+
+  private consumeItem(itemId: string): void {
+    const stack = this.character.inventory.find((i) => i.id === itemId);
+    if (stack) {
+      stack.count -= 1;
+      if (stack.count <= 0) {
+        this.character.inventory = this.character.inventory.filter((i) => i.id !== itemId);
+      }
+      this.onCharacterMutated?.();
+    }
+  }
+
+  applyEquipment(equipment: Record<EquipSlot, string | null>): void {
+    const weaponId = equipment.weapon;
+    if (!this.rigReady) return;
+    if (weaponId) {
+      this.rig.setPartVisible(SWORD_PART_ID, true);
+      const item = getItem(weaponId);
+      this.rig.setPartTint(SWORD_PART_ID, item ? item.color : null);
+    } else {
+      this.rig.setPartVisible(SWORD_PART_ID, false);
+    }
+  }
+
+  damagePlayer(amount: number): void {
+    if (this.playerDead) return;
+    this.playerHp = Math.max(0, this.playerHp - amount);
+    this.character.hp = Math.round(this.playerHp);
+    this.onCharacterMutated?.();
+    if (this.playerHp <= 0) this.die();
   }
 
   private placePlayerAtSpawn(): void {
@@ -212,8 +420,22 @@ export class GameWorld {
       const group = this.buildNpc(npc.name);
       group.position.set(npc.x, 0, npc.z);
       this.scene.add(group);
-      this.npcGroups.push({ group, name: npc.name, x: npc.x, z: npc.z });
+      this.npcGroups.push({ group, id: npc.id, name: npc.name, x: npc.x, z: npc.z });
     }
+  }
+
+  private buildSelectionRing(): THREE.Mesh {
+    const geo = new THREE.RingGeometry(0.55, 0.8, 24);
+    const mat = new THREE.MeshBasicMaterial({
+      color: 0xffe082,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.9,
+      depthTest: false,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.rotation.x = -Math.PI / 2;
+    return mesh;
   }
 
   private buildNpc(name: string): THREE.Group {
@@ -367,7 +589,11 @@ export class GameWorld {
   }
 
   attack(): void {
-    if (!this.rigReady || this.attacking) return;
+    if (!this.rigReady || this.attacking || this.playerDead) return;
+    if (this.selected?.kind === "npc") {
+      this.onLog(`You cannot attack ${this.selected.name}.`);
+      return;
+    }
     this.attacking = true;
     this.attackHitDone = false;
     this.animState = "attack";
@@ -377,18 +603,57 @@ export class GameWorld {
 
   interact(): void {
     const p = this.rig.group.position;
-    let best: { name: string; d: number } | null = null;
-    for (const npc of this.npcGroups) {
-      const d = Math.hypot(npc.x - p.x, npc.z - p.z);
-      if (d < 16 && (!best || d < best.d)) {
-        best = { name: npc.name, d };
+    let best: { npc: NpcGroup; d: number } | null = null;
+
+    if (this.selected?.kind === "npc") {
+      const npc = this.npcGroups.find((n) => n.id === this.selected!.id);
+      if (npc) {
+        best = { npc, d: Math.hypot(npc.x - p.x, npc.z - p.z) };
+      }
+    }
+    if (!best || best.d > 16) {
+      for (const npc of this.npcGroups) {
+        const d = Math.hypot(npc.x - p.x, npc.z - p.z);
+        if (d < 16 && (!best || d < best.d)) {
+          best = { npc, d };
+        }
       }
     }
     if (best) {
-      this.onLog(`You speak with ${best.name}. (interaction placeholder)`);
+      this.selectTarget("npc", best.npc.id, best.npc.name);
+      this.onInteractNpc?.({ id: best.npc.id, name: best.npc.name, x: best.npc.x, z: best.npc.z });
     } else {
       this.onLog("Nothing to interact with nearby.");
     }
+  }
+
+  private die(): void {
+    this.playerDead = true;
+    this.respawnDeadline = performance.now() + PLAYER_DEATH_MS;
+    this.animState = "idle";
+    this.rig.play("idle");
+    this.onLog("You have been defeated. Recovering...");
+  }
+
+  private respawn(): void {
+    this.playerDead = false;
+    this.respawnDeadline = 0;
+    this.playerHp = this.character.maxHp;
+    this.playerMp = this.character.maxMp;
+    this.character.hp = this.playerHp;
+    this.character.mp = this.playerMp;
+    this.placePlayerAtSpawn();
+    this.onCharacterMutated?.();
+    this.onLog("You have recovered and returned to the entrance.");
+  }
+
+  private updateRegen(dt: number): void {
+    if (this.playerDead) return;
+    const stats = getClassStats(this.character.classId);
+    this.playerHp = Math.min(this.character.maxHp, this.playerHp + stats.regenHp * dt);
+    this.playerMp = Math.min(this.character.maxMp, this.playerMp + stats.regenMp * dt);
+    this.character.hp = Math.round(this.playerHp);
+    this.character.mp = Math.round(this.playerMp);
   }
 
   private getMovementWorld(): { wx: number; wz: number } {
@@ -406,6 +671,11 @@ export class GameWorld {
   private updatePlayer(dt: number): void {
     if (!this.rigReady) return;
     const p = this.rig.group.position;
+
+    if (this.playerDead) {
+      if (performance.now() >= this.respawnDeadline) this.respawn();
+      return;
+    }
 
     if (this.attacking) {
       const impactMs = this.rig.duration * ATTACK_IMPACT_FRACTION;
@@ -446,36 +716,51 @@ export class GameWorld {
 
   private tryHitTarget(): void {
     const d = this.dummy;
-    if (!d.alive) return;
+    if (!d.alive) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
     const p = this.rig.group.position;
     const dx = d.group.position.x - p.x;
     const dz = d.group.position.z - p.z;
     const dist = Math.hypot(dx, dz);
-    if (dist <= ATTACK_RANGE) {
-      const ry = this.rig.group.rotation.y;
-      const fx = -Math.sin(ry);
-      const fz = -Math.cos(ry);
-      const facing = (fx * dx + fz * dz) / (dist || 1);
-      if (facing < 0.25) {
-        this.onLog("Your target is out of reach.");
-        return;
-      }
-      const damage = 15 + Math.floor(Math.random() * 11);
-      this.lastDamage = damage;
-      this.dummyHits++;
-      d.hp = Math.max(0, d.hp - damage);
-      this.dummyHpBar.setHp(d.hp / d.maxHp);
-      this.makeFloatingText(`-${damage}`, "#ffd54f");
-      if (d.hp <= 0) {
-        d.alive = false;
-        d.respawnT = DUMMY_RESPAWN_MS;
-        this.onLog(`The training dummy has been defeated (${this.dummyHits} hits)!`);
-      } else {
-        this.onLog(`You hit the training dummy for ${damage} damage. (${d.hp}/${d.maxHp})`);
-      }
-    } else {
+    if (dist > ATTACK_RANGE) {
       this.onLog("Your target is out of reach.");
+      return;
     }
+    const ry = this.rig.group.rotation.y;
+    const fx = -Math.sin(ry);
+    const fz = -Math.cos(ry);
+    const facing = (fx * dx + fz * dz) / (dist || 1);
+    if (facing < 0.25) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
+    const damage = 15 + Math.floor(Math.random() * 11);
+    this.lastDamage = damage;
+    this.dummyHits++;
+    d.hp = Math.max(0, d.hp - damage);
+    this.dummyHpBar.setHp(d.hp / d.maxHp);
+    this.makeFloatingText(`-${damage}`, "#ffd54f");
+    if (d.hp <= 0) {
+      d.alive = false;
+      d.respawnT = DUMMY_RESPAWN_MS;
+      const reward = DUMMY_GOLD_REWARD.min + Math.floor(Math.random() * (DUMMY_GOLD_REWARD.max - DUMMY_GOLD_REWARD.min));
+      this.character.gold += reward;
+      this.onCharacterMutated?.();
+      this.onLog(`The training dummy has been defeated (${this.dummyHits} hits)! +${reward} gold.`);
+      return;
+    }
+    this.onLog(`You hit the training dummy for ${damage} damage. (${d.hp}/${d.maxHp})`);
+    this.maybeRetaliate();
+  }
+
+  private maybeRetaliate(): void {
+    if (Math.random() >= RETALIATE_CHANCE) return;
+    const dmg = RETALIATE_MIN + Math.floor(Math.random() * (RETALIATE_MAX - RETALIATE_MIN));
+    this.makeFloatingText(`-${dmg}`, "#ff8a80");
+    this.damagePlayer(dmg);
+    this.onLog(`The training dummy swings back and hits you for ${dmg} damage.`);
   }
 
   private updateDummy(dt: number): void {
@@ -539,6 +824,7 @@ export class GameWorld {
     if (this.disposed) return;
     this.raf = requestAnimationFrame(this.loop);
     const dt = Math.min(this.clock.getDelta(), 0.05);
+    this.updateRegen(dt);
     this.updatePlayer(dt);
     this.rig.update(dt);
     if (this.rig.skeleton) {
