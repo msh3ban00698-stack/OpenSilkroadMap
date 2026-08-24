@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OpenSilkroadMap</string>
+    <string name="title_activity_main">OpenSilkroadMap</string>
+    <string name="package_name">com.opensilkroadmap.app</string>
+    <string name="custom_url_scheme">com.opensilkroadmap.app</string>
+</resources>

@@ -1,0 +1,22 @@
+{
+  "name": "opensilkroadmap-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Capacitor Android packaging for the OpenSilkroadMap web game (map/). The web game itself stays a Deno-managed Vite app; this package only wraps it for Android.",
+  "type": "module",
+  "scripts": {
+    "build:web": "deno task build",
+    "cap:sync": "cap sync android",
+    "cap:add": "cap add android",
+    "cap:open": "cap open android",
+    "apk:build": "deno task build && cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "typescript": "^5.9.3"
+  }
+}
