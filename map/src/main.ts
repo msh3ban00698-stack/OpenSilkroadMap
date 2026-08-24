@@ -43,6 +43,7 @@ import {
   loadCheckpoint,
   deleteCheckpoint,
 } from "./navlink_editor";
+import { initGameFlow } from "./game/flow";
 
 // Handle map tiles toggle change
 const mapTilesToggle = document.getElementById("maptiles-toggle") as HTMLInputElement | null;
@@ -793,3 +794,6 @@ setOnChange(() => {
 // Initialize on page load
 refreshEditActionsList();
 refreshCheckpointsList();
+
+// Initialize the Phase D game-entry flow (intro -> selection -> 3D world).
+initGameFlow();
