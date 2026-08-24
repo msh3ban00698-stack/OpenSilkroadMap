@@ -4,6 +4,7 @@ import type { GameCharacter } from "./types";
 export interface ScreensCallbacks {
   onStartGame: () => void;
   onOpenMap: () => void;
+  onOpenCharacterViewer: () => void;
   onBack: () => void;
   onSelectCharacter: (id: string) => void;
   onDeleteCharacter: (id: string) => void;
@@ -60,10 +61,12 @@ export class GameScreens {
       `,
       `
         <button id="gs-start" class="game-btn game-btn-primary">Start Game</button>
+        <button id="gs-charview" class="game-btn game-btn-ghost">Character Viewer</button>
         <button id="gs-map" class="game-btn game-btn-ghost">Open World Map</button>
       `,
     );
     this.root.querySelector("#gs-start")!.addEventListener("click", () => this.cb.onStartGame());
+    this.root.querySelector("#gs-charview")!.addEventListener("click", () => this.cb.onOpenCharacterViewer());
     this.root.querySelector("#gs-map")!.addEventListener("click", () => this.cb.onOpenMap());
   }
 

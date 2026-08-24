@@ -9,6 +9,7 @@ import { RegionLoader } from "./region_loader";
 import { GameWorld } from "./game3d";
 import { TouchControls } from "./player_control";
 import { buildHud, type Hud } from "./hud";
+import { CharacterViewerScreen } from "./character_viewer_screen";
 import { START_REGION } from "./game_data";
 import type { GameCharacter } from "./types";
 
@@ -19,14 +20,17 @@ class GameFlow {
   private hud: Hud | null = null;
   private currentChar: GameCharacter | null = null;
   private pauseOverlay: HTMLElement | null = null;
+  private charViewer: CharacterViewerScreen | null = null;
 
   constructor(
     private menuRoot: HTMLElement,
     private worldContainer: HTMLElement,
+    private viewerContainer: HTMLElement,
   ) {
     this.screens = new GameScreens(menuRoot, {
       onStartGame: () => this.showSelect(),
       onOpenMap: () => this.showMap(),
+      onOpenCharacterViewer: () => this.showCharacterViewer(),
       onBack: () => this.showIntro(),
       onSelectCharacter: (id) => this.enterWith(id),
       onDeleteCharacter: (id) => {
@@ -63,10 +67,16 @@ class GameFlow {
 
   private showIntro(): void {
     this.teardownWorld();
+    this.hideCharacterViewer();
     this.worldContainer.style.display = "none";
     this.menuRoot.style.display = "block";
     this.setReturnButtonVisible(false);
     this.screens.renderIntro();
+  }
+
+  private hideCharacterViewer(): void {
+    this.charViewer?.hide();
+    this.charViewer = null;
   }
 
   private showSelect(): void {
@@ -88,6 +98,18 @@ class GameFlow {
     this.menuRoot.style.display = "none";
     this.worldContainer.style.display = "none";
     this.setReturnButtonVisible(true);
+  }
+
+  private showCharacterViewer(): void {
+    this.teardownWorld();
+    this.menuRoot.style.display = "none";
+    this.worldContainer.style.display = "none";
+    this.setReturnButtonVisible(false);
+    this.charViewer = new CharacterViewerScreen({
+      root: this.viewerContainer,
+      onBack: () => this.showIntro(),
+    });
+    this.charViewer.show();
   }
 
   private setReturnButtonVisible(visible: boolean): void {
@@ -210,7 +232,8 @@ class GameFlow {
 export function initGameFlow(): void {
   const menuRoot = document.getElementById("game-menus")!;
   const worldContainer = document.getElementById("game-container")!;
-  const flow = new GameFlow(menuRoot, worldContainer);
+  const viewerContainer = document.getElementById("character-viewer-container")!;
+  const flow = new GameFlow(menuRoot, worldContainer, viewerContainer);
   flow.start();
 
   const returnBtn = document.getElementById("return-to-game");

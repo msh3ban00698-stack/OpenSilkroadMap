@@ -704,3 +704,132 @@ body {
 .return-to-game:hover {
   filter: brightness(1.3);
 }
+
+/* ---------------------------------------------------------------------------
+   Character viewer (Phase E): real skeleton/mesh/animation preview
+   --------------------------------------------------------------------------- */
+
+#character-viewer-container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cv-root {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cv-canvas {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cv-canvas canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.cv-bar {
+  background: linear-gradient(180deg, rgba(10, 8, 12, 0.92), rgba(10, 8, 12, 0.78));
+  border-bottom: 1px solid #5a4030;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  left: 0;
+  padding: 10px 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.cv-head {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cv-title {
+  color: #e8d3a0;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.cv-subtitle {
+  color: #9a8f86;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.cv-anims {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cv-anim-btn {
+  background: #26201f;
+  border: 1px solid #5a4030;
+  border-radius: 16px;
+  color: #cbb89a;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  padding: 6px 14px;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cv-anim-btn:hover {
+  filter: brightness(1.25);
+}
+
+.cv-anim-btn.active {
+  background: #6d1c1c;
+  border-color: #c06a3c;
+  color: #ffe9c4;
+}
+
+.cv-controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cv-label {
+  align-items: center;
+  color: #cbb89a;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  gap: 8px;
+}
+
+.cv-check {
+  cursor: pointer;
+}
+
+.cv-note {
+  color: #8a7d70;
+  font-size: 11px;
+  width: 100%;
+}
+
+.cv-bar .game-btn-sm {
+  padding: 6px 14px;
+  font-size: 12px;
+}
