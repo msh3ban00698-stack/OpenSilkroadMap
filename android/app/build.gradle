@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+// Release signing. Credentials live in app/keystore.properties (gitignored).
+// When absent, the release build falls back to an unsigned APK so CI and fresh
+// checkouts still compile.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = file('keystore.properties')
+def keystoreConfigured = keystorePropertiesFile.exists()
+if (keystoreConfigured) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace "com.opensilkroadmap.app"
     compileSdk rootProject.ext.compileSdkVersion
@@ -16,10 +26,23 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (keystoreConfigured) {
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keystoreConfigured) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }

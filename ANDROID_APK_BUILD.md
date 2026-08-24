@@ -81,6 +81,43 @@ To open the project in Android Studio:
 npx cap open android
 ```
 
+## Building a signed release APK
+
+The debug APK is convenient for testing but is signed with the shared Android
+debug keystore. For an installable release build, create a release keystore and
+run `assembleRelease`:
+
+```shell
+# 1. generate a release keystore (one-time; keep it safe)
+keytool -genkeypair -v \
+  -keystore app/release.keystore \
+  -alias opensilkroadmap -keyalg RSA -keysize 2048 -validity 10000 \
+  -dname "CN=OpenSilkroadMap, OU=Map, O=OpenSilkroadMap, L=Local, ST=Local, C=US"
+
+# 2. store the credentials (gitignored)
+#    app/keystore.properties
+#    storeFile=release.keystore
+#    storePassword=<your-store-password>
+#    keyAlias=opensilkroadmap
+#    keyPassword=<your-key-password>
+
+# 3. build the signed release APK
+cd android
+./gradlew assembleRelease
+# output: android/app/build/outputs/apk/release/app-release.apk
+```
+
+`android/app/build.gradle` wires the release `signingConfig` from
+`app/keystore.properties`. Both the keystore and the properties file are
+gitignored; when they are absent the release build still compiles but produces
+an unsigned APK (fine for CI, not installable on a device). Verify the signature
+with:
+
+```shell
+$ANDROID_HOME/build-tools/34.0.0/apksigner verify --print-certs \
+  app/build/outputs/apk/release/app-release.apk
+```
+
 ## Updating the game
 
 Nothing special: change the web app, commit, and the next push to `main` rebuilds
@@ -94,4 +131,5 @@ Capacitor), run `npx cap add android` again.
 - `android/build/`, `android/app/build/`, `android/.gradle/`, `.cxx/`
 - `android/app/src/main/assets/public/` (synced web assets)
 - `local.properties` (machine-specific SDK path)
+- `android/app/release.keystore` + `android/app/keystore.properties` (release signing secrets)
 - any `*.apk` / `*.aab` binaries
