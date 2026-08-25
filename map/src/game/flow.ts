@@ -36,6 +36,7 @@ const emptyState: HudWorldState = {
   npcs: [],
   dummy: { x: 0, z: 0, alive: false, hp: 0, maxHp: 1, selected: false },
   bounds: { minX: 0, maxX: 0, minZ: 0, maxZ: 0 },
+  skills: [],
 };
 
 class GameFlow {

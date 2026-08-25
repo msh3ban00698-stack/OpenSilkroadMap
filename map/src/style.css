@@ -1165,6 +1165,32 @@ body {
   cursor: default;
 }
 
+.hud-slot-skill {
+  background-color: rgba(20, 16, 12, 0.72);
+}
+
+.hud-slot-skill .hud-slot-label {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hud-slot-cd {
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 3px;
+  bottom: 3px;
+  color: #ffd54f;
+  font-size: 10px;
+  font-weight: 700;
+  position: absolute;
+  right: 3px;
+}
+
+.hud-slot-cd-on {
+  filter: grayscale(0.75) brightness(0.5);
+}
+
 /* Level-up banner / log */
 
 .hud-levelup {

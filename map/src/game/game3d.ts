@@ -1,12 +1,13 @@
 import * as THREE from "three";
 import type { EquipSlot, GameCharacter } from "./types";
-import { getClass, getClassStats, REGION_NPCS, START_REGION_NAME } from "./game_data";
+import { getClass, getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, REGION_NPCS, START_REGION_NAME } from "./game_data";
 import { expToNext, MAX_LEVEL } from "./data_loader";
 import type { RegionAssets } from "./region_loader";
 import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
 import { getItem } from "./items";
 import { MOB_CAMPS } from "./mobs_data";
+import { getSkillFull, isHealSkill, loadSkillsFull, skillDamage, skillHeal, skillMpCost } from "./skill_data";
 
 export interface NpcInstance {
   id: string;
@@ -150,6 +151,8 @@ export class GameWorld {
     this.playerHp = this.character.hp;
     this.playerMp = this.character.mp;
 
+    void loadSkillsFull();
+
     this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.setSize(this.container.clientWidth || 360, this.container.clientHeight || 640);
@@ -248,7 +251,7 @@ export class GameWorld {
         this.rig.group.rotation.y = y;
       },
       attack: () => this.attack(),
-      useSkill: (code: string, name: string) => this.useSkill(code, name),
+      useSkill: (code: string, name?: string) => this.useSkill(code, name ?? code),
       dummy: () => ({
         x: this.dummy.group.position.x,
         z: this.dummy.group.position.z,
@@ -422,6 +425,10 @@ export class GameWorld {
               })()
             : null,
       weaponsInWorld: this.character.equipment.weapon ? 1 : 0,
+      skills: Array.from(this.skillCds.entries()).map(([code, at]) => ({
+        code,
+        remaining: Math.max(0, Math.round((at + (getSkillFull(code)?.cooldown ?? 0) - performance.now()) / 1000)),
+      })),
     };
   }
 
@@ -730,6 +737,7 @@ export class GameWorld {
 
   private npcRigs: { rig: CharacterRig; group: THREE.Group }[] = [];
   private mobs: MobState[] = [];
+  private skillCds = new Map<string, number>();
   private pendingNpcRigs: { x: number; z: number; actor: string; group: THREE.Group; y: number }[] = [];
 
   private async spawnMobs(): Promise<void> {
@@ -1249,17 +1257,86 @@ export class GameWorld {
     }
     if (this.character.level >= MAX_LEVEL) this.character.exp = 0;
     if (leveled) {
-      this.onCharacterMutated?.();
+      this.character.maxHp += HP_PER_LEVEL;
+      this.character.maxMp += MP_PER_LEVEL;
       this.playerHp = this.character.maxHp;
       this.playerMp = this.character.maxMp;
+      this.onCharacterMutated?.();
       this.onLevelUp?.(this.character.level);
       this.makeFloatingText("LEVEL UP!", "#ffe082");
     }
   }
 
   useSkill(code: string, name: string): void {
-    this.attack();
-    this.onLog(`[skill] ${name} (${code}) - skill effects are placeholder; no damage/heal tables were extracted.`);
+    if (!this.rigReady || this.playerDead) return;
+    const full = getSkillFull(code);
+    if (!full) {
+      this.attack();
+      this.onLog(`${name} has no combat data in this build yet; basic attack used instead.`);
+      return;
+    }
+    const now = performance.now();
+    const last = this.skillCds.get(code) ?? 0;
+    if (now - last < full.cooldown) {
+      this.onLog(`${full.name} is on cooldown (${Math.ceil((full.cooldown - (now - last)) / 1000)}s).`);
+      return;
+    }
+    const cost = skillMpCost(full, this.character.level);
+    if (this.playerMp < cost) {
+      this.onLog(`Not enough MP for ${full.name} (need ${cost}).`);
+      return;
+    }
+    this.playerMp -= cost;
+    this.character.mp = Math.round(this.playerMp);
+    this.skillCds.set(code, now);
+    if (isHealSkill(code)) {
+      const heal = skillHeal(this.character.maxHp, this.character.level);
+      this.playerHp = Math.min(this.character.maxHp, this.playerHp + heal);
+      this.character.hp = Math.round(this.playerHp);
+      this.makeFloatingText(`+${heal}`, "#7fe07f");
+      this.rig.play("attack");
+      this.onLog(`${full.name} heals you for ${heal} HP.`);
+      this.onCharacterMutated?.();
+      return;
+    }
+    const sel = this.selected;
+    if (!sel || sel.kind !== "mob") {
+      this.onLog("Select a monster to use a combat skill.");
+      return;
+    }
+    const mob = this.mobs[Number(sel.id)];
+    if (!mob || !mob.alive) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
+    const p = this.rig.group.position;
+    const dx = mob.group.position.x - p.x;
+    const dz = mob.group.position.z - p.z;
+    const dist = Math.hypot(dx, dz);
+    if (dist > ATTACK_RANGE + 6) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
+    this.rig.group.rotation.y = Math.atan2(-dx, -dz);
+    const base = 18 + Math.floor(Math.random() * 12);
+    const dmg = skillDamage(full, base, this.character.level);
+    mob.hp = Math.max(0, mob.hp - dmg);
+    this.lastDamage = dmg;
+    this.makeFloatingText(`-${dmg}`, "#ff7043", mob.group.position);
+    this.onLog(`${full.name} hits ${mob.def.name} for ${dmg} damage.`);
+    if (!mob.aggro) {
+      mob.aggro = true;
+    }
+    if (!this.attacking) {
+      this.attacking = true;
+      this.attackStartedAt = performance.now();
+      this.attackHitDone = true;
+      this.rig.play("attack");
+    }
+    if (mob.hp <= 0) {
+      this.killMob(mob);
+    }
+    this.onCharacterMutated?.();
   }
 
   private maybeRetaliate(): void {
@@ -1299,26 +1376,29 @@ export class GameWorld {
       mob.aggro = true;
     }
     if (mob.hp <= 0) {
-      mob.alive = false;
-      mob.respawnAt = performance.now() + DUMMY_RESPAWN_MS;
-      mob.group.visible = true;
-      const death = mob.rig.hasAnim("death") ? { id: "death" } : null;
-      if (death) {
-        mob.rig.play("death");
-        setTimeout(() => {
-          mob.group.visible = false;
-        }, 1600);
-      } else {
-        mob.group.visible = false;
-      }
-      if (this.selected && this.selected.kind === "mob") this.selectTarget(null, "");
-      const reward =
-        mob.def.goldReward[0] + Math.floor(Math.random() * (mob.def.goldReward[1] - mob.def.goldReward[0]));
-      this.character.gold += reward;
-      this.gainExp(mob.def.expReward);
-      this.onCharacterMutated?.();
-      this.onLog(`${mob.def.name} defeated! +${reward} gold, +${mob.def.expReward} exp.`);
+      this.killMob(mob);
     }
+  }
+
+  private killMob(mob: MobState): void {
+    mob.alive = false;
+    mob.respawnAt = performance.now() + DUMMY_RESPAWN_MS;
+    mob.group.visible = true;
+    const death = mob.rig.hasAnim("death") ? { id: "death" } : null;
+    if (death) {
+      mob.rig.play("death");
+      setTimeout(() => {
+        mob.group.visible = false;
+      }, 1600);
+    } else {
+      mob.group.visible = false;
+    }
+    if (this.selected && this.selected.kind === "mob") this.selectTarget(null, "");
+    const reward = mob.def.goldReward[0] + Math.floor(Math.random() * (mob.def.goldReward[1] - mob.def.goldReward[0]));
+    this.character.gold += reward;
+    this.gainExp(mob.def.expReward);
+    this.onCharacterMutated?.();
+    this.onLog(`${mob.def.name} defeated! +${reward} gold, +${mob.def.expReward} exp.`);
   }
 
   private updateDummy(dt: number): void {

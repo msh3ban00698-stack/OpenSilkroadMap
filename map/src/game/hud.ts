@@ -1,6 +1,7 @@
 import type { GameCharacter } from "./types";
 import { getClass, START_REGION_NAME } from "./game_data";
 import { getClassSkills, getClassMasteryName } from "./data_loader";
+import { skillIconUrl } from "./skill_data";
 
 export interface NpcDialogInfo {
   id: string;
@@ -30,6 +31,7 @@ export interface HudWorldState {
   npcs: { id: string; name: string; x: number; z: number; selected: boolean }[];
   dummy: { x: number; z: number; alive: boolean; hp: number; maxHp: number; selected: boolean };
   bounds: { minX: number; maxX: number; minZ: number; maxZ: number };
+  skills: { code: string; remaining: number }[];
 }
 
 export interface HudOptions {
@@ -77,8 +79,8 @@ export function buildHud(opts: HudOptions): Hud {
   ];
   classSkills.forEach((s, i) => {
     slots.push(`
-      <button class="hud-slot hud-slot-skill" data-skill="${s.code}" data-name="${s.name}" title="${s.name} (${s.code})">
-        <span class="hud-slot-key">${i + 3}</span>${shortSkillLabel(s.code)}
+      <button class="hud-slot hud-slot-skill" data-skill="${s.code}" data-name="${s.name}" data-skill-label="${shortSkillLabel(s.code)}" title="${s.name} (${s.code})">
+        <span class="hud-slot-key">${i + 3}</span><span class="hud-slot-label">${shortSkillLabel(s.code)}</span><span class="hud-slot-cd"></span>
       </button>`);
   });
   for (let i = classSkills.length; i < 4; i++) {
@@ -280,6 +282,31 @@ export function buildHud(opts: HudOptions): Hud {
     }
 
     drawMinimap(s);
+
+    const cds = new Map((s.skills ?? []).map((k) => [k.code, k.remaining] as const));
+    root.querySelectorAll<HTMLElement>(".hud-slot-skill[data-skill]").forEach((el) => {
+      const code = el.dataset.skill!;
+      if (!el.dataset.icon) {
+        const url = skillIconUrl(code);
+        if (url) {
+          const img = new Image();
+          img.onload = () => {
+            el.dataset.icon = "1";
+            el.style.backgroundImage = `url("${url}")`;
+          };
+          img.onerror = () => {
+            el.dataset.icon = "none";
+          };
+          img.src = url;
+        } else {
+          el.dataset.icon = "none";
+        }
+      }
+      const remaining = cds.get(code) ?? 0;
+      el.classList.toggle("hud-slot-cd-on", remaining > 0);
+      const cdEl = el.querySelector<HTMLElement>(".hud-slot-cd");
+      if (cdEl) cdEl.textContent = remaining > 0 ? `${remaining}` : "";
+    });
   };
 
   root.querySelector("#hud-attack")!.addEventListener("click", opts.onAttack);
