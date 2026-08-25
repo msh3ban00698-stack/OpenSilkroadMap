@@ -3,6 +3,7 @@ import type { EquipSlot, GameCharacter } from "./types";
 import { getClass, getClassStats, REGION_NPCS, START_REGION_NAME } from "./game_data";
 import { expToNext, MAX_LEVEL } from "./data_loader";
 import type { RegionAssets } from "./region_loader";
+import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
 import { getItem } from "./items";
 
@@ -34,6 +35,12 @@ const RUN_MAGNITUDE = 0.55;
 const CAM_DIST = 11;
 const CAM_MIN_PITCH = 0.12;
 const CAM_MAX_PITCH = 1.15;
+
+// Open-world constants for the real Constantinople region (region 1). The
+// terrain spans 11520 x 11520 world units, so the camera + fog must reach far.
+const CAM_FAR = 6000;
+const FOG_NEAR = 250;
+const FOG_FAR = 1800;
 
 const ATTACK_RANGE = 2.4;
 const ATTACK_IMPACT_FRACTION = 0.42;
@@ -90,6 +97,8 @@ export class GameWorld {
   private labels: THREE.Group;
   private npcGroups: NpcGroup[] = [];
 
+  private worldNpcCount = 0;
+  private npcList = REGION_NPCS;
   private yaw = 0.5;
   private pitch = 0.32;
   private move = { x: 0, z: 0, mag: 0 };
@@ -131,19 +140,20 @@ export class GameWorld {
     this.container.appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0b0b10);
-    this.scene.fog = new THREE.Fog(0x1a1620, 160, 420);
+    this.scene.background = new THREE.Color(0x9db8d6);
+    this.scene.fog = new THREE.Fog(0xb9c8d9, FOG_NEAR, FOG_FAR);
 
     this.camera = new THREE.PerspectiveCamera(
       62,
       (this.container.clientWidth || 360) / (this.container.clientHeight || 640),
       0.1,
-      800,
+      CAM_FAR,
     );
 
     this.addLights();
     this.addFloor();
     this.addBounds();
+    this.addWorldObjects();
     this.addNpcs();
 
     this.rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE });
@@ -210,6 +220,7 @@ export class GameWorld {
       setPlayerPos: (x: number, z: number) => {
         this.rig.group.position.set(x, this.assets.spawn.y, z);
       },
+      terrainY: (x: number, z: number) => this.terrainHeightAt(x, z),
       setPlayerRotationY: (y: number) => {
         this.rig.group.rotation.y = y;
       },
@@ -225,6 +236,7 @@ export class GameWorld {
         lastDamage: this.lastDamage,
       }),
       getState: () => this.getState(),
+      worldInfo: () => this.worldInfo(),
       pick: (x: number, y: number) => this.pick(x, y),
       selectTarget: (kind: string, id: string) => this.selectTarget(kind as Selection["kind"], id),
       clearTarget: () => this.selectTarget(null, ""),
@@ -257,13 +269,14 @@ export class GameWorld {
       selected: target,
       pos: { x: this.rig.group.position.x, y: this.rig.group.position.y, z: this.rig.group.position.z },
       yaw: this.rig.group.rotation.y,
-      npcs: REGION_NPCS.map((n) => ({
+      npcs: this.npcList.map((n) => ({
         id: n.id,
         name: n.name,
         x: n.x,
         z: n.z,
         selected: this.selected?.kind === "npc" && this.selected.id === n.id,
       })),
+      world: this.worldInfo(),
       dummy: {
         x: this.dummy.group.position.x,
         z: this.dummy.group.position.z,
@@ -274,6 +287,16 @@ export class GameWorld {
       },
       bounds: this.boundsBox,
       weaponsInWorld: this.character.equipment.weapon ? 1 : 0,
+    };
+  }
+
+  private worldInfo(): Record<string, number> {
+    const wb = this.assets.buildings;
+    return {
+      buildings: wb ? wb.manifest.instances.length : 0,
+      geoms: wb ? wb.manifest.geoms.length : 0,
+      npcInstances: this.worldNpcCount,
+      atlasPages: wb ? wb.manifest.atlas.length : 0,
     };
   }
 
@@ -409,6 +432,94 @@ export class GameWorld {
     this.scene.add(mesh);
   }
 
+  private terrainHeightAt(x: number, z: number): number {
+    return sampleTerrainHeight(this.assets.data, x, z);
+  }
+
+  private addWorldObjects(): void {
+    const wb = this.assets.buildings;
+    if (!wb) return;
+    const { manifest, geometry, atlasTextures } = wb;
+
+    const mats = atlasTextures.map(
+      (tex) =>
+        new THREE.MeshLambertMaterial({
+          map: tex,
+          side: THREE.DoubleSide,
+          alphaTest: 0.4,
+        }),
+    );
+
+    const geomGeos = manifest.geoms.map((slice) => this.buildGeomGeometry(geometry, slice));
+
+    const matrix = new THREE.Matrix4();
+    const quat = new THREE.Quaternion();
+    const compose = (x: number, y: number, z: number, ry: number): THREE.Matrix4 =>
+      matrix.makeRotationFromQuaternion(quat.setFromEuler(new THREE.Euler(0, ry, 0, "YZX")))
+        .setPosition(x, y, z);
+
+    // Buildings: one InstancedMesh per geometry.
+    for (let gi = 0; gi < manifest.geoms.length; gi++) {
+      const insts = manifest.instances.filter((i) => i.g === gi);
+      if (!insts.length) continue;
+      const slice = manifest.geoms[gi];
+      const mat = mats[slice.page] ?? mats[0];
+      if (!mat) continue;
+      const mesh = new THREE.InstancedMesh(geomGeos[gi], mat, insts.length);
+      for (let k = 0; k < insts.length; k++) {
+        const i = insts[k];
+        mesh.setMatrixAt(k, compose(i.x, i.y, i.z, i.ry));
+      }
+      mesh.instanceMatrix.needsUpdate = true;
+      this.scene.add(mesh);
+    }
+
+    // NPCs / monsters: one InstancedMesh per model group, placed on terrain.
+    for (const grp of manifest.npcGroups) {
+      if (!grp.instances.length) continue;
+      const slice = manifest.geoms[grp.geom];
+      if (!slice) continue;
+      const mat = mats[slice.page] ?? mats[0];
+      if (!mat) continue;
+      const mesh = new THREE.InstancedMesh(geomGeos[grp.geom], mat, grp.instances.length);
+      for (let k = 0; k < grp.instances.length; k++) {
+        const p = grp.instances[k];
+        const h = this.terrainHeightAt(p.x, p.z) + 0.8;
+        mesh.setMatrixAt(k, compose(p.x, h, p.z, (k * 0.6) % (Math.PI * 2)));
+      }
+      mesh.instanceMatrix.needsUpdate = true;
+      this.scene.add(mesh);
+      this.worldNpcCount += grp.instances.length;
+    }
+  }
+
+  private buildGeomGeometry(merged: THREE.BufferGeometry, slice: {
+    v0: number; vCount: number; i0: number; iCount: number;
+  }): THREE.BufferGeometry {
+    const srcPos = merged.getAttribute("position") as THREE.BufferAttribute;
+    const srcUv = merged.getAttribute("uv") as THREE.BufferAttribute;
+    const srcIdx = merged.getIndex() as THREE.BufferAttribute;
+    const pos = new Float32Array(slice.vCount * 3);
+    const uv = new Float32Array(slice.vCount * 2);
+    const idx = new Uint32Array(slice.iCount);
+    for (let i = 0; i < slice.vCount; i++) {
+      pos[i * 3] = srcPos.getX(slice.v0 + i);
+      pos[i * 3 + 1] = srcPos.getY(slice.v0 + i);
+      pos[i * 3 + 2] = srcPos.getZ(slice.v0 + i);
+      uv[i * 2] = srcUv.getX(slice.v0 + i);
+      uv[i * 2 + 1] = srcUv.getY(slice.v0 + i);
+    }
+    for (let j = 0; j < slice.iCount; j++) {
+      idx[j] = srcIdx.getX(slice.i0 + j) - slice.v0;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
+    g.setIndex(new THREE.BufferAttribute(idx, 1));
+    g.computeVertexNormals();
+    return g;
+  }
+
   private addBounds(): void {
     const b = this.assets.data.bounds;
     const cx = (b.minX + b.maxX) / 2;
@@ -426,12 +537,46 @@ export class GameWorld {
   private boundsBox!: { minX: number; maxX: number; minZ: number; maxZ: number };
 
   private addNpcs(): void {
+    if (this.assets.buildings) {
+      this.buildManifestNpcs();
+      return;
+    }
     for (const npc of REGION_NPCS) {
       const group = this.buildNpc(npc.name);
       group.position.set(npc.x, 0, npc.z);
       this.scene.add(group);
       this.npcGroups.push({ group, id: npc.id, name: npc.name, x: npc.x, z: npc.z });
     }
+  }
+
+  private buildManifestNpcs(): void {
+    const wb = this.assets.buildings;
+    if (!wb) return;
+    const list: typeof REGION_NPCS = [];
+    wb.manifest.npcGroups.forEach((grp, gi) => {
+      if (grp.kind !== "npc" || !grp.instances.length) return;
+      const p = grp.instances[0];
+      const id = `npc_${grp.name}_${gi}`;
+      const group = this.buildNpcCollider(grp.name);
+      group.position.set(p.x, this.terrainHeightAt(p.x, p.z) + 0.5, p.z);
+      this.scene.add(group);
+      this.npcGroups.push({ group, id, name: grp.name, x: p.x, z: p.z });
+      list.push({ id, name: grp.name, x: p.x, z: p.z });
+    });
+    if (list.length) this.npcList = list;
+  }
+
+  private buildNpcCollider(name: string): THREE.Group {
+    const group = new THREE.Group();
+    const geo = new THREE.BoxGeometry(1.6, 3, 1.6);
+    const mat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
+    const box = new THREE.Mesh(geo, mat);
+    box.position.y = 1.5;
+    group.add(box);
+    const sprite = this.makeLabel(name, 0x9ad7ff, 0.8);
+    sprite.position.y = 3.4;
+    group.add(sprite);
+    return group;
   }
 
   private buildSelectionRing(): THREE.Mesh {
@@ -708,6 +853,7 @@ export class GameWorld {
       const b = this.boundsBox;
       p.x = Math.max(b.minX + 2, Math.min(b.maxX - 2, nx));
       p.z = Math.max(b.minZ + 2, Math.min(b.maxZ - 2, nz));
+      p.y = this.terrainHeightAt(p.x, p.z);
 
       const targetAngle = Math.atan2(-wx, -wz);
       const cur = this.rig.group.rotation.y;

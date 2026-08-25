@@ -4,6 +4,8 @@ import {
   saveCharacter,
   deleteCharacter,
   createCharacter,
+  createAccount,
+  loginAccount,
 } from "./storage";
 import { RegionLoader } from "./region_loader";
 import { GameWorld } from "./game3d";
@@ -11,7 +13,7 @@ import { TouchControls } from "./player_control";
 import { buildHud, type Hud, type HudWorldState } from "./hud";
 import { buildInventoryPanel, type InventoryPanel } from "./inventory_panel";
 import { CharacterViewerScreen } from "./character_viewer_screen";
-import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, START_REGION } from "./game_data";
+import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, START_REGION, START_REGION_NAME } from "./game_data";
 import { getItem, isEquippable } from "./items";
 import type { EquipSlot, GameCharacter } from "./types";
 
@@ -52,10 +54,14 @@ class GameFlow {
     private viewerContainer: HTMLElement,
   ) {
     this.screens = new GameScreens(menuRoot, {
-      onStartGame: () => this.showSelect(),
+      onStartGame: () => this.showLogin(),
       onOpenMap: () => this.showMap(),
       onOpenCharacterViewer: () => this.showCharacterViewer(),
       onBack: () => this.showIntro(),
+      onLogin: (username, password) => this.handleLogin(username, password),
+      onOpenAccountCreate: () => this.showCreateAccount(),
+      onCreateAccount: (username, password) => this.handleCreateAccount(username, password),
+      onCancelAccount: () => this.showLogin(),
       onSelectCharacter: (id) => this.enterWith(id),
       onDeleteCharacter: (id) => {
         deleteCharacter(id);
@@ -66,8 +72,8 @@ class GameFlow {
       onConfirmCreate: (input) => {
         const error = this.checkName(input.name);
         if (error) return;
-        const char = createCharacter(input);
-        this.enterWith(char.id);
+        createCharacter(input);
+        this.showSelect();
       },
     });
   }
@@ -96,6 +102,42 @@ class GameFlow {
     this.menuRoot.style.display = "block";
     this.setReturnButtonVisible(false);
     this.screens.renderIntro();
+  }
+
+  private showLogin(error?: string): void {
+    this.teardownWorld();
+    this.hideCharacterViewer();
+    this.worldContainer.style.display = "none";
+    this.menuRoot.style.display = "block";
+    this.setReturnButtonVisible(false);
+    this.screens.renderLogin(error);
+  }
+
+  private showCreateAccount(error?: string): void {
+    this.teardownWorld();
+    this.hideCharacterViewer();
+    this.worldContainer.style.display = "none";
+    this.menuRoot.style.display = "block";
+    this.setReturnButtonVisible(false);
+    this.screens.renderCreateAccount(error);
+  }
+
+  private async handleLogin(username: string, password: string): Promise<void> {
+    const res = await loginAccount(username, password);
+    if (!res.ok) {
+      this.showLogin(res.error);
+      return;
+    }
+    this.showSelect();
+  }
+
+  private async handleCreateAccount(username: string, password: string): Promise<void> {
+    const res = await createAccount(username, password);
+    if (!res.ok) {
+      this.showCreateAccount(res.error);
+      return;
+    }
+    this.showSelect();
   }
 
   private hideCharacterViewer(): void {
@@ -153,7 +195,7 @@ class GameFlow {
 
   private async enterWorld(char: GameCharacter): Promise<void> {
     this.menuRoot.style.display = "block";
-    this.screens.renderLoading(`Loading region ${START_REGION}...`);
+    this.screens.renderLoading(`Loading ${START_REGION_NAME} (region ${START_REGION})...`);
     this.worldContainer.style.display = "none";
 
     try {

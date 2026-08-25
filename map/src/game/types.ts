@@ -34,6 +34,7 @@ export interface GameCharacter {
 
 export type GameState =
   | "intro"
+  | "login"
   | "select"
   | "create"
   | "loading"

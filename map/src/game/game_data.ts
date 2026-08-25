@@ -25,16 +25,19 @@ export function getClass(id: string): ClassDef | undefined {
   return VERIFIED_CLASSES.find((c) => c.id === id);
 }
 
-// Region 32785 "Cave of Meditation" - fully verified 3D region (Phase B + D).
-// Generated assets: map/public/assets/img/silkroad/game/region32785/
-export const START_REGION = 32785;
-export const START_REGION_NAME = "Cave of Meditation";
+// Region 1 Constantinople - real 3D world generated from the original VSRO
+// packages (scripts/extract_ct.py + scripts/generate_region_ct.py).
+// Assets: map/public/assets/img/silkroad/game/region1/
+export const START_REGION = 1;
+export const START_REGION_NAME = "Constantinople";
 export const START_REGION_URL =
-  "/assets/img/silkroad/game/region32785";
+  "/assets/img/silkroad/game/region1";
 
 export const CHARACTERS_KEY = "silkroad_characters_v1";
 
-// Verified "Dungeon Exit" NPC inside region 32785 (npcs.json).
+// Verified "Dungeon Exit" NPC inside region 32785 (npcs.json). Used only when a
+// region has no generated buildings manifest (region 1 supplies real npcpos
+// placements through buildings.json instead).
 export const REGION_NPCS = [
   {
     id: "dungeon_exit",

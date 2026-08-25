@@ -7,9 +7,125 @@ import {
 } from "./game_data";
 import type { GameCharacter } from "./types";
 
-export function loadCharacters(): GameCharacter[] {
+export interface Account {
+  username: string;
+  salt: string;
+  hash: string;
+  createdAt: number;
+}
+
+export const ACCOUNTS_KEY = "silkroad_accounts_v1";
+export const SESSION_KEY = "silkroad_session_v1";
+
+async function sha256Hex(text: string): Promise<string> {
+  if (globalThis.crypto && typeof crypto.subtle !== "undefined") {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+  let h1 = 0x811c9dc5;
+  let h2 = 0x01000193;
+  for (let i = 0; i < text.length; i++) {
+    h1 = Math.imul(h1 ^ text.charCodeAt(i), 0x01000193) >>> 0;
+    h2 = (h2 * 31 + text.charCodeAt(i)) >>> 0;
+  }
+  return `${h1.toString(16)}${h2.toString(16)}`;
+}
+
+function loadAccounts(): Account[] {
   try {
-    const raw = localStorage.getItem(CHARACTERS_KEY);
+    const raw = localStorage.getItem(ACCOUNTS_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((a) => a && typeof a.username === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveAccounts(list: Account[]): void {
+  try {
+    localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(list));
+  } catch (e) {
+    console.warn("Failed to save accounts:", e);
+  }
+}
+
+export function validateUsername(username: string): string | null {
+  const trimmed = username.trim();
+  if (!trimmed) return "Username is required.";
+  if (trimmed.length < 3) return "Username must be at least 3 characters.";
+  if (trimmed.length > 20) return "Username must be at most 20 characters.";
+  if (!/^[A-Za-z0-9_]+$/.test(trimmed)) {
+    return "Username may contain only letters, digits or underscores.";
+  }
+  if (loadAccounts().some((a) => a.username.toLowerCase() === trimmed.toLowerCase())) {
+    return "That username is already taken.";
+  }
+  return null;
+}
+
+export function validatePassword(password: string): string | null {
+  if (!password) return "Password is required.";
+  if (password.length < 4) return "Password must be at least 4 characters.";
+  return null;
+}
+
+export async function createAccount(username: string, password: string): Promise<{ ok: boolean; error?: string }> {
+  const uname = username.trim();
+  const err = validateUsername(uname) ?? validatePassword(password);
+  if (err) return { ok: false, error: err };
+  const salt = Math.random().toString(36).slice(2, 10);
+  const hash = await sha256Hex(`${salt}::${password}`);
+  const list = loadAccounts();
+  list.push({ username: uname, salt, hash, createdAt: Date.now() });
+  saveAccounts(list);
+  setSession(uname);
+  return { ok: true };
+}
+
+export async function loginAccount(username: string, password: string): Promise<{ ok: boolean; error?: string }> {
+  const uname = username.trim();
+  const acc = loadAccounts().find((a) => a.username.toLowerCase() === uname.toLowerCase());
+  if (!acc) return { ok: false, error: "Account not found." };
+  const hash = await sha256Hex(`${acc.salt}::${password}`);
+  if (hash !== acc.hash) return { ok: false, error: "Incorrect password." };
+  setSession(acc.username);
+  return { ok: true };
+}
+
+export function setSession(username: string): void {
+  try {
+    localStorage.setItem(SESSION_KEY, username);
+  } catch {
+    /* ignore */
+  }
+}
+
+export function getSession(): string | null {
+  try {
+    return localStorage.getItem(SESSION_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function clearSession(): void {
+  try {
+    localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+function charactersKey(account: string | null): string {
+  return account ? `${CHARACTERS_KEY}_${account.toLowerCase()}` : CHARACTERS_KEY;
+}
+
+export function loadCharacters(account?: string | null): GameCharacter[] {
+  try {
+    const raw = localStorage.getItem(charactersKey(account ?? getSession()));
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
@@ -42,28 +158,28 @@ function normalizeCharacter(c: GameCharacter): GameCharacter {
   };
 }
 
-function saveCharacters(list: GameCharacter[]): void {
+function saveCharacters(list: GameCharacter[], account?: string | null): void {
   try {
-    localStorage.setItem(CHARACTERS_KEY, JSON.stringify(list));
+    localStorage.setItem(charactersKey(account ?? getSession()), JSON.stringify(list));
   } catch (e) {
     console.warn("Failed to save characters:", e);
   }
 }
 
-export function saveCharacter(char: GameCharacter): void {
-  const list = loadCharacters();
+export function saveCharacter(char: GameCharacter, account?: string | null): void {
+  const list = loadCharacters(account);
   const idx = list.findIndex((c) => c.id === char.id);
   if (idx >= 0) {
     list[idx] = char;
   } else {
     list.push(char);
   }
-  saveCharacters(list);
+  saveCharacters(list, account);
 }
 
-export function deleteCharacter(id: string): void {
-  const list = loadCharacters();
-  saveCharacters(list.filter((c) => c.id !== id));
+export function deleteCharacter(id: string, account?: string | null): void {
+  const list = loadCharacters(account);
+  saveCharacters(list.filter((c) => c.id !== id), account);
 }
 
 export function createCharacter(input: {
@@ -91,8 +207,8 @@ export function createCharacter(input: {
     },
     createdAt: now,
     lastPlayedAt: now,
-    region: 32785,
-    position: { x: 1134.79, y: 0, z: -864.29 },
+    region: 1,
+    position: { x: 1800, y: 0, z: 5350 },
     gold: STARTING_GOLD,
     hp: stats.hp,
     mp: stats.mp,
