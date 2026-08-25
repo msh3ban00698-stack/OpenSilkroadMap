@@ -1097,7 +1097,7 @@ export class GameWorld {
     }
     if (best) {
       this.selectTarget("npc", best.npc.id, best.npc.name);
-      this.onInteractNpc?.({ id: best.npc.id, name: best.npc.name, x: best.npc.x, z: best.npc.z });
+      this.onInteractNpc?.({ id: best.npc.id, code: best.npc.id, name: best.npc.name, x: best.npc.x, z: best.npc.z });
     } else {
       this.onLog("Nothing to interact with nearby.");
     }
