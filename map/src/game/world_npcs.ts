@@ -107,12 +107,18 @@ const itemInfoCache: Record<
   { name: string; price: number; icon: string; iconUrl: string | null; stack: number; level: number }
 > = {};
 
+const PRICE_SCALE = 1 / 180;
+
 export function itemIconUrl(iconRel: string): string {
   const flat = iconRel.replace(/\\/g, "/").toLowerCase();
   return `/assets/img/silkroad/icons/${flat.split("/").join("_")}.webp`;
 }
 
-export async function loadItemInfo(codes: string[]): Promise<Record<string, { name: string; price: number; icon: string; iconUrl: string | null; stack: number; level: number }>> {
+export async function loadItemInfo(
+  codes: string[],
+): Promise<
+  Record<string, { name: string; price: number; icon: string; iconUrl: string | null; stack: number; level: number }>
+> {
   const missing = codes.filter((c) => !itemInfoCache[c]);
   if (missing.length) {
     const all = await fetch("/assets/gamedata/items.json").then((r) => r.json());
@@ -120,7 +126,7 @@ export async function loadItemInfo(codes: string[]): Promise<Record<string, { na
       const it = all[c];
       itemInfoCache[c] = {
         name: it.name,
-        price: it.price,
+        price: Math.max(1, Math.round((it.price || 0) * PRICE_SCALE)),
         icon: it.icon,
         iconUrl: it.icon ? itemIconUrl(it.icon) : null,
         stack: it.stack,
@@ -128,7 +134,10 @@ export async function loadItemInfo(codes: string[]): Promise<Record<string, { na
       };
     }
   }
-  const out: Record<string, { name: string; price: number; icon: string; iconUrl: string | null; stack: number; level: number }> = {};
+  const out: Record<
+    string,
+    { name: string; price: number; icon: string; iconUrl: string | null; stack: number; level: number }
+  > = {};
   for (const c of codes) {
     if (itemInfoCache[c]) out[c] = itemInfoCache[c];
   }

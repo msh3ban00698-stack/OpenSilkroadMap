@@ -1424,6 +1424,7 @@ body.game-mode #popup {
 .shop-cell {
   position: relative;
   aspect-ratio: 1;
+  min-width: 0;
   background: rgba(20, 14, 8, 0.72);
   border: 1px solid #6b5636;
   border-radius: 6px;
@@ -1432,6 +1433,7 @@ body.game-mode #popup {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .shop-cell img {
   width: 80%;
@@ -1440,6 +1442,7 @@ body.game-mode #popup {
   image-rendering: pixelated;
 }
 .shop-cell i {
+  display: block;
   font-style: normal;
   font-size: 8px;
   color: #d8ccb0;
@@ -1449,6 +1452,7 @@ body.game-mode #popup {
   white-space: nowrap;
 }
 .shop-cell u {
+  display: block;
   text-decoration: none;
   font-size: 9px;
   color: #f4d67c;

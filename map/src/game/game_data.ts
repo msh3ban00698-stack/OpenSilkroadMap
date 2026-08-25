@@ -99,7 +99,7 @@ export function getClassStats(classId: string): ClassStats {
 export const HP_PER_LEVEL = 6;
 export const MP_PER_LEVEL = 3;
 
-export const STARTING_GOLD = 100;
+export const STARTING_GOLD = 10000;
 
 // Starter gear, using verified level-1 items from itemdata_5000.txt:
 //   sword_01_a        ITEM_CH_SWORD_01_A        Copper Sword
