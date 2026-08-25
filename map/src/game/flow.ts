@@ -383,6 +383,7 @@ function escapeHtml(s: string): string {
 }
 
 export function initGameFlow(): void {
+  document.body.classList.add("game-mode");
   const menuRoot = document.getElementById("game-menus")!;
   const worldContainer = document.getElementById("game-container")!;
   const flow = new GameFlow(menuRoot, worldContainer);

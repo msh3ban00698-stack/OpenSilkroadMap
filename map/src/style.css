@@ -264,12 +264,22 @@ body {
    --------------------------------------------------------------------------- */
 
 #game-root {
+  background: #0b0a08;
   bottom: 0;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 60;
+}
+
+body.game-mode #map,
+body.game-mode .material-panel,
+body.game-mode .ol-popup,
+body.game-mode #popup {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 #game-container {
@@ -616,9 +626,9 @@ body {
   border-radius: 4px;
   color: #a08a5e;
   cursor: pointer;
-  font-size: 14px;
-  height: 30px;
-  width: 30px;
+  font-size: 16px;
+  height: 44px;
+  width: 44px;
 }
 
 .sro-iconbtn:hover {
@@ -660,6 +670,7 @@ body {
 
 .sro-split-create {
   flex-direction: column-reverse;
+  min-height: 0;
 }
 
 .sro-form-panel {
@@ -693,15 +704,11 @@ body {
 
 @media (max-width: 699px) {
   .sro-preview-col {
-    flex: 0 0 36vh;
+    flex: 0 0 32vh;
   }
 
   .sro-preview-tall {
     min-height: 0;
-  }
-
-  .sro-form-scroll {
-    overflow-y: visible;
   }
 }
 
@@ -723,11 +730,13 @@ body {
   background: rgba(10, 8, 6, 0.55);
   border: 1px solid #57431f;
   border-radius: 3px;
+  box-sizing: border-box;
   color: #cdbf9c;
   cursor: pointer;
   flex: 1;
   font-size: 14px;
-  padding: 10px 8px;
+  min-height: 44px;
+  padding: 11px 8px;
   user-select: none;
 }
 
@@ -1054,10 +1063,11 @@ body {
   background: rgba(12, 10, 8, 0.72);
   border: 1px solid #57431f;
   border-radius: 50%;
+  box-sizing: border-box;
   cursor: pointer;
-  height: 40px;
-  padding: 6px;
-  width: 40px;
+  height: 44px;
+  padding: 7px;
+  width: 44px;
 }
 
 .hud-sysbtn:hover {
@@ -1133,7 +1143,7 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
   color: #e8dcc0;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 12px;
   height: 54px;
   padding: 4px;
   position: relative;
@@ -1315,9 +1325,11 @@ body {
 
 .hud-btn.hud-mini {
   border-radius: 4px;
+  box-sizing: border-box;
   font-size: 12px;
   height: auto;
-  padding: 6px 10px;
+  min-height: 44px;
+  padding: 6px 14px;
   width: auto;
 }
 
