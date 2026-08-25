@@ -156,7 +156,7 @@ export class GameWorld {
     this.addBounds();
     this.addWorldObjects();
     this.addNpcs();
-    if (new URLSearchParams(location.search).has("npcs")) void this.populateAuthenticNpcs();
+    void this.populateAuthenticNpcs();
 
     this.rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE });
     this.labels = new THREE.Group();
