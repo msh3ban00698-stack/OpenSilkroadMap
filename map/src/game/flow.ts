@@ -184,6 +184,7 @@ class GameFlow {
           this.hud?.log(`Level up! You reached level ${level}.`);
           this.hud?.showLevelUp(level);
         },
+        onCharacterMutated: () => persist(),
         getState: () => (this.world ? (this.world.getState() as unknown as HudWorldState) : emptyState),
       });
       document.getElementById("game-root")!.appendChild(this.hud.root);

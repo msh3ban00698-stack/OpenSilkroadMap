@@ -7,6 +7,7 @@ export interface NpcDialogInfo {
   name: string;
   x: number;
   z: number;
+  code?: string;
 }
 
 export interface HudWorldState {
@@ -39,6 +40,7 @@ export interface HudOptions {
   onUsePotion: () => boolean;
   onUseSkill: (code: string, name: string) => void;
   onLevelUp: (level: number) => void;
+  onCharacterMutated: () => void;
   getState: () => HudWorldState;
 }
 
@@ -322,25 +324,44 @@ export function buildHud(opts: HudOptions): Hud {
     dlg.innerHTML = `
       <div class="sro-window hud-dialog-panel">
         <div class="sro-window-title">${npc.name}</div>
-        <div class="hud-dialog-body">
-          The doorway before you leads back toward the surface.
-          (NPC dialogue is a placeholder; no real quest text data is wired in this phase.)
-        </div>
-        <div class="hud-dialog-actions">
-          <button class="sro-btn sro-btn-secondary" id="hd-test">Interact Test</button>
-          <button class="sro-btn sro-btn-primary" id="hd-close">Close</button>
-        </div>
+        <div class="hud-dialog-body">Greetings, traveler. How may I assist you?</div>
+        <div class="hud-dialog-actions" id="hd-actions"></div>
       </div>
     `;
     dlg.addEventListener("click", (e) => {
       if (e.target === dlg) closeDialog();
     });
-    dlg.querySelector("#hd-test")!.addEventListener("click", () => {
-      log(`[interaction] ${npc.name}: the door is locked in this prototype.`);
+    const actions = dlg.querySelector("#hd-actions")!;
+    const shopBtn = document.createElement("button");
+    shopBtn.className = "sro-btn sro-btn-primary";
+    shopBtn.textContent = "Shop";
+    shopBtn.addEventListener("click", () => {
+      if (!npc.code) return;
+      void import("./shop_panel").then(({ openShop }) =>
+        openShop(root, {
+          npcCode: npc.code!,
+          npcName: npc.name,
+          character: opts.character,
+          onMutate: opts.onCharacterMutated,
+          log,
+        }),
+      );
+      closeDialog();
     });
-    dlg.querySelector("#hd-close")!.addEventListener("click", closeDialog);
+    actions.appendChild(shopBtn);
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "sro-btn sro-btn-secondary";
+    closeBtn.textContent = "Close";
+    closeBtn.addEventListener("click", closeDialog);
+    actions.appendChild(closeBtn);
     root.appendChild(dlg);
     dialogRoot = dlg;
+    void import("./world_npcs").then(async ({ loadShops }) => {
+      const shops = await loadShops();
+      if (!shops[npc.code || ""]) {
+        shopBtn.style.display = "none";
+      }
+    });
   };
 
   const closeDialog = (): void => {

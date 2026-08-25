@@ -130,8 +130,38 @@ export const ITEMS: Record<string, ItemDef> = {
   },
 };
 
+const AUTHENTIC = new Map<string, ItemDef>();
+
+export function registerAuthenticItem(code: string, def: ItemDef): void {
+  if (!AUTHENTIC.has(code)) AUTHENTIC.set(code, def);
+}
+
 export function getItem(id: string): ItemDef | undefined {
-  return ITEMS[id];
+  return ITEMS[id] || AUTHENTIC.get(id);
+}
+
+const WEAPON_WORDS = ["SWORD", "BLADE", "BOW", "SPEAR", "STAFF", "AXE", "SHIELD", "TSWORD", "DAGGER"];
+const ARMOR_WORDS = ["CLOTHES", "HEAVY", "LIGHT", "ROBE", "ARMOR"];
+const ACC_WORDS = ["RING", "NECKLACE", "EARRING"];
+
+export function authenticItemDef(code: string, name: string, price: number, iconUrl: string | null, level: number): ItemDef {
+  const up = code.toUpperCase();
+  let slot: ItemSlot = "consumable";
+  if (WEAPON_WORDS.some((w) => up.includes(w))) slot = "weapon";
+  else if (ARMOR_WORDS.some((w) => up.includes(w))) slot = "armor";
+  else if (ACC_WORDS.some((w) => up.includes(w))) slot = "accessory";
+  return {
+    id: code,
+    code,
+    refId: 0,
+    name,
+    slot,
+    desc: level ? `Requires level ${level}.` : "",
+    levelReq: level || 1,
+    color: "#d8c9a0",
+    value: Math.max(1, price),
+    icon: iconUrl || svgIcon(`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="48" height="48" fill="#3a2d1c"/></svg>`),
+  };
 }
 
 export function isEquippable(item: ItemDef | undefined): item is ItemDef & { slot: EquipSlot } {

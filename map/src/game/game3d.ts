@@ -12,6 +12,7 @@ export interface NpcInstance {
   name: string;
   x: number;
   z: number;
+  code?: string;
 }
 
 export interface GameWorldOptions {
@@ -155,6 +156,7 @@ export class GameWorld {
     this.addBounds();
     this.addWorldObjects();
     this.addNpcs();
+    if (new URLSearchParams(location.search).has("npcs")) void this.populateAuthenticNpcs();
 
     this.rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE });
     this.labels = new THREE.Group();
@@ -665,8 +667,36 @@ export class GameWorld {
     if (list.length) this.npcList = list;
   }
 
-  private buildNpcCollider(name: string): THREE.Group {
-    const group = new THREE.Group();
+  private npcRigs: { rig: CharacterRig; group: THREE.Group }[] = [];
+  private pendingNpcRigs: { x: number; z: number; actor: string; group: THREE.Group; y: number }[] = [];
+
+  private async populateAuthenticNpcs(): Promise<void> {
+    try {
+      const { loadWorldNpcs } = await import("./world_npcs");
+      const npcs = await loadWorldNpcs();
+      for (const npc of npcs) {
+        const group = this.buildNpcCollider(npc.name);
+        const y = this.terrainHeightAt(npc.x, npc.z);
+        group.position.set(npc.x, y + 0.2, npc.z);
+        this.scene.add(group);
+        this.npcGroups.push({ group, id: npc.id, name: npc.name, x: npc.x, z: npc.z });
+        if (npc.actor) {
+          this.pendingNpcRigs.push({ x: npc.x, z: npc.z, actor: npc.actor, group, y });
+        }
+        const existing = this.npcList.find((n) => n.id === npc.id);
+        if (!existing) {
+          this.npcList = [...this.npcList.filter((n) => n.id !== `npc_${npc.code}_0`), { id: npc.id, name: npc.name, x: npc.x, z: npc.z }];
+        } else {
+          existing.name = npc.name;
+        }
+      }
+      this.buildLabels();
+    } catch {
+      this.onLog("NPC data unavailable");
+    }
+  }
+
+  private buildNpcCollider(name: string): THREE.Group {    const group = new THREE.Group();
     const geo = new THREE.BoxGeometry(1.6, 3, 1.6);
     const mat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
     const box = new THREE.Mesh(geo, mat);
@@ -1113,6 +1143,32 @@ export class GameWorld {
       this.rig.skeleton.update();
     }
     this.updateDummy(dt);
+    const px = this.rig.group.position.x;
+    const pz = this.rig.group.position.z;
+    for (let i = this.pendingNpcRigs.length - 1; i >= 0; i--) {
+      const p = this.pendingNpcRigs[i];
+      const dx = p.x - px;
+      const dz = p.z - pz;
+      if (dx * dx + dz * dz < -1) {
+        const rig = new CharacterRig({ preset: p.actor, scale: CHAR_SCALE });
+        rig.group.position.set(p.x, p.y + 0.15, p.z);
+        rig.group.rotation.y = Math.PI;
+        this.scene.add(rig.group);
+        void rig.load().then(() => rig.play("idle"));
+        this.npcRigs.push({ rig, group: p.group });
+        this.pendingNpcRigs.splice(i, 1);
+      }
+    }
+    for (const nr of this.npcRigs) {
+      const dx = nr.group.position.x - px;
+      const dz = nr.group.position.z - pz;
+      const near = dx * dx + dz * dz < 22500;
+      nr.rig.group.visible = near;
+      if (near) {
+        nr.rig.update(dt);
+        if (nr.rig.skeleton) nr.rig.skeleton.update();
+      }
+    }
     this.updateFloaters(dt);
     this.updateLabels();
     this.updateCamera(dt);

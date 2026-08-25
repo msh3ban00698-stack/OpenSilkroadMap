@@ -1350,6 +1350,97 @@ body {
   width: min(88vw, 360px);
 }
 
+.shop-panel {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  margin: 0 auto;
+  max-width: 420px;
+  width: 100vw;
+  max-height: 62vh;
+  overflow-y: auto;
+  padding: 10px 12px calc(12px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.shop-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.shop-tabs .sro-btn.active {
+  filter: brightness(1.35);
+  outline: 1px solid #e8c874;
+}
+.shop-gold {
+  color: #f4d67c;
+  font-size: 13px;
+}
+.shop-grid,
+.shop-inv {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.shop-cell {
+  position: relative;
+  aspect-ratio: 1;
+  background: rgba(20, 14, 8, 0.72);
+  border: 1px solid #6b5636;
+  border-radius: 6px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.shop-cell img {
+  width: 80%;
+  height: 60%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.shop-cell i {
+  font-style: normal;
+  font-size: 8px;
+  color: #d8ccb0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shop-cell u {
+  text-decoration: none;
+  font-size: 9px;
+  color: #f4d67c;
+}
+.shop-cell em {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-style: normal;
+  font-size: 10px;
+  color: #fff;
+  text-shadow: 0 1px 2px #000;
+}
+.shop-noicon {
+  width: 60%;
+  height: 55%;
+  border: 1px dashed #6b5636;
+  border-radius: 4px;
+}
+.shop-inv-title {
+  color: #a99b7c;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.shop-empty {
+  color: #a99b7c;
+  font-size: 12px;
+  grid-column: 1 / -1;
+}
+
 .hud-dialog-body {
   color: #d8ccb0;
   font-size: 13px;

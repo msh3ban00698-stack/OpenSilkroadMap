@@ -54,6 +54,9 @@ export interface CharacterAssets {
 }
 
 export function characterBase(preset: string): string {
+  if (preset.startsWith("actor/") || preset.includes("/")) {
+    return `/assets/img/silkroad/game/${preset}`;
+  }
   return `/assets/img/silkroad/game/character/${preset}`;
 }
 
