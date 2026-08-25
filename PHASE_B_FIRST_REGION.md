@@ -16,13 +16,13 @@ through the existing conversion pipeline into the OpenSilkroadMap runtime.
 
 All resolved from external `Data.pk2` / `Media.pk2` and confirmed present/size-consistent:
 
-| Asset | Count / Size | Role |
-| --- | --- | --- |
-| `Media/minimap_d/fort_dungeon/fort_dungeon01_{127..129}x{126..128}.ddj` | 9 x 256x256 RGB | minimap tiles |
-| `Data/Dungeon/wchina/fortress_dungeon.dof` | 56,311 B | dungeon definition (1 floor) |
-| `Data/.../donhwang_cv_clone/floor_1/*.bsr` | 13 | navmesh object definitions |
-| `res/dun/.../floor_1/*.bms` + `prim/mesh/.../floor_1/*.bms` | 13 | navmesh meshes (bsr -> bms parse validated) |
-| `Data/navmesh/ainavdata_32785.dat` | 243,051 B | navmesh data |
+| Asset                                                                   | Count / Size    | Role                                        |
+| ----------------------------------------------------------------------- | --------------- | ------------------------------------------- |
+| `Media/minimap_d/fort_dungeon/fort_dungeon01_{127..129}x{126..128}.ddj` | 9 x 256x256 RGB | minimap tiles                               |
+| `Data/Dungeon/wchina/fortress_dungeon.dof`                              | 56,311 B        | dungeon definition (1 floor)                |
+| `Data/.../donhwang_cv_clone/floor_1/*.bsr`                              | 13              | navmesh object definitions                  |
+| `res/dun/.../floor_1/*.bms` + `prim/mesh/.../floor_1/*.bms`             | 13              | navmesh meshes (bsr -> bms parse validated) |
+| `Data/navmesh/ainavdata_32785.dat`                                      | 243,051 B       | navmesh data                                |
 
 Region 32785 has **zero** markers in `npcpos.txt` / `teleportdata.txt` (verified),
 so no marker layer needed.

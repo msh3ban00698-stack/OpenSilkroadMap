@@ -1,10 +1,4 @@
-import {
-  CHARACTERS_KEY,
-  getClassStats,
-  getStarterKit,
-  STARTING_GOLD,
-  STARTER_EQUIPMENT,
-} from "./game_data";
+import { CHARACTERS_KEY, getClassStats, getStarterKit, STARTING_GOLD, STARTER_EQUIPMENT } from "./game_data";
 import type { GameCharacter } from "./types";
 
 export interface Account {
@@ -152,9 +146,10 @@ function normalizeCharacter(c: GameCharacter): GameCharacter {
     inventory: Array.isArray(c.inventory)
       ? c.inventory.filter((i) => i && typeof i.id === "string")
       : getStarterKit("kit_blade").bag.map((i) => ({ ...i })),
-    equipment: c.equipment && typeof c.equipment === "object"
-      ? { ...STARTER_EQUIPMENT, ...c.equipment }
-      : { ...STARTER_EQUIPMENT },
+    equipment:
+      c.equipment && typeof c.equipment === "object"
+        ? { ...STARTER_EQUIPMENT, ...c.equipment }
+        : { ...STARTER_EQUIPMENT },
   };
 }
 
@@ -179,7 +174,10 @@ export function saveCharacter(char: GameCharacter, account?: string | null): voi
 
 export function deleteCharacter(id: string, account?: string | null): void {
   const list = loadCharacters(account);
-  saveCharacters(list.filter((c) => c.id !== id), account);
+  saveCharacters(
+    list.filter((c) => c.id !== id),
+    account,
+  );
 }
 
 export function createCharacter(input: {
@@ -208,7 +206,7 @@ export function createCharacter(input: {
     createdAt: now,
     lastPlayedAt: now,
     region: 1,
-    position: { x: 1800, y: 0, z: 5350 },
+    position: { x: 5000, y: 0, z: 5800 },
     gold: STARTING_GOLD,
     hp: stats.hp,
     mp: stats.mp,

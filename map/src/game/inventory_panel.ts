@@ -79,10 +79,10 @@ export function buildInventoryPanel(opts: InventoryPanelOptions): InventoryPanel
         const actions = equippedIn
           ? `<button class="hud-btn hud-mini" id="inv-action-unequip">Unequip</button>`
           : inBag && item.slot === "consumable"
-          ? `<button class="hud-btn hud-mini hud-primary" id="inv-action-use">Use</button>`
-          : inBag
-          ? `<button class="hud-btn hud-mini hud-primary" id="inv-action-equip">Equip</button>`
-          : "";
+            ? `<button class="hud-btn hud-mini hud-primary" id="inv-action-use">Use</button>`
+            : inBag
+              ? `<button class="hud-btn hud-mini hud-primary" id="inv-action-equip">Equip</button>`
+              : "";
         detail = `
           <div class="inv-detail">
             <img src="${item.icon}" alt="" />

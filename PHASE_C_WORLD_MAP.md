@@ -8,16 +8,16 @@ vSRO textdata and named regions in the overlay/popups.
 
 All resolved from the external `Media.pk2` archive (never committed to Git).
 
-| Asset | Count / Size | Role |
-| --- | --- | --- |
-| `Media/minimap/{secX}x{secY}.ddj` | 5,523 x 256x256 RGB | per-sector world minimaps |
-| `Media/server_dep/silkroad/textdata/characterdata_*.txt` | 9 files | NPC templates |
-| `Media/server_dep/silkroad/textdata/npcpos.txt` | — | NPC spawn positions |
-| `Media/server_dep/silkroad/textdata/teleportbuilding.txt` | 106 buildings | teleport gate definitions |
-| `Media/server_dep/silkroad/textdata/teleportdata.txt` | 246 entries | teleport nodes |
-| `Media/server_dep/silkroad/textdata/teleportlink.txt` | 200 link sets | teleport graph |
-| `Media/server_dep/silkroad/textdata/textdata_object.txt` | — | object name translations |
-| `Media/server_dep/silkroad/textdata/textzonename.txt` | 4,129 named rows | region/zone names |
+| Asset                                                     | Count / Size        | Role                      |
+| --------------------------------------------------------- | ------------------- | ------------------------- |
+| `Media/minimap/{secX}x{secY}.ddj`                         | 5,523 x 256x256 RGB | per-sector world minimaps |
+| `Media/server_dep/silkroad/textdata/characterdata_*.txt`  | 9 files             | NPC templates             |
+| `Media/server_dep/silkroad/textdata/npcpos.txt`           | —                   | NPC spawn positions       |
+| `Media/server_dep/silkroad/textdata/teleportbuilding.txt` | 106 buildings       | teleport gate definitions |
+| `Media/server_dep/silkroad/textdata/teleportdata.txt`     | 246 entries         | teleport nodes            |
+| `Media/server_dep/silkroad/textdata/teleportlink.txt`     | 200 link sets       | teleport graph            |
+| `Media/server_dep/silkroad/textdata/textdata_object.txt`  | —                   | object name translations  |
+| `Media/server_dep/silkroad/textdata/textzonename.txt`     | 4,129 named rows    | region/zone names         |
 
 Extraction: `scripts/extract_world.py` -> 5,682 files, 340 MB under the gitignored
 `game_source/` tree (5,523 world minimaps + 159 textdata files).
@@ -32,11 +32,11 @@ Extraction: `scripts/extract_world.py` -> 5,682 files, 340 MB under the gitignor
 Built by the new streaming builder `scripts/generate_world.py` (reuses
 `convert_ddj_to_webp` from `convert_ddjs.py` + the repo's pmtiles writer):
 
-| Level | Tiles | Content |
-| --- | --- | --- |
+| Level            | Tiles | Content                                     |
+| ---------------- | ----- | ------------------------------------------- |
 | z8 (native, top) | 5,523 | one 256px webp per sector, q60 (~8 KB each) |
-| z6 (region) | 1,392 | 4x4 sectors merged @64px/sector, q80 |
-| z3 (overview) | 24 | 32x32 sectors merged @8px/sector, q80 |
+| z6 (region)      | 1,392 | 4x4 sectors merged @64px/sector, q80        |
+| z3 (overview)    | 24    | 32x32 sectors merged @8px/sector, q80       |
 
 Output: `map/public/assets/world.pmtiles` — **42.6 MB**, 5,789 entries /
 6,027 addressed tiles, minzoom 3 / maxzoom 8, webp, compression none.

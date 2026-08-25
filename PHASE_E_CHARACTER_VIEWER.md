@@ -28,13 +28,13 @@ generated assets are committed.
 All from the external vSRO `Data.pk2` (never committed); every value below was
 parsed and checked against the real bytes.
 
-| Asset | Verified detail | Role |
-| --- | --- | --- |
-| `Data/prim/skel/chinaman_fighter.bsk` | `JMXVBSK 0101`; 41 bones (38 Bip01 + Bone01/Bone03/Bone05) | skeleton |
-| `Data/prim/mesh/chinaman_fighter.bms` | `JMXVBMS 0110`; 16 parts (man_head, man_pelvis, man_torso_*, clothes_01_*, sword1_2_3) | skinned mesh |
-| `Data/prim/ani/chinaman_fighter.bans` | `JMXVBAN 0102`; 6 anims | animations |
-| `Data/prim/mtrl/chinaman_fighter.bmt` | `JMXVBMT 0102`; material -> texture mapping | material table |
-| `Data/prim/mtrl/*.ddj` | 20-byte JMX header + DDS payload | textures |
+| Asset                                 | Verified detail                                                                        | Role           |
+| ------------------------------------- | -------------------------------------------------------------------------------------- | -------------- |
+| `Data/prim/skel/chinaman_fighter.bsk` | `JMXVBSK 0101`; 41 bones (38 Bip01 + Bone01/Bone03/Bone05)                             | skeleton       |
+| `Data/prim/mesh/chinaman_fighter.bms` | `JMXVBMS 0110`; 16 parts (man_head, man_pelvis, man_torso__, clothes_01__, sword1_2_3) | skinned mesh   |
+| `Data/prim/ani/chinaman_fighter.bans` | `JMXVBAN 0102`; 6 anims                                                                | animations     |
+| `Data/prim/mtrl/chinaman_fighter.bmt` | `JMXVBMT 0102`; material -> texture mapping                                            | material table |
+| `Data/prim/mtrl/*.ddj`                | 20-byte JMX header + DDS payload                                                       | textures       |
 
 Key verified numbers:
 
@@ -72,11 +72,11 @@ Committed under `map/public/assets/img/silkroad/game/character/chinaman_fighter/
 
 ## Runtime (`map/src/game/`, added to Phase D client)
 
-| Module | Responsibility |
-| --- | --- |
-| `character_loader.ts` | fetch `{skeleton,meshes,anims,meta}.json` + textures for a preset -> `CharacterAssets`; SRGB `colorSpace` on textures |
-| `character_viewer.ts` | THREE.Skeleton from bind data, `SkinnedMesh` per part (4-weight `skinIndex`/`skinWeight`, shared skeleton), quaternion slerp + position lerp over keyframes, orbit camera (drag/zoom/auto-rotate), dt cap 0.5s, `resetView()`, `window.__charviewer` debug hooks |
-| `character_viewer_screen.ts` | `CharacterViewerScreen`: top bar + back, 6 animation buttons, speed slider, auto-rotate checkbox |
+| Module                       | Responsibility                                                                                                                                                                                                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `character_loader.ts`        | fetch `{skeleton,meshes,anims,meta}.json` + textures for a preset -> `CharacterAssets`; SRGB `colorSpace` on textures                                                                                                                                            |
+| `character_viewer.ts`        | THREE.Skeleton from bind data, `SkinnedMesh` per part (4-weight `skinIndex`/`skinWeight`, shared skeleton), quaternion slerp + position lerp over keyframes, orbit camera (drag/zoom/auto-rotate), dt cap 0.5s, `resetView()`, `window.__charviewer` debug hooks |
+| `character_viewer_screen.ts` | `CharacterViewerScreen`: top bar + back, 6 animation buttons, speed slider, auto-rotate checkbox                                                                                                                                                                 |
 
 Animation playback interpolates the full local transforms from `anims.json`
 with THREE.Quaternion slerp; every bone has equal keyframe counts so a single

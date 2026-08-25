@@ -56,10 +56,11 @@ const MINIMAP_SIZE = 160;
 const MINIMAP_RADIUS = 250;
 const MINIMAP_POLL_MS = 150;
 
-// Compact slot label derived from the verified skill code, e.g.
-// SKILL_CH_SWORD_SMASH_A_01 -> "SMASH A".
 function shortSkillLabel(code: string): string {
-  const parts = code.replace(/^SKILL_/, "").split("_").filter((p) => !/^\d+$/.test(p));
+  const parts = code
+    .replace(/^SKILL_/, "")
+    .split("_")
+    .filter((p) => !/^\d+$/.test(p));
   return parts.slice(-2).join(" ");
 }
 
@@ -68,7 +69,7 @@ export function buildHud(opts: HudOptions): Hud {
   const classSkills = getClassSkills(opts.character.classId);
   const masteryName = getClassMasteryName(opts.character.classId);
   const slots = [
-    `<button class="hud-slot" data-skill="atk" title="Basic Attack"><span class="hud-slot-key">1</span>ATK</button>`,
+    `<button class="hud-slot hud-slot-atk" data-skill="atk" title="Basic Attack"><span class="hud-slot-key">1</span>ATK</button>`,
     `<button class="hud-slot" data-skill="potion" title="Use the best HP potion in your bag"><span class="hud-slot-key">2</span>POT</button>`,
   ];
   classSkills.forEach((s, i) => {
@@ -78,36 +79,34 @@ export function buildHud(opts: HudOptions): Hud {
       </button>`);
   });
   for (let i = classSkills.length; i < 4; i++) {
-    slots.push(`<button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">${i + 3}</span>--</button>`);
+    slots.push(
+      `<button class="hud-slot hud-slot-locked" data-skill="locked"><span class="hud-slot-key">${i + 3}</span>--</button>`,
+    );
   }
   const root = document.createElement("div");
   root.className = "game-hud";
   root.innerHTML = `
     <div class="hud-plate">
-      <div class="hud-name">${opts.character.name}</div>
-      <div class="hud-meta">Lv.${opts.character.level} ${cls ? cls.name : opts.character.classId}${masteryName ? ` · ${masteryName}` : ""}</div>
-      <div class="hud-bars">
-        <div class="hud-bar-row">
-          <div class="hud-bar hp"><div class="hud-bar-fill" id="hud-hp-fill"></div></div>
-          <div class="hud-bar-num" id="hud-hp-num"></div>
-        </div>
-        <div class="hud-bar-row">
-          <div class="hud-bar mp"><div class="hud-bar-fill" id="hud-mp-fill"></div></div>
-          <div class="hud-bar-num" id="hud-mp-num"></div>
-        </div>
-        <div class="hud-bar-row">
-          <div class="hud-bar exp"><div class="hud-bar-fill" id="hud-exp-fill"></div></div>
-          <div class="hud-bar-num" id="hud-exp-num"></div>
-        </div>
-      </div>
-    </div>
-        <div class="hud-bar-row">
-          <div class="hud-bar mp"><div class="hud-bar-fill" id="hud-mp-fill"></div></div>
-          <div class="hud-bar-num" id="hud-mp-num"></div>
-        </div>
-        <div class="hud-bar-row">
-          <div class="hud-bar exp"><div class="hud-bar-fill" id="hud-exp-fill"></div></div>
-          <div class="hud-bar-num" id="hud-exp-num"></div>
+      <img class="hud-portrait" src="assets/img/silkroad/ui/hud_face.png" alt="" />
+      <div class="hud-plate-main">
+        <div class="hud-name">${opts.character.name}</div>
+        <div class="hud-meta">Lv.${opts.character.level} ${cls ? cls.name : opts.character.classId}${masteryName ? ` · ${masteryName}` : ""}</div>
+        <div class="hud-bars">
+          <div class="hud-bar-row">
+            <span class="hud-bar-tag">HP</span>
+            <div class="hud-bar hp"><div class="hud-bar-drain" id="hud-hp-fill"></div></div>
+            <span class="hud-bar-num" id="hud-hp-num"></span>
+          </div>
+          <div class="hud-bar-row">
+            <span class="hud-bar-tag">MP</span>
+            <div class="hud-bar mp"><div class="hud-bar-drain" id="hud-mp-fill"></div></div>
+            <span class="hud-bar-num" id="hud-mp-num"></span>
+          </div>
+          <div class="hud-bar-row">
+            <span class="hud-bar-tag">EXP</span>
+            <div class="hud-bar exp"><div class="hud-bar-fill" id="hud-exp-fill"></div></div>
+            <span class="hud-bar-num" id="hud-exp-num"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -115,8 +114,8 @@ export function buildHud(opts: HudOptions): Hud {
       <div class="hud-region">${START_REGION_NAME}</div>
       <div class="hud-gold-row"><span class="hud-coin"></span><span id="hud-gold"></span></div>
       <div class="hud-corner-btns">
-        <button class="hud-btn hud-mini" id="hud-inventory">Bag</button>
-        <button class="hud-btn hud-mini" id="hud-menu">Menu</button>
+        <button class="hud-sysbtn" id="hud-inventory" title="Inventory"><img src="assets/img/silkroad/ui/sys_inventory.png" alt="Bag" /></button>
+        <button class="hud-sysbtn" id="hud-menu" title="Menu"><img src="assets/img/silkroad/ui/hud_btn.png" alt="Menu" /></button>
       </div>
     </div>
     <div class="hud-minimap-wrap">
@@ -126,7 +125,7 @@ export function buildHud(opts: HudOptions): Hud {
       <div class="hud-target-name" id="hud-target-name"></div>
       <div class="hud-bar-row">
         <div class="hud-bar target"><div class="hud-bar-fill" id="hud-target-fill"></div></div>
-        <div class="hud-bar-num" id="hud-target-num"></div>
+        <span class="hud-bar-num" id="hud-target-num"></span>
       </div>
       <div class="hud-target-dist" id="hud-target-dist"></div>
     </div>
@@ -176,9 +175,9 @@ export function buildHud(opts: HudOptions): Hud {
   const deathSub = root.querySelector("#hud-death-sub") as HTMLElement;
   const minimap = root.querySelector("#hud-minimap") as HTMLCanvasElement;
 
-  const setBar = (fill: HTMLElement, num: HTMLElement, cur: number, max: number): void => {
+  const setBar = (fill: HTMLElement, num: HTMLElement, cur: number, max: number, drain = false): void => {
     const frac = max > 0 ? Math.max(0, Math.min(1, cur / max)) : 0;
-    fill.style.width = `${(frac * 100).toFixed(1)}%`;
+    fill.style.width = `${((drain ? 1 - frac : frac) * 100).toFixed(1)}%`;
     num.textContent = `${Math.round(cur)}/${max}`;
   };
 
@@ -188,15 +187,15 @@ export function buildHud(opts: HudOptions): Hud {
     const S = minimap.width;
     const c = S / 2;
     ctx.clearRect(0, 0, S, S);
-    ctx.fillStyle = "rgba(8, 12, 18, 0.82)";
+    ctx.fillStyle = "rgba(10, 10, 14, 0.86)";
     ctx.beginPath();
-    ctx.arc(c, c, c - 2, 0, Math.PI * 2);
+    ctx.arc(c, c, c - 3, 0, Math.PI * 2);
     ctx.fill();
-    ctx.strokeStyle = "rgba(120, 160, 210, 0.35)";
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#c8a24a";
+    ctx.lineWidth = 2;
     ctx.stroke();
 
-    const scale = (c - 4) / MINIMAP_RADIUS;
+    const scale = (c - 5) / MINIMAP_RADIUS;
     const px = state.pos.x;
     const pz = state.pos.z;
     const toScreen = (wx: number, wz: number): [number, number] => {
@@ -206,7 +205,8 @@ export function buildHud(opts: HudOptions): Hud {
     };
 
     const b = state.bounds;
-    ctx.strokeStyle = "rgba(140, 170, 210, 0.22)";
+    ctx.strokeStyle = "rgba(200, 170, 100, 0.28)";
+    ctx.lineWidth = 1;
     ctx.strokeRect(...toScreen(b.minX, b.minZ), (b.maxX - b.minX) * scale, (b.maxZ - b.minZ) * scale);
 
     const dot = (wx: number, wz: number, color: string, r: number, sel: boolean): void => {
@@ -239,12 +239,17 @@ export function buildHud(opts: HudOptions): Hud {
     ctx.closePath();
     ctx.fill();
     ctx.restore();
+
+    ctx.fillStyle = "rgba(232,220,192,0.85)";
+    ctx.font = "9px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("N", c, 11);
   };
 
   const refresh = (): void => {
     const s = opts.getState();
-    setBar(hpFill, hpNum, s.hp, s.maxHp);
-    setBar(mpFill, mpNum, s.mp, s.maxMp);
+    setBar(hpFill, hpNum, s.hp, s.maxHp, true);
+    setBar(mpFill, mpNum, s.mp, s.maxMp, true);
     setBar(expFill, expNum, s.exp, s.expToNext);
     if (s.expToNext <= 0) expNum.textContent = "MAX";
     goldEl.textContent = String(s.gold);
@@ -315,15 +320,15 @@ export function buildHud(opts: HudOptions): Hud {
     const dlg = document.createElement("div");
     dlg.className = "hud-dialog";
     dlg.innerHTML = `
-      <div class="hud-dialog-panel">
-        <div class="hud-dialog-title">${npc.name}</div>
+      <div class="sro-window hud-dialog-panel">
+        <div class="sro-window-title">${npc.name}</div>
         <div class="hud-dialog-body">
           The doorway before you leads back toward the surface.
           (NPC dialogue is a placeholder; no real quest text data is wired in this phase.)
         </div>
         <div class="hud-dialog-actions">
-          <button class="hud-btn hud-mini" id="hd-test">Interact Test</button>
-          <button class="hud-btn hud-mini hud-primary" id="hd-close">Close</button>
+          <button class="sro-btn sro-btn-secondary" id="hd-test">Interact Test</button>
+          <button class="sro-btn sro-btn-primary" id="hd-close">Close</button>
         </div>
       </div>
     `;

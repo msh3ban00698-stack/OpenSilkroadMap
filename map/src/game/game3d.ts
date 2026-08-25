@@ -99,8 +99,8 @@ export class GameWorld {
 
   private worldNpcCount = 0;
   private npcList = REGION_NPCS;
-  private yaw = 0.5;
-  private pitch = 0.32;
+  private yaw = -1.31;
+  private pitch = 0.15;
   private move = { x: 0, z: 0, mag: 0 };
   private moving = false;
 
@@ -183,7 +183,8 @@ export class GameWorld {
     this.rig.group.add(playerLight);
 
     this.clock = new THREE.Clock();
-    this.rig.load()
+    this.rig
+      .load()
       .then(() => {
         this.rigReady = true;
         this.rig.play("idle");
@@ -198,7 +199,11 @@ export class GameWorld {
     this.loop();
 
     (window as unknown as Record<string, unknown>).__sro3d = {
-      getPlayerPos: () => ({ x: this.rig.group.position.x, y: this.rig.group.position.y, z: this.rig.group.position.z }),
+      getPlayerPos: () => ({
+        x: this.rig.group.position.x,
+        y: this.rig.group.position.y,
+        z: this.rig.group.position.z,
+      }),
       getPlayerRotation: () => ({ y: this.rig.group.rotation.y }),
       getCameraPos: () => ({ x: this.camera.position.x, y: this.camera.position.y, z: this.camera.position.z }),
       yaw: () => this.yaw,
@@ -217,8 +222,8 @@ export class GameWorld {
         return v ? { x: v.x, y: v.y, z: v.z } : null;
       },
       setMove: (x: number, z: number) => this.setMovement(x, z),
-      setPlayerPos: (x: number, z: number) => {
-        this.rig.group.position.set(x, this.assets.spawn.y, z);
+      setPlayerPos: (x: number, z: number, y?: number) => {
+        this.rig.group.position.set(x, y ?? this.assets.spawn.y, z);
       },
       terrainY: (x: number, z: number) => this.terrainHeightAt(x, z),
       setPlayerRotationY: (y: number) => {
@@ -242,6 +247,78 @@ export class GameWorld {
       clearTarget: () => this.selectTarget(null, ""),
       interact: () => this.interact(),
       damagePlayer: (amount: number) => this.damagePlayer(amount),
+      renderInfo: () => ({
+        calls: this.renderer.info.render.calls,
+        triangles: this.renderer.info.render.triangles,
+      }),
+      probeView: () => this.probeRays(),
+      skyline: () => this.skyline(),
+      setCameraPose: (yaw: number, pitch: number) => {
+        this.yaw = yaw;
+        this.targetYaw = yaw;
+        this.pitch = pitch;
+      },
+      setTerrainVisible: (v: boolean) => {
+        if (this.floorMesh) this.floorMesh.visible = v;
+      },
+    };
+  }
+
+  private skyline(): Record<string, unknown> {
+    const ray = new THREE.Raycaster();
+    ray.far = 5000;
+    const o = this.camera.position.clone();
+    this.scene.updateMatrixWorld(true);
+    const targets = this.scene.children.filter((c) => c.visible && (c.type === "Mesh" || c.type === "InstancedMesh"));
+    const dirs = [
+      ["E", 90],
+      ["S", 180],
+      ["W", 270],
+      ["N", 0],
+    ] as const;
+    const sectors = dirs.map(([name, deg]) => {
+      const res: Record<string, number> = {};
+      for (const [tag, elev] of [
+        ["low", -0.02],
+        ["high", 0.18],
+      ] as const) {
+        const d = new THREE.Vector3(Math.sin((deg * Math.PI) / 180), elev, Math.cos((deg * Math.PI) / 180));
+        ray.set(o, d);
+        let best: number | null = null;
+        outer: for (const child of targets) {
+          try {
+            const hits = ray.intersectObject(child, false);
+            if (hits.length) {
+              best = hits[0].distance;
+              break outer;
+            }
+          } catch {
+            continue;
+          }
+        }
+        res[tag] = best === null ? -1 : Math.round(best);
+      }
+      return { dir: name, ...res };
+    });
+    return { origin: o.toArray().map((v) => Math.round(v)), sectors };
+  }
+
+  private probeRays(): Record<string, unknown> {
+    const ray = new THREE.Raycaster();
+    ray.far = 4000;
+    const rays: { ndc: [number, number]; dist: number; kind: string }[] = [];
+    for (const nx of [-0.6, 0, 0.6]) {
+      for (const ny of [0.45, 0, -0.4]) {
+        ray.setFromCamera(new THREE.Vector2(nx, ny), this.camera);
+        const hits = ray.intersectObjects(this.scene.children, true);
+        const h = hits[0];
+        rays.push({ ndc: [nx, ny], dist: h ? Math.round(h.distance) : -1, kind: h ? h.object.type : "none" });
+      }
+    }
+    return {
+      camera: this.camera.position,
+      player: this.rig.group.position,
+      rays,
     };
   }
 
@@ -250,7 +327,13 @@ export class GameWorld {
   getState(): Record<string, unknown> {
     const cls = getClass(this.character.classId);
     const target = this.selected
-      ? { kind: this.selected.kind, id: this.selected.id, name: this.selected.name, x: this.selected.x, z: this.selected.z }
+      ? {
+          kind: this.selected.kind,
+          id: this.selected.id,
+          name: this.selected.name,
+          x: this.selected.x,
+          z: this.selected.z,
+        }
       : null;
     return {
       hp: Math.max(0, Math.round(this.playerHp)),
@@ -356,7 +439,13 @@ export class GameWorld {
       if (!npc) return;
       this.selected = { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z };
     } else {
-      this.selected = { kind: "dummy", id: "dummy", name: name ?? "Training Dummy", x: this.dummy.group.position.x, z: this.dummy.group.position.z };
+      this.selected = {
+        kind: "dummy",
+        id: "dummy",
+        name: name ?? "Training Dummy",
+        x: this.dummy.group.position.x,
+        z: this.dummy.group.position.z,
+      };
     }
     this.selectionRing.visible = true;
     this.selectionRing.position.set(this.selected.x, 0.05, this.selected.z);
@@ -423,6 +512,8 @@ export class GameWorld {
     this.scene.add(fill);
   }
 
+  private floorMesh: THREE.Mesh | null = null;
+
   private addFloor(): void {
     const material = new THREE.MeshLambertMaterial({
       map: this.assets.texture,
@@ -430,6 +521,7 @@ export class GameWorld {
     });
     const mesh = new THREE.Mesh(this.assets.floorGeometry, material);
     this.scene.add(mesh);
+    this.floorMesh = mesh;
   }
 
   private terrainHeightAt(x: number, z: number): number {
@@ -455,8 +547,7 @@ export class GameWorld {
     const matrix = new THREE.Matrix4();
     const quat = new THREE.Quaternion();
     const compose = (x: number, y: number, z: number, ry: number): THREE.Matrix4 =>
-      matrix.makeRotationFromQuaternion(quat.setFromEuler(new THREE.Euler(0, ry, 0, "YZX")))
-        .setPosition(x, y, z);
+      matrix.makeRotationFromQuaternion(quat.setFromEuler(new THREE.Euler(0, ry, 0, "YZX"))).setPosition(x, y, z);
 
     // Buildings: one InstancedMesh per geometry.
     for (let gi = 0; gi < manifest.geoms.length; gi++) {
@@ -471,6 +562,7 @@ export class GameWorld {
         mesh.setMatrixAt(k, compose(i.x, i.y, i.z, i.ry));
       }
       mesh.instanceMatrix.needsUpdate = true;
+      mesh.frustumCulled = false;
       this.scene.add(mesh);
     }
 
@@ -488,14 +580,21 @@ export class GameWorld {
         mesh.setMatrixAt(k, compose(p.x, h, p.z, (k * 0.6) % (Math.PI * 2)));
       }
       mesh.instanceMatrix.needsUpdate = true;
+      mesh.frustumCulled = false;
       this.scene.add(mesh);
       this.worldNpcCount += grp.instances.length;
     }
   }
 
-  private buildGeomGeometry(merged: THREE.BufferGeometry, slice: {
-    v0: number; vCount: number; i0: number; iCount: number;
-  }): THREE.BufferGeometry {
+  private buildGeomGeometry(
+    merged: THREE.BufferGeometry,
+    slice: {
+      v0: number;
+      vCount: number;
+      i0: number;
+      iCount: number;
+    },
+  ): THREE.BufferGeometry {
     const srcPos = merged.getAttribute("position") as THREE.BufferAttribute;
     const srcUv = merged.getAttribute("uv") as THREE.BufferAttribute;
     const srcIdx = merged.getIndex() as THREE.BufferAttribute;
@@ -599,7 +698,10 @@ export class GameWorld {
     const body = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.5, 1.1, 10), mat);
     body.position.y = 0.55;
     group.add(body);
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.3, 12, 10), new THREE.MeshLambertMaterial({ color: 0xe8c39a }));
+    const head = new THREE.Mesh(
+      new THREE.SphereGeometry(0.3, 12, 10),
+      new THREE.MeshLambertMaterial({ color: 0xe8c39a }),
+    );
     head.position.y = 1.35;
     group.add(head);
     const ring = new THREE.Mesh(
@@ -714,11 +816,7 @@ export class GameWorld {
     const tex = new THREE.CanvasTexture(canvas);
     const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false, depthWrite: false }));
     sprite.scale.set(1.8, 0.9, 1);
-    sprite.position.set(
-      this.dummy.group.position.x,
-      this.dummy.group.position.y + 2.6,
-      this.dummy.group.position.z,
-    );
+    sprite.position.set(this.dummy.group.position.x, this.dummy.group.position.y + 2.6, this.dummy.group.position.z);
     this.scene.add(sprite);
     this.floaters.push({ sprite, t: 0, life: 0.8, vy: 1.6 });
     return sprite;
@@ -901,11 +999,14 @@ export class GameWorld {
     if (d.hp <= 0) {
       d.alive = false;
       d.respawnT = DUMMY_RESPAWN_MS;
-      const reward = DUMMY_GOLD_REWARD.min + Math.floor(Math.random() * (DUMMY_GOLD_REWARD.max - DUMMY_GOLD_REWARD.min));
+      const reward =
+        DUMMY_GOLD_REWARD.min + Math.floor(Math.random() * (DUMMY_GOLD_REWARD.max - DUMMY_GOLD_REWARD.min));
       this.character.gold += reward;
       this.gainExp(DUMMY_EXP_REWARD);
       this.onCharacterMutated?.();
-      this.onLog(`The training dummy has been defeated (${this.dummyHits} hits)! +${reward} gold, +${DUMMY_EXP_REWARD} exp.`);
+      this.onLog(
+        `The training dummy has been defeated (${this.dummyHits} hits)! +${reward} gold, +${DUMMY_EXP_REWARD} exp.`,
+      );
       return;
     }
     this.onLog(`You hit the training dummy for ${damage} damage. (${d.hp}/${d.maxHp})`);
@@ -999,7 +1100,7 @@ export class GameWorld {
     this.camera.lookAt(p.x, p.y + 1.6, p.z);
   }
 
-  private targetYaw = 0.5;
+  private targetYaw = -1.31;
 
   private loop = (): void => {
     if (this.disposed) return;

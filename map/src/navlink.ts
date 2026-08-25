@@ -51,7 +51,7 @@ async function responseToText(response: Response): Promise<string> {
 }
 
 export async function downloadAndCacheNavlink(
-  onProgress: (percent: number, message: string) => void
+  onProgress: (percent: number, message: string) => void,
 ): Promise<any | null> {
   onProgress(0, "Downloading navigation linkage...");
 

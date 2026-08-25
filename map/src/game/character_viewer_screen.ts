@@ -102,9 +102,7 @@ export class CharacterViewerScreen {
       el.addEventListener("click", () => {
         const id = (el as HTMLElement).dataset.anim!;
         this.viewer?.setAnimation(id);
-        wrap.querySelectorAll(".cv-anim-btn").forEach((b) =>
-          b.classList.toggle("active", b === el),
-        );
+        wrap.querySelectorAll(".cv-anim-btn").forEach((b) => b.classList.toggle("active", b === el));
       });
     });
   }

@@ -72,7 +72,10 @@ export function updateNavlinkViz(currentLayerKey: string) {
   if (!navlinkData || !navlinkData.nodes || !navlinkData.edges) return;
 
   const nodes = navlinkData.nodes as Record<string, { x: number; y: number; region: number }>;
-  const edges = navlinkData.edges as Record<string, { from: string; to: string; type: string; npc: string | null; dest: number | null; steps: number | null }>;
+  const edges = navlinkData.edges as Record<
+    string,
+    { from: string; to: string; type: string; npc: string | null; dest: number | null; steps: number | null }
+  >;
 
   const isWorld = currentLayerKey === "world";
 

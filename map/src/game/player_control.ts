@@ -9,7 +9,7 @@ export interface ControlsOptions {
 
 const JOY_RADIUS = 42;
 const TAP_MAX_MOVE = 6;
-const INTERACTIVE_SELECTOR = ".game-btn, .hud-btn, #joy-base, #joy-knob";
+const INTERACTIVE_SELECTOR = ".game-btn, .hud-btn, .sro-btn, .sro-window, #joy-base, #joy-knob";
 
 export class TouchControls {
   private opts: ControlsOptions;

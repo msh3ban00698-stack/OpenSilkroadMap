@@ -48,9 +48,11 @@ export const MAX_LEVEL = 150;
 
 const LEVELS = (levelData as { levels: LevelEntry[] }).levels;
 const ITEMS = (itemData as { items: RealItem[] }).items;
-const CLASS_SKILLS = (skillData as {
-  classes: Record<string, { masteryId: string | null; mastery: string | null; skills: RealSkill[] }>;
-}).classes;
+const CLASS_SKILLS = (
+  skillData as {
+    classes: Record<string, { masteryId: string | null; mastery: string | null; skills: RealSkill[] }>;
+  }
+).classes;
 const MASTERIES = (masteryData as { masteries: MasteryEntry[] }).masteries;
 
 export function expToNext(level: number): number {

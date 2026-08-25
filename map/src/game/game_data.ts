@@ -13,12 +13,37 @@ export interface ClassDef {
 // Race assignment per class is inferred from the class set (not a verified
 // translation); the UI marks it "(inferred)".
 export const VERIFIED_CLASSES: ClassDef[] = [
-  { id: "warrior", name: "Warrior", race: "Chinese", desc: "Chinese melee fighter. Verified masteries: Sword + Lightning." },
+  {
+    id: "warrior",
+    name: "Warrior",
+    race: "Chinese",
+    desc: "Chinese melee fighter. Verified masteries: Sword + Lightning.",
+  },
   { id: "rogue", name: "Rogue", race: "Chinese", desc: "Chinese physical fighter. Verified masteries: Spear + Cold." },
-  { id: "cleric", name: "Cleric", race: "Chinese", desc: "Chinese support caster. Verified masteries: Bow + Fire, plus the Water healing line." },
-  { id: "warlock", name: "Warlock", race: "European", desc: "European caster. No skill data for this class exists in the package." },
-  { id: "wizard", name: "Wizard", race: "European", desc: "European elemental caster. Verified mastery: European Wizard (Force)." },
-  { id: "bard", name: "Bard", race: "European", desc: "European support class. No skill data for this class exists in the package." },
+  {
+    id: "cleric",
+    name: "Cleric",
+    race: "Chinese",
+    desc: "Chinese support caster. Verified masteries: Bow + Fire, plus the Water healing line.",
+  },
+  {
+    id: "warlock",
+    name: "Warlock",
+    race: "European",
+    desc: "European caster. No skill data for this class exists in the package.",
+  },
+  {
+    id: "wizard",
+    name: "Wizard",
+    race: "European",
+    desc: "European elemental caster. Verified mastery: European Wizard (Force).",
+  },
+  {
+    id: "bard",
+    name: "Bard",
+    race: "European",
+    desc: "European support class. No skill data for this class exists in the package.",
+  },
 ];
 
 export function getClass(id: string): ClassDef | undefined {
@@ -30,8 +55,7 @@ export function getClass(id: string): ClassDef | undefined {
 // Assets: map/public/assets/img/silkroad/game/region1/
 export const START_REGION = 1;
 export const START_REGION_NAME = "Constantinople";
-export const START_REGION_URL =
-  "/assets/img/silkroad/game/region1";
+export const START_REGION_URL = "/assets/img/silkroad/game/region1";
 
 export const CHARACTERS_KEY = "silkroad_characters_v1";
 

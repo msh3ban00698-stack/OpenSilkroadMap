@@ -141,17 +141,17 @@ Phase F world  ->  HUD + gameplay systems (all real DOM/3D wiring, no mock serve
 
 ## Real Assets vs Placeholders
 
-| Feature | Source |
-|---|---|
-| Character / animations | Real chinaman_fighter rig (Phase E/F exports) |
-| Sword appearance (equip/unequip) | Real `sword1_2_3.webp` mesh part `sword_01` (tint + visibility) |
-| Dungeon Exit NPC + position | Real `npcs.json` / `REGION_NPCS` (region 32785) |
-| Region terrain/spawn/bounds | Real Phase D exports |
-| Classes, gold, HP/MP, potions, kits | Gameplay tuning — no extracted balance data |
-| Item icons | Procedural SVG (no icon art extracted) |
-| Armor/accessory 3D appearance | None exists — stat-only change (labeled in UI) |
-| NPC dialogue text | Placeholder (labeled in the dialog) |
-| Minimap | Procedural radar from live world state |
+| Feature                             | Source                                                          |
+| ----------------------------------- | --------------------------------------------------------------- |
+| Character / animations              | Real chinaman_fighter rig (Phase E/F exports)                   |
+| Sword appearance (equip/unequip)    | Real `sword1_2_3.webp` mesh part `sword_01` (tint + visibility) |
+| Dungeon Exit NPC + position         | Real `npcs.json` / `REGION_NPCS` (region 32785)                 |
+| Region terrain/spawn/bounds         | Real Phase D exports                                            |
+| Classes, gold, HP/MP, potions, kits | Gameplay tuning — no extracted balance data                     |
+| Item icons                          | Procedural SVG (no icon art extracted)                          |
+| Armor/accessory 3D appearance       | None exists — stat-only change (labeled in UI)                  |
+| NPC dialogue text                   | Placeholder (labeled in the dialog)                             |
+| Minimap                             | Procedural radar from live world state                          |
 
 ## Remaining Limitations
 

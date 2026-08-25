@@ -12,7 +12,6 @@ import { GameWorld } from "./game3d";
 import { TouchControls } from "./player_control";
 import { buildHud, type Hud, type HudWorldState } from "./hud";
 import { buildInventoryPanel, type InventoryPanel } from "./inventory_panel";
-import { CharacterViewerScreen } from "./character_viewer_screen";
 import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, START_REGION, START_REGION_NAME } from "./game_data";
 import { getItem, isEquippable } from "./items";
 import type { EquipSlot, GameCharacter } from "./types";
@@ -45,19 +44,14 @@ class GameFlow {
   private hud: Hud | null = null;
   private currentChar: GameCharacter | null = null;
   private pauseOverlay: HTMLElement | null = null;
-  private charViewer: CharacterViewerScreen | null = null;
   private inventory: InventoryPanel | null = null;
 
   constructor(
     private menuRoot: HTMLElement,
     private worldContainer: HTMLElement,
-    private viewerContainer: HTMLElement,
   ) {
     this.screens = new GameScreens(menuRoot, {
-      onStartGame: () => this.showLogin(),
-      onOpenMap: () => this.showMap(),
-      onOpenCharacterViewer: () => this.showCharacterViewer(),
-      onBack: () => this.showIntro(),
+      onBack: () => this.showLogin(),
       onLogin: (username, password) => this.handleLogin(username, password),
       onOpenAccountCreate: () => this.showCreateAccount(),
       onCreateAccount: (username, password) => this.handleCreateAccount(username, password),
@@ -92,21 +86,19 @@ class GameFlow {
   }
 
   start(): void {
-    this.showIntro();
+    this.showLogin();
   }
 
-  private showIntro(): void {
+  private showScreen(render: () => void): void {
     this.teardownWorld();
-    this.hideCharacterViewer();
     this.worldContainer.style.display = "none";
     this.menuRoot.style.display = "block";
     this.setReturnButtonVisible(false);
-    this.screens.renderIntro();
+    render();
   }
 
   private showLogin(error?: string): void {
     this.teardownWorld();
-    this.hideCharacterViewer();
     this.worldContainer.style.display = "none";
     this.menuRoot.style.display = "block";
     this.setReturnButtonVisible(false);
@@ -114,12 +106,7 @@ class GameFlow {
   }
 
   private showCreateAccount(error?: string): void {
-    this.teardownWorld();
-    this.hideCharacterViewer();
-    this.worldContainer.style.display = "none";
-    this.menuRoot.style.display = "block";
-    this.setReturnButtonVisible(false);
-    this.screens.renderCreateAccount(error);
+    this.showScreen(() => this.screens.renderCreateAccount(error));
   }
 
   private async handleLogin(username: string, password: string): Promise<void> {
@@ -140,42 +127,14 @@ class GameFlow {
     this.showSelect();
   }
 
-  private hideCharacterViewer(): void {
-    this.charViewer?.hide();
-    this.charViewer = null;
-  }
-
   private showSelect(): void {
-    this.teardownWorld();
-    this.worldContainer.style.display = "none";
-    this.menuRoot.style.display = "block";
-    this.setReturnButtonVisible(false);
-    this.screens.renderSelect(loadCharacters());
+    this.showScreen(() => this.screens.renderSelect(loadCharacters()));
   }
 
   private showCreate(): void {
     this.worldContainer.style.display = "none";
     this.menuRoot.style.display = "block";
     this.screens.renderCreate();
-  }
-
-  private showMap(): void {
-    this.teardownWorld();
-    this.menuRoot.style.display = "none";
-    this.worldContainer.style.display = "none";
-    this.setReturnButtonVisible(true);
-  }
-
-  private showCharacterViewer(): void {
-    this.teardownWorld();
-    this.menuRoot.style.display = "none";
-    this.worldContainer.style.display = "none";
-    this.setReturnButtonVisible(false);
-    this.charViewer = new CharacterViewerScreen({
-      root: this.viewerContainer,
-      onBack: () => this.showIntro(),
-    });
-    this.charViewer.show();
   }
 
   private setReturnButtonVisible(visible: boolean): void {
@@ -225,7 +184,7 @@ class GameFlow {
           this.hud?.log(`Level up! You reached level ${level}.`);
           this.hud?.showLevelUp(level);
         },
-        getState: () => (this.world ? this.world.getState() as unknown as HudWorldState : emptyState),
+        getState: () => (this.world ? (this.world.getState() as unknown as HudWorldState) : emptyState),
       });
       document.getElementById("game-root")!.appendChild(this.hud.root);
 
@@ -376,18 +335,14 @@ class GameFlow {
     if (this.pauseOverlay) return;
     this.closeInventory();
     const overlay = document.createElement("div");
-    overlay.className = "game-screen";
+    overlay.className = "sro-screen sro-pause";
     overlay.innerHTML = `
-      <div class="game-panel">
-        <div class="game-title">Menu</div>
-        <div class="game-body">
-          <div class="game-note">${this.currentChar ? `${this.currentChar.name} · Lv.${this.currentChar.level}` : ""}</div>
-        </div>
-        <div class="game-footer">
-          <button class="game-btn game-btn-primary" id="gp-resume">Resume</button>
-          <button class="game-btn game-btn-ghost" id="gp-select">Character Select</button>
-          <button class="game-btn game-btn-ghost" id="gp-map">Open World Map</button>
-        </div>
+      <div class="sro-window sro-center-panel">
+        <div class="sro-window-title">Menu</div>
+        ${this.currentChar ? `<div class="sro-note">${escapeHtml(this.currentChar.name)} · Lv.${this.currentChar.level}</div>` : ""}
+        <button class="sro-btn sro-btn-primary" id="gp-resume">Resume</button>
+        <button class="sro-btn sro-btn-secondary" id="gp-select">Character Select</button>
+        <button class="sro-btn sro-btn-secondary" id="gp-logout">Log Out</button>
       </div>
     `;
     document.getElementById("game-root")!.appendChild(overlay);
@@ -395,7 +350,7 @@ class GameFlow {
 
     overlay.querySelector("#gp-resume")!.addEventListener("click", () => this.hidePause());
     overlay.querySelector("#gp-select")!.addEventListener("click", () => this.showSelect());
-    overlay.querySelector("#gp-map")!.addEventListener("click", () => this.showMap());
+    overlay.querySelector("#gp-logout")!.addEventListener("click", () => this.showLogin());
   }
 
   private hidePause(): void {
@@ -420,11 +375,14 @@ class GameFlow {
   }
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 export function initGameFlow(): void {
   const menuRoot = document.getElementById("game-menus")!;
   const worldContainer = document.getElementById("game-container")!;
-  const viewerContainer = document.getElementById("character-viewer-container")!;
-  const flow = new GameFlow(menuRoot, worldContainer, viewerContainer);
+  const flow = new GameFlow(menuRoot, worldContainer);
   flow.start();
 
   const returnBtn = document.getElementById("return-to-game");

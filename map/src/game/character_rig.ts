@@ -1,10 +1,5 @@
 import * as THREE from "three";
-import {
-  loadCharacter,
-  type AnimData,
-  type CharacterAssets,
-  type MeshPartData,
-} from "./character_loader";
+import { loadCharacter, type AnimData, type CharacterAssets, type MeshPartData } from "./character_loader";
 
 export interface CharacterRigOptions {
   preset: string;
@@ -212,11 +207,7 @@ export class CharacterRig {
     return skeleton;
   }
 
-  private static buildMesh(
-    part: MeshPartData,
-    assets: CharacterAssets,
-    skeleton: THREE.Skeleton,
-  ): THREE.SkinnedMesh {
+  private static buildMesh(part: MeshPartData, assets: CharacterAssets, skeleton: THREE.Skeleton): THREE.SkinnedMesh {
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute("position", new THREE.Float32BufferAttribute(part.pos, 3));
     geometry.setAttribute("normal", new THREE.Float32BufferAttribute(part.nrm, 3));

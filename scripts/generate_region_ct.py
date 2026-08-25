@@ -717,7 +717,7 @@ def main():
     print("buildings.json ->", mj)
 
     # ---- mesh.json ----
-    spawn_x, spawn_z = 1800.0, 5350.0
+    spawn_x, spawn_z = 5000.0, 5800.0
     spawn_y = sample_terrain_height(terrain, spawn_x, spawn_z)
     mesh = {
         "region": 1,

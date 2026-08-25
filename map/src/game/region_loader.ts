@@ -114,8 +114,8 @@ export class RegionLoader {
 
     const texture = await this.loadTexture(`${base}/floor.webp`);
 
-    const positions = new Float32Array(data.vertices.length / 5 * 3);
-    const uvs = new Float32Array(data.vertices.length / 5 * 2);
+    const positions = new Float32Array((data.vertices.length / 5) * 3);
+    const uvs = new Float32Array((data.vertices.length / 5) * 2);
     for (let i = 0; i < data.vertexCount; i++) {
       const o = i * 5;
       positions[i * 3] = data.vertices[o];
@@ -181,9 +181,7 @@ export class RegionLoader {
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     geometry.computeVertexNormals();
 
-    const atlasTextures = await Promise.all(
-      manifest.atlas.map((a) => this.loadTexture(`${base}/${a}`)),
-    );
+    const atlasTextures = await Promise.all(manifest.atlas.map((a) => this.loadTexture(`${base}/${a}`)));
     return { manifest, geometry, atlasTextures };
   }
 

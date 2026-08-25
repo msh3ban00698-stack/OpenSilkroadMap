@@ -23,14 +23,14 @@ complete MMORPG — it proves a created character can enter a verified 3D region
 All resolved from the external vSRO `Media.pk2` / `Data.srp` archives (never
 committed to Git); everything below was parsed and checked, not guessed.
 
-| Asset | Verified detail | Role |
-| --- | --- | --- |
-| `Data/Dungeon/wchina/fortress_dungeon.dof` | 56,311 B, 1 floor, 29 blocks | region floor plan |
-| `Data/Zone_data/wchina/fortress_dungeon01/*.bsr` + `*.bms` (13+13) | 1,438 vertices / 2,120 triangles | 3D floor meshes |
-| `Media/minimap_d/fort_dungeon/fort_dungeon01_{127..129}x{126..128}.ddj` | 9 x 256x256 | 3D floor texture source |
-| `Media/server_dep/silkroad/textdata/characterdata_*.txt` | region 32785: 1 NPC "Dungeon Exit" @ (1134.79, 0, -864.29) | in-world NPC |
-| `Media/server_dep/silkroad/textdata/textdata_equip&skill.txt` | 6 class strings | class names |
-| `Media/server_dep/silkroad/textdata/textzonename.txt` | 32785 -> "Cave of Meditation" | region label |
+| Asset                                                                   | Verified detail                                            | Role                    |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------- | ----------------------- |
+| `Data/Dungeon/wchina/fortress_dungeon.dof`                              | 56,311 B, 1 floor, 29 blocks                               | region floor plan       |
+| `Data/Zone_data/wchina/fortress_dungeon01/*.bsr` + `*.bms` (13+13)      | 1,438 vertices / 2,120 triangles                           | 3D floor meshes         |
+| `Media/minimap_d/fort_dungeon/fort_dungeon01_{127..129}x{126..128}.ddj` | 9 x 256x256                                                | 3D floor texture source |
+| `Media/server_dep/silkroad/textdata/characterdata_*.txt`                | region 32785: 1 NPC "Dungeon Exit" @ (1134.79, 0, -864.29) | in-world NPC            |
+| `Media/server_dep/silkroad/textdata/textdata_equip&skill.txt`           | 6 class strings                                            | class names             |
+| `Media/server_dep/silkroad/textdata/textzonename.txt`                   | 32785 -> "Cave of Meditation"                              | region label            |
 
 ## 3D Mesh Pipeline (new: `scripts/generate_region_mesh.py`)
 
@@ -54,17 +54,17 @@ assets). No PK2/archive/BSR/DJJ files are committed.
 Rendered with three.js (`three@^0.161`, added to `map/deno.json`) into a new
 `#game-root` overlay; the Phase C map stays under `#map`:
 
-| Module | Responsibility |
-| --- | --- |
-| `types.ts` | `Appearance`, `GameCharacter`, `GameState` |
-| `game_data.ts` | 6 verified classes, `START_REGION=32785` + name + URL, region NPC |
-| `storage.ts` | character create/load/save/delete (localStorage `silkroad_characters_v1`) |
-| `screens.ts` | intro / select / create / loading / error screens (all inferred labels marked "(inferred)") |
-| `region_loader.ts` | fetch `mesh.json` + `floor.webp` -> THREE.BufferGeometry (Uint32 indices, vertex normals) + SRGB texture |
-| `game3d.ts` | scene, lights, floor mesh, NPC group + label sprites, player from appearance colors, third-person camera, walk/attack/interact, resize/dispose, `window.__sro3d` debug hook |
-| `player_control.ts` | touch joystick + pointer-drag camera + WASD/arrow fallback (pointer-capture correct on the joystick element) |
-| `hud.ts` | name/Lv/class plate, region label, log, joystick, ATK/TALK buttons |
-| `flow.ts` | intro->select->create->world state machine; pause overlay; map bridge + return-to-game |
+| Module              | Responsibility                                                                                                                                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `types.ts`          | `Appearance`, `GameCharacter`, `GameState`                                                                                                                                  |
+| `game_data.ts`      | 6 verified classes, `START_REGION=32785` + name + URL, region NPC                                                                                                           |
+| `storage.ts`        | character create/load/save/delete (localStorage `silkroad_characters_v1`)                                                                                                   |
+| `screens.ts`        | intro / select / create / loading / error screens (all inferred labels marked "(inferred)")                                                                                 |
+| `region_loader.ts`  | fetch `mesh.json` + `floor.webp` -> THREE.BufferGeometry (Uint32 indices, vertex normals) + SRGB texture                                                                    |
+| `game3d.ts`         | scene, lights, floor mesh, NPC group + label sprites, player from appearance colors, third-person camera, walk/attack/interact, resize/dispose, `window.__sro3d` debug hook |
+| `player_control.ts` | touch joystick + pointer-drag camera + WASD/arrow fallback (pointer-capture correct on the joystick element)                                                                |
+| `hud.ts`            | name/Lv/class plate, region label, log, joystick, ATK/TALK buttons                                                                                                          |
+| `flow.ts`           | intro->select->create->world state machine; pause overlay; map bridge + return-to-game                                                                                      |
 
 Verified class names (from `textdata_equip&skill.txt`, UTF-16, key
 `parts[1]`, English `parts[8]`): **Warrior, Rogue, Wizard, Warlock, Bard,

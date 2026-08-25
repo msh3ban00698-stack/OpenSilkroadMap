@@ -32,12 +32,4 @@ export interface GameCharacter {
   equipment: Record<EquipSlot, string | null>;
 }
 
-export type GameState =
-  | "intro"
-  | "login"
-  | "select"
-  | "create"
-  | "loading"
-  | "in-world"
-  | "paused"
-  | "map";
+export type GameState = "intro" | "login" | "select" | "create" | "loading" | "in-world" | "paused" | "map";
