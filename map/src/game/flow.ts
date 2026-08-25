@@ -30,6 +30,7 @@ const emptyState: HudWorldState = {
   dead: false,
   respawnIn: 0,
   selected: null,
+  selectedTarget: null,
   pos: { x: 0, y: 0, z: 0 },
   yaw: 0,
   npcs: [],

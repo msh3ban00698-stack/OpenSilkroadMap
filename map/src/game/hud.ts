@@ -23,7 +23,8 @@ export interface HudWorldState {
   className: string;
   dead: boolean;
   respawnIn: number;
-  selected: { kind: "npc" | "dummy"; id: string; name: string; x: number; z: number } | null;
+  selected: { kind: "npc" | "dummy" | "mob"; id: string; name: string; x: number; z: number } | null;
+  selectedTarget: { hp: number; maxHp: number } | null;
   pos: { x: number; y: number; z: number };
   yaw: number;
   npcs: { id: string; name: string; x: number; z: number; selected: boolean }[];
@@ -259,11 +260,11 @@ export function buildHud(opts: HudOptions): Hud {
     if (s.selected) {
       targetEl.style.display = "block";
       targetNameEl.textContent = s.selected.name;
-      if (s.selected.kind === "dummy") {
-        setBar(targetFill, targetNum, s.dummy.hp, s.dummy.maxHp);
-      } else {
+      if (s.selected.kind === "npc" || !s.selectedTarget) {
         setBar(targetFill, targetNum, 0, 1);
         targetNum.textContent = "NPC";
+      } else {
+        setBar(targetFill, targetNum, s.selectedTarget.hp, s.selectedTarget.maxHp);
       }
       const dist = Math.hypot(s.selected.x - s.pos.x, s.selected.z - s.pos.z);
       targetDist.textContent = `${dist.toFixed(1)}m`;

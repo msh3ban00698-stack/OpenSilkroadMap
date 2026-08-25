@@ -6,6 +6,7 @@ import type { RegionAssets } from "./region_loader";
 import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
 import { getItem } from "./items";
+import { MOB_CAMPS } from "./mobs_data";
 
 export interface NpcInstance {
   id: string;
@@ -62,7 +63,7 @@ const SWORD_PART_ID = "sword_01";
 type AnimState = "idle" | "walk" | "run" | "attack";
 
 interface Selection {
-  kind: "npc" | "dummy";
+  kind: "npc" | "dummy" | "mob";
   id: string;
   name: string;
   x: number;
@@ -75,6 +76,19 @@ interface NpcGroup {
   name: string;
   x: number;
   z: number;
+}
+
+interface MobState {
+  def: (typeof MOB_CAMPS)[number]["mob"];
+  rig: CharacterRig;
+  group: THREE.Group;
+  hp: number;
+  alive: boolean;
+  respawnAt: number;
+  homeX: number;
+  homeZ: number;
+  aggro: boolean;
+  nextAttackAt: number;
 }
 
 export class GameWorld {
@@ -107,9 +121,10 @@ export class GameWorld {
 
   private animState: AnimState = "idle";
   private attacking = false;
+  private attackStartedAt = 0;
   private attackHitDone = false;
 
-  private dummy: { group: THREE.Group; alive: boolean; hp: number; maxHp: number; respawnT: number };
+  private dummy: { group: THREE.Group; alive: boolean; hp: number; maxHp: number; respawnAt: number };
   private dummyHpBar: { sprite: THREE.Sprite; setHp: (frac: number) => void };
   private floaters: { sprite: THREE.Sprite; t: number; life: number; vy: number }[] = [];
   private lastDamage = 0;
@@ -157,6 +172,7 @@ export class GameWorld {
     this.addWorldObjects();
     this.addNpcs();
     void this.populateAuthenticNpcs();
+    void this.spawnMobs();
 
     this.rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE });
     this.labels = new THREE.Group();
@@ -170,7 +186,7 @@ export class GameWorld {
     const hpBar = this.makeHpBar();
     hpBar.sprite.position.set(0, 3.1, 0);
     dummyGroup.add(hpBar.sprite);
-    this.dummy = { group: dummyGroup, alive: true, hp: DUMMY_HP, maxHp: DUMMY_HP, respawnT: 0 };
+    this.dummy = { group: dummyGroup, alive: true, hp: DUMMY_HP, maxHp: DUMMY_HP, respawnAt: 0 };
     this.dummyHpBar = hpBar;
 
     this.scene.add(this.rig.group);
@@ -246,6 +262,31 @@ export class GameWorld {
       worldInfo: () => this.worldInfo(),
       pick: (x: number, y: number) => this.pick(x, y),
       selectTarget: (kind: string, id: string) => this.selectTarget(kind as Selection["kind"], id),
+      mobs: () =>
+        this.mobs.map((m, i) => ({
+          i,
+          name: m.def.name,
+          alive: m.alive,
+          hp: m.hp,
+          maxHp: m.def.hp,
+          ready: m.rig.isReady,
+          aggro: m.aggro,
+          cd: Math.max(0, Math.round((m.nextAttackAt - performance.now()) / 100) / 10),
+          cur: m.rig.currentId,
+          x: m.group.position.x,
+          z: m.group.position.z,
+        })),
+      debugTeleport: (x: number, z: number) => {
+        const y = this.terrainHeightAt(x, z);
+        this.rig.group.position.set(x, y, z);
+      },
+      swing: () => ({
+        attacking: this.attacking,
+        cur: this.rig.currentId,
+        tMs: Math.round(this.rig.timeMs),
+        dur: Math.round(this.rig.duration),
+        loop: this.rig.isLooping,
+      }),
       clearTarget: () => this.selectTarget(null, ""),
       interact: () => this.interact(),
       damagePlayer: (amount: number) => this.damagePlayer(amount),
@@ -371,6 +412,15 @@ export class GameWorld {
         selected: this.selected?.kind === "dummy",
       },
       bounds: this.boundsBox,
+      selectedTarget:
+        this.selected?.kind === "dummy"
+          ? { hp: this.dummy.hp, maxHp: this.dummy.maxHp }
+          : this.selected?.kind === "mob"
+            ? (() => {
+                const m = this.mobs[Number(this.selected.id)];
+                return m ? { hp: m.hp, maxHp: m.def.hp } : null;
+              })()
+            : null,
       weaponsInWorld: this.character.equipment.weapon ? 1 : 0,
     };
   }
@@ -410,6 +460,13 @@ export class GameWorld {
         z: this.dummy.group.position.z,
       },
     });
+    this.mobs.forEach((m, i) => {
+      if (!m.alive) return;
+      pickables.push({
+        object: m.group,
+        sel: { kind: "mob", id: String(i), name: m.def.name, x: m.group.position.x, z: m.group.position.z },
+      });
+    });
     const hits = this.raycaster.intersectObjects(
       pickables.map((p) => p.object),
       true,
@@ -440,6 +497,10 @@ export class GameWorld {
       const npc = REGION_NPCS.find((n) => n.id === id);
       if (!npc) return;
       this.selected = { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z };
+    } else if (kind === "mob") {
+      const m = this.mobs[Number(id)];
+      if (!m || !m.alive) return;
+      this.selected = { kind: "mob", id, name: name ?? m.def.name, x: m.group.position.x, z: m.group.position.z };
     } else {
       this.selected = {
         kind: "dummy",
@@ -668,7 +729,105 @@ export class GameWorld {
   }
 
   private npcRigs: { rig: CharacterRig; group: THREE.Group }[] = [];
+  private mobs: MobState[] = [];
   private pendingNpcRigs: { x: number; z: number; actor: string; group: THREE.Group; y: number }[] = [];
+
+  private async spawnMobs(): Promise<void> {
+    for (const camp of MOB_CAMPS) {
+      for (let i = 0; i < camp.mob.count; i++) {
+        const ang = (i / camp.mob.count) * Math.PI * 2;
+        const x = camp.cx + Math.cos(ang) * camp.radius * (0.5 + ((i * 37) % 50) / 100);
+        const z = camp.cz + Math.sin(ang) * camp.radius * (0.5 + ((i * 53) % 50) / 100);
+        const y = this.terrainHeightAt(x, z);
+        const rig = new CharacterRig({ preset: camp.mob.actor, scale: CHAR_SCALE });
+        const group = new THREE.Group();
+        group.position.set(x, y + 0.15, z);
+        const box = new THREE.Mesh(
+          new THREE.BoxGeometry(1.8, 2.4, 1.8),
+          new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }),
+        );
+        box.position.y = 1.2;
+        group.add(box);
+        this.scene.add(group);
+        void rig.load().then(() => {
+          rig.group.position.set(x, y + 0.15, z);
+          rig.play("idle");
+          group.add(rig.group);
+        });
+        const st: MobState = {
+          def: camp.mob,
+          rig,
+          group,
+          hp: camp.mob.hp,
+          alive: true,
+          respawnAt: 0,
+          homeX: x,
+          homeZ: z,
+          aggro: false,
+          nextAttackAt: 0,
+        };
+        this.mobs.push(st);
+      }
+    }
+    this.onLog("Wild creatures roam the fields beyond the gates.");
+  }
+
+  private updateMobs(dt: number): void {
+    if (!this.rigReady) return;
+    const p = this.rig.group.position;
+    for (const m of this.mobs) {
+      if (!m.alive) {
+        if (performance.now() >= m.respawnAt && m.rig.isReady) {
+          m.alive = true;
+          m.hp = m.def.hp;
+          m.aggro = false;
+          m.group.position.set(m.homeX, this.terrainHeightAt(m.homeX, m.homeZ) + 0.15, m.homeZ);
+          m.rig.play("idle");
+        }
+        continue;
+      }
+      if (!m.rig.isReady) continue;
+      const dx = p.x - m.group.position.x;
+      const dz = p.z - m.group.position.z;
+      const dist = Math.hypot(dx, dz);
+      if (this.selected?.kind === "mob" && this.selected.id === String(this.mobs.indexOf(m))) {
+        this.selected.x = m.group.position.x;
+        this.selected.z = m.group.position.z;
+      }
+      if (dist < 30 && !this.playerDead) m.aggro = true;
+      if (dist > 220) m.aggro = false;
+      if (m.aggro && dist > 6) {
+        const speed = 34;
+        const nx = m.group.position.x + (dx / dist) * speed * dt;
+        const nz = m.group.position.z + (dz / dist) * speed * dt;
+        m.group.position.set(nx, this.terrainHeightAt(nx, nz) + 0.15, nz);
+        m.rig.group.rotation.y = Math.atan2(-dx, -dz);
+        const animId = m.rig.hasAnim("run") ? "run" : m.rig.hasAnim("walk") ? "walk" : null;
+        if (animId && m.rig.currentId !== animId) m.rig.play(animId);
+        else if (!animId && m.rig.currentId !== "walk") m.rig.play("walk");
+      } else {
+        if (dist <= 6 && dist > 4.2) {
+          m.rig.group.lookAt(p.x, m.group.position.y, p.z);
+        }
+        if (m.aggro && dist <= 6 && !this.playerDead) {
+          if (performance.now() >= m.nextAttackAt) {
+            m.nextAttackAt = performance.now() + 2000;
+            const hasAttack = m.rig.hasAnim("attack");
+            if (hasAttack) {
+              m.rig.play("attack");
+              setTimeout(() => {
+                if (m.alive && m.rig.currentId === "attack") m.rig.play("idle");
+              }, 700);
+            }
+            this.damagePlayer(m.def.attack + Math.floor(Math.random() * 7));
+            this.makeFloatingTextAtPlayer(`-${Math.round(m.def.attack + Math.random() * 7)}`, "#ff8a80");
+          }
+        } else if (m.rig.currentId !== "idle") {
+          m.rig.play("idle");
+        }
+      }
+    }
+  }
 
   private async populateAuthenticNpcs(): Promise<void> {
     try {
@@ -685,7 +844,10 @@ export class GameWorld {
         }
         const existing = this.npcList.find((n) => n.id === npc.id);
         if (!existing) {
-          this.npcList = [...this.npcList.filter((n) => n.id !== `npc_${npc.code}_0`), { id: npc.id, name: npc.name, x: npc.x, z: npc.z }];
+          this.npcList = [
+            ...this.npcList.filter((n) => n.id !== `npc_${npc.code}_0`),
+            { id: npc.id, name: npc.name, x: npc.x, z: npc.z },
+          ];
         } else {
           existing.name = npc.name;
         }
@@ -696,7 +858,8 @@ export class GameWorld {
     }
   }
 
-  private buildNpcCollider(name: string): THREE.Group {    const group = new THREE.Group();
+  private buildNpcCollider(name: string): THREE.Group {
+    const group = new THREE.Group();
     const geo = new THREE.BoxGeometry(1.6, 3, 1.6);
     const mat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
     const box = new THREE.Mesh(geo, mat);
@@ -830,7 +993,16 @@ export class GameWorld {
     return sprite;
   }
 
-  private makeFloatingText(text: string, color: string): THREE.Sprite {
+  private makeFloatingTextAtPlayer(text: string, color: string): THREE.Sprite {
+    const sprite = this.makeFloatingText(text, color);
+    const p = this.rig.group.position;
+    sprite.position.set(p.x, p.y + 2.4, p.z);
+    this.scene.add(sprite);
+    this.floaters.push({ sprite, t: 0, life: 1.2, vy: 2 });
+    return sprite;
+  }
+
+  private makeFloatingText(text: string, color: string, at?: THREE.Vector3): THREE.Sprite {
     const canvas = document.createElement("canvas");
     canvas.width = 128;
     canvas.height = 64;
@@ -846,7 +1018,8 @@ export class GameWorld {
     const tex = new THREE.CanvasTexture(canvas);
     const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false, depthWrite: false }));
     sprite.scale.set(1.8, 0.9, 1);
-    sprite.position.set(this.dummy.group.position.x, this.dummy.group.position.y + 2.6, this.dummy.group.position.z);
+    const base = at ?? this.dummy.group.position;
+    sprite.position.set(base.x, base.y + 2.6, base.z);
     this.scene.add(sprite);
     this.floaters.push({ sprite, t: 0, life: 0.8, vy: 1.6 });
     return sprite;
@@ -877,7 +1050,19 @@ export class GameWorld {
       this.onLog(`You cannot attack ${this.selected.name}.`);
       return;
     }
+    const sel = this.selected;
+    if (sel && sel.kind === "mob") {
+      const m = this.mobs[Number(sel.id)];
+      if (m && m.alive) {
+        const dx = m.group.position.x - this.rig.group.position.x;
+        const dz = m.group.position.z - this.rig.group.position.z;
+        if (Math.hypot(dx, dz) < ATTACK_RANGE + 6) {
+          this.rig.group.rotation.y = Math.atan2(-dx, -dz);
+        }
+      }
+    }
     this.attacking = true;
+    this.attackStartedAt = performance.now();
     this.attackHitDone = false;
     this.animState = "attack";
     this.rig.play("attack");
@@ -961,12 +1146,13 @@ export class GameWorld {
     }
 
     if (this.attacking) {
+      const elapsed = performance.now() - this.attackStartedAt;
       const impactMs = this.rig.duration * ATTACK_IMPACT_FRACTION;
-      if (!this.attackHitDone && this.rig.timeMs >= impactMs) {
+      if (!this.attackHitDone && elapsed >= impactMs) {
         this.attackHitDone = true;
         this.tryHitTarget();
       }
-      if (!this.rig.isLooping && this.rig.timeMs >= this.rig.duration) {
+      if (elapsed >= this.rig.duration) {
         this.attacking = false;
       }
       return;
@@ -999,6 +1185,15 @@ export class GameWorld {
   }
 
   private tryHitTarget(): void {
+    const sel = this.selected;
+    if (sel && sel.kind === "mob") {
+      this.hitMob(sel.id);
+      return;
+    }
+    if (sel && sel.kind === "npc") {
+      this.onLog("You cannot attack townsfolk.");
+      return;
+    }
     const d = this.dummy;
     if (!d.alive) {
       this.onLog("Your target is out of reach.");
@@ -1028,7 +1223,7 @@ export class GameWorld {
     this.makeFloatingText(`-${damage}`, "#ffd54f");
     if (d.hp <= 0) {
       d.alive = false;
-      d.respawnT = DUMMY_RESPAWN_MS;
+      d.respawnAt = performance.now() + DUMMY_RESPAWN_MS;
       const reward =
         DUMMY_GOLD_REWARD.min + Math.floor(Math.random() * (DUMMY_GOLD_REWARD.max - DUMMY_GOLD_REWARD.min));
       this.character.gold += reward;
@@ -1075,16 +1270,65 @@ export class GameWorld {
     this.onLog(`The training dummy swings back and hits you for ${dmg} damage.`);
   }
 
+  private hitMob(id: string): void {
+    const mob = this.mobs[Number(id)];
+    if (!mob) return;
+    if (!mob.alive) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
+    const p = this.rig.group.position;
+    const dx = mob.group.position.x - p.x;
+    const dz = mob.group.position.z - p.z;
+    const dist = Math.hypot(dx, dz);
+    if (dist > ATTACK_RANGE + 2) {
+      this.onLog("Your target is out of reach.");
+      return;
+    }
+    const ry = this.rig.group.rotation.y;
+    const facing = (-Math.sin(ry) * dx - Math.cos(ry) * dz) / (dist || 1);
+    if (facing < 0.2) {
+      this.onLog("Face your target to attack.");
+      return;
+    }
+    const damage = 18 + Math.floor(Math.random() * 12);
+    mob.hp = Math.max(0, mob.hp - damage);
+    this.lastDamage = damage;
+    this.makeFloatingText(`-${damage}`, "#ffd54f", mob.group.position);
+    if (!mob.aggro) {
+      mob.aggro = true;
+    }
+    if (mob.hp <= 0) {
+      mob.alive = false;
+      mob.respawnAt = performance.now() + DUMMY_RESPAWN_MS;
+      mob.group.visible = true;
+      const death = mob.rig.hasAnim("death") ? { id: "death" } : null;
+      if (death) {
+        mob.rig.play("death");
+        setTimeout(() => {
+          mob.group.visible = false;
+        }, 1600);
+      } else {
+        mob.group.visible = false;
+      }
+      if (this.selected && this.selected.kind === "mob") this.selectTarget(null, "");
+      const reward =
+        mob.def.goldReward[0] + Math.floor(Math.random() * (mob.def.goldReward[1] - mob.def.goldReward[0]));
+      this.character.gold += reward;
+      this.gainExp(mob.def.expReward);
+      this.onCharacterMutated?.();
+      this.onLog(`${mob.def.name} defeated! +${reward} gold, +${mob.def.expReward} exp.`);
+    }
+  }
+
   private updateDummy(dt: number): void {
     const d = this.dummy;
     if (!d.alive) {
-      d.respawnT -= dt * 1000;
       d.group.rotation.z = Math.min(Math.PI / 2, d.group.rotation.z + dt * 3);
-      if (d.respawnT <= 0) {
+      if (performance.now() >= d.respawnAt) {
         d.alive = true;
         d.hp = d.maxHp;
         this.dummyHits = 0;
-        d.respawnT = 0;
         this.dummyHpBar.setHp(1);
         this.onLog("The training dummy has been repaired.");
       }
@@ -1143,6 +1387,7 @@ export class GameWorld {
       this.rig.skeleton.update();
     }
     this.updateDummy(dt);
+    this.updateMobs(dt);
     const px = this.rig.group.position.x;
     const pz = this.rig.group.position.z;
     for (let i = this.pendingNpcRigs.length - 1; i >= 0; i--) {

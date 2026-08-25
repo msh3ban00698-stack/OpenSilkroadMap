@@ -42,6 +42,14 @@ export class CharacterRig {
     return this.currentAnim ? this.currentAnim.id : null;
   }
 
+  hasAnim(id: string): boolean {
+    return this.anims.some((a) => a.id === id);
+  }
+
+  animIds(): string[] {
+    return this.anims.map((a) => a.id);
+  }
+
   get timeMs(): number {
     return this.timeMsValue;
   }
