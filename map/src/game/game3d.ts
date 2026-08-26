@@ -7,6 +7,8 @@ import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
 import { getItem } from "./items";
 import { MOB_CAMPS } from "./mobs_data";
+import { loadTeleportPads, type TeleportPad } from "./teleport_data";
+import { MAX_PARTY_MEMBERS, type MercenaryDef } from "./party_data";
 import { getSkillFull, isHealSkill, loadSkillsFull, skillDamage, skillHeal, skillMpCost } from "./skill_data";
 
 export interface NpcInstance {
@@ -23,6 +25,8 @@ export interface GameWorldOptions {
   assets: RegionAssets;
   onLog: (msg: string) => void;
   onInteractNpc?: (npc: NpcInstance) => void;
+  onInteractGate?: (gate: TeleportPad) => void;
+  onMobKilled?: (mobCode: string) => void;
   onCharacterMutated?: () => void;
   onLevelUp?: (level: number) => void;
 }
@@ -64,7 +68,7 @@ const SWORD_PART_ID = "sword_01";
 type AnimState = "idle" | "walk" | "run" | "attack";
 
 interface Selection {
-  kind: "npc" | "dummy" | "mob";
+  kind: "npc" | "dummy" | "mob" | "gate";
   id: string;
   name: string;
   x: number;
@@ -98,6 +102,8 @@ export class GameWorld {
   private assets: RegionAssets;
   private onLog: (msg: string) => void;
   private onInteractNpc?: (npc: NpcInstance) => void;
+  private onInteractGate?: (gate: TeleportPad) => void;
+  private onMobKilled?: (mobCode: string) => void;
   private onCharacterMutated?: () => void;
   private onLevelUp?: (level: number) => void;
 
@@ -112,6 +118,14 @@ export class GameWorld {
   private rigReady = false;
   private labels: THREE.Group;
   private npcGroups: NpcGroup[] = [];
+  private gateGroups: NpcGroup[] = [];
+  private gatePads: TeleportPad[] = [];
+  private companions: {
+    rig: CharacterRig;
+    code: string;
+    name: string;
+    nextAttackAt: number;
+  }[] = [];
 
   private worldNpcCount = 0;
   private npcList = REGION_NPCS;
@@ -145,6 +159,8 @@ export class GameWorld {
     this.assets = opts.assets;
     this.onLog = opts.onLog;
     this.onInteractNpc = opts.onInteractNpc;
+    this.onInteractGate = opts.onInteractGate;
+    this.onMobKilled = opts.onMobKilled;
     this.onCharacterMutated = opts.onCharacterMutated;
     this.onLevelUp = opts.onLevelUp;
 
@@ -152,6 +168,8 @@ export class GameWorld {
     this.playerMp = this.character.mp;
 
     void loadSkillsFull();
+    void this.buildGates();
+    this.syncCompanions();
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -370,6 +388,14 @@ export class GameWorld {
 
   // --- Public gameplay API -------------------------------------------------
 
+  getPlayerPos(): { x: number; y: number; z: number } {
+    return {
+      x: this.rig.group.position.x,
+      y: this.rig.group.position.y,
+      z: this.rig.group.position.z,
+    };
+  }
+
   getState(): Record<string, unknown> {
     const cls = getClass(this.character.classId);
     const target = this.selected
@@ -404,6 +430,20 @@ export class GameWorld {
         x: n.x,
         z: n.z,
         selected: this.selected?.kind === "npc" && this.selected.id === n.id,
+      })),
+      gates: this.gatePads.map((g) => ({
+        id: String(g.id),
+        code: g.code,
+        name: g.name,
+        x: g.x,
+        z: g.z,
+        selected: this.selected?.kind === "gate" && this.selected.id === String(g.id),
+      })),
+      companions: this.companions.map((c) => ({
+        code: c.code,
+        name: c.name,
+        x: c.rig.group.position.x,
+        z: c.rig.group.position.z,
       })),
       world: this.worldInfo(),
       dummy: {
@@ -457,6 +497,12 @@ export class GameWorld {
         sel: { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z },
       });
     }
+    for (const gate of this.gateGroups) {
+      pickables.push({
+        object: gate.group,
+        sel: { kind: "gate", id: gate.id, name: gate.name, x: gate.x, z: gate.z },
+      });
+    }
     pickables.push({
       object: this.dummy.group,
       sel: {
@@ -501,9 +547,15 @@ export class GameWorld {
       return;
     }
     if (kind === "npc") {
-      const npc = REGION_NPCS.find((n) => n.id === id);
-      if (!npc) return;
-      this.selected = { kind: "npc", id: npc.id, name: npc.name, x: npc.x, z: npc.z };
+      const reg = REGION_NPCS.find((n) => n.id === id);
+      const grp = this.npcGroups.find((n) => n.id === id);
+      if (!reg && !grp) return;
+      const src = reg ?? grp!;
+      this.selected = { kind: "npc", id: src.id, name: src.name, x: src.x, z: src.z };
+    } else if (kind === "gate") {
+      const pad = this.gatePads.find((g) => String(g.id) === id);
+      if (!pad) return;
+      this.selected = { kind: "gate", id: String(pad.id), name: pad.name, x: pad.x, z: pad.z };
     } else if (kind === "mob") {
       const m = this.mobs[Number(id)];
       if (!m || !m.alive) return;
@@ -842,6 +894,12 @@ export class GameWorld {
       const { loadWorldNpcs } = await import("./world_npcs");
       const npcs = await loadWorldNpcs();
       for (const npc of npcs) {
+        const dupes = this.npcGroups.filter((g) => g.id.startsWith("npc_") && Math.hypot(g.x - npc.x, g.z - npc.z) < 4);
+        if (dupes.length > 0) {
+          for (const d of dupes) this.scene.remove(d.group);
+          this.npcGroups = this.npcGroups.filter((g) => !dupes.includes(g));
+          this.npcList = this.npcList.filter((n) => !dupes.some((d) => d.id === n.id));
+        }
         const group = this.buildNpcCollider(npc.name);
         const y = this.terrainHeightAt(npc.x, npc.z);
         group.position.set(npc.x, y + 0.2, npc.z);
@@ -1080,20 +1138,50 @@ export class GameWorld {
   interact(): void {
     const p = this.rig.group.position;
     let best: { npc: NpcGroup; d: number } | null = null;
+    let bestGate: { gate: NpcGroup; d: number } | null = null;
 
     if (this.selected?.kind === "npc") {
       const npc = this.npcGroups.find((n) => n.id === this.selected!.id);
-      if (npc) {
-        best = { npc, d: Math.hypot(npc.x - p.x, npc.z - p.z) };
+      const d = npc ? Math.hypot(npc.x - p.x, npc.z - p.z) : Infinity;
+      if (npc && d <= 16) {
+        this.selectTarget("npc", npc.id, npc.name);
+        this.onInteractNpc?.({ id: npc.id, code: npc.id, name: npc.name, x: npc.x, z: npc.z });
+        return;
       }
+      if (npc) best = { npc, d };
+    }
+    if (this.selected?.kind === "gate") {
+      const gate = this.gateGroups.find((n) => n.id === this.selected!.id);
+      const d = gate ? Math.hypot(gate.x - p.x, gate.z - p.z) : Infinity;
+      if (gate && d <= 16) {
+        this.selectTarget("gate", gate.id, gate.name);
+        const pad = this.gatePads.find((g) => String(g.id) === gate.id);
+        if (pad) this.onInteractGate?.(pad);
+        return;
+      }
+      if (gate) bestGate = { gate, d };
     }
     if (!best || best.d > 16) {
       for (const npc of this.npcGroups) {
         const d = Math.hypot(npc.x - p.x, npc.z - p.z);
-        if (d < 16 && (!best || d < best.d)) {
+        if (d <= 16 && (!best || d < best.d)) {
           best = { npc, d };
         }
       }
+    }
+    if (!bestGate || bestGate.d > 16) {
+      for (const gate of this.gateGroups) {
+        const d = Math.hypot(gate.x - p.x, gate.z - p.z);
+        if (d <= 16 && (!bestGate || d < bestGate.d)) {
+          bestGate = { gate, d };
+        }
+      }
+    }
+    if (bestGate && (!best || bestGate.d < best.d)) {
+      this.selectTarget("gate", bestGate.gate.id, bestGate.gate.name);
+      const pad = this.gatePads.find((g) => String(g.id) === bestGate!.gate.id);
+      if (pad) this.onInteractGate?.(pad);
+      return;
     }
     if (best) {
       this.selectTarget("npc", best.npc.id, best.npc.name);
@@ -1398,6 +1486,7 @@ export class GameWorld {
     this.character.gold += reward;
     this.gainExp(mob.def.expReward);
     this.onCharacterMutated?.();
+    this.onMobKilled?.(mob.def.code);
     this.onLog(`${mob.def.name} defeated! +${reward} gold, +${mob.def.expReward} exp.`);
   }
 
@@ -1415,6 +1504,159 @@ export class GameWorld {
     } else {
       d.group.rotation.z = Math.max(0, d.group.rotation.z - dt * 3);
     }
+  }
+
+  private async buildGates(): Promise<void> {
+    const pads = await loadTeleportPads();
+    for (const pad of pads) {
+      const group = new THREE.Group();
+      const ringGeo = new THREE.TorusGeometry(2.2, 0.28, 8, 32);
+      const ringMat = new THREE.MeshStandardMaterial({
+        color: 0x4fc3f7,
+        emissive: 0x1a6da8,
+        emissiveIntensity: 0.9,
+        metalness: 0.4,
+        roughness: 0.35,
+      });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.35;
+      group.add(ring);
+      const beamGeo = new THREE.CylinderGeometry(0.5, 0.5, 7, 12, 1, true);
+      const beamMat = new THREE.MeshBasicMaterial({
+        color: 0x7fd8ff,
+        transparent: true,
+        opacity: 0.22,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      });
+      const beam = new THREE.Mesh(beamGeo, beamMat);
+      beam.position.y = 3.5;
+      group.add(beam);
+      const y = this.terrainHeightAt(pad.x, pad.z);
+      group.position.set(pad.x, y, pad.z);
+      this.scene.add(group);
+      this.gateGroups.push({ group, id: String(pad.id), name: pad.name, x: pad.x, z: pad.z });
+      this.gatePads.push(pad);
+    }
+    if (pads.length > 0) {
+      this.onLog(`Teleport pads attuned: ${pads.map((g) => g.name).join(", ")}.`);
+    }
+  }
+
+  teleportTo(x: number, z: number): void {
+    const y = this.terrainHeightAt(x, z);
+    this.rig.group.position.set(x, y, z);
+    this.selectTarget(null, "");
+  }
+
+  syncCompanions(): void {
+    const party = this.character.party || [];
+    for (let i = this.companions.length - 1; i >= 0; i--) {
+      if (!party.some((m) => m.code === this.companions[i].code)) {
+        this.scene.remove(this.companions[i].rig.group);
+        this.companions.splice(i, 1);
+      }
+    }
+    party.forEach((member, idx) => {
+      if (this.companions.some((c) => c.code === member.code)) return;
+      const rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE * 0.94 });
+      const p = this.rig.group.position;
+      rig.group.position.set(p.x + 2 + idx * 1.5, p.y, p.z - 1.5);
+      this.scene.add(rig.group);
+      void rig.load().then(() => rig.play("idle"));
+      this.companions.push({
+        rig,
+        code: member.code,
+        name: member.name,
+        nextAttackAt: 0,
+      });
+    });
+  }
+
+  hireCompanion(def: MercenaryDef): boolean {
+    if (this.playerDead) return false;
+    if (this.companions.length >= MAX_PARTY_MEMBERS) {
+      this.onLog(`Your party is full (max ${MAX_PARTY_MEMBERS}).`);
+      return false;
+    }
+    if (this.character.gold < def.cost) {
+      this.onLog(`Not enough gold to hire ${def.name} (${def.cost} gold).`);
+      return false;
+    }
+    this.character.gold -= def.cost;
+    if (!this.character.party) this.character.party = [];
+    this.character.party.push({ code: def.code, name: def.name });
+    this.syncCompanions();
+    this.onCharacterMutated?.();
+    this.onLog(`${def.name} joins your party.`);
+    return true;
+  }
+
+  dismissCompanion(code: string): boolean {
+    if (!this.character.party) return false;
+    const member = this.character.party.find((m) => m.code === code);
+    if (!member) return false;
+    this.character.party = this.character.party.filter((m) => m.code !== code);
+    this.syncCompanions();
+    this.onCharacterMutated?.();
+    this.onLog(`${member.name} leaves your party.`);
+    return true;
+  }
+
+  private updateCompanions(dt: number): void {
+    const p = this.rig.group.position;
+    this.companions.forEach((c, idx) => {
+      const cp = c.rig.group.position;
+      const dx = p.x + 2 + idx * 1.5 - cp.x;
+      const dz = p.z - 1.5 - cp.z;
+      const dist = Math.hypot(dx, dz);
+      if (dist > 60) {
+        cp.x = p.x + 2 + idx * 1.5;
+        cp.z = p.z - 1.5;
+        cp.y = this.terrainHeightAt(cp.x, cp.z);
+      } else if (dist > 4) {
+        const speed = Math.min(120, dist * 2.2) * dt;
+        cp.x += (dx / dist) * speed;
+        cp.z += (dz / dist) * speed;
+        cp.y = this.terrainHeightAt(cp.x, cp.z);
+        c.rig.group.rotation.y = Math.atan2(dx, dz);
+        c.rig.play("run");
+      } else if (c.rig.currentId !== "attack" && c.rig.currentId !== "idle") {
+        c.rig.play("idle");
+      }
+      const now = performance.now();
+      if (now < c.nextAttackAt) return;
+      let target: { x: number; z: number; index: number; hp: number } | null = null;
+      if (this.selected?.kind === "mob") {
+        const m = this.mobs[Number(this.selected.id)];
+        if (m && m.alive && Math.hypot(m.group.position.x - cp.x, m.group.position.z - cp.z) < 9) {
+          target = { x: m.group.position.x, z: m.group.position.z, index: Number(this.selected.id), hp: m.hp };
+        }
+      }
+      if (!target) {
+        this.mobs.forEach((m, mi) => {
+          if (!m.alive || target) return;
+          const d = Math.hypot(m.group.position.x - cp.x, m.group.position.z - cp.z);
+          if (d < 7) {
+            target = { x: m.group.position.x, z: m.group.position.z, index: mi, hp: m.hp };
+          }
+        });
+      }
+      if (target) {
+        c.nextAttackAt = now + 2000;
+        const t = target as { x: number; z: number; index: number; hp: number };
+        c.rig.group.rotation.y = Math.atan2(t.x - cp.x, t.z - cp.z);
+        c.rig.play("attack");
+        const dmg = 8 + Math.round(Math.random() * 6);
+        const m = this.mobs[t.index];
+        m.hp -= dmg;
+        this.makeFloatingText(`${dmg}`, "#ffd479", new THREE.Vector3(t.x, 2.4, t.z));
+        if (m.hp <= 0) {
+          this.killMob(m);
+        }
+      }
+    });
   }
 
   private updateFloaters(dt: number): void {
@@ -1468,6 +1710,7 @@ export class GameWorld {
     }
     this.updateDummy(dt);
     this.updateMobs(dt);
+    this.updateCompanions(dt);
     const px = this.rig.group.position.x;
     const pz = this.rig.group.position.z;
     for (let i = this.pendingNpcRigs.length - 1; i >= 0; i--) {

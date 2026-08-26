@@ -21,6 +21,7 @@ interface Info {
 }
 
 export async function openShop(root: HTMLElement, opts: ShopOptions): Promise<ShopHandle> {
+  root.querySelectorAll(":scope > .shop-panel").forEach((el) => el.remove());
   const shops = await loadShops();
   const entry = shops[opts.npcCode];
   const panel = document.createElement("div");

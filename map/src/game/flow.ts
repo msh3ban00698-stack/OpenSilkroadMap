@@ -187,6 +187,40 @@ class GameFlow {
           this.hud?.showLevelUp(level);
         },
         onCharacterMutated: () => persist(),
+        onOpenParty: () => {
+          void import("./party_panel").then(({ openPartyPanel }) => {
+            openPartyPanel(this.hud!.root, {
+              root: this.hud!.root,
+              character: char,
+              onMutate: () => {
+                persist();
+                this.inventory?.refresh();
+              },
+              log: (msg) => this.hud?.log(msg),
+              onHire: (def) => this.world?.hireCompanion(def) ?? false,
+              onDismiss: (code) => this.world?.dismissCompanion(code) ?? false,
+            });
+          });
+        },
+        onOpenWarehouse: () => {
+          void import("./warehouse_panel").then(({ openWarehousePanel }) => {
+            openWarehousePanel(this.hud!.root, {
+              root: this.hud!.root,
+              character: char,
+              onMutate: () => {
+                persist();
+                this.inventory?.refresh();
+              },
+              log: (msg) => this.hud?.log(msg),
+            });
+          });
+        },
+        getNpcPos: (npcCode) => {
+          if (!this.world) return null;
+          const st = this.world.getState() as unknown as HudWorldState;
+          const n = st.npcs.find((p) => p.id === npcCode);
+          return n ? { x: n.x, z: n.z } : null;
+        },
         getState: () => (this.world ? (this.world.getState() as unknown as HudWorldState) : emptyState),
       });
       document.getElementById("game-root")!.appendChild(this.hud.root);
@@ -210,7 +244,20 @@ class GameFlow {
         character: char,
         assets,
         onLog: (msg) => this.hud?.log(msg),
-        onInteractNpc: (npc) => this.hud?.showNpcDialog(npc),
+        onInteractNpc: (npc) => {
+          void import("./quest_runtime").then(({ onNpcTalked }) => {
+            if (onNpcTalked(char, npc.name, (msg) => this.hud?.log(msg))) persist();
+          });
+          this.hud?.showNpcDialog(npc);
+        },
+        onInteractGate: (gate) => this.showTeleportPanel(gate),
+        onMobKilled: (mobCode) => {
+          void import("./quest_runtime").then(({ onMobKilled }) => {
+            if (onMobKilled(char, mobCode, (msg) => this.hud?.log(msg))) {
+              persist();
+            }
+          });
+        },
         onCharacterMutated: persist,
       });
       this.world.resize();
@@ -247,6 +294,43 @@ class GameFlow {
     } else {
       this.inventory?.show();
     }
+  }
+
+  private showTeleportPanel(gate: { id: string | number; name: string; x: number; z: number }): void {
+    if (!this.world) return;
+    this.hud?.closeDialog();
+    void import("./teleport_data").then(async ({ loadTeleportPads }) => {
+      const pads = await loadTeleportPads();
+      const pos = this.world!.getPlayerPos();
+      void import("./teleport_panel").then(({ openTeleportPanel }) => {
+        openTeleportPanel(this.hud!.root, {
+          root: this.hud!.root,
+          pads,
+          currentPadId: String(gate.id),
+          playerPos: pos,
+          onTravel: (pad) => this.travelTo(pad),
+        });
+      });
+    });
+  }
+
+  private async travelTo(pad: { name: string; x: number; z: number }): Promise<void> {
+    if (!this.world) return;
+    this.hud?.closeDialog();
+    this.menuRoot.style.display = "block";
+    this.screens.renderLoading(`Traveling to ${pad.name}...`);
+    this.worldContainer.style.display = "none";
+    await new Promise((r) => setTimeout(r, 900));
+    this.world.teleportTo(pad.x, pad.z);
+    this.menuRoot.style.display = "none";
+    this.worldContainer.style.display = "block";
+    this.world.resize();
+    if (this.currentChar) {
+      const p = this.world.getPlayerPos();
+      this.currentChar.position = { x: p.x, y: p.y, z: p.z };
+      saveCharacter(this.currentChar);
+    }
+    this.hud?.log(`You arrive at ${pad.name}.`);
   }
 
   private closeInventory(): void {

@@ -20,6 +20,7 @@ Usage: uv run scripts/build_game_database.py
 import glob
 import json
 import os
+import re
 
 BASE = "game_source/Media/server_dep/silkroad/textdata"
 OUT = "map/public/assets/gamedata"
@@ -250,10 +251,16 @@ def build_quests(names):
         if len(r) < 11 or r[0] != "1":
             continue
         qno = r[2]
+        giver = ""
+        m = re.match(r"QNO_((?:CH|EU|WC)_[A-Z0-9]+?)_\d+$", qno)
+        if m:
+            giver = "NPC_" + m.group(1)
         quests.append(
             {
                 "code": qno,
+                "giver": giver,
                 "titleSn": r[5],
+                "title": names.get(r[5], ""),
                 "paySn": r[6],
                 "nn": r[9],
                 "nc": r[10],
@@ -267,12 +274,27 @@ def build_quests(names):
         q = by_code.get(r[0])
         if not q:
             continue
+        sn = next((c for c in r if c.startswith("SN_CON_")), "")
         con = {
-            "sn": next((c for c in r if c.startswith("SN_CON_")), ""),
+            "sn": sn,
+            "text": names.get(sn, ""),
             "state": _int(r[2]) if len(r) > 2 and r[2].isdigit() else 0,
         }
         q["contents"].append(con)
-    out = [q for q in quests if q["code"].startswith("QNO_")]
+    rewards = {}
+    for r in read_table("refquestrewarditems.txt"):
+        if len(r) > 7 and r[1].startswith("QNO_"):
+            count = _int(r[7]) or 1
+            entry = {"code": r[3], "count": count}
+            if entry not in rewards.setdefault(r[1], []):
+                rewards[r[1]].append(entry)
+    out = []
+    for q in quests:
+        if not q["code"].startswith("QNO_"):
+            continue
+        q["rewards"] = rewards.get(q["code"], [])
+        if q["title"]:
+            out.append(q)
     return out
 
 

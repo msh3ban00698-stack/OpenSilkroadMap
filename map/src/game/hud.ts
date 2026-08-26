@@ -2,6 +2,7 @@ import type { GameCharacter } from "./types";
 import { getClass, START_REGION_NAME } from "./game_data";
 import { getClassSkills, getClassMasteryName } from "./data_loader";
 import { skillIconUrl } from "./skill_data";
+import { updateQuestTracker } from "./quest_runtime";
 
 export interface NpcDialogInfo {
   id: string;
@@ -24,7 +25,7 @@ export interface HudWorldState {
   className: string;
   dead: boolean;
   respawnIn: number;
-  selected: { kind: "npc" | "dummy" | "mob"; id: string; name: string; x: number; z: number } | null;
+  selected: { kind: "npc" | "dummy" | "mob" | "gate"; id: string; name: string; x: number; z: number } | null;
   selectedTarget: { hp: number; maxHp: number } | null;
   pos: { x: number; y: number; z: number };
   yaw: number;
@@ -44,6 +45,9 @@ export interface HudOptions {
   onUseSkill: (code: string, name: string) => void;
   onLevelUp: (level: number) => void;
   onCharacterMutated: () => void;
+  onOpenParty?: () => void;
+  onOpenWarehouse?: () => void;
+  getNpcPos?: (npcCode: string) => { x: number; z: number } | null;
   getState: () => HudWorldState;
 }
 
@@ -53,6 +57,7 @@ export interface Hud {
   joystickKnob: HTMLElement;
   log(msg: string): void;
   showNpcDialog(npc: NpcDialogInfo): void;
+  closeDialog(): void;
   showLevelUp(level: number): void;
   dispose(): void;
 }
@@ -139,6 +144,7 @@ export function buildHud(opts: HudOptions): Hud {
     </div>
     <div class="hud-levelup" id="hud-levelup" style="display:none"></div>
     <div class="hud-log" id="hud-log"></div>
+    <div class="hud-tracker" id="hud-tracker"></div>
     <div class="hud-joystick" id="joy-base">
       <div class="hud-joystick-knob" id="joy-knob"></div>
     </div>
@@ -258,11 +264,15 @@ export function buildHud(opts: HudOptions): Hud {
     setBar(expFill, expNum, s.exp, s.expToNext);
     if (s.expToNext <= 0) expNum.textContent = "MAX";
     goldEl.textContent = String(s.gold);
+    updateQuestTracker(root.querySelector("#hud-tracker") as HTMLElement, opts.character);
 
     if (s.selected) {
       targetEl.style.display = "block";
       targetNameEl.textContent = s.selected.name;
-      if (s.selected.kind === "npc" || !s.selectedTarget) {
+      if (s.selected.kind === "gate") {
+        setBar(targetFill, targetNum, 0, 1);
+        targetNum.textContent = "TELEPORT";
+      } else if (s.selected.kind === "npc" || !s.selectedTarget) {
         setBar(targetFill, targetNum, 0, 1);
         targetNum.textContent = "NPC";
       } else {
@@ -346,7 +356,7 @@ export function buildHud(opts: HudOptions): Hud {
 
   let dialogRoot: HTMLElement | null = null;
   const showNpcDialog = (npc: NpcDialogInfo): void => {
-    if (dialogRoot) return;
+    closeDialog();
     const dlg = document.createElement("div");
     dlg.className = "hud-dialog";
     dlg.innerHTML = `
@@ -360,6 +370,50 @@ export function buildHud(opts: HudOptions): Hud {
       if (e.target === dlg) closeDialog();
     });
     const actions = dlg.querySelector("#hd-actions")!;
+    const questBtn = document.createElement("button");
+    questBtn.className = "sro-btn sro-btn-primary";
+    questBtn.textContent = "Quest";
+    questBtn.style.display = "none";
+    questBtn.addEventListener("click", () => {
+      if (!npc.code) return;
+      void import("./quest_runtime").then(({ openQuestPanel }) =>
+        openQuestPanel(root, {
+          root,
+          character: opts.character,
+          onMutate: opts.onCharacterMutated,
+          log,
+          npcCode: npc.code!,
+          npcName: npc.name,
+          getNpcPos: opts.getNpcPos ?? (() => null),
+        }),
+      );
+      closeDialog();
+    });
+    actions.appendChild(questBtn);
+    const partyBtn = document.createElement("button");
+    partyBtn.className = "sro-btn sro-btn-primary";
+    partyBtn.textContent = "Party";
+    if (npc.code === "NPC_EU_GUILD" && opts.onOpenParty) {
+      partyBtn.addEventListener("click", () => {
+        closeDialog();
+        opts.onOpenParty!();
+      });
+    } else {
+      partyBtn.style.display = "none";
+    }
+    actions.appendChild(partyBtn);
+    const whBtn = document.createElement("button");
+    whBtn.className = "sro-btn sro-btn-primary";
+    whBtn.textContent = "Exchange";
+    if (npc.code === "NPC_EU_WAREHOUSE" && opts.onOpenWarehouse) {
+      whBtn.addEventListener("click", () => {
+        closeDialog();
+        opts.onOpenWarehouse!();
+      });
+    } else {
+      whBtn.style.display = "none";
+    }
+    actions.appendChild(whBtn);
     const shopBtn = document.createElement("button");
     shopBtn.className = "sro-btn sro-btn-primary";
     shopBtn.textContent = "Shop";
@@ -390,6 +444,11 @@ export function buildHud(opts: HudOptions): Hud {
         shopBtn.style.display = "none";
       }
     });
+    void import("./quest_runtime").then(async ({ hasQuestActions }) => {
+      if (npc.code && (await hasQuestActions(opts.character, npc.code))) {
+        questBtn.style.display = "";
+      }
+    });
   };
 
   const closeDialog = (): void => {
@@ -405,6 +464,7 @@ export function buildHud(opts: HudOptions): Hud {
     joystickKnob: root.querySelector("#joy-knob")!,
     log,
     showNpcDialog,
+    closeDialog,
     showLevelUp,
     dispose: () => {
       window.clearInterval(pollTimer);
