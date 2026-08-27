@@ -173,7 +173,8 @@ async function acceptQuest(
   const { questLog } = ensureQuestFields(opts.character);
   questLog.push({ code: def.code, progress: 0 });
   const obj = questObjective(def);
-  const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
+  const camp =
+    obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
   if (camp && obj && obj.kind !== "talk") {
     opts.log(`Quest accepted: ${def.title} — ${obj.label}; hunt ${camp.name}.`);
   } else {
@@ -218,7 +219,8 @@ export async function openQuestPanel(root: HTMLElement, opts: QuestPanelOpts): P
     const card = document.createElement("div");
     card.className = "quest-card";
     const obj = questObjective(def);
-    const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
+    const camp =
+      obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
     const progEntry = opts.character.questLog?.find((p) => p.code === def.code);
 
     const rewardText = def.rewards

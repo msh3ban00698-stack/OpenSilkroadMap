@@ -56,14 +56,7 @@ function loadAllPads(): Promise<TeleportPad[]> {
 export async function loadTeleportPads(region: RegionDef): Promise<TeleportPad[]> {
   const all = await loadAllPads();
   const size = region.span * 1920;
-  return all.filter(
-    (p) =>
-      p.regionId === region.id &&
-      p.x >= 0 &&
-      p.x <= size &&
-      p.z >= 0 &&
-      p.z <= size,
-  );
+  return all.filter((p) => p.regionId === region.id && p.x >= 0 && p.x <= size && p.z >= 0 && p.z <= size);
 }
 
 // Inter-region destination list: one town gate per region.
