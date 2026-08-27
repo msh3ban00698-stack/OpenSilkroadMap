@@ -118,7 +118,7 @@ export class GameScreens {
   renderCreateAccount(error?: string): void {
     this.clear();
     this.root.innerHTML = `
-      <div class="sro-screen">
+      <div class="sro-screen sro-login">
         ${this.bg("bg-login")}
         <div class="sro-logo sro-logo-sm">SILKROAD</div>
         <div class="sro-window sro-center-panel">
@@ -302,23 +302,9 @@ export class GameScreens {
                   <button class="sro-seg sro-gender" data-gender="female">Female</button>
                 </div>
               </div>
-              <div class="sro-field sro-field-appearance">
-                <label>Appearance</label>
-                <div class="sro-color-groups">
-                  <div class="sro-color-group">
-                    <span class="sro-color-name">Skin</span>
-                    <div class="sro-row">${colorRow("skin", SKIN_TONES)}</div>
-                  </div>
-                  <div class="sro-color-group">
-                    <span class="sro-color-name">Hair</span>
-                    <div class="sro-row">${colorRow("hair", HAIR_COLORS)}</div>
-                  </div>
-                  <div class="sro-color-group">
-                    <span class="sro-color-name">Outfit</span>
-                    <div class="sro-row">${colorRow("outfit", OUTFIT_COLORS)}</div>
-                  </div>
-                </div>
-              </div>
+              <div class="sro-field"><label>Skin Tone</label><div class="sro-row">${colorRow("skin", SKIN_TONES)}</div></div>
+              <div class="sro-field"><label>Hair Color</label><div class="sro-row">${colorRow("hair", HAIR_COLORS)}</div></div>
+              <div class="sro-field"><label>Outfit Color</label><div class="sro-row">${colorRow("outfit", OUTFIT_COLORS)}</div></div>
             </div>
           </div>
           <div class="sro-preview-col">
@@ -460,7 +446,7 @@ export class GameScreens {
   renderError(title: string, message: string, buttonText: string): void {
     this.clear();
     this.root.innerHTML = `
-      <div class="sro-screen">
+      <div class="sro-screen sro-login">
         ${this.bg("bg-login")}
         <div class="sro-window sro-center-panel">
           <div class="sro-window-title">${escapeHtml(title)}</div>

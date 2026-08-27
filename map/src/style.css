@@ -456,13 +456,94 @@ body.game-mode #popup {
   width: 170px;
 }
 
+.sro-login {
+  justify-content: flex-start;
+}
+
+.sro-login .sro-logo {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  margin-top: clamp(4px, 1.6vh, 18px);
+}
+
 .sro-login-panel,
 .sro-center-panel {
   align-self: center;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
-  margin-top: clamp(6vh, 11vh, 14vh);
+  display: grid;
+  flex-shrink: 0;
+  grid-template-columns: 1fr;
+  margin-bottom: clamp(8px, 2vh, 20px);
+  margin-top: clamp(6px, 1.8vh, 16px);
   max-width: 340px;
   width: min(88vw, 340px);
+}
+
+.sro-login-panel .sro-window-title,
+.sro-login-panel .sro-field,
+.sro-login-panel .sro-error,
+.sro-center-panel .sro-window-title,
+.sro-center-panel .sro-field,
+.sro-center-panel .sro-error,
+.sro-center-panel .sro-note {
+  grid-column: 1 / -1;
+}
+
+.sro-login-panel .sro-btn,
+.sro-center-panel .sro-btn {
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+@media (max-height: 430px) {
+  .sro-login .sro-logo {
+    font-size: clamp(22px, 5vw, 32px);
+    letter-spacing: clamp(6px, 1.5vw, 10px);
+  }
+
+  .sro-login-panel,
+  .sro-center-panel {
+    margin-top: 4px;
+    padding: 8px 14px;
+  }
+
+  .sro-center-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sro-login-panel .sro-window-title,
+  .sro-center-panel .sro-window-title {
+    margin-bottom: 4px;
+  }
+
+  .sro-login-panel .sro-field,
+  .sro-center-panel .sro-field {
+    margin-bottom: 4px;
+  }
+
+  .sro-login-panel .sro-field label,
+  .sro-center-panel .sro-field label {
+    margin-bottom: 3px;
+  }
+
+  .sro-login-panel .sro-input,
+  .sro-center-panel .sro-input {
+    font-size: 14px;
+    padding: 7px 10px;
+  }
+
+  .sro-login-panel .sro-error,
+  .sro-center-panel .sro-error {
+    margin: 2px 0 4px;
+    min-height: 12px;
+  }
+
+  .sro-login-panel .sro-btn,
+  .sro-center-panel .sro-btn {
+    font-size: 14px;
+    margin-top: 4px;
+    padding: 8px 10px;
+  }
 }
 
 /* --- Fields & buttons --- */
@@ -693,13 +774,14 @@ body.game-mode #popup {
 
 .sro-preview {
   height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
 .sro-preview canvas {
   display: block;
-  height: 100% !important;
-  width: 100% !important;
 }
 
 /* --- Create character layout --- */
@@ -816,18 +898,13 @@ body.game-mode #popup {
   }
 
   .sro-split-create .sro-option {
-    min-height: 40px;
+    min-height: var(--ctl-sm);
     padding: 6px 10px;
   }
 
   .sro-split-create .sro-seg {
-    min-height: 40px;
+    min-height: var(--ctl-sm);
     padding: 6px 8px;
-  }
-
-  .sro-split-create .sro-color {
-    height: 38px;
-    width: 38px;
   }
 }
 
@@ -915,33 +992,6 @@ body.game-mode #popup {
 .sro-color.active {
   border-color: #ffe9c4;
   box-shadow: 0 0 8px rgba(255, 233, 196, 0.5);
-}
-
-.sro-color-groups {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(8px, 1.6vw, 16px);
-}
-
-.sro-color-group {
-  display: flex;
-  flex: 1 1 180px;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.sro-color-name {
-  color: #9a8a70;
-  font-size: var(--txt-xs);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-@media (max-width: 699px) {
-  .sro-color-group {
-    flex-basis: 100%;
-  }
 }
 
 /* --- Loading screen --- */
@@ -1546,6 +1596,22 @@ body.game-mode #popup {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.shop-panel .shop-grid,
+.shop-panel .shop-inv {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.shop-panel .hud-dialog-actions {
+  background-color: #241c11;
+  flex-shrink: 0;
+  margin-top: 4px;
+  padding-top: 4px;
+  position: sticky;
+  bottom: 0;
 }
 
 .shop-sheet > .quest-close-btn,

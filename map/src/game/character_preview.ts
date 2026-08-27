@@ -37,6 +37,7 @@ export class CharacterPreview {
   private raf = 0;
   private disposed = false;
   private loaded = false;
+  private resizeObs: ResizeObserver | null = null;
 
   constructor(
     private container: HTMLElement,
@@ -45,15 +46,14 @@ export class CharacterPreview {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.setClearColor(0x000000, 0);
-    this.renderer.setSize(container.clientWidth || 320, container.clientHeight || 420);
+    const startW = Math.max(container.clientWidth, 1);
+    const startH = Math.max(container.clientHeight, 1);
+    this.renderer.setSize(startW, startH);
     this.renderer.domElement.style.display = "block";
-    this.renderer.domElement.style.width = "100%";
-    this.renderer.domElement.style.height = "100%";
     container.appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
-    const aspect = (container.clientWidth || 320) / (container.clientHeight || 420);
-    this.camera = new THREE.PerspectiveCamera(38, aspect, 0.05, 60);
+    this.camera = new THREE.PerspectiveCamera(38, startW / startH, 0.05, 60);
 
     const hemi = new THREE.HemisphereLight(0xcfd8ff, 0x3a2c20, 1.15);
     this.scene.add(hemi);
@@ -75,14 +75,38 @@ export class CharacterPreview {
       .then(() => {
         if (this.disposed) return;
         this.loaded = true;
-        const h = this.rig.height;
-        const target = new THREE.Vector3(0, h * 0.52, 0);
-        const radius = h * 2.15;
-        this.camera.position.set(target.x, target.y + radius * 0.16, target.z - radius);
-        this.camera.lookAt(target);
         this.rig.play("idle");
+        this.rig.update(0);
+        if (this.rig.skeleton) this.rig.skeleton.update();
+        this.resize();
       })
       .catch((e) => console.error("preview load failed:", e));
+
+    const bump = (): void => this.resize();
+    requestAnimationFrame(() => {
+      bump();
+      requestAnimationFrame(bump);
+    });
+    this.resizeObs = new ResizeObserver(bump);
+    this.resizeObs.observe(container);
+    window.addEventListener("resize", this.onWindowResize);
+  }
+
+  private onWindowResize = (): void => {
+    this.resize();
+  };
+
+  private frameRig(): void {
+    const scaledH = this.rig.height || 1.7;
+    const groupScale = Math.abs(this.rig.group.scale.y) || 1;
+    const h = groupScale < 0.99 ? scaledH / groupScale : scaledH;
+    const target = new THREE.Vector3(0, h * 0.52, 0);
+    const radius = h * 2.15;
+    this.camera.position.set(target.x, target.y + radius * 0.16, target.z - radius);
+    this.camera.near = Math.max(0.05, radius / 80);
+    this.camera.far = Math.max(80, radius * 12);
+    this.camera.lookAt(target);
+    this.camera.updateProjectionMatrix();
   }
 
   private makeShadow(): THREE.Mesh {
@@ -126,16 +150,22 @@ export class CharacterPreview {
   }
 
   resize(): void {
-    const w = this.container.clientWidth || 320;
-    const h = this.container.clientHeight || 420;
+    if (this.disposed) return;
+    const w = this.container.clientWidth;
+    const h = this.container.clientHeight;
+    if (w < 8 || h < 8) return;
     this.renderer.setSize(w, h);
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
+    if (this.loaded) this.frameRig();
   }
 
   dispose(): void {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
+    this.resizeObs?.disconnect();
+    this.resizeObs = null;
+    window.removeEventListener("resize", this.onWindowResize);
     this.rig.dispose();
     releaseRenderer(this.renderer);
     if (this.renderer.domElement.parentElement === this.container) {
