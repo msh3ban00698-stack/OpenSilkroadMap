@@ -1,4 +1,4 @@
-import { MOB_CAMPS } from "./mobs_data.js";
+import type { MobCamp } from "./mobs_data.js";
 
 export interface QuestContent {
   sn: string;
@@ -61,9 +61,10 @@ export function questObjective(q: QuestDef): QuestObjective | null {
 
 export function resolveHuntCamp(
   giverPos: { x: number; z: number },
+  camps: MobCamp[],
   charLevel = 1,
 ): { code: string; name: string; cx: number; cz: number; radius: number } | null {
-  const scored = MOB_CAMPS.map((c) => ({
+  const scored = camps.map((c) => ({
     camp: c,
     dist: Math.hypot(c.cx - giverPos.x, c.cz - giverPos.z),
     overLevel: c.mob.level > charLevel + 4,

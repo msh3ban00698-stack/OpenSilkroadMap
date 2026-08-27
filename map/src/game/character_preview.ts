@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { CharacterRig } from "./character_rig";
+import { releaseRenderer } from "./gl_utils";
 
 export interface PreviewAppearance {
   skin?: string | null;
@@ -136,7 +137,7 @@ export class CharacterPreview {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.rig.dispose();
-    this.renderer.dispose();
+    releaseRenderer(this.renderer);
     if (this.renderer.domElement.parentElement === this.container) {
       this.container.removeChild(this.renderer.domElement);
     }

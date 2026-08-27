@@ -3,6 +3,7 @@ import { getClass, START_REGION_NAME } from "./game_data";
 import { getClassSkills, getClassMasteryName } from "./data_loader";
 import { skillIconUrl } from "./skill_data";
 import { updateQuestTracker } from "./quest_runtime";
+import type { MobCamp } from "./mobs_data";
 
 export interface NpcDialogInfo {
   id: string;
@@ -23,6 +24,7 @@ export interface HudWorldState {
   expToNext: number;
   name: string;
   className: string;
+  regionName?: string;
   dead: boolean;
   respawnIn: number;
   selected: { kind: "npc" | "dummy" | "mob" | "gate"; id: string; name: string; x: number; z: number } | null;
@@ -48,6 +50,7 @@ export interface HudOptions {
   onOpenParty?: () => void;
   onOpenWarehouse?: () => void;
   getNpcPos?: (npcCode: string) => { x: number; z: number } | null;
+  getCamps?: () => MobCamp[];
   getState: () => HudWorldState;
 }
 
@@ -177,6 +180,7 @@ export function buildHud(opts: HudOptions): Hud {
   const expNum = root.querySelector("#hud-exp-num") as HTMLElement;
   const levelUpEl = root.querySelector("#hud-levelup") as HTMLElement;
   const goldEl = root.querySelector("#hud-gold") as HTMLElement;
+  const regionEl = root.querySelector<HTMLElement>(".hud-region")!;
   const targetEl = root.querySelector("#hud-target") as HTMLElement;
   const targetNameEl = root.querySelector("#hud-target-name") as HTMLElement;
   const targetFill = root.querySelector("#hud-target-fill") as HTMLElement;
@@ -259,6 +263,7 @@ export function buildHud(opts: HudOptions): Hud {
 
   const refresh = (): void => {
     const s = opts.getState();
+    if (s.regionName && regionEl.textContent !== s.regionName) regionEl.textContent = s.regionName;
     setBar(hpFill, hpNum, s.hp, s.maxHp, true);
     setBar(mpFill, mpNum, s.mp, s.maxMp, true);
     setBar(expFill, expNum, s.exp, s.expToNext);
@@ -385,6 +390,7 @@ export function buildHud(opts: HudOptions): Hud {
           npcCode: npc.code!,
           npcName: npc.name,
           getNpcPos: opts.getNpcPos ?? (() => null),
+          camps: opts.getCamps?.() ?? [],
         }),
       );
       closeDialog();

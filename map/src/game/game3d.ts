@@ -1,12 +1,14 @@
 import * as THREE from "three";
 import type { EquipSlot, GameCharacter } from "./types";
-import { getClass, getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, REGION_NPCS, START_REGION_NAME } from "./game_data";
+import { getClass, getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, REGION_NPCS } from "./game_data";
+import type { RegionDef } from "./regions";
 import { expToNext, MAX_LEVEL } from "./data_loader";
 import type { RegionAssets } from "./region_loader";
 import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
+import { releaseRenderer } from "./gl_utils";
 import { getItem } from "./items";
-import { MOB_CAMPS } from "./mobs_data";
+import { mobCampsFor, type MobCamp } from "./mobs_data";
 import { loadTeleportPads, type TeleportPad } from "./teleport_data";
 import { MAX_PARTY_MEMBERS, type MercenaryDef } from "./party_data";
 import { getSkillFull, isHealSkill, loadSkillsFull, skillDamage, skillHeal, skillMpCost } from "./skill_data";
@@ -23,6 +25,7 @@ export interface GameWorldOptions {
   container: HTMLElement;
   character: GameCharacter;
   assets: RegionAssets;
+  region: RegionDef;
   onLog: (msg: string) => void;
   onInteractNpc?: (npc: NpcInstance) => void;
   onInteractGate?: (gate: TeleportPad) => void;
@@ -84,7 +87,7 @@ interface NpcGroup {
 }
 
 interface MobState {
-  def: (typeof MOB_CAMPS)[number]["mob"];
+  def: MobCamp["mob"];
   rig: CharacterRig;
   group: THREE.Group;
   hp: number;
@@ -100,6 +103,7 @@ export class GameWorld {
   private container: HTMLElement;
   private character: GameCharacter;
   private assets: RegionAssets;
+  private region: RegionDef;
   private onLog: (msg: string) => void;
   private onInteractNpc?: (npc: NpcInstance) => void;
   private onInteractGate?: (gate: TeleportPad) => void;
@@ -157,6 +161,7 @@ export class GameWorld {
     this.container = opts.container;
     this.character = opts.character;
     this.assets = opts.assets;
+    this.region = opts.region;
     this.onLog = opts.onLog;
     this.onInteractNpc = opts.onInteractNpc;
     this.onInteractGate = opts.onInteractGate;
@@ -228,7 +233,7 @@ export class GameWorld {
         this.rigReady = true;
         this.rig.play("idle");
         this.applyEquipment(this.character.equipment);
-        this.onLog(`Welcome to ${START_REGION_NAME}, ${this.character.name}.`);
+        this.onLog(`Welcome to ${this.region.name}, ${this.character.name}.`);
         this.onLog("A training dummy stands in front of you. Attack it (ATK) when close.");
       })
       .catch((e) => {
@@ -396,6 +401,10 @@ export class GameWorld {
     };
   }
 
+  getCamps(): MobCamp[] {
+    return this.mobCamps;
+  }
+
   getState(): Record<string, unknown> {
     const cls = getClass(this.character.classId);
     const target = this.selected
@@ -408,6 +417,8 @@ export class GameWorld {
         }
       : null;
     return {
+      regionId: this.region.id,
+      regionName: this.region.name,
       hp: Math.max(0, Math.round(this.playerHp)),
       mp: Math.max(0, Math.round(this.playerMp)),
       maxHp: this.character.maxHp,
@@ -789,11 +800,15 @@ export class GameWorld {
 
   private npcRigs: { rig: CharacterRig; group: THREE.Group }[] = [];
   private mobs: MobState[] = [];
+  private mobCamps: MobCamp[] = [];
   private skillCds = new Map<string, number>();
   private pendingNpcRigs: { x: number; z: number; actor: string; group: THREE.Group; y: number }[] = [];
 
   private async spawnMobs(): Promise<void> {
-    for (const camp of MOB_CAMPS) {
+    const spawn = this.assets.spawn;
+    const camps = mobCampsFor(this.region, spawn);
+    this.mobCamps = camps;
+    for (const camp of camps) {
       for (let i = 0; i < camp.mob.count; i++) {
         const ang = (i / camp.mob.count) * Math.PI * 2;
         const x = camp.cx + Math.cos(ang) * camp.radius * (0.5 + ((i * 37) % 50) / 100);
@@ -892,7 +907,7 @@ export class GameWorld {
   private async populateAuthenticNpcs(): Promise<void> {
     try {
       const { loadWorldNpcs } = await import("./world_npcs");
-      const npcs = await loadWorldNpcs();
+      const npcs = await loadWorldNpcs(this.region);
       for (const npc of npcs) {
         const dupes = this.npcGroups.filter((g) => g.id.startsWith("npc_") && Math.hypot(g.x - npc.x, g.z - npc.z) < 4);
         if (dupes.length > 0) {
@@ -1507,7 +1522,7 @@ export class GameWorld {
   }
 
   private async buildGates(): Promise<void> {
-    const pads = await loadTeleportPads();
+    const pads = await loadTeleportPads(this.region);
     for (const pad of pads) {
       const group = new THREE.Group();
       const ringGeo = new THREE.TorusGeometry(2.2, 0.28, 8, 32);
@@ -1755,7 +1770,7 @@ export class GameWorld {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.rig.dispose();
-    this.renderer.dispose();
+    releaseRenderer(this.renderer);
     if (this.renderer.domElement.parentElement === this.container) {
       this.container.removeChild(this.renderer.domElement);
     }

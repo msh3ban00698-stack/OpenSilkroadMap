@@ -1,5 +1,6 @@
 import type { GameCharacter } from "./types.js";
 import { loadQuests, questObjective, resolveHuntCamp, talkTargetName, type QuestDef } from "./quest_data.js";
+import type { MobCamp } from "./mobs_data.js";
 import { loadItemInfo } from "./world_npcs.js";
 import { registerAuthenticItem, authenticItemDef } from "./items.js";
 
@@ -11,6 +12,7 @@ export interface QuestPanelOpts {
   npcCode: string;
   npcName: string;
   getNpcPos: (npcCode: string) => { x: number; z: number } | null;
+  camps: MobCamp[];
 }
 
 const campCache = new Map<string, string>();
@@ -58,6 +60,7 @@ export function resolvedCampFor(
   q: QuestDef,
   getNpcPos: (code: string) => { x: number; z: number } | null,
   charLevel = 1,
+  camps: MobCamp[] = [],
 ): { code: string; name: string } | null {
   const cached = campCache.get(q.code);
   if (cached) return JSON.parse(cached);
@@ -65,7 +68,7 @@ export function resolvedCampFor(
   if (!obj || obj.kind === "talk") return null;
   const pos = getNpcPos(q.giver);
   if (!pos) return null;
-  const camp = resolveHuntCamp(pos, charLevel);
+  const camp = resolveHuntCamp(pos, camps, charLevel);
   if (!camp) return null;
   const res = { code: camp.code, name: camp.name };
   campCache.set(q.code, JSON.stringify(res));
@@ -164,13 +167,13 @@ async function completeQuest(opts: QuestPanelOpts, def: QuestDef): Promise<void>
 }
 
 async function acceptQuest(
-  opts: Pick<QuestPanelOpts, "character" | "onMutate" | "log" | "getNpcPos">,
+  opts: Pick<QuestPanelOpts, "character" | "onMutate" | "log" | "getNpcPos" | "camps">,
   def: QuestDef,
 ): Promise<void> {
   const { questLog } = ensureQuestFields(opts.character);
   questLog.push({ code: def.code, progress: 0 });
   const obj = questObjective(def);
-  const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level) : null;
+  const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
   if (camp && obj && obj.kind !== "talk") {
     opts.log(`Quest accepted: ${def.title} — ${obj.label}; hunt ${camp.name}.`);
   } else {
@@ -215,7 +218,7 @@ export async function openQuestPanel(root: HTMLElement, opts: QuestPanelOpts): P
     const card = document.createElement("div");
     card.className = "quest-card";
     const obj = questObjective(def);
-    const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level) : null;
+    const camp = obj && obj.kind !== "talk" ? resolvedCampFor(def, opts.getNpcPos, opts.character.level, opts.camps) : null;
     const progEntry = opts.character.questLog?.find((p) => p.code === def.code);
 
     const rewardText = def.rewards

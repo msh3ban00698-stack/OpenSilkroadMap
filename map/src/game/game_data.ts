@@ -1,3 +1,5 @@
+import { START_REGION as START_REGION_DEF } from "./regions";
+
 export interface ClassDef {
   id: string;
   name: string;
@@ -53,10 +55,9 @@ export function getClass(id: string): ClassDef | undefined {
 // Region 1 Constantinople - real 3D world generated from the original VSRO
 // packages (scripts/extract_ct.py + scripts/generate_region_ct.py).
 // Assets: map/public/assets/img/silkroad/game/region1/
-export const START_REGION = 1;
-export const START_REGION_NAME = "Constantinople";
+export const START_REGION = START_REGION_DEF.id;
+export const START_REGION_NAME = START_REGION_DEF.name;
 export const START_REGION_URL = "/assets/img/silkroad/game/region1";
-
 export const CHARACTERS_KEY = "silkroad_characters_v1";
 
 // Verified "Dungeon Exit" NPC inside region 32785 (npcs.json). Used only when a

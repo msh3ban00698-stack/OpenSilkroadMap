@@ -12,12 +12,14 @@
 
 body {
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   width: 100vw;
 }
 
 .map {
   height: 100vh;
+  height: 100dvh;
   left: 0;
   position: absolute;
   top: 0;
@@ -561,6 +563,25 @@ body.game-mode #popup {
   .sro-preview-panel {
     flex: 1;
   }
+
+  /* Create character: form scrolls on the left, preview + actions on the right */
+  .sro-split-create {
+    flex-direction: row;
+  }
+
+  .sro-form-panel {
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+
+  .sro-preview-col {
+    flex: 0 0 40%;
+    min-width: 0;
+  }
+
+  .sro-preview-tall {
+    min-height: 0;
+  }
 }
 
 .sro-char-list {
@@ -792,8 +813,8 @@ body.game-mode #popup {
   border: 2px solid #3a2c18;
   border-radius: 50%;
   cursor: pointer;
-  height: 34px;
-  width: 34px;
+  height: 44px;
+  width: 44px;
 }
 
 .sro-color.active {
@@ -895,12 +916,12 @@ body.game-mode #popup {
   background: url("img/silkroad/ui/hud_pmi_window.png") no-repeat center / 100% 100%;
   display: flex;
   gap: 6px;
-  left: 8px;
+  left: calc(8px + env(safe-area-inset-left));
   max-width: 300px;
   min-height: 76px;
   padding: 8px 10px 8px 56px;
   position: absolute;
-  top: 8px;
+  top: calc(8px + env(safe-area-inset-top));
   width: calc(100vw - 150px);
 }
 
@@ -957,8 +978,8 @@ body.game-mode #popup {
 
 .hud-bar-tag {
   color: #bfae87;
-  flex: 0 0 26px;
-  font-size: 9px;
+  flex: 0 0 30px;
+  font-size: 11px;
   letter-spacing: 1px;
   text-shadow: 0 1px 1px #000;
 }
@@ -1012,7 +1033,7 @@ body.game-mode #popup {
 .hud-bar-num {
   color: #d8ccb0;
   flex: 0 0 auto;
-  font-size: 9px;
+  font-size: 11px;
   text-shadow: 0 1px 1px #000;
 }
 
@@ -1020,9 +1041,9 @@ body.game-mode #popup {
 
 .hud-corner {
   position: absolute;
-  right: 8px;
+  right: calc(8px + env(safe-area-inset-right));
   text-align: right;
-  top: 176px;
+  top: calc(176px + env(safe-area-inset-top));
 }
 
 .hud-region {
@@ -1084,8 +1105,8 @@ body.game-mode #popup {
 
 .hud-minimap-wrap {
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: calc(8px + env(safe-area-inset-right));
+  top: calc(8px + env(safe-area-inset-top));
 }
 
 .hud-minimap {
@@ -1117,7 +1138,7 @@ body.game-mode #popup {
 
 .hud-target-dist {
   color: #b3a37e;
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 4px;
   text-align: right;
 }
@@ -1125,7 +1146,7 @@ body.game-mode #popup {
 /* Skill bar (quickslots) */
 
 .hud-skillbar {
-  bottom: 108px;
+  bottom: calc(108px + env(safe-area-inset-bottom));
   display: flex;
   gap: 6px;
   justify-content: center;
@@ -1163,7 +1184,7 @@ body.game-mode #popup {
   background: rgba(0, 0, 0, 0.65);
   border-radius: 3px;
   color: #d9b45c;
-  font-size: 9px;
+  font-size: 11px;
   left: 3px;
   padding: 0 3px;
   position: absolute;
@@ -1191,7 +1212,7 @@ body.game-mode #popup {
   border-radius: 3px;
   bottom: 3px;
   color: #ffd54f;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   position: absolute;
   right: 3px;
@@ -1232,7 +1253,7 @@ body.game-mode #popup {
 }
 
 .hud-log {
-  bottom: 168px;
+  bottom: calc(168px + env(safe-area-inset-bottom));
   color: #efe4c8;
   font-size: 12px;
   left: 12px;
@@ -1269,7 +1290,7 @@ body.game-mode #popup {
   background: radial-gradient(circle, rgba(232, 211, 160, 0.06) 0%, rgba(20, 16, 12, 0.35) 70%);
   border: 1px solid rgba(217, 180, 92, 0.4);
   border-radius: 50%;
-  bottom: 26px;
+  bottom: calc(26px + env(safe-area-inset-bottom));
   height: 116px;
   left: 22px;
   position: absolute;
@@ -1293,7 +1314,7 @@ body.game-mode #popup {
 /* Action buttons */
 
 .hud-actions {
-  bottom: 34px;
+  bottom: calc(34px + env(safe-area-inset-bottom));
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(2, 64px);
@@ -1397,10 +1418,22 @@ body.game-mode #popup {
   width: 100vw;
   max-height: 62vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 10px 12px calc(12px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.shop-sheet > .quest-close-btn,
+.shop-sheet > .party-close-btn,
+.shop-sheet > .wh-close-btn,
+.shop-sheet > .tp-close-btn {
+  position: sticky;
+  bottom: 0;
+  flex-shrink: 0;
+  background-color: #241c11;
+  margin-top: 4px;
 }
 .shop-tabs {
   display: flex;
@@ -1444,7 +1477,7 @@ body.game-mode #popup {
 .shop-cell i {
   display: block;
   font-style: normal;
-  font-size: 8px;
+  font-size: 11px;
   color: #d8ccb0;
   max-width: 100%;
   overflow: hidden;
@@ -1454,7 +1487,7 @@ body.game-mode #popup {
 .shop-cell u {
   display: block;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 11px;
   color: #f4d67c;
 }
 .shop-cell em {
@@ -1462,7 +1495,7 @@ body.game-mode #popup {
   top: 2px;
   right: 4px;
   font-style: normal;
-  font-size: 10px;
+  font-size: 11px;
   color: #fff;
   text-shadow: 0 1px 2px #000;
 }
@@ -1490,6 +1523,7 @@ body.game-mode #popup {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
+  padding-bottom: 60px;
 }
 .quest-card {
   background: rgba(20, 14, 8, 0.72);
@@ -1517,7 +1551,7 @@ body.game-mode #popup {
 }
 .quest-rewards {
   color: #c9b98e;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
 }
 .quest-actions {
@@ -1543,6 +1577,7 @@ body.game-mode #popup {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
+  padding-bottom: 60px;
 }
 .tp-row {
   display: flex;
@@ -1562,6 +1597,7 @@ body.game-mode #popup {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
+  padding-bottom: 60px;
 }
 .party-row {
   display: flex;
@@ -1579,6 +1615,7 @@ body.game-mode #popup {
 }
 .party-name small {
   color: #f4d67c;
+  font-size: 11px;
   margin-left: 6px;
 }
 .party-section {
@@ -1622,7 +1659,7 @@ body.game-mode #popup {
 .wh-cell i {
   display: block;
   font-style: normal;
-  font-size: 8px;
+  font-size: 11px;
   color: #d8ccb0;
   max-width: 100%;
   overflow: hidden;
@@ -1634,7 +1671,7 @@ body.game-mode #popup {
   top: 2px;
   right: 4px;
   font-style: normal;
-  font-size: 10px;
+  font-size: 11px;
   color: #fff;
   text-shadow: 0 1px 2px #000;
 }
@@ -1653,7 +1690,7 @@ body.game-mode #popup {
 }
 .hud-tracker-title {
   color: #e8c874;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 2px;
@@ -1817,7 +1854,7 @@ body.game-mode #popup {
   border-radius: 4px;
   bottom: 1px;
   color: #f0e6d2;
-  font-size: 10px;
+  font-size: 11px;
   padding: 0 3px;
   position: absolute;
   right: 2px;
@@ -1871,15 +1908,15 @@ body.game-mode #popup {
 }
 @media (max-width: 640px) {
   .hud-skillbar {
-    bottom: 150px;
+    bottom: calc(150px + env(safe-area-inset-bottom));
   }
 
   .hud-log {
-    bottom: 210px;
+    bottom: calc(210px + env(safe-area-inset-bottom));
   }
 
   .hud-corner {
-    top: 104px;
+    top: calc(104px + env(safe-area-inset-top));
   }
 
   .hud-minimap {
@@ -1888,7 +1925,9 @@ body.game-mode #popup {
   }
 
   .hud-target {
-    width: 200px;
+    left: 8px;
+    transform: none;
+    width: min(200px, calc(100vw - 130px));
   }
 }
 
@@ -2040,4 +2079,60 @@ body.game-mode #popup {
 .cv-bar .game-btn-sm {
   padding: 6px 14px;
   font-size: 12px;
+}
+
+/* --- Landscape HUD compaction (must come after base HUD rules) --- */
+
+/* Compact HUD for short landscape heights (1080p+ phones in landscape) */
+@media (max-height: 430px) {
+  .hud-minimap-wrap {
+    transform: scale(0.72);
+    transform-origin: top right;
+  }
+
+  .hud-corner {
+    top: calc(128px + env(safe-area-inset-top));
+  }
+
+  .hud-sysbtn {
+    height: 42px;
+    padding: 6px;
+    width: 42px;
+  }
+
+  .hud-region {
+    font-size: 11px;
+  }
+
+  .hud-gold-row {
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  .hud-corner-btns {
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .hud-log {
+    bottom: calc(62px + env(safe-area-inset-bottom));
+    font-size: 11px;
+    left: 50%;
+    max-height: 40px;
+    max-width: 44vw;
+    overflow: hidden;
+    transform: translateX(-50%);
+  }
+
+  .hud-log-line {
+    margin-top: 2px;
+    padding: 2px 6px;
+  }
+}
+
+/* Keep the target frame clear of the player plate on narrow landscape widths */
+@media (max-width: 860px) {
+  .hud-target {
+    top: 132px;
+  }
 }

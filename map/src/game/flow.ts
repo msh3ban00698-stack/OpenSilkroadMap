@@ -12,7 +12,9 @@ import { GameWorld } from "./game3d";
 import { TouchControls } from "./player_control";
 import { buildHud, type Hud, type HudWorldState } from "./hud";
 import { buildInventoryPanel, type InventoryPanel } from "./inventory_panel";
-import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL, START_REGION, START_REGION_NAME } from "./game_data";
+import { getClassStats, HP_PER_LEVEL, MP_PER_LEVEL } from "./game_data";
+import { REGIONS, regionById, START_REGION as START_REGION_DEF, type RegionDef } from "./regions";
+import { regionForPad, type TeleportPad } from "./teleport_data";
 import { getItem, isEquippable } from "./items";
 import type { EquipSlot, GameCharacter } from "./types";
 
@@ -45,6 +47,7 @@ class GameFlow {
   private controls: TouchControls | null = null;
   private hud: Hud | null = null;
   private currentChar: GameCharacter | null = null;
+  private currentRegion: RegionDef = START_REGION_DEF;
   private pauseOverlay: HTMLElement | null = null;
   private inventory: InventoryPanel | null = null;
 
@@ -72,6 +75,7 @@ class GameFlow {
         this.showSelect();
       },
     });
+    this.installAuditHook();
   }
 
   private checkName(name: string): string | null {
@@ -156,23 +160,12 @@ class GameFlow {
 
   private async enterWorld(char: GameCharacter): Promise<void> {
     this.menuRoot.style.display = "block";
-    this.screens.renderLoading(`Loading ${START_REGION_NAME} (region ${START_REGION})...`);
+    const entryRegion = REGIONS.some((r) => r.id === char.region) ? regionById(char.region) : START_REGION_DEF;
+    this.screens.renderLoading(`Loading ${entryRegion.name} (region ${entryRegion.id})...`);
     this.worldContainer.style.display = "none";
 
     try {
-      const assets = await RegionLoader.load(START_REGION);
-      this.screens.setLoadingMessage("Building world...");
-      await new Promise((r) => setTimeout(r, 100));
-
-      this.menuRoot.style.display = "none";
-      this.worldContainer.style.display = "block";
-
-      const persist = (): void => {
-        if (this.currentChar) {
-          this.recomputeStats(this.currentChar);
-          saveCharacter(this.currentChar);
-        }
-      };
+      const persist = (): void => this.persistCurrent();
 
       this.hud = buildHud({
         character: char,
@@ -187,40 +180,15 @@ class GameFlow {
           this.hud?.showLevelUp(level);
         },
         onCharacterMutated: () => persist(),
-        onOpenParty: () => {
-          void import("./party_panel").then(({ openPartyPanel }) => {
-            openPartyPanel(this.hud!.root, {
-              root: this.hud!.root,
-              character: char,
-              onMutate: () => {
-                persist();
-                this.inventory?.refresh();
-              },
-              log: (msg) => this.hud?.log(msg),
-              onHire: (def) => this.world?.hireCompanion(def) ?? false,
-              onDismiss: (code) => this.world?.dismissCompanion(code) ?? false,
-            });
-          });
-        },
-        onOpenWarehouse: () => {
-          void import("./warehouse_panel").then(({ openWarehousePanel }) => {
-            openWarehousePanel(this.hud!.root, {
-              root: this.hud!.root,
-              character: char,
-              onMutate: () => {
-                persist();
-                this.inventory?.refresh();
-              },
-              log: (msg) => this.hud?.log(msg),
-            });
-          });
-        },
+        onOpenParty: () => this.openPartyPanel(),
+        onOpenWarehouse: () => this.openWarehousePanel(),
         getNpcPos: (npcCode) => {
           if (!this.world) return null;
           const st = this.world.getState() as unknown as HudWorldState;
           const n = st.npcs.find((p) => p.id === npcCode);
           return n ? { x: n.x, z: n.z } : null;
         },
+        getCamps: () => this.world?.getCamps() ?? [],
         getState: () => (this.world ? (this.world.getState() as unknown as HudWorldState) : emptyState),
       });
       document.getElementById("game-root")!.appendChild(this.hud.root);
@@ -239,44 +207,20 @@ class GameFlow {
         onClose: () => this.closeInventory(),
       });
 
-      this.world = new GameWorld({
-        container: this.worldContainer,
-        character: char,
-        assets,
-        onLog: (msg) => this.hud?.log(msg),
-        onInteractNpc: (npc) => {
-          void import("./quest_runtime").then(({ onNpcTalked }) => {
-            if (onNpcTalked(char, npc.name, (msg) => this.hud?.log(msg))) persist();
-          });
-          this.hud?.showNpcDialog(npc);
-        },
-        onInteractGate: (gate) => this.showTeleportPanel(gate),
-        onMobKilled: (mobCode) => {
-          void import("./quest_runtime").then(({ onMobKilled }) => {
-            if (onMobKilled(char, mobCode, (msg) => this.hud?.log(msg))) {
-              persist();
-            }
-          });
-        },
-        onCharacterMutated: persist,
-      });
-      this.world.resize();
-
-      this.controls = new TouchControls({
-        container: this.worldContainer,
-        joystickBase: this.hud.joystickBase,
-        joystickKnob: this.hud.joystickKnob,
-        onMove: (x, z) => this.world?.setMovement(x, z),
-        onRotate: (dx, dy) => this.world?.rotateCamera(dx, dy),
-        onSelect: (clientX, clientY) => this.world?.pick(clientX, clientY),
-      });
+      const arrival = this.currentRegion ? { x: char.position.x, z: char.position.z } : undefined;
+      await this.buildWorld(entryRegion, char, arrival);
+      this.currentRegion = entryRegion;
 
       window.addEventListener("resize", this.onResize);
+
+      this.menuRoot.style.display = "none";
+      this.worldContainer.style.display = "block";
+      this.world?.resize();
 
       char.lastPlayedAt = Date.now();
       saveCharacter(char);
 
-      this.hud.log(`Welcome to ${START_REGION}, ${char.name}.`);
+      this.hud.log(`Welcome to ${entryRegion.name}, ${char.name}.`);
       this.hud.log("Move with the left joystick; drag to look around; tap a target.");
     } catch (e) {
       console.error(e);
@@ -286,6 +230,73 @@ class GameFlow {
         "Back to Character Select",
       );
     }
+  }
+
+  // Rebuild the 3D world for a region. Keeps the existing HUD/inventory alive;
+  // used both for initial entry and for inter-region teleport travel.
+  private async buildWorld(region: RegionDef, char: GameCharacter, arrival?: { x: number; z: number }): Promise<void> {
+    this.screens.setLoadingMessage(`Loading ${region.name}...`);
+    this.teardownWorldScene();
+    const assets = await RegionLoader.load(region.id);
+    this.currentRegion = region;
+
+    this.world = new GameWorld({
+      container: this.worldContainer,
+      character: char,
+      assets,
+      region,
+      onLog: (msg) => this.hud?.log(msg),
+      onInteractNpc: (npc) => {
+        void import("./quest_runtime").then(({ onNpcTalked }) => {
+          if (onNpcTalked(char, npc.name, (msg) => this.hud?.log(msg))) {
+            if (this.currentChar) saveCharacter(this.currentChar);
+          }
+        });
+        this.hud?.showNpcDialog(npc);
+      },
+      onInteractGate: (gate) => this.showTeleportPanel(gate),
+      onMobKilled: (mobCode) => {
+        void import("./quest_runtime").then(({ onMobKilled }) => {
+          if (onMobKilled(char, mobCode, (msg) => this.hud?.log(msg))) {
+            if (this.currentChar) saveCharacter(this.currentChar);
+          }
+        });
+      },
+      onCharacterMutated: () => {
+        if (this.currentChar) {
+          this.recomputeStats(this.currentChar);
+          saveCharacter(this.currentChar);
+        }
+      },
+    });
+    this.world.resize();
+    if (arrival) {
+      this.world.teleportTo(arrival.x, arrival.z);
+    }
+
+    this.controls = new TouchControls({
+      container: this.worldContainer,
+      joystickBase: this.hud!.joystickBase,
+      joystickKnob: this.hud!.joystickKnob,
+      onMove: (x, z) => this.world?.setMovement(x, z),
+      onRotate: (dx, dy) => this.world?.rotateCamera(dx, dy),
+      onSelect: (clientX, clientY) => this.world?.pick(clientX, clientY),
+    });
+
+    if (this.currentChar) {
+      this.currentChar.region = region.id;
+      const p = this.world.getPlayerPos();
+      this.currentChar.position = { x: p.x, y: p.y, z: p.z };
+      saveCharacter(this.currentChar);
+    }
+  }
+
+  private teardownWorldScene(): void {
+    window.removeEventListener("resize", this.onResize);
+    this.controls?.dispose();
+    this.controls = null;
+    this.world?.dispose();
+    this.world = null;
   }
 
   private toggleInventory(): void {
@@ -299,29 +310,43 @@ class GameFlow {
   private showTeleportPanel(gate: { id: string | number; name: string; x: number; z: number }): void {
     if (!this.world) return;
     this.hud?.closeDialog();
-    void import("./teleport_data").then(async ({ loadTeleportPads }) => {
-      const pads = await loadTeleportPads();
+    void import("./teleport_data").then(async ({ loadTeleportPads, loadTownGates }) => {
+      const [regionPads, townGates] = await Promise.all([loadTeleportPads(this.currentRegion), loadTownGates()]);
       const pos = this.world!.getPlayerPos();
       void import("./teleport_panel").then(({ openTeleportPanel }) => {
         openTeleportPanel(this.hud!.root, {
           root: this.hud!.root,
-          pads,
+          pads: regionPads,
+          townGates,
           currentPadId: String(gate.id),
           playerPos: pos,
+          currentRegionId: this.currentRegion.id,
           onTravel: (pad) => this.travelTo(pad),
         });
       });
     });
   }
 
-  private async travelTo(pad: { name: string; x: number; z: number }): Promise<void> {
+  private async travelTo(pad: TeleportPad): Promise<void> {
     if (!this.world) return;
+    const destRegion = regionForPad(pad);
     this.hud?.closeDialog();
     this.menuRoot.style.display = "block";
     this.screens.renderLoading(`Traveling to ${pad.name}...`);
     this.worldContainer.style.display = "none";
     await new Promise((r) => setTimeout(r, 900));
-    this.world.teleportTo(pad.x, pad.z);
+
+    if (destRegion.id === this.currentRegion.id) {
+      this.world.teleportTo(pad.x, pad.z);
+    } else {
+      try {
+        await this.buildWorld(destRegion, this.currentChar!, { x: pad.x, z: pad.z });
+      } catch (e) {
+        console.error(e);
+        this.hud?.log("Travel failed — the destination region could not be loaded.");
+        this.world?.teleportTo(pad.x, pad.z);
+      }
+    }
     this.menuRoot.style.display = "none";
     this.worldContainer.style.display = "block";
     this.world.resize();
@@ -330,7 +355,7 @@ class GameFlow {
       this.currentChar.position = { x: p.x, y: p.y, z: p.z };
       saveCharacter(this.currentChar);
     }
-    this.hud?.log(`You arrive at ${pad.name}.`);
+    this.hud?.log(`You arrive at ${pad.name}, ${destRegion.name}.`);
   }
 
   private closeInventory(): void {
@@ -447,14 +472,135 @@ class GameFlow {
     }
   }
 
+  private persistCurrent(): void {
+    if (this.currentChar) {
+      this.recomputeStats(this.currentChar);
+      saveCharacter(this.currentChar);
+    }
+  }
+
+  private openPartyPanel(): void {
+    const char = this.currentChar;
+    if (!char || !this.hud) return;
+    void import("./party_panel").then(({ openPartyPanel }) => {
+      openPartyPanel(this.hud!.root, {
+        root: this.hud!.root,
+        character: char,
+        onMutate: () => {
+          this.persistCurrent();
+          this.inventory?.refresh();
+        },
+        log: (msg) => this.hud?.log(msg),
+        onHire: (def) => this.world?.hireCompanion(def) ?? false,
+        onDismiss: (code) => this.world?.dismissCompanion(code) ?? false,
+      });
+    });
+  }
+
+  private openWarehousePanel(): void {
+    const char = this.currentChar;
+    if (!char || !this.hud) return;
+    void import("./warehouse_panel").then(({ openWarehousePanel }) => {
+      openWarehousePanel(this.hud!.root, {
+        root: this.hud!.root,
+        character: char,
+        onMutate: () => {
+          this.persistCurrent();
+          this.inventory?.refresh();
+        },
+        log: (msg) => this.hud?.log(msg),
+      });
+    });
+  }
+
+  private installAuditHook(): void {
+    if (!new URLSearchParams(location.search).has("audit")) return;
+    const api: Record<string, unknown> = {
+      screen: (): string => {
+        if (this.worldContainer.style.display !== "none" && this.menuRoot.style.display === "none") return "world";
+        if (this.menuRoot.querySelector(".sro-login")) return "login";
+        if (this.menuRoot.querySelector("#ga-user")) return "create-account";
+        if (this.menuRoot.querySelector(".sro-select")) return "select";
+        if (this.menuRoot.querySelector(".sro-create")) return "create";
+        if (this.menuRoot.querySelector(".sro-loading")) return "loading";
+        if (this.menuRoot.querySelector(".sro-error")) return "error";
+        return "menu";
+      },
+      showLogin: (): void => this.showLogin(),
+      showSelect: (): void => this.showSelect(),
+      showCreate: (): void => this.showCreate(),
+      showCreateAccount: (): void => this.showCreateAccount(),
+      login: (u: string, p: string): Promise<void> => this.handleLogin(u, p),
+      createAccount: (u: string, p: string): Promise<void> => this.handleCreateAccount(u, p),
+      setup: async (username: string): Promise<{ account: boolean; chars: string[] }> => {
+        const res = await createAccount(username, "test1234");
+        if (loadCharacters().length === 0) {
+          createCharacter({
+            name: "Auditor",
+            classId: "warrior",
+            gender: "male",
+            skinTone: "#f5d0a9",
+            hairColor: "#1a1a1a",
+            outfitColor: "#8b0000",
+            kit: "kit_blade",
+          });
+        }
+        this.showSelect();
+        return { account: res.ok, chars: loadCharacters().map((c) => c.id) };
+      },
+      enter: (id: string): void => this.enterWith(id),
+      inventory: (): void => this.toggleInventory(),
+      inventoryOpen: (): boolean => this.inventory?.isOpen() ?? false,
+      pause: (): void => this.showPause(),
+      pauseOpen: (): boolean => this.pauseOverlay !== null,
+      npcDialog: (code: string): void => {
+        this.hud?.showNpcDialog({ id: code, name: code, x: 0, z: 0, code });
+      },
+      closeDialog: (): void => this.hud?.closeDialog(),
+      shop: (code: string): void => {
+        const char = this.currentChar;
+        if (!char || !this.hud) return;
+        void import("./shop_panel").then(({ openShop }) =>
+          openShop(this.hud!.root, {
+            npcCode: code,
+            npcName: code,
+            character: char,
+            onMutate: () => this.persistCurrent(),
+            log: (msg) => this.hud?.log(msg),
+          }),
+        );
+      },
+      quest: (code: string): void => {
+        const char = this.currentChar;
+        if (!char || !this.hud) return;
+        void import("./quest_runtime").then(({ openQuestPanel }) =>
+          openQuestPanel(this.hud!.root, {
+            root: this.hud!.root,
+            character: char,
+            onMutate: () => this.persistCurrent(),
+            log: (msg) => this.hud?.log(msg),
+            npcCode: code,
+            npcName: code,
+            getNpcPos: () => null,
+            camps: [],
+          }),
+        );
+      },
+      party: (): void => this.openPartyPanel(),
+      warehouse: (): void => this.openWarehousePanel(),
+      teleport: (): void => {
+        if (!this.world) return;
+        this.showTeleportPanel({ id: "audit", name: "Audit Gate", x: 0, z: 0 });
+      },
+      worldState: (): unknown => this.world?.getState() ?? null,
+    };
+    (globalThis as { __sroAudit?: Record<string, unknown> }).__sroAudit = api;
+  }
+
   private teardownWorld(): void {
     this.hidePause();
     this.closeInventory();
-    window.removeEventListener("resize", this.onResize);
-    this.controls?.dispose();
-    this.controls = null;
-    this.world?.dispose();
-    this.world = null;
+    this.teardownWorldScene();
     this.hud?.dispose();
     this.hud = null;
     this.inventory?.dispose();
