@@ -310,21 +310,25 @@ class GameFlow {
   private showTeleportPanel(gate: { id: string | number; name: string; x: number; z: number }): void {
     if (!this.world) return;
     this.hud?.closeDialog();
-    void import("./teleport_data").then(async ({ loadTeleportPads, loadTownGates }) => {
-      const [regionPads, townGates] = await Promise.all([loadTeleportPads(this.currentRegion), loadTownGates()]);
-      const pos = this.world!.getPlayerPos();
-      void import("./teleport_panel").then(({ openTeleportPanel }) => {
-        openTeleportPanel(this.hud!.root, {
-          root: this.hud!.root,
-          pads: regionPads,
-          townGates,
-          currentPadId: String(gate.id),
-          playerPos: pos,
-          currentRegionId: this.currentRegion.id,
-          onTravel: (pad) => this.travelTo(pad),
+    void import("./teleport_data")
+      .then(async ({ loadTeleportPads, loadTownGates }) => {
+        const [regionPads, townGates] = await Promise.all([loadTeleportPads(this.currentRegion), loadTownGates()]);
+        const pos = this.world!.getPlayerPos();
+        void import("./teleport_panel").then(({ openTeleportPanel }) => {
+          openTeleportPanel(this.hud!.root, {
+            root: this.hud!.root,
+            pads: regionPads,
+            townGates,
+            currentPadId: String(gate.id),
+            playerPos: pos,
+            currentRegionId: this.currentRegion.id,
+            onTravel: (pad) => this.travelTo(pad),
+          });
         });
+      })
+      .catch(() => {
+        this.hud?.log("Teleport data unavailable.");
       });
-    });
   }
 
   private async travelTo(pad: TeleportPad): Promise<void> {

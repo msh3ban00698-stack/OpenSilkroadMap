@@ -117,10 +117,14 @@ let shopCache: Record<string, NpcShop> | null = null;
 
 export async function loadShops(): Promise<Record<string, NpcShop>> {
   if (shopCache) return shopCache;
-  const raw = await fetch("/assets/gamedata/shops.json").then(
-    (r) => r.json() as Promise<Record<string, { shop: string; tabs: ShopTab[] }>>,
-  );
-  shopCache = raw as Record<string, NpcShop>;
+  try {
+    const raw = await fetch("/assets/gamedata/shops.json").then(
+      (r) => r.json() as Promise<Record<string, { shop: string; tabs: ShopTab[] }>>,
+    );
+    shopCache = raw as Record<string, NpcShop>;
+  } catch {
+    shopCache = {};
+  }
   return shopCache;
 }
 
@@ -143,7 +147,12 @@ export async function loadItemInfo(
 > {
   const missing = codes.filter((c) => !itemInfoCache[c]);
   if (missing.length) {
-    const all = await fetch("/assets/gamedata/items.json").then((r) => r.json());
+    let all: Record<string, any> = {};
+    try {
+      all = await fetch("/assets/gamedata/items.json").then((r) => r.json());
+    } catch {
+      all = {};
+    }
     for (const c of Object.keys(all)) {
       const it = all[c];
       itemInfoCache[c] = {

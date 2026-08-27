@@ -17,9 +17,11 @@ export interface QuestPanelOpts {
 
 const campCache = new Map<string, string>();
 const questByCode = new Map<string, QuestDef>();
-loadQuests().then((defs) => {
-  for (const d of defs) questByCode.set(d.code, d);
-});
+loadQuests()
+  .then((defs) => {
+    for (const d of defs) questByCode.set(d.code, d);
+  })
+  .catch(() => {});
 
 function ensureQuestFields(char: GameCharacter): {
   questLog: NonNullable<GameCharacter["questLog"]>;
@@ -34,7 +36,7 @@ export async function questsForNpc(
   char: GameCharacter,
   npcCode: string,
 ): Promise<{ available: QuestDef[]; completable: QuestDef[]; active: QuestDef[] }> {
-  const all = await loadQuests();
+  const all = await loadQuests().catch(() => []);
   const { questLog, questsDone } = ensureQuestFields(char);
   const done = new Set(questsDone);
   const activeMap = new Map(questLog.map((p) => [p.code, p.progress]));

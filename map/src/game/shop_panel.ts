@@ -1,5 +1,5 @@
 import type { GameCharacter } from "./types";
-import { loadShops, loadItemInfo } from "./world_npcs";
+import { loadShops, loadItemInfo, type NpcShop } from "./world_npcs";
 import { registerAuthenticItem, authenticItemDef } from "./items";
 
 export interface ShopHandle {
@@ -22,7 +22,12 @@ interface Info {
 
 export async function openShop(root: HTMLElement, opts: ShopOptions): Promise<ShopHandle> {
   root.querySelectorAll(":scope > .shop-panel").forEach((el) => el.remove());
-  const shops = await loadShops();
+  let shops: Record<string, NpcShop> = {};
+  try {
+    shops = await loadShops();
+  } catch {
+    shops = {};
+  }
   const entry = shops[opts.npcCode];
   const panel = document.createElement("div");
   panel.className = "sro-window shop-panel";

@@ -444,17 +444,21 @@ export function buildHud(opts: HudOptions): Hud {
     actions.appendChild(closeBtn);
     root.appendChild(dlg);
     dialogRoot = dlg;
-    void import("./world_npcs").then(async ({ loadShops }) => {
-      const shops = await loadShops();
-      if (!shops[npc.code || ""]) {
-        shopBtn.style.display = "none";
-      }
-    });
-    void import("./quest_runtime").then(async ({ hasQuestActions }) => {
-      if (npc.code && (await hasQuestActions(opts.character, npc.code))) {
-        questBtn.style.display = "";
-      }
-    });
+    void import("./world_npcs")
+      .then(async ({ loadShops }) => {
+        const shops = await loadShops();
+        if (!shops[npc.code || ""]) {
+          shopBtn.style.display = "none";
+        }
+      })
+      .catch(() => {});
+    void import("./quest_runtime")
+      .then(async ({ hasQuestActions }) => {
+        if (npc.code && (await hasQuestActions(opts.character, npc.code))) {
+          questBtn.style.display = "";
+        }
+      })
+      .catch(() => {});
   };
 
   const closeDialog = (): void => {

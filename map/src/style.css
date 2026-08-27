@@ -10,6 +10,50 @@
   padding: 0;
 }
 
+/* ---------------------------------------------------------------------------
+   Responsive design tokens - single source of truth for viewport geometry.
+   Game UI sizes are keyed to viewport height (vh) so everything re-flows
+   across small/large landscape phones, tablets and desktop windows without
+   any transform-scale or zoom hacks.
+   --------------------------------------------------------------------------- */
+:root {
+  /* Device-edge gutters (safe-area aware; handles landscape notches) */
+  --gx: max(10px, env(safe-area-inset-left, 0px));
+  --gx-r: max(10px, env(safe-area-inset-right, 0px));
+  --gy: max(8px, env(safe-area-inset-top, 0px));
+  --gy-b: max(10px, env(safe-area-inset-bottom, 0px));
+
+  /* Panels */
+  --panel-w: clamp(250px, 26vw, 340px);
+  --sheet-w: min(94vw, 460px);
+  --modal-w: min(94vw, 560px);
+  --dialog-w: min(92vw, 400px);
+  --sheet-h: min(76dvh, 620px);
+  --modal-h: min(92dvh, 660px);
+
+  /* HUD player plate + bars */
+  --plate-w: clamp(220px, 27vw, 320px);
+  --plate-h: clamp(56px, 12vh, 84px);
+  --bar-h: clamp(9px, 1.9vh, 14px);
+
+  /* Controls */
+  --ctl-lg: clamp(48px, 9vh, 64px);
+  --ctl-md: clamp(44px, 8.4vh, 54px);
+  --ctl-sm: clamp(36px, 7vh, 44px);
+  --ctl-xs: clamp(30px, 5.8vh, 38px);
+  --joy-d: clamp(96px, 18vh, 128px);
+  --joy-k: clamp(40px, 7.4vh, 54px);
+  --minimap-d: clamp(84px, 22vw, 120px);
+
+  /* Space reserved under the skillbar for the joystick + action buttons */
+  --hud-bottom-zone: calc(var(--gy-b) + var(--joy-d));
+
+  /* Typography */
+  --txt-xs: clamp(10px, 2vh, 12px);
+  --txt-sm: clamp(11px, 2.1vh, 13px);
+  --txt-md: clamp(12px, 2.3vh, 15px);
+}
+
 body {
   height: 100vh;
   height: 100dvh;
@@ -32,14 +76,20 @@ body {
 }
 
 .layer-panel {
-  @apply left-4 top-4 p-4 w-80;
-  max-height: calc(100vh - 32px);
+  @apply p-4;
+  left: var(--gx);
+  max-height: calc(100dvh - 2 * var(--gy));
   overflow-y: auto;
+  top: var(--gy);
+  width: var(--panel-w);
 }
 
 .history-panel {
-  @apply p-4 right-4 top-4 w-80;
-  max-height: calc(100vh - 32px);
+  @apply p-4;
+  max-height: calc(100dvh - 2 * var(--gy));
+  right: var(--gx-r);
+  top: var(--gy);
+  width: var(--panel-w);
 }
 
 #history-toggle.collapsed + #history-body {
@@ -130,7 +180,7 @@ body {
     0 6px 10px 0 rgba(0, 0, 0, 0.14),
     0 1px 18px 0 rgba(0, 0, 0, 0.12);
   left: -50px;
-  min-width: 220px;
+  min-width: min(220px, 72vw);
   padding: 16px;
   position: absolute;
   z-index: 100;
@@ -183,7 +233,7 @@ body {
 }
 
 #search-results {
-  max-height: 80vh;
+  max-height: min(70vh, 480px);
 }
 
 #search-results details {
@@ -355,12 +405,12 @@ body.game-mode #popup {
 .sro-logo {
   color: transparent;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 44px;
+  font-size: clamp(30px, 6.5vw, 46px);
   font-weight: 700;
-  letter-spacing: 14px;
-  margin: 34px auto 0;
+  letter-spacing: clamp(8px, 2vw, 14px);
+  margin: clamp(16px, 5vh, 34px) auto 0;
   position: relative;
-  text-indent: 14px;
+  text-indent: clamp(8px, 2vw, 14px);
   z-index: 2;
   background: linear-gradient(180deg, #f4e3b0 15%, #d9b45c 45%, #8a6420 80%);
   -webkit-background-clip: text;
@@ -369,10 +419,10 @@ body.game-mode #popup {
 }
 
 .sro-logo-sm {
-  font-size: 26px;
-  letter-spacing: 9px;
-  margin-top: 20px;
-  text-indent: 9px;
+  font-size: clamp(20px, 4.2vw, 26px);
+  letter-spacing: clamp(6px, 1.4vw, 9px);
+  margin-top: clamp(10px, 3vh, 20px);
+  text-indent: clamp(6px, 1.4vw, 9px);
 }
 
 /* --- Windows (authentic nine-patch frame) --- */
@@ -388,9 +438,9 @@ body.game-mode #popup {
 .sro-window-title {
   color: #ecd9a8;
   font-family: Georgia, serif;
-  font-size: 17px;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
+  font-size: clamp(14px, 2.4vh, 17px);
+  letter-spacing: clamp(2px, 0.5vh, 3px);
+  margin-bottom: clamp(4px, 1.2vh, 10px);
   text-align: center;
   text-shadow: 0 1px 2px #000;
 }
@@ -410,15 +460,15 @@ body.game-mode #popup {
 .sro-center-panel {
   align-self: center;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
-  margin-top: 12vh;
-  max-width: 330px;
-  width: min(88vw, 330px);
+  margin-top: clamp(6vh, 11vh, 14vh);
+  max-width: 340px;
+  width: min(88vw, 340px);
 }
 
 /* --- Fields & buttons --- */
 
 .sro-field {
-  margin-bottom: 12px;
+  margin-bottom: clamp(6px, 1.2vh, 10px);
 }
 
 .sro-field label {
@@ -549,41 +599,6 @@ body.game-mode #popup {
   min-height: 0;
 }
 
-@media (min-width: 700px) and (orientation: landscape) {
-  .sro-split {
-    align-items: stretch;
-    flex-direction: row;
-    padding: 24px 4vw 32px;
-  }
-
-  .sro-list-panel {
-    flex: 0 0 320px;
-  }
-
-  .sro-preview-panel {
-    flex: 1;
-  }
-
-  /* Create character: form scrolls on the left, preview + actions on the right */
-  .sro-split-create {
-    flex-direction: row;
-  }
-
-  .sro-form-panel {
-    flex: 1 1 60%;
-    min-width: 0;
-  }
-
-  .sro-preview-col {
-    flex: 0 0 40%;
-    min-width: 0;
-  }
-
-  .sro-preview-tall {
-    min-height: 0;
-  }
-}
-
 .sro-char-list {
   display: flex;
   flex-direction: column;
@@ -616,9 +631,9 @@ body.game-mode #popup {
 .sro-char-face {
   background: #000;
   border: 1px solid #57431f;
-  height: 44px;
+  height: var(--ctl-sm);
   image-rendering: pixelated;
-  width: 44px;
+  width: var(--ctl-sm);
 }
 
 .sro-char-info {
@@ -648,8 +663,8 @@ body.game-mode #popup {
   color: #a08a5e;
   cursor: pointer;
   font-size: 16px;
-  height: 44px;
-  width: 44px;
+  height: var(--ctl-sm);
+  width: var(--ctl-sm);
 }
 
 .sro-iconbtn:hover {
@@ -670,8 +685,8 @@ body.game-mode #popup {
   border: 1px solid rgba(217, 180, 92, 0.28);
   border-radius: 6px;
   display: flex;
-  height: 34vh;
-  min-height: 220px;
+  height: clamp(200px, 34vh, 46vh);
+  min-height: 0;
   overflow: hidden;
   position: relative;
 }
@@ -720,7 +735,7 @@ body.game-mode #popup {
 .sro-preview-tall {
   flex: 1;
   height: auto;
-  min-height: 200px;
+  min-height: clamp(150px, 28vh, 300px);
 }
 
 @media (max-width: 699px) {
@@ -742,6 +757,80 @@ body.game-mode #popup {
   flex: 1;
 }
 
+@media (min-width: 700px) and (orientation: landscape) {
+  .sro-split {
+    align-items: stretch;
+    flex-direction: row;
+    padding: clamp(12px, 2.6vh, 24px) 3vw clamp(16px, 3.4vh, 32px);
+  }
+
+  .sro-list-panel {
+    flex: 0 0 var(--panel-w);
+  }
+
+  .sro-preview-panel {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* Create character: form on the left, preview + actions on the right */
+  .sro-split-create {
+    flex-direction: row;
+  }
+
+  .sro-form-panel {
+    flex: 1 1 58%;
+    min-width: 0;
+  }
+
+  .sro-preview-col {
+    flex: 0 0 42%;
+    min-width: 0;
+  }
+
+  .sro-preview-tall {
+    min-height: 0;
+  }
+
+  /* Compact the create form so name/class/kit/gender/colors all fit above the fold */
+  .sro-split-create .sro-form-scroll {
+    gap: 0;
+  }
+
+  .sro-split-create .sro-field {
+    margin-bottom: clamp(5px, 1vh, 8px);
+  }
+
+  .sro-split-create .sro-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .sro-split-create label {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .sro-split-create .sro-options {
+    gap: 4px;
+  }
+
+  .sro-split-create .sro-option {
+    min-height: 40px;
+    padding: 6px 10px;
+  }
+
+  .sro-split-create .sro-seg {
+    min-height: 40px;
+    padding: 6px 8px;
+  }
+
+  .sro-split-create .sro-color {
+    height: 38px;
+    width: 38px;
+  }
+}
+
 .sro-row {
   display: flex;
   gap: 8px;
@@ -755,9 +844,9 @@ body.game-mode #popup {
   color: #cdbf9c;
   cursor: pointer;
   flex: 1;
-  font-size: 14px;
-  min-height: 44px;
-  padding: 11px 8px;
+  font-size: var(--txt-sm);
+  min-height: var(--ctl-sm);
+  padding: 8px 10px;
   user-select: none;
 }
 
@@ -769,9 +858,9 @@ body.game-mode #popup {
 }
 
 .sro-options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 168px), 1fr));
 }
 
 .sro-option {
@@ -783,7 +872,9 @@ body.game-mode #popup {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 9px 12px;
+  justify-content: center;
+  min-height: var(--ctl-sm);
+  padding: clamp(7px, 1.3vh, 12px) 12px;
   text-align: left;
   user-select: none;
 }
@@ -795,8 +886,11 @@ body.game-mode #popup {
 
 .sro-option-name {
   color: #f2e2b8;
-  font-size: 14px;
+  font-size: var(--txt-sm);
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sro-option.active .sro-option-name {
@@ -805,7 +899,8 @@ body.game-mode #popup {
 
 .sro-option-desc {
   color: #a3946f;
-  font-size: 11px;
+  font-size: var(--txt-xs);
+  line-height: 1.35;
 }
 
 .sro-color {
@@ -813,13 +908,40 @@ body.game-mode #popup {
   border: 2px solid #3a2c18;
   border-radius: 50%;
   cursor: pointer;
-  height: 44px;
-  width: 44px;
+  height: var(--ctl-xs);
+  width: var(--ctl-xs);
 }
 
 .sro-color.active {
   border-color: #ffe9c4;
   box-shadow: 0 0 8px rgba(255, 233, 196, 0.5);
+}
+
+.sro-color-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.6vw, 16px);
+}
+
+.sro-color-group {
+  display: flex;
+  flex: 1 1 180px;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sro-color-name {
+  color: #9a8a70;
+  font-size: var(--txt-xs);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 699px) {
+  .sro-color-group {
+    flex-basis: 100%;
+  }
 }
 
 /* --- Loading screen --- */
@@ -852,9 +974,9 @@ body.game-mode #popup {
   background: rgba(10, 8, 6, 0.8);
   border: 1px solid #57431f;
   border-radius: 3px;
-  height: 14px;
+  height: clamp(12px, 2.4vh, 16px);
   margin: 0 auto;
-  max-width: 420px;
+  max-width: min(420px, 72vw);
   overflow: hidden;
   padding: 2px;
 }
@@ -916,26 +1038,25 @@ body.game-mode #popup {
   background: url("img/silkroad/ui/hud_pmi_window.png") no-repeat center / 100% 100%;
   display: flex;
   gap: 6px;
-  left: calc(8px + env(safe-area-inset-left));
-  max-width: 300px;
-  min-height: 76px;
-  padding: 8px 10px 8px 56px;
+  left: var(--gx);
+  min-height: var(--plate-h);
+  padding: clamp(6px, 1.2vh, 9px) 10px clamp(6px, 1.2vh, 9px) clamp(46px, 10vh, 62px);
   position: absolute;
-  top: calc(8px + env(safe-area-inset-top));
-  width: calc(100vw - 150px);
+  top: var(--gy);
+  width: min(var(--plate-w), calc(100vw - var(--minimap-d) - var(--gx) - var(--gx-r) - 24px));
 }
 
 .hud-portrait {
   border: 1px solid #57431f;
   box-shadow: 0 0 0 1px #000;
-  height: 48px;
+  height: clamp(40px, 7.6vh, 52px);
   image-rendering: pixelated;
-  left: 10px;
+  left: clamp(8px, 1.4vh, 12px);
   object-fit: cover;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
+  width: clamp(40px, 7.6vh, 52px);
 }
 
 .hud-plate-main {
@@ -990,7 +1111,7 @@ body.game-mode #popup {
   border: 1px solid #00000088;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
   flex: 1;
-  height: 12px;
+  height: var(--bar-h);
   max-width: 148px;
   position: relative;
 }
@@ -1041,9 +1162,9 @@ body.game-mode #popup {
 
 .hud-corner {
   position: absolute;
-  right: calc(8px + env(safe-area-inset-right));
+  right: var(--gx-r);
   text-align: right;
-  top: calc(176px + env(safe-area-inset-top));
+  top: calc(var(--gy) + var(--minimap-d) + 12px);
 }
 
 .hud-region {
@@ -1086,9 +1207,9 @@ body.game-mode #popup {
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
-  height: 44px;
-  padding: 7px;
-  width: 44px;
+  height: var(--ctl-sm);
+  padding: clamp(5px, 1vh, 8px);
+  width: var(--ctl-sm);
 }
 
 .hud-sysbtn:hover {
@@ -1105,12 +1226,14 @@ body.game-mode #popup {
 
 .hud-minimap-wrap {
   position: absolute;
-  right: calc(8px + env(safe-area-inset-right));
-  top: calc(8px + env(safe-area-inset-top));
+  right: var(--gx-r);
+  top: var(--gy);
 }
 
 .hud-minimap {
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+  height: var(--minimap-d);
+  width: var(--minimap-d);
 }
 
 /* Target frame */
@@ -1122,9 +1245,9 @@ body.game-mode #popup {
   left: 50%;
   padding: 8px 12px;
   position: absolute;
-  top: 96px;
+  top: calc(var(--gy) + var(--plate-h) + 12px);
   transform: translateX(-50%);
-  width: 240px;
+  width: clamp(180px, 24vw, 260px);
 }
 
 .hud-target-name {
@@ -1146,9 +1269,9 @@ body.game-mode #popup {
 /* Skill bar (quickslots) */
 
 .hud-skillbar {
-  bottom: calc(108px + env(safe-area-inset-bottom));
+  bottom: calc(var(--hud-bottom-zone) + 6px);
   display: flex;
-  gap: 6px;
+  gap: clamp(4px, 0.8vh, 8px);
   justify-content: center;
   left: 0;
   position: absolute;
@@ -1164,12 +1287,12 @@ body.game-mode #popup {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
   color: #e8dcc0;
   cursor: pointer;
-  font-size: 12px;
-  height: 54px;
-  padding: 4px;
+  font-size: var(--txt-xs);
+  height: var(--ctl-md);
+  padding: 3px;
   position: relative;
   text-shadow: 0 1px 2px #000;
-  width: 54px;
+  width: var(--ctl-md);
 }
 
 .hud-slot:active {
@@ -1253,11 +1376,11 @@ body.game-mode #popup {
 }
 
 .hud-log {
-  bottom: calc(168px + env(safe-area-inset-bottom));
+  bottom: calc(var(--hud-bottom-zone) + var(--ctl-md) + 12px);
   color: #efe4c8;
-  font-size: 12px;
-  left: 12px;
-  max-width: 62vw;
+  font-size: var(--txt-xs);
+  left: var(--gx);
+  max-width: min(62vw, 560px);
   pointer-events: none !important;
   position: absolute;
   text-shadow: 0 1px 2px #000;
@@ -1290,12 +1413,12 @@ body.game-mode #popup {
   background: radial-gradient(circle, rgba(232, 211, 160, 0.06) 0%, rgba(20, 16, 12, 0.35) 70%);
   border: 1px solid rgba(217, 180, 92, 0.4);
   border-radius: 50%;
-  bottom: calc(26px + env(safe-area-inset-bottom));
-  height: 116px;
-  left: 22px;
+  bottom: var(--gy-b);
+  height: var(--joy-d);
+  left: calc(var(--gx) + 8px);
   position: absolute;
   touch-action: none;
-  width: 116px;
+  width: var(--joy-d);
 }
 
 .hud-joystick-knob {
@@ -1303,23 +1426,23 @@ body.game-mode #popup {
   border: 1px solid #3a2b0c;
   border-radius: 50%;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-  height: 50px;
-  left: 33px;
+  height: var(--joy-k);
+  left: calc((var(--joy-d) - var(--joy-k)) / 2);
   position: absolute;
-  top: 33px;
+  top: calc((var(--joy-d) - var(--joy-k)) / 2);
   touch-action: none;
-  width: 50px;
+  width: var(--joy-k);
 }
 
 /* Action buttons */
 
 .hud-actions {
-  bottom: calc(34px + env(safe-area-inset-bottom));
+  bottom: var(--gy-b);
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(2, 64px);
+  gap: clamp(8px, 1.6vh, 14px);
+  grid-template-columns: repeat(2, var(--ctl-lg));
   position: absolute;
-  right: 22px;
+  right: calc(var(--gx-r) + 8px);
 }
 
 .hud-btn {
@@ -1337,19 +1460,19 @@ body.game-mode #popup {
 }
 
 .hud-action {
-  font-size: 14px;
+  font-size: clamp(12px, 2.4vh, 15px);
   font-weight: 600;
-  height: 64px;
+  height: var(--ctl-lg);
   text-shadow: 0 1px 2px #000;
-  width: 64px;
+  width: var(--ctl-lg);
 }
 
 .hud-btn.hud-mini {
   border-radius: 4px;
   box-sizing: border-box;
-  font-size: 12px;
+  font-size: var(--txt-sm);
   height: auto;
-  min-height: 44px;
+  min-height: var(--ctl-sm);
   padding: 6px 14px;
   width: auto;
 }
@@ -1405,8 +1528,8 @@ body.game-mode #popup {
 }
 
 .hud-dialog-panel {
-  max-width: 360px;
-  width: min(88vw, 360px);
+  max-width: var(--dialog-w);
+  width: min(92vw, var(--dialog-w));
 }
 
 .shop-panel {
@@ -1414,9 +1537,9 @@ body.game-mode #popup {
   inset: auto 0 0 0;
   z-index: 40;
   margin: 0 auto;
-  max-width: 420px;
-  width: 100vw;
-  max-height: 62vh;
+  max-width: var(--sheet-w);
+  width: min(100vw, var(--sheet-w));
+  max-height: var(--sheet-h);
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 10px 12px calc(12px + env(safe-area-inset-bottom));
@@ -1678,9 +1801,9 @@ body.game-mode #popup {
 
 .hud-tracker {
   position: absolute;
-  left: 10px;
-  top: calc(96px + env(safe-area-inset-top));
-  max-width: 46vw;
+  left: var(--gx);
+  top: calc(var(--gy) + var(--plate-h) + 14px);
+  max-width: min(46vw, 380px);
   background: rgba(10, 8, 6, 0.66);
   border: 1px solid rgba(200, 162, 74, 0.45);
   border-radius: 8px;
@@ -1746,11 +1869,11 @@ body.game-mode #popup {
   border: 1px solid #5a4030;
   border-radius: 14px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  max-height: 88%;
-  max-width: 520px;
+  max-height: var(--modal-h);
+  max-width: var(--modal-w);
   overflow-y: auto;
   padding: 16px 18px;
-  width: 92%;
+  width: min(94vw, var(--modal-w));
 }
 
 .inv-header {
@@ -1906,28 +2029,12 @@ body.game-mode #popup {
   color: #8a7a60;
   font-size: 12px;
 }
-@media (max-width: 640px) {
-  .hud-skillbar {
-    bottom: calc(150px + env(safe-area-inset-bottom));
-  }
-
-  .hud-log {
-    bottom: calc(210px + env(safe-area-inset-bottom));
-  }
-
-  .hud-corner {
-    top: calc(104px + env(safe-area-inset-top));
-  }
-
-  .hud-minimap {
-    height: 88px;
-    width: 88px;
-  }
-
+@media (max-width: 640px) and (orientation: portrait) {
   .hud-target {
-    left: 8px;
+    left: var(--gx);
+    top: calc(var(--gy) + var(--plate-h) + 12px);
     transform: none;
-    width: min(200px, calc(100vw - 130px));
+    width: min(210px, calc(100vw - 2 * var(--gx)));
   }
 }
 
@@ -2081,58 +2188,23 @@ body.game-mode #popup {
   font-size: 12px;
 }
 
-/* --- Landscape HUD compaction (must come after base HUD rules) --- */
-
-/* Compact HUD for short landscape heights (1080p+ phones in landscape) */
-@media (max-height: 430px) {
-  .hud-minimap-wrap {
-    transform: scale(0.72);
-    transform-origin: top right;
-  }
-
-  .hud-corner {
-    top: calc(128px + env(safe-area-inset-top));
-  }
-
-  .hud-sysbtn {
-    height: 42px;
-    padding: 6px;
-    width: 42px;
-  }
-
-  .hud-region {
-    font-size: 11px;
-  }
-
-  .hud-gold-row {
-    font-size: 11px;
-    margin-top: 2px;
-  }
-
-  .hud-corner-btns {
-    gap: 6px;
-    margin-top: 6px;
+/* --- Landscape HUD (orientation-based; replaces the old max-height + scale hack) --- */
+@media (orientation: landscape) {
+  :root {
+    --minimap-d: clamp(120px, 20vh, 168px);
   }
 
   .hud-log {
-    bottom: calc(62px + env(safe-area-inset-bottom));
-    font-size: 11px;
+    bottom: calc(var(--hud-bottom-zone) + var(--ctl-md) + 10px);
+    font-size: var(--txt-xs);
     left: 50%;
-    max-height: 40px;
-    max-width: 44vw;
-    overflow: hidden;
+    max-width: min(50vw, 640px);
+    text-align: center;
     transform: translateX(-50%);
   }
 
   .hud-log-line {
     margin-top: 2px;
     padding: 2px 6px;
-  }
-}
-
-/* Keep the target frame clear of the player plate on narrow landscape widths */
-@media (max-width: 860px) {
-  .hud-target {
-    top: 132px;
   }
 }

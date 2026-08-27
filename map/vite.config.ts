@@ -5,6 +5,8 @@ import autoprefixer from "autoprefixer";
 const NAVLINK_URL =
   "https://github.com/Silkroad-Developer-Community/Silkroad-NavLink/releases/latest/download/navigation_linkage.json.gz";
 
+let resolvedOutDir = "dist";
+
 export default defineConfig({
   css: {
     postcss: {
@@ -35,17 +37,20 @@ export default defineConfig({
     },
     {
       name: "navlink-build-download",
+      apply: "build",
+      configResolved(config) {
+        resolvedOutDir = config.build.outDir;
+      },
       async closeBundle() {
-        const outDir = "public/assets";
         const fs = await import("node:fs");
         const path = await import("node:path");
-        const dest = path.join(outDir, "navigation_linkage.json.gz");
+        const dest = path.join(path.resolve(resolvedOutDir), "assets", "navigation_linkage.json.gz");
         if (fs.existsSync(dest)) return;
         try {
           const response = await fetch(NAVLINK_URL);
           if (!response.ok) return;
           const buffer = await response.arrayBuffer();
-          fs.mkdirSync(outDir, { recursive: true });
+          fs.mkdirSync(path.dirname(dest), { recursive: true });
           fs.writeFileSync(dest, new Uint8Array(buffer));
           console.log(`Downloaded navlink to ${dest}`);
         } catch (e) {

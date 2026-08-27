@@ -302,9 +302,23 @@ export class GameScreens {
                   <button class="sro-seg sro-gender" data-gender="female">Female</button>
                 </div>
               </div>
-              <div class="sro-field"><label>Skin Tone</label><div class="sro-row">${colorRow("skin", SKIN_TONES)}</div></div>
-              <div class="sro-field"><label>Hair Color</label><div class="sro-row">${colorRow("hair", HAIR_COLORS)}</div></div>
-              <div class="sro-field"><label>Outfit Color</label><div class="sro-row">${colorRow("outfit", OUTFIT_COLORS)}</div></div>
+              <div class="sro-field sro-field-appearance">
+                <label>Appearance</label>
+                <div class="sro-color-groups">
+                  <div class="sro-color-group">
+                    <span class="sro-color-name">Skin</span>
+                    <div class="sro-row">${colorRow("skin", SKIN_TONES)}</div>
+                  </div>
+                  <div class="sro-color-group">
+                    <span class="sro-color-name">Hair</span>
+                    <div class="sro-row">${colorRow("hair", HAIR_COLORS)}</div>
+                  </div>
+                  <div class="sro-color-group">
+                    <span class="sro-color-name">Outfit</span>
+                    <div class="sro-row">${colorRow("outfit", OUTFIT_COLORS)}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="sro-preview-col">

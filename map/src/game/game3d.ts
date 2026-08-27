@@ -1522,7 +1522,13 @@ export class GameWorld {
   }
 
   private async buildGates(): Promise<void> {
-    const pads = await loadTeleportPads(this.region);
+    let pads: TeleportPad[] = [];
+    try {
+      pads = await loadTeleportPads(this.region);
+    } catch {
+      this.onLog("Teleport data unavailable");
+      return;
+    }
     for (const pad of pads) {
       const group = new THREE.Group();
       const ringGeo = new THREE.TorusGeometry(2.2, 0.28, 8, 32);
