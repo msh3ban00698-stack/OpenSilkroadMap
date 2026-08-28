@@ -1,32 +1,16 @@
 import * as THREE from "three";
 import { CharacterRig } from "./character_rig";
 import { releaseRenderer } from "./gl_utils";
+import {
+  applyCharacterAppearance,
+  classShowsWeapon,
+  PLAYER_PRESET,
+  PLAYER_SCALE,
+  playerPreset,
+  type LookAppearance,
+} from "./character_look";
 
-export interface PreviewAppearance {
-  skin?: string | null;
-  hair?: string | null;
-  outfit?: string | null;
-}
-
-const SKIN_PARTS = [
-  "man_pelvis",
-  "man_torso_lower",
-  "man_torso_upper",
-  "man_arm_upper",
-  "man_arm_lower",
-  "man_thigh",
-  "man_calf",
-  "chinaman_fighter_face",
-];
-const HAIR_PARTS = ["chinaman_fighter_hair"];
-const OUTFIT_PARTS = [
-  "clothes_01_aa",
-  "clothes_01_ba",
-  "clothes_01_fa",
-  "clothes_01_ha",
-  "clothes_01_la",
-  "clothes_01_sa",
-];
+export type PreviewAppearance = LookAppearance;
 
 export class CharacterPreview {
   private renderer: THREE.WebGLRenderer;
@@ -39,11 +23,15 @@ export class CharacterPreview {
   private loaded = false;
   private resizeObs: ResizeObserver | null = null;
   private pendingAppearance: PreviewAppearance | null = null;
+  private preset: string;
+  private classId = "warrior";
+  private gender: "male" | "female" = "male";
 
   constructor(
     private container: HTMLElement,
-    preset = "chinaman_fighter",
+    preset = PLAYER_PRESET,
   ) {
+    this.preset = preset;
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.setClearColor(0x000000, 0);
@@ -80,6 +68,7 @@ export class CharacterPreview {
         this.rig.update(0);
         if (this.rig.skeleton) this.rig.skeleton.update();
         if (this.pendingAppearance) this.setAppearance(this.pendingAppearance);
+        this.applyLookFlags();
         this.resize();
       })
       .catch((e) => console.error("preview load failed:", e));
@@ -140,15 +129,51 @@ export class CharacterPreview {
     this.renderer.render(this.scene, this.camera);
   };
 
+  setPreset(preset: string): void {
+    if (preset === this.preset) return;
+    this.preset = preset;
+    this.loaded = false;
+    this.scene.remove(this.rig.group);
+    this.rig.dispose();
+    this.rig = new CharacterRig({ preset });
+    this.scene.add(this.rig.group);
+    this.rig
+      .load()
+      .then(() => {
+        if (this.disposed) return;
+        this.loaded = true;
+        this.rig.play("idle");
+        this.rig.update(0);
+        if (this.rig.skeleton) this.rig.skeleton.update();
+        if (this.pendingAppearance) this.setAppearance(this.pendingAppearance);
+        this.applyLookFlags();
+        this.resize();
+      })
+      .catch((e) => console.error("preview load failed:", e));
+  }
+
+  setLook(classId: string, gender: "male" | "female", app?: PreviewAppearance): void {
+    this.classId = classId;
+    this.gender = gender;
+    if (app) this.pendingAppearance = app;
+    this.setPreset(playerPreset(classId, gender));
+    if (this.loaded) {
+      if (this.pendingAppearance) this.setAppearance(this.pendingAppearance);
+      this.applyLookFlags();
+    }
+  }
+
   setAppearance(app: PreviewAppearance): void {
     this.pendingAppearance = app;
     if (!this.loaded) return;
-    const tintParts = (ids: string[], color: string | null | undefined): void => {
-      for (const id of ids) this.rig.setPartTint(id, color ?? null);
-    };
-    tintParts(SKIN_PARTS, app.skin);
-    tintParts(HAIR_PARTS, app.hair);
-    tintParts(OUTFIT_PARTS, app.outfit);
+    applyCharacterAppearance(this.rig, app);
+    this.applyLookFlags();
+  }
+
+  private applyLookFlags(): void {
+    if (!this.loaded) return;
+    this.rig.setPartVisible("sword_01", classShowsWeapon(this.classId));
+    this.rig.group.scale.setScalar(PLAYER_SCALE * (this.gender === "female" ? 0.92 : 1));
   }
 
   resize(): void {

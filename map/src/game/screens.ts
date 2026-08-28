@@ -1,6 +1,7 @@
 import { VERIFIED_CLASSES, getClass, STARTER_KITS } from "./game_data";
 import type { GameCharacter } from "./types";
 import { CharacterPreview } from "./character_preview";
+import { playerPreset } from "./character_look";
 
 export interface ScreensCallbacks {
   onBack: () => void;
@@ -52,18 +53,22 @@ export class GameScreens {
 
   private mountPreview(
     hostId: string,
-    appearance?: { skinTone?: string | null; hairColor?: string | null; outfitColor?: string | null },
+    appearance?: { gender?: "male" | "female"; skinTone?: string | null; hairColor?: string | null; outfitColor?: string | null },
+    classId = "warrior",
   ): void {
     const host = this.root.querySelector(`#${hostId}`) as HTMLElement | null;
     if (!host) return;
-    this.preview = new CharacterPreview(host);
-    if (appearance) {
-      this.preview.setAppearance({
-        skin: appearance.skinTone,
-        hair: appearance.hairColor,
-        outfit: appearance.outfitColor,
-      });
+    if (this.preview) {
+      this.preview.dispose();
+      this.preview = null;
     }
+    const gender = appearance?.gender ?? "male";
+    this.preview = new CharacterPreview(host, playerPreset(classId, gender));
+    this.preview.setLook(classId, gender, {
+      skin: appearance?.skinTone,
+      hair: appearance?.hairColor,
+      outfit: appearance?.outfitColor,
+    });
   }
 
   private bg(layer: string): string {
@@ -207,7 +212,8 @@ export class GameScreens {
         </div>
       </div>
     `;
-    this.mountPreview("select-preview", characters.find((c) => c.id === selected)?.appearance);
+    const selectedChar = characters.find((c) => c.id === selected);
+    this.mountPreview("select-preview", selectedChar?.appearance, selectedChar?.classId ?? "warrior");
 
     const syncSelection = (id: string): void => {
       selected = id;
@@ -217,8 +223,8 @@ export class GameScreens {
       const enterBtn = this.root.querySelector("#gs-enter") as HTMLButtonElement;
       enterBtn.disabled = false;
       enterBtn.dataset.enter = id;
-      const app = characters.find((ch) => ch.id === id)?.appearance;
-      this.preview?.setAppearance({ skin: app?.skinTone, hair: app?.hairColor, outfit: app?.outfitColor });
+      const next = characters.find((ch) => ch.id === id);
+      this.mountPreview("select-preview", next?.appearance, next?.classId ?? "warrior");
     };
 
     this.root.querySelectorAll(".sro-char").forEach((el) => {
@@ -321,11 +327,16 @@ export class GameScreens {
         </div>
       </div>
     `;
-    this.mountPreview("create-preview", {
-      skinTone: SKIN_TONES[0],
-      hairColor: HAIR_COLORS[0],
-      outfitColor: OUTFIT_COLORS[0],
-    });
+    this.mountPreview(
+      "create-preview",
+      {
+        gender: "male",
+        skinTone: SKIN_TONES[0],
+        hairColor: HAIR_COLORS[0],
+        outfitColor: OUTFIT_COLORS[0],
+      },
+      VERIFIED_CLASSES[0].id,
+    );
 
     const nameInput = this.root.querySelector("#gc-name") as HTMLInputElement;
     const errorEl = this.root.querySelector("#gc-name-error") as HTMLElement;
@@ -337,8 +348,8 @@ export class GameScreens {
     let hairColor = HAIR_COLORS[0];
     let outfitColor = OUTFIT_COLORS[0];
 
-    const pushAppearance = (): void => {
-      this.preview?.setAppearance({ skin: skinTone, hair: hairColor, outfit: outfitColor });
+    const pushLook = (): void => {
+      this.preview?.setLook(classId, gender, { skin: skinTone, hair: hairColor, outfit: outfitColor });
     };
 
     const classGrid = this.root.querySelector("#gc-class-grid") as HTMLElement;
@@ -359,8 +370,10 @@ export class GameScreens {
         el.addEventListener("click", () => {
           classId = (el as HTMLElement).dataset.class!;
           markClass(classId);
+          pushLook();
         });
       });
+      pushLook();
     };
     const bindGroup = (selector: string, set: (v: string) => void) => {
       this.root.querySelectorAll(selector).forEach((el) => {
@@ -389,6 +402,7 @@ export class GameScreens {
       el.addEventListener("click", () => {
         gender = (el as HTMLElement).dataset.gender as "male" | "female";
         this.root.querySelectorAll(".sro-gender").forEach((b) => b.classList.toggle("active", b === el));
+        pushLook();
       });
     });
     const bindColor = (selector: string, set: (v: string) => void) => {
@@ -396,7 +410,7 @@ export class GameScreens {
         el.addEventListener("click", () => {
           set((el as HTMLElement).dataset.i!);
           this.root.querySelectorAll(selector).forEach((b) => b.classList.toggle("active", b === el));
-          pushAppearance();
+          pushLook();
         });
       });
     };

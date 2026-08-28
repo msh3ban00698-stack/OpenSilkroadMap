@@ -340,11 +340,13 @@ body.game-mode #popup {
   position: absolute;
   right: 0;
   top: 0;
+  touch-action: none;
 }
 
 #game-container canvas {
   display: block;
   height: 100%;
+  touch-action: none;
   width: 100%;
 }
 
@@ -1156,11 +1158,25 @@ body.game-mode #popup {
   position: absolute;
   right: 0;
   top: 0;
+  touch-action: none;
   user-select: none;
   z-index: 3;
 }
 
 .game-hud > * {
+  pointer-events: none;
+}
+
+.hud-plate,
+.hud-tracker,
+.hud-corner,
+.hud-minimap-wrap,
+.hud-target,
+.hud-joystick,
+.hud-actions,
+.hud-dialog,
+.inv-overlay,
+.shop-panel {
   pointer-events: auto;
 }
 
@@ -1421,9 +1437,11 @@ body.game-mode #popup {
   display: flex;
   gap: clamp(4px, 0.8vh, 8px);
   justify-content: center;
-  left: 0;
+  left: 50%;
+  pointer-events: none;
   position: absolute;
-  right: 0;
+  transform: translateX(-50%);
+  width: max-content;
   z-index: 3;
 }
 
@@ -1439,6 +1457,7 @@ body.game-mode #popup {
   font-size: var(--txt-xs);
   height: var(--ctl-md);
   padding: 3px;
+  pointer-events: auto;
   position: relative;
   text-shadow: 0 1px 2px #000;
   width: var(--ctl-md);

@@ -6,6 +6,13 @@ import { expToNext, MAX_LEVEL } from "./data_loader";
 import type { RegionAssets } from "./region_loader";
 import { sampleTerrainHeight } from "./region_loader";
 import { CharacterRig } from "./character_rig";
+import {
+  appearanceToLook,
+  applyCharacterAppearance,
+  classShowsWeapon,
+  PLAYER_SCALE,
+  playerPreset,
+} from "./character_look";
 import { releaseRenderer } from "./gl_utils";
 import { getItem } from "./items";
 import { mobCampsFor, type MobCamp } from "./mobs_data";
@@ -36,21 +43,26 @@ export interface GameWorldOptions {
 
 // Character visual scale (0.15 => ~2.4 world units, the Phase E viewer scale).
 // The world keeps the Phase D region 32785 at 1:1 SRO coordinates.
-const CHAR_SCALE = 0.15;
+const CHAR_SCALE = PLAYER_SCALE;
 
 const WALK_SPEED = 70;
 const RUN_SPEED = 125;
 const RUN_MAGNITUDE = 0.55;
 
-const CAM_DIST = 11;
-const CAM_MIN_PITCH = 0.12;
-const CAM_MAX_PITCH = 1.15;
+const CAM_DIST = 22;
+const CAM_MIN_PITCH = 0.18;
+const CAM_MAX_PITCH = 1.2;
+const NPC_LOAD_DIST_SQ = 160 * 160;
+const NPC_VISIBLE_DIST_SQ = 150 * 150;
+const BUILDING_CELL = 256;
+const BUILDING_DRAW_DIST_SQ = 300 * 300;
+const BUILDING_UNLOAD_DIST_SQ = 360 * 360;
 
 // Open-world constants for the real Constantinople region (region 1). The
 // terrain spans 11520 x 11520 world units, so the camera + fog must reach far.
 const CAM_FAR = 6000;
-const FOG_NEAR = 250;
-const FOG_FAR = 1800;
+const FOG_NEAR = 420;
+const FOG_FAR = 3200;
 
 const ATTACK_RANGE = 2.4;
 const ATTACK_IMPACT_FRACTION = 0.42;
@@ -97,6 +109,7 @@ interface MobState {
   homeZ: number;
   aggro: boolean;
   nextAttackAt: number;
+  loaded: boolean;
 }
 
 export class GameWorld {
@@ -132,9 +145,19 @@ export class GameWorld {
   }[] = [];
 
   private worldNpcCount = 0;
+  private buildingMats: THREE.MeshBasicMaterial[] = [];
+  private buildingGeos: Array<THREE.BufferGeometry | null> = [];
+  private buildingChunks: {
+    gi: number;
+    x: number;
+    z: number;
+    insts: { x: number; y: number; z: number; ry: number }[];
+    mesh: THREE.InstancedMesh | null;
+  }[] = [];
+  private chunkTick = 0;
   private npcList = REGION_NPCS;
   private yaw = -1.31;
-  private pitch = 0.15;
+  private pitch = 0.42;
   private move = { x: 0, z: 0, mag: 0 };
   private moving = false;
 
@@ -176,8 +199,8 @@ export class GameWorld {
     void this.buildGates();
     this.syncCompanions();
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "low-power" });
+    this.renderer.setPixelRatio(1);
     this.renderer.setSize(this.container.clientWidth || 360, this.container.clientHeight || 640);
     this.container.appendChild(this.renderer.domElement);
 
@@ -200,14 +223,17 @@ export class GameWorld {
     void this.populateAuthenticNpcs();
     void this.spawnMobs();
 
-    this.rig = new CharacterRig({ preset: "chinaman_fighter", scale: CHAR_SCALE });
+    this.rig = new CharacterRig({
+      preset: playerPreset(this.character.classId, this.character.appearance.gender),
+      scale: CHAR_SCALE,
+    });
     this.labels = new THREE.Group();
     this.scene.add(this.labels);
     this.buildLabels();
 
     const spawn = this.assets.spawn;
     const dummyGroup = this.buildDummy();
-    dummyGroup.position.set(spawn.x, spawn.y, spawn.z - 6);
+    dummyGroup.position.set(spawn.x, this.terrainHeightAt(spawn.x, spawn.z - 6), spawn.z - 6);
     this.scene.add(dummyGroup);
     const hpBar = this.makeHpBar();
     hpBar.sprite.position.set(0, 3.1, 0);
@@ -217,6 +243,7 @@ export class GameWorld {
 
     this.scene.add(this.rig.group);
     this.placePlayerAtSpawn();
+    this.updateBuildingChunks();
 
     this.selectionRing = this.buildSelectionRing();
     this.selectionRing.visible = false;
@@ -232,6 +259,7 @@ export class GameWorld {
       .then(() => {
         this.rigReady = true;
         this.rig.play("idle");
+        this.applyCharacterLook();
         this.applyEquipment(this.character.equipment);
         this.onLog(`Welcome to ${this.region.name}, ${this.character.name}.`);
         this.onLog("A training dummy stands in front of you. Attack it (ATK) when close.");
@@ -608,10 +636,18 @@ export class GameWorld {
     }
   }
 
+  private applyCharacterLook(): void {
+    if (!this.rigReady) return;
+    applyCharacterAppearance(this.rig, appearanceToLook(this.character.appearance));
+    const female = this.character.appearance.gender === "female";
+    this.rig.group.scale.setScalar(CHAR_SCALE * (female ? 0.92 : 1));
+  }
+
   applyEquipment(equipment: Record<EquipSlot, string | null>): void {
     const weaponId = equipment.weapon;
     if (!this.rigReady) return;
-    if (weaponId) {
+    const showSword = !!weaponId && classShowsWeapon(this.character.classId);
+    if (showSword) {
       this.rig.setPartVisible(SWORD_PART_ID, true);
       const item = getItem(weaponId);
       this.rig.setPartTint(SWORD_PART_ID, item ? item.color : null);
@@ -630,7 +666,8 @@ export class GameWorld {
 
   private placePlayerAtSpawn(): void {
     const spawn = this.assets.spawn;
-    this.rig.group.position.set(spawn.x, spawn.y, spawn.z);
+    const y = this.terrainHeightAt(spawn.x, spawn.z);
+    this.rig.group.position.set(spawn.x, Number.isFinite(y) ? y : spawn.y, spawn.z);
     this.rig.group.rotation.y = 0;
   }
 
@@ -648,7 +685,7 @@ export class GameWorld {
   private floorMesh: THREE.Mesh | null = null;
 
   private addFloor(): void {
-    const material = new THREE.MeshLambertMaterial({
+    const material = new THREE.MeshBasicMaterial({
       map: this.assets.texture,
       side: THREE.DoubleSide,
     });
@@ -664,58 +701,104 @@ export class GameWorld {
   private addWorldObjects(): void {
     const wb = this.assets.buildings;
     if (!wb) return;
-    const { manifest, geometry, atlasTextures } = wb;
+    const { manifest, atlasTextures } = wb;
 
-    const mats = atlasTextures.map(
+    this.buildingMats = atlasTextures.map(
       (tex) =>
-        new THREE.MeshLambertMaterial({
+        new THREE.MeshBasicMaterial({
           map: tex,
           side: THREE.DoubleSide,
           alphaTest: 0.4,
         }),
     );
+    this.buildingGeos = manifest.geoms.map(() => null);
 
-    const geomGeos = manifest.geoms.map((slice) => this.buildGeomGeometry(geometry, slice));
-
-    const matrix = new THREE.Matrix4();
-    const quat = new THREE.Quaternion();
-    const compose = (x: number, y: number, z: number, ry: number): THREE.Matrix4 =>
-      matrix.makeRotationFromQuaternion(quat.setFromEuler(new THREE.Euler(0, ry, 0, "YZX"))).setPosition(x, y, z);
-
-    // Buildings: one InstancedMesh per geometry.
-    for (let gi = 0; gi < manifest.geoms.length; gi++) {
-      const insts = manifest.instances.filter((i) => i.g === gi);
-      if (!insts.length) continue;
-      const slice = manifest.geoms[gi];
-      const mat = mats[slice.page] ?? mats[0];
-      if (!mat) continue;
-      const mesh = new THREE.InstancedMesh(geomGeos[gi], mat, insts.length);
-      for (let k = 0; k < insts.length; k++) {
-        const i = insts[k];
-        mesh.setMatrixAt(k, compose(i.x, i.y, i.z, i.ry));
+    const buckets = new Map<string, { gi: number; insts: { x: number; y: number; z: number; ry: number }[] }>();
+    const push = (gi: number, x: number, y: number, z: number, ry: number): void => {
+      const key = `${gi}:${Math.floor(x / BUILDING_CELL)}:${Math.floor(z / BUILDING_CELL)}`;
+      let bucket = buckets.get(key);
+      if (!bucket) {
+        bucket = { gi, insts: [] };
+        buckets.set(key, bucket);
       }
-      mesh.instanceMatrix.needsUpdate = true;
-      mesh.frustumCulled = false;
-      this.scene.add(mesh);
+      bucket.insts.push({ x, y, z, ry });
+    };
+    for (const inst of manifest.instances) {
+      push(inst.g, inst.x, inst.y, inst.z, inst.ry);
     }
-
-    // NPCs / monsters: one InstancedMesh per model group, placed on terrain.
     for (const grp of manifest.npcGroups) {
       if (!grp.instances.length) continue;
-      const slice = manifest.geoms[grp.geom];
-      if (!slice) continue;
-      const mat = mats[slice.page] ?? mats[0];
-      if (!mat) continue;
-      const mesh = new THREE.InstancedMesh(geomGeos[grp.geom], mat, grp.instances.length);
-      for (let k = 0; k < grp.instances.length; k++) {
-        const p = grp.instances[k];
-        const h = this.terrainHeightAt(p.x, p.z) + 0.8;
-        mesh.setMatrixAt(k, compose(p.x, h, p.z, (k * 0.6) % (Math.PI * 2)));
-      }
-      mesh.instanceMatrix.needsUpdate = true;
-      mesh.frustumCulled = false;
-      this.scene.add(mesh);
       this.worldNpcCount += grp.instances.length;
+      grp.instances.forEach((p, k) => {
+        push(grp.geom, p.x, this.terrainHeightAt(p.x, p.z) + 0.8, p.z, (k * 0.6) % (Math.PI * 2));
+      });
+    }
+    for (const bucket of buckets.values()) {
+      if (!bucket.insts.length) continue;
+      let sx = 0;
+      let sz = 0;
+      for (const i of bucket.insts) {
+        sx += i.x;
+        sz += i.z;
+      }
+      this.buildingChunks.push({
+        gi: bucket.gi,
+        x: sx / bucket.insts.length,
+        z: sz / bucket.insts.length,
+        insts: bucket.insts,
+        mesh: null,
+      });
+    }
+  }
+
+  private geomFor(gi: number): THREE.BufferGeometry | null {
+    const wb = this.assets.buildings;
+    if (!wb) return null;
+    const cached = this.buildingGeos[gi];
+    if (cached) return cached;
+    const slice = wb.manifest.geoms[gi];
+    if (!slice) return null;
+    const geo = this.buildGeomGeometry(wb.geometry, slice);
+    this.buildingGeos[gi] = geo;
+    return geo;
+  }
+
+  private mountBuildingChunk(chunk: (typeof this.buildingChunks)[number]): void {
+    if (chunk.mesh) return;
+    const geo = this.geomFor(chunk.gi);
+    const slice = this.assets.buildings?.manifest.geoms[chunk.gi];
+    const mat = slice ? this.buildingMats[slice.page] ?? this.buildingMats[0] : this.buildingMats[0];
+    if (!geo || !mat) return;
+    const mesh = new THREE.InstancedMesh(geo, mat, chunk.insts.length);
+    const matrix = new THREE.Matrix4();
+    const quat = new THREE.Quaternion();
+    for (let k = 0; k < chunk.insts.length; k++) {
+      const i = chunk.insts[k];
+      matrix.makeRotationFromQuaternion(quat.setFromEuler(new THREE.Euler(0, i.ry, 0, "YZX"))).setPosition(i.x, i.y, i.z);
+      mesh.setMatrixAt(k, matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.frustumCulled = false;
+    this.scene.add(mesh);
+    chunk.mesh = mesh;
+  }
+
+  private unmountBuildingChunk(chunk: (typeof this.buildingChunks)[number]): void {
+    if (!chunk.mesh) return;
+    this.scene.remove(chunk.mesh);
+    chunk.mesh.dispose();
+    chunk.mesh = null;
+  }
+
+  private updateBuildingChunks(): void {
+    const px = this.rig.group.position.x;
+    const pz = this.rig.group.position.z;
+    for (const chunk of this.buildingChunks) {
+      const dx = chunk.x - px;
+      const dz = chunk.z - pz;
+      const d2 = dx * dx + dz * dz;
+      if (d2 < BUILDING_DRAW_DIST_SQ) this.mountBuildingChunk(chunk);
+      else if (d2 > BUILDING_UNLOAD_DIST_SQ) this.unmountBuildingChunk(chunk);
     }
   }
 
@@ -748,21 +831,11 @@ export class GameWorld {
     g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
     g.setIndex(new THREE.BufferAttribute(idx, 1));
-    g.computeVertexNormals();
     return g;
   }
 
   private addBounds(): void {
     const b = this.assets.data.bounds;
-    const cx = (b.minX + b.maxX) / 2;
-    const cz = (b.minZ + b.maxZ) / 2;
-    const w = b.maxX - b.minX;
-    const h = b.maxZ - b.minZ;
-    const geo = new THREE.BoxGeometry(w, 1, h);
-    const mat = new THREE.MeshBasicMaterial({ color: 0x1a2230, transparent: true, opacity: 0.0 });
-    const box = new THREE.Mesh(geo, mat);
-    box.position.set(cx, -0.6, cz);
-    this.scene.add(box);
     this.boundsBox = { minX: b.minX, maxX: b.maxX, minZ: b.minZ, maxZ: b.maxZ };
   }
 
@@ -824,11 +897,6 @@ export class GameWorld {
         box.position.y = 1.2;
         group.add(box);
         this.scene.add(group);
-        void rig.load().then(() => {
-          rig.group.position.set(x, y + 0.15, z);
-          rig.play("idle");
-          group.add(rig.group);
-        });
         const st: MobState = {
           def: camp.mob,
           rig,
@@ -840,6 +908,7 @@ export class GameWorld {
           homeZ: z,
           aggro: false,
           nextAttackAt: 0,
+          loaded: false,
         };
         this.mobs.push(st);
       }
@@ -847,10 +916,27 @@ export class GameWorld {
     this.onLog("Wild creatures roam the fields beyond the gates.");
   }
 
+  private loadMobRig(m: MobState): void {
+    if (m.loaded) return;
+    m.loaded = true;
+    void m.rig.load().then(() => {
+      if (this.disposed) return;
+      m.rig.group.position.set(m.homeX, this.terrainHeightAt(m.homeX, m.homeZ) + 0.15, m.homeZ);
+      m.rig.play("idle");
+      m.group.add(m.rig.group);
+    });
+  }
+
   private updateMobs(dt: number): void {
     if (!this.rigReady) return;
     const p = this.rig.group.position;
     for (const m of this.mobs) {
+      if (!m.loaded) {
+        const dx0 = p.x - m.homeX;
+        const dz0 = p.z - m.homeZ;
+        if (dx0 * dx0 + dz0 * dz0 < NPC_LOAD_DIST_SQ) this.loadMobRig(m);
+        continue;
+      }
       if (!m.alive) {
         if (performance.now() >= m.respawnAt && m.rig.isReady) {
           m.alive = true;
@@ -1712,12 +1798,13 @@ export class GameWorld {
     const y = this.targetYaw;
     const cp = Math.cos(this.pitch);
     const sp = Math.sin(this.pitch);
+    const lookY = Math.max(1.35, this.rig.height * 0.62 || 1.5);
     this.camera.position.set(
       p.x + CAM_DIST * cp * Math.sin(y),
-      p.y + CAM_DIST * sp + 1.6,
+      p.y + CAM_DIST * sp + lookY,
       p.z + CAM_DIST * cp * Math.cos(y),
     );
-    this.camera.lookAt(p.x, p.y + 1.6, p.z);
+    this.camera.lookAt(p.x, p.y + lookY, p.z);
   }
 
   private targetYaw = -1.31;
@@ -1741,12 +1828,16 @@ export class GameWorld {
       const p = this.pendingNpcRigs[i];
       const dx = p.x - px;
       const dz = p.z - pz;
-      if (dx * dx + dz * dz < -1) {
+      if (dx * dx + dz * dz < NPC_LOAD_DIST_SQ) {
         const rig = new CharacterRig({ preset: p.actor, scale: CHAR_SCALE });
         rig.group.position.set(p.x, p.y + 0.15, p.z);
         rig.group.rotation.y = Math.PI;
         this.scene.add(rig.group);
-        void rig.load().then(() => rig.play("idle"));
+        void rig.load().then(() => {
+          if (this.disposed) return;
+          const idle = rig.hasAnim("idle") ? "idle" : rig.animIds()[0];
+          if (idle) rig.play(idle);
+        });
         this.npcRigs.push({ rig, group: p.group });
         this.pendingNpcRigs.splice(i, 1);
       }
@@ -1754,7 +1845,7 @@ export class GameWorld {
     for (const nr of this.npcRigs) {
       const dx = nr.group.position.x - px;
       const dz = nr.group.position.z - pz;
-      const near = dx * dx + dz * dz < 22500;
+      const near = dx * dx + dz * dz < NPC_VISIBLE_DIST_SQ;
       nr.rig.group.visible = near;
       if (near) {
         nr.rig.update(dt);
@@ -1764,6 +1855,8 @@ export class GameWorld {
     this.updateFloaters(dt);
     this.updateLabels();
     this.updateCamera(dt);
+    this.chunkTick += 1;
+    if (this.chunkTick % 8 === 0) this.updateBuildingChunks();
     this.renderer.render(this.scene, this.camera);
   };
 
@@ -1778,6 +1871,7 @@ export class GameWorld {
   dispose(): void {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
+    for (const chunk of this.buildingChunks) this.unmountBuildingChunk(chunk);
     this.rig.dispose();
     releaseRenderer(this.renderer);
     if (this.renderer.domElement.parentElement === this.container) {

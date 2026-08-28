@@ -7,9 +7,9 @@ export interface ControlsOptions {
   onSelect?: (clientX: number, clientY: number) => void;
 }
 
-const JOY_RADIUS = 42;
-const TAP_MAX_MOVE = 6;
-const INTERACTIVE_SELECTOR = ".game-btn, .hud-btn, .sro-btn, .sro-window, #joy-base, #joy-knob";
+const TAP_MAX_MOVE = 8;
+const INTERACTIVE_SELECTOR =
+  "button, .game-btn, .hud-btn, .hud-slot, .hud-sysbtn, .hud-actions, .hud-joystick, .hud-dialog, .inv-overlay, .sro-btn, .sro-window, #joy-base, #joy-knob";
 
 export class TouchControls {
   private opts: ControlsOptions;
@@ -23,6 +23,12 @@ export class TouchControls {
   private joyCenter = { x: 0, y: 0 };
   private keys = new Set<string>();
 
+  private joyRadius(): number {
+    const base = this.opts.joystickBase.getBoundingClientRect();
+    const knob = this.opts.joystickKnob.getBoundingClientRect();
+    return Math.max(24, (base.width - knob.width) / 2);
+  }
+
   private joyPointerDown = (e: PointerEvent): void => {
     if (this.joyPointer !== null) return;
     this.joyPointer = e.pointerId;
@@ -34,15 +40,15 @@ export class TouchControls {
 
   private joyPointerMove = (e: PointerEvent): void => {
     if (e.pointerId !== this.joyPointer) return;
+    const radius = this.joyRadius();
     const dx = e.clientX - this.joyCenter.x;
     const dy = e.clientY - this.joyCenter.y;
     const len = Math.hypot(dx, dy);
-    const clamped = Math.min(len, JOY_RADIUS);
+    const clamped = Math.min(len, radius);
     const nx = len > 0 ? (dx / len) * clamped : 0;
     const ny = len > 0 ? (dy / len) * clamped : 0;
     this.opts.joystickKnob.style.transform = `translate(${nx}px, ${ny}px)`;
-    // Screen-up = forward (z+); screen-left = strafe left (x-).
-    this.opts.onMove(nx / JOY_RADIUS, -ny / JOY_RADIUS);
+    this.opts.onMove(nx / radius, -ny / radius);
   };
 
   private joyPointerUp = (e: PointerEvent): void => {
@@ -56,8 +62,6 @@ export class TouchControls {
     const target = e.target as HTMLElement | null;
     const isInteractive = !!target && !!target.closest(INTERACTIVE_SELECTOR);
     if (this.camPointer === null && !isInteractive) {
-      // Start a potential tap / camera drag anywhere that isn't a joystick or
-      // button. A short press selects a world target; a drag orbits the camera.
       this.camPointer = e.pointerId;
       this.lastCamX = e.clientX;
       this.lastCamY = e.clientY;
@@ -65,6 +69,7 @@ export class TouchControls {
       this.tapStartY = e.clientY;
       this.tapMoved = false;
       this.container.setPointerCapture(e.pointerId);
+      e.preventDefault();
     }
   };
 
@@ -120,13 +125,13 @@ export class TouchControls {
     const joyRect = opts.joystickBase.getBoundingClientRect();
     this.joyCenter = { x: joyRect.left + joyRect.width / 2, y: joyRect.top + joyRect.height / 2 };
 
-    opts.joystickBase.addEventListener("pointerdown", this.joyPointerDown);
-    opts.joystickBase.addEventListener("pointermove", this.joyPointerMove);
+    opts.joystickBase.addEventListener("pointerdown", this.joyPointerDown, { passive: false });
+    opts.joystickBase.addEventListener("pointermove", this.joyPointerMove, { passive: false });
     opts.joystickBase.addEventListener("pointerup", this.joyPointerUp);
     opts.joystickBase.addEventListener("pointercancel", this.joyPointerUp);
 
-    this.container.addEventListener("pointerdown", this.onPointerDown);
-    this.container.addEventListener("pointermove", this.onPointerMove);
+    this.container.addEventListener("pointerdown", this.onPointerDown, { passive: false });
+    this.container.addEventListener("pointermove", this.onPointerMove, { passive: false });
     this.container.addEventListener("pointerup", this.onPointerUp);
     this.container.addEventListener("pointercancel", this.onPointerUp);
     window.addEventListener("keydown", this.onKeyDown);
