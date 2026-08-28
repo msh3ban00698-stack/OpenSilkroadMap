@@ -61,8 +61,11 @@ const BUILDING_UNLOAD_DIST_SQ = 360 * 360;
 // Open-world constants for the real Constantinople region (region 1). The
 // terrain spans 11520 x 11520 world units, so the camera + fog must reach far.
 const CAM_FAR = 6000;
-const FOG_NEAR = 420;
-const FOG_FAR = 3200;
+const FOG_NEAR = 260;
+const FOG_FAR = 2600;
+const SKY_TOP = 0x4e8bc8;
+const SKY_HORIZON = 0xd7c7a8;
+const FOG_COLOR = 0xc4b394;
 
 const ATTACK_RANGE = 2.4;
 const ATTACK_IMPACT_FRACTION = 0.42;
@@ -145,7 +148,10 @@ export class GameWorld {
   }[] = [];
 
   private worldNpcCount = 0;
-  private buildingMats: THREE.MeshBasicMaterial[] = [];
+  private buildingMats: THREE.MeshLambertMaterial[] = [];
+  private skyMesh: THREE.Mesh | null = null;
+  private playerShadow: THREE.Mesh | null = null;
+  private dummyShadow: THREE.Mesh | null = null;
   private buildingGeos: Array<THREE.BufferGeometry | null> = [];
   private buildingChunks: {
     gi: number;
@@ -205,8 +211,9 @@ export class GameWorld {
     this.container.appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x9db8d6);
-    this.scene.fog = new THREE.Fog(0xb9c8d9, FOG_NEAR, FOG_FAR);
+    this.scene.background = new THREE.Color(FOG_COLOR);
+    this.scene.fog = new THREE.Fog(FOG_COLOR, FOG_NEAR, FOG_FAR);
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     this.camera = new THREE.PerspectiveCamera(
       62,
@@ -216,6 +223,7 @@ export class GameWorld {
     );
 
     this.addLights();
+    this.addSky();
     this.addFloor();
     this.addBounds();
     this.addWorldObjects();
@@ -249,9 +257,13 @@ export class GameWorld {
     this.selectionRing.visible = false;
     this.scene.add(this.selectionRing);
 
-    const playerLight = new THREE.PointLight(0xffd9a0, 40, 60, 2);
-    playerLight.position.set(0, 8, 0);
+    const playerLight = new THREE.PointLight(0xffd4a0, 7.5, 26, 2);
+    playerLight.position.set(0, 2.4, 0);
     this.rig.group.add(playerLight);
+    this.playerShadow = this.makeBlobShadow(2.4);
+    this.scene.add(this.playerShadow);
+    this.dummyShadow = this.makeBlobShadow(1.6);
+    this.scene.add(this.dummyShadow);
 
     this.clock = new THREE.Clock();
     this.rig
@@ -358,6 +370,7 @@ export class GameWorld {
       setTerrainVisible: (v: boolean) => {
         if (this.floorMesh) this.floorMesh.visible = v;
       },
+      visualInfo: () => this.visualInfo(),
     };
   }
 
@@ -416,6 +429,31 @@ export class GameWorld {
       camera: this.camera.position,
       player: this.rig.group.position,
       rays,
+    };
+  }
+
+  private visualInfo(): Record<string, unknown> {
+    const fog = this.scene.fog as THREE.Fog | null;
+    const lights = this.scene.children
+      .filter((c) => (c as THREE.Light).isLight)
+      .map((c) => ({ type: c.type, intensity: (c as THREE.Light).intensity }));
+    const floorType = this.floorMesh
+      ? ((this.floorMesh.material as THREE.Material).type)
+      : null;
+    const buildingType = this.buildingMats[0] ? this.buildingMats[0].type : null;
+    const mounted = this.buildingChunks.filter((c) => c.mesh).length;
+    return {
+      fog: fog ? { color: fog.color.getHex(), near: fog.near, far: fog.far } : null,
+      background: (this.scene.background as THREE.Color | null)?.getHex?.() ?? null,
+      sky: !!this.skyMesh,
+      lights,
+      floorType,
+      buildingType,
+      mountedChunks: mounted,
+      chunks: this.buildingChunks.length,
+      playerShadow: !!this.playerShadow,
+      dummyShadow: !!this.dummyShadow,
+      outputColorSpace: this.renderer.outputColorSpace,
     };
   }
 
@@ -672,20 +710,78 @@ export class GameWorld {
   }
 
   private addLights(): void {
-    const hemi = new THREE.HemisphereLight(0xbfd0ff, 0x302418, 0.9);
+    const hemi = new THREE.HemisphereLight(0xc8d8f0, 0x4a3828, 0.88);
     this.scene.add(hemi);
-    const dir = new THREE.DirectionalLight(0xffe8c8, 1.1);
-    dir.position.set(60, 120, 40);
-    this.scene.add(dir);
-    const fill = new THREE.DirectionalLight(0x8890ff, 0.35);
-    fill.position.set(-60, 40, -80);
+    const sun = new THREE.DirectionalLight(0xffe2b8, 1.7);
+    sun.position.set(80, 140, 55);
+    this.scene.add(sun);
+    const fill = new THREE.DirectionalLight(0x8aa0d0, 0.32);
+    fill.position.set(-70, 45, -90);
     this.scene.add(fill);
+    const ambient = new THREE.AmbientLight(0xfff3e0, 0.2);
+    this.scene.add(ambient);
+  }
+
+  private addSky(): void {
+    const canvas = document.createElement("canvas");
+    canvas.width = 4;
+    canvas.height = 256;
+    const ctx = canvas.getContext("2d")!;
+    const hex = (n: number) => `#${n.toString(16).padStart(6, "0")}`;
+    const grad = ctx.createLinearGradient(0, 0, 0, 256);
+    grad.addColorStop(0, hex(SKY_TOP));
+    grad.addColorStop(0.42, "#8eb8d8");
+    grad.addColorStop(0.72, hex(SKY_HORIZON));
+    grad.addColorStop(1, hex(FOG_COLOR));
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 4, 256);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.magFilter = THREE.LinearFilter;
+    tex.minFilter = THREE.LinearFilter;
+    const geo = new THREE.SphereGeometry(4800, 24, 16);
+    const mat = new THREE.MeshBasicMaterial({
+      map: tex,
+      side: THREE.BackSide,
+      fog: false,
+      depthWrite: false,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.frustumCulled = false;
+    this.scene.add(mesh);
+    this.skyMesh = mesh;
+  }
+
+  private makeBlobShadow(size: number): THREE.Mesh {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d")!;
+    const grad = ctx.createRadialGradient(64, 64, 8, 64, 64, 60);
+    grad.addColorStop(0, "rgba(20,12,6,0.42)");
+    grad.addColorStop(0.55, "rgba(20,12,6,0.16)");
+    grad.addColorStop(1, "rgba(20,12,6,0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 128, 128);
+    const tex = new THREE.CanvasTexture(canvas);
+    const mesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(size, size),
+      new THREE.MeshBasicMaterial({
+        map: tex,
+        transparent: true,
+        depthWrite: false,
+        fog: false,
+      }),
+    );
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.renderOrder = 1;
+    return mesh;
   }
 
   private floorMesh: THREE.Mesh | null = null;
 
   private addFloor(): void {
-    const material = new THREE.MeshBasicMaterial({
+    const material = new THREE.MeshLambertMaterial({
       map: this.assets.texture,
       side: THREE.DoubleSide,
     });
@@ -705,7 +801,7 @@ export class GameWorld {
 
     this.buildingMats = atlasTextures.map(
       (tex) =>
-        new THREE.MeshBasicMaterial({
+        new THREE.MeshLambertMaterial({
           map: tex,
           side: THREE.DoubleSide,
           alphaTest: 0.4,
@@ -831,6 +927,7 @@ export class GameWorld {
     g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
     g.setIndex(new THREE.BufferAttribute(idx, 1));
+    g.computeVertexNormals();
     return g;
   }
 
@@ -1805,6 +1902,15 @@ export class GameWorld {
       p.z + CAM_DIST * cp * Math.cos(y),
     );
     this.camera.lookAt(p.x, p.y + lookY, p.z);
+    if (this.skyMesh) this.skyMesh.position.copy(this.camera.position);
+    if (this.playerShadow) {
+      this.playerShadow.position.set(p.x, p.y + 0.04, p.z);
+    }
+    if (this.dummyShadow) {
+      const d = this.dummy.group.position;
+      this.dummyShadow.position.set(d.x, d.y + 0.04, d.z);
+      this.dummyShadow.visible = this.dummy.alive;
+    }
   }
 
   private targetYaw = -1.31;

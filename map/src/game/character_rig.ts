@@ -299,7 +299,7 @@ function buildMesh(part: MeshPartData, assets: CharacterAssets): THREE.SkinnedMe
   geometry.setIndex(part.idx);
 
   const map = part.tex ? assets.textures.get(part.tex) : undefined;
-  const base = { roughness: 0.92, metalness: 0.05, ...(map ? { map } : {}) };
+  const base = { roughness: 0.72, metalness: 0.04, ...(map ? { map } : {}) };
   let material: THREE.MeshStandardMaterial;
   if (part.render === "alpha") {
     material = new THREE.MeshStandardMaterial({
