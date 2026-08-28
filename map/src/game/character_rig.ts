@@ -140,6 +140,16 @@ export class CharacterRig {
     if (mat) (mat as THREE.MeshStandardMaterial).color.set(colorHex ?? "#ffffff");
   }
 
+  applyEnvMap(envMap: THREE.Texture | null): void {
+    for (const mesh of this.meshes) {
+      const mat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+      if (!mat) continue;
+      const std = mat as THREE.MeshStandardMaterial;
+      std.envMap = envMap;
+      std.needsUpdate = true;
+    }
+  }
+
   applyPose(timeMs: number): void {
     const anim = this.currentAnim;
     if (!anim || !this.skeleton) return;
@@ -299,19 +309,34 @@ function buildMesh(part: MeshPartData, assets: CharacterAssets): THREE.SkinnedMe
   geometry.setIndex(part.idx);
 
   const map = part.tex ? assets.textures.get(part.tex) : undefined;
-  const base = { roughness: 0.72, metalness: 0.04, ...(map ? { map } : {}) };
+  const cloth = part.id.includes("clothes") || part.id.includes("hair");
+  const metal = part.id.includes("sword") || part.id.includes("armor") || part.id.includes("helm");
+  const leather = part.id.includes("boot") || part.id.includes("glove") || part.id.includes("belt");
+  const skin =
+    part.id.includes("face") ||
+    part.id.includes("pelvis") ||
+    part.id.includes("torso") ||
+    part.id.includes("arm") ||
+    part.id.includes("thigh") ||
+    part.id.includes("calf");
+  const base = {
+    roughness: metal ? 0.28 : leather ? 0.7 : cloth ? 0.58 : skin ? 0.52 : 0.55,
+    metalness: metal ? 0.62 : 0.02,
+    envMapIntensity: metal ? 0.7 : 0.35,
+    ...(map ? { map } : {}),
+  };
   let material: THREE.MeshStandardMaterial;
   if (part.render === "alpha") {
     material = new THREE.MeshStandardMaterial({
       ...base,
-      alphaTest: 0.5,
+      alphaTest: 0.45,
       side: THREE.DoubleSide,
     });
   } else if (part.render === "translucent") {
     material = new THREE.MeshStandardMaterial({
       ...base,
-      roughness: 0.6,
-      metalness: 0.2,
+      roughness: 0.42,
+      metalness: 0.18,
       transparent: true,
       side: THREE.DoubleSide,
     });

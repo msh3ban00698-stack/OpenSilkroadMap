@@ -192,7 +192,7 @@ export class RegionLoader {
         url,
         (tex) => {
           tex.colorSpace = THREE.SRGBColorSpace;
-          tex.anisotropy = 4;
+          tex.anisotropy = 8;
           resolve(tex);
         },
         undefined,

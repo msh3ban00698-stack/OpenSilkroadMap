@@ -19,6 +19,7 @@ import { mobCampsFor, type MobCamp } from "./mobs_data";
 import { loadTeleportPads, type TeleportPad } from "./teleport_data";
 import { MAX_PARTY_MEMBERS, type MercenaryDef } from "./party_data";
 import { getSkillFull, isHealSkill, loadSkillsFull, skillDamage, skillHeal, skillMpCost } from "./skill_data";
+import { DressingStreamer, loadEnvArt, makeTerrainMaterial, type EnvTextures } from "./world_art";
 
 export interface NpcInstance {
   id: string;
@@ -49,14 +50,14 @@ const WALK_SPEED = 70;
 const RUN_SPEED = 125;
 const RUN_MAGNITUDE = 0.55;
 
-const CAM_DIST = 22;
+const CAM_DIST = 13.5;
 const CAM_MIN_PITCH = 0.18;
 const CAM_MAX_PITCH = 1.2;
-const NPC_LOAD_DIST_SQ = 160 * 160;
-const NPC_VISIBLE_DIST_SQ = 150 * 150;
+const NPC_LOAD_DIST_SQ = 200 * 200;
+const NPC_VISIBLE_DIST_SQ = 190 * 190;
 const BUILDING_CELL = 256;
-const BUILDING_DRAW_DIST_SQ = 300 * 300;
-const BUILDING_UNLOAD_DIST_SQ = 360 * 360;
+const BUILDING_DRAW_DIST_SQ = 520 * 520;
+const BUILDING_UNLOAD_DIST_SQ = 640 * 640;
 
 // Open-world constants for the real Constantinople region (region 1). The
 // terrain spans 11520 x 11520 world units, so the camera + fog must reach far.
@@ -148,22 +149,27 @@ export class GameWorld {
   }[] = [];
 
   private worldNpcCount = 0;
-  private buildingMats: THREE.MeshLambertMaterial[] = [];
+  private buildingMats: THREE.MeshPhongMaterial[] = [];
   private skyMesh: THREE.Mesh | null = null;
   private playerShadow: THREE.Mesh | null = null;
   private dummyShadow: THREE.Mesh | null = null;
+  private dressing: DressingStreamer | null = null;
+  private terrainTime = { value: 0 };
+  private charEnv: THREE.Texture | null = null;
+  private loopPaused = false;
   private buildingGeos: Array<THREE.BufferGeometry | null> = [];
   private buildingChunks: {
     gi: number;
     x: number;
     z: number;
+    verts: number;
     insts: { x: number; y: number; z: number; ry: number }[];
     mesh: THREE.InstancedMesh | null;
   }[] = [];
   private chunkTick = 0;
   private npcList = REGION_NPCS;
   private yaw = -1.31;
-  private pitch = 0.42;
+  private pitch = 0.5;
   private move = { x: 0, z: 0, mag: 0 };
   private moving = false;
 
@@ -205,8 +211,12 @@ export class GameWorld {
     void this.buildGates();
     this.syncCompanions();
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "low-power" });
-    this.renderer.setPixelRatio(1);
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      powerPreference: "high-performance",
+      preserveDrawingBuffer: true,
+    });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     this.renderer.setSize(this.container.clientWidth || 360, this.container.clientHeight || 640);
     this.container.appendChild(this.renderer.domElement);
 
@@ -214,6 +224,8 @@ export class GameWorld {
     this.scene.background = new THREE.Color(FOG_COLOR);
     this.scene.fog = new THREE.Fog(FOG_COLOR, FOG_NEAR, FOG_FAR);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.12;
 
     this.camera = new THREE.PerspectiveCamera(
       62,
@@ -230,6 +242,7 @@ export class GameWorld {
     this.addNpcs();
     void this.populateAuthenticNpcs();
     void this.spawnMobs();
+    void this.loadWorldArt();
 
     this.rig = new CharacterRig({
       preset: playerPreset(this.character.classId, this.character.appearance.gender),
@@ -271,6 +284,7 @@ export class GameWorld {
       .then(() => {
         this.rigReady = true;
         this.rig.play("idle");
+        if (this.charEnv) this.rig.applyEnvMap(this.charEnv);
         this.applyCharacterLook();
         this.applyEquipment(this.character.equipment);
         this.onLog(`Welcome to ${this.region.name}, ${this.character.name}.`);
@@ -371,6 +385,32 @@ export class GameWorld {
         if (this.floorMesh) this.floorMesh.visible = v;
       },
       visualInfo: () => this.visualInfo(),
+      pauseLoop: (v: boolean) => {
+        this.loopPaused = v;
+      },
+      captureFrame: (w = 200, h = 112) => {
+        const rt = new THREE.WebGLRenderTarget(w, h, { depthBuffer: true, stencilBuffer: false });
+        const prevAspect = this.camera.aspect;
+        this.camera.aspect = w / h;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setRenderTarget(rt);
+        this.renderer.render(this.scene, this.camera);
+        const src = new Uint8Array(w * h * 4);
+        this.renderer.readRenderTargetPixels(rt, 0, 0, w, h, src);
+        this.renderer.setRenderTarget(null);
+        rt.dispose();
+        this.camera.aspect = prevAspect;
+        this.camera.updateProjectionMatrix();
+        const rgb: number[] = [];
+        for (let y = h - 1; y >= 0; y--) {
+          const row = y * w * 4;
+          for (let x = 0; x < w; x++) {
+            const i = row + x * 4;
+            rgb.push(src[i], src[i + 1], src[i + 2]);
+          }
+        }
+        return { w, h, rgb };
+      },
     };
   }
 
@@ -710,15 +750,15 @@ export class GameWorld {
   }
 
   private addLights(): void {
-    const hemi = new THREE.HemisphereLight(0xc8d8f0, 0x4a3828, 0.88);
+    const hemi = new THREE.HemisphereLight(0xd6e4f4, 0x3d2a1c, 0.95);
     this.scene.add(hemi);
-    const sun = new THREE.DirectionalLight(0xffe2b8, 1.7);
-    sun.position.set(80, 140, 55);
+    const sun = new THREE.DirectionalLight(0xffe4c0, 1.85);
+    sun.position.set(90, 160, 70);
     this.scene.add(sun);
-    const fill = new THREE.DirectionalLight(0x8aa0d0, 0.32);
-    fill.position.set(-70, 45, -90);
+    const fill = new THREE.DirectionalLight(0x7e92c4, 0.38);
+    fill.position.set(-80, 50, -90);
     this.scene.add(fill);
-    const ambient = new THREE.AmbientLight(0xfff3e0, 0.2);
+    const ambient = new THREE.AmbientLight(0xfff1dc, 0.24);
     this.scene.add(ambient);
   }
 
@@ -781,13 +821,130 @@ export class GameWorld {
   private floorMesh: THREE.Mesh | null = null;
 
   private addFloor(): void {
-    const material = new THREE.MeshLambertMaterial({
+    const material = new THREE.MeshPhongMaterial({
       map: this.assets.texture,
       side: THREE.DoubleSide,
+      shininess: 8,
+      specular: new THREE.Color(0x1a1610),
     });
     const mesh = new THREE.Mesh(this.assets.floorGeometry, material);
     this.scene.add(mesh);
     this.floorMesh = mesh;
+  }
+
+  private async loadWorldArt(): Promise<void> {
+    try {
+      const art = await loadEnvArt();
+      if (this.disposed) return;
+      if (this.floorMesh) {
+        const splat = makeTerrainMaterial(this.assets.texture, art.textures, this.terrainTime);
+        this.floorMesh.material = splat;
+      }
+      if (art.dressing) {
+        this.dressing = new DressingStreamer(this.scene, art.textures, art.dressing, (x, z) => this.terrainHeightAt(x, z));
+        this.dressing.update(this.rig.group.position.x, this.rig.group.position.z);
+      }
+      this.placeSpawnArchitecture(art.textures);
+      this.bakeCharEnv();
+    } catch (err) {
+      console.error("world art failed", err);
+    }
+  }
+
+  private bakeCharEnv(): void {
+    const c = document.createElement("canvas");
+    c.width = 64;
+    c.height = 64;
+    const ctx = c.getContext("2d")!;
+    const g = ctx.createLinearGradient(0, 0, 0, 64);
+    g.addColorStop(0, "#8eb8d8");
+    g.addColorStop(0.45, "#d7c7a8");
+    g.addColorStop(1, "#6a5a40");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 64, 64);
+    const tex = new THREE.CanvasTexture(c);
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.colorSpace = THREE.SRGBColorSpace;
+    this.charEnv = tex;
+    this.rig.applyEnvMap(this.charEnv);
+  }
+
+  private placeSpawnArchitecture(env: EnvTextures): void {
+    const spawn = this.assets.spawn;
+    const stone = new THREE.MeshPhongMaterial({
+      map: env.stone,
+      shininess: 16,
+      specular: new THREE.Color(0x222018),
+    });
+    const wood = new THREE.MeshPhongMaterial({
+      map: env.wood,
+      color: 0xc4a070,
+      shininess: 14,
+      specular: new THREE.Color(0x2a1c10),
+    });
+    const cloth = new THREE.MeshLambertMaterial({ map: env.cloth, side: THREE.DoubleSide });
+    const cobble = new THREE.MeshPhongMaterial({
+      map: env.cobble,
+      shininess: 10,
+      specular: new THREE.Color(0x1a1610),
+    });
+    const colGeo = new THREE.CylinderGeometry(0.28, 0.36, 3.5, 10);
+    const capGeo = new THREE.CylinderGeometry(0.44, 0.44, 0.16, 10);
+    const baseGeo = new THREE.CylinderGeometry(0.48, 0.52, 0.22, 10);
+    for (let i = 0; i < 10; i++) {
+      const a = (i / 10) * Math.PI * 2 + 0.2;
+      const x = spawn.x + Math.cos(a) * 16.5;
+      const z = spawn.z + Math.sin(a) * 16.5;
+      const y = this.terrainHeightAt(x, z);
+      const col = new THREE.Mesh(colGeo, stone);
+      col.position.set(x, y + 1.75, z);
+      this.scene.add(col);
+      const cap = new THREE.Mesh(capGeo, stone);
+      cap.position.set(x, y + 3.55, z);
+      this.scene.add(cap);
+      const base = new THREE.Mesh(baseGeo, stone);
+      base.position.set(x, y + 0.12, z);
+      this.scene.add(base);
+    }
+    const plaza = new THREE.Mesh(new THREE.CircleGeometry(9.5, 28), cobble);
+    plaza.rotation.x = -Math.PI / 2;
+    plaza.position.set(spawn.x, this.terrainHeightAt(spawn.x, spawn.z) + 0.03, spawn.z);
+    this.scene.add(plaza);
+    const wallGeo = new THREE.BoxGeometry(4.2, 1.05, 0.32);
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2 + 0.5;
+      const x = spawn.x + Math.cos(a) * 24;
+      const z = spawn.z + Math.sin(a) * 24;
+      const y = this.terrainHeightAt(x, z);
+      const wall = new THREE.Mesh(wallGeo, stone);
+      wall.position.set(x, y + 0.52, z);
+      wall.rotation.y = a + Math.PI / 2;
+      this.scene.add(wall);
+    }
+    const stallPosts = new THREE.BoxGeometry(0.12, 2.1, 0.12);
+    const stallRoof = new THREE.BoxGeometry(3.2, 0.08, 2.1);
+    const stallDeck = new THREE.BoxGeometry(2.8, 0.7, 1.4);
+    for (let i = 0; i < 4; i++) {
+      const a = -0.6 + i * 0.42;
+      const x = spawn.x + Math.cos(a) * 11;
+      const z = spawn.z - 8 + Math.sin(a) * 4;
+      const y = this.terrainHeightAt(x, z);
+      const deck = new THREE.Mesh(stallDeck, wood);
+      deck.position.set(x, y + 0.36, z);
+      deck.rotation.y = a;
+      this.scene.add(deck);
+      const roof = new THREE.Mesh(stallRoof, cloth);
+      roof.position.set(x, y + 2.05, z);
+      roof.rotation.y = a;
+      roof.rotation.x = -0.18;
+      this.scene.add(roof);
+      const p1 = new THREE.Mesh(stallPosts, wood);
+      p1.position.set(x - 1.3, y + 1.05, z - 0.7);
+      this.scene.add(p1);
+      const p2 = new THREE.Mesh(stallPosts, wood);
+      p2.position.set(x + 1.3, y + 1.05, z - 0.7);
+      this.scene.add(p2);
+    }
   }
 
   private terrainHeightAt(x: number, z: number): number {
@@ -801,10 +958,14 @@ export class GameWorld {
 
     this.buildingMats = atlasTextures.map(
       (tex) =>
-        new THREE.MeshLambertMaterial({
+        new THREE.MeshPhongMaterial({
           map: tex,
+          bumpMap: tex,
+          bumpScale: 0.42,
           side: THREE.DoubleSide,
-          alphaTest: 0.4,
+          alphaTest: 0.35,
+          shininess: 22,
+          specular: new THREE.Color(0x2a2418),
         }),
     );
     this.buildingGeos = manifest.geoms.map(() => null);
@@ -819,14 +980,18 @@ export class GameWorld {
       }
       bucket.insts.push({ x, y, z, ry });
     };
+    const seen = new Set<string>();
     for (const inst of manifest.instances) {
+      const key = `${inst.g}:${Math.round(inst.x)}:${Math.round(inst.z)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       push(inst.g, inst.x, inst.y, inst.z, inst.ry);
     }
     for (const grp of manifest.npcGroups) {
       if (!grp.instances.length) continue;
       this.worldNpcCount += grp.instances.length;
       grp.instances.forEach((p, k) => {
-        push(grp.geom, p.x, this.terrainHeightAt(p.x, p.z) + 0.8, p.z, (k * 0.6) % (Math.PI * 2));
+        push(grp.geom, p.x, this.terrainHeightAt(p.x, p.z), p.z, (k * 0.6) % (Math.PI * 2));
       });
     }
     for (const bucket of buckets.values()) {
@@ -841,6 +1006,7 @@ export class GameWorld {
         gi: bucket.gi,
         x: sx / bucket.insts.length,
         z: sz / bucket.insts.length,
+        verts: manifest.geoms[bucket.gi]?.vCount ?? 0,
         insts: bucket.insts,
         mesh: null,
       });
@@ -893,8 +1059,11 @@ export class GameWorld {
       const dx = chunk.x - px;
       const dz = chunk.z - pz;
       const d2 = dx * dx + dz * dz;
-      if (d2 < BUILDING_DRAW_DIST_SQ) this.mountBuildingChunk(chunk);
-      else if (d2 > BUILDING_UNLOAD_DIST_SQ) this.unmountBuildingChunk(chunk);
+      const landmark = chunk.verts > 8000;
+      const draw = landmark ? 720 * 720 : BUILDING_DRAW_DIST_SQ;
+      const unload = landmark ? 880 * 880 : BUILDING_UNLOAD_DIST_SQ;
+      if (d2 < draw) this.mountBuildingChunk(chunk);
+      else if (d2 > unload) this.unmountBuildingChunk(chunk);
     }
   }
 
@@ -1018,6 +1187,7 @@ export class GameWorld {
     m.loaded = true;
     void m.rig.load().then(() => {
       if (this.disposed) return;
+      if (this.charEnv) m.rig.applyEnvMap(this.charEnv);
       m.rig.group.position.set(m.homeX, this.terrainHeightAt(m.homeX, m.homeZ) + 0.15, m.homeZ);
       m.rig.play("idle");
       m.group.add(m.rig.group);
@@ -1151,26 +1321,31 @@ export class GameWorld {
 
   private buildNpc(name: string): THREE.Group {
     const group = new THREE.Group();
-    const mat = new THREE.MeshLambertMaterial({ color: 0x2f7bbf });
-    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.5, 1.1, 10), mat);
-    body.position.y = 0.55;
+    const robe = new THREE.MeshPhongMaterial({ color: 0x6b3a28, shininess: 12, specular: 0x221108 });
+    const skin = new THREE.MeshLambertMaterial({ color: 0xe0b48a });
+    const sash = new THREE.MeshPhongMaterial({ color: 0xc4a050, shininess: 28, specular: 0x443310 });
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.46, 1.22, 10), robe);
+    body.position.y = 0.62;
     group.add(body);
-    const head = new THREE.Mesh(
-      new THREE.SphereGeometry(0.3, 12, 10),
-      new THREE.MeshLambertMaterial({ color: 0xe8c39a }),
-    );
-    head.position.y = 1.35;
+    const belt = new THREE.Mesh(new THREE.TorusGeometry(0.36, 0.045, 6, 12), sash);
+    belt.rotation.x = Math.PI / 2;
+    belt.position.y = 0.95;
+    group.add(belt);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.26, 12, 10), skin);
+    head.position.y = 1.42;
     group.add(head);
+    const wrap = new THREE.Mesh(new THREE.SphereGeometry(0.28, 10, 8, 0, Math.PI * 2, 0, Math.PI * 0.45), robe);
+    wrap.position.y = 1.52;
+    group.add(wrap);
     const ring = new THREE.Mesh(
-      new THREE.RingGeometry(0.42, 0.55, 20),
+      new THREE.RingGeometry(0.38, 0.5, 20),
       new THREE.MeshBasicMaterial({ color: 0x7ce6c8, side: THREE.DoubleSide }),
     );
     ring.rotation.x = -Math.PI / 2;
     ring.position.y = 0.02;
     group.add(ring);
-
     const sprite = this.makeLabel(name, 0x9ad7ff, 0.8);
-    sprite.position.y = 1.95;
+    sprite.position.y = 2.05;
     group.add(sprite);
     return group;
   }
@@ -1178,8 +1353,8 @@ export class GameWorld {
   private buildLabels(): void {
     const cls = getClass(this.character.classId);
     const nameSprite = this.makeLabel(this.character.name, 0xffffff, 1);
-    nameSprite.position.y = 1.05;
-    nameSprite.scale.set(2.2, 0.55, 1);
+    nameSprite.position.y = 0.95;
+    nameSprite.scale.set(1.7, 0.42, 1);
     this.labels.add(nameSprite);
     const classSprite = this.makeLabel(cls ? cls.name : this.character.classId, 0xbb86fc, 0.7);
     classSprite.position.y = 0.55;
@@ -1189,17 +1364,25 @@ export class GameWorld {
 
   private buildDummy(): THREE.Group {
     const group = new THREE.Group();
-    const wood = new THREE.MeshLambertMaterial({ color: 0x9a7448 });
-    const dark = new THREE.MeshLambertMaterial({ color: 0x5a3f28 });
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.32, 2.1, 12), wood);
-    post.position.y = 1.05;
+    const wood = new THREE.MeshPhongMaterial({ color: 0xb08958, shininess: 22, specular: 0x332211 });
+    const dark = new THREE.MeshPhongMaterial({ color: 0x5a3f28, shininess: 12 });
+    const straw = new THREE.MeshLambertMaterial({ color: 0xc4a45a });
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.3, 2.05, 10), wood);
+    post.position.y = 1.02;
     group.add(post);
-    const arm = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.16, 0.16), dark);
-    arm.position.y = 1.75;
+    const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.48, 1.05, 10), straw);
+    torso.position.y = 1.35;
+    group.add(torso);
+    const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 1.7, 8), dark);
+    arm.rotation.z = Math.PI / 2;
+    arm.position.y = 1.72;
     group.add(arm);
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.3, 12, 10), wood);
-    head.position.y = 2.3;
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.28, 12, 10), straw);
+    head.position.y = 2.18;
     group.add(head);
+    const hat = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.32, 0.18, 8), dark);
+    hat.position.y = 2.42;
+    group.add(hat);
     const ring = new THREE.Mesh(
       new THREE.RingGeometry(0.3, 0.46, 18),
       new THREE.MeshBasicMaterial({ color: 0xcc3344, side: THREE.DoubleSide }),
@@ -1895,7 +2078,7 @@ export class GameWorld {
     const y = this.targetYaw;
     const cp = Math.cos(this.pitch);
     const sp = Math.sin(this.pitch);
-    const lookY = Math.max(1.35, this.rig.height * 0.62 || 1.5);
+    const lookY = Math.max(1.15, this.rig.height * 0.72 || 1.45);
     this.camera.position.set(
       p.x + CAM_DIST * cp * Math.sin(y),
       p.y + CAM_DIST * sp + lookY,
@@ -1918,6 +2101,7 @@ export class GameWorld {
   private loop = (): void => {
     if (this.disposed) return;
     this.raf = requestAnimationFrame(this.loop);
+    if (this.loopPaused) return;
     const dt = Math.min(this.clock.getDelta(), 0.05);
     this.updateRegen(dt);
     this.updatePlayer(dt);
@@ -1941,6 +2125,7 @@ export class GameWorld {
         this.scene.add(rig.group);
         void rig.load().then(() => {
           if (this.disposed) return;
+          if (this.charEnv) rig.applyEnvMap(this.charEnv);
           const idle = rig.hasAnim("idle") ? "idle" : rig.animIds()[0];
           if (idle) rig.play(idle);
         });
@@ -1962,7 +2147,11 @@ export class GameWorld {
     this.updateLabels();
     this.updateCamera(dt);
     this.chunkTick += 1;
-    if (this.chunkTick % 8 === 0) this.updateBuildingChunks();
+    if (this.chunkTick % 8 === 0) {
+      this.updateBuildingChunks();
+      this.dressing?.update(px, pz);
+    }
+    this.terrainTime.value += dt;
     this.renderer.render(this.scene, this.camera);
   };
 
@@ -1978,6 +2167,7 @@ export class GameWorld {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     for (const chunk of this.buildingChunks) this.unmountBuildingChunk(chunk);
+    this.dressing?.dispose();
     this.rig.dispose();
     releaseRenderer(this.renderer);
     if (this.renderer.domElement.parentElement === this.container) {

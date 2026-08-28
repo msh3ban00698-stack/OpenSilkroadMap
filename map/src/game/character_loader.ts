@@ -74,6 +74,7 @@ function loadTexture(url: string): Promise<THREE.Texture> {
       url,
       (tex) => {
         tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = 8;
         resolve(tex);
       },
       undefined,
