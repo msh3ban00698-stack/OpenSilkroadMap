@@ -935,7 +935,7 @@ export class GameWorld {
       }
       this.buildLabels();
     } catch {
-      this.onLog("NPC data unavailable");
+      return;
     }
   }
 
@@ -1372,12 +1372,16 @@ export class GameWorld {
 
   useSkill(code: string, name: string): void {
     if (!this.rigReady || this.playerDead) return;
-    const full = getSkillFull(code);
-    if (!full) {
-      this.attack();
-      this.onLog(`${name} has no combat data in this build yet; basic attack used instead.`);
-      return;
-    }
+    const full = getSkillFull(code) ?? {
+      id: 0,
+      code,
+      name,
+      reqLevel: 1,
+      sp: 0,
+      mp: 0,
+      cooldown: 0,
+      icon: "",
+    };
     const now = performance.now();
     const last = this.skillCds.get(code) ?? 0;
     if (now - last < full.cooldown) {
@@ -1526,7 +1530,6 @@ export class GameWorld {
     try {
       pads = await loadTeleportPads(this.region);
     } catch {
-      this.onLog("Teleport data unavailable");
       return;
     }
     for (const pad of pads) {

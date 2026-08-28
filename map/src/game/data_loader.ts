@@ -1,7 +1,7 @@
-import levelData from "./data/level_progression.json";
-import itemData from "./data/items.json";
-import skillData from "./data/skills.json";
-import masteryData from "./data/masteries.json";
+import levelData from "./data/level_progression.json" with { type: "json" };
+import itemData from "./data/items.json" with { type: "json" };
+import skillData from "./data/skills.json" with { type: "json" };
+import masteryData from "./data/masteries.json" with { type: "json" };
 
 // Phase H: verified VSRO 1.193 data extracted from the external package
 // (scripts/generate_phase_h_data.py). Kept small and committed under src/game/data.
@@ -73,6 +73,10 @@ export function getMastery(id: string | null): MasteryEntry | undefined {
 
 export function getClassSkills(classId: string): RealSkill[] {
   return CLASS_SKILLS[classId]?.skills ?? [];
+}
+
+export function getAllClassSkills(): RealSkill[] {
+  return Object.values(CLASS_SKILLS).flatMap((c) => c.skills);
 }
 
 export function getClassMasteryName(classId: string): string | null {

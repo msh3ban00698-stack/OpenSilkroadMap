@@ -32,6 +32,15 @@ interface SpawnRec {
   z: number;
 }
 
+interface MarkerNpc {
+  name: string;
+  region: number;
+  x: number;
+  y: number;
+  z: number;
+  teleport?: unknown[];
+}
+
 const SECTOR_W = 1920;
 
 const ACTOR_BY_CODE: Record<string, string> = {
@@ -77,38 +86,106 @@ function actorFor(code: string): string | null {
   return "actor/adventurer";
 }
 
+function actorForName(name: string): string {
+  const n = name.toUpperCase();
+  if (/SMITH|BLACKSMITH/.test(n)) return "actor/smith_eu";
+  if (/ACCESSORY|GROCER|JEWEL/.test(n)) return "actor/grocery_eu";
+  if (/POTION|DOCTOR|CHEF|HERB/.test(n)) return "actor/potion_eu";
+  if (/WAREHOUSE|STORAGE/.test(n)) return "actor/warehouse_keeper";
+  if (/MERCHANT|TRADER|COMMERCE/.test(n)) return "actor/merchant_union";
+  if (/GUILD/.test(n)) return "actor/guild_master";
+  if (/FERRY|HORSE|STABLE/.test(n)) return "actor/port_manager";
+  if (/PRIEST|MONK|BUDDHIST/.test(n)) return "actor/priest";
+  if (/GUIDE/.test(n)) return "actor/guide";
+  if (/SOLDIER|SOLDER|GUARD|GENERAL/.test(n)) return "actor/soldier_a";
+  return "actor/adventurer";
+}
+
+function sectorInRegion(region: number, def: RegionDef): boolean {
+  const id = region < 0 ? region + 65536 : region;
+  const rx = id & 0xff;
+  const ry = id >> 8;
+  return rx >= def.sx && rx < def.sx + def.span && ry >= def.sy && ry < def.sy + def.span;
+}
+
+function localToWorld(region: number, localX: number, localZ: number, def: RegionDef): { x: number; z: number } {
+  const id = region < 0 ? region + 65536 : region;
+  const rx = id & 0xff;
+  const ry = id >> 8;
+  return {
+    x: localX + (rx - def.sx) * SECTOR_W,
+    z: localZ + (ry - def.sy) * SECTOR_W,
+  };
+}
+
+async function fetchJson<T>(url: string): Promise<T | null> {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
 let cache: Record<number, WorldNpc[]> = {};
 
 export async function loadWorldNpcs(region: RegionDef): Promise<WorldNpc[]> {
   if (cache[region.id]) return cache[region.id];
-  const [spawns, chars] = await Promise.all([
-    fetch("/assets/gamedata/spawns.json").then((r) => r.json() as Promise<SpawnRec[]>),
-    fetch("/assets/gamedata/chars.json").then((r) => r.json() as Promise<Record<string, { name?: string }>>),
-  ]);
   const out: WorldNpc[] = [];
   const seen = new Set<string>();
-  for (const s of spawns) {
-    if (s.kind !== "npc") continue;
-    const rx = s.region & 0xff;
-    const ry = s.region >> 8;
-    if (rx < region.sx || rx >= region.sx + region.span || ry < region.sy || ry >= region.sy + region.span) continue;
-    if (seen.has(s.code)) continue;
-    seen.add(s.code);
-    const wx = s.x + (rx - region.sx) * SECTOR_W;
-    const wz = s.z + (ry - region.sy) * SECTOR_W;
-    const size = region.span * SECTOR_W;
-    if (wx < 0 || wx > size || wz < 0 || wz > size) continue;
-    out.push({
-      id: s.code,
-      code: s.code,
-      name: chars[String(s.cid)]?.name || s.code,
-      x: wx,
-      z: wz,
-      region: s.region,
-      actor: actorFor(s.code),
-      rotY: Math.PI,
-    });
+  const size = region.span * SECTOR_W;
+
+  const [spawns, chars] = await Promise.all([
+    fetchJson<SpawnRec[]>("/assets/gamedata/spawns.json"),
+    fetchJson<Record<string, { name?: string }>>("/assets/gamedata/chars.json"),
+  ]);
+  if (spawns && chars) {
+    for (const s of spawns) {
+      if (s.kind !== "npc") continue;
+      if (!sectorInRegion(s.region, region)) continue;
+      if (seen.has(s.code)) continue;
+      seen.add(s.code);
+      const { x: wx, z: wz } = localToWorld(s.region, s.x, s.z, region);
+      if (wx < 0 || wx > size || wz < 0 || wz > size) continue;
+      out.push({
+        id: s.code,
+        code: s.code,
+        name: chars[String(s.cid)]?.name || s.code,
+        x: wx,
+        z: wz,
+        region: s.region,
+        actor: actorFor(s.code),
+        rotY: Math.PI,
+      });
+    }
   }
+
+  if (out.length === 0) {
+    const markers = await fetchJson<MarkerNpc[]>("/assets/npcs.json");
+    if (markers) {
+      let i = 0;
+      for (const n of markers) {
+        const regionId = n.region < 0 ? n.region + 65536 : n.region;
+        if (regionId >= 32768) continue;
+        if (!sectorInRegion(n.region, region)) continue;
+        const { x: wx, z: wz } = localToWorld(n.region, n.x, n.y, region);
+        if (wx < 0 || wx > size || wz < 0 || wz > size) continue;
+        const id = `npc_marker_${region.id}_${i++}`;
+        out.push({
+          id,
+          code: id,
+          name: n.name,
+          x: wx,
+          z: wz,
+          region: n.region,
+          actor: actorForName(n.name),
+          rotY: Math.PI,
+        });
+      }
+    }
+  }
+
   cache[region.id] = out;
   return out;
 }

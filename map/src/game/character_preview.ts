@@ -38,6 +38,7 @@ export class CharacterPreview {
   private disposed = false;
   private loaded = false;
   private resizeObs: ResizeObserver | null = null;
+  private pendingAppearance: PreviewAppearance | null = null;
 
   constructor(
     private container: HTMLElement,
@@ -78,6 +79,7 @@ export class CharacterPreview {
         this.rig.play("idle");
         this.rig.update(0);
         if (this.rig.skeleton) this.rig.skeleton.update();
+        if (this.pendingAppearance) this.setAppearance(this.pendingAppearance);
         this.resize();
       })
       .catch((e) => console.error("preview load failed:", e));
@@ -97,9 +99,7 @@ export class CharacterPreview {
   };
 
   private frameRig(): void {
-    const scaledH = this.rig.height || 1.7;
-    const groupScale = Math.abs(this.rig.group.scale.y) || 1;
-    const h = groupScale < 0.99 ? scaledH / groupScale : scaledH;
+    const h = this.rig.height || 1.7;
     const target = new THREE.Vector3(0, h * 0.52, 0);
     const radius = h * 2.15;
     this.camera.position.set(target.x, target.y + radius * 0.16, target.z - radius);
@@ -141,6 +141,8 @@ export class CharacterPreview {
   };
 
   setAppearance(app: PreviewAppearance): void {
+    this.pendingAppearance = app;
+    if (!this.loaded) return;
     const tintParts = (ids: string[], color: string | null | undefined): void => {
       for (const id of ids) this.rig.setPartTint(id, color ?? null);
     };

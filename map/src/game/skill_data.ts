@@ -1,3 +1,5 @@
+import { getAllClassSkills } from "./data_loader";
+
 export interface SkillFull {
   id: number;
   code: string;
@@ -23,37 +25,57 @@ export function isHealSkill(code: string): boolean {
 
 export function skillIconUrl(code: string): string | null {
   const full = getSkillFull(code);
-  if (!full) return null;
+  if (!full || !full.icon) return null;
   return `assets/img/silkroad/icons/${full.icon.replace(/\\/g, "/").replace(/\//g, "_")}.webp`;
 }
 
+function seedFromBundled(): void {
+  const map = new Map<string, SkillFull>();
+  const fam = new Map<string, SkillFull>();
+  for (const s of getAllClassSkills()) {
+    const full: SkillFull = {
+      id: s.id ?? 0,
+      code: s.code,
+      name: s.name,
+      reqLevel: s.levelReq,
+      sp: 0,
+      mp: 0,
+      cooldown: 0,
+      icon: "",
+    };
+    map.set(s.code, full);
+    const f = familyOf(s.code);
+    if (!fam.has(f)) fam.set(f, full);
+  }
+  fullByCode = map;
+  fullByFamily = fam;
+}
+
+seedFromBundled();
+
 export async function loadSkillsFull(): Promise<void> {
-  if (fullByCode) return;
+  if (!fullByCode) seedFromBundled();
   try {
     const res = await fetch("assets/gamedata/skills_full.json");
-    if (!res.ok) {
-      fullByCode = new Map();
-      fullByFamily = new Map();
-      return;
-    }
+    if (!res.ok) return;
     const data = (await res.json()) as Record<string, SkillFull>;
-    const map = new Map(Object.entries(data));
-    const fam = new Map<string, SkillFull>();
-    for (const s of map.values()) {
+    const map = fullByCode ?? new Map<string, SkillFull>();
+    const fam = fullByFamily ?? new Map<string, SkillFull>();
+    for (const s of Object.values(data)) {
+      map.set(s.code, s);
       const f = familyOf(s.code);
       if (!fam.has(f)) fam.set(f, s);
     }
     fullByCode = map;
     fullByFamily = fam;
   } catch {
-    fullByCode = new Map();
-    fullByFamily = new Map();
+    if (!fullByCode) seedFromBundled();
   }
 }
 
 export function getSkillFull(code: string): SkillFull | null {
-  if (!fullByCode) return null;
-  return fullByCode.get(code) ?? fullByFamily?.get(familyOf(code)) ?? null;
+  if (!fullByCode) seedFromBundled();
+  return fullByCode!.get(code) ?? fullByFamily?.get(familyOf(code)) ?? null;
 }
 
 export function skillMpCost(full: SkillFull, level: number): number {

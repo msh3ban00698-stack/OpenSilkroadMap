@@ -70,13 +70,9 @@ export class CharacterRig {
     this.assets = await loadCharacter(this.preset);
     this.scale = this.assets.meta.scale || this.scale;
     this.anims = this.assets.anims;
-    this.group.scale.setScalar(this.scale);
-    this.skeleton = CharacterRig.buildSkeleton(this.assets, this.group);
-    for (const part of this.assets.meshes) {
-      const mesh = CharacterRig.buildMesh(part, this.assets, this.skeleton);
-      this.meshes.push(mesh);
-      this.group.add(mesh);
-    }
+    const assembled = assembleCharacter(this.assets, this.scale, this.group);
+    this.skeleton = assembled.skeleton;
+    this.meshes = assembled.meshes;
     if (this.anims.length > 0) {
       this.currentAnim = this.anims[0];
       this.applyPose(0);
@@ -186,75 +182,6 @@ export class CharacterRig {
     }
   }
 
-  private static buildSkeleton(assets: CharacterAssets, root: THREE.Object3D): THREE.Skeleton {
-    const names = assets.skeleton.names;
-    const bones: THREE.Bone[] = names.map(() => new THREE.Bone());
-    for (let i = 0; i < names.length; i++) {
-      const bone = bones[i];
-      bone.position.set(
-        assets.skeleton.bindPos[i * 3],
-        assets.skeleton.bindPos[i * 3 + 1],
-        assets.skeleton.bindPos[i * 3 + 2],
-      );
-      bone.quaternion.set(
-        assets.skeleton.bindRot[i * 4],
-        assets.skeleton.bindRot[i * 4 + 1],
-        assets.skeleton.bindRot[i * 4 + 2],
-        assets.skeleton.bindRot[i * 4 + 3],
-      );
-      const parent = assets.skeleton.parents[i];
-      if (parent >= 0) {
-        bones[parent].add(bone);
-      } else {
-        root.add(bone);
-      }
-    }
-    const skeleton = new THREE.Skeleton(bones);
-    root.updateMatrixWorld(true);
-    skeleton.calculateInverses();
-    return skeleton;
-  }
-
-  private static buildMesh(part: MeshPartData, assets: CharacterAssets, skeleton: THREE.Skeleton): THREE.SkinnedMesh {
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.Float32BufferAttribute(part.pos, 3));
-    geometry.setAttribute("normal", new THREE.Float32BufferAttribute(part.nrm, 3));
-    geometry.setAttribute("uv", new THREE.Float32BufferAttribute(part.uv, 2));
-    geometry.setAttribute("skinIndex", new THREE.Uint16BufferAttribute(part.sk, 4));
-    geometry.setAttribute("skinWeight", new THREE.Float32BufferAttribute(part.sw, 4));
-    geometry.setIndex(part.idx);
-
-    const map = part.tex ? assets.textures.get(part.tex) : undefined;
-    let material: THREE.MeshStandardMaterial;
-    if (part.render === "alpha") {
-      material = new THREE.MeshStandardMaterial({
-        map,
-        alphaTest: 0.5,
-        roughness: 0.92,
-        metalness: 0.05,
-        side: THREE.DoubleSide,
-      });
-    } else if (part.render === "translucent") {
-      material = new THREE.MeshStandardMaterial({
-        map,
-        transparent: true,
-        roughness: 0.6,
-        metalness: 0.2,
-        side: THREE.DoubleSide,
-      });
-    } else {
-      material = new THREE.MeshStandardMaterial({
-        map,
-        roughness: 0.92,
-        metalness: 0.05,
-      });
-    }
-
-    const mesh = new THREE.SkinnedMesh(geometry, material);
-    mesh.bind(skeleton);
-    return mesh;
-  }
-
   dispose(): void {
     for (const mesh of this.meshes) {
       mesh.geometry.dispose();
@@ -266,4 +193,131 @@ export class CharacterRig {
       for (const tex of this.assets.textures.values()) tex.dispose();
     }
   }
+}
+
+export function assembleCharacter(
+  assets: CharacterAssets,
+  scale: number,
+  root: THREE.Group = new THREE.Group(),
+): { group: THREE.Group; skeleton: THREE.Skeleton; meshes: THREE.SkinnedMesh[] } {
+  root.scale.setScalar(1);
+  const skeleton = buildSkeleton(assets, root);
+  const meshes: THREE.SkinnedMesh[] = [];
+  for (const part of assets.meshes) {
+    const mesh = buildMesh(part, assets);
+    meshes.push(mesh);
+    root.add(mesh);
+  }
+  root.updateMatrixWorld(true);
+  promoteBoneLocalMeshes(assets, skeleton, meshes);
+  skeleton.calculateInverses();
+  for (const mesh of meshes) {
+    mesh.bind(skeleton);
+  }
+  root.scale.setScalar(scale);
+  return { group: root, skeleton, meshes };
+}
+
+function exclusiveBoneIndex(part: MeshPartData): number {
+  const { sk, sw } = part;
+  const n = sk.length / 4;
+  if (n === 0) return -1;
+  const bone = sk[0];
+  for (let i = 0; i < n; i++) {
+    for (let k = 0; k < 4; k++) {
+      if (sw[i * 4 + k] > 1e-5 && sk[i * 4 + k] !== bone) return -1;
+    }
+  }
+  return bone;
+}
+
+function promoteBoneLocalMeshes(
+  assets: CharacterAssets,
+  skeleton: THREE.Skeleton,
+  meshes: THREE.SkinnedMesh[],
+): void {
+  const boneWorld = new THREE.Vector3();
+  for (let i = 0; i < assets.meshes.length; i++) {
+    const part = assets.meshes[i];
+    const boneIndex = exclusiveBoneIndex(part);
+    if (boneIndex < 0 || boneIndex >= skeleton.bones.length) continue;
+    const pos = part.pos;
+    const n = pos.length / 3;
+    if (n === 0) continue;
+    let cx = 0;
+    let cy = 0;
+    let cz = 0;
+    for (let v = 0; v < n; v++) {
+      cx += pos[v * 3];
+      cy += pos[v * 3 + 1];
+      cz += pos[v * 3 + 2];
+    }
+    cx /= n;
+    cy /= n;
+    cz /= n;
+    skeleton.bones[boneIndex].getWorldPosition(boneWorld);
+    const distOrigin = Math.hypot(cx, cy, cz);
+    const distBone = Math.hypot(cx - boneWorld.x, cy - boneWorld.y, cz - boneWorld.z);
+    if (distOrigin >= distBone * 0.45) continue;
+    meshes[i].geometry.applyMatrix4(skeleton.bones[boneIndex].matrixWorld);
+  }
+}
+
+function buildSkeleton(assets: CharacterAssets, root: THREE.Object3D): THREE.Skeleton {
+  const names = assets.skeleton.names;
+  const bones: THREE.Bone[] = names.map(() => new THREE.Bone());
+  for (let i = 0; i < names.length; i++) {
+    const bone = bones[i];
+    bone.position.set(
+      assets.skeleton.bindPos[i * 3],
+      assets.skeleton.bindPos[i * 3 + 1],
+      assets.skeleton.bindPos[i * 3 + 2],
+    );
+    bone.quaternion.set(
+      assets.skeleton.bindRot[i * 4],
+      assets.skeleton.bindRot[i * 4 + 1],
+      assets.skeleton.bindRot[i * 4 + 2],
+      assets.skeleton.bindRot[i * 4 + 3],
+    );
+    const parent = assets.skeleton.parents[i];
+    if (parent >= 0) {
+      bones[parent].add(bone);
+    } else {
+      root.add(bone);
+    }
+  }
+  return new THREE.Skeleton(bones);
+}
+
+function buildMesh(part: MeshPartData, assets: CharacterAssets): THREE.SkinnedMesh {
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(part.pos, 3));
+  geometry.setAttribute("normal", new THREE.Float32BufferAttribute(part.nrm, 3));
+  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(part.uv, 2));
+  geometry.setAttribute("skinIndex", new THREE.Uint16BufferAttribute(part.sk, 4));
+  geometry.setAttribute("skinWeight", new THREE.Float32BufferAttribute(part.sw, 4));
+  geometry.setIndex(part.idx);
+
+  const map = part.tex ? assets.textures.get(part.tex) : undefined;
+  const base = { roughness: 0.92, metalness: 0.05, ...(map ? { map } : {}) };
+  let material: THREE.MeshStandardMaterial;
+  if (part.render === "alpha") {
+    material = new THREE.MeshStandardMaterial({
+      ...base,
+      alphaTest: 0.5,
+      side: THREE.DoubleSide,
+    });
+  } else if (part.render === "translucent") {
+    material = new THREE.MeshStandardMaterial({
+      ...base,
+      roughness: 0.6,
+      metalness: 0.2,
+      transparent: true,
+      side: THREE.DoubleSide,
+    });
+  } else {
+    material = new THREE.MeshStandardMaterial(base);
+  }
+
+  return new THREE.SkinnedMesh(geometry, material);
 }

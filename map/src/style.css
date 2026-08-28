@@ -28,7 +28,7 @@
   --sheet-w: min(94vw, 460px);
   --modal-w: min(94vw, 560px);
   --dialog-w: min(92vw, 400px);
-  --sheet-h: min(76dvh, 620px);
+  --sheet-h: min(90dvh, 620px);
   --modal-h: min(92dvh, 660px);
 
   /* HUD player plate + bars */
@@ -773,6 +773,7 @@ body.game-mode #popup {
 }
 
 .sro-preview {
+  flex: 1;
   height: 100%;
   min-height: 0;
   overflow: hidden;
@@ -795,6 +796,19 @@ body.game-mode #popup {
   display: flex;
   flex-direction: column;
   min-height: 0;
+}
+
+.sro-create-colors {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.sro-create-colors .sro-field {
+  flex: 1;
+  margin-bottom: 0;
+  min-width: 0;
 }
 
 .sro-form-scroll {
@@ -867,7 +881,7 @@ body.game-mode #popup {
   }
 
   .sro-preview-col {
-    flex: 0 0 42%;
+    flex: 0 0 34%;
     min-width: 0;
   }
 
@@ -875,13 +889,29 @@ body.game-mode #popup {
     min-height: 0;
   }
 
-  /* Compact the create form so name/class/kit/gender/colors all fit above the fold */
+  .sro-split-create {
+    padding: 8px 2vw 10px;
+  }
+
+  .sro-form-panel {
+    padding: 8px 12px;
+  }
+
+  .sro-split-create .sro-window-title {
+    margin-bottom: 2px;
+  }
+
+  .sro-split-create .sro-window-title::after {
+    height: 4px;
+    margin: 2px auto 0;
+  }
+
   .sro-split-create .sro-form-scroll {
     gap: 0;
   }
 
   .sro-split-create .sro-field {
-    margin-bottom: clamp(5px, 1vh, 8px);
+    margin-bottom: 2px;
   }
 
   .sro-split-create .sro-field:last-child {
@@ -889,22 +919,72 @@ body.game-mode #popup {
   }
 
   .sro-split-create label {
-    font-size: 11px;
-    margin-bottom: 3px;
+    font-size: 10px;
+    margin-bottom: 2px;
   }
 
   .sro-split-create .sro-options {
     gap: 4px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .sro-split-create .sro-option {
-    min-height: var(--ctl-sm);
-    padding: 6px 10px;
+    min-height: 0;
+    padding: 4px 8px;
+  }
+
+  .sro-split-create .sro-option-desc {
+    font-size: 10px;
+    line-height: 1.2;
   }
 
   .sro-split-create .sro-seg {
-    min-height: var(--ctl-sm);
-    padding: 6px 8px;
+    min-height: var(--ctl-xs);
+    padding: 4px 8px;
+  }
+
+  .sro-split-create .sro-error {
+    margin: 0;
+    min-height: 0;
+  }
+
+  .sro-split-create .sro-input {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+
+  .sro-create-meta {
+    display: flex;
+    gap: 8px;
+  }
+
+  .sro-create-meta .sro-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sro-create-meta .sro-field:last-child {
+    flex: 0 0 38%;
+  }
+
+  .sro-create-meta .sro-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sro-create-colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  .sro-create-colors .sro-field {
+    flex: 1;
+    margin-bottom: 0;
+    min-width: 0;
+  }
+
+  .sro-create-colors .sro-color {
+    height: 22px;
+    width: 22px;
   }
 }
 
@@ -1084,16 +1164,34 @@ body.game-mode #popup {
   pointer-events: auto;
 }
 
-.hud-plate {
-  background: url("img/silkroad/ui/hud_pmi_window.png") no-repeat center / 100% 100%;
+.hud-left {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  gap: 4px;
   left: var(--gx);
-  min-height: var(--plate-h);
-  padding: clamp(6px, 1.2vh, 9px) 10px clamp(6px, 1.2vh, 9px) clamp(46px, 10vh, 62px);
+  max-height: calc(100dvh - var(--hud-bottom-zone) - var(--ctl-md) - 12px);
+  max-width: min(var(--plate-w), calc(100vw - var(--minimap-d) - var(--gx) - var(--gx-r) - 24px));
+  overflow: hidden;
+  pointer-events: none;
   position: absolute;
   top: var(--gy);
   width: min(var(--plate-w), calc(100vw - var(--minimap-d) - var(--gx) - var(--gx-r) - 24px));
+  z-index: 3;
+}
+
+.hud-left > * {
+  pointer-events: auto;
+}
+
+.hud-plate {
+  background: url("img/silkroad/ui/hud_pmi_window.png") no-repeat center / 100% 100%;
+  display: flex;
+  flex-shrink: 0;
+  gap: 6px;
+  min-height: var(--plate-h);
+  padding: clamp(6px, 1.2vh, 9px) 10px clamp(6px, 1.2vh, 9px) clamp(46px, 10vh, 62px);
+  position: relative;
+  width: 100%;
 }
 
 .hud-portrait {
@@ -1326,6 +1424,7 @@ body.game-mode #popup {
   left: 0;
   position: absolute;
   right: 0;
+  z-index: 3;
 }
 
 .hud-slot {
@@ -1426,13 +1525,13 @@ body.game-mode #popup {
 }
 
 .hud-log {
-  bottom: calc(var(--hud-bottom-zone) + var(--ctl-md) + 12px);
   color: #efe4c8;
+  flex: 1 1 auto;
   font-size: var(--txt-xs);
-  left: var(--gx);
-  max-width: min(62vw, 560px);
+  max-height: 88px;
+  min-height: 0;
+  overflow: hidden;
   pointer-events: none !important;
-  position: absolute;
   text-shadow: 0 1px 2px #000;
 }
 
@@ -1598,6 +1697,32 @@ body.game-mode #popup {
   gap: 8px;
 }
 
+.shop-panel:has(.shop-sheet) {
+  inset: 0;
+  max-width: none;
+  width: 100%;
+  max-height: none;
+  align-items: center;
+  background: rgba(4, 3, 6, 0.55);
+  justify-content: center;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.shop-backdrop {
+  display: none;
+}
+
+.shop-sheet {
+  display: flex;
+  flex-direction: column;
+  max-height: min(var(--sheet-h), calc(100dvh - 16px));
+  min-height: 0;
+  overflow: hidden;
+  width: min(92vw, var(--sheet-w));
+  z-index: 1;
+}
+
 .shop-panel .shop-grid,
 .shop-panel .shop-inv {
   flex: 1 1 auto;
@@ -1607,22 +1732,31 @@ body.game-mode #popup {
 
 .shop-panel .hud-dialog-actions {
   background-color: #241c11;
+  display: flex;
   flex-shrink: 0;
+  justify-content: center;
   margin-top: 4px;
   padding-top: 4px;
-  position: sticky;
-  bottom: 0;
+}
+
+.shop-panel .hud-dialog-actions .sro-btn {
+  flex: 0 0 auto;
+  max-width: 168px;
+  padding: 8px 16px;
+  width: min(100%, 168px);
 }
 
 .shop-sheet > .quest-close-btn,
 .shop-sheet > .party-close-btn,
 .shop-sheet > .wh-close-btn,
 .shop-sheet > .tp-close-btn {
-  position: sticky;
-  bottom: 0;
-  flex-shrink: 0;
+  align-self: center;
   background-color: #241c11;
-  margin-top: 4px;
+  flex-shrink: 0;
+  margin-top: 8px;
+  max-width: 168px;
+  padding: 8px 16px;
+  width: min(100%, 168px);
 }
 .shop-tabs {
   display: flex;
@@ -1711,8 +1845,7 @@ body.game-mode #popup {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 10px;
-  padding-bottom: 60px;
+  margin-bottom: 0;
 }
 .quest-card {
   background: rgba(20, 14, 8, 0.72);
@@ -1755,8 +1888,8 @@ body.game-mode #popup {
 .quest-empty {
   color: #a99b7c;
   font-size: 12px;
-  text-align: center;
-  padding: 10px 0;
+  text-align: left;
+  padding: 2px 0 6px;
 }
 
 /* --- Teleport panel --- */
@@ -1765,8 +1898,7 @@ body.game-mode #popup {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 10px;
-  padding-bottom: 60px;
+  margin-bottom: 0;
 }
 .tp-row {
   display: flex;
@@ -1783,10 +1915,13 @@ body.game-mode #popup {
 
 .party-list {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 10px;
-  padding-bottom: 60px;
+  gap: 6px;
+  margin-bottom: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .party-row {
   display: flex;
@@ -1795,12 +1930,26 @@ body.game-mode #popup {
   background: rgba(20, 14, 8, 0.72);
   border: 1px solid #6b5636;
   border-radius: 8px;
-  padding: 6px 10px;
-  min-height: 48px;
+  flex-shrink: 0;
+  gap: 10px;
+  padding: 4px 8px;
+  min-height: 36px;
+  min-width: 0;
+}
+.party-row .sro-btn {
+  flex: 0 0 auto;
+  min-width: 88px;
+  padding: 8px 14px;
+  width: auto;
 }
 .party-name {
   color: #efe6cf;
+  flex: 1 1 auto;
   font-size: 13px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .party-name small {
   color: #f4d67c;
@@ -1821,9 +1970,18 @@ body.game-mode #popup {
 }
 .wh-grid {
   display: grid;
+  flex: 1 1 auto;
   grid-template-columns: repeat(5, 1fr);
   gap: 6px;
   margin-bottom: 8px;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.wh-grid > .quest-empty,
+.shop-grid > .quest-empty,
+.shop-inv > .quest-empty {
+  grid-column: 1 / -1;
 }
 .wh-cell {
   position: relative;
@@ -1866,16 +2024,12 @@ body.game-mode #popup {
 }
 
 .hud-tracker {
-  position: absolute;
-  left: var(--gx);
-  top: calc(var(--gy) + var(--plate-h) + 14px);
-  max-width: min(46vw, 380px);
   background: rgba(10, 8, 6, 0.66);
   border: 1px solid rgba(200, 162, 74, 0.45);
   border-radius: 8px;
+  flex-shrink: 0;
   padding: 6px 8px;
   pointer-events: none;
-  z-index: 3;
 }
 .hud-tracker-title {
   color: #e8c874;
@@ -2261,16 +2415,49 @@ body.game-mode #popup {
   }
 
   .hud-log {
-    bottom: calc(var(--hud-bottom-zone) + var(--ctl-md) + 10px);
     font-size: var(--txt-xs);
-    left: 50%;
-    max-width: min(50vw, 640px);
-    text-align: center;
-    transform: translateX(-50%);
+    max-height: min(88px, 22vh);
+    text-align: left;
   }
 
   .hud-log-line {
     margin-top: 2px;
     padding: 2px 6px;
+  }
+
+  .shop-sheet {
+    max-height: min(var(--sheet-h), calc(100dvh - 12px));
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .shop-panel:has(.shop-sheet) {
+    padding: 4px;
+  }
+
+  .shop-sheet.sro-window {
+    padding: 8px 12px;
+  }
+
+  .shop-sheet > .quest-close-btn,
+  .shop-sheet > .party-close-btn,
+  .shop-sheet > .wh-close-btn,
+  .shop-sheet > .tp-close-btn {
+    margin-top: 4px;
+    padding: 6px 14px;
+  }
+
+  .party-row {
+    min-height: 32px;
+    padding: 3px 8px;
+  }
+
+  .party-row .sro-btn {
+    min-width: 80px;
+    padding: 6px 12px;
+  }
+
+  .wh-grid {
+    margin-bottom: 4px;
   }
 }

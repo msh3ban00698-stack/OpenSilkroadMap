@@ -327,7 +327,7 @@ class GameFlow {
         });
       })
       .catch(() => {
-        this.hud?.log("Teleport data unavailable.");
+        return;
       });
   }
 

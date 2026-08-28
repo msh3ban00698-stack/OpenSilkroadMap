@@ -99,6 +99,7 @@ export function buildHud(opts: HudOptions): Hud {
   const root = document.createElement("div");
   root.className = "game-hud";
   root.innerHTML = `
+    <div class="hud-left">
     <div class="hud-plate">
       <img class="hud-portrait" src="assets/img/silkroad/ui/hud_face.png" alt="" />
       <div class="hud-plate-main">
@@ -123,6 +124,9 @@ export function buildHud(opts: HudOptions): Hud {
         </div>
       </div>
     </div>
+    <div class="hud-tracker" id="hud-tracker"></div>
+    <div class="hud-log" id="hud-log"></div>
+    </div>
     <div class="hud-corner">
       <div class="hud-region">${START_REGION_NAME}</div>
       <div class="hud-gold-row"><span class="hud-coin"></span><span id="hud-gold"></span></div>
@@ -146,8 +150,6 @@ export function buildHud(opts: HudOptions): Hud {
       ${slots.join("")}
     </div>
     <div class="hud-levelup" id="hud-levelup" style="display:none"></div>
-    <div class="hud-log" id="hud-log"></div>
-    <div class="hud-tracker" id="hud-tracker"></div>
     <div class="hud-joystick" id="joy-base">
       <div class="hud-joystick-knob" id="joy-knob"></div>
     </div>

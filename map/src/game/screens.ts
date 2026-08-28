@@ -58,13 +58,11 @@ export class GameScreens {
     if (!host) return;
     this.preview = new CharacterPreview(host);
     if (appearance) {
-      setTimeout(() => {
-        this.preview?.setAppearance({
-          skin: appearance.skinTone,
-          hair: appearance.hairColor,
-          outfit: appearance.outfitColor,
-        });
-      }, 400);
+      this.preview.setAppearance({
+        skin: appearance.skinTone,
+        hair: appearance.hairColor,
+        outfit: appearance.outfitColor,
+      });
     }
   }
 
@@ -291,17 +289,21 @@ export class GameScreens {
                 <label>Class</label>
                 <div id="gc-class-grid" class="sro-options">${classFor(RACES[0])}</div>
               </div>
-              <div class="sro-field">
-                <label>Starter Kit</label>
-                <div class="sro-options">${kitOptions}</div>
-              </div>
-              <div class="sro-field">
-                <label>Gender</label>
-                <div class="sro-row">
-                  <button class="sro-seg sro-gender active" data-gender="male">Male</button>
-                  <button class="sro-seg sro-gender" data-gender="female">Female</button>
+              <div class="sro-create-meta">
+                <div class="sro-field">
+                  <label>Starter Kit</label>
+                  <div class="sro-options">${kitOptions}</div>
+                </div>
+                <div class="sro-field">
+                  <label>Gender</label>
+                  <div class="sro-row">
+                    <button class="sro-seg sro-gender active" data-gender="male">Male</button>
+                    <button class="sro-seg sro-gender" data-gender="female">Female</button>
+                  </div>
                 </div>
               </div>
+            </div>
+            <div class="sro-create-colors">
               <div class="sro-field"><label>Skin Tone</label><div class="sro-row">${colorRow("skin", SKIN_TONES)}</div></div>
               <div class="sro-field"><label>Hair Color</label><div class="sro-row">${colorRow("hair", HAIR_COLORS)}</div></div>
               <div class="sro-field"><label>Outfit Color</label><div class="sro-row">${colorRow("outfit", OUTFIT_COLORS)}</div></div>
