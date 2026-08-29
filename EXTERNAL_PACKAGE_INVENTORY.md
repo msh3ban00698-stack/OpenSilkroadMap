@@ -5,8 +5,8 @@ package (listings produced with `pk2_mate list` and a purpose-built Python PK2 r
 porting Veykril/pk2's Joymax Blowfish variant). Claims that are inferred rather than
 verified are explicitly marked **[assumed]**.
 
-All external material lives outside the repository (`/tmp/opencode/vsro/`); nothing
-from the package has been imported into the repo.
+All external material lives outside the repository. Supply the PK2 root with
+`--pk2-dir` or `SRO_PK2_DIR`; nothing from the package is imported into the repo.
 
 ---
 
@@ -130,7 +130,8 @@ Headers: `.t`=`JMXVMAPT1001`, `.o`/`.o2`=`JMXVMAPO1001`, `.m`=`JMXVMAPM1000`.
 - No tooling for Data `prim` 3D models/animations.
 - No item/skill/quest search surfaced in the UI (data is present in textdata).
 - No direct teleporter import flow (README TODO), though teleport data is present.
-- No automated pipeline script chaining the whole `game_source` → `map/public/assets` build.
+- Canonical pipeline entrypoint: `scripts/extract_sro.py` (`validate` / `extract` / `generate`).
+  PK2 reader (`pk2reader.py` / `jmblowfish.py`) is an external dependency, not in this repo.
 
 ## 7. Recommended Future Pipeline
 

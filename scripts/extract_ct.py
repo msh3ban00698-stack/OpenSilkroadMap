@@ -8,20 +8,19 @@ Extracts:
   - npcpos.txt + characterdata_*.txt (Media.pk2)
   - full dependency closure of building/NPC/mob bsr + bms + bmt + ddj textures
 """
+import argparse
 import os
 import struct
 import sys
 
-PK2ROOT = "/tmp/opencode/vsro"
-sys.path.insert(0, PK2ROOT)
-import pk2reader  # noqa: E402
+import sro_paths
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "game_source", "CT")
 SECTORS = [(x, y) for y in range(103, 109) for x in range(76, 82)]
 
-data = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Data.pk2"))
-mapk = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Map.pk2"))
-media = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Media.pk2"))
+data = None
+mapk = None
+media = None
 
 
 def find(pk, path):
@@ -164,6 +163,20 @@ def collect_model(dst_prefix, path, seen):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Extract Constantinople sources from vSRO PK2s")
+    sro_paths.add_common_args(parser, pk2=True, source=True)
+    args = parser.parse_args()
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
+    global data, mapk, media, OUT
+    data = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Data.pk2"))
+    mapk = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Map.pk2"))
+    media = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Media.pk2"))
+    OUT = os.path.join(sro_paths.resolve_source_dir(args.source_dir), "CT")
     # --- terrain / overlays (Map.pk2) ---
     for x, y in SECTORS:
         store(mapk, f"{y}/{x}.m", f"Map/{y}/{x}.m")

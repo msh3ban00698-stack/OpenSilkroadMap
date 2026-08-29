@@ -3,6 +3,8 @@ import glob
 import json
 import sys
 
+import sro_paths
+
 # Configure stdout to use UTF-8
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -25,8 +27,14 @@ def find_file_case_insensitive(directory, filename):
     return os.path.join(directory, filename)
 
 
-def main():
-    base_dir = r"game_source/Media/server_dep/silkroad/textdata"
+def main(argv=None):
+    parser = sro_paths.make_parser(
+        "Generate map NPC/teleport JSON from extracted textdata",
+        source=True,
+    )
+    args = parser.parse_args(argv)
+    source = sro_paths.resolve_source_dir(args.source_dir)
+    base_dir = sro_paths.textdata_dir(source)
     if not os.path.exists(base_dir):
         print(f"Error: Directory {base_dir} not found.")
         sys.exit(1)
