@@ -193,13 +193,13 @@ the package (`[REDACTED]\SQLEXPRESS`). Not present in this Linux workspace.
 
 ### Where each archive lives (this session)
 
-| Archive | Uncompressed size (B) | Container | Extracted? |
-| --- | --- | --- | --- |
-| `Data.pk2` | 3,351,891,968 | `PK2_Files.7z` | No |
-| `Map.pk2` | 1,268,441,088 | `PK2_Files.7z` | No |
-| `Music.pk2` | 76,488,704 | `PK2_Files.7z` | No |
-| `Particles.pk2` | 178,126,848 | `PK2_Files.7z` | No |
-| `Media.pk2` | 823,066,624 | `VSRO-R Client.7z` | No |
+| Archive | Uncompressed size (B) | SHA256 (Phase 4) | Container | Extracted? |
+| --- | --- | --- | --- | --- |
+| `Data.pk2` | 3,351,891,968 | `e61c8477ba1b1864ddd3e65f2e840d2d426c34e588fe2853dff3b2e800e61c17` | `PK2_Files.7z` | Raw materialized; controlled samples |
+| `Map.pk2` | 1,268,441,088 | `ae482b3bb6853281158f94ba976e2a242c3df8e037b4704757498a7d371987e5` | `PK2_Files.7z` | Raw materialized; controlled samples |
+| `Music.pk2` | 76,488,704 | `f1ce4723e76cae2bb67cd6524fdeaa7f031da4f483e283461f99809f46e5f5b2` | `PK2_Files.7z` | Fully extracted |
+| `Particles.pk2` | 178,126,848 | `558027e2ec33e96ed17a5341726c3b9fdc7def769660393ee47083eb8dd56596` | `PK2_Files.7z` | Fully extracted |
+| `Media.pk2` | 823,066,624 | `134731ac6c0fe30a4557f4210e1236386b976c65432def1fd74b5d74ce67c0fb` | `VSRO-R Client.7z` | Fully extracted |
 
 `PK2_Files.7z` listing total: 4,874,948,608 B uncompressed, 4 files.
 Five-PK2 uncompressed total including Media: 5,698,015,232 B.
@@ -209,10 +209,21 @@ PK2s. This listing shows four; `Media.pk2` is in the client 7z.
 
 ### Interior layout
 
-**Not re-walked this session.** Prior Phase A inventory (pk2_mate / custom
-Joymax Blowfish reader, key `169841`) described Data/Map/Media/Music/Particles
-trees. Treat those counts as **previously verified, not re-verified here**.
-This session did not run a PK2 reader and does not claim header checksums.
+**Phase 4 re-walked every archive** via `pk2_mate` (pinned commit `e07dec06…`) and
+verified the file counts that Phase A reported:
+
+| Archive | files | top-level structure (counts verified) |
+| --- | --- | --- |
+| `Data.pk2` | 66,051 | `prim` 52,085 · `res` 7,575 · `navmesh` 6,072 · `compound` 162 · `shader` 73 · `dungeon` 35 · `water` 30 · `shader_maptool` 18 · `RegionInfo.txt` |
+| `Map.pk2` | 19,171 | 87 row dirs (region geometry `.t/.m/.o/.o2`) · `tile2d` 754 · index `.ifo` files |
+| `Media.pk2` | 29,591 | `interface` 8,418 · `icon` 8,654 · `icon64` 4,209 · `minimap` 5,523 · `minimap_d` 2,214 · `server_dep` 165 · `resinfo` 243 · `res_ui` 51 · `script` 25 · `launcher` 50 · `effect` 26 · `config` 5 · `fonts` 3 |
+| `Music.pk2` | 50 | 50 `.ogg` BGM |
+| `Particles.pk2` | 4,768 | `textures` 1,000 · `monster` 1,089 · `system` 785 · `skill` 784 · `dun` 251 · `meshes` 264 · others |
+
+Full per-archive listings and JSON inventory at `/tmp/opencode/phase4/` (outside
+repo), produced by `scripts/inventory_pk2.py`. Format detection (magic bytes) and
+Android suitability: `ANDROID_ASSET_MANIFEST.md`. Controlled sample extraction:
+`scripts/extract_samples.py`.
 
 Canonical pipeline (repo):
 
@@ -222,7 +233,8 @@ PK2 root -> extract -> game_source/ -> generate -> map/public/assets/gamedata/
 
 Expected layout: `Data.pk2` `Map.pk2` `Media.pk2` `Music.pk2` plus optional
 `Particles.pk2` and listings. Reader API: `PK2(path)`, `.find()`,
-`.read_file()`. Blowfish key `169841` is documented; **not re-checked here**.
+`.read_file()`. Blowfish key `169841` is documented; **re-verified** by pk2_mate
+in Phase 4 (default key, all five archives listed).
 
 ---
 

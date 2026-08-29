@@ -215,3 +215,31 @@ The choice depends on user direction; Phase 3 does not presume it.
 | Tests | `scripts/test_pk2_reader.py`; `scripts/test_sro_pipeline.py` |
 | Validator | `scripts/validate_pk2.py` |
 | Phase 2 doc | `PK2_ACCESS_AND_ASSET_PIPELINE.md` (commit `ed0589c`) |
+
+---
+
+# Phase 4 Addendum (2026-08-29) — Real Extraction and Asset Foundation
+
+Phase 4 built on this foundation: real extraction + asset classification. Full
+detail in `ANDROID_ASSET_MANIFEST.md`. Highlights verified this session:
+
+- **Archive SHA256** (all five, computed over raw files at `/tmp/opencode/pk2raw/`):
+  Data `e61c8477…e61c17`, Map `ae482b3b…987e5`, Media `134731ac…7c0fb`,
+  Music `f1ce4723…e5f5b2`, Particles `558027e2…d56596`.
+- **Inventory** (`scripts/inventory_pk2.py`, reproducible): Data 66,051 files,
+  Map 19,171, Media 29,591, Music 50, Particles 4,768 — matching Phase A counts.
+- **Controlled extraction** (`scripts/extract_samples.py`, 35 samples, 0 failures):
+  all five archives, covering every asset category; per-file sha256 recorded.
+- **Verified formats by magic bytes** (not filename guessing): `.ddj` = 20-byte
+  `JMXVDDJ 1000` header + standard DDS (DXT1/DXT3/RGB16/RGB32 verified); `.ogg` =
+  OggS; `.wav` = PCM 16-bit 22050 Hz; textdata = UTF-16 LE; Map `.t/.m/.o/.o2` =
+  `JMXVMAPT/MAPM/MAPO`; `.nvm` = `JMXVNVM 1000`; `.bms/.bsr/.cpd/.ban/.efp` =
+  `JMXVBMS/JMXVRES/JMXVCPD/JMXVBAN/JMXVEFF`; fonts `.dat` = `JMXVIMG 1100`.
+- **Full extractions (outside repo)**: Media 819,003,922 B, Music 76,475,511 B,
+  Particles 177,456,277 B. Data/Map partially extracted (disk bound).
+- **Not a game asset**: `Particles/textures/thumbs.db` is a Windows thumbnail cache.
+- **Android readiness**: Ogg/WAV native; DDJ needs DDS decode (repo `convert_ddjs.py`
+  path proven against real structure); all JMX 3D/particle/terrain/navmesh formats
+  remain UNKNOWN — DO NOT CONVERT YET.
+- **New reproducibility**: `scripts/inventory_pk2.py`,
+  `scripts/extract_samples.py`, `scripts/test_phase4_assets.py` (5 tests).

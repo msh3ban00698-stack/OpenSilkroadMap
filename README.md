@@ -83,6 +83,28 @@ pk2_mate extract --archive "C:\Games\SRO\Map.pk2" --out game_source/Map
 `map/public/assets/gamedata/` is generated and optional at runtime (shops/quests
 degrade if missing). Do not commit PK2 archives or `game_source/`.
 
+Phase 4 asset foundation (reproducible against real archives; raw PK2s and any
+large extraction must live OUTSIDE the repo):
+
+```shell
+# 1. Validate + inventory (needs a pinned pk2_mate binary)
+python3 scripts/validate_pk2.py --pk2-dir /tmp/opencode/pk2raw --reader-bin /tmp/opencode/pk2_mate
+pk2_mate list --archive /tmp/opencode/pk2raw/Media.pk2 > /tmp/opencode/phase4/listings/Media.list.txt
+python3 scripts/inventory_pk2.py --json /tmp/opencode/phase4/listings/Media.list.txt
+
+# 2. Controlled extraction of curated samples (35, all categories)
+python3 scripts/extract_samples.py --pk2-dir /tmp/opencode/pk2raw \
+  --reader-bin /tmp/opencode/pk2_mate --out /tmp/opencode/phase4/extract \
+  --json /tmp/opencode/phase4/extract_report.json
+
+# 3. Tests
+SRO_READER_BIN=/tmp/opencode/pk2_mate python3 scripts/test_phase4_assets.py
+```
+
+Verified per-archive SHA256, real sizes, format taxonomy (magic bytes) and the
+Android suitability table live in `ANDROID_ASSET_MANIFEST.md`.
+`PK2_READER_FOUNDATION.md` documents the pinned reader + format constants.
+
 ### 3. Processing Silkroad Assets
 
 ```shell
