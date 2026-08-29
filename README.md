@@ -147,6 +147,27 @@ SRO_PHASE6_PK2_DIR=/path/to/pk2s SRO_READER_BIN=/path/to/pk2_mate \
 the verified format sampling, resource budget, determinism, and the commit
 decision (all converted PNGs committed by user choice).
 
+### 2d. Android minimap asset layer (Phase 7)
+
+Integrates the verified minimap inventory into a manifest-driven, bounded
+TypeScript asset layer that runs on Android via the Capacitor WebView
+(`map/dist`): `map/src/game/minimap_assets.ts` provides a resolver
+(`MinimapManifestResolver`), a validating loader (`MinimapAssetLoader`), and a
+bounded LRU cache (`BoundedMinimapCache` / `CachedMinimapLoader`). It reads
+`android-assets/manifest.json` as the authoritative mapping, resolves PK2
+source paths to Android asset paths without filename guessing, validates PNG
+signature/dimensions/CRC/sha256 per loaded asset, never preloads the
+collection, and fails explicitly on missing/corrupt/mismatched assets.
+
+```shell
+cd map
+deno test --allow-all --no-check src/game/minimap_assets.test.ts
+```
+
+`PHASE_7_ANDROID_MINIMAP_INTEGRATION.md` documents the exact inventory, the
+resolution/validation design, the memory policy, real-asset proof, and the
+Android-runtime test status (NOT EXECUTED — no device/emulator available).
+
 ### 3. Processing Silkroad Assets
 
 ```shell

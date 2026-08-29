@@ -234,3 +234,11 @@ See `PHASE_5_ANDROID_ASSET_CONVERSION.md`.
    navmesh) — first 3D-adjacent candidates.
 4. All other JMX 3D/particle formats remain UNKNOWN until individually decoded with
    real samples; do not convert.
+
+## 9. Phase 7 status
+
+`android-assets/manifest.json` (7,755 records, schema `sro-android-assets-v2`) is now
+the authoritative mapping consumed by the Android asset layer in
+`map/src/game/minimap_assets.ts` (resolver + validating loader + bounded cache,
+manifest-driven, no filename guessing). Phase 7 chose PNG as the shipping minimap
+format. See `PHASE_7_ANDROID_MINIMAP_INTEGRATION.md`.
