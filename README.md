@@ -123,6 +123,30 @@ SRO_PHASE5_SAMPLES=/path/to/phase4/extract python3 scripts/test_phase5_assets.py
 `PHASE_5_ANDROID_ASSET_CONVERSION.md` documents scope, verified formats, the
 UNKNOWN table, and the exact next-phase recommendation.
 
+### 2c. Bulk minimap conversion (Phase 6)
+
+Bulk-converts the verified minimap directories (`Media/minimap/*` = 5,523,
+`Media/minimap_d/*` = 2,214) into deterministic PNG in bounded 300-file batches.
+Batches respect the disk budget; each file is extracted individually and the
+temp copy is removed immediately. Requires a `Media.list.txt` from
+`pk2_mate list --archive Media.pk2`.
+
+```shell
+python3 scripts/bulk_convert_assets.py \
+  --pk2-dir /path/to/pk2s --reader-bin /path/to/pk2_mate \
+  --listing /path/to/Media.list.txt --out android-assets \
+  --batch-size 300 --manifest /path/to/manifest.json
+
+# Tests (real-bytes checks need the PK2 dir + listing):
+SRO_PHASE6_PK2_DIR=/path/to/pk2s SRO_READER_BIN=/path/to/pk2_mate \
+  SRO_PHASE6_LISTING=/path/to/Media.list.txt \
+  python3 scripts/test_phase6_assets.py
+```
+
+`PHASE_6_BULK_ANDROID_ASSET_CONVERSION.md` documents exact inventory counts,
+the verified format sampling, resource budget, determinism, and the commit
+decision (all converted PNGs committed by user choice).
+
 ### 3. Processing Silkroad Assets
 
 ```shell
