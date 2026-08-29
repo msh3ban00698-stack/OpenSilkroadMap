@@ -11,6 +11,7 @@ import com.opensilkroadmap.app.minimap.NativeMinimapAssetProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Phase 9 native game host activity. Loads the real derived region catalog
@@ -35,7 +36,8 @@ public final class GameActivity extends Activity {
     super.onCreate(savedInstanceState);
     RegionCatalog catalog = loadCatalog();
     provider = loadProvider();
-    hud = new GameHudView(this, catalog, provider);
+    GameDataCatalog data = loadDataCatalog();
+    hud = new GameHudView(this, catalog, provider, data);
     setContentView(hud);
     hud.setPlayerCell(DEFAULT_PLAYER_CELL_X, DEFAULT_PLAYER_CELL_Y);
   }
@@ -75,6 +77,25 @@ public final class GameActivity extends Activity {
           NativeMinimapAssetProvider.DEFAULT_MAX_CACHE_BYTES,
           NativeMinimapAssetProvider.DEFAULT_MAX_CACHE_ENTRIES);
     } catch (IOException | MinimapException e) {
+      return null;
+    }
+  }
+
+  /**
+   * Loads the Phase 12 textdata catalog (npcpos/leveldata/teleportdata/
+   * worldmap_instanceinfo). Returns {@code null} when the textdata assets are
+   * not bundled; the HUD then shows an explicit "assets not bundled" state
+   * instead of fabricating data.
+   */
+  private GameDataCatalog loadDataCatalog() {
+    try {
+      return GameDataCatalog.loadFrom(
+          new InputStreamReader(getAssets().open("game/textdata/npcpos.tsv"), StandardCharsets.UTF_8),
+          new InputStreamReader(getAssets().open("game/textdata/leveldata.tsv"), StandardCharsets.UTF_8),
+          new InputStreamReader(getAssets().open("game/textdata/teleportdata.tsv"), StandardCharsets.UTF_8),
+          new InputStreamReader(
+              getAssets().open("game/textdata/worldmap_instanceinfo.tsv"), StandardCharsets.UTF_8));
+    } catch (IOException e) {
       return null;
     }
   }

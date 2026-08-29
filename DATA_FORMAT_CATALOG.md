@@ -10,6 +10,8 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 
 - **VERIFIED** — magic confirmed AND a working decoder produced real output from a
   real sample in this project (files converted / parsed and checked).
+- **PARTIAL** — a decoder is committed and tested for a *proven subset* of the
+  format; the remaining layout is documented as UNKNOWN (see `FORMAT_RESEARCH.md`).
 - **PARSEABLE** — magic confirmed; internal structure researched from samples;
   a production decoder is not yet committed.
 - **TEXT** — decodable plain text / tabular data (UTF-16LE BOM, UTF-8, or cp949);
@@ -34,20 +36,25 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 
 | Ext | Magic | Files / Bytes | Notes |
 |---|---|---|---|
-| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | Static geometry/mesh. |
+| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | Static geometry/mesh. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN. |
 | `bsr` | `JMXVRES 0109` | 7,549 / 12.9 MB | Object resource. |
-| `nvm` | `JMXVNVM 1000` | 6,041 / 778.6 MB | Navmesh. Phase 10 sampled; decode pending. |
+| `nvm` | `JMXVNVM 1000` | 6,041 / 778.6 MB | Navmesh. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN (no proven count fields). |
 | `t` | `JMXVMAPT1001` | 4,989 / 700.4 MB | Tile/zone. |
-| `ban` | `JMXVBAN 0102` | 4,796 / 235.2 MB | Animation. |
 | `o` | `JMXVMAPO1000` | 4,491 / 3.5 MB | Map overlay. |
 | `bmt` | `JMXVBMT 0102` | 4,269 / 2.1 MB | Material. |
-| `efp` | `JMXVEFF 0011` | 3,395 / 95.1 MB | Particle effect. |
+| `efp` | `JMXVEFF 0011` | 3,395 / 95.1 MB | Particle effect. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN. |
 | `bsk` | `JMXVBSK 0101` | 1,040 / 4.0 MB | Skeleton (sample `flame_crazy_stand01.bsk` 7,513 B). |
 | `cpd` | `JMXVCPD 0101` | 124 / 34.1 KB | Object/character detail. |
 | `dof` | `JMXVDOF 0101` | 34 / 4.3 MB | Depth-of-field shader data. |
 | `mfo` | `JMXVMFO 1000` | 2 / 16.4 KB | Uncommon object container. |
 | `2dt` | `\x1a\x00\x00\x00 CNIF…` | 51 / 2.7 MB | Joymax `CNIF` binary text-data container (Media, e.g. `BattleArenaRankWnd`). |
 | `sfk` | `SFPK` | 1 / 796 B | Unknown purpose; magic confirmed only. |
+
+## 2a. PARTIAL formats (decoder committed for a proven subset)
+
+| Ext | Magic | Files / Bytes | Decoder | Proven subset | Remaining UNKNOWN |
+|---|---|---|---|---|---|
+| `ban` | `JMXVBAN 0102` | 4,796 / 235.2 MB | `scripts/ban_decoder.py` (Phase 12) | magic/version; name-length u32 + NUL-terminated name; 28-byte keyframe records = 4×f32 normalized rotation quaternion + 3×f32 position (stride proven on 3 real files; contiguous runs = 3/27/181 records on samples). Tests: `scripts/test_phase12_formats.py` (10 tests, live-archive check passes). | all u32 fields after the name (durations/counts/bone linkage); keyframe→bone association; time/frame-index encoding. See `FORMAT_RESEARCH.md`. |
 
 ## 3. TEXT formats (decoded)
 
@@ -81,7 +88,8 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 | Status | Files | Formats |
 |---|---:|---:|
 | VERIFIED | 11,790 | wav, ogg, tga, tmp, ddj (conversion proven in prior phases), m, o2 (Phase 10 decoders) |
-| PARSEABLE | 107,226 | bms, bsr, nvm, t, ban, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk, plus the ext-less `Media /icon/action/cos_cmd_inventory` file (a `JMXVDDJ 1000` container) |
+| PARTIAL | 4,796 | ban (Phase 12 decoder: header + keyframe records) |
+| PARSEABLE | 102,430 | bms, bsr, nvm, t, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk, plus the ext-less `Media /icon/action/cos_cmd_inventory` file (a `JMXVDDJ 1000` container) |
 | TEXT | 516 | txt (441), ifo (12), ini (1), c (40), vsh (8), psh (14) |
 | UNKNOWN | 99 | dat (79), db (1), msf (2), scc (17) — bytes for these formats total 96.5 MB |
 

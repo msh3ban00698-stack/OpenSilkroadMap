@@ -54,28 +54,40 @@ Every converted file is covered by a committed test (`scripts/test_phase11.py`:
 record counts, schema width, content spot checks) and listed in
 `TEXTDATA_CATALOG.tsv` with per-file sha256.
 
-## 3. PARSED/NORMALIZED but not yet wired to an Android consumer
+## 3. PARSED/NORMALIZED — wired to Android consumers (Phase 12)
 
-- All 21 datasets above are *data-only*; Android parsers exist only for
-  `regions.tsv` (`RegionInfo.java`/`RegionCatalog.java`). Parsers for
-  `npcpos.tsv`, `leveldata.tsv`, etc. are Phase 12 work (rule: no scaffolding
-  claiming implementation).
+- **All 21 datasets** now have Android-free parsers in
+  `android/app/src/main/java/com/opensilkroadmap/app/data/` (NpcPosTable,
+  LevelDataTable, LevelGoldTable, TeleportDataTable, RefShopGoodsTable,
+  WorldMapInstanceTable, QuestDataTable + generic TsvTable), with 10 JVM tests
+  against real committed values (`TextDataTablesTest.java`).
+- `GameDataCatalog` (Phase 12) composes npcpos/leveldata/teleportdata/
+  worldmap_instanceinfo and is wired into `GameActivity`/`GameHudView`; the HUD
+  shows real counts and degrades to an explicit "not bundled" state when the
+  assets are absent. Schema/join provenance: `TEXTDATA_SCHEMAS.json`,
+  `DATA_REFERENCE_GRAPH.json`.
 
-## 4. DECODED, conversion deferred (backlog, do not claim as done)
+## 4. PARTIALLY DECODED (Phase 12 decoder committed for a proven subset)
+
+| Format | Files | Proven subset | Remaining UNKNOWN |
+|---|---|---|---|
+| `ban` | 4,796 | magic/version; name length + name; 28-byte keyframe records (normalized rotation quaternion + position) — decoder `scripts/ban_decoder.py`, 10 tests incl. live archive check | all u32 fields after the name; keyframe→bone linkage; time encoding |
+
+## 5. DECODED, conversion deferred (backlog, do not claim as done)
 
 | Format | Files | What is proven | What remains |
 |---|---|---|---|
 | `ddj` (the 39,740 not yet converted) | 47,495 | container + DDS payload extraction proven | convert remaining textures |
 | `tga` | 15 | header verified | decode + convert |
 | `m` (remaining height grids) | 4,491 | 23 grids converted in Phase 10 | convert all grids |
-| `nvm` navmesh | 6,041 | magic + samples | full structure, extraction of walkable surfaces |
-| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven | full geometry/material pipeline |
-| `ban` / `bsk` | 5,836 | magic confirmed | animation/skeleton decode |
-| `efp` | 3,395 | magic confirmed | particle system decode |
-| `wav` (2,884 remaining) / `ogg` (49 remaining) | 2,935 | decode proven on samples | bulk convert all |
+| `nvm` navmesh | 6,041 | magic + samples; header carries LE floats (extents) and count-like fields, layout NOT proven (see FORMAT_RESEARCH.md) | full structure, extraction of walkable surfaces |
+| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven; `bms` offset-table header documented | full geometry/material pipeline |
+| `bsk` | 1,040 | magic confirmed | skeleton decode |
+| `efp` | 3,395 | magic confirmed; 5 version variants documented (0010/0011/0012/0013/0000) | particle system decode |
+| `wav` (2,454 remaining) / `ogg` (0 remaining) | 2,454 | decode proven on samples; **Phase 12 converted all 50 `ogg` + 431 `wav`** (`/prim/snd/monster`) with provenance manifest | convert remaining wav sets |
 | `2dt` (CNIF text-data) | 51 | container magic confirmed | CNIF string-table decode |
 
-## 5. BLOCKED (format UNKNOWN — no honest decoder yet)
+## 6. BLOCKED (format UNKNOWN — no honest decoder yet)
 
 | Format | Files | Bytes | Note |
 |---|---|---|---|
@@ -85,14 +97,18 @@ record counts, schema width, content spot checks) and listed in
 | `msf` | 2 | 350 B | no structure identified |
 | `skilldata_*enc.txt` | 7 | ~27 MB | client-encrypted skill tables; no key. The plaintext `skilldata_*` equivalents exist and are cataloged. |
 
-## 6. Summary
+## 7. Summary
 
 - Real data in Android-consumable form (committed): prior ~7,755 textures/audio +
-  23 `.hg` + `regions.tsv` + **21 new textdata TSVs** (Phase 11).
+  23 `.hg` + `regions.tsv` + 21 textdata TSVs (Phase 11) + **29 worldmap
+  textures (WebP) + 50 OGG + 431 WAV** with provenance manifests
+  (`TEXTURE_CONVERSION_MANIFEST.tsv`, `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12).
 - Formats fully decoded: **13** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
   ddj, m, o2 — the last three through committed Phase 5–10 converters).
-- Formats decoded at sample level (magic verified), decoder pending: **13**
-  (bms, bsr, nvm, t, ban, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk — 14 entries;
-  `o` stays pending, `m`/`o2` promoted to decoded).
+- Formats with a committed decoder for a proven subset: **1** (`ban`, Phase 12:
+  header + name + keyframe records).
+- Formats decoded at sample level (magic verified), decoder pending: **12**
+  (bms, bsr, nvm, t, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk — 13 entries;
+  `ban` promoted to partial; `o` stays pending, `m`/`o2` promoted to decoded).
 - Formats fully unknown: **4** (`dat`, `db`, `scc`, `msf`) + encrypted client
   skill tables (7 files; plaintext equivalents exist).

@@ -29,8 +29,13 @@ public final class GameHudView extends FrameLayout {
   private final TextView regionLabel;
   private final TextView cellLabel;
   private final TextView statusLabel;
+  private final TextView dataLabel;
 
-  public GameHudView(Context context, RegionCatalog catalog, NativeMinimapAssetProvider provider) {
+  public GameHudView(
+      Context context,
+      RegionCatalog catalog,
+      NativeMinimapAssetProvider provider,
+      GameDataCatalog data) {
     super(context);
     this.catalog = catalog;
     this.provider = provider;
@@ -43,9 +48,18 @@ public final class GameHudView extends FrameLayout {
     regionLabel = label(context, 18f, Color.WHITE);
     cellLabel = label(context, 14f, Color.rgb(200, 200, 210));
     statusLabel = label(context, 13f, Color.rgb(255, 200, 90));
+    dataLabel = label(context, 12f, Color.rgb(150, 220, 150));
     labels.addView(regionLabel);
     labels.addView(cellLabel);
     labels.addView(statusLabel);
+    if (data != null) {
+      dataLabel.setText(data.summary());
+      labels.addView(dataLabel);
+    } else {
+      dataLabel.setText("TEXTDATA ASSETS NOT BUNDLED (game/textdata/*.tsv absent)");
+      dataLabel.setTextColor(Color.rgb(150, 150, 150));
+      labels.addView(dataLabel);
+    }
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
     labelParams.gravity = Gravity.TOP | Gravity.START;
@@ -83,6 +97,10 @@ public final class GameHudView extends FrameLayout {
 
   public String statusLabelText() {
     return statusLabel.getText().toString();
+  }
+
+  public String dataLabelText() {
+    return dataLabel.getText().toString();
   }
 
   /**

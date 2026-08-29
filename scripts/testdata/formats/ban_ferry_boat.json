@@ -1,0 +1,82 @@
+{
+  "header": {
+    "magic": "JMXVBAN ",
+    "version": "0102",
+    "reserved_hex": "0000000000000000",
+    "name_length": 17,
+    "name": "cj_ferry_boat_old",
+    "body_start": 42
+  },
+  "keyframe_runs": [
+    {
+      "start_offset": 87,
+      "record_count": 3,
+      "quaternion": [
+        0.214,
+        -0.374,
+        -0.082,
+        0.899
+      ],
+      "position": [
+        12.894,
+        5.643,
+        6.247
+      ]
+    }
+  ],
+  "record_byte_size": 28,
+  "record_layout": [
+    "f32 rotation quaternion (x,y,z,w)",
+    "f32 position (x,y,z)"
+  ],
+  "sample_records": [
+    {
+      "offset": 87,
+      "quaternion": [
+        0.2142,
+        -0.3736,
+        -0.0821,
+        0.8988
+      ],
+      "position": [
+        12.8938,
+        5.6434,
+        6.2466
+      ]
+    },
+    {
+      "offset": 115,
+      "quaternion": [
+        0.2142,
+        -0.3736,
+        -0.0821,
+        0.8988
+      ],
+      "position": [
+        12.8938,
+        5.6434,
+        6.2466
+      ]
+    },
+    {
+      "offset": 143,
+      "quaternion": [
+        0.2142,
+        -0.3736,
+        -0.0821,
+        0.8988
+      ],
+      "position": [
+        12.8938,
+        5.6434,
+        6.2466
+      ]
+    }
+  ],
+  "source": {
+    "archive": "Data.pk2",
+    "path": "/prim/ani/bldg/china/cj_ferry/cj_ferry_boat_old.ban",
+    "size": 171,
+    "sha256_1mib": "52a1f47c73a219b592ca9c47a3d1a15c272c228cc70cc334361ca1af8d3d9636"
+  }
+}
