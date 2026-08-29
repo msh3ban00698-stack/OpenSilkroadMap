@@ -38,7 +38,9 @@ PK2 root -> extract -> game_source/ -> generate -> map/public/assets/gamedata/
 This repository does **not** include `pk2reader.py` / `jmblowfish.py`. Supply them
 next to the archives with `--reader-dir` (defaults to `--pk2-dir`). Expected API:
 `PK2(path)`, `.find(path)`, `.read_file(entry)`. Blowfish key for these archives
-is `169841` (see `EXTERNAL_PACKAGE_INVENTORY.md`).
+is `169841` (see `EXTERNAL_PACKAGE_INVENTORY.md`). Nested client/server/DB/PK2
+listings and blockers: `VSRO_V193_SOURCE_INVENTORY.md`. `Media.pk2` is in
+`VSRO-R Client.7z`; the other four PK2s are in `PK2 Files.7z`.
 
 Expected layout (either flat or nested):
 
