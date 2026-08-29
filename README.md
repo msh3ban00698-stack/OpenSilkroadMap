@@ -105,6 +105,24 @@ Verified per-archive SHA256, real sizes, format taxonomy (magic bytes) and the
 Android suitability table live in `ANDROID_ASSET_MANIFEST.md`.
 `PK2_READER_FOUNDATION.md` documents the pinned reader + format constants.
 
+### 2b. Android asset conversion (Phase 5, controlled proof)
+
+Converts only formats VERIFIED from real bytes (DDJ->PNG, OGG/WAV copy,
+UTF-16LE/ASCII text -> UTF-8). Deterministic pure-Python DDS decoder; no bulk
+conversion. Outputs + traceability: `android-assets/` + `manifest.json`.
+
+```shell
+python3 scripts/convert_android_assets.py \
+  --pk2-dir /path/to/pk2s --reader-bin /path/to/pk2_mate \
+  --out android-assets
+
+# Cross-check the pure-Python decoder against Pillow on real samples:
+SRO_PHASE5_SAMPLES=/path/to/phase4/extract python3 scripts/test_phase5_assets.py
+```
+
+`PHASE_5_ANDROID_ASSET_CONVERSION.md` documents scope, verified formats, the
+UNKNOWN table, and the exact next-phase recommendation.
+
 ### 3. Processing Silkroad Assets
 
 ```shell

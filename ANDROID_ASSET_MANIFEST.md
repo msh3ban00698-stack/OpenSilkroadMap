@@ -196,14 +196,17 @@ python3 scripts/extract_samples.py --pk2-dir /tmp/opencode/pk2raw \
   --json /tmp/opencode/phase4/extract_report.json
 ```
 
-## 6. Controlled-Proven Conversion (no bulk conversion yet)
+## 6. Controlled-Proven Conversion (Phase 5)
 
-Only proof performed: **DDJ inner structure is a standard DDS** (magic, DDS_HEADER,
-dimensions, pixel formats verified for 7 samples across archives). The repo's
-`scripts/convert_ddjs.py` already strips the 20-byte JMX header and feeds the DDS to
-Pillow, matching this verified structure. No bulk conversion was run in Phase 4;
-final Android formats (PNG vs WEBP vs KTX/ASTC, texture atlas strategy) are Phase 5+
-decisions and are NOT guessed here.
+Phase 4 proved the DDJ structure; **Phase 5 performed the conversion proof**:
+a pure-Python, stdlib-only DDS decoder (`scripts/dds_decode.py`) was written for
+exactly the verified pixel formats (DXT1, DXT3, RGB565, ARGB1555, X8R8G8B8,
+A8R8G8B8) and a deterministic PNG encoder. It decodes all 10 real sampled DDJs
+**byte-identical to Pillow**, and 18 controlled conversions (10 images, 2 audio
+copies, 6 UTF-8 texts) were produced into `android-assets/` with full
+traceability in `android-assets/manifest.json`. No bulk conversion was run;
+final Android formats (PNG vs WEBP vs KTX/ASTC) remain Phase 6+ decisions.
+See `PHASE_5_ANDROID_ASSET_CONVERSION.md`.
 
 ## 7. What Is NOT Included / Blocked
 
@@ -217,14 +220,16 @@ decisions and are NOT guessed here.
   (carried blocker); pk2_mate covers CLI access only.
 - `listing_media.txt` / `listing_music.txt`: NOT FOUND (optional for repo extractors).
 
-## 8. Recommended Phase 5 (from VERIFIED evidence only)
+## 8. Recommended Phase 6 (from VERIFIED evidence only)
 
-1. Decide Android target texture pipeline and run a **controlled DDS decode proof**
-   (Pillow, repo path) on 3-5 minimaps/icons to lock PNG/WEBP output and validate
-   `convert_ddjs.py` end-to-end against real `.ddj`.
-2. When disk allows (or on a machine with the raw PK2s), run full Media extraction
-   (already proven: 819,003,922 B) and full Data/Map extraction to complete the
-   verified inventory totals for Data/Map.
+1. **Bulk texture conversion + minimap pack integration** (Phase 6): convert
+   `Media/minimap/*` (5,523) and `Media/minimap_d/*` (2,214) `.ddj` to PNG/WEBP,
+   with a resource budget study; extend the deterministic decoder to any new
+   `.ddj` pixel formats found during the bulk run; validate a bundled minimap
+   pack loads on Android. Audio and text are already Android-ready.
+2. When disk allows (or on a machine with the raw PK2s), run full Media
+   extraction (already proven: 819,003,922 B) and full Data/Map extraction to
+   complete the verified inventory totals for Data/Map.
 3. Research `.nvm` navmesh + `.bsr` material structure (repo tooling exists for
    navmesh) — first 3D-adjacent candidates.
 4. All other JMX 3D/particle formats remain UNKNOWN until individually decoded with

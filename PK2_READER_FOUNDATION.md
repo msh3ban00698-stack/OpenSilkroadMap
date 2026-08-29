@@ -243,3 +243,23 @@ detail in `ANDROID_ASSET_MANIFEST.md`. Highlights verified this session:
   remain UNKNOWN — DO NOT CONVERT YET.
 - **New reproducibility**: `scripts/inventory_pk2.py`,
   `scripts/extract_samples.py`, `scripts/test_phase4_assets.py` (5 tests).
+
+# Phase 5 Addendum (2026-08-29) — Android Asset Conversion
+
+Phase 5 proved conversion of verified assets for Android. Summary (full detail in
+`PHASE_5_ANDROID_ASSET_CONVERSION.md`):
+
+- **DDJ -> PNG proven.** New `scripts/dds_decode.py`: pure-Python stdlib-only
+  DDS decoder for the verified pixel formats (DXT1, DXT3, RGB565, ARGB1555,
+  X8R8G8B8, A8R8G8B8) plus a deterministic PNG encoder. All 10 real DDJ samples
+  decode **byte-identical to Pillow 12.3.0**.
+- **Controlled conversions:** 18 (10 PNG, 1 OGG copy, 1 WAV copy, 6 UTF-8
+  texts), 0 failures, emitted to `android-assets/` with full traceability in
+  `android-assets/manifest.json` (`scripts/convert_android_assets.py`).
+- **Android-native verified:** Ogg Vorbis (44.1 kHz stereo), WAV PCM (22.05 kHz
+  mono 16-bit), ASCII/UTF-16LE text (re-encoded to UTF-8, semantics preserved).
+- **Regression fixed:** converter initially hardcoded `/tmp/opencode`
+  (caught by `test_sro_pipeline.py`); work-dir default now uses `tempfile`.
+- **New tests:** `scripts/test_phase5_assets.py` (18 tests, incl. Pillow and
+  real-sample cross-checks). All existing suites stay green
+  (11 + 15 + 5 + validate).

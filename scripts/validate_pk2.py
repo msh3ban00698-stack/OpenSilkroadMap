@@ -12,9 +12,11 @@ Usage:
         [--reader-bin /path/to/pk2_mate] [--reader-dir /path/to/reader]
         [--sample N] [--extract-one]
 
-Reader resolution order: --reader-bin, SRO_READER_BIN, --reader-dir/pk2_mate,
-SRO_READER_DIR/pk2_mate, then "pk2_mate" on PATH. The command fails clearly and
-exits non-zero when the reader cannot be found or any archive fails validation.
+Reader resolution order: an explicitly provided --reader-bin is authoritative
+(validated immediately; the command fails clearly if it is not an executable
+file), otherwise SRO_READER_BIN, --reader-dir/pk2_mate, SRO_READER_DIR/pk2_mate,
+then "pk2_mate" on PATH. The command fails clearly and exits non-zero when the
+reader cannot be found or any archive fails validation.
 """
 
 import argparse
@@ -31,9 +33,11 @@ PK2_ARCHIVES = ("Data.pk2", "Map.pk2", "Media.pk2", "Music.pk2", "Particles.pk2"
 
 
 def find_pk2_mate(reader_bin=None, reader_dir=None):
-    candidates = []
     if reader_bin:
-        candidates.append(reader_bin)
+        if os.path.isfile(reader_bin) and os.access(reader_bin, os.X_OK):
+            return os.path.abspath(reader_bin)
+        return None
+    candidates = []
     candidates.append(os.environ.get("SRO_READER_BIN"))
     for base in (reader_dir, os.environ.get("SRO_READER_DIR")):
         if base:
