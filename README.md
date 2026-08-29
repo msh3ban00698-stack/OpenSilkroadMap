@@ -168,6 +168,30 @@ deno test --allow-all --no-check src/game/minimap_assets.test.ts
 resolution/validation design, the memory policy, real-asset proof, and the
 Android-runtime test status (NOT EXECUTED — no device/emulator available).
 
+### 2e. Native Android minimap renderer (Phase 8)
+
+First native (non-WebView) module in the Android app: a Java minimap renderer in
+`android/app/src/main/java/com/opensilkroadmap/app/minimap/` that consumes the
+same verified `android-assets/manifest.json` through `ManifestParser` +
+`ManifestResolver`, decodes Android assets with `BitmapFactory`-based
+`AssetDecoder`/`BitmapFactoryDecoder`, keeps decoded payloads bounded in
+`NativeMinimapAssetProvider` (LRU by bytes + entries, dimension-validated,
+release on eviction), and draws them via the custom `NativeMinimapRenderer`
+`View` with bounded zoom and a TEST ONLY player marker. The logic core
+(resolver, fit math, cache) is Android-free so it compiles as JVM unit tests;
+instrumented renderer tests run against gitignored real proof assets under
+`android/app/src/main/assets/minimap_proof/`.
+
+```shell
+cd /workspace
+python3 scripts/verify_phase8_manifest_rules.py   # manifest-resolution invariants (runs here)
+python3 scripts/prepare_phase8_proof_assets.py   # copies real proof assets (gitignored)
+```
+
+`PHASE_8_ANDROID_MINIMAP_RENDERER.md` documents the module inventory, design,
+JVM/Android test status (NOT EXECUTED — no JDK/SDK/emulator in this
+environment), and next-phase recommendation.
+
 ### 3. Processing Silkroad Assets
 
 ```shell
