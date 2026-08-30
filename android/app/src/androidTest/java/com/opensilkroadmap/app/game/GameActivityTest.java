@@ -8,17 +8,19 @@ import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
+import com.opensilkroadmap.app.world.WorldTerrainSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Instrumented test for the Phase 14 native world runtime host activity.
+ * Instrumented test for the Phase 15 native world runtime host activity.
  *
  * <p>Launches {@link GameActivity} on a device/emulator and verifies the
- * activity renders the verified real terrain through {@link NativeWorldRenderer}.
- * The first region whose reference sector has a committed {@code .hg} is
- * Jangan_Field sector 156x89 (min 866.25, max 2687.02); the grid must load as a
- * real 97x97 VSHG height field, not generated geometry.
+ * activity renders the verified multi-sector world through
+ * {@link NativeWorldRenderer}. The first region whose reference sector has a
+ * committed {@code .hg} is Jangan_Field (ref sector 156x89); the activity must
+ * load every committed sector in that window (156x89, 156x90) as real 97x97
+ * VSHG height fields, not generated geometry.
  *
  * <p>These tests execute on an Android device/emulator only; in this
  * environment (no JDK/Android SDK) they are NOT EXECUTED.
@@ -27,17 +29,18 @@ import org.junit.runner.RunWith;
 public class GameActivityTest {
 
   @Test
-  public void rendersVerifiedTerrainThroughNativeWorldRenderer() {
+  public void rendersVerifiedMultiSectorWorld() {
     try (ActivityScenario<GameActivity> scenario =
         ActivityScenario.launch(GameActivity.class)) {
       scenario.onActivity(
           activity -> {
             NativeWorldRenderer world = activity.worldRenderer();
             assertNotNull(world);
-            TerrainHeightGrid grid = world.grid();
-            assertNotNull(grid);
-            assertEquals(97, grid.size());
-            assertEquals(20.0f, grid.step(), 1e-6f);
+            WorldTerrainSet set = world.world();
+            assertNotNull(set);
+            assertEquals(2, set.sectorCount());
+            assertEquals(1920.0f, set.width(), 1e-3f);
+            assertEquals(3840.0f, set.height(), 1e-3f);
           });
     }
   }
@@ -48,8 +51,13 @@ public class GameActivityTest {
         ActivityScenario.launch(GameActivity.class)) {
       scenario.onActivity(
           activity -> {
-            TerrainHeightGrid grid = activity.worldRenderer().grid();
-            assertNotNull(grid);
+            WorldTerrainSet set = activity.worldRenderer().world();
+            assertNotNull(set);
+            WorldTerrainSet.Sector ref = set.sectorAt(10f, 10f);
+            assertNotNull(ref);
+            assertEquals(156, ref.sx);
+            assertEquals(89, ref.sy);
+            TerrainHeightGrid grid = ref.grid;
             // Real Map.pk2 /89/156.m (Jangan_Field ref sector 156x89).
             assertEquals(866.25f, grid.min(), 0.1f);
             assertEquals(2687.02f, grid.max(), 0.1f);

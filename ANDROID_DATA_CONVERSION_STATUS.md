@@ -80,6 +80,22 @@ record counts, schema width, content spot checks) and listed in
   no fabricated geometry). Executed evidence: `scripts/test_phase14_world_runtime.py`
   (16 tests). Build/runtime NOT EXECUTED here (no JDK/Android SDK).
 
+### Phase 15 — multi-sector world + NPC placement
+
+- The native world screen now loads EVERY committed `.hg` sector in the selected
+  region window (not just the reference sector). For `Jangan_Field`
+  (window `sx 156..182, sy 89..102`) this loads `156x89` + `156x90` as a
+  `WorldTerrainSet` (world extent 1920 × 3840), verified edge-continuous
+  (`g1[96][x] == g2[0][x]`).
+- `npcpos.tsv` is now consumed at runtime by the Android-free `NpcSpawnIndex`
+  (18,457 rows: 14,800 world + 3,657 dungeon). Verified world spawns are drawn as
+  DIAGNOSTIC PLACEMENT MARKERS only (no character model decoded).
+- Object placement (`.o2`, 4,348 overlays) characterized: magic `JMXVMAPO1001`,
+  offset 12 always `u32=0`, variable data start `>= 16`; `parse_o2` is proven
+  only when data starts at 16 — remaining header layout UNKNOWN.
+- Executed evidence: `scripts/test_phase15_world_integration.py` (12 tests, OK).
+  JVM/instrumented tests + build/runtime NOT EXECUTED (no JDK/Android SDK).
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |

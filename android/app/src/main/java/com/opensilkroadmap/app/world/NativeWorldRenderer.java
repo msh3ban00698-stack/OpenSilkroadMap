@@ -8,23 +8,31 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.game.Camera2D;
 
+import java.util.List;
+
 /**
- * Android-native renderer of a REAL sector terrain height field.
+ * Android-native renderer of a REAL multi-sector world height field.
  *
- * <p>Loads the committed normalized height grid (derived read-only from
- * {@code Map.pk2 /{y}/{x}.m}) and draws it top-down as a colored height-field
- * wireframe: each grid cell is a quad filled with a grayscale ramp of the real
- * height. Camera state (center world x/z and pixels-per-unit) is set from the
- * verified {@link WorldCoordinates} transform; no geometry is invented.
+ * <p>Loads a {@link WorldTerrainSet} (committed normalized height grids derived
+ * read-only from {@code Map.pk2 /{y}/{x}.m}) and draws each sector top-down as
+ * a grayscale height-field wireframe with correct world origins (the proven
+ * {@code world = (sector - ref) * 1920 + local} formula). When a
+ * {@link NpcSpawnIndex} is attached, verified NPC world placements are drawn as
+ * small diagnostic markers (real {@code npcpos} coordinates, NOT models).
  *
- * <p>Rendering is device-side only; this class has no game logic. Grid quads
- * are drawn every frame from the committed 97x97 heights (fine for a small
- * real-world region slice).
+ * <p>Rendering is device-side only; this class has no game logic. The renderer
+ * remains a DIAGNOSTIC TERRAIN/PLACEMENT renderer: no models, materials,
+ * normals, or textures are invented.
  */
 public class NativeWorldRenderer extends View {
-  private TerrainHeightGrid grid;
+  private WorldTerrainSet world;
+  private NpcSpawnIndex npc;
+  private float worldMinH;
+  private float worldMaxH;
+
   private float camX;
   private float camZ;
   private float pixelsPerUnit = 0.5f;
@@ -34,6 +42,7 @@ public class NativeWorldRenderer extends View {
 
   private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
   private final Paint wirePaint = new Paint();
+  private final Paint markerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
   private float lastTouchX;
   private float lastTouchY;
@@ -50,15 +59,41 @@ public class NativeWorldRenderer extends View {
     wirePaint.setStyle(Paint.Style.STROKE);
     wirePaint.setStrokeWidth(1f);
     wirePaint.setColor(0xFF202020);
+    markerPaint.setColor(0xFFFFC107);
   }
 
-  public void setGrid(TerrainHeightGrid grid) {
-    this.grid = grid;
-    if (grid != null) {
-      float extent = grid.size() * grid.step();
-      camera.setWorld(extent, extent);
+  /** Installs the multi-sector world and derives camera bounds + height range. */
+  public void setWorld(WorldTerrainSet world) {
+    this.world = world;
+    this.worldMinH = Float.POSITIVE_INFINITY;
+    this.worldMaxH = Float.NEGATIVE_INFINITY;
+    if (world != null) {
+      camera.setWorld(world.width(), world.height());
+      for (WorldTerrainSet.Sector s : world.sectors()) {
+        worldMinH = Math.min(worldMinH, s.grid.min());
+        worldMaxH = Math.max(worldMaxH, s.grid.max());
+      }
     }
     invalidate();
+  }
+
+  /** Attaches the verified NPC placement index (optional diagnostic overlay). */
+  public void setNpcSpawns(NpcSpawnIndex npc) {
+    this.npc = npc;
+    invalidate();
+  }
+
+  /** Sets a single sector as the world (backward-compatible with Phase 14). */
+  public void setGrid(TerrainHeightGrid grid) {
+    if (grid == null) {
+      setWorld(null);
+      return;
+    }
+    WorldTerrainSet.Sector s =
+        WorldTerrainSet.sector(0, 0, 0, 0, grid);
+    java.util.List<WorldTerrainSet.Sector> one =
+        java.util.Collections.singletonList(s);
+    setWorld(new WorldTerrainSet(one));
   }
 
   public void setCamera(float centerWorldX, float centerWorldZ, float ppu) {
@@ -68,8 +103,8 @@ public class NativeWorldRenderer extends View {
     invalidate();
   }
 
-  public TerrainHeightGrid grid() {
-    return grid;
+  public WorldTerrainSet world() {
+    return world;
   }
 
   /** Drag pan in viewport pixels; positive dx moves the world right (camera left). */
@@ -147,24 +182,29 @@ public class NativeWorldRenderer extends View {
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-    if (grid == null) {
+    if (world == null) {
       return;
     }
     camera.setViewport(getWidth(), getHeight());
     camera.setScale(pixelsPerUnit);
     camera.follow(camX, camZ);
-    float step = grid.step();
-    int size = grid.size();
-    float w = size * step;
-    float min = grid.min();
-    float max = grid.max();
     canvas.drawColor(0xFF101010);
     Path quad = new Path();
+    for (WorldTerrainSet.Sector s : world.sectors()) {
+      drawSector(canvas, s, quad);
+    }
+    drawNpcMarkers(canvas);
+  }
+
+  private void drawSector(Canvas canvas, WorldTerrainSet.Sector s, Path quad) {
+    TerrainHeightGrid grid = s.grid;
+    float step = grid.step();
+    int size = grid.size();
     for (int z = 0; z < size - 1; z++) {
       for (int x = 0; x < size - 1; x++) {
-        float x0 = x * step;
+        float x0 = s.originX + x * step;
         float x1 = x0 + step;
-        float z0 = z * step;
+        float z0 = s.originZ + z * step;
         float z1 = z0 + step;
         float h00 = grid.height(z, x);
         float h10 = grid.height(z, x + 1);
@@ -177,23 +217,42 @@ public class NativeWorldRenderer extends View {
         quad.lineTo(vx(x1, z1), vy(x1, z1));
         quad.lineTo(vx(x0, z1), vy(x0, z1));
         quad.close();
-        fillPaint.setColor(WorldProjection.heightColor(hc, min, max));
+        fillPaint.setColor(WorldProjection.heightColor(hc, worldMinH, worldMaxH));
         canvas.drawPath(quad, fillPaint);
         if (x % 4 == 0 || z % 4 == 0) {
           canvas.drawPath(quad, wirePaint);
         }
       }
     }
-    // Frame the sector edge so the real extent is visible.
-    wirePaint.setColor(0xFF000000);
-    wirePaint.setStrokeWidth(2f);
-    quad.reset();
-    quad.moveTo(vx(0, 0), vy(0, 0));
-    quad.lineTo(vx(w, 0), vy(w, 0));
-    quad.lineTo(vx(w, w), vy(w, w));
-    quad.lineTo(vx(0, w), vy(0, w));
-    quad.close();
-    canvas.drawPath(quad, wirePaint);
+  }
+
+  private void drawNpcMarkers(Canvas canvas) {
+    if (npc == null || world == null) {
+      return;
+    }
+    // Draw real npcpos placements within the loaded world bounds as markers.
+    int sx0 = Integer.MAX_VALUE;
+    int sy0 = Integer.MAX_VALUE;
+    int sx1 = Integer.MIN_VALUE;
+    int sy1 = Integer.MIN_VALUE;
+    for (WorldTerrainSet.Sector s : world.sectors()) {
+      sx0 = Math.min(sx0, s.sx);
+      sy0 = Math.min(sy0, s.sy);
+      sx1 = Math.max(sx1, s.sx);
+      sy1 = Math.max(sy1, s.sy);
+    }
+    if (sx0 > sx1 || sy0 > sy1) {
+      return;
+    }
+    int refSx = sx0;
+    int refSy = sy0;
+    List<NpcSpawnIndex.Spawn> spawns = npc.inWindow(sx0, sx1, sy0, sy1);
+    float r = 3f * getResources().getDisplayMetrics().density;
+    for (NpcSpawnIndex.Spawn sp : spawns) {
+      float wx = sp.worldX(refSx);
+      float wz = sp.worldZ(refSy);
+      canvas.drawCircle(vx(wx, wz), vy(wx, wz), r, markerPaint);
+    }
   }
 
   private float vx(float wx, float wz) {

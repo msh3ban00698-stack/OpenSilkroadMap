@@ -1,7 +1,7 @@
 {
  "description": "Proven references between Android runtime assets (Phase 13 Part N). Only edges reproduced from real data are present; status VERIFIED means the reference was reproduced from committed/live bytes, PARTIAL means the structure is proven but a downstream field is UNKNOWN.",
- "textdata_edges": 9,
- "asset_edges": 10,
+  "textdata_edges": 9,
+  "asset_edges": 14,
  "edges": [
   {
    "from": {
@@ -247,8 +247,60 @@
     "role": "emitter command stream"
    },
    "relationship": "u32-length-prefixed ASCII command tokens",
-   "status": "PARTIAL",
-   "evidence": "Phase 13 Part G: command vocabulary proven; params UNKNOWN"
-  }
- ]
+    "status": "PARTIAL",
+    "evidence": "Phase 13 Part G: command vocabulary proven; params UNKNOWN"
+   },
+   {
+    "from": {
+     "kind": "world_index.tsv",
+     "role": "sector inventory entry"
+    },
+    "to": {
+     "kind": ".hg",
+     "role": "committed terrain height grid (VSHG v1)"
+    },
+    "relationship": "inventoried asset (size/min/max/sha256)",
+    "status": "VERIFIED",
+    "evidence": "Phase 10/15: 23 committed sectors, each derived read-only from a real Map.pk2 /{sy}/{sx}.m"
+   },
+   {
+    "from": {
+     "kind": ".hg",
+     "role": "committed terrain sector"
+    },
+    "to": {
+     "kind": "world_regions.tsv",
+     "role": "region sector window"
+    },
+    "relationship": "sector within region window",
+    "status": "VERIFIED",
+    "evidence": "Phase 15: Jangan_Field ref sector 156x89; committed 156x89 + 156x90 fall inside window sx 156..182, sy 89..102"
+   },
+   {
+    "from": {
+     "kind": "npcpos.tsv",
+     "role": "world spawn region_code"
+    },
+    "to": {
+     "kind": ".hg",
+     "role": "committed terrain sector"
+    },
+    "relationship": "spawn placement on committed terrain",
+    "status": "VERIFIED",
+    "evidence": "Phase 15: 3 world spawns resolve to committed sector 156x90, 0 to 156x89; worldCount 14800, dungeonCount 3657"
+   },
+   {
+    "from": {
+     "kind": ".o2",
+     "role": "object instance overlay (Map.pk2)"
+    },
+    "to": {
+     "kind": ".m",
+     "role": "terrain sector (Map.pk2)"
+    },
+    "relationship": "per-sector object overlay",
+    "status": "PARTIAL",
+    "evidence": "Phase 15: 4348 .o2 overlays; magic JMXVMAPO1001; offset12=0; variable data start >=16; parse_o2 proven only when data starts at 16"
+   }
+  ]
 }

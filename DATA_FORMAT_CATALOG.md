@@ -29,8 +29,8 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 | `tga` | TGA header `00 00 0a 00` (type 10 RLE true-color) | 15 files, 4.0 MB. | TGA header verified; no conversion run this phase. |
 | `tmp` | `DDS \x7c` | 1 file, 87,528 B (`Data.pk2`). Payload is a DDS texture misnamed `.tmp`. | DDS decode already verified in this project (`scripts/dds_decode.py`). |
 | `ddj` | `JMXVDDJ 1000` | 47,495 files, 2,200.6 MB (largest format by bytes). Container header `JMXVDDJ 1000` then embedded DDS textures. | Prior phases verified `ddj -> DDS` extraction and conversion (`scripts/convert_ddjs.py`, `scripts/dds_decode.py`); ~7,755 Android texture outputs produced across Phases 5–8. |
-| `m` | `JMXVMAPM1000` | 4,491 files, 416.6 MB. Terrain height grid. | **Phase 10 decodes `.m` fully** (`scripts/world_terrain.py`, 97×97 height grid per cell); 23 real grids committed as `.hg`. |
-| `o2` | `JMXVMAPO1001` | 4,348 files, 8.3 MB. Object overlay/instance. | **Phase 10 parses `.o2` instances** (committed fixtures `const_76x103_objects.json`). |
+| `m` | `JMXVMAPM1000` | 4,491 files, 416.6 MB. Terrain height grid. | **Phase 10 decodes `.m` fully** (`scripts/world_terrain.py`, 97×97 height grid per cell); 23 real grids committed as `.hg`; Phase 15 loads adjacent `.hg` sectors as a multi-sector `WorldTerrainSet`. |
+| `o2` | `JMXVMAPO1001` | 4,348 files, 8.3 MB. Object overlay/instance. | **Phase 10 parses `.o2` instances** (committed fixtures `const_76x103_objects.json`). Phase 15: header length is VARIABLE (offset 12 always `u32=0`, first data byte `>=16`); `parse_o2` is valid only when data starts at 16 — other sectors' header layout UNKNOWN. |
 | `ban` | `JMXVBAN 0102` | 4,796 files, 235.2 MB. Animation. | **Phase 13 Part D proves FULL layout** (`scripts/ban_decoder.py`): magic/version, 8-byte reserved, u32 name-len + name, u32 duration + frame-rate(30) + u32 UNKNOWN + kpb, kpb×u32 timestamps, bone count + per-bone name + kf-count + kpb×28-byte keyframes (4×f32 quat + 3×f32 pos). Tests: `scripts/test_phase13_ban.py` (8 GREEN). |
 
 ## 2. PARSEABLE formats (magic confirmed, decoder not yet committed)

@@ -6,26 +6,31 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
 import com.opensilkroadmap.app.world.WorldRegion;
 import com.opensilkroadmap.app.world.WorldTerrainIndex;
+import com.opensilkroadmap.app.world.WorldTerrainSet;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Phase 14 native world runtime host. Loads the verified world region windows
- * ({@code world_regions.tsv}) and the verified terrain inventory
- * ({@code world_index.tsv}), selects the first region whose reference sector
- * has a committed real {@code .hg} height grid, and renders that real terrain
- * through {@link NativeWorldRenderer}.
+ * Phase 15 native world runtime host. Loads the verified world region windows
+ * ({@code world_regions.tsv}), the verified terrain inventory
+ * ({@code world_index.tsv}), and the verified NPC placement table
+ * ({@code npcpos.tsv}); selects the first region whose reference sector has a
+ * committed real {@code .hg}; then loads EVERY committed sector in that region
+ * window into a {@link WorldTerrainSet} and renders the real multi-sector
+ * terrain plus verified NPC placements through {@link NativeWorldRenderer}.
  *
- * <p>The renderer is a DIAGNOSTIC TERRAIN RENDERER (verified heightfield
- * wireframe), not a production 3D terrain renderer: no models, materials,
- * normals, or textures are invented. When the terrain asset is missing the
- * screen fails closed with an explicit message; no other region is substituted.
+ * <p>The renderer is a DIAGNOSTIC TERRAIN/PLACEMENT renderer (verified
+ * heightfield wireframe + real npcpos markers), not a production 3D renderer:
+ * no models, materials, normals, or textures are invented. Missing terrain
+ * fails closed; no other region is substituted.
  *
  * <p>The WebView {@code MainActivity} (Capacitor) remains the app launcher;
  * this native activity is reachable independently and uses no WebView.
@@ -34,48 +39,32 @@ public final class GameActivity extends Activity {
 
   private static final String WORLD_REGIONS_ASSET = "game/world/world_regions.tsv";
   private static final String WORLD_INDEX_ASSET = "game/world/world_index.tsv";
+  private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
 
   private NativeWorldRenderer world;
+  private WorldTerrainSet terrain;
+  private NpcSpawnIndex npc;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    RegionCatalog catalog = loadCatalog();
     GameDataCatalog data = loadDataCatalog();
     WorldTerrainIndex index = loadTerrainIndex();
     List<WorldRegion> regions = loadWorldRegions();
+    npc = loadNpcSpawns();
 
-    TerrainHeightGrid grid = null;
-    WorldRegion region = null;
-    WorldTerrainIndex.Entry sector = null;
-    if (index != null && regions != null) {
-      for (WorldRegion r : regions) {
-        WorldTerrainIndex.Entry e = index.find(r.refSx, r.refSy);
-        if (e != null) {
-          region = r;
-          sector = e;
-          break;
-        }
-      }
-      if (sector != null) {
-        try {
-          grid = TerrainHeightGrid.load(
-              getAssets().open(WorldTerrainIndex.hgAssetPath(sector.sx, sector.sy)));
-        } catch (IOException e) {
-          grid = null;
-        }
-      }
-    }
+    WorldRegion region = selectRegion(index, regions);
+    terrain = loadRegionTerrain(index, region);
 
     FrameLayout root = new FrameLayout(this);
     root.setBackgroundColor(Color.rgb(16, 16, 20));
 
     world = new NativeWorldRenderer(this);
-    if (grid != null) {
-      world.setGrid(grid);
-      float extent = grid.size() * grid.step();
-      world.setCamera(extent / 2f, extent / 2f, 0.5f);
+    if (terrain != null) {
+      world.setWorld(terrain);
+      world.setNpcSpawns(npc);
+      world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
     root.addView(world, new FrameLayout.LayoutParams(
         FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
@@ -84,7 +73,7 @@ public final class GameActivity extends Activity {
     overlay.setTextSize(13f);
     overlay.setTextColor(Color.rgb(230, 230, 235));
     overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, sector, grid, catalog, data));
+    overlay.setText(describe(region, terrain, npc, data));
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -94,27 +83,63 @@ public final class GameActivity extends Activity {
     setContentView(root);
   }
 
+  private WorldRegion selectRegion(WorldTerrainIndex index, List<WorldRegion> regions) {
+    if (index != null && regions != null) {
+      for (WorldRegion r : regions) {
+        if (index.find(r.refSx, r.refSy) != null) {
+          return r;
+        }
+      }
+    }
+    return null;
+  }
+
+  private WorldTerrainSet loadRegionTerrain(WorldTerrainIndex index, WorldRegion region) {
+    if (index == null || region == null) {
+      return null;
+    }
+    List<WorldTerrainSet.Sector> sectors = new ArrayList<WorldTerrainSet.Sector>();
+    for (WorldTerrainIndex.Entry e : index.entries()) {
+      if (region.containsSector(e.sx, e.sy)) {
+        TerrainHeightGrid grid = loadGrid(e.sx, e.sy);
+        if (grid != null) {
+          sectors.add(WorldTerrainSet.sector(e.sx, e.sy, region.refSx, region.refSy, grid));
+        }
+      }
+    }
+    return sectors.isEmpty() ? null : new WorldTerrainSet(sectors);
+  }
+
+  private TerrainHeightGrid loadGrid(int sx, int sy) {
+    try {
+      return TerrainHeightGrid.load(
+          getAssets().open(WorldTerrainIndex.hgAssetPath(sx, sy)));
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
   private String describe(
       WorldRegion region,
-      WorldTerrainIndex.Entry sector,
-      TerrainHeightGrid grid,
-      RegionCatalog catalog,
+      WorldTerrainSet terrain,
+      NpcSpawnIndex npc,
       GameDataCatalog data) {
     StringBuilder sb = new StringBuilder();
-    if (grid != null && region != null && sector != null) {
+    if (terrain != null && region != null) {
       sb.append(region.name).append(" (").append(region.type).append(")\n");
-      sb.append("sector ").append(sector.sx).append('x').append(sector.sy);
-      sb.append(" · ref ").append(region.refSx).append('x').append(region.refSy);
-      sb.append('\n');
-      sb.append("terrain ").append(grid.size()).append('x').append(grid.size());
-      sb.append(" step ").append(grid.step());
-      sb.append(" · heights ").append(grid.size() * grid.size());
-      sb.append('\n');
-      sb.append("min ").append(grid.min()).append(" max ").append(grid.max());
-      if (data != null) {
-        sb.append("\n").append(data.summary());
+      sb.append("sectors ").append(terrain.sectorCount())
+          .append(" · world ").append((int) terrain.width())
+          .append('x').append((int) terrain.height()).append(" units\n");
+      if (npc != null) {
+        int inWindow = npc.inWindow(region.sx0, region.sx1, region.sy0, region.sy1).size();
+        sb.append("npc in window ").append(inWindow)
+            .append(" (world ").append(npc.worldCount())
+            .append(" / dungeon ").append(npc.dungeonCount()).append(")\n");
       }
-      sb.append("\nDIAGNOSTIC TERRAIN RENDERER");
+      if (data != null) {
+        sb.append(data.summary()).append('\n');
+      }
+      sb.append("DIAGNOSTIC TERRAIN + NPC PLACEMENT");
     } else {
       sb.append("TERRAIN ASSET MISSING (verified .hg absent)\n");
       sb.append("no real terrain loaded; no region substituted");
@@ -134,15 +159,6 @@ public final class GameActivity extends Activity {
     return Math.round(value * getResources().getDisplayMetrics().density);
   }
 
-  private RegionCatalog loadCatalog() {
-    try {
-      return RegionCatalog.parse(
-          new InputStreamReader(getAssets().open("game/regions.tsv"), StandardCharsets.UTF_8));
-    } catch (IOException e) {
-      return null;
-    }
-  }
-
   private WorldTerrainIndex loadTerrainIndex() {
     try {
       return WorldTerrainIndex.parse(
@@ -155,6 +171,15 @@ public final class GameActivity extends Activity {
   private List<WorldRegion> loadWorldRegions() {
     try {
       return WorldRegion.load(() -> getAssets().open(WORLD_REGIONS_ASSET));
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private NpcSpawnIndex loadNpcSpawns() {
+    try {
+      return NpcSpawnIndex.parse(
+          new InputStreamReader(getAssets().open(NPC_POS_ASSET), StandardCharsets.UTF_8));
     } catch (IOException e) {
       return null;
     }
