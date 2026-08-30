@@ -149,10 +149,10 @@
 - `CharacterMeshIndex.load(AssetManager, refSx, refSy)`, `characters()`, `Instance.worldX/worldZ/theta`.
 - Renderer: `drawCharacters(Canvas)` mirrors `drawMeshPart` with per-vertex skinned `worldVertex`.
 
-- [ ] **Step 1: structural JVM test** (parses committed bandit assets, count assertions) — NOT EXECUTED (no JDK), documented.
-- [ ] **Step 2: implement Java** (Android-free parser + renderer seam).
-- [ ] **Step 3: brace-balance + review; NO build/device claims.**
-- [ ] **Step 4: Commit**
+- [x] **Step 1: structural JVM test** (parses committed bandit assets, count assertions) — NOT EXECUTED (no JDK), documented in `CharacterMeshIndexTest` javadoc.
+- [x] **Step 2: implement Java** (Android-free parser + renderer seam): `StaticMeshAsset.parseSkinned` + `SkinnedMesh` (MSH v2), `CharacterMeshIndex` (skeleton/meshes/placements/anims loaders + minimal JSON parser + bind-pose `skinnedBindPositions` = Σ(w/Σw)·(R·v+t)), `NativeWorldRenderer.drawCharacters` (theta=0), `GameActivity` wiring.
+- [x] **Step 3: brace-balance + review; NO build/device claims.**
+- [x] **Step 4: Commit**
 
 ### Task 8: Player pipeline status (Part J) + docs (Part O)
 

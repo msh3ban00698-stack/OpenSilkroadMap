@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
@@ -67,6 +68,29 @@ public class GameActivityTest {
                 assertNotNull(part.texture);
               }
             }
+          });
+    }
+  }
+
+  @Test
+  public void rendersRealSkinnedCharacters() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            CharacterMeshIndex characters = activity.characters();
+            assertNotNull("real character index must load", characters);
+            assertEquals(60, characters.instanceCount());
+            assertEquals(35, characters.skeleton().boneCount);
+            assertEquals(3, characters.parts().size());
+            for (CharacterMeshIndex.Part part : characters.parts()) {
+              assertNotNull(part.mesh);
+              assertTrue(part.mesh.boneNames.length > 0);
+              assertEquals(part.mesh.vertexCount, part.mesh.bone1.length);
+              assertNotNull(part.texture);
+              assertEquals(part.mesh.vertexCount * 3, part.bindPositions.length);
+            }
+            assertTrue(characters.anims().size() == 16);
           });
     }
   }

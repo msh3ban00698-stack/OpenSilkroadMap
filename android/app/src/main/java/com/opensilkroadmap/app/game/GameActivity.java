@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
@@ -46,6 +47,7 @@ public final class GameActivity extends Activity {
   private WorldTerrainSet terrain;
   private NpcSpawnIndex npc;
   private MeshObjectIndex meshObjects;
+  private CharacterMeshIndex characters;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,8 @@ public final class GameActivity extends Activity {
     if (region != null) {
       meshObjects = MeshObjectIndex.load(getAssets(), region.refSx, region.refSy);
     }
+    characters = CharacterMeshIndex.load(getAssets(), region == null ? 0 : region.refSx,
+        region == null ? 0 : region.refSy);
 
     FrameLayout root = new FrameLayout(this);
     root.setBackgroundColor(Color.rgb(16, 16, 20));
@@ -70,6 +74,7 @@ public final class GameActivity extends Activity {
       world.setWorld(terrain);
       world.setNpcSpawns(npc);
       world.setMeshObjects(meshObjects);
+      world.setCharacters(characters);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
     root.addView(world, new FrameLayout.LayoutParams(
@@ -147,6 +152,12 @@ public final class GameActivity extends Activity {
         sb.append("objects ").append(meshObjects.instanceCount())
             .append(" placements, real BMS mesh parts\n");
       }
+      if (characters != null) {
+        sb.append("characters ").append(characters.instanceCount())
+            .append(" placements, ").append(characters.parts().size())
+            .append(" skinned parts, ").append(characters.skeleton().boneCount)
+            .append(" bones (bind pose)\n");
+      }
       if (data != null) {
         sb.append(data.summary()).append('\n');
       }
@@ -169,6 +180,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   MeshObjectIndex meshObjects() {
     return meshObjects;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  CharacterMeshIndex characters() {
+    return characters;
   }
 
   private int dp(int value) {

@@ -41,7 +41,9 @@ public class NativeWorldRenderer extends View {
   private WorldTerrainSet world;
   private NpcSpawnIndex npc;
   private MeshObjectIndex meshObjects;
+  private CharacterMeshIndex characters;
   private boolean objectsVisible = true;
+  private boolean charactersVisible = true;
   private float worldMinH;
   private float worldMaxH;
 
@@ -111,9 +113,25 @@ public class NativeWorldRenderer extends View {
     invalidate();
   }
 
+  /**
+   * Attaches the real character index (Phase 18, bind-pose skinning);
+   * null hides characters.
+   */
+  public void setCharacters(CharacterMeshIndex characters) {
+    this.characters = characters;
+    shaderCache.clear();
+    invalidate();
+  }
+
   /** Toggles the real object mesh overlay. */
   public void setObjectsVisible(boolean visible) {
     this.objectsVisible = visible;
+    invalidate();
+  }
+
+  /** Toggles the real character overlay. */
+  public void setCharactersVisible(boolean visible) {
+    this.charactersVisible = visible;
     invalidate();
   }
 
@@ -229,6 +247,7 @@ public class NativeWorldRenderer extends View {
     }
     drawNpcMarkers(canvas);
     drawMeshObjects(canvas);
+    drawCharacters(canvas);
   }
 
   private void drawSector(Canvas canvas, WorldTerrainSet.Sector s, Path quad) {
@@ -313,6 +332,40 @@ public class NativeWorldRenderer extends View {
     if (tex == null) {
       return;
     }
+    float cos = (float) Math.cos(theta);
+    float sin = (float) Math.sin(theta);
+    drawTexturedTriangles(
+        canvas, mesh.positions, mesh.uvs, mesh.indices, mesh.triangleCount,
+        tex, wx, wz, cos, sin);
+  }
+
+  private void drawCharacters(Canvas canvas) {
+    if (!charactersVisible || characters == null || world == null) {
+      return;
+    }
+    for (CharacterMeshIndex.Instance inst : characters.instances()) {
+      // Bind-pose skinning only; placement heading is UNKNOWN (theta = 0).
+      for (CharacterMeshIndex.Part part : inst.parts) {
+        drawTexturedTriangles(
+            canvas, part.bindPositions, part.mesh.uvs, part.mesh.indices,
+            part.mesh.triangleCount, part.texture, inst.worldX, inst.worldZ,
+            1f, 0f);
+      }
+    }
+  }
+
+  /**
+   * Draws a triangle list with a bitmap shader. Positions are already in
+   * character/world-local space; {@code (cos, sin)} is the placement heading
+   * rotation ({@code 1,0} = no heading).
+   */
+  private void drawTexturedTriangles(
+      Canvas canvas, float[] positions, float[] uvs, int[] indices,
+      int triangleCount, Bitmap tex, float wx, float wz, float cos, float sin) {
+    if (positions == null || uvs == null || indices == null
+        || triangleCount == 0 || tex == null) {
+      return;
+    }
     float texW = tex.getWidth();
     float texH = tex.getHeight();
     BitmapShader shader = shaderCache.get(tex);
@@ -320,13 +373,8 @@ public class NativeWorldRenderer extends View {
       shader = new BitmapShader(tex, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       shaderCache.put(tex, shader);
     }
-    float cos = (float) Math.cos(theta);
-    float sin = (float) Math.sin(theta);
-    float[] positions = mesh.positions;
-    float[] uvs = mesh.uvs;
-    int[] indices = mesh.indices;
     objectPaint.setShader(shader);
-    for (int t = 0; t < mesh.triangleCount; t++) {
+    for (int t = 0; t < triangleCount; t++) {
       int i0 = indices[t * 3];
       int i1 = indices[t * 3 + 1];
       int i2 = indices[t * 3 + 2];
