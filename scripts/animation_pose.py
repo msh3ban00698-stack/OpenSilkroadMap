@@ -137,6 +137,10 @@ def _sample(channel, timestamps, t):
     if t1 == t0:
         return channel[lo]
     f = (t - t0) / (t1 - t0)
+    if f <= 0.0:
+        return channel[lo]
+    if f >= 1.0:
+        return channel[hi]
     q0, p0 = channel[lo]
     q1, p1 = channel[hi]
     q = _slerp(q0, q1, f)
