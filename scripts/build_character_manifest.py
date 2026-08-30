@@ -739,6 +739,7 @@ PLAYER_WEAPON = "/prim/mesh/item/china/weapon/sword_01.bms"
 PLAYER_MATERIALS = [
     "/prim/mtrl/char/china/man/chinaman_fighter.bmt",
     "/prim/mtrl/item/china/man_item/clothes_01.bmt",
+    "/prim/mtrl/item/china/man_item/clothes_01_sa.bmt",
     "/prim/mtrl/item/china/weapon/sword1_2_3.bmt",
 ]
 PLAYER_ANIMS = [
