@@ -135,5 +135,111 @@ def census_bsk(entries, read_fn):
     return result
 
 
+def group_census(entries, read_fn):
+    """Group all nonzero .bsk entries by magic/version/size-bucket and by
+    bone_type values. Returns a dict of PROVEN grouping facts; no semantic
+    interpretation is attached to any bone_type value."""
+    groups = {}
+    bone_type_hist = {}
+    for e in entries:
+        if not e["path"].lower().endswith(".bsk") or e["size"] == 0:
+            continue
+        r = parse_bsk(read_fn(e))
+        magic = r["magic"].decode("ascii", "replace") if isinstance(r["magic"], bytes) else ""
+        # magic embeds the version (JMXVBSK 0101); derive a bounded label
+        # instead of using parse_bsk's 'version' (which is data[12:] tail).
+        version = magic[-4:] if magic.startswith("JMXVBSK ") else magic
+        bucket = "small" if e["size"] < 256 else ("mid" if e["size"] < 16384 else "large")
+        key = (magic, version, bucket)
+        g = groups.setdefault(key, {"count": 0, "sizes": []})
+        g["count"] += 1
+        g["sizes"].append(e["size"])
+        for b in r["bones"]:
+            bt = b["bone_type"]
+            bone_type_hist[bt] = bone_type_hist.get(bt, 0) + 1
+    return {
+        "groups": [
+            {
+                "magic": magic,
+                "version": version,
+                "size_bucket": bucket,
+                "count": g["count"],
+                "size_min": min(g["sizes"]),
+                "size_max": max(g["sizes"]),
+            }
+            for (magic, version, bucket), g in groups.items()
+        ],
+        "bone_type_histogram": {str(k): v for k, v in sorted(bone_type_hist.items())},
+    }
+
+
+def census_record(data: bytes):
+    """Walk a .bsk byte-for-byte and emit a per-field evidence record.
+
+    Returns {'fields': [ {offset, size, field, raw_value, interpretation,
+    evidence, status} ... ], 'bone_count', 'exact'}. Offsets are absolute
+    file offsets; raw_value is kept byte/float-exact but size-capped for
+    strings. No semantic name is attached to any field beyond the structural
+    layout proven in Phase 18; status is PROVEN only for layout fields that
+    byte-exhaust.
+    """
+    fields = []
+    if data[:MAGIC_LEN] != BSK_MAGIC:
+        return {
+            "fields": [{
+                "offset": 0, "size": min(16, len(data)), "field": "magic",
+                "raw_value": data[:16].hex(), "interpretation": "UNKNOWN magic",
+                "evidence": "does not equal JMXVBSK 0101", "status": "PARTIAL",
+            }],
+            "bone_count": 0, "exact": False,
+        }
+
+    def add(off, size, field, raw, interp, evidence, status):
+        fields.append({
+            "offset": off, "size": size, "field": field, "raw_value": raw,
+            "interpretation": interp, "evidence": evidence, "status": status,
+        })
+
+    add(0, MAGIC_LEN, "magic", data[:MAGIC_LEN].decode("ascii", "replace"),
+        "file magic", "equals JMXVBSK 0101", "PROVEN")
+    (count,) = struct.unpack_from("<I", data, COUNT_OFFSET)
+    add(COUNT_OFFSET, 4, "bone_count", count, "number of bone records",
+        "parse consumes this many records", "PROVEN")
+    off = COUNT_OFFSET + 4
+    for i in range(count):
+        bt = data[off]
+        add(off, 1, "bones[%d].bone_type" % i, bt,
+            "raw bone type byte", "structural layout byte; semantics UNKNOWN",
+            "PROVEN" if data[off] == bt else "UNKNOWN")
+        off += 1
+        name, off = _read_str(data, off)
+        add(off - 4 - len(name), 4 + len(name), "bones[%d].name" % i,
+            name[:64], "bone name string", "structural layout", "PROVEN")
+        parent, off = _read_str(data, off)
+        add(off - 4 - len(parent), 4 + len(parent), "bones[%d].parent" % i,
+            parent[:64], "parent bone name", "structural layout; empty=root",
+            "PROVEN")
+        for fname, n in _FLOAT_FIELDS:
+            vals = list(struct.unpack_from("<%df" % n, data, off))
+            add(off, 4 * n, "bones[%d].%s" % (i, fname),
+                [round(v, 6) for v in vals],
+                "f32 vector (%d)" % n, "structural layout", "PROVEN")
+            off += 4 * n
+        (cc,) = struct.unpack_from("<I", data, off)
+        add(off, 4, "bones[%d].child_count" % i, cc,
+            "number of child names", "structural layout", "PROVEN")
+        off += 4
+        for j in range(cc):
+            child, off = _read_str(data, off)
+            add(off - 4 - len(child), 4 + len(child),
+                "bones[%d].children[%d]" % (i, j), child[:64],
+                "child bone name", "structural layout", "PROVEN")
+    trailer = data[off:off + TRAILER_LEN]
+    exact = (off + TRAILER_LEN == len(data)) and (trailer == b"\x00" * TRAILER_LEN)
+    add(off, TRAILER_LEN, "trailer", trailer.hex(),
+        "8 zero bytes", "byte-exhaustion anchor", "PROVEN" if exact else "PARTIAL")
+    return {"fields": fields, "bone_count": count, "exact": exact}
+
+
 def bone_names(parsed):
     return [b["name"] for b in parsed["bones"]]
