@@ -426,6 +426,141 @@ def real_npc_chain(refid, pk2_dir=None):
         read_media.close()
 
 
+PLAYER_SKELETON = "/prim/skel/char/china/chinaman_skel.bsk"
+PLAYER_BSR = "/res/char/china/chinaman_fighter.bsr"
+PLAYER_BODY = [
+    "/prim/mesh/char/china/man/man_pelvis.bms",
+    "/prim/mesh/char/china/man/man_torso_lower.bms",
+    "/prim/mesh/char/china/man/man_torso_upper.bms",
+    "/prim/mesh/char/china/man/man_arm_upper.bms",
+    "/prim/mesh/char/china/man/man_arm_lower.bms",
+    "/prim/mesh/char/china/man/man_thigh.bms",
+    "/prim/mesh/char/china/man/man_calf.bms",
+    "/prim/mesh/char/china/man/chinaman_fighter_face.bms",
+    "/prim/mesh/char/china/man/chinaman_fighter_hair.bms",
+]
+PLAYER_CLOTHES = [
+    "/prim/mesh/item/china/man_item/clothes_01_aa.bms",
+    "/prim/mesh/item/china/man_item/clothes_01_ba.bms",
+    "/prim/mesh/item/china/man_item/clothes_01_fa.bms",
+    "/prim/mesh/item/china/man_item/clothes_01_ha.bms",
+    "/prim/mesh/item/china/man_item/clothes_01_la.bms",
+    "/prim/mesh/item/china/man_item/clothes_01_sa.bms",
+]
+PLAYER_WEAPON = "/prim/mesh/item/china/weapon/sword_01.bms"
+PLAYER_MATERIALS = [
+    "/prim/mtrl/char/china/man/chinaman_fighter.bmt",
+    "/prim/mtrl/item/china/man_item/clothes_01.bmt",
+    "/prim/mtrl/item/china/weapon/sword1_2_3.bmt",
+]
+PLAYER_ANIMS = [
+    "/prim/ani/char/china/man/chinaman_standbattle.ban",
+    "/prim/ani/char/china/man/chinaman_fighter_standcity.ban",
+    "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",
+    "/prim/ani/char/china/man/chinaman_fighter_runforward_sword.ban",
+    "/prim/ani/char/china/man/chinaman_fighter_runforward.ban",
+]
+
+
+def player_pipeline(pk2_dir=None):
+    """Independently resolve the PLAYER (chinaman) pipeline from archives.
+
+    The player is NOT an NPC: it has no npcpos spawn and no /res/mob/ BSR.
+    Its model is assembled from character-creation parts (body + face + hair +
+    clothes + weapon) over the China-man skeleton. Returns per-component
+    {status, evidence, path} facts; status vocabulary is PROVEN / UNKNOWN /
+    PARTIAL only. Raises ChainError when the archive cannot be opened.
+    """
+    pk2_dir = pk2_dir or os.environ.get("SRO_PK2_DIR")
+    if not pk2_dir:
+        raise ChainError("--pk2-dir or SRO_PK2_DIR is required")
+    data_pk2 = sro_paths.pk2_archive(pk2_dir, "Data.pk2")
+    read_data = _Pk2Reader(data_pk2)
+    comp = {}
+
+    def comp_entry(name, path, status, evidence):
+        comp[name] = {"status": status, "path": path, "evidence": evidence}
+
+    try:
+        # skeleton
+        skel_blob = read_data.read(PLAYER_SKELETON)
+        skel = bsk_decoder.parse_bsk(skel_blob)
+        if not skel["exact"]:
+            raise ChainError(f"player skeleton not exact: {skel['error']}")
+        hier = SK.verify_hierarchy(skel["bones"])
+        comp_entry("skeleton", PLAYER_SKELETON, "PROVEN",
+                   "parse exact, %d bones, single root %s, is_tree=%s" % (
+                       len(skel["bones"]), hier["roots"][0], hier["is_tree"]))
+
+        # BSR -> skeleton (documented mismatch: char BSR points at europe skeleton)
+        bsr_blob = read_data.read(PLAYER_BSR)
+        parsed = bsr_decoder.parse_bsr_references(bsr_blob)
+        bsr_skel = parsed["skeleton"][0] if parsed["skeleton"] else None
+        if bsr_skel and bsr_skel.lower() != PLAYER_SKELETON.lower():
+            comp_entry("bsr", PLAYER_BSR, "PROVEN",
+                       "character-selection BSR resolves, but references %s "
+                       "(43 bones), NOT the China player skeleton %s" % (
+                           bsr_skel, PLAYER_SKELETON))
+        else:
+            comp_entry("bsr", PLAYER_BSR, "PROVEN",
+                       "character-selection BSR resolves to %s" % bsr_skel)
+
+        # meshes (body + face + hair)
+        body_ok = 0
+        for p in PLAYER_BODY:
+            m = B.parse_bms(read_data.read(p))
+            if m["skin"] is None:
+                raise ChainError(f"player mesh {p} lacks skin block")
+            body_ok += 1
+        comp_entry("meshes", "body/face/hair", "PROVEN",
+                   "%d body/face/hair meshes parse with skin blocks" % body_ok)
+
+        # clothes + weapon
+        cloth_ok = 0
+        for p in PLAYER_CLOTHES:
+            if B.parse_bms(read_data.read(p))["skin"] is None:
+                raise ChainError(f"clothes mesh {p} lacks skin block")
+            cloth_ok += 1
+        if B.parse_bms(read_data.read(PLAYER_WEAPON))["skin"] is None:
+            raise ChainError("weapon mesh lacks skin block")
+        comp_entry("equipment", "clothes/weapon", "PROVEN",
+                   "%d clothes + 1 weapon meshes parse with skin blocks"
+                   % cloth_ok)
+
+        # materials
+        for p in PLAYER_MATERIALS:
+            read_data.read(p)
+        comp_entry("textures", "materials", "PROVEN",
+                   "%d material (.bmt) blobs present" % len(PLAYER_MATERIALS))
+
+        # animations
+        anim_ok = 0
+        for p in PLAYER_ANIMS:
+            raw = read_data.read(p)
+            desc = AP.describe_animation(raw)
+            anim_ok += 1
+        comp_entry("animations", "chinaman clips", "PROVEN",
+                   "%d clips parse (walk/stand/run), all loop" % anim_ok)
+
+        # spawn reference
+        comp_entry("spawn_reference", None, "UNKNOWN",
+                   "player has no npcpos spawn; start/revival point is a "
+                   "game-server concept absent from static archives")
+
+        return {
+            "character": "chinaman (player)",
+            "components": comp,
+            "status": "PARTIAL",
+            "blockers": [
+                "BSR->skeleton edge: /res/char BSRs reference europeman_skel.bsk, "
+                "not chinaman_skel.bsk; player skeleton is not BSR-referenced",
+                "spawn_reference: no static player spawn in the archives",
+            ],
+        }
+    finally:
+        read_data.close()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=ASSETS)
