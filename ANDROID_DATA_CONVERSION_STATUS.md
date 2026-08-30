@@ -148,15 +148,48 @@ record counts, schema width, content spot checks) and listed in
 - Executed evidence: 5 new Phase 18 Python suites (52 tests) + full 24-suite
   regression **294 tests, 13 skipped, OK**.
 
+### Phase 19 — real skinning semantics + animation playback
+
+- **BSK transform semantics PROVEN** (`scripts/test_phase19_bsk_semantics.py`):
+  `rot_origin`/`tr_origin` == bone WORLD bind (byte-exact to `skeleton.json`);
+  `rot_parent`/`tr_parent` == parent-relative local; `rot_local`/`tr_local` ==
+  inverse-bind (root proven; child PARTIAL). `bone_type` u8 census = constant 0
+  across 29,957 bones (meaning UNKNOWN).
+- **Skinning weights PROVEN** (`scripts/test_phase19_weights.py`): max 2
+  influences/vertex, u16 weights, `0xFF` sentinel; sums NOT exactly 65535
+  (bandit_part1 min 49146/max 65531; sword single-influence only) — normalization
+  is a renderer operation.
+- **Bind-pose skinning PROVEN** (`scripts/bms_to_asset.py::validate_skinned_mesh`):
+  reproduces stored rest vertices with max deform ≈ `2e-6`.
+- **Animation PROVEN** (`scripts/test_phase19_animation.py` + `_pose.py` +
+  `_real_animation.py`): full keyframes exported (walk 34×15 @1333 ms, stand01
+  34×5 @2000 ms); non-uniform timestamps (no fixed FPS); LOOPING proven; channel
+  space = absolute parent-relative replacing bind. 2 `JMXVBAN 0101` anomalies
+  UNKNOWN.
+- **FIRST REAL NPC + ANIMATION DONE**: bandit refid 1949 (35 bones, 3 meshes
+  846 verts, 3 textures, 16 anims, 61 npcpos spawns, 2 on committed 156x90)
+  rendered AND animated at deterministic timestamps; snapshots committed under
+  `docs/phase19/snapshots/`.
+- **PLAYER (chinaman) PARTIAL**: skeleton (38 bones) + meshes + anims PROVEN;
+  BSR references `europeman_skel.bsk` (43 bones) instead of `chinaman_skel.bsk`;
+  no static spawn (npcpos is NPC-only).
+- **Java renderer (compile-only)**: `Pose.java` + `CharacterRenderer.java`
+  compile clean (`javac`); `NativeWorldRenderer` pose-driven `drawCharacters`
+  with bind fallback; skinning math verified (bind reproduces rest, 90° rotation,
+  parent->child chaining). APK build + device runtime NOT EXECUTED (no Gradle/
+  Android SDK).
+- Proof artifacts: `scripts/build_phase19_evidence.py` + committed
+  `phase19_evidence.json` (bandit DONE / chinaman PARTIAL).
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|
-| `ban` | 4,796 | **FULL layout** (Phase 13 Part D): magic/version; reserved; u32 name-len + name; u32 duration + frame-rate(30) + u32 UNKNOWN + kpb; kpb×u32 timestamps; bone count + per-bone name + kf-count + kpb×28-byte keyframes (quat + pos). Decoder `scripts/ban_decoder.py`, 8 tests. | semantic only: `u32`@body+8, reserved 8 bytes |
+| `ban` | 4,796 | **FULL layout** (Phase 13 Part D): magic/version; reserved; u32 name-len + name; u32 duration + frame-rate(30) + u32 UNKNOWN + kpb; kpb×u32 timestamps; bone count + per-bone name + kf-count + kpb×28-byte keyframes (quat + pos). Decoder `scripts/ban_decoder.py`, 8 tests. **Phase 19**: full keyframes + looping + channel space proven; 2 `JMXVBAN 0101` anomalies. | semantic only: `u32`@body+8, reserved 8 bytes |
 | `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB; **vertex layout PROVEN: 44 B standard (17,247) / 52 B lightmap (5,399) / 80 B morph (6) / 32 unproven**; **per-vertex SKIN BLOCK proven (Phase 18)**; `scripts/bms_decoder.py`, 16+7 tests. | skinned/flags==2 tail semantics (u32@36 is NOT a local bone index); 80 B morph fields; trailing bytes. Static (flags==0) meshes fully decodable. |
 | `nvm` | 6,041 | flat 8-byte nav-cell records; 96×96 (9,216) grid; f32 region; trailing fill. 5 tests. | nav-cell semantics |
 | `efp` | 3,395 | version tree + u32-length-prefixed command stream. 11 tests. | command-stream semantics |
-| `bsk` | 1,039 | **FULL layout (Phase 18)**: u32 bone_count@12; per bone u8 type + name + parent + 21×f32 (rot_parent/tr_parent/rot_origin/tr_origin/rot_local/tr_local) + child_count + children + 8-byte trailer; byte-exhausts 1,034/1,035. `scripts/bsk_decoder.py`, 9 tests. | `bone_type` u8; origin/local transform usage; `mob_select.bsk` outlier |
+| `bsk` | 1,039 | **FULL layout (Phase 18)**: u32 bone_count@12; per bone u8 type + name + parent + 21×f32 (rot_parent/tr_parent/rot_origin/tr_origin/rot_local/tr_local) + child_count + children + 8-byte trailer; byte-exhausts 1,034/1,035. `scripts/bsk_decoder.py`, 9 tests. **Phase 19**: transform semantics proven (origin==world, parent==local, local==inverse-bind root). | `bone_type` u8 (census constant 0); child-bone `rot_local/tr_local` inverse; `mob_select.bsk` outlier |
 | `bsr` | 7,549 | **FULL layout (Phase 18)**: 8×u32 table@12 + 16 zero bytes + body@0x3C u32-len-prefixed token stream; classified `.bmt/.bms/.ban/.bsk/.efp/.wav`; `is_character` = has `.bsk`; group order asserted for characters. `scripts/bsr_decoder.py`. | 8×u32 header table semantics |
 
 ## 5. DECODED, conversion deferred (backlog, do not claim as done)

@@ -70,8 +70,26 @@ feathers/skirt/chair/effect chains, 182 total):
 ### Remaining UNKNOWN (documented, not guessed)
 
 - The u32 at body+8 (`1 / 0 / 1`) — possibly a loop/override flag. **UNKNOWN.**
+  (Note: looping itself is now PROVEN from the keyframe data — first keyframe ==
+  last for every channel — independent of this flag.)
 - The reserved 8 bytes at 0x0C. **UNKNOWN.**
 - Interpolation type / event records / world-vs-bone-local reference frame.
+
+### Phase 19 — full keyframes, looping, and anomalies
+
+- **Full keyframe export** (`scripts/animation_pose.py::load_keyframes`): every
+  keyframe is committed (bandit_stand01 34 ch × 5 kf @ 2000 ms; bandit_walk 34 ch
+  × 15 kf @ 1333 ms). Timestamps are non-uniform (`[0,33,133,266,333,400,533,566,
+  666,800,933,1000,1066,1200,1333]`), proving NO fixed FPS assumption.
+- **Looping PROVEN** (walk + stand01): first keyframe == last keyframe for every
+  channel (tolerance `2e-3` for float32 keyframe rounding); the Bip01 root
+  translation drift is loop-contained (no accumulated offset).
+- **Channel space PROVEN**: BAN channel (q,pos) are ABSOLUTE parent-relative
+  transforms that REPLACE the bind `rot_parent`/`tr_parent` (chaining proof:
+  stand01 t=0 toes on ground; walk t=0 L Toe planted / R Toe lifted +1.25).
+- **Format anomalies**: 4,793/4,795 `.ban` parse byte-exact as `JMXVBAN 0102`;
+  2 files use `JMXVBAN 0101` (`spidey_attack01.ban`, `chakji_stand02.ban`) with an
+  unproven layout — documented UNKNOWN, not guessed.
 
 ### Deliverables
 
@@ -302,8 +320,26 @@ trailer:        8 zero bytes
 Census: **1,034 / 1,035** nonzero `Data.pk2` `.bsk` byte-exhaust (4 zero-byte
 files); single outlier `/prim/skel/item/common/mob_select.bsk` structure
 **UNKNOWN** (skipped, not guessed). Only `rot_parent`/`tr_parent` feed the proven
-bind pose; `bone_type`, rot_origin/tr_origin/rot_local/tr_local semantics
-**UNKNOWN**.
+bind pose.
+
+### Phase 19 — transform-field semantics (PROVEN) and `bone_type` census (UNKNOWN)
+
+`scripts/build_bsk_census_fixture.py` + `scripts/test_phase19_bsk_semantics.py`
+prove the three transform triples' meaning for the bandit `.bsk`:
+
+- **`rot_origin`/`tr_origin` == the bone WORLD (bind/model-space) transform**
+  (PROVEN byte-exact against `skeleton.json` `bind_world`): Pelvis `tr_origin
+  [0,6.9362,2.7382]` == `[0,6.936188,2.738231]`; Head `[0,12.379,-0.8446]` ==
+  `[5e-06,12.378977,-0.844599]`; root `Bip01` origin == parent (no parent).
+- **`rot_parent`/`tr_parent` == parent-relative local transform** (Phase 18, re-proven).
+- **`rot_local`/`tr_local` == inverse-bind (world -> bone-local)** — PROVEN on the
+  ROOT by the conjugate pattern (`rot_local == conj(rot_origin)`, `tr_local ==
+  R^-1·(-t)`); child-bone inverse is **PARTIAL** (the local vector-part sign
+  differs from the plain conjugate — requires a full inverse recompute, kept
+  UNKNOWN where not proven).
+- **`bone_type` u8 census** (`build_bsk_census_fixture.py`): across 1,035 nonzero
+  `.bsk` (29,957 bones) the histogram is `{0: 29957}` — a constant zero. Meaning
+  remains **UNKNOWN** (raw census only, no semantics asserted).
 
 ### `.bsk` quaternion convention — **PROVEN `[x,y,z,w]` (Phase 18)**
 
@@ -330,7 +366,7 @@ discarded (planted toes at y ≈ 2.5 vs real feet 4.8–6.8). See
 - bandit: 3 bmt + 3 bms + **16 ban** + 1 bsk + 7 efp + 16 wav; chinaquest_priest
   1+3+2+1; movoi 15 ban.
 
-### BAN pose evaluation — **DONE (Phase 18)**
+### BAN pose evaluation — **DONE (Phase 18), full keyframes + playback (Phase 19)**
 
 `scripts/animation_pose.py` aligns per-bone channels to GLOBAL timestamps and
 interpolates between adjacent PROVEN keyframes (slerp for rotation, lerp for
@@ -338,8 +374,14 @@ position); unanimated bones fall back to bind `rot_parent`/`tr_parent`.
 bandit_stand01: 2000 ms / 5 kf / 34 channels; bandit_walk: 1333 ms / 15 kf /
 34 channels (irregular 33/133/266 ms timestamps justify adjacent-key
 interpolation). Fixtures `ban_phase18_samples/` + `ban_phase18.json`; tests
-`scripts/test_phase18_animation.py` (10). Runtime playback UNKNOWN (renderer
-draws the static bind pose).
+`scripts/test_phase18_animation.py` (10).
+
+Phase 19 exports ALL keyframes (not just the first) and proves, by pose chaining,
+that the bandit walk/stand01 poses genuinely move the real skeleton
+(`scripts/test_phase19_pose.py`, `scripts/test_phase19_animation.py`,
+`scripts/test_phase19_real_animation.py`, `scripts/render_npc_animation.py`).
+Runtime playback on device remains NOT EXECUTED; the committed Java renderer is
+compile-only with a bind-pose fallback.
 
 ---
 
