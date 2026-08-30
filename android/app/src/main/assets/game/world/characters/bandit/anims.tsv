@@ -1,0 +1,17 @@
+ban_path	name	duration_ms	keyframes	channels	anim_asset
+/prim/ani/mob/china/bandit/bandit_stand01.ban	bandit_stand01	2000	5	34	anim/bandit_stand01.json
+/prim/ani/mob/china/bandit/bandit_stand02.ban	bandit_stand02	2000	18	34	
+/prim/ani/mob/china/bandit/bandit_walk.ban	bandit_walk	1333	15	34	anim/bandit_walk.json
+/prim/ani/mob/china/bandit/bandit_run.ban	bandit_run	833	25	34	
+/prim/ani/mob/china/bandit/bandit_attack01.ban	bandit_attack01	1133	33	34	
+/prim/ani/mob/china/bandit/bandit_attack02.ban	bandit_attack02	1500	40	34	
+/prim/ani/mob/china/bandit/bandit_damage01.ban	bandit_damage01	366	5	3	
+/prim/ani/mob/china/bandit/bandit_damage02.ban	bandit_damage02	1666	24	34	
+/prim/ani/mob/china/bandit/bandit_die.ban	bandit_die	2666	52	34	
+/prim/ani/mob/china/bandit/bandit_die_loop.ban	bandit_die_loop	333	2	34	
+/prim/ani/mob/china/bandit/bandit_down.ban	bandit_down	833	18	34	
+/prim/ani/mob/china/bandit/bandit_downwait.ban	bandit_downwait	2000	5	34	
+/prim/ani/mob/china/bandit/bandit_downdamage.ban	bandit_downdamage	833	14	34	
+/prim/ani/mob/china/bandit/bandit_wakeup.ban	bandit_wakeup	1333	18	34	
+/prim/ani/mob/china/bandit/bandit_downdie.ban	bandit_downdie	300	2	34	
+/prim/ani/mob/china/bandit/bandit_attack03.ban	bandit_attack03	1166	18	34	

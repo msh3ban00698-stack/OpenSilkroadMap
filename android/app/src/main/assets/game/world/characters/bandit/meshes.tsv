@@ -1,0 +1,4 @@
+part_idx	bms_path	material	ddj_path	msh_asset	tex_asset	vcount	tcount	skin_records	bone_count
+0	/prim/mesh/mob/china/bandit_sword.bms	Bandit1	/prim/mtrl/mob/china/bandit_sword.ddj	mesh/bandit_sword.msh	tex/bandit_sword.png	76	134	76	1
+1	/prim/mesh/mob/china/bandit_part1.bms	Bandit	/prim/mtrl/mob/china/bandit.ddj	mesh/bandit_part1.msh	tex/bandit_part1.png	214	276	214	18
+2	/prim/mesh/mob/china/bandit_part2.bms	Bandit	/prim/mtrl/mob/china/bandit.ddj	mesh/bandit_part2.msh	tex/bandit_part2.png	556	766	556	17

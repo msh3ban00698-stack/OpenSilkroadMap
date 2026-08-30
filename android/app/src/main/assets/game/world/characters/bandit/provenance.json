@@ -1,0 +1,69 @@
+{
+ "animations": {
+  "/prim/ani/mob/china/bandit/bandit_attack01.ban": "4ba4d61bbc7d1c0fcf5224663a98f38169a5e62856ac38740daafc9fe3d7b2f9",
+  "/prim/ani/mob/china/bandit/bandit_attack02.ban": "276d6bd11da362fb1231ca4d49db20735bdd4f675a9f3c631a8b91f9422138be",
+  "/prim/ani/mob/china/bandit/bandit_attack03.ban": "e94220cfeb0eed3d0f6b62ab9219c671e235570762b3bf579adbcf4e328a31f6",
+  "/prim/ani/mob/china/bandit/bandit_damage01.ban": "6f90fb17ab20e569671f1108c3bea96a1cbf23877e0a624c833b1f81c24d22df",
+  "/prim/ani/mob/china/bandit/bandit_damage02.ban": "a90cfb269923f83f71ec05386f89938adf2b5ce5471a13dc9f8f1e0773b01fdd",
+  "/prim/ani/mob/china/bandit/bandit_die.ban": "3c5a6d8cf775a054358066255e6d8fb0cd5cd76d5c08ee07144516a32c2df9ba",
+  "/prim/ani/mob/china/bandit/bandit_die_loop.ban": "fe3399ff04312963a949c597a9f3e5528a0e9edc6f17e29d94057292e909e4a4",
+  "/prim/ani/mob/china/bandit/bandit_down.ban": "732ea695213c8682bf9dbd301cbf097a03c6476d66d547db3a24bda0610091ea",
+  "/prim/ani/mob/china/bandit/bandit_downdamage.ban": "188bec81df65f6e20501f5cea6c91ee0e42e20cee6de04c625bd33d488206bcd",
+  "/prim/ani/mob/china/bandit/bandit_downdie.ban": "7fa933c3dd191242c2354c177c1c2a55d309995f2d6e9d05c5697548f1a37c9d",
+  "/prim/ani/mob/china/bandit/bandit_downwait.ban": "b8b8a130ef615c75fc628ce0218d359a8e18e901189d8a1ae4243f8f445cca3e",
+  "/prim/ani/mob/china/bandit/bandit_run.ban": "f28f983e3c065d97b1d9ea8aafdc149f2ab143ded2870490f963734eab9293b5",
+  "/prim/ani/mob/china/bandit/bandit_stand01.ban": "1a916448e48bd33fb69c23e372b2f571c2984ce51a04f4522311281c704074f2",
+  "/prim/ani/mob/china/bandit/bandit_stand02.ban": "2ade7adc8afde8f2ebf869ee91e03034dd2728ba81db34ca489ff47415519f03",
+  "/prim/ani/mob/china/bandit/bandit_wakeup.ban": "752aa93081c975181ecaab147d7768d9f6616ac298ba6670c00483bd62f5739d",
+  "/prim/ani/mob/china/bandit/bandit_walk.ban": "89e19be0434b20fc8f7d5c83a27b27c8eb01e3551659b9cfea11fc979cf7a535"
+ },
+ "bmt": {
+  "path": "/prim/mtrl/mob/china/bandit.bmt",
+  "sha256": "ed180a4e47b682a02f3b258c64451794dd0b718c0cf1fd4c737fc532452b6bff"
+ },
+ "bsk": {
+  "path": "/prim/skel/mob/china/bandit.bsk",
+  "sha256": "c642c903f17fe3d39db832048d37f9ab821197ffefd614a5e549a78a8dd1ed77"
+ },
+ "bsr": {
+  "path": "/res/mob/china/bandit.bsr",
+  "sha256": "05e5fe4f041a87c35652480bff88e1f5a97208fd75278fd1a3af33f2821d5543"
+ },
+ "ddj": {
+  "/prim/mtrl/mob/china/bandit.ddj": "33033677606ee855334aa0ddea01f91f29a5beaaec694d812444d98cf22d0c18",
+  "/prim/mtrl/mob/china/bandit_sword.ddj": "1fad1b8c91a226d650b4a729a3a8a954b8db26ad154e9854217a9fe3bc2e6d30"
+ },
+ "meshes": {
+  "/prim/mesh/mob/china/bandit_part1.bms": "705ed73b21b3e856a0bac331b72adf7baeef0744e9279452d771c285356e5a8c",
+  "/prim/mesh/mob/china/bandit_part2.bms": "d186dee6cf8a5dd101cc2a022969b12cfa2b7b109a8384dd429b0fc6ee76cc8e",
+  "/prim/mesh/mob/china/bandit_sword.bms": "16c0e5def4f07c313acf34347c48ca7dc9949429841f5e61cd768bb0b505a34c"
+ },
+ "resolved": {
+  "ban": [
+   "/prim/ani/mob/china/bandit/bandit_stand01.ban",
+   "/prim/ani/mob/china/bandit/bandit_stand02.ban",
+   "/prim/ani/mob/china/bandit/bandit_walk.ban",
+   "/prim/ani/mob/china/bandit/bandit_run.ban",
+   "/prim/ani/mob/china/bandit/bandit_attack01.ban",
+   "/prim/ani/mob/china/bandit/bandit_attack02.ban",
+   "/prim/ani/mob/china/bandit/bandit_damage01.ban",
+   "/prim/ani/mob/china/bandit/bandit_damage02.ban",
+   "/prim/ani/mob/china/bandit/bandit_die.ban",
+   "/prim/ani/mob/china/bandit/bandit_die_loop.ban",
+   "/prim/ani/mob/china/bandit/bandit_down.ban",
+   "/prim/ani/mob/china/bandit/bandit_downwait.ban",
+   "/prim/ani/mob/china/bandit/bandit_downdamage.ban",
+   "/prim/ani/mob/china/bandit/bandit_wakeup.ban",
+   "/prim/ani/mob/china/bandit/bandit_downdie.ban",
+   "/prim/ani/mob/china/bandit/bandit_attack03.ban"
+  ],
+  "bms": [
+   "/prim/mesh/mob/china/bandit_sword.bms",
+   "/prim/mesh/mob/china/bandit_part1.bms",
+   "/prim/mesh/mob/china/bandit_part2.bms"
+  ],
+  "bmt": "/prim/mtrl/mob/china/bandit.bmt",
+  "bsk": "/prim/skel/mob/china/bandit.bsk",
+  "bsr": "/res/mob/china/bandit.bsr"
+ }
+}
