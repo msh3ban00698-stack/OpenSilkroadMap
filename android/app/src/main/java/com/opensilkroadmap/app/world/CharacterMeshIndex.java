@@ -4,7 +4,6 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,30 +17,29 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Character (skinned NPC) index over the committed Phase 18 rendering assets
- * ({@code game/world/characters/bandit/}: {@code skeleton.json},
- * {@code meshes.tsv}, {@code mesh/*.msh} (MSH v2), {@code tex/*.png},
- * {@code npc_placements.tsv}, {@code anims.tsv}).
+ * Character (skinned NPC) index over the committed data-driven character
+ * assets. Each character is described by a manifest
+ * ({@code game/world/characters/<key>/manifest.json}) that references a
+ * skeleton plus a set of mesh parts and animations, with the underlying
+ * binaries stored in a shared key-based asset store:
+ * {@code game/world/characters/shared/{skel,mesh,tex,anim}/}.
  *
- * <p>Every asset is derived offline from the ORIGINAL data chain proven in
- * Phase 18 (characterdata refid -> {@code .bsr} -> {@code .bsk} skeleton +
+ * <p>Every asset is derived offline from the ORIGINAL SRO data chain
+ * (characterdata refid -> {@code .bsr} -> {@code .bsk} skeleton +
  * {@code .bms} parts + {@code .ban} animations + {@code .bmt} material ->
- * {@code .ddj} texture; npcpos -> world coordinates). The index exposes the
- * real skeleton (bind pose, [x,y,z,w] quaternions), the real skinned mesh
- * parts with their real textures, and the real NPC world placements.
+ * {@code .ddj} texture). The index exposes the real skeleton (bind pose,
+ * [x,y,z,w] quaternions), the real mesh parts (skinned or static) with their
+ * real textures, and the real animations (sampled on demand via
+ * {@link #poseAt}).
  *
  * <p>Rendering contract: STATIC BIND POSE only. Per-vertex skinning is
  * {@code sum(w_i / sum(w)) * (R_i * v + t_i)} using each bone's proven bind
- * world rotation/translation from {@code skeleton.json}. Weights are
- * normalized by their vertex sum because Phase 18 proved they are NOT
- * normalized to 65535. Animation playback is UNKNOWN (only the first keyframe
- * is committed per animation); {@link #anims()} exposes the proven metadata.
- * Placement heading is UNKNOWN (npcpos carries no theta), so {@code theta}
- * is 0.
+ * world rotation/translation from the skeleton. Weights are normalized by
+ * their vertex sum because Phase 18 proved they are NOT normalized to 65535.
  *
- * <p>Loading is strict and fail-closed: a missing mesh/texture, a mesh bone
- * name absent from the skeleton, or a meshes.tsv/mesh count mismatch returns
- * null from {@link #load} (never a partial index).
+ * <p>Loading is strict and fail-closed: a missing manifest, a missing
+ * mesh/texture, a mesh bone name absent from the skeleton, or an unknown
+ * animation returns null from {@link #load} (never a partial index).
  */
 public final class CharacterMeshIndex {
 
@@ -101,64 +99,7 @@ public final class CharacterMeshIndex {
     }
   }
 
-  /** One committed skinned mesh part row of {@code meshes.tsv}. */
-  public static final class MeshRow {
-    public final int partIdx;
-    public final String bmsPath;
-    public final String material;
-    public final String ddjPath;
-    public final String mshAsset;
-    public final String texAsset;
-    public final int vcount;
-    public final int tcount;
-    public final int skinRecords;
-    public final int boneCount;
-
-    MeshRow(int partIdx, String bmsPath, String material, String ddjPath,
-            String mshAsset, String texAsset, int vcount, int tcount,
-            int skinRecords, int boneCount) {
-      this.partIdx = partIdx;
-      this.bmsPath = bmsPath;
-      this.material = material;
-      this.ddjPath = ddjPath;
-      this.mshAsset = mshAsset;
-      this.texAsset = texAsset;
-      this.vcount = vcount;
-      this.tcount = tcount;
-      this.skinRecords = skinRecords;
-      this.boneCount = boneCount;
-    }
-  }
-
-  /** One real NPC placement row of {@code npc_placements.tsv}. */
-  public static final class PlacementDef {
-    public final String refid;
-    public final int region;
-    public final int sectorSx;
-    public final int sectorSy;
-    public final float localX;
-    public final float localZ;
-    /** Absolute world X (precomputed at build time with ref sector 156x89). */
-    public final float worldX;
-    /** Absolute world Z (precomputed at build time with ref sector 156x89). */
-    public final float worldZ;
-    public final float height;
-
-    PlacementDef(String refid, int region, int sectorSx, int sectorSy,
-                 float localX, float localZ, float worldX, float worldZ, float height) {
-      this.refid = refid;
-      this.region = region;
-      this.sectorSx = sectorSx;
-      this.sectorSy = sectorSy;
-      this.localX = localX;
-      this.localZ = localZ;
-      this.worldX = worldX;
-      this.worldZ = worldZ;
-      this.height = height;
-    }
-  }
-
-  /** One animation row of {@code anims.tsv} (metadata; playback UNKNOWN). */
+  /** One animation row (metadata). */
   public static final class Anim {
     public final String banPath;
     public final String name;
@@ -179,75 +120,47 @@ public final class CharacterMeshIndex {
     }
   }
 
-  /** One skinned mesh part (real geometry + real texture + bind positions). */
+  /** One character mesh part (real geometry + texture + optional skinning). */
   public static final class Part {
     public final int partIdx;
     public final String material;
     public final String ddjPath;
-    public final StaticMeshAsset.SkinnedMesh mesh;
+    public final boolean skinned;
+    public final StaticMeshAsset.Mesh mesh;
     public final Bitmap texture;
-    /** 3 floats per vertex: bind-pose skinned position (character-local). */
+    /** Bind-pose skinned positions (skinned parts only); null for static parts. */
     public final float[] bindPositions;
 
-    Part(int partIdx, String material, String ddjPath,
-         StaticMeshAsset.SkinnedMesh mesh, Bitmap texture, float[] bindPositions) {
+    Part(int partIdx, String material, String ddjPath, boolean skinned,
+         StaticMeshAsset.Mesh mesh, Bitmap texture, float[] bindPositions) {
       this.partIdx = partIdx;
       this.material = material;
       this.ddjPath = ddjPath;
+      this.skinned = skinned;
       this.mesh = mesh;
       this.texture = texture;
       this.bindPositions = bindPositions;
     }
   }
 
-  /** One character instance at a real NPC world placement. */
-  public static final class Instance {
-    public final String refid;
-    public final int region;
-    public final int sectorSx;
-    public final int sectorSy;
-    public final float localX;
-    public final float localZ;
-    public final float worldX;
-    public final float worldZ;
-    public final float height;
-    public final List<Part> parts;
-
-    Instance(PlacementDef p, List<Part> parts) {
-      this.refid = p.refid;
-      this.region = p.region;
-      this.sectorSx = p.sectorSx;
-      this.sectorSy = p.sectorSy;
-      this.localX = p.localX;
-      this.localZ = p.localZ;
-      this.worldX = p.worldX;
-      this.worldZ = p.worldZ;
-      this.height = p.height;
-      this.parts = parts;
-    }
-
-    /** Placement heading. UNKNOWN in npcpos (no theta column); always 0. */
-    public float theta() {
-      return 0f;
-    }
-  }
-
-  private static final String CHARACTER_DIR = "game/world/characters/bandit/";
+  private static final String CHARACTERS_ROOT = "game/world/characters/";
+  private static final String SHARED = "shared/";
 
   private final AssetManager assets;
+  private final String key;
   private final Skeleton skeleton;
   private final List<Part> parts;
-  private final List<Instance> instances;
   private final List<Anim> anims;
+  private final Map<String, String> animSlugByName;
 
-  private CharacterMeshIndex(
-      AssetManager assets, Skeleton skeleton, List<Part> parts,
-      List<Instance> instances, List<Anim> anims) {
+  private CharacterMeshIndex(AssetManager assets, String key, Skeleton skeleton,
+      List<Part> parts, List<Anim> anims, Map<String, String> animSlugByName) {
     this.assets = assets;
+    this.key = key;
     this.skeleton = skeleton;
     this.parts = Collections.unmodifiableList(parts);
-    this.instances = Collections.unmodifiableList(instances);
     this.anims = Collections.unmodifiableList(anims);
+    this.animSlugByName = animSlugByName;
   }
 
   public Skeleton skeleton() {
@@ -258,26 +171,21 @@ public final class CharacterMeshIndex {
     return parts;
   }
 
-  public List<Instance> instances() {
-    return instances;
-  }
-
-  public int instanceCount() {
-    return instances.size();
-  }
-
   public List<Anim> anims() {
     return anims;
   }
 
   /**
-   * Samples the committed animation JSON ({@code anim/<name>.json}) into a
-   * {@link Pose} at {@code tMs} (Phase 19). The clip must be one of the
-   * committed full-keyframe clips (bandit_stand01, bandit_walk); other names
-   * fail closed with {@link IOException}.
+   * Samples the committed animation JSON ({@code shared/anim/<slug>.json})
+   * into a {@link Pose} at {@code tMs}. Unknown animation names fail closed
+   * with {@link IOException}.
    */
   public Pose poseAt(String animName, int tMs) throws IOException {
-    String path = CHARACTER_DIR + "anim/" + animName + ".json";
+    String slug = animSlugByName.get(animName);
+    if (slug == null) {
+      throw new IOException("unknown animation: " + animName);
+    }
+    String path = CHARACTERS_ROOT + SHARED + "anim/" + slug + ".json";
     String text = readAll(
         new InputStreamReader(assets.open(path), StandardCharsets.UTF_8));
     Map<String, Object> root = (Map<String, Object>) new JsonParser(text).parse();
@@ -285,59 +193,78 @@ public final class CharacterMeshIndex {
   }
 
   /**
-   * Loads the committed bandit character assets, or null on any failure.
-   *
-   * <p>{@code refSx}/{@code refSy} mirror the {@link MeshObjectIndex#load}
-   * signature for parity; the committed placements carry absolute world
-   * coordinates precomputed offline with ref sector 156x89, so the values are
-   * not re-derived here.
+   * Loads a character by key, or null on any failure (fail-closed).
    */
-  public static CharacterMeshIndex load(AssetManager assets, int refSx, int refSy) {
+  public static CharacterMeshIndex load(AssetManager assets, String key) {
     try {
-      return build(assets);
+      return build(assets, key);
     } catch (IOException e) {
       return null;
     }
   }
 
-  private static CharacterMeshIndex build(AssetManager assets) throws IOException {
-    Skeleton skeleton = parseSkeleton(
-        new InputStreamReader(assets.open(CHARACTER_DIR + "skeleton.json"), StandardCharsets.UTF_8));
-    List<MeshRow> rows = parseMeshes(new BufferedReader(
-        new InputStreamReader(assets.open(CHARACTER_DIR + "meshes.tsv"), StandardCharsets.UTF_8)));
-    List<PlacementDef> placements = parsePlacements(new BufferedReader(
-        new InputStreamReader(assets.open(CHARACTER_DIR + "npc_placements.tsv"),
-            StandardCharsets.UTF_8)));
-    List<Anim> anims = parseAnims(new BufferedReader(
-        new InputStreamReader(assets.open(CHARACTER_DIR + "anims.tsv"), StandardCharsets.UTF_8)));
+  public static CharacterMeshIndex load(AssetManager assets, String key,
+                                        int refSx, int refSy) {
+    return load(assets, key);
+  }
 
+  private static CharacterMeshIndex build(AssetManager assets, String key)
+      throws IOException {
+    String root = CHARACTERS_ROOT + key + "/";
+    Map<String, Object> manifest = (Map<String, Object>)
+        new JsonParser(readAll(new InputStreamReader(
+            assets.open(root + "manifest.json"), StandardCharsets.UTF_8))).parse();
+
+    String skelSlug = asString(manifest.get("skeleton"));
+    Skeleton skeleton = parseSkeleton(new InputStreamReader(
+        assets.open(CHARACTERS_ROOT + SHARED + "skel/" + skelSlug + ".json"),
+        StandardCharsets.UTF_8));
+
+    List<?> meshes = (List<?>) manifest.get("meshes");
     List<Part> parts = new ArrayList<Part>();
-    for (MeshRow r : rows) {
-      byte[] msh = readBytes(assets.open(CHARACTER_DIR + r.mshAsset));
-      StaticMeshAsset.SkinnedMesh mesh = StaticMeshAsset.parseSkinned(msh);
-      if (mesh.vertexCount != r.vcount || mesh.triangleCount != r.tcount
-          || mesh.boneNames.length != r.boneCount) {
-        throw new IOException("meshes.tsv/mesh mismatch for " + r.mshAsset);
-      }
-      Bitmap tex = BitmapFactory.decodeStream(assets.open(CHARACTER_DIR + r.texAsset));
+    int partIdx = 0;
+    for (Object mo : meshes) {
+      Map<String, Object> m = (Map<String, Object>) mo;
+      String mshSlug = asString(m.get("msh"));
+      String texSlug = asString(m.get("tex"));
+      boolean skinned = m.get("skinned") == Boolean.TRUE;
+      byte[] msh = readBytes(assets.open(
+          CHARACTERS_ROOT + SHARED + "mesh/" + mshSlug + ".msh"));
+      Bitmap tex = BitmapFactory.decodeStream(assets.open(
+          CHARACTERS_ROOT + SHARED + "tex/" + texSlug + ".png"));
       if (tex == null) {
-        throw new IOException("texture decode failed: " + r.texAsset);
+        throw new IOException("texture decode failed: " + texSlug);
       }
-      parts.add(new Part(r.partIdx, r.material, r.ddjPath, mesh, tex,
-          skinnedBindPositions(mesh, skeleton)));
+      float[] bindPositions = null;
+      if (skinned) {
+        StaticMeshAsset.SkinnedMesh sm = StaticMeshAsset.parseSkinned(msh);
+        bindPositions = skinnedBindPositions(sm, skeleton);
+        parts.add(new Part(partIdx++, asString(m.get("material")),
+            asString(m.get("ddj_path")), true, sm, tex, bindPositions));
+      } else {
+        StaticMeshAsset.Mesh mesh = StaticMeshAsset.parse(msh);
+        parts.add(new Part(partIdx++, asString(m.get("material")),
+            asString(m.get("ddj_path")), false, mesh, tex, null));
+      }
     }
     if (parts.isEmpty()) {
       throw new IOException("no character mesh parts");
     }
-    List<Part> shared = Collections.unmodifiableList(new ArrayList<Part>(parts));
-    List<Instance> instances = new ArrayList<Instance>();
-    for (PlacementDef p : placements) {
-      instances.add(new Instance(p, shared));
+
+    List<?> animList = (List<?>) manifest.get("anims");
+    List<Anim> anims = new ArrayList<Anim>();
+    Map<String, String> animSlugByName = new HashMap<String, String>();
+    for (Object ao : animList) {
+      Map<String, Object> a = (Map<String, Object>) ao;
+      String name = asString(a.get("name"));
+      String animSlug = asString(a.get("anim"));
+      animSlugByName.put(name, animSlug);
+      anims.add(new Anim(asString(a.get("ban_path")), name,
+          asInt(a.get("duration_ms")), asInt(a.get("keyframes")),
+          asInt(a.get("channels")), animSlug));
     }
-    if (instances.isEmpty()) {
-      throw new IOException("no character placements");
-    }
-    return new CharacterMeshIndex(assets, skeleton, parts, instances, anims);
+
+    return new CharacterMeshIndex(assets, key, skeleton, parts, anims, animSlugByName);
   }
 
   /**
@@ -438,86 +365,6 @@ public final class CharacterMeshIndex {
           asFloatArray(b.get("bind_world_pos"), 3));
     }
     return new Skeleton(path, boneCount, convention, arr);
-  }
-
-  public static List<MeshRow> parseMeshes(BufferedReader in) throws IOException {
-    if (in.readLine() == null) {
-      throw new IOException("empty meshes.tsv");
-    }
-    List<MeshRow> out = new ArrayList<MeshRow>();
-    String line;
-    while ((line = in.readLine()) != null) {
-      if (line.trim().isEmpty()) {
-        continue;
-      }
-      String[] c = line.split("\t");
-      if (c.length < 10) {
-        throw new IOException("short meshes.tsv row");
-      }
-      out.add(new MeshRow(
-          Integer.parseInt(c[0]), c[1], c[2], c[3], c[4], c[5],
-          Integer.parseInt(c[6]), Integer.parseInt(c[7]),
-          Integer.parseInt(c[8]), Integer.parseInt(c[9])));
-    }
-    if (out.isEmpty()) {
-      throw new IOException("no meshes in meshes.tsv");
-    }
-    return out;
-  }
-
-  public static List<PlacementDef> parsePlacements(BufferedReader in) throws IOException {
-    if (in.readLine() == null) {
-      throw new IOException("empty npc_placements.tsv");
-    }
-    List<PlacementDef> out = new ArrayList<PlacementDef>();
-    String line;
-    while ((line = in.readLine()) != null) {
-      if (line.trim().isEmpty()) {
-        continue;
-      }
-      String[] c = line.split("\t");
-      if (c.length < 8) {
-        throw new IOException("short npc_placements.tsv row");
-      }
-      String[] sector = c[2].split("x");
-      if (sector.length != 2) {
-        throw new IOException("bad sector cell: " + c[2]);
-      }
-      out.add(new PlacementDef(
-          c[0],
-          Integer.parseInt(c[1]),
-          Integer.parseInt(sector[0]),
-          Integer.parseInt(sector[1]),
-          Float.parseFloat(c[3]),
-          Float.parseFloat(c[4]),
-          Float.parseFloat(c[5]),
-          Float.parseFloat(c[6]),
-          Float.parseFloat(c[7])));
-    }
-    if (out.isEmpty()) {
-      throw new IOException("no placements in npc_placements.tsv");
-    }
-    return out;
-  }
-
-  public static List<Anim> parseAnims(BufferedReader in) throws IOException {
-    if (in.readLine() == null) {
-      throw new IOException("empty anims.tsv");
-    }
-    List<Anim> out = new ArrayList<Anim>();
-    String line;
-    while ((line = in.readLine()) != null) {
-      if (line.trim().isEmpty()) {
-        continue;
-      }
-      String[] c = line.split("\t");
-      if (c.length < 6) {
-        throw new IOException("short anims.tsv row");
-      }
-      out.add(new Anim(c[0], c[1], Integer.parseInt(c[2]),
-          Integer.parseInt(c[3]), Integer.parseInt(c[4]), c[5]));
-    }
-    return out;
   }
 
   private static String asString(Object o) throws IOException {
