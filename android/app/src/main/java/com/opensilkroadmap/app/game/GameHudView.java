@@ -9,23 +9,20 @@ import android.widget.TextView;
 import com.opensilkroadmap.app.minimap.MinimapException;
 import com.opensilkroadmap.app.minimap.NativeMinimapAssetProvider;
 import com.opensilkroadmap.app.minimap.NativeMinimapRenderer;
+import com.opensilkroadmap.app.world.NativeWorldRenderer;
+import com.opensilkroadmap.app.world.TerrainHeightGrid;
 
 /**
- * Phase 9 HUD integration: a native {@link FrameLayout} that hosts the Phase 8
- * {@link NativeMinimapRenderer} plus region/cell/status labels, wired to a real
- * {@link RegionCatalog} (from Data.pk2 RegionInfo.txt) and a
- * {@link NativeMinimapAssetProvider}.
- *
- * <p>When the full manifest ({@code assets/game/manifest.json}) and the
- * converted minimap PNGs are bundled into the APK, {@link #setPlayerCell} loads
- * the minimap for the cell through the verified Phase 8 resolver/loader. When
- * they are not bundled, the HUD degrades to a clear, explicit "assets not
- * bundled" state instead of inventing behavior.
+ * Native game HUD host. The world renderer occupies the full viewport and the
+ * existing HUD/minimap are layered above it. Real terrain is optional: when a
+ * matching .hg asset is not bundled, the renderer remains empty and the HUD
+ * reports that exact state rather than inventing geometry.
  */
 public final class GameHudView extends FrameLayout {
   private final RegionCatalog catalog;
   private final NativeMinimapAssetProvider provider;
   private final NativeMinimapRenderer minimap;
+  private final NativeWorldRenderer world;
   private final TextView regionLabel;
   private final TextView cellLabel;
   private final TextView statusLabel;
@@ -41,6 +38,11 @@ public final class GameHudView extends FrameLayout {
     this.provider = provider;
 
     setBackgroundColor(Color.rgb(16, 16, 20));
+
+    world = new NativeWorldRenderer(context);
+    FrameLayout.LayoutParams worldParams =
+        new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+    addView(world, worldParams);
 
     LinearLayout labels = new LinearLayout(context);
     labels.setOrientation(LinearLayout.VERTICAL);
@@ -87,6 +89,10 @@ public final class GameHudView extends FrameLayout {
     return minimap;
   }
 
+  public NativeWorldRenderer worldRenderer() {
+    return world;
+  }
+
   public String regionLabelText() {
     return regionLabel.getText().toString();
   }
@@ -128,5 +134,19 @@ public final class GameHudView extends FrameLayout {
       minimap.reset();
       statusLabel.setText("no minimap for cell " + x + "x" + y + ": " + e.getMessage());
     }
+  }
+
+  /** Install a verified real height grid and center the camera on the sector. */
+  public void setTerrain(TerrainHeightGrid grid) {
+    world.setGrid(grid);
+    if (grid != null) {
+      float center = (grid.size() - 1) * grid.step() * 0.5f;
+      world.setCamera(center, center, 0.45f);
+    }
+  }
+
+  /** Update the terrain status without changing the minimap status. */
+  public void setTerrainStatus(String message) {
+    statusLabel.setText(message);
   }
 }
