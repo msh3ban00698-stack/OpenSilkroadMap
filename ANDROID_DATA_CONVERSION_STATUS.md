@@ -67,6 +67,19 @@ record counts, schema width, content spot checks) and listed in
   assets are absent. Schema/join provenance: `TEXTDATA_SCHEMAS.json`,
   `DATA_REFERENCE_GRAPH.json`.
 
+### Phase 14 — native world runtime (terrain consumer)
+
+- The Phase 10 `.hg` height grids (23 real sectors, `world_index.tsv`) are now
+  consumed by the native world screen: `GameActivity` → `NativeWorldRenderer` →
+  `Camera2D` renders the verified heightfield (DIAGNOSTIC TERRAIN RENDERER, not
+  final 3D). Selection is deterministic (first region whose reference sector has
+  a committed `.hg`): `Jangan_Field` sector `156x89` (`Map.pk2 /89/156.m`,
+  min 866.25 / max 2687.02, 97×97 = 9,409 heights).
+- Missing terrain assets fail closed (explicit "TERRAIN ASSET MISSING" state,
+  no substitution). No models/objects/NPCs are rendered (format decode BLOCKED,
+  no fabricated geometry). Executed evidence: `scripts/test_phase14_world_runtime.py`
+  (16 tests). Build/runtime NOT EXECUTED here (no JDK/Android SDK).
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |

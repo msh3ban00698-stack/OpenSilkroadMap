@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.opensilkroadmap.app.game.Camera2D;
@@ -34,6 +35,12 @@ public class NativeWorldRenderer extends View {
   private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
   private final Paint wirePaint = new Paint();
 
+  private float lastTouchX;
+  private float lastTouchY;
+  private boolean panning;
+  private float pinchStartDistance;
+  private float pinchStartScale;
+
   public NativeWorldRenderer(Context context) {
     this(context, null);
   }
@@ -47,18 +54,94 @@ public class NativeWorldRenderer extends View {
 
   public void setGrid(TerrainHeightGrid grid) {
     this.grid = grid;
+    if (grid != null) {
+      float extent = grid.size() * grid.step();
+      camera.setWorld(extent, extent);
+    }
     invalidate();
   }
 
   public void setCamera(float centerWorldX, float centerWorldZ, float ppu) {
     this.camX = centerWorldX;
     this.camZ = centerWorldZ;
-    this.pixelsPerUnit = ppu;
+    this.pixelsPerUnit = ppu > 0f ? ppu : 0.5f;
     invalidate();
   }
 
   public TerrainHeightGrid grid() {
     return grid;
+  }
+
+  /** Drag pan in viewport pixels; positive dx moves the world right (camera left). */
+  public void panByPixels(float dx, float dy) {
+    if (pixelsPerUnit <= 0f) {
+      return;
+    }
+    camX -= dx / pixelsPerUnit;
+    camZ += dy / pixelsPerUnit;
+    invalidate();
+  }
+
+  /** Multiplicative zoom around the current camera center. */
+  public void zoomBy(float factor) {
+    if (factor <= 0f) {
+      return;
+    }
+    pixelsPerUnit *= factor;
+    invalidate();
+  }
+
+  @Override
+  public boolean onTouchEvent(MotionEvent event) {
+    switch (event.getActionMasked()) {
+      case MotionEvent.ACTION_DOWN:
+        lastTouchX = event.getX();
+        lastTouchY = event.getY();
+        panning = true;
+        return true;
+      case MotionEvent.ACTION_POINTER_DOWN:
+        if (event.getPointerCount() == 2) {
+          panning = false;
+          pinchStartDistance = distance(event);
+          pinchStartScale = pixelsPerUnit;
+        }
+        return true;
+      case MotionEvent.ACTION_MOVE:
+        if (event.getPointerCount() >= 2 && pinchStartDistance > 0f) {
+          float d = distance(event);
+          if (d > 0f) {
+            float next = pinchStartScale * (d / pinchStartDistance);
+            if (next > 0f) {
+              pixelsPerUnit = next;
+              invalidate();
+            }
+          }
+        } else if (panning && event.getPointerCount() == 1) {
+          float dx = event.getX() - lastTouchX;
+          float dy = event.getY() - lastTouchY;
+          lastTouchX = event.getX();
+          lastTouchY = event.getY();
+          panByPixels(dx, dy);
+        }
+        return true;
+      case MotionEvent.ACTION_POINTER_UP:
+        panning = false;
+        pinchStartDistance = 0f;
+        return true;
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_CANCEL:
+        panning = false;
+        pinchStartDistance = 0f;
+        return true;
+      default:
+        return super.onTouchEvent(event);
+    }
+  }
+
+  private static float distance(MotionEvent e) {
+    float dx = e.getX(0) - e.getX(1);
+    float dy = e.getY(0) - e.getY(1);
+    return (float) Math.sqrt(dx * dx + dy * dy);
   }
 
   @Override
