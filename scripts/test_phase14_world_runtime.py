@@ -218,12 +218,13 @@ class AssetDependencyTest(unittest.TestCase):
         d = json.loads(DEP_GRAPH.read_text(encoding="utf-8"))
         self.assertEqual(9, d["textdata_edges"])
         self.assertEqual(17, d["asset_edges"])
-        self.assertEqual(26, len(d["edges"]))
+        self.assertEqual(53, len(d["edges"]))
         statuses = {e["status"] for e in d["edges"]}
         self.assertLessEqual(statuses, {"VERIFIED", "PARTIAL"})
         kinds = {(e["from"]["kind"], e["to"]["kind"]) for e in d["edges"]}
         self.assertIn(("npcpos.tsv", "characterdata_*.txt (tiers)"), kinds)
         self.assertIn((".ddj", "DDS"), kinds)
+        self.assertIn(("bandit.bsr", "bandit chain"), kinds)
 
 
 class MissingAssetFailClosedTest(unittest.TestCase):
