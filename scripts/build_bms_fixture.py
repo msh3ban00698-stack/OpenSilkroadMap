@@ -4,12 +4,13 @@
 The fixture captures only PROVEN facts so the Phase 16 test suite runs
 hermetically (no archive required). Regenerate with:
 
-    uv run scripts/build_bms_fixture.py
+    uv run scripts/build_bms_fixture.py --pk2-dir <dir>   # or set SRO_PK2_DIR
 
-Samples are read from /tmp/opencode/pk2raw/Data.pk2 when present; the raw
+Samples are read from Data.pk2 in the given directory; the raw
 bytes are committed under scripts/testdata/formats/bms_samples/ so the
 fixture builder and tests never depend on the archive.
 """
+import argparse
 import json
 import os
 import struct
@@ -18,8 +19,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import bms_decoder as B  # noqa: E402
+import sro_paths  # noqa: E402
 
-PK2 = "/tmp/opencode/pk2raw/Data.pk2"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "testdata", "formats", "bms_phase16.json")
 SAMPLES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -82,17 +83,28 @@ def _record(d, path):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--pk2-dir",
+        default=os.environ.get("SRO_PK2_DIR"),
+        help="Directory containing Data.pk2 (default: $SRO_PK2_DIR)",
+    )
+    args = ap.parse_args()
+    if not args.pk2_dir:
+        ap.error("--pk2-dir or SRO_PK2_DIR is required")
+    pk2 = sro_paths.pk2_archive(args.pk2_dir, "Data.pk2")
+
     os.makedirs(SAMPLES_DIR, exist_ok=True)
     fixture = {}
-    if os.path.exists(PK2):
+    if os.path.exists(pk2):
         import pk2_table  # noqa: PLC0415
-        entries, _ = pk2_table.inventory(PK2)
+        entries, _ = pk2_table.inventory(pk2)
         for key, path in SAMPLES.items():
             e = _find(entries, path)
             if e is None:
                 print(f"WARN sample missing from archive: {path}")
                 continue
-            with open(PK2, "rb") as fh:
+            with open(pk2, "rb") as fh:
                 fh.seek(e["pos"])
                 d = fh.read(e["size"])
             rec = _record(d, path)

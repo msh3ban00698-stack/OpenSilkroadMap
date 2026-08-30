@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
 import com.opensilkroadmap.app.world.WorldTerrainSet;
@@ -21,6 +22,10 @@ import org.junit.runner.RunWith;
  * committed {@code .hg} is Jangan_Field (ref sector 156x89); the activity must
  * load every committed sector in that window (156x89, 156x90) as real 97x97
  * VSHG height fields, not generated geometry.
+ *
+ * <p>Phase 17 additionally verifies the real object mesh overlay: 32 real
+ * {@code .o2} placements resolve to real BMS mesh parts attached to the
+ * renderer (not markers).
  *
  * <p>These tests execute on an Android device/emulator only; in this
  * environment (no JDK/Android SDK) they are NOT EXECUTED.
@@ -41,6 +46,27 @@ public class GameActivityTest {
             assertEquals(2, set.sectorCount());
             assertEquals(1920.0f, set.width(), 1e-3f);
             assertEquals(3840.0f, set.height(), 1e-3f);
+          });
+    }
+  }
+
+  @Test
+  public void rendersRealObjectMeshes() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            MeshObjectIndex objects = activity.meshObjects();
+            assertNotNull("real object index must load", objects);
+            assertEquals(32, objects.instanceCount());
+            for (MeshObjectIndex.Instance inst : objects.instances()) {
+              assertTrue(inst.parts.size() == 3);
+              for (MeshObjectIndex.Part part : inst.parts) {
+                assertNotNull(part.mesh);
+                assertTrue(part.mesh.vertexCount > 0);
+                assertNotNull(part.texture);
+              }
+            }
           });
     }
   }

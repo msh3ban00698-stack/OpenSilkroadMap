@@ -103,34 +103,27 @@ def parse_object_ifo(text):
 def parse_o2(blob, object_index):
     """Parse a Map.pk2 {Y}/{X}.o2 blob into object instances.
 
-    Returns a list of dicts: {nameI, bsr, x, y, z, theta, tx, tz}.
+    Returns a list of dicts: {nameI, bsr, x, y, z, theta, tx, tz, extra}.
     bsr is resolved via object_index when nameI is in range, else None.
+    Delegates to the Phase 17 decoder (o2_decoder) whose proven layout walks
+    [u16 count][count x 30-byte record] groups from offset 16; the variable
+    zero header observed in Phase 15 is leading zero-count groups (padding)
+    and does not change the parsed instances.
     """
-    if blob[:12] != O_MAGIC:
+    from o2_decoder import parse_o2 as _parse, O2FormatError
+    try:
+        placements = _parse(blob)
+    except O2FormatError:
         raise WorldFormatError("not a .o2 blob")
     out = []
-    pos = 16
-    while pos < len(blob):
-        if pos + 2 > len(blob):
-            break
-        cnt = struct.unpack_from("<H", blob, pos)[0]
-        pos += 2
-        if cnt == 0:
-            continue
-        for _ in range(cnt):
-            if pos + 30 > len(blob):
-                break
-            nameI = struct.unpack_from("<I", blob, pos)[0]
-            x, y, z = struct.unpack_from("<fff", blob, pos + 4)
-            theta = struct.unpack_from("<f", blob, pos + 18)[0]
-            tail = struct.unpack_from("<H", blob, pos + 28)[0]
-            pos += 30
-            bsr = object_index[nameI] if nameI < len(object_index) else None
-            out.append({
-                "nameI": nameI, "bsr": bsr,
-                "x": x, "y": y, "z": z, "theta": theta,
-                "tx": tail & 0xFF, "tz": tail >> 8,
-            })
+    for p in placements:
+        bsr = object_index[p.nameI] if p.nameI < len(object_index) else None
+        out.append({
+            "nameI": p.nameI, "bsr": bsr,
+            "x": p.x, "y": p.y, "z": p.z, "theta": p.theta,
+            "tx": p.tx, "tz": p.tz,
+            "extra": (p.unknown0, p.unknown1, p.unknown2, p.unknown3),
+        })
     return out
 
 

@@ -96,6 +96,29 @@ record counts, schema width, content spot checks) and listed in
 - Executed evidence: `scripts/test_phase15_world_integration.py` (12 tests, OK).
   JVM/instrumented tests + build/runtime NOT EXECUTED (no JDK/Android SDK).
 
+### Phase 17 — real object mesh rendering
+
+- `.o2` record layout now PROVEN for every file (`scripts/o2_decoder.py`, 12
+  tests): walker from offset 16 consumes all 4,348 files exactly (variable
+  header = zero-count-group padding); record = `u32 nameI + 3x f32 x/y/z +
+  u16 + f32 theta + 3x u16 + u16 tail` (30 B); `world = (tail − ref) × 1920 +
+  local`.
+- Real model chain PROVEN: `nameI → object.ifo → .bsr → {.bms parts + .bmt →
+  material.ddj → DDS → RGBA PNG}` (`scripts/build_object_manifest.py`, 8 tests
+  incl. byte-identical rebuild). Sector 156x90 yields 32 real instances (23×
+  tre_tree03 + 9× tre_tree02) from 6 committed mesh parts + 6 PNG textures.
+- Committed assets under `android/app/src/main/assets/game/world/objects/`
+  (`models.tsv`, `placements.tsv`, `mesh/*.msh` (MSH1), `tex/*.png`).
+- Java consumes them: `StaticMeshAsset` (strict MSH1 parser),
+  `MeshObjectIndex` (models+placements+PNG), `NativeWorldRenderer` draws each
+  real mesh at its proven world position with θ rotation and per-triangle
+  texture mapping (2D Canvas top-down projection). Overlay state ends "REAL
+  TERRAIN + NPC PLACEMENT + OBJECT MESH".
+- JVM/instrumented tests added (`StaticMeshAssetTest`, `GameActivityTest`
+  additions) but NOT EXECUTED (no JDK/Android SDK).
+- Executed evidence: `scripts/test_phase17_*.py` (32 tests, all OK); full 23-suite
+  regression green.
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |

@@ -30,7 +30,7 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 | `tmp` | `DDS \x7c` | 1 file, 87,528 B (`Data.pk2`). Payload is a DDS texture misnamed `.tmp`. | DDS decode already verified in this project (`scripts/dds_decode.py`). |
 | `ddj` | `JMXVDDJ 1000` | 47,495 files, 2,200.6 MB (largest format by bytes). Container header `JMXVDDJ 1000` then embedded DDS textures. | Prior phases verified `ddj -> DDS` extraction and conversion (`scripts/convert_ddjs.py`, `scripts/dds_decode.py`); ~7,755 Android texture outputs produced across Phases 5–8. |
 | `m` | `JMXVMAPM1000` | 4,491 files, 416.6 MB. Terrain height grid. | **Phase 10 decodes `.m` fully** (`scripts/world_terrain.py`, 97×97 height grid per cell); 23 real grids committed as `.hg`; Phase 15 loads adjacent `.hg` sectors as a multi-sector `WorldTerrainSet`. |
-| `o2` | `JMXVMAPO1001` | 4,348 files, 8.3 MB. Object overlay/instance. | **Phase 10 parses `.o2` instances** (committed fixtures `const_76x103_objects.json`). Phase 15: header length is VARIABLE (offset 12 always `u32=0`, first data byte `>=16`); `parse_o2` is valid only when data starts at 16 — other sectors' header layout UNKNOWN. |
+| `o2` | `JMXVMAPO1001` | 4,348 files, 8.3 MB. Object overlay/instance. | **Phase 17 PROVES the record layout** (`scripts/o2_decoder.py`, 12 GREEN): walker from offset 16 consumes every file exactly (variable header = zero-count-group padding); record = `u32 nameI + 3x f32 x/y/z + u16 + f32 theta + 3x u16 + u16 tail` (30 B); `world = (tail − ref) × 1920 + local`. 32 real instances in 156x90 resolve to real trees. |
 | `ban` | `JMXVBAN 0102` | 4,796 files, 235.2 MB. Animation. | **Phase 13 Part D proves FULL layout** (`scripts/ban_decoder.py`): magic/version, 8-byte reserved, u32 name-len + name, u32 duration + frame-rate(30) + u32 UNKNOWN + kpb, kpb×u32 timestamps, bone count + per-bone name + kf-count + kpb×28-byte keyframes (4×f32 quat + 3×f32 pos). Tests: `scripts/test_phase13_ban.py` (8 GREEN). |
 
 ## 2. PARSEABLE formats (magic confirmed, decoder not yet committed)
@@ -50,18 +50,18 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 
 | Ext | Magic | Files / Bytes | Decoder | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|---|---|
-| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | `scripts/bms_decoder.py` + `scripts/test_phase16_bms.py` (16 GREEN) | full census of 22,684 Data.pk2 files: **44 B standard** (17,247: pos+normal+uv+[weight,bone,flags]) / **52 B lightmap** (5,399: +uv2) / **80 B morph** (6) / 32 unproven. s0 vertices (stride = (s1−s0−4)/vcount), s1 bone table (names), s2 triangles (u32 count + 3×u16), s5 AABB; 44/52 B layouts PROVEN. | skinned/flags==2 tail semantics (u32@36 exceeds local bone_count → external palette or leaf payload; NOT a local bone index); 80 B morph fields; 7th header offset; trailing bytes. Static (flags==0) path fully decodable. |
+| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | `scripts/bms_decoder.py` + `scripts/test_phase16_bms.py` (16 GREEN) | full census of 22,684 Data.pk2 files: **44 B standard** (17,247: pos+normal+uv+[weight,bone,flags]) / **52 B lightmap** (5,399: +uv2) / **80 B morph** (6) / 32 unproven. s0 vertices (stride = (s1−s0−4)/vcount), s1 bone table (names), s2 triangles (u32 count + 3×u16), s5 AABB; 44/52 B layouts PROVEN. **Phase 17** converts static meshes to committed MSH1 assets (`scripts/bms_to_asset.py`, 12 GREEN) keeping every vertex (real trees carry flags≠0 canopy geometry). | skinned/flags==2 tail semantics (u32@36 exceeds local bone_count → external palette or leaf payload; NOT a local bone index); 80 B morph fields; 7th header offset; trailing bytes. Static (flags==0) path fully decodable; flags≠0 vertices kept and recorded as `non_static`. |
 | `nvm` | `JMXVNVM 1000` | 6,041 / 778.6 MB | `scripts/test_phase13_nvm.py` (5 GREEN) | flat 8-byte LE nav-cell records (4×u16); dominant 9,216 = 96×96 grid; post-grid f32 region (~37,814 B); trailing −20.0 fill. | nav-cell record semantics; region meaning. |
 | `efp` | `JMXVEFF xxxx` | 3,395 / 95.1 MB | `scripts/test_phase13_efp.py` (11 GREEN) | version tree (0000×7/0010×1/0011×1,820/0012×408/0013×1,158); u32-length-prefixed ASCII command stream. | command-stream semantics / parameters. |
 | `bsk` | `JMXVBSK 0101` | 1,039 / 4.0 MB | `scripts/test_phase13_bsk_bsr.py` (9 GREEN) | magic/version; body sampled. | bone/keyframe layout (bone-name count ≠ count@12 → not a plain count). |
-| `bsr` | `JMXVRES 0109/0108/0107` | 7,549 / 12.9 MB | `scripts/test_phase13_bsk_bsr.py` (9 GREEN) | magic is `JMXVRES` (NOT `JMXVBSR`); body = u32-length-prefixed `.bmt`/`.bms` paths. | record layout. |
+| `bsr` | `JMXVRES 0109/0108/0107` | 7,549 / 12.9 MB | `scripts/test_phase13_bsk_bsr.py` (9 GREEN) | magic is `JMXVRES` (NOT `JMXVBSR`); body = u32-length-prefixed `.bmt`/`.bms` paths. **Phase 17** `parse_bsr` returns `(bmt_path, [bms_paths])`; object chain nameI→bsr→bms+bmt→ddj PROVEN for real trees. | per-record field layout (beyond path list). |
 
 ## 3. TEXT formats (decoded)
 
 | Ext | Magic / structure | Files / Bytes | Notes |
 |---|---|---|---|
 | `txt` | tabular text | 441 / 116.6 MB | 159 are server textdata in `Media.pk2 /server_dep/silkroad/textdata/` (tab-separated, UTF-16LE BOM 149 / cp949 / UTF-8). See `TEXTDATA_CATALOG.tsv`. |
-| `ifo` | `JMXVOBJI1000` | 12 / 928 KB | Object info; UTF-16LE text after header. Phase 10 fixture `object_ifo_head.txt` (real head of `Data.pk2 /navmesh/object.ifo`). |
+| `ifo` | `JMXVOBJI1000` | 12 / 928 KB | Object info; UTF-16LE text after header. Phase 10 fixture `object_ifo_head.txt` (real head of `Data.pk2 /navmesh/object.ifo`). **Phase 17** proves the index (skip magic + count line; `nameI u32` + quoted path rows, paths normalized to leading `/`); nameI 820/574 resolve to real tree `.bsr` paths. |
 | `ini` | `[LocalizedFileNames]` | 1 / 396 B | Text ini. |
 | `c` | `vs.1.1...` | 40 / 133 KB | DirectX vertex-shader **source text** (`.c` shader files). |
 | `vsh` | `vs.1.1...` | 8 / 27.7 KB | DirectX vertex shader source. |

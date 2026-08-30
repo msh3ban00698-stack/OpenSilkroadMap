@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
 import com.opensilkroadmap.app.world.WorldRegion;
@@ -44,6 +45,7 @@ public final class GameActivity extends Activity {
   private NativeWorldRenderer world;
   private WorldTerrainSet terrain;
   private NpcSpawnIndex npc;
+  private MeshObjectIndex meshObjects;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public final class GameActivity extends Activity {
 
     WorldRegion region = selectRegion(index, regions);
     terrain = loadRegionTerrain(index, region);
+    if (region != null) {
+      meshObjects = MeshObjectIndex.load(getAssets(), region.refSx, region.refSy);
+    }
 
     FrameLayout root = new FrameLayout(this);
     root.setBackgroundColor(Color.rgb(16, 16, 20));
@@ -64,6 +69,7 @@ public final class GameActivity extends Activity {
     if (terrain != null) {
       world.setWorld(terrain);
       world.setNpcSpawns(npc);
+      world.setMeshObjects(meshObjects);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
     root.addView(world, new FrameLayout.LayoutParams(
@@ -73,7 +79,7 @@ public final class GameActivity extends Activity {
     overlay.setTextSize(13f);
     overlay.setTextColor(Color.rgb(230, 230, 235));
     overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, terrain, npc, data));
+    overlay.setText(describe(region, terrain, npc, data, meshObjects));
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -123,7 +129,8 @@ public final class GameActivity extends Activity {
       WorldRegion region,
       WorldTerrainSet terrain,
       NpcSpawnIndex npc,
-      GameDataCatalog data) {
+      GameDataCatalog data,
+      MeshObjectIndex meshObjects) {
     StringBuilder sb = new StringBuilder();
     if (terrain != null && region != null) {
       sb.append(region.name).append(" (").append(region.type).append(")\n");
@@ -136,10 +143,14 @@ public final class GameActivity extends Activity {
             .append(" (world ").append(npc.worldCount())
             .append(" / dungeon ").append(npc.dungeonCount()).append(")\n");
       }
+      if (meshObjects != null) {
+        sb.append("objects ").append(meshObjects.instanceCount())
+            .append(" placements, real BMS mesh parts\n");
+      }
       if (data != null) {
         sb.append(data.summary()).append('\n');
       }
-      sb.append("DIAGNOSTIC TERRAIN + NPC PLACEMENT");
+      sb.append("REAL TERRAIN + NPC PLACEMENT + OBJECT MESH");
     } else {
       sb.append("TERRAIN ASSET MISSING (verified .hg absent)\n");
       sb.append("no real terrain loaded; no region substituted");
@@ -153,6 +164,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   NativeWorldRenderer worldRenderer() {
     return world;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  MeshObjectIndex meshObjects() {
+    return meshObjects;
   }
 
   private int dp(int value) {

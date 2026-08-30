@@ -99,6 +99,48 @@ ASSET_EDGES = [
         "status": "PARTIAL",
         "evidence": "Phase 13 Part G: command vocabulary proven; params UNKNOWN",
     },
+    {
+        "from": {"kind": "world_index.tsv", "role": "sector inventory entry"},
+        "to": {"kind": ".hg", "role": "committed terrain height grid (VSHG v1)"},
+        "relationship": "inventoried asset (size/min/max/sha256)",
+        "status": "VERIFIED",
+        "evidence": "Phase 10/15: 23 committed sectors, each derived read-only from a real Map.pk2 /{sy}/{sx}.m",
+    },
+    {
+        "from": {"kind": ".hg", "role": "committed terrain sector"},
+        "to": {"kind": "world_regions.tsv", "role": "region sector window"},
+        "relationship": "sector within region window",
+        "status": "VERIFIED",
+        "evidence": "Phase 15: Jangan_Field ref sector 156x89; committed 156x89 + 156x90 fall inside window sx 156..182, sy 89..102",
+    },
+    {
+        "from": {"kind": "npcpos.tsv", "role": "world spawn region_code"},
+        "to": {"kind": ".hg", "role": "committed terrain sector"},
+        "relationship": "spawn placement on committed terrain",
+        "status": "VERIFIED",
+        "evidence": "Phase 15: 3 world spawns resolve to committed sector 156x90, 0 to 156x89; worldCount 14800, dungeonCount 3657",
+    },
+    {
+        "from": {"kind": ".o2", "role": "object instance overlay (Map.pk2)"},
+        "to": {"kind": ".m", "role": "terrain sector (Map.pk2)"},
+        "relationship": "per-sector object overlay",
+        "status": "VERIFIED",
+        "evidence": "Phase 17: walker from offset 16 consumes every one of the 4348 .o2 files exactly; record = [u16 cnt][cnt x 30 B], positions local to the (tx,tz) tail sector",
+    },
+    {
+        "from": {"kind": ".bms", "role": "static mesh (JMXVBMS)"},
+        "to": {"kind": "vertices+triangles", "role": "position/normal/uv[/uv2] + u16 index buffer"},
+        "relationship": "s0 vertex records (stride = (s1-s0-4)/vcount) + s2 triangles",
+        "status": "VERIFIED",
+        "evidence": "Phase 16: 44 B standard layout (17,247 files) and 52 B lightmap layout (5,399) proven from live bytes; indices within vertex_count; AABB matches vertices",
+    },
+    {
+        "from": {"kind": ".bms", "role": "skinned/flagged vertices (flags==2)"},
+        "to": {"kind": "skeleton", "role": "external bone/palette reference"},
+        "relationship": "12 B tail [blend_weight f32, u32, u32 flags]",
+        "status": "PARTIAL",
+        "evidence": "Phase 16: u32@36 reaches 3..96 with local bone_count 14 (npc_chicken) and 8..34 with bone_count 0 (nature_tree) -> NOT a local bone index; likely external palette; static (flags==0) path unaffected",
+    },
 ]
 
 

@@ -206,7 +206,9 @@ s6  4 B  (0)
   and u32@36 ∈ 8..34 **with duplicates** — therefore u32@36 is **NOT a local
   bone index** (likely an external skeleton/palette reference, or a non-skinning
   payload for leaf/billboard vertices). Not decodable without original code.
-  Static rendering uses only flags==0 vertices → unaffected.
+  Static rendering (Phase 17 MSH1) keeps **every** vertex because real trees
+  legitimately carry flags≠0 (tre_tree03_02: 49/154 flags==2 canopy vertices);
+  `non_static_vertices` is recorded, nothing is dropped.
 - `morph80` (5 files) and `morph_trailing` (1): 80 B/vertex with 4 f32 weight
   streams; field-by-field layout UNKNOWN. Classified, not decoded.
 - The 7th optional header offset u32@0x28 (`off7`, e.g. nature_tree=2086) and
@@ -344,3 +346,72 @@ Deliverables: `scripts/test_phase13_npcpos_regions.py` (14 tests),
 `scripts/textdata_schemas.py` `VERIFIED_NAMES` corrected, `TEXTDATA_SCHEMAS.json`
 + `DATA_REFERENCE_GRAPH.json` regenerated, `NpcPosTable.java` column accessors
 renamed (`characterRefId`/`regionCode`/`localX`/`heightY`/`localZ`).
+
+---
+
+## 8. `.o2` object overlays + object identity chain (Phase 17) — **PROVEN**
+
+### `.o2` — object instance overlay (`JMXVMAPO1001`) — **RECORD LAYOUT PROVEN**
+
+All 4,348 Map.pk2 `.o2` files were walked with a parser that starts at a
+variable data offset and consumes records until exhaustion. Starting at
+**offset 16** consumes every file exactly (1,322 are empty after the header),
+and the resulting instance count equals the first-nonzero-start result for
+every file — the variable header is pure zero-count-group padding.
+
+```
+header:  magic[12] "JMXVMAPO1001"  u32 count_groups   (always zero fields)
+record (30 B each, after offset 16):
+   0  u32   nameI          index into /navmesh/object.ifo
+   4  f32   x  y  z        position LOCAL to the tail sector (tx,tz)
+  16  u16   unknown0       0xFFFF for boundary-sector records
+  18  f32   theta          yaw (radians; 820 -> 0.0, 574 -> -6.4403)
+  22  u16   unknown1       (0 for all 820 records; never interpreted)
+  24  u16   unknown2       (0)
+  26  u16   unknown3       (0)
+  28  u16   tail           tx = tail & 0xFF, tz = tail >> 8
+world = (tail_sector - reference_sector) * 1920 + local   # PROVEN
+```
+
+Verified on `/90/156.o2`: 32 instances = 4 distinct raw records duplicated by
+the author (820 ×16, 574 ×9, 820 ×4 tail (157,90), 820 ×3 tail (156,91)).
+
+### `object.ifo` — nameI → `.bsr` index (`JMXVOBJI1000`) — **PROVEN**
+
+After the 12 B magic + count line, rows are `nameI u32` + quoted path; paths
+normalize to a leading `/`. nameI **820** → `/res/nature/common/tree/new-maple/tre_tree03.bsr`,
+nameI **574** → `/res/nature/common/tree/tre_tree02.bsr` (live meshes under
+`/prim/mesh/nature/common/tree/...`).
+
+### material → texture link — **PROVEN**
+
+Per `.bms` part, the BMS header `names[1]` is the **material name**; the
+texture is `material + ".ddj"` resolved in the `.bmt` directory and present in
+the `.bmt` blob: tre_tree03_01 → `tre_tree03_01.ddj`, _02 → `tre_pine08_03.ddj`,
+_03 → `tre_pine08_02.ddj`; tre_tree02 parts map to their own names.
+
+### MSH1 — Android mesh asset (new committed format) — **PROVEN round-trip**
+
+```
+[4B "MSH1"][u8 version=1][u8 layout 0/1][u16 flags bit0=uv2]
+[u32 vcount][u32 tcount][u32 non_static][u16 tex_index][u16 reserved]
+vcount x 32 B (std: pos3f+norm3f+uv2f) | 40 B (lightmap: +uv2 2f)
+u16 x tcount*3 indices
+```
+
+`bms_to_msh` / `read_msh` round-trip byte-identical; `non_static_vertices` is
+informative (real trees legitimately carry `flags != 0` — dropping them removed
+real canopy geometry, so MSH1 keeps every vertex).
+
+### World placement
+
+Sector 156x90 holds 32 real instances: 23× tre_tree03 (nameI 820, θ 0) + 9×
+tre_tree02 (nameI 574, θ −6.4403), tails (156,90)/(157,90)/(156,91); the world
+formula above yields positions matching the committed 156x90 height grid. Scale
+(the mesh AABB is in hundreds of units, y 148..760) is UNKNOWN; no scaling
+claimed.
+
+Deliverables: `scripts/o2_decoder.py` (+12 tests), `scripts/bms_to_asset.py`
+(+12 tests), `scripts/build_object_manifest.py` (+8 tests, byte-identical
+rebuild), committed assets under `android/app/src/main/assets/game/world/objects/`
+(6 `.msh` + 6 `.png` + `models.tsv` + `placements.tsv`).
