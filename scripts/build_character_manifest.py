@@ -79,12 +79,21 @@ class _Pk2Reader:
         self._fh.seek(e["pos"])
         return self._fh.read(e["size"])
 
+    def _has(self, path):
+        key = ("/" + path.lstrip("/")).lower()
+        return key in self._by_path
+
     def close(self):
         self._fh.close()
 
 
 def load_characterdata(read_media):
-    """Join characterdata_*.txt (Media.pk2) on col1 (proven refid column)."""
+    """Join characterdata_*.txt (Media.pk2) on col1 -> [col52 model paths].
+
+    col52 is comma-split (multi-BSR variants share one refid). Returns
+    {refid: [model_path, ...]}.
+    """
+    import character_resolve
     idx = {}
     for p in sorted(read_media.paths_matching("characterdata")):
         raw = read_media.read(p)
@@ -92,10 +101,8 @@ def load_characterdata(read_media):
             text = raw.decode("utf-16-le", errors="replace")
         except (UnicodeDecodeError, AttributeError):
             text = raw.decode("utf-8", errors="replace")
-        for ln in text.split("\r\n"):
-            cols = ln.split("\t")
-            if len(cols) > 52 and cols[1].isdigit():
-                idx.setdefault(cols[1], cols[52])
+        for refid, models in character_resolve.load_characterdata(text).items():
+            idx.setdefault(refid, models)
     return idx
 
 
@@ -120,14 +127,14 @@ def _bmt_materials(bmt_blob):
 
 
 def resolve_texture(read_data, bmt_blob, bmt_path, material_ref):
-    """material_ref (from bms names[1]) -> ddj path (case-insensitive)."""
-    mats = _bmt_materials(bmt_blob)
-    bmt_dir = os.path.dirname(bmt_path)
-    want = material_ref.lower()
-    for name, ddj in mats.items():
-        if name.lower() == want:
-            return (bmt_dir + "/" + ddj).replace("\\", "/")
-    raise ChainError(f"material {material_ref!r} not in bmt {bmt_path}: {sorted(mats)}")
+    """material_ref (from bms names[1]) -> ddj path, both ddj forms proven."""
+    import character_resolve
+    try:
+        return character_resolve.resolve_texture(
+            read_data.read, lambda p: read_data._has(p), bmt_blob, bmt_path,
+            material_ref)
+    except KeyError as exc:
+        raise ChainError(str(exc)) from exc
 
 
 def build(out_dir, pk2_dir=None):
@@ -157,7 +164,8 @@ def _build_with(read_data, read_media, out_dir):
 
     # 1. characterdata -> bsr (col1 refid join, col52 model path)
     chardata = load_characterdata(read_media)
-    bsr_rel = chardata.get(REFID)
+    models = chardata.get(REFID)
+    bsr_rel = models[0] if models else None
     if not bsr_rel:
         raise ChainError(f"refid {REFID} missing from characterdata")
     bsr_path = "/res/" + bsr_rel.replace("\\", "/")
@@ -322,6 +330,282 @@ def _build_with(read_data, read_media, out_dir):
     }
 
 
+def path_exists(read_media):
+    return read_media._has
+
+
+def convert_character(read_data, read_media, bsr_rel, out_root, key):
+    """Convert one character model (bsr_rel) into the shared asset store.
+
+    Writes:
+      <out_root>/shared/skel/<slug>.json, shared/mesh/<slug>.msh,
+      shared/tex/<slug>.png, shared/anim/<slug>.json
+      <out_root>/<key>/manifest.json, <key>/provenance.json,
+      <key>/npc_placements.tsv
+    Returns the manifest dict. Raises ChainError on the first unproven edge.
+    """
+    import character_resolve
+
+    bsr_path = character_resolve.bsr_path(bsr_rel)
+    bsr_blob = read_data.read(bsr_path)
+    parsed = bsr_decoder.parse_bsr_references(bsr_blob)
+    if not parsed["is_character"]:
+        raise ChainError(f"{bsr_path} is not a character bsr")
+
+    skel_slug, skeleton = _write_skeleton(
+        read_data, read_media, parsed, out_root, key)
+
+    bmt_path = parsed["materials"][0]
+    bmt_blob = read_data.read(bmt_path)
+
+    mesh_entries = []
+    tex_by_ddj = {}
+    for idx, bms_path in enumerate(parsed["meshes"]):
+        bms_blob = read_data.read(bms_path)
+        header = B.parse_bms_header(bms_blob)
+        if len(header["names"]) < 2:
+            raise ChainError(f"bms {bms_path} missing material name")
+        material_ref = header["names"][1]
+        ddj_path = resolve_texture(read_data, bmt_blob, bmt_path, material_ref)
+        ddj_blob = read_data.read(ddj_path)
+        msh_slug = character_resolve.slug(bms_path)
+        tex_slug = character_resolve.slug(ddj_path)
+        _write_shared_bytes(
+            out_root, "mesh", msh_slug + ".msh",
+            bms_to_msh_skinned(bms_blob, texture_index=0)[0])
+        if tex_slug not in tex_by_ddj:
+            w, h, rgba = ddj_to_rgba(ddj_blob)
+            _write_shared_bytes(out_root, "tex", tex_slug + ".png",
+                                png_from_rgba(w, h, rgba))
+            tex_by_ddj[tex_slug] = True
+        prov = bms_to_asset_prov(bms_blob)
+        mesh_entries.append({
+            "msh": msh_slug, "tex": tex_slug, "skinned": True,
+            "material": material_ref, "bms_path": bms_path, "ddj_path": ddj_path,
+            "vcount": prov["asset"]["vertex_count"],
+            "tcount": prov["asset"]["triangle_count"],
+            "skin_records": prov["asset"]["skin_records"],
+            "bone_count": prov["asset"]["bone_count"],
+        })
+
+    anim_entries = []
+    for ban_path in parsed["animations"]:
+        ban_blob = read_data.read(ban_path)
+        anim = AP.load_keyframes(ban_blob)
+        anim_slug = character_resolve.slug(ban_path)
+        stem = os.path.basename(ban_path)[:-4]
+        anim_json = {
+            "path": ban_path, "duration_ms": anim["duration_ms"],
+            "timestamps": anim["timestamps"],
+            "channels": {
+                name: [[[round(x, 6) for x in q], [round(x, 6) for x in p]]
+                       for q, p in recs]
+                for name, recs in anim["channels"].items()
+            },
+        }
+        _write_shared_bytes(out_root, "anim", anim_slug + ".json",
+                            json.dumps(anim_json, indent=1).encode("utf-8"))
+        anim_entries.append({
+            "anim": anim_slug, "name": stem, "ban_path": ban_path,
+            "duration_ms": anim["duration_ms"], "keyframes": len(anim["timestamps"]),
+            "channels": len(anim["channels"]),
+        })
+
+    manifest = {"key": key, "skeleton": skel_slug,
+                "skeleton_path": parsed["skeleton"][0],
+                "meshes": mesh_entries, "anims": anim_entries}
+    _write_manifest(out_root, key, manifest)
+    _write_provenance(out_root, key, {
+        "bsr": bsr_path, "bsk": parsed["skeleton"][0], "bmt": bmt_path,
+        "meshes": parsed["meshes"], "animations": parsed["animations"],
+    })
+    _write_placements(out_root, key, read_data, read_media, parsed, bsr_rel)
+    return manifest
+
+
+def bms_to_asset_prov(bms_blob):
+    msh_bytes, prov = bms_to_msh_skinned(bms_blob, texture_index=0)
+    return prov
+
+
+def _shared_dir(out_root, kind):
+    d = os.path.join(out_root, "shared", kind)
+    os.makedirs(d, exist_ok=True)
+    return d
+
+
+def _write_shared_bytes(out_root, kind, name, blob):
+    with open(os.path.join(_shared_dir(out_root, kind), name), "wb") as fh:
+        fh.write(blob)
+
+
+def _write_manifest(out_root, key, manifest):
+    d = os.path.join(out_root, key)
+    os.makedirs(d, exist_ok=True)
+    with open(os.path.join(d, "manifest.json"), "w") as fh:
+        json.dump(manifest, fh, indent=1, sort_keys=True)
+
+
+def _write_provenance(out_root, key, prov):
+    d = os.path.join(out_root, key)
+    os.makedirs(d, exist_ok=True)
+    with open(os.path.join(d, "provenance.json"), "w") as fh:
+        json.dump(prov, fh, indent=1, sort_keys=True)
+
+
+def _write_skeleton(read_data, read_media, parsed, out_root, key):
+    import character_resolve
+    bsk_path = parsed["skeleton"][0]
+    bsk_blob = read_data.read(bsk_path)
+    skel = bsk_decoder.parse_bsk(bsk_blob)
+    if not skel["exact"]:
+        raise ChainError(f"bsk {bsk_path} not exact: {skel['error']}")
+    wrot, wpos = SK.bind_world(skel["bones"])
+    skeleton_json = {
+        "path": bsk_path, "bone_count": len(skel["bones"]),
+        "quaternion_convention": "xyzw",
+        "bones": [{
+            "name": b["name"], "parent": b["parent"], "children": b["children"],
+            "rot_parent": [round(x, 6) for x in b["rot_parent"]],
+            "tr_parent": [round(x, 6) for x in b["tr_parent"]],
+            "bind_world_rot": [round(x, 6) for x in wrot[i]],
+            "bind_world_pos": [round(x, 6) for x in wpos[i]],
+        } for i, b in enumerate(skel["bones"])],
+    }
+    slug = character_resolve.slug(bsk_path)
+    _write_shared_bytes(out_root, "skel", slug + ".json",
+                        json.dumps(skeleton_json, indent=1).encode("utf-8"))
+    return slug, skeleton_json
+
+
+def _write_placements(out_root, key, read_data, read_media, parsed, bsr_rel):
+    # Resolve the refid(s) that map to this bsr_rel for placement rows.
+    refids = []
+    for refid, models in load_characterdata(read_media).items():
+        if bsr_rel in models:
+            refids.append(refid)
+    placements = []
+    for row in load_npcpos():
+        if row[0] not in refids:
+            continue
+        region = int(row[1])
+        x, z = float(row[2]), float(row[4])
+        wx, wz = wt.npc_to_world(x, z, region, REF_SX, REF_SY)
+        sx, sy = wt.unpack_region(region)
+        placements.append({
+            "refid": row[0], "region": region, "sector": f"{sx}x{sy}",
+            "local_x": round(x, 3), "local_z": round(z, 3),
+            "world_x": round(wx, 3), "world_z": round(wz, 3), "height": row[3],
+        })
+    d = os.path.join(out_root, key)
+    os.makedirs(d, exist_ok=True)
+    cols = ["refid", "region", "sector", "local_x", "local_z",
+            "world_x", "world_z", "height"]
+    with open(os.path.join(d, "npc_placements.tsv"), "w") as fh:
+        fh.write("\t".join(cols) + "\n")
+        for r in placements:
+            fh.write("\t".join(str(r[c]) for c in cols) + "\n")
+
+
+def convert_player(read_data, read_media, out_root):
+    """Convert the proven chinaman player assembly into key 'player'.
+
+    The player is PARTIAL (BSR->skeleton mismatch + no static spawn), but every
+    mesh/clothes/weapon part, material, and animation used here is PROVEN by
+    byte-exact archive presence (Phase 19). The skeleton is chinaman_skel.bsk.
+    """
+    skel_blob = read_data.read(PLAYER_SKELETON)
+    skel = bsk_decoder.parse_bsk(skel_blob)
+    if not skel["exact"]:
+        raise ChainError(f"player skeleton not exact: {skel['error']}")
+    wrot, wpos = SK.bind_world(skel["bones"])
+    skeleton_json = {
+        "path": PLAYER_SKELETON, "bone_count": len(skel["bones"]),
+        "quaternion_convention": "xyzw",
+        "bones": [{
+            "name": b["name"], "parent": b["parent"], "children": b["children"],
+            "rot_parent": [round(x, 6) for x in b["rot_parent"]],
+            "tr_parent": [round(x, 6) for x in b["tr_parent"]],
+            "bind_world_rot": [round(x, 6) for x in wrot[i]],
+            "bind_world_pos": [round(x, 6) for x in wpos[i]],
+        } for i, b in enumerate(skel["bones"])],
+    }
+    import character_resolve
+    skel_slug = character_resolve.slug(PLAYER_SKELETON)
+    _write_shared_bytes(out_root, "skel", skel_slug + ".json",
+                        json.dumps(skeleton_json, indent=1).encode("utf-8"))
+
+    mesh_entries = []
+    body_meshes = PLAYER_BODY + PLAYER_CLOTHES + [PLAYER_WEAPON]
+    for idx, bms_path in enumerate(body_meshes):
+        bms_blob = read_data.read(bms_path)
+        header = B.parse_bms_header(bms_blob)
+        material_ref = header["names"][1] if len(header["names"]) >= 2 else None
+        # Resolve texture from the first matching player material bmt.
+        ddj_path = None
+        for bmt_path in PLAYER_MATERIALS:
+            try:
+                ddj_path = resolve_texture(
+                    read_data, read_data.read(bmt_path), bmt_path, material_ref)
+                break
+            except ChainError:
+                continue
+        if ddj_path is None:
+            raise ChainError(f"no texture for player mesh {bms_path}")
+        ddj_blob = read_data.read(ddj_path)
+        msh_slug = character_resolve.slug(bms_path)
+        tex_slug = character_resolve.slug(ddj_path)
+        _write_shared_bytes(out_root, "mesh", msh_slug + ".msh",
+                            bms_to_msh_skinned(bms_blob, texture_index=0)[0])
+        w, h, rgba = ddj_to_rgba(ddj_blob)
+        _write_shared_bytes(out_root, "tex", tex_slug + ".png",
+                            png_from_rgba(w, h, rgba))
+        prov = bms_to_asset_prov(bms_blob)
+        mesh_entries.append({
+            "msh": msh_slug, "tex": tex_slug, "skinned": True,
+            "material": material_ref or "", "bms_path": bms_path,
+            "ddj_path": ddj_path,
+            "vcount": prov["asset"]["vertex_count"],
+            "tcount": prov["asset"]["triangle_count"],
+            "skin_records": prov["asset"]["skin_records"],
+            "bone_count": prov["asset"]["bone_count"],
+        })
+
+    anim_entries = []
+    for ban_path in PLAYER_ANIMS:
+        ban_blob = read_data.read(ban_path)
+        anim = AP.load_keyframes(ban_blob)
+        anim_slug = character_resolve.slug(ban_path)
+        stem = os.path.basename(ban_path)[:-4]
+        anim_json = {
+            "path": ban_path, "duration_ms": anim["duration_ms"],
+            "timestamps": anim["timestamps"],
+            "channels": {
+                name: [[[round(x, 6) for x in q], [round(x, 6) for x in p]]
+                       for q, p in recs]
+                for name, recs in anim["channels"].items()
+            },
+        }
+        _write_shared_bytes(out_root, "anim", anim_slug + ".json",
+                            json.dumps(anim_json, indent=1).encode("utf-8"))
+        anim_entries.append({
+            "anim": anim_slug, "name": stem, "ban_path": ban_path,
+            "duration_ms": anim["duration_ms"], "keyframes": len(anim["timestamps"]),
+            "channels": len(anim["channels"]),
+        })
+
+    manifest = {"key": "player", "skeleton": skel_slug,
+                "skeleton_path": PLAYER_SKELETON, "meshes": mesh_entries,
+                "anims": anim_entries}
+    _write_manifest(out_root, "player", manifest)
+    _write_provenance(out_root, "player", {
+        "bsr": PLAYER_BSR, "bsk": PLAYER_SKELETON,
+        "meshes": body_meshes, "animations": PLAYER_ANIMS,
+        "note": "PARTIAL: BSR references europeman_skel (43 bones) not chinaman_skel; no static spawn",
+    })
+    return manifest
+
+
 def real_npc_chain(refid, pk2_dir=None):
     """Recompute the NPC->world chain for one refid from original archives.
 
@@ -345,7 +629,8 @@ def real_npc_chain(refid, pk2_dir=None):
     try:
         # NPC record -> character reference (characterdata col1==refid -> col52)
         chardata = load_characterdata(read_media)
-        bsr_rel = chardata.get(refid)
+        models = chardata.get(refid)
+        bsr_rel = models[0] if models else None
         if not bsr_rel:
             raise ChainError(f"refid {refid} missing from characterdata")
         edge("npc_record->character_reference", f"refid {refid}",
