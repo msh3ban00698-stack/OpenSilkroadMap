@@ -234,13 +234,16 @@ public final class CharacterMeshIndex {
 
   private static final String CHARACTER_DIR = "game/world/characters/bandit/";
 
+  private final AssetManager assets;
   private final Skeleton skeleton;
   private final List<Part> parts;
   private final List<Instance> instances;
   private final List<Anim> anims;
 
   private CharacterMeshIndex(
-      Skeleton skeleton, List<Part> parts, List<Instance> instances, List<Anim> anims) {
+      AssetManager assets, Skeleton skeleton, List<Part> parts,
+      List<Instance> instances, List<Anim> anims) {
+    this.assets = assets;
     this.skeleton = skeleton;
     this.parts = Collections.unmodifiableList(parts);
     this.instances = Collections.unmodifiableList(instances);
@@ -265,6 +268,20 @@ public final class CharacterMeshIndex {
 
   public List<Anim> anims() {
     return anims;
+  }
+
+  /**
+   * Samples the committed animation JSON ({@code anim/<name>.json}) into a
+   * {@link Pose} at {@code tMs} (Phase 19). The clip must be one of the
+   * committed full-keyframe clips (bandit_stand01, bandit_walk); other names
+   * fail closed with {@link IOException}.
+   */
+  public Pose poseAt(String animName, int tMs) throws IOException {
+    String path = CHARACTER_DIR + "anim/" + animName + ".json";
+    String text = readAll(
+        new InputStreamReader(assets.open(path), StandardCharsets.UTF_8));
+    Map<String, Object> root = (Map<String, Object>) new JsonParser(text).parse();
+    return Pose.sample(skeleton, root, tMs);
   }
 
   /**
@@ -320,7 +337,7 @@ public final class CharacterMeshIndex {
     if (instances.isEmpty()) {
       throw new IOException("no character placements");
     }
-    return new CharacterMeshIndex(skeleton, parts, instances, anims);
+    return new CharacterMeshIndex(assets, skeleton, parts, instances, anims);
   }
 
   /**

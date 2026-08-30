@@ -15,6 +15,7 @@ import android.view.View;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.game.Camera2D;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,7 @@ public class NativeWorldRenderer extends View {
   private NpcSpawnIndex npc;
   private MeshObjectIndex meshObjects;
   private CharacterMeshIndex characters;
+  private Pose characterPose;
   private boolean objectsVisible = true;
   private boolean charactersVisible = true;
   private float worldMinH;
@@ -120,6 +122,18 @@ public class NativeWorldRenderer extends View {
   public void setCharacters(CharacterMeshIndex characters) {
     this.characters = characters;
     shaderCache.clear();
+    invalidate();
+  }
+
+  /**
+   * Attaches an optional pose (Phase 19). When non-null, characters are
+   * skinned at that pose instead of the static bind pose. Null restores the
+   * bind-pose fallback. Sampling a real clip is done via
+   * {@code characters.poseAt(name, tMs)}; the animation clock is not wired
+   * here (device runtime NOT EXECUTED).
+   */
+  public void setCharacterPose(Pose pose) {
+    this.characterPose = pose;
     invalidate();
   }
 
@@ -344,10 +358,20 @@ public class NativeWorldRenderer extends View {
       return;
     }
     for (CharacterMeshIndex.Instance inst : characters.instances()) {
-      // Bind-pose skinning only; placement heading is UNKNOWN (theta = 0).
+      // Static bind pose is the fallback; a pose re-skins every vertex.
+      // Placement heading is UNKNOWN (theta = 0).
       for (CharacterMeshIndex.Part part : inst.parts) {
+        float[] positions = part.bindPositions;
+        if (characterPose != null) {
+          try {
+            positions = CharacterRenderer.skin(
+                characters.skeleton(), characterPose, part.mesh);
+          } catch (IOException e) {
+            positions = part.bindPositions; // fail-closed fallback
+          }
+        }
         drawTexturedTriangles(
-            canvas, part.bindPositions, part.mesh.uvs, part.mesh.indices,
+            canvas, positions, part.mesh.uvs, part.mesh.indices,
             part.mesh.triangleCount, part.texture, inst.worldX, inst.worldZ,
             1f, 0f);
       }

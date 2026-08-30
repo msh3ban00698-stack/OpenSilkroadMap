@@ -31,7 +31,7 @@ import java.nio.charset.StandardCharsets;
 public final class StaticMeshAsset {
 
   /** Parsed real mesh asset. Positions/normals/uvs are flat little-endian f32. */
-  public static final class Mesh {
+  public static class Mesh {
     public final int layout;
     public final boolean hasUv2;
     public final int vertexCount;
