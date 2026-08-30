@@ -26,6 +26,7 @@ such meshes are not built as render assets.
 
 from __future__ import annotations
 
+import math
 import struct
 
 from bms_decoder import (
@@ -33,6 +34,7 @@ from bms_decoder import (
     classify_bms,
     parse_bms,
 )
+from skeleton import qrot
 
 MSH_MAGIC = b"MSH1"
 MSH_VERSION = 1
@@ -203,6 +205,105 @@ def bms_to_msh_skinned(bms_bytes: bytes, texture_index: int = 0) -> tuple[bytes,
         },
     }
     return bytes(blob), provenance
+
+
+def _compose_world_local(bone, p):
+    """Apply inverse-bind (local) then bind-world (origin) to point p.
+
+    At the bind pose the BSK local transform is the inverse of the origin
+    (Part B PROVEN), so the composition is identity. The composition is
+    computed, not assumed, so the validator measures any residual distortion.
+    """
+    ql, tl = bone["rot_local"], bone["tr_local"]
+    qo, to = bone["rot_origin"], bone["tr_origin"]
+    p1 = [qrot(ql, p)[k] + tl[k] for k in range(3)]
+    return [qrot(qo, p1)[k] + to[k] for k in range(3)]
+
+
+def validate_skinned_mesh(skin, mesh_bone_names, skeleton_bones, raw_positions,
+                          tol=0.01):
+    """Bind-pose skinned-mesh validation (Phase 19 Part I).
+
+    A linear-blend-skinned mesh deforms each rest vertex as
+        v' = sum_i w_i * (bind_world_i o inverse_bind_i) * v
+    with weights normalized as a renderer operation (the raw two-influence
+    sums provably miss 65535 by a few units, Part C). At the bind pose
+    bind_world o inverse_bind is identity, so v' must reproduce the stored
+    model-space vertex. Because the mesh bone names resolve into the BSK
+    skeleton (which holds both the bind world and its proven inverse), this
+    cross-checks the skin indices, the weights, the bone mapping, AND the
+    Part B transform semantics in one reproduction.
+
+    Reports facts, never raises:
+      every_vertex_exists      : one skin record per raw vertex
+      indices_valid            : every influence index < mesh bone count,
+                                 no influence duplicates itself
+      weights_valid            : weights in [0, 65535], no zero-weight slot
+      every_bone_exists        : every influence name present in the skeleton
+      bind_pose_no_distortion  : max weighted deviation from raw position <= tol
+    """
+    records = skin["records"] if isinstance(skin, dict) else skin
+    vcount = len(raw_positions)
+    bcount = len(mesh_bone_names)
+    skel = {b["name"]: b for b in skeleton_bones}
+
+    every_vertex_exists = len(records) == vcount
+    indices_valid = True
+    weights_valid = True
+    missing_bones: set[str] = set()
+    max_deform = 0.0
+    total_deform = 0.0
+    checked = 0
+    for i in range(vcount):
+        if i >= len(records):
+            continue
+        r = records[i]
+        infs = [(r["bone1"], r["weight1"])]
+        if r["bone2"] != 0xFF and r["weight2"] > 0:
+            infs.append((r["bone2"], r["weight2"]))
+        for b, w in infs:
+            if b >= bcount:
+                indices_valid = False
+        if r["bone2"] != 0xFF and r["bone1"] == r["bone2"]:
+            indices_valid = False
+        if r["weight1"] > 65535 or r["weight2"] > 65535:
+            weights_valid = False
+        if r["weight1"] == 0 and r["bone1"] != 0xFF:
+            weights_valid = False
+        sumw = 0.0
+        acc = [0.0, 0.0, 0.0]
+        for b, w in infs:
+            name = mesh_bone_names[b]
+            bone = skel.get(name)
+            if bone is None:
+                missing_bones.add(name)
+                continue
+            sumw += w
+            p2 = _compose_world_local(bone, raw_positions[i])
+            acc[0] += w * p2[0]
+            acc[1] += w * p2[1]
+            acc[2] += w * p2[2]
+        if sumw > 0:
+            v = raw_positions[i]
+            d = math.sqrt(sum(((acc[k] / sumw) - v[k]) ** 2 for k in range(3)))
+            max_deform = max(max_deform, d)
+            total_deform += d
+            checked += 1
+    mean_deform = total_deform / max(checked, 1)
+    return {
+        "vertex_count": vcount,
+        "skin_record_count": len(records),
+        "every_vertex_exists": every_vertex_exists,
+        "indices_valid": indices_valid,
+        "weights_valid": weights_valid,
+        "every_bone_exists": not missing_bones,
+        "missing_bone_names": sorted(missing_bones),
+        "bind_pose_no_distortion": max_deform <= tol,
+        "max_deform": round(max_deform, 6),
+        "mean_deform": round(mean_deform, 6),
+        "tolerance": tol,
+        "vertices_checked": checked,
+    }
 
 
 def read_msh(blob: bytes) -> dict:

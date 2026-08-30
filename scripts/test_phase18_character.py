@@ -127,12 +127,14 @@ class TestAnimations(unittest.TestCase):
             self.assertEqual(len(a["channels"]), 34)
             self.assertEqual(len(a["timestamps"]), a["keyframes_count"]
                              if "keyframes_count" in a else len(a["timestamps"]))
-            for name, rec in a["channels"].items():
-                q, p = rec[0], rec[1]
-                self.assertEqual(len(q), 4)
-                self.assertEqual(len(p), 3)
-                norm = (q[0] ** 2 + q[1] ** 2 + q[2] ** 2 + q[3] ** 2) ** 0.5
-                self.assertAlmostEqual(norm, 1.0, places=3, msg=name)
+            for name, recs in a["channels"].items():
+                self.assertEqual(len(recs), len(a["timestamps"]), name)
+                for rec in recs:
+                    q, p = rec[0], rec[1]
+                    self.assertEqual(len(q), 4)
+                    self.assertEqual(len(p), 3)
+                    norm = (q[0] ** 2 + q[1] ** 2 + q[2] ** 2 + q[3] ** 2) ** 0.5
+                    self.assertAlmostEqual(norm, 1.0, places=3, msg=name)
 
 
 class TestPlacements(unittest.TestCase):
