@@ -25,6 +25,8 @@ from __future__ import annotations
 
 import struct
 
+import skeleton as SK  # noqa: E402
+
 BSK_MAGIC = b"JMXVBSK 0101"
 
 MAGIC_LEN = 12
@@ -243,3 +245,64 @@ def census_record(data: bytes):
 
 def bone_names(parsed):
     return [b["name"] for b in parsed["bones"]]
+
+
+def _quat_eq(a, b, tol=3e-3):
+    d = sum(a[i] * b[i] for i in range(4))
+    return abs(d - 1.0) < tol or abs(d + 1.0) < tol
+
+
+def verify_transform_semantics(bones):
+    """Cross-file semantic verification of BSK transform fields.
+
+    Chains rot_parent/tr_parent (Phase 18 proven FK) into per-bone world
+    transforms, then checks, for every bone:
+      * origin_matches_world  : rot_origin/tr_origin == FK-chained world
+                                (rotation up to quaternion +/- equivalence;
+                                translation within 1e-4)
+      * local_is_inverse_world: rot_local/tr_local == inverse of the
+                                FK-chained world
+      * local_is_inverse_origin: rot_local/tr_local == inverse of the
+                                stored rot_origin/tr_origin
+
+    Returns a dict with per-sample counts and the list of exception bone
+    names per check. Nothing here assigns semantics beyond what the math
+    proves against the Phase 18 FK chain.
+    """
+    fk_rot, fk_pos = SK.bind_world([{
+        "name": b["name"], "parent": b["parent"], "children": b["children"],
+        "rot_parent": b["rot_parent"], "tr_parent": b["tr_parent"],
+    } for b in bones])
+    n = len(bones)
+    ow = lw = lo = 0
+    ow_exc, lw_exc, lo_exc = [], [], []
+    for i, b in enumerate(bones):
+        o_w = _quat_eq(b["rot_origin"], fk_rot[i]) and all(
+            abs(x - y) < 1e-4 for x, y in zip(b["tr_origin"], fk_pos[i]))
+        l_w = _quat_eq(SK.qmul(b["rot_local"], fk_rot[i]),
+                       [0, 0, 0, 1]) and all(
+            abs(a - c) < 1e-3 for a, c in zip(
+                b["tr_local"], SK.qrot(b["rot_local"], [-x for x in fk_pos[i]])))
+        l_o = _quat_eq(SK.qmul(b["rot_local"], b["rot_origin"]),
+                       [0, 0, 0, 1]) and all(
+            abs(a - c) < 1e-3 for a, c in zip(
+                b["tr_local"], SK.qrot(b["rot_local"],
+                                       [-x for x in b["tr_origin"]])))
+        ow += o_w
+        lw += l_w
+        lo += l_o
+        if not o_w:
+            ow_exc.append(b["name"])
+        if not l_w:
+            lw_exc.append(b["name"])
+        if not l_o:
+            lo_exc.append(b["name"])
+    return {
+        "bone_count": n,
+        "origin_matches_world": ow,
+        "origin_exceptions": ow_exc,
+        "local_is_inverse_world": lw,
+        "local_inverse_world_exceptions": lw_exc,
+        "local_is_inverse_origin": lo,
+        "local_inverse_origin_exceptions": lo_exc,
+    }
