@@ -168,10 +168,10 @@
 
 ### Task 9: Git discipline (Part P)
 
-- [ ] `git status` + inspect all changed/untracked files
-- [ ] secret scan staged diff (`git diff --cached | rg` secrets); verify no `.pk2`/binaries beyond intended assets
-- [ ] create branch `260830-feat-phase18-npc-player-skinning`
-- [ ] commit
-- [ ] push `-u origin`
-- [ ] `git fetch`; verify LOCAL SHA == REMOTE SHA
-- [ ] verify clean tree
+- [x] `git status` + inspect all changed/untracked files
+- [x] secret scan staged diff (`git diff --cached | rg` secrets); verify no `.pk2`/binaries beyond intended assets
+- [x] create branch `260830-feat-phase18-npc-player-skinning`
+- [x] commit
+- [x] push `-u origin`
+- [x] `git fetch`; verify LOCAL SHA == REMOTE SHA
+- [x] verify clean tree
