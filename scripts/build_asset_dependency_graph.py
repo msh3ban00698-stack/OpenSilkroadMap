@@ -51,6 +51,13 @@ ASSET_EDGES = [
         "evidence": "Phase 13 Part F: bsr body lists .bms parts (part1/part2)",
     },
     {
+        "from": {"kind": ".bsr", "role": "character resource (JMXVRES)"},
+        "to": {"kind": ".ban/.bsk", "role": "animation + skeleton refs"},
+        "relationship": "u32-length-prefixed path groups (bmt/bms/ban/bsk/efp/wav)",
+        "status": "VERIFIED",
+        "evidence": "Phase 18: bandit.bsr -> 3 bmt + 3 bms + 18 ban + 1 bsk; chinaquest_priest.bsr -> 1 bmt + 3 bms + 2 ban + 1 bsk; every ban/bsk path resolves in Data.pk2",
+    },
+    {
         "from": {"kind": ".bmt", "role": "material (JMXVBMT)"},
         "to": {"kind": ".ddj", "role": "texture (JMXVDDJ -> DDS)"},
         "relationship": "bare ddj filename resolved against bmt directory",
@@ -62,7 +69,7 @@ ASSET_EDGES = [
         "to": {"kind": ".bsr", "role": "character model"},
         "relationship": "model path column (col 52)",
         "status": "VERIFIED",
-        "evidence": "Phase 13 Part J: refid 2023 -> npc\\npc\\chinaquest_priest.bsr",
+        "evidence": "Phase 13 Part J: refid 2023 -> npc\\npc\\chinaquest_priest.bsr; Phase 18: refid 1949 -> mob\\china\\bandit.bsr (3 world spawns on committed sector 156x90)",
     },
     {
         "from": {"kind": ".ddj", "role": "texture (JMXVDDJ)"},
@@ -83,7 +90,14 @@ ASSET_EDGES = [
         "to": {"kind": "bones", "role": "skeleton bone names"},
         "relationship": "embedded bone name table ([root], Bip01*, BoneNN)",
         "status": "VERIFIED",
-        "evidence": "Phase 13 Part F: bsk embeds skeleton bone names",
+        "evidence": "Phase 18: bsk_decoder byte-exhausts 1034/1035 nonzero Data.pk2 .bsk (1 outlier mob_select.bsk); bandit.bsk = 35 bones, chinaman_skel = 38; mesh-local bone names subset of skeleton names",
+    },
+    {
+        "from": {"kind": ".bms", "role": "skinned/flagged vertices (flags==2)"},
+        "to": {"kind": "skeleton", "role": "external bone/palette reference"},
+        "relationship": "6 B skin record per vertex in bone section [u8 b1][u16 w1][u8 b2][u16 w2]; 0xFF sentinel; name-based bone mapping",
+        "status": "VERIFIED",
+        "evidence": "Phase 18: skin block s2-s1 == 6*vcount byte-exhausts on every character mesh (bandit part1 214, part2 556, sword 76; man_pelvis 79); skinned_vertex_count == flags==2 count; tail u32@36 = global palette index beyond skeleton (semantics UNKNOWN)",
     },
     {
         "from": {"kind": ".nvm", "role": "navmesh (JMXVNVM)"},
@@ -133,13 +147,6 @@ ASSET_EDGES = [
         "relationship": "s0 vertex records (stride = (s1-s0-4)/vcount) + s2 triangles",
         "status": "VERIFIED",
         "evidence": "Phase 16: 44 B standard layout (17,247 files) and 52 B lightmap layout (5,399) proven from live bytes; indices within vertex_count; AABB matches vertices",
-    },
-    {
-        "from": {"kind": ".bms", "role": "skinned/flagged vertices (flags==2)"},
-        "to": {"kind": "skeleton", "role": "external bone/palette reference"},
-        "relationship": "12 B tail [blend_weight f32, u32, u32 flags]",
-        "status": "PARTIAL",
-        "evidence": "Phase 16: u32@36 reaches 3..96 with local bone_count 14 (npc_chicken) and 8..34 with bone_count 0 (nature_tree) -> NOT a local bone index; likely external palette; static (flags==0) path unaffected",
     },
 ]
 

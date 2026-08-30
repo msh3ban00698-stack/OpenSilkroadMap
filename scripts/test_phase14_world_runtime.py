@@ -217,8 +217,8 @@ class AssetDependencyTest(unittest.TestCase):
     def test_dependency_graph_loads_with_verified_edges(self):
         d = json.loads(DEP_GRAPH.read_text(encoding="utf-8"))
         self.assertEqual(9, d["textdata_edges"])
-        self.assertEqual(16, d["asset_edges"])
-        self.assertEqual(25, len(d["edges"]))
+        self.assertEqual(17, d["asset_edges"])
+        self.assertEqual(26, len(d["edges"]))
         statuses = {e["status"] for e in d["edges"]}
         self.assertLessEqual(statuses, {"VERIFIED", "PARTIAL"})
         kinds = {(e["from"]["kind"], e["to"]["kind"]) for e in d["edges"]}
