@@ -8,21 +8,21 @@ import com.opensilkroadmap.app.minimap.ManifestParser;
 import com.opensilkroadmap.app.minimap.ManifestResolver;
 import com.opensilkroadmap.app.minimap.MinimapException;
 import com.opensilkroadmap.app.minimap.NativeMinimapAssetProvider;
+import com.opensilkroadmap.app.world.TerrainHeightGrid;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Phase 9 native game host activity. Loads the real derived region catalog
- * (Data.pk2 RegionInfo.txt), builds the verified Phase 8 minimap provider when
- * {@code assets/game/manifest.json} is bundled, and shows the native HUD.
+ * Native game host activity. Loads the real derived region catalog
+ * (Data.pk2 RegionInfo.txt), the verified Phase 8 minimap provider, and the
+ * optional committed terrain height grid for the current sector.
  *
  * <p>Default camera cell is (182, 96), which RegionInfo.txt places in
- * {@code TOWN ThiefTown} (VERIFIED); this is a default camera position for the
- * HUD, not a gameplay spawn claim. The WebView MainActivity remains the
- * launcher; this activity is reachable once bundled and is the integration
- * point for Phase 10 on-device validation.
+ * {@code TOWN ThiefTown} (VERIFIED). If the matching height asset is not
+ * bundled, the native world renderer stays empty and the HUD reports the
+ * missing asset explicitly instead of substituting fake geometry.
  */
 public final class GameActivity extends Activity {
   static final int DEFAULT_PLAYER_CELL_X = 182;
@@ -40,6 +40,7 @@ public final class GameActivity extends Activity {
     hud = new GameHudView(this, catalog, provider, data);
     setContentView(hud);
     hud.setPlayerCell(DEFAULT_PLAYER_CELL_X, DEFAULT_PLAYER_CELL_Y);
+    loadTerrainForSector(DEFAULT_PLAYER_CELL_X, DEFAULT_PLAYER_CELL_Y);
   }
 
   @Override
@@ -78,6 +79,17 @@ public final class GameActivity extends Activity {
           NativeMinimapAssetProvider.DEFAULT_MAX_CACHE_ENTRIES);
     } catch (IOException | MinimapException e) {
       return null;
+    }
+  }
+
+  private void loadTerrainForSector(int sectorX, int sectorY) {
+    String path = "game/world/" + sectorX + "x" + sectorY + ".hg";
+    try (InputStream in = getAssets().open(path)) {
+      hud.setTerrain(TerrainHeightGrid.load(in));
+      hud.setTerrainStatus("REAL TERRAIN loaded: " + path);
+    } catch (IOException e) {
+      hud.setTerrain(null);
+      hud.setTerrainStatus("REAL TERRAIN NOT BUNDLED: " + path);
     }
   }
 
