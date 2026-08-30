@@ -1,0 +1,1197 @@
+{
+ "anomalies": [
+  {
+   "classification": "animation_data_unparsed",
+   "evidence": "JMXVBAN magic v0101; full parse failed: bad magic/version",
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/char/china/man/spidey_attack01.ban",
+   "size": 41120
+  },
+  {
+   "classification": "motion_or_unknown",
+   "evidence": "animation-like extension but no JMXVBAN magic",
+   "magic": "42414e2065000000",
+   "path": "/prim/ani/item/common/mob_select.ban",
+   "size": 300
+  },
+  {
+   "classification": "animation_data_unparsed",
+   "evidence": "JMXVBAN magic v0101; full parse failed: bad magic/version",
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/mob/china/chakji/chakji_stand02.ban",
+   "size": 51108
+  }
+ ],
+ "counts": {
+  "animation_data": 4793,
+  "animation_data_unparsed": 2,
+  "motion_or_unknown": 1,
+  "skeleton_data": 1036,
+  "unrelated_binary": 64982
+ },
+ "duration_buckets": {
+  "1000_5000": 3347,
+  "gt_5000": 299,
+  "lt_1000": 1147
+ },
+ "magic_histogram": {
+  "JMXVBAN ": 4793
+ },
+ "samples": [
+  {
+   "classification": "animation_data",
+   "duration_ms": 38333,
+   "kpb": 84,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/china/dunhuang/w_cd_ani_boat.ban",
+   "size": 42981,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4000,
+   "kpb": 7,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/china/dunhuang/w_cd_boat.ban",
+   "size": 1341,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/fort_stone_ht.ban",
+   "size": 755,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/fort_stone_ht_dmg.ban",
+   "size": 759,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6000,
+   "kpb": 8,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/fort_stone_sk.ban",
+   "size": 5829,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/guard tower/tower_ready.ban",
+   "size": 203,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/guard tower/tower_stand.ban",
+   "size": 203,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/guild/guard tower/tower_wait.ban",
+   "size": 202,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/artifact/west asia/rock mt/seventop/rok_key01_01.ban",
+   "size": 460,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 8,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/booth_mob_bigeyeghost.ban",
+   "size": 811,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 18,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/booth_mob_earthghost.ban",
+   "size": 4798,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 3333,
+   "kpb": 5,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/booth_mob_mangyang.ban",
+   "size": 544,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 22,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/booth_special_monster_01.ban",
+   "size": 9606,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 166,
+   "kpb": 6,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_man_ready.ban",
+   "size": 7100,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4800,
+   "kpb": 11,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_man_run.ban",
+   "size": 12297,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 800,
+   "kpb": 15,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_man_shot.ban",
+   "size": 16459,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 13,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_man_stand.ban",
+   "size": 14380,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 33,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_man_wait.ban",
+   "size": 2939,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 166,
+   "kpb": 4,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_woman_ready.ban",
+   "size": 5918,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4800,
+   "kpb": 16,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_woman_run.ban",
+   "size": 21663,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 833,
+   "kpb": 24,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_woman_shot.ban",
+   "size": 30637,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 37,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_woman_stand.ban",
+   "size": 48808,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 33,
+   "kpb": 4,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/avatar/nasrun1_woman_wait.ban",
+   "size": 5917,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 39,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_Arabia_F/Bagh_Arabia_F.BAN",
+   "size": 45631,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10666,
+   "kpb": 5,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_City/Bagh_Abal_foun.BAN",
+   "size": 386,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10666,
+   "kpb": 6,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_City/Bagh_City_Portal.BAN",
+   "size": 994,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_Masin/Bagh_Masin_bridge_down.BAN",
+   "size": 214,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_Masin/Bagh_Masin_bridge_down_up.BAN",
+   "size": 217,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_Masin/Bagh_Masin_bridge_up.BAN",
+   "size": 212,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 16000,
+   "kpb": 23,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/Arabia/Bagh_Petra/Bagh_Petra_Core.BAN",
+   "size": 10679,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 4333,
+   "kpb": 14,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/central asia_beeh01.ban",
+   "size": 20104,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5666,
+   "kpb": 13,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/central asia_beeh02.ban",
+   "size": 18728,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5666,
+   "kpb": 23,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/central asia_beeh04.ban",
+   "size": 20616,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5333,
+   "kpb": 22,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/central asia_beeh07_01.ban",
+   "size": 105154,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 16,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/central asia_beeh08.ban",
+   "size": 22856,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/central asia/samarkand_potal_07.ban",
+   "size": 368,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 7333,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/cj_ferry/cj_ferry_boat_new.ban",
+   "size": 1277,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/cj_ferry/cj_ferry_boat_old.ban",
+   "size": 171,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 14000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/dunhuang/ferry/naru_fish.ban",
+   "size": 555,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10166,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan01/cj_etc_light01.ban",
+   "size": 560,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan01/cj_luxu_light.ban",
+   "size": 461,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan01/cj_por_stone.ban",
+   "size": 362,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan01/cj_resta02_light02.ban",
+   "size": 466,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan01/cj_resta04_light.ban",
+   "size": 366,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan02/cj_adult04_light01.ban",
+   "size": 368,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan02/cj_pub01_light01.ban",
+   "size": 464,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan02/cj_pub01_light02.ban",
+   "size": 366,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan02/cj_pub01_light03.ban",
+   "size": 562,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 8000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/china/jangan02/cj_pub03_light.ban",
+   "size": 364,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/europe/east eurpoe/vikingfld/euro_esteuro_viking20.ban",
+   "size": 273,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/bj/big_mun_bj_ing.ban",
+   "size": 416,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/bj/big_mun_bj_open.ban",
+   "size": 417,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/bj/big_mun_bj_open_close.ban",
+   "size": 423,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/bj/big_mun_bj_still.ban",
+   "size": 418,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 4,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_clo.ban",
+   "size": 956,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_close.ban",
+   "size": 418,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_closing.ban",
+   "size": 420,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 4,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_ing.ban",
+   "size": 956,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_open.ban",
+   "size": 417,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_opening.ban",
+   "size": 420,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_in_door_still.ban",
+   "size": 558,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 5,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_out_door_clo.ban",
+   "size": 1157,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 4,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_out_door_ing.ban",
+   "size": 957,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 3,
+   "magic": "JMXVBAN ",
+   "path": "/prim/ani/bldg/guild/constantinople/ct_out_door_open.ban",
+   "size": 758,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/20time_spin_-y.ban",
+   "size": 712,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/20time_spin_y.ban",
+   "size": 711,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 3000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/8line_02.ban",
+   "size": 1026,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6666,
+   "kpb": 100,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi.ban",
+   "size": 3263,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 300,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi02.ban",
+   "size": 9665,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 300,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi03.ban",
+   "size": 9665,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6666,
+   "kpb": 100,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi04.ban",
+   "size": 3265,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 6666,
+   "kpb": 100,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi05.ban",
+   "size": 3265,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 10000,
+   "kpb": 301,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bandi06.ban",
+   "size": 9697,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang001.ban",
+   "size": 385,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang002.ban",
+   "size": 385,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang003-01.ban",
+   "size": 388,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 60,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang003-01_60frame_full.ban",
+   "size": 2001,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang003-02.ban",
+   "size": 388,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 60,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang003-02_60frame_full.ban",
+   "size": 2001,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 2000,
+   "kpb": 60,
+   "magic": "JMXVBAN ",
+   "path": "/animations/bang003-03_60frame_full.ban",
+   "size": 2001,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/big_scrow_up_01.ban",
+   "size": 1022,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1333,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/big_scrow_up_02.ban",
+   "size": 1022,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 500,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch1-born-001.ban",
+   "size": 390,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade01.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade02.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade03.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade04.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade05.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade06.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade07.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_blade08.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear01.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear02.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear03.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear04.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear05.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear06.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear07.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_spear08.ban",
+   "size": 1033,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade01.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade02.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade03.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade04.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade05.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade06.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade07.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 30,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ch_path_tblade08.ban",
+   "size": 1034,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 500,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cho-born-001.ban",
+   "size": 390,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 500,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cho-born-002.ban",
+   "size": 390,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 500,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cho-born-003.ban",
+   "size": 390,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 500,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cho-born-004.ban",
+   "size": 390,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1000,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/chosomyul.ban",
+   "size": 387,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/circle size 10m.ban",
+   "size": 713,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/circle size 6m.ban",
+   "size": 712,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 333,
+   "kpb": 10,
+   "magic": "JMXVBAN ",
+   "path": "/animations/circle_a.ban",
+   "size": 386,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 13,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cross-001.ban",
+   "size": 483,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 11,
+   "magic": "JMXVBAN ",
+   "path": "/animations/cross-002.ban",
+   "size": 419,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/animations/firework_02.ban",
+   "size": 133,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 5000,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/animations/firework_15m_5s.ban",
+   "size": 137,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 2,
+   "magic": "JMXVBAN ",
+   "path": "/animations/firework_2m.ban",
+   "size": 133,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ghost_beast_line_01.ban",
+   "size": 717,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ghost_beast_line_02.ban",
+   "size": 717,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ghost_beast_line_03.ban",
+   "size": 717,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ghost_beast_line_04.ban",
+   "size": 717,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ho-magic-001.ban",
+   "size": 710,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 666,
+   "kpb": 20,
+   "magic": "JMXVBAN ",
+   "path": "/animations/ho-magic-003.ban",
+   "size": 710,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 1666,
+   "kpb": 85,
+   "magic": "JMXVBAN ",
+   "path": "/animations/holy-o.ban",
+   "size": 2784,
+   "version": "0102"
+  },
+  {
+   "classification": "animation_data",
+   "duration_ms": 833,
+   "kpb": 26,
+   "magic": "JMXVBAN ",
+   "path": "/animations/irem_use_02.ban",
+   "size": 901,
+   "version": "0102"
+  }
+ ],
+ "version_histogram": {
+  "0102": 4793
+ }
+}
