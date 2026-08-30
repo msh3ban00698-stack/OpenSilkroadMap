@@ -326,6 +326,137 @@ def parse_skin_data(data: bytes, header: dict, vertex_count: int) -> dict:
     }
 
 
+def skin_census(data: bytes, header: dict, vertex_count: int) -> dict:
+    """Lenient weight/influence census over the vertex-skin block.
+
+    Unlike parse_skin_data (which raises on malformed records) this scans the
+    block and COUNTS anomalies instead of failing, so the census can report
+    invalid/repeated/zero/unused influences as facts. Returns provable=False
+    when the block is not exactly vertex_count*6 bytes (static mesh).
+    """
+    bones = parse_bone_table(data, header)
+    o = bones["names_end"]
+    o1 = header["offsets"][1]
+    span = o1 - o
+    if span != vertex_count * 6:
+        return {
+            "provable": False,
+            "reason": "skin block span %d != 6*%d" % (span, vertex_count),
+            "vertex_count": vertex_count,
+            "bone_count": bones["bone_count"],
+            "bone_names": bones["bone_names"],
+        }
+    bcount = bones["bone_count"]
+    two_count = 0
+    sums = []
+    invalid = []
+    repeated = 0
+    zero = 0
+    used = set()
+    max_inf = 0
+    for i in range(vertex_count):
+        b1, w1, b2, w2 = struct.unpack_from("<BHBH", data, o + i * 6)
+        influences = 0
+        for b, w in ((b1, w1), (b2, w2)):
+            if b != 0xFF and w > 0:
+                influences += 1
+        max_inf = max(max_inf, influences)
+        if b1 != 0xFF:
+            if b1 >= bcount:
+                invalid.append((i, "b1", b1))
+            else:
+                used.add(b1)
+        else:
+            invalid.append((i, "b1", b1))
+        if b2 != 0xFF:
+            if b2 >= bcount:
+                invalid.append((i, "b2", b2))
+            else:
+                used.add(b2)
+        if b1 == b2:
+            repeated += 1
+        if w1 == 0:
+            zero += 1
+        if b2 != 0xFF and w2 == 0:
+            zero += 1
+        if b2 != 0xFF:
+            two_count += 1
+            sums.append(w1 + w2)
+    unused = [nm for i, nm in enumerate(bones["bone_names"]) if i not in used]
+    norm = {}
+    if sums:
+        norm = {
+            "min_sum": min(sums),
+            "max_sum": max(sums),
+            "mean_sum": round(sum(sums) / len(sums), 2),
+            "two_influence": len(sums),
+            "count_sum_eq_65535": sum(1 for s in sums if s == 65535),
+            "count_sum_ge_65000": sum(1 for s in sums if s >= 65000),
+        }
+    return {
+        "provable": True,
+        "vertex_count": vertex_count,
+        "record_bytes": span,
+        "bone_count": bcount,
+        "bone_names": bones["bone_names"],
+        "influence_count": vertex_count * 2,
+        "max_influences": max_inf,
+        "index_width_bits": 8,
+        "weight_width_bits": 16,
+        "weight_scale": 65535.0,
+        "single_influence": sum(
+            1 for i in range(vertex_count)
+            if struct.unpack_from("<BH", data, o + i * 6 + 2)[0] == 0xFF),
+        "two_influence": two_count,
+        "normalization": norm,
+        "invalid_indices": invalid,
+        "repeated_indices": repeated,
+        "zero_weight_slots": zero,
+        "unused_bones": unused,
+    }
+
+
+def skin_vertex_cross_check(data: bytes, header: dict, vertex_count: int) -> dict:
+    """Cross-check the 44-byte vertex bone_index field against the skin block.
+
+    NEW Phase 19 fact: the vertex-record u32 bone_index (0xFFFFFFFF = flagged
+    unskinned) is NOT authoritative -- vertices flagged 0xFFFFFFFF still carry
+    a valid skin record. The 6-byte-per-vertex skin block is authoritative.
+    Reports the four combination counts as proof.
+    """
+    info = detect_vertex_format(data, header)
+    if info["vertex_size"] != VERTEX_SIZE_44:
+        return {"provable": False, "reason": "not a 44-byte vertex mesh"}
+    bones = parse_bone_table(data, header)
+    o = bones["names_end"]
+    o1 = header["offsets"][1]
+    if o1 - o != vertex_count * 6:
+        return {"provable": False, "reason": "skin block span mismatch"}
+    start = header["header_size"] + 4
+    ff_valid = ff_ff = sk_valid = sk_ff = 0
+    for i in range(vertex_count):
+        bi = struct.unpack_from("<I", data, start + i * VERTEX_SIZE_44 + 36)[0]
+        b1 = struct.unpack_from("<B", data, o + i * 6)[0]
+        is_ff = bi == UNSKINNED
+        skin_valid = b1 != 0xFF
+        if is_ff and skin_valid:
+            ff_valid += 1
+        elif is_ff:
+            ff_ff += 1
+        elif skin_valid:
+            sk_valid += 1
+        else:
+            sk_ff += 1
+    return {
+        "provable": True,
+        "vertex_count": vertex_count,
+        "bone_ff_skin_valid": ff_valid,
+        "bone_ff_skin_ff": ff_ff,
+        "bone_valid_skin_valid": sk_valid,
+        "bone_valid_skin_ff": sk_ff,
+    }
+
+
 
 def parse_triangles(data: bytes, header: dict, vc: int) -> dict:
     o1 = header["offsets"][1]

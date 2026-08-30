@@ -1,0 +1,336 @@
+{
+ "samples": {
+  "bandit_part1": {
+   "census": {
+    "bone_count": 18,
+    "bone_names": [
+     "Bip01 R Forearm",
+     "Bip01 R UpperArm",
+     "Bip01 R Hand",
+     "Bip01 R Finger0",
+     "Bip01 R Finger2",
+     "Bip01 R Finger1",
+     "Bip01 R Finger01",
+     "Bip01 R Finger11",
+     "Bip01 R Finger21",
+     "Bip01 L UpperArm",
+     "Bip01 L Forearm",
+     "Bip01 L Hand",
+     "Bip01 L Finger2",
+     "Bip01 L Finger1",
+     "Bip01 L Finger01",
+     "Bip01 L Finger0",
+     "Bip01 L Finger11",
+     "Bip01 L Finger21"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 428,
+    "invalid_indices": [],
+    "max_influences": 2,
+    "normalization": {
+     "count_sum_eq_65535": 0,
+     "count_sum_ge_65000": 121,
+     "max_sum": 65531,
+     "mean_sum": 64755.68,
+     "min_sum": 49146,
+     "two_influence": 127
+    },
+    "provable": true,
+    "record_bytes": 1284,
+    "repeated_indices": 0,
+    "single_influence": 87,
+    "two_influence": 127,
+    "unused_bones": [],
+    "vertex_count": 214,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 140,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 74,
+    "provable": true,
+    "vertex_count": 214
+   },
+   "key": "bandit_part1",
+   "sha256": "705ed73b21b3e856a0bac331b72adf7baeef0744e9279452d771c285356e5a8c",
+   "size": 12854,
+   "source": "/prim/mesh/mob/china/bandit_part1.bms"
+  },
+  "bandit_part2": {
+   "census": {
+    "bone_count": 17,
+    "bone_names": [
+     "Bip01 Spine1",
+     "Bip01 Spine",
+     "Bip01 L Clavicle",
+     "Bip01 L UpperArm",
+     "Bip01 Neck",
+     "Bip01 Head",
+     "Bip01 Pelvis",
+     "Bip01 L Thigh",
+     "Bip01 L Calf",
+     "Bip01 L Foot",
+     "Bip01 L Toe0",
+     "Bip01 R Clavicle",
+     "Bip01 R UpperArm",
+     "Bip01 R Thigh",
+     "Bip01 R Calf",
+     "Bip01 R Foot",
+     "Bip01 R Toe0"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 1112,
+    "invalid_indices": [],
+    "max_influences": 2,
+    "normalization": {
+     "count_sum_eq_65535": 0,
+     "count_sum_ge_65000": 208,
+     "max_sum": 65531,
+     "mean_sum": 64928.5,
+     "min_sum": 43686,
+     "two_influence": 228
+    },
+    "provable": true,
+    "record_bytes": 3336,
+    "repeated_indices": 0,
+    "single_influence": 328,
+    "two_influence": 228,
+    "unused_bones": [],
+    "vertex_count": 556,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 328,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 228,
+    "provable": true,
+    "vertex_count": 556
+   },
+   "key": "bandit_part2",
+   "sha256": "d186dee6cf8a5dd101cc2a022969b12cfa2b7b109a8384dd429b0fc6ee76cc8e",
+   "size": 32835,
+   "source": "/prim/mesh/mob/china/bandit_part2.bms"
+  },
+  "bandit_sword": {
+   "census": {
+    "bone_count": 1,
+    "bone_names": [
+     "Bip01 R Hand"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 152,
+    "invalid_indices": [],
+    "max_influences": 1,
+    "normalization": {},
+    "provable": true,
+    "record_bytes": 456,
+    "repeated_indices": 0,
+    "single_influence": 76,
+    "two_influence": 0,
+    "unused_bones": [],
+    "vertex_count": 76,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 14,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 62,
+    "provable": true,
+    "vertex_count": 76
+   },
+   "key": "bandit_sword",
+   "sha256": "16c0e5def4f07c313acf34347c48ca7dc9949429841f5e61cd768bb0b505a34c",
+   "size": 4771,
+   "source": "/prim/mesh/mob/china/bandit_sword.bms"
+  },
+  "char_face": {
+   "census": {
+    "bone_count": 5,
+    "bone_names": [
+     "Bip01 Head",
+     "Bip01 Neck1",
+     "Bip01 L Clavicle",
+     "Bip01 Spine1",
+     "Bip01 R Clavicle"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 320,
+    "invalid_indices": [],
+    "max_influences": 2,
+    "normalization": {
+     "count_sum_eq_65535": 0,
+     "count_sum_ge_65000": 18,
+     "max_sum": 65514,
+     "mean_sum": 65514.0,
+     "min_sum": 65514,
+     "two_influence": 18
+    },
+    "provable": true,
+    "record_bytes": 960,
+    "repeated_indices": 0,
+    "single_influence": 142,
+    "two_influence": 18,
+    "unused_bones": [],
+    "vertex_count": 160,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 72,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 88,
+    "provable": true,
+    "vertex_count": 160
+   },
+   "key": "char_face",
+   "sha256": "4f812a39fa2b63c48a6c7eedd2cf5012c888c9d490b7718358bdd347d513a214",
+   "size": 9686,
+   "source": "committed bms_samples/char_face.bms"
+  },
+  "npc_chicken": {
+   "census": {
+    "bone_count": 14,
+    "bone_names": [
+     "Bip01 Spine",
+     "Bip01 Neck1",
+     "Bip01 Neck",
+     "Bip01 Tail",
+     "Bip01 R Thigh",
+     "Bip01 Pelvis",
+     "Bip01 Tail1",
+     "Bip01 Head",
+     "Bip01 Tail2",
+     "Bip01 R Calf",
+     "Bip01 R Foot",
+     "Bip01 L Thigh",
+     "Bip01 L Calf",
+     "Bip01 L Foot"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 292,
+    "invalid_indices": [],
+    "max_influences": 2,
+    "normalization": {
+     "count_sum_eq_65535": 0,
+     "count_sum_ge_65000": 61,
+     "max_sum": 65534,
+     "mean_sum": 60994.99,
+     "min_sum": 43690,
+     "two_influence": 77
+    },
+    "provable": true,
+    "record_bytes": 876,
+    "repeated_indices": 0,
+    "single_influence": 69,
+    "two_influence": 77,
+    "unused_bones": [],
+    "vertex_count": 146,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 82,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 64,
+    "provable": true,
+    "vertex_count": 146
+   },
+   "key": "npc_chicken",
+   "sha256": "4bdaac067fece525dd1438b640eb660017626d609c22a6abc2aff041fb561217",
+   "size": 8896,
+   "source": "committed bms_samples/npc_chicken.bms"
+  },
+  "petra": {
+   "census": {
+    "bone_count": 2,
+    "bone_names": [
+     "Bone01",
+     "Bone02"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 692,
+    "invalid_indices": [],
+    "max_influences": 1,
+    "normalization": {},
+    "provable": true,
+    "record_bytes": 2076,
+    "repeated_indices": 0,
+    "single_influence": 346,
+    "two_influence": 0,
+    "unused_bones": [],
+    "vertex_count": 346,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 252,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 94,
+    "provable": true,
+    "vertex_count": 346
+   },
+   "key": "petra",
+   "sha256": "d269765645da12eba58af47b6b8acd310b4bcbd6daa7f4f026c15ed2f51e0be9",
+   "size": 19866,
+   "source": "committed bms_samples/petra.bms"
+  },
+  "v50_avatar": {
+   "census": {
+    "bone_count": 2,
+    "bone_names": [
+     "Bone01",
+     "Bone02"
+    ],
+    "index_width_bits": 8,
+    "influence_count": 870,
+    "invalid_indices": [],
+    "max_influences": 2,
+    "normalization": {
+     "count_sum_eq_65535": 0,
+     "count_sum_ge_65000": 4,
+     "max_sum": 65534,
+     "mean_sum": 65534.0,
+     "min_sum": 65534,
+     "two_influence": 4
+    },
+    "provable": true,
+    "record_bytes": 2610,
+    "repeated_indices": 0,
+    "single_influence": 431,
+    "two_influence": 4,
+    "unused_bones": [],
+    "vertex_count": 435,
+    "weight_scale": 65535.0,
+    "weight_width_bits": 16,
+    "zero_weight_slots": 0
+   },
+   "cross_check": {
+    "bone_ff_skin_ff": 0,
+    "bone_ff_skin_valid": 388,
+    "bone_valid_skin_ff": 0,
+    "bone_valid_skin_valid": 47,
+    "provable": true,
+    "vertex_count": 435
+   },
+   "key": "v50_avatar",
+   "sha256": "8ebd6f2b29cb389949eb43ea44ba94a044ba5b10ab24e4f4a536ffe7d477092c",
+   "size": 24195,
+   "source": "committed bms_samples/v50_avatar.bms"
+  }
+ }
+}
