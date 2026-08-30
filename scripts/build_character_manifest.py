@@ -44,7 +44,7 @@ import bms_decoder as B  # noqa: E402
 import animation_pose as AP  # noqa: E402
 import skeleton as SK  # noqa: E402
 from dds_decode import ddj_to_rgba, png_from_rgba  # noqa: E402
-from bms_to_asset import bms_to_msh_skinned  # noqa: E402
+from bms_to_asset import MshFormatError, bms_to_msh, bms_to_msh_skinned  # noqa: E402
 
 ASSETS = os.path.join(
     BASE, "..", "android", "app", "src", "main", "assets", "game", "world", "characters"
@@ -370,22 +370,25 @@ def convert_character(read_data, read_media, bsr_rel, out_root, key):
         ddj_blob = read_data.read(ddj_path)
         msh_slug = character_resolve.slug(bms_path)
         tex_slug = character_resolve.slug(ddj_path)
-        _write_shared_bytes(
-            out_root, "mesh", msh_slug + ".msh",
-            bms_to_msh_skinned(bms_blob, texture_index=0)[0])
+        try:
+            msh_bytes, prov = bms_to_msh_skinned(bms_blob, texture_index=0)
+            skinned = True
+        except MshFormatError:
+            msh_bytes, prov = bms_to_msh(bms_blob, texture_index=0)
+            skinned = False
+        _write_shared_bytes(out_root, "mesh", msh_slug + ".msh", msh_bytes)
         if tex_slug not in tex_by_ddj:
             w, h, rgba = ddj_to_rgba(ddj_blob)
             _write_shared_bytes(out_root, "tex", tex_slug + ".png",
                                 png_from_rgba(w, h, rgba))
             tex_by_ddj[tex_slug] = True
-        prov = bms_to_asset_prov(bms_blob)
         mesh_entries.append({
-            "msh": msh_slug, "tex": tex_slug, "skinned": True,
+            "msh": msh_slug, "tex": tex_slug, "skinned": skinned,
             "material": material_ref, "bms_path": bms_path, "ddj_path": ddj_path,
             "vcount": prov["asset"]["vertex_count"],
             "tcount": prov["asset"]["triangle_count"],
-            "skin_records": prov["asset"]["skin_records"],
-            "bone_count": prov["asset"]["bone_count"],
+            "skin_records": prov["asset"].get("skin_records", 0),
+            "bone_count": prov["asset"].get("bone_count", 0),
         })
 
     anim_entries = []
