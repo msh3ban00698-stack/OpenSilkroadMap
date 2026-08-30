@@ -209,6 +209,16 @@ s6  4 B  (0)
   Static rendering (Phase 17 MSH1) keeps **every** vertex because real trees
   legitimately carry flags≠0 (tre_tree03_02: 49/154 flags==2 canopy vertices);
   `non_static_vertices` is recorded, nothing is dropped.
+- **Phase 18 proves the per-vertex SKIN BLOCK** (inside the bone section,
+  between the bone-name table end and `offsets[1]`): 6 B/vertex
+  `[u8 bone1][u16 weight1][u8 bone2][u16 weight2]`; `0xFF` bone sentinel
+  (⇒ `weight2=0`), single-influence vertices carry `weight2=0`; span ==
+  6 × vertex_count byte-exhausts on every skinned sample. Weights are NOT
+  normalized to 65535 (two-influence sums are mesh-dependent: bandit_part1 min
+  sum 49,146; bandit_sword has zero two-influence vertices). `skinned_vertex_count`
+  (u32@0x80−4) is mesh-dependent UNKNOWN. The u32@36 tail `bone_index` is still
+  NOT a local skin index (values reach 151 beyond any local table) — the skin
+  block's `bone1/bone2` ARE local bone-table indices (b1,b2 < bone_count proven).
 - `morph80` (5 files) and `morph_trailing` (1): 80 B/vertex with 4 f32 weight
   streams; field-by-field layout UNKNOWN. Classified, not decoded.
 - The 7th optional header offset u32@0x28 (`off7`, e.g. nature_tree=2086) and
@@ -268,38 +278,68 @@ an older, file-referencing variant.
 
 ---
 
-## 5. `.bsk` / `.bsr` — skeleton animation / mesh resource — **SAMPLED; LAYOUT UNKNOWN**
+## 5. `.bsk` / `.bsr` — skeleton animation / mesh resource — **FULLY PROVEN (Phase 18)**
 
-Sampled (Phase 13 Part F; `scripts/test_phase13_bsk_bsr.py`, fixture
-`scripts/testdata/formats/bsk_bsr_samples.json`).
+Phase 18 replaces the Phase 13 sampling with byte-exact decoders
+(`scripts/bsk_decoder.py`, `scripts/bsr_decoder.py`; fixtures
+`scripts/testdata/formats/bsk_phase18.json`, `bsr_phase18.json`).
 
-### `.bsk` (`JMXVBSK 0101`)
+### `.bsk` (`JMXVBSK 0101`) — **DONE (1034/1035 byte-exact)**
 
-- 1,034 non-empty files in Data.pk2 (1 of 1,039 zero-byte; 1 corrupt magic
-  `BSK e...`). Version constant `0101`.
-- Header: `u32` count @12 (values 2–55, e.g. 6 for `w_cd_boat.bsk`, 55 for
-  `flame_crazy_stand01.bsk`).
-- Embeds skeleton **bone names** (`[root]`, `Bip01`, `Bip01 Pelvis`,
-  `Bip01 Spine`, `Bip01 L Thigh`, `Bone01`–`Bone09` …) — same naming family as
-  `.ban`.
-- Body: quaternion/position keyframe floats (visible `0x0000803f` = 1.0,
-  ±0.5-ish quat values in `w_cd_boat.bsk`). Layout/semantics of the keyframe
-  stream **UNKNOWN** (bone-name count ≠ count@12 → count is not a plain bone
-  count). Decoder: **none**.
+```
+0x00  char[12]  magic "JMXVBSK 0101"
+0x0C  u32       bone_count            (bandit 35, blackrobber 35, chinaman_skel 38,
+                                       horse1 31, islamman 43)
+per bone:
+     u8         bone_type             (opaque; semantics UNKNOWN)
+     str        name                  (u32 len + ascii, no NUL)
+     str        parent                ("" for the root)
+     21 x f32   rot_parent4 tr_parent3 rot_origin4 tr_origin3 rot_local4 tr_local3
+     u32        child_count + child_count x (u32 len + ascii name)
+trailer:        8 zero bytes
+```
 
-### `.bsr` (`JMXVRES xxxx` — NOT `JMXVBSR`)
+Census: **1,034 / 1,035** nonzero `Data.pk2` `.bsk` byte-exhaust (4 zero-byte
+files); single outlier `/prim/skel/item/common/mob_select.bsk` structure
+**UNKNOWN** (skipped, not guessed). Only `rot_parent`/`tr_parent` feed the proven
+bind pose; `bone_type`, rot_origin/tr_origin/rot_local/tr_local semantics
+**UNKNOWN**.
 
-- 7,549 files in Data.pk2; magic is `JMXVRES 0109` (7,545) + `0108` (3) +
-  `0107` (1).
-- Header: **8 × `u32`** offset table @12..40 (values < file size but **NOT**
-  monotonic — unlike `.bms`, this is not a simple section table; e.g.
-  `[201, 255, 387, 375, 391, 418, 422, 145]` for `avatar_w_angel_wing_dress.bsr`).
-- Body: u32-length-prefixed **asset path references** to `.bmt` (materials) and
-  `.bms` (mesh parts), e.g. `prim\mtrl\item\etc\avatar_w_angel_wing.bmt` +
-  `avatar_w_angel_wing_dress_part1.bms` + `...part2.bms`; plus string tokens
-  (`default`, `ambient`) and small u32 counters. This is a **resource
-  linker/attachment** file (mesh + material + optional part meshes).
-  Record layout **UNKNOWN**. Decoder: **none**.
+### `.bsk` quaternion convention — **PROVEN `[x,y,z,w]` (Phase 18)**
+
+Bind pose chaining with quaternions read as `[x,y,z,w]` aligns the bandit
+skeleton to its REAL mesh bounds (L Toe0 world y ≈ 0.02 vs mesh ground 0.03;
+pelvis 6.94; head 12.38; hands ±8.2 at shoulder height). The `wxyz` reading was
+discarded (planted toes at y ≈ 2.5 vs real feet 4.8–6.8). See
+`scripts/skeleton.py` + `scripts/test_phase18_skeleton.py` (9 tests).
+
+### `.bsr` (`JMXVRES 0109/0108/0107`) — **DONE (path groups + classification)**
+
+```
+0x00  char[12]  magic "JMXVRES 0109"  (0108 x3, 0107 x1)
+0x0C  8 x u32   table                 (non-monotonic values; semantics UNKNOWN)
+0x2C  16 bytes  zeros
+0x3C  body      [u32 len][ascii token] runs
+```
+
+- Tokens classified by extension: `.bmt` (materials), `.bms` (mesh parts),
+  `.ban` (animations), `.bsk` (skeleton), `.efp` (effects), `.wav` (sounds).
+- `is_character` = file references a `.bsk`; for characters the group order
+  `bmt → bms → ban → bsk → efp → wav` is ASSERTED (static-object bsrs like
+  tre_tree03 interleave and are deliberately not asserted).
+- bandit: 3 bmt + 3 bms + **16 ban** + 1 bsk + 7 efp + 16 wav; chinaquest_priest
+  1+3+2+1; movoi 15 ban.
+
+### BAN pose evaluation — **DONE (Phase 18)**
+
+`scripts/animation_pose.py` aligns per-bone channels to GLOBAL timestamps and
+interpolates between adjacent PROVEN keyframes (slerp for rotation, lerp for
+position); unanimated bones fall back to bind `rot_parent`/`tr_parent`.
+bandit_stand01: 2000 ms / 5 kf / 34 channels; bandit_walk: 1333 ms / 15 kf /
+34 channels (irregular 33/133/266 ms timestamps justify adjacent-key
+interpolation). Fixtures `ban_phase18_samples/` + `ban_phase18.json`; tests
+`scripts/test_phase18_animation.py` (10). Runtime playback UNKNOWN (renderer
+draws the static bind pose).
 
 ---
 
@@ -402,6 +442,38 @@ u16 x tcount*3 indices
 `bms_to_msh` / `read_msh` round-trip byte-identical; `non_static_vertices` is
 informative (real trees legitimately carry `flags != 0` — dropping them removed
 real canopy geometry, so MSH1 keeps every vertex).
+
+### MSH v2 — skinned Android mesh asset (Phase 18) — **PROVEN round-trip**
+
+```
+[4B "MSH1"][u8 version=2][u8 layout 0/1][u16 flags bit0=uv2, bit1=has_skin]
+[u32 vcount][u32 tcount][u32 skinned_vertex_count (informative)][u16 tex_index][u16 reserved]
+vcount x 32 B | 40 B vertex records
+vcount x 6 B  skin records [u8 bone1][u16 weight1][u8 bone2][u16 weight2]
+u16 x tcount*3 indices
+u32 bone_count + bone_count x (u32 name_len + ascii name)
+```
+
+Produced by `scripts/bms_to_asset.py::bms_to_msh_skinned`; `read_msh` round-trips
+v1 + v2. Bandit parts: sword (1 bone `Bip01 R Hand`), part1 (18 bones), part2
+(17 bones) — mesh bone names ⊆ the 35-bone skeleton (proven).
+
+### Character chain (Phase 18) — **PROVEN end-to-end for bandit**
+
+```
+characterdata_*.txt col1=refid 1949 -> col52 "mob\china\bandit.bsr"
+.bsr -> .bmt (bandit/clone/champ) + .bms parts + 16 .ban + .bsk + 7 .efp + 16 .wav
+.bms part -> material name (header names[1]) -> .ddj via .bmt (case-insensitive)
+.ddj -> DDS -> RGBA PNG (committed tex/*.png)
+.bms -> MSH v2 skinned mesh (committed mesh/*.msh)
+.bsk -> skeleton.json (35 bones, [x,y,z,w], bind_world_rot/pos)
+.ban -> decoded keyframe JSON (stand01/walk committed)
+npcpos row refid 1949 -> region/local -> world (ref sector 156x89)
+```
+
+Committed under `android/app/src/main/assets/game/world/characters/bandit/` with
+`provenance.json` recording the sha256 of every original input
+(`scripts/build_character_manifest.py`, 17 tests, byte-identical rebuild).
 
 ### World placement
 

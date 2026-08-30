@@ -162,9 +162,9 @@
 
 **Player status:** DONE for assets (chinaman_skel + man_* + bans exist and parse); PLAYER RENDERING same BLOCKED-as-device-untested caveat as NPC; explicit missing-evidence list if any column/field unproven.
 
-- [ ] **Step 1: update docs + write report** (18-metric matrix per spec Part O, statuses DONE/PARTIAL/BLOCKED/UNKNOWN/NOT EXECUTED).
-- [ ] **Step 2: full regression re-run** (all 23+ suites) green.
-- [ ] **Step 3: Commit**
+- [x] **Step 1: update docs + write report** (`PHASE_18_REPORT.md` 18-metric matrix; `FORMAT_RESEARCH.md` §3/§5/§8; `DATA_FORMAT_CATALOG.md` bsk/bsr→VERIFIED, bms skin, rollup 17,525/40,944; `ANDROID_DATA_CONVERSION_STATUS.md` Phase 18 section + summary; `ANDROID_ASSET_DEPENDENCY_GRAPH.json` regenerated = 26 edges, deterministic no-diff).
+- [x] **Step 2: full regression re-run** green — 294 tests, 13 skipped (~328 s); Phase 18 + graph suites re-verified after doc edits (85 tests, OK).
+- [x] **Step 3: Commit**
 
 ### Task 9: Git discipline (Part P)
 

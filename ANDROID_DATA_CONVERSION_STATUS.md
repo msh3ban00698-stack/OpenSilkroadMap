@@ -119,16 +119,45 @@ record counts, schema width, content spot checks) and listed in
 - Executed evidence: `scripts/test_phase17_*.py` (32 tests, all OK); full 23-suite
   regression green.
 
+### Phase 18 — skinned NPC character pipeline
+
+- **Character chain PROVEN end-to-end for the bandit NPC** (refid 1949):
+  `characterdata_*.txt` (Media.pk2) col1=refid → col52 `mob\china\bandit.bsr`
+  → `{3 .bmt, 3 .bms, 16 .ban, 1 .bsk, 7 .efp, 16 .wav}` (`scripts/bsr_decoder.py`).
+- **BSK decoded** (`scripts/bsk_decoder.py`): byte-exhausts 1,034/1,035 nonzero
+  `.bsk`; bandit = 35 bones; quaternion convention **PROVEN `[x,y,z,w]`**; bind
+  pose aligned to real mesh bounds.
+- **BMS per-vertex skin block decoded** (`scripts/bms_decoder.py::parse_skin_data`):
+  6 B/vertex `[u8 b1][u16 w1][u8 b2][u16 w2]`, 0xFF sentinel, single-influence
+  `w2=0`.
+- **BAN pose evaluation** (`scripts/animation_pose.py`): slerp/pos-lerp between
+  adjacent PROVEN keyframes; bandit_stand01 2000 ms, bandit_walk 1333 ms.
+- **CONVERTED and committed** under
+  `android/app/src/main/assets/game/world/characters/bandit/`:
+  `skeleton.json` (35 bones, bind world), 3 MSH v2 skinned meshes
+  (`scripts/bms_to_asset.py::bms_to_msh_skinned`), 3 real `.ddj`→PNG textures,
+  `anims.tsv` + 2 animation JSON, `npc_placements.tsv` (60 real spawns, 31
+  sectors, 2 on committed terrain 156x90), `provenance.json` (sha256 of every
+  input). `scripts/build_character_manifest.py` (17 tests) rebuilds
+  byte-identically.
+- Java: `CharacterMeshIndex` (Android-free loaders + minimal JSON parser +
+  bind-pose `skinnedBindPositions` = Σ(w/Σw)·(R·v+t)), `StaticMeshAsset` MSH v2
+  parser, `NativeWorldRenderer.drawCharacters` (static bind pose, theta=0
+  UNKNOWN), `GameActivity` wiring. `CharacterMeshIndexTest` (JVM) +
+  `GameActivityTest` additions written but **NOT EXECUTED** (no JDK/Android SDK).
+- Executed evidence: 5 new Phase 18 Python suites (52 tests) + full 24-suite
+  regression **294 tests, 13 skipped, OK**.
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|
 | `ban` | 4,796 | **FULL layout** (Phase 13 Part D): magic/version; reserved; u32 name-len + name; u32 duration + frame-rate(30) + u32 UNKNOWN + kpb; kpb×u32 timestamps; bone count + per-bone name + kf-count + kpb×28-byte keyframes (quat + pos). Decoder `scripts/ban_decoder.py`, 8 tests. | semantic only: `u32`@body+8, reserved 8 bytes |
-| `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB; **vertex layout PROVEN: 44 B standard (17,247) / 52 B lightmap (5,399) / 80 B morph (6) / 32 unproven**; `scripts/bms_decoder.py`, 16 tests (Phase 16). | skinned/flags==2 tail semantics (u32@36 is NOT a local bone index); 80 B morph fields; trailing bytes. Static (flags==0) meshes fully decodable. |
+| `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB; **vertex layout PROVEN: 44 B standard (17,247) / 52 B lightmap (5,399) / 80 B morph (6) / 32 unproven**; **per-vertex SKIN BLOCK proven (Phase 18)**; `scripts/bms_decoder.py`, 16+7 tests. | skinned/flags==2 tail semantics (u32@36 is NOT a local bone index); 80 B morph fields; trailing bytes. Static (flags==0) meshes fully decodable. |
 | `nvm` | 6,041 | flat 8-byte nav-cell records; 96×96 (9,216) grid; f32 region; trailing fill. 5 tests. | nav-cell semantics |
 | `efp` | 3,395 | version tree + u32-length-prefixed command stream. 11 tests. | command-stream semantics |
-| `bsk` | 1,039 | magic/version; body sampled. 9 tests (shared). | bone/keyframe layout |
-| `bsr` | 7,549 | magic `JMXVRES`; u32-length-prefixed `.bmt`/`.bms` paths. 9 tests (shared). | record layout |
+| `bsk` | 1,039 | **FULL layout (Phase 18)**: u32 bone_count@12; per bone u8 type + name + parent + 21×f32 (rot_parent/tr_parent/rot_origin/tr_origin/rot_local/tr_local) + child_count + children + 8-byte trailer; byte-exhausts 1,034/1,035. `scripts/bsk_decoder.py`, 9 tests. | `bone_type` u8; origin/local transform usage; `mob_select.bsk` outlier |
+| `bsr` | 7,549 | **FULL layout (Phase 18)**: 8×u32 table@12 + 16 zero bytes + body@0x3C u32-len-prefixed token stream; classified `.bmt/.bms/.ban/.bsk/.efp/.wav`; `is_character` = has `.bsk`; group order asserted for characters. `scripts/bsr_decoder.py`. | 8×u32 header table semantics |
 
 ## 5. DECODED, conversion deferred (backlog, do not claim as done)
 
@@ -138,8 +167,8 @@ record counts, schema width, content spot checks) and listed in
 | `tga` | 15 | header verified | decode + convert |
 | `m` (remaining height grids) | 4,491 | 23 grids converted in Phase 10 | convert all grids |
 | `nvm` navmesh | 6,041 | partial structure proven (see section 4) | full structure, extraction of walkable surfaces |
-| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven; `bms`/`bsr` partial structure (section 4) | full geometry/material pipeline |
-| `bsk` | 1,039 | magic confirmed + body sampled (section 4) | skeleton decode |
+| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven; `bms` (incl. skin block) / `bsr` fully decoded for characters (section 4); **bandit chain converted to MSH v2 + PNG (Phase 18)** | convert every mesh/material; full geometry/material pipeline |
+| `bsk` | 1,039 | **FULL decode (Phase 18, section 4)**; **bandit skeleton.json committed** | convert every skeleton; player skeleton manifests |
 | `efp` | 3,395 | version tree + command stream proven (section 4) | particle system decode |
 | `wav` (2,454 remaining) / `ogg` (0 remaining) | 2,454 | decode proven on samples; **Phase 12 converted all 50 `ogg` + 431 `wav`** (`/prim/snd/monster`) with provenance manifest | convert remaining wav sets |
 | `2dt` (CNIF text-data) | 51 | container magic confirmed | CNIF string-table decode |
@@ -160,11 +189,14 @@ record counts, schema width, content spot checks) and listed in
   23 `.hg` + `regions.tsv` + 21 textdata TSVs (Phase 11) + **663 worldmap
   textures (WebP: 632 `map_world_` tiles + 31 named) + 50 OGG + 431 WAV** with
   provenance manifests (`TEXTURE_CONVERSION_MANIFEST.tsv`,
-  `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12 + Phase 13 Part C).
-- Formats fully decoded: **14** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
-  ddj, m, o2, ban — the last four through committed Phase 5–13 converters).
-- Formats with a committed decoder for a proven subset: **5** (nvm, bms, efp,
-  bsk, bsr — Phase 13 partial structure).
+  `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12 + Phase 13 Part C) + **Phase 17
+  real object assets** (`game/world/objects/`: 6 MSH1 + 6 PNG + models/placements)
+  + **Phase 18 character assets** (`game/world/characters/bandit/`: skeleton.json,
+  3 MSH v2 + 3 PNG, anims.tsv + 2 anim JSON, npc_placements.tsv, provenance.json).
+- Formats fully decoded: **16** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
+  ddj, m, o2, ban, **bsk, bsr** — bsk/bsr via committed Phase 18 decoders).
+- Formats with a committed decoder for a proven subset: **3** (nvm, bms, efp —
+  bms now includes the proven per-vertex skin block).
 - Formats decoded at sample level (magic verified), decoder pending: **8**
   (t, o, bmt, cpd, dof, mfo, 2dt, sfk).
 - Formats fully unknown: **4** (`dat`, `db`, `scc`, `msf`) + encrypted client
