@@ -1,0 +1,2773 @@
+{
+ "datasets": {
+  "characterdata.tsv": {
+   "columns": 1,
+   "columns_detail": [
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "str": 9
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "index",
+   "records": 9,
+   "source_path": "/server_dep/silkroad/textdata/characterdata.txt"
+  },
+  "gameworldconfigdata.tsv": {
+   "columns": 5,
+   "columns_detail": [
+    {
+     "dominant": "str",
+     "evidence": "GROUP_* codes",
+     "name": "group_code",
+     "types": {
+      "str": 1027
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "REF_* codes",
+     "name": "ref_code",
+     "types": {
+      "str": 1027
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "STRING/INT-like type tag",
+     "name": "data_type",
+     "types": {
+      "str": 1027
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "config key",
+     "name": "key",
+     "types": {
+      "int": 546,
+      "str": 481
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "config value",
+     "name": "value",
+     "types": {
+      "empty": 1027
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 1027,
+   "source_path": "/server_dep/silkroad/textdata/gameworldconfigdata.txt"
+  },
+  "gameworlddata.tsv": {
+   "columns": 7,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 115
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "world code e.g. INS_DEFAULT",
+     "name": "code",
+     "types": {
+      "str": 115
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 115
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "int": 115
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 115
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "str": 115
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "empty": 115
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 115,
+   "source_path": "/server_dep/silkroad/textdata/gameworlddata.txt"
+  },
+  "itemdata.tsv": {
+   "columns": 1,
+   "columns_detail": [
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "str": 9
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "index",
+   "records": 9,
+   "source_path": "/server_dep/silkroad/textdata/itemdata.txt"
+  },
+  "leveldata.tsv": {
+   "columns": 10,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "1..150 ascending",
+     "name": "level",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 150
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "empty": 150
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 150,
+   "source_path": "/server_dep/silkroad/textdata/leveldata.txt"
+  },
+  "levelgold.tsv": {
+   "columns": 3,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "1..140 ascending",
+     "name": "level",
+     "types": {
+      "int": 140
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 140
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 140
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 140,
+   "source_path": "/server_dep/silkroad/textdata/levelgold.txt"
+  },
+  "npcpos.tsv": {
+   "columns": 5,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "joins characterdata_*.txt col1 for 1180/1180 distinct ids",
+     "name": "character_refid",
+     "types": {
+      "int": 18457
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins regioncode.txt col1 for 1800/1855 distinct codes; unpack_region gives sector",
+     "name": "region_code",
+     "types": {
+      "int": 18457
+     }
+    },
+    {
+     "dominant": "float",
+     "evidence": "sector-local x, [0, 1920) for world rows (Phase 13 verified)",
+     "name": "local_x",
+     "types": {
+      "float": 18230,
+      "int": 227
+     }
+    },
+    {
+     "dominant": "float",
+     "evidence": "height axis; ~0 across records",
+     "name": "height_y",
+     "types": {
+      "float": 16020,
+      "int": 2437
+     }
+    },
+    {
+     "dominant": "float",
+     "evidence": "sector-local z, [0, 1920) for world rows (Phase 13 verified)",
+     "name": "local_z",
+     "types": {
+      "float": 18182,
+      "int": 275
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 18457,
+   "source_path": "/server_dep/silkroad/textdata/npcpos.txt"
+  },
+  "questdata.tsv": {
+   "columns": 12,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 1004
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "Q* string codes",
+     "name": "quest_code",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "int": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "str": 1004
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "empty": 1004
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 1004,
+   "source_path": "/server_dep/silkroad/textdata/questdata.txt"
+  },
+  "refoptionalteleport.tsv": {
+   "columns": 20,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "str": 44
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "str": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "str": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "str": 44
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "int": 44
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "str": 44
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col19",
+     "types": {
+      "empty": 44
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 44,
+   "source_path": "/server_dep/silkroad/textdata/refoptionalteleport.txt"
+  },
+  "refquestrewarditems.tsv": {
+   "columns": 13,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "QNO_* codes, subset of refqusetreward.col1",
+     "name": "quest_code",
+     "types": {
+      "str": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "ITEM_* codes; 316/318 present in itemdata_*.txt col2",
+     "name": "item_code",
+     "types": {
+      "str": 373
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "str": 373
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "str": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 373
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "empty": 373
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 373,
+   "source_path": "/server_dep/silkroad/textdata/refquestrewarditems.txt"
+  },
+  "refqusetreward.tsv": {
+   "columns": 26,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "QNO_* codes; refquestrewarditems.col1 is a subset",
+     "name": "quest_code",
+     "types": {
+      "str": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "str": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col19",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col20",
+     "types": {
+      "str": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col21",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col22",
+     "types": {
+      "str": 995
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col23",
+     "types": {
+      "int": 995
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col24",
+     "types": {
+      "str": 995
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col25",
+     "types": {
+      "empty": 995
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 995,
+   "source_path": "/server_dep/silkroad/textdata/refqusetreward.txt"
+  },
+  "refshop.tsv": {
+   "columns": 13,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins refshopgoods.col1 (both value 15 in committed set)",
+     "name": "shop_id",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "MALL_* / STORE_* codes",
+     "name": "shop_code",
+     "types": {
+      "str": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "str": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "str": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "str": 78
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 78
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "str": 78
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "empty": 78
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 78,
+   "source_path": "/server_dep/silkroad/textdata/refshop.txt"
+  },
+  "refshopgoods.tsv": {
+   "columns": 14,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins refshop.col1",
+     "name": "shop_id",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "joins refshoptab.txt col3",
+     "name": "category_code",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "PACKAGE_ITEM_* codes",
+     "name": "item_code",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 2282
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "str": 2282
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "empty": 2282
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 2282,
+   "source_path": "/server_dep/silkroad/textdata/refshopgoods.txt"
+  },
+  "regioncode.tsv": {
+   "columns": 4,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 3294
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "int region code",
+     "name": "region_id",
+     "types": {
+      "int": 3294
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "string; source value 'xxx' placeholder",
+     "name": "name",
+     "types": {
+      "str": 3294
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "string; source value 'xxx' placeholder",
+     "name": "name2",
+     "types": {
+      "str": 3294
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 3294,
+   "source_path": "/server_dep/silkroad/textdata/regioncode.txt"
+  },
+  "skilldata.tsv": {
+   "columns": 1,
+   "columns_detail": [
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "str": 7
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "index",
+   "records": 7,
+   "source_path": "/server_dep/silkroad/textdata/skilldata.txt"
+  },
+  "teleportbuilding.tsv": {
+   "columns": 59,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins teleportdata.col3",
+     "name": "gate_id",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "STORE_* / *_GATE codes",
+     "name": "building_code",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col19",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col20",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col21",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col22",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col23",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col24",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col25",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col26",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col27",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col28",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col29",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col30",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col31",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col32",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col33",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col34",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col35",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col36",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col37",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col38",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col39",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col40",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col41",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col42",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col43",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col44",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col45",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col46",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col47",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col48",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col49",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col50",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col51",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col52",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col53",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col54",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col55",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col56",
+     "types": {
+      "str": 106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col57",
+     "types": {
+      "int": 106
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col58",
+     "types": {
+      "empty": 106
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 106,
+   "source_path": "/server_dep/silkroad/textdata/teleportbuilding.txt"
+  },
+  "teleportdata.tsv": {
+   "columns": 14,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "GATE_* codes",
+     "name": "gate_code",
+     "types": {
+      "str": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins teleportbuilding.col1 for 101/135 ids",
+     "name": "gate_id",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "SN_ZONE_* codes",
+     "name": "zone_code",
+     "types": {
+      "int": 2,
+      "str": 244
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "int zone id",
+     "name": "zone_id",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 246
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "empty": 246
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 246,
+   "source_path": "/server_dep/silkroad/textdata/teleportdata.txt"
+  },
+  "teleportlink.tsv": {
+   "columns": 23,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col19",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col20",
+     "types": {
+      "int": 351
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col21",
+     "types": {
+      "empty": 47,
+      "int": 304
+     }
+    },
+    {
+     "dominant": "empty",
+     "evidence": "semantics not verified",
+     "name": "col22",
+     "types": {
+      "empty": 351
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 351,
+   "source_path": "/server_dep/silkroad/textdata/teleportlink.txt"
+  },
+  "worldmap_instanceinfo.tsv": {
+   "columns": 11,
+   "columns_detail": [
+    {
+     "dominant": "str",
+     "evidence": "Worldmap_* codes",
+     "name": "code",
+     "types": {
+      "str": 23
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "Korean name",
+     "name": "name",
+     "types": {
+      "str": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins regions.tsv cell x (23/23 matched)",
+     "name": "region_cell_x",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "joins regions.tsv cell y (23/23 matched)",
+     "name": "region_cell_y",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 23
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "int": 23
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 23,
+   "source_path": "/server_dep/silkroad/textdata/worldmap_instanceinfo.txt"
+  },
+  "worldmap_localinfo.tsv": {
+   "columns": 22,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col0",
+     "types": {
+      "int": 1116
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "int zone id",
+     "name": "zone_id",
+     "types": {
+      "int": 1116
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col2",
+     "types": {
+      "int": 1116
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "SN_ZONE_* codes",
+     "name": "zone_code",
+     "types": {
+      "str": 1116
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "Korean name",
+     "name": "name",
+     "types": {
+      "str": 1116
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "Korean description",
+     "name": "description",
+     "types": {
+      "str": 1116
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "str": 1116
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "empty": 9,
+      "int": 1107
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "empty": 8,
+      "int": 1108
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "empty": 10,
+      "int": 1106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col10",
+     "types": {
+      "empty": 10,
+      "int": 1106
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col11",
+     "types": {
+      "empty": 11,
+      "int": 1105
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "empty": 11,
+      "int": 1105
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "empty": 9,
+      "int": 1107
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "empty": 9,
+      "int": 1107
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "empty": 20,
+      "int": 1096
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "empty": 20,
+      "int": 1096
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "empty": 20,
+      "int": 1096
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "empty": 19,
+      "int": 1097
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col19",
+     "types": {
+      "empty": 19,
+      "int": 1097
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col20",
+     "types": {
+      "empty": 25,
+      "int": 1091
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col21",
+     "types": {
+      "empty": 191,
+      "str": 925
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 1116,
+   "source_path": "/server_dep/silkroad/textdata/worldmap_localinfo.txt"
+  },
+  "worldmap_mapinfo.tsv": {
+   "columns": 23,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "int map id",
+     "name": "map_id",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col1",
+     "types": {
+      "int": 32,
+      "str": 25
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "Korean name",
+     "name": "name",
+     "types": {
+      "str": 57
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "backslash path to interface .ddj texture",
+     "name": "texture_ddj_path",
+     "types": {
+      "int": 25,
+      "str": 32
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col5",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col6",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col7",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col8",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col9",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "region cell x (166 for Jangan)",
+     "name": "cell_x",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "region cell y (99 for Jangan)",
+     "name": "cell_y",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "float": 19,
+      "int": 38
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "int": 32,
+      "str": 25
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "int": 32,
+      "str": 25
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col18",
+     "types": {
+      "int": 25,
+      "str": 32
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "UIIT_* string reference",
+     "name": "ui_text_ref",
+     "types": {
+      "int": 25,
+      "str": 32
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col20",
+     "types": {
+      "int": 56,
+      "str": 1
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "'4x4' style grid descriptor",
+     "name": "grid_size",
+     "types": {
+      "empty": 1,
+      "int": 25,
+      "str": 31
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col22",
+     "types": {
+      "empty": 21,
+      "float": 6,
+      "int": 28
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 57,
+   "source_path": "/server_dep/silkroad/textdata/worldmap_mapinfo.txt"
+  }
+ },
+ "edges": [
+  {
+   "from": {
+    "column": 0,
+    "dataset": "npcpos.tsv",
+    "name": "character_refid"
+   },
+   "matched": 1180,
+   "note": "every distinct spawn character refid resolves to a characterdata entry",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "characterdata_*.txt (tiers)",
+    "name": "refid"
+   },
+   "total": 1180
+  },
+  {
+   "from": {
+    "column": 1,
+    "dataset": "npcpos.tsv",
+    "name": "region_code"
+   },
+   "matched": 1800,
+   "note": "1800/1855 distinct region codes exist in regioncode.tsv; the 55 unmatched include 21 negative (dungeon/instance) codes",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "regioncode.tsv",
+    "name": "region_id"
+   },
+   "total": 1855
+  },
+  {
+   "from": {
+    "column": 3,
+    "dataset": "refquestrewarditems.tsv",
+    "name": "item_code"
+   },
+   "matched": 316,
+   "note": "2 unmatched: ITEM_QNO_EU_CONS_12_02 (not in checked tiers) and 'xxx' placeholder",
+   "status": "VERIFIED",
+   "to": {
+    "column": 2,
+    "dataset": "itemdata_*.txt (tiers)",
+    "name": "item code"
+   },
+   "total": 318
+  },
+  {
+   "from": {
+    "column": 1,
+    "dataset": "refqusetreward.tsv",
+    "name": "quest_code"
+   },
+   "matched": 140,
+   "note": "every reward-item quest code exists in the quest reward list",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "refquestrewarditems.tsv",
+    "name": "quest_code"
+   },
+   "total": 140
+  },
+  {
+   "from": {
+    "column": 3,
+    "dataset": "teleportdata.tsv",
+    "name": "gate_id"
+   },
+   "matched": 101,
+   "note": "unmatched: 0 (special), 19495-19497 and 2011 not in teleportbuilding",
+   "status": "PARTIAL",
+   "to": {
+    "column": 1,
+    "dataset": "teleportbuilding.tsv",
+    "name": "gate_id"
+   },
+   "total": 135
+  },
+  {
+   "from": {
+    "column": 1,
+    "dataset": "refshopgoods.tsv",
+    "name": "shop_id"
+   },
+   "matched": 1,
+   "note": "committed set holds a single shop id (15)",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "refshop.tsv",
+    "name": "shop_id"
+   },
+   "total": 1
+  },
+  {
+   "from": {
+    "column": 2,
+    "dataset": "refshopgoods.tsv",
+    "name": "category_code"
+   },
+   "matched": 164,
+   "note": "every refshopgoods category code exists in refshoptab.txt col3",
+   "status": "VERIFIED",
+   "to": {
+    "column": 3,
+    "dataset": "refshoptab.txt",
+    "name": "tab code"
+   },
+   "total": 164
+  },
+  {
+   "from": {
+    "column": 2,
+    "dataset": "worldmap_instanceinfo.tsv",
+    "name": "region_cell_x"
+   },
+   "matched": 23,
+   "note": "all instance cells (e.g. ThiefTown 182:96) exist in regions.tsv",
+   "status": "VERIFIED",
+   "to": {
+    "column": "cells",
+    "dataset": "regions.tsv",
+    "name": "cell"
+   },
+   "total": 23
+  },
+  {
+   "from": {
+    "column": 3,
+    "dataset": "worldmap_mapinfo.tsv",
+    "name": "texture_ddj_path"
+   },
+   "matched": 31,
+   "note": "31/57 paths resolve to a file in Media.pk2 (all *.ddj); the unresolved set includes extension-less 'map_world_' style entries",
+   "status": "PARTIAL",
+   "to": {
+    "column": "path",
+    "dataset": "Media.pk2 interface/ *.ddj",
+    "name": "texture"
+   },
+   "total": 57
+  }
+ ]
+}

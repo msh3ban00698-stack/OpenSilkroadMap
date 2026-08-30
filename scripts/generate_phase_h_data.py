@@ -1,10 +1,12 @@
 import os
 import sys
 
+import sro_paths
+
 sys.stdout.reconfigure(encoding="utf-8")
 
-BASE = "game_source/Media/server_dep/silkroad/textdata"
-OUT = "map/src/game/data"
+BASE = sro_paths.textdata_dir(sro_paths.DEFAULT_SOURCE_DIR)
+OUT = sro_paths.DEFAULT_PHASE_H_DIR
 
 
 def read_utf16(name):
@@ -28,7 +30,24 @@ def build_translations(filenames):
     return tr
 
 
-def main():
+def main(argv=None):
+    parser = sro_paths.make_parser(
+        "Generate Phase H starter JSON from extracted textdata",
+        source=True,
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Phase H JSON output (default: map/src/game/data)",
+    )
+    args = parser.parse_args(argv)
+    global BASE, OUT
+    source = sro_paths.resolve_source_dir(args.source_dir)
+    BASE = sro_paths.textdata_dir(source)
+    OUT = sro_paths.resolve_phase_h_dir(args.output_dir)
+    if not os.path.isdir(BASE):
+        print(f"Error: Directory {BASE} not found.")
+        sys.exit(1)
     os.makedirs(OUT, exist_ok=True)
     trans = build_translations(["textdata_equip&skill.txt", "textdata_object.txt"])
 

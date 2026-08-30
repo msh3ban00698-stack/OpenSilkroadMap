@@ -8,17 +8,17 @@ under map/public/assets/img/silkroad/icons/<flat-name>.webp.
 Usage: python3 scripts/extract_icons.py
 """
 
+import argparse
 import json
 import os
 import sys
 
-from PIL import Image
+import sro_paths
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from extract_ui import PK2ROOT, load_ddj, parse_listing  # noqa: E402
+from extract_ui import load_ddj, parse_listing  # noqa: E402
 
 OUT = "map/public/assets/img/silkroad/icons"
-MEDIA_PK2 = os.path.join(PK2ROOT, "pk2", "Media.pk2")
 GAMEDATA = "map/public/assets/gamedata"
 
 
@@ -50,14 +50,23 @@ def resolve_candidates(rel):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Extract item/skill icons from Media.pk2")
+    sro_paths.add_common_args(parser, pk2=True, output=True)
+    args = parser.parse_args()
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
+    media = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Media.pk2"))
     os.makedirs(OUT, exist_ok=True)
-    from extract_ui import media  # noqa: E402
 
     wanted = wanted_icons()
     print(f"{len(wanted)} unique icons referenced")
 
     index = {}
-    for p in parse_listing(os.path.join(PK2ROOT, "listing_media.txt")):
+    for p in parse_listing(sro_paths.listing_path(pk2_dir, "listing_media.txt")):
         low = p.lower()
         for root in ("icon64/", "icon/", "skill/", "pet2/", "item/", "legendrpet/"):
             if root == "icon64/" or root == "icon/":

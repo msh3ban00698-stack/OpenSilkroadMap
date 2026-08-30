@@ -7,27 +7,23 @@ Minimaps: Constantinople-window tiles from Media.pk2 minimap tree
 Usage: python3 scripts/extract_audio_minimaps.py
 """
 
+import argparse
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, "/tmp/opencode/vsro")
+import sro_paths
 
-import pk2reader  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from extract_ui import load_ddj, parse_listing  # noqa: E402
 
-PK2ROOT = "/tmp/opencode/vsro"
 MUSIC_OUT = "map/public/assets/audio/music"
 MINIMAP_OUT = "map/public/assets/img/silkroad/game/minimap"
 
-music = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Music.pk2"))
-media = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Media.pk2"))
 
-
-def extract_music():
+def extract_music(music, pk2_dir):
     os.makedirs(MUSIC_OUT, exist_ok=True)
     ok = 0
-    for p in parse_listing(os.path.join(PK2ROOT, "listing_music.txt")):
+    for p in parse_listing(sro_paths.listing_path(pk2_dir, "listing_music.txt")):
         name = os.path.basename(p)
         dest = os.path.join(MUSIC_OUT, name.lower())
         if os.path.exists(dest):
@@ -44,11 +40,11 @@ def extract_music():
     print(f"music: {ok} tracks")
 
 
-def extract_minimaps():
+def extract_minimaps(media, pk2_dir):
     """CT window tiles: minimap/{76..81}x{103..108}.ddj"""
     os.makedirs(MINIMAP_OUT, exist_ok=True)
     wanted = {}
-    for p in parse_listing(os.path.join(PK2ROOT, "listing_media.txt")):
+    for p in parse_listing(sro_paths.listing_path(pk2_dir, "listing_media.txt")):
         low = p.lower()
         if "/minimap/" not in low:
             continue
@@ -74,6 +70,21 @@ def extract_minimaps():
     print(f"minimaps: {ok}/{len(wanted)} tiles")
 
 
+def main():
+    parser = argparse.ArgumentParser(description="Extract audio tracks and CT minimap tiles")
+    sro_paths.add_common_args(parser, pk2=True)
+    args = parser.parse_args()
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
+    music = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Music.pk2"))
+    media = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Media.pk2"))
+    extract_music(music, pk2_dir)
+    extract_minimaps(media, pk2_dir)
+
+
 if __name__ == "__main__":
-    extract_music()
-    extract_minimaps()
+    main()

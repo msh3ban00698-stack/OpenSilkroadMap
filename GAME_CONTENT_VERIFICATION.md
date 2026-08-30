@@ -121,8 +121,8 @@ regenerate them):
 
 ## 9. REQUIRED NEXT WORK
 
-1. **Restore the external VSRO 1.193 package** (`game_source/` + PK2 archives at
-   `/tmp/opencode/vsro/` — both currently absent). This is the hard blocker.
+1. **Restore the external VSRO 1.193 package** (`game_source/` + PK2 archives via
+   `--pk2-dir` / `SRO_PK2_DIR` — both currently absent). This is the hard blocker.
 2. Regenerate + commit the missing data with the repo's own scripts:
    - `scripts/build_game_database.py` → all `gamedata/*.json` (§4)
    - `scripts/generate_pmtiles.py` → dungeon pmtiles for `32769_*`, `32775..32770`, `32784`, `32786` (§5)

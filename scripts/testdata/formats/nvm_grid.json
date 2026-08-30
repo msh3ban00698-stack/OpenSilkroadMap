@@ -1,0 +1,301 @@
+{
+ "nv_5731.nvm": {
+  "size": 154787,
+  "trailing_fill_words": 0
+ },
+ "nv_1bcf.nvm": {
+  "size": 141483,
+  "trailing_fill_words": 0
+ },
+ "nv_5ba3.nvm": {
+  "size": 152578,
+  "trailing_fill_words": 36,
+  "grid_start": 41036,
+  "grid_records": 9216,
+  "grid_end": 114764,
+  "post_grid_bytes": 37814
+ },
+ "nv_6e50.nvm": {
+  "size": 124026,
+  "trailing_fill_words": 36,
+  "grid_start": 12484,
+  "grid_records": 9216,
+  "grid_end": 86212,
+  "post_grid_bytes": 37814
+ },
+ "nv_1614.nvm": {
+  "size": 122274,
+  "trailing_fill_words": 0,
+  "grid_start": 10732,
+  "grid_records": 9216,
+  "grid_end": 84460,
+  "post_grid_bytes": 37814
+ },
+ "nv_1748.nvm": {
+  "size": 154491,
+  "trailing_fill_words": 0
+ },
+ "nv_64aa.nvm": {
+  "size": 132698,
+  "trailing_fill_words": 1,
+  "grid_start": 21156,
+  "grid_records": 9216,
+  "grid_end": 94884,
+  "post_grid_bytes": 37814
+ },
+ "nv_189f.nvm": {
+  "size": 175417,
+  "trailing_fill_words": 36
+ },
+ "nv_59ae.nvm": {
+  "size": 112004,
+  "trailing_fill_words": 36
+ },
+ "nv_6876.nvm": {
+  "size": 113520,
+  "trailing_fill_words": 36,
+  "grid_start": 1980,
+  "grid_records": 9236,
+  "grid_end": 75868,
+  "post_grid_bytes": 37652
+ },
+ "nv_169b.nvm": {
+  "size": 127088,
+  "trailing_fill_words": 36
+ },
+ "nv_634d.nvm": {
+  "size": 117175,
+  "trailing_fill_words": 0
+ },
+ "nv_3b5a.nvm": {
+  "size": 116055,
+  "trailing_fill_words": 36
+ },
+ "nv_154e.nvm": {
+  "size": 111942,
+  "trailing_fill_words": 36,
+  "grid_start": 404,
+  "grid_records": 9216,
+  "grid_end": 74132,
+  "post_grid_bytes": 37810
+ },
+ "nv_1f29.nvm": {
+  "size": 74643,
+  "trailing_fill_words": 0,
+  "grid_start": 148,
+  "grid_records": 9311,
+  "grid_end": 74636,
+  "post_grid_bytes": 7
+ },
+ "nv_74bf.nvm": {
+  "size": 121810,
+  "trailing_fill_words": 0,
+  "grid_start": 10268,
+  "grid_records": 9216,
+  "grid_end": 83996,
+  "post_grid_bytes": 37814
+ },
+ "nv_198c.nvm": {
+  "size": 232418,
+  "trailing_fill_words": 36,
+  "grid_start": 120876,
+  "grid_records": 9216,
+  "grid_end": 194604,
+  "post_grid_bytes": 37814,
+  "detail_start": 120876,
+  "sample_records": [
+   [
+    0,
+    0,
+    279,
+    1141
+   ],
+   [
+    0,
+    1,
+    279,
+    271
+   ],
+   [
+    0,
+    0,
+    279,
+    271
+   ],
+   [
+    0,
+    0,
+    279,
+    271
+   ],
+   [
+    0,
+    0,
+    279,
+    1177
+   ],
+   [
+    0,
+    1,
+    279,
+    1177
+   ],
+   [
+    0,
+    1,
+    279,
+    71
+   ],
+   [
+    0,
+    0,
+    279,
+    71
+   ],
+   [
+    0,
+    0,
+    279,
+    71
+   ],
+   [
+    0,
+    0,
+    279,
+    1207
+   ],
+   [
+    0,
+    1,
+    279,
+    340
+   ],
+   [
+    0,
+    0,
+    279,
+    1227
+   ],
+   [
+    0,
+    1,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    23
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ],
+   [
+    0,
+    0,
+    279,
+    15
+   ]
+  ]
+ }
+}

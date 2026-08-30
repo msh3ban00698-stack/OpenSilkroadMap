@@ -97,6 +97,9 @@ capacitor-cordova-android-plugins
 # Copied web assets
 app/src/main/assets/public
 
+# Phase 8 native minimap proof assets (prepared by scripts/prepare_phase8_proof_assets.py)
+app/src/main/assets/minimap_proof
+
 # Generated Config files
 app/src/main/assets/capacitor.config.json
 app/src/main/assets/capacitor.plugins.json

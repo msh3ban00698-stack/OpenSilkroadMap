@@ -1,0 +1,45 @@
+1	1	Constantinople	SN_ZONE_22004	26959	1030	80	512	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	2	Forest of Sorrow	SN_ZONE_25063	27207	648	-21	194	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	3	Garden of the gods	SN_ZONE_25068	25416	735	0	1674	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	4	Pond Remains	SN_ZONE_25057	26205	1091	169	46	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	5	Door of Cleopatra	SN_ZONE_25053	25957	2	272	1821	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	6	Samarkand	SN_ZONE_22005	27244	271	180	1438	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	7	On Habitat	SN_ZONE_25047	26219	1884	42	1900	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	8	Hun	SN_ZONE_25046	26737	705	272	1466	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	9	Rock Mountain	SN_ZONE_24013	24431	1223	2034	1312	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	10	Peak of the Heart	SN_ZONE_25039	23664	1093	4206	1076	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	11	Abandoned village	SN_ZONE_25036	23914	882	2806	300	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	12	Shepherd town	SN_ZONE_25035	22125	997	2566	519	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	13	Town of Wind	SN_ZONE_25034	23156	728	2288	1593	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	14	Niya ruins	SN_ZONE_25027	26752	1285	206	176	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	15	Necrotic Desert	SN_ZONE_25024	25731	664	-135	1847	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	16	Temple of affluence	SN_ZONE_25026	26503	984	-469	831	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	17	Choctan	SN_ZONE_22003	23687	1255	245	83	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	18	Meadow way	SN_ZONE_25011	24713	705	-13	1057	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	19	Ishid Samgeori	SN_ZONE_25018_1	22658	1504	1395	794	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	20	Ancient Ruins	SN_ZONE_25019	23166	1523	547	445	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	21	Spider's Forest	SN_ZONE_25020	23931	1259	1913	93	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	22	A black-tipped den	SN_ZONE_25003	23445	335	197	1011	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	23	Tarim Basin	SN_ZONE_24006	24211	195	1076	747	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	24	Dunhuang	SN_ZONE_22002	26265	972	-106	1421	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	25	Gongno's Goto	SN_ZONE_25015	26526	772	-91	934	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	26	Chang'an	SN_ZONE_22001	25000	995	-32	1132	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	27	Southern meadow	SN_ZONE_25007	24490	514	-20	90	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	28	Non-native alpine	SN_ZONE_25005	23712	771	1390	966	1	-1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	29	Entrance to Dunhuang Cave (only flag location)	xxx	27027	1814	452	1834	1	1	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	30	Dunhuang Cave 1F	SN_ZONE_23002	-32767	1115	0	-935	1	1	0	50	999	-1	xxx	-1	xxx	-1	xxx	
+1	31	Jinshi entrance (only flag location)	xxx	26284	960	111	1662	1	2	1	0	0	-1	xxx	-1	xxx	-1	xxx	
+1	32	Jinshi 2nd floor (2nd floor entrance)	SN_ZONE_26002	-32762	-11719	-47	5742	1	2	0	70	999	-1	xxx	-1	xxx	-1	xxx	
+1	33	Jinshi 3F (3rd floor entrance)	SN_ZONE_26003	-32763	397	72	55	1	2	0	70	999	-1	xxx	-1	xxx	-1	xxx	
+1	38	Jinshi 4th floor (white sand entrance)	SN_ZONE_26004	-32764	-1103	-32	-180	1	2	0	70	999	-1	xxx	-1	xxx	-1	xxx	
+1	39	Alexandria (South)	SN_ZONE_21836_15	23088	663	863	526	1	-1	1	90	999	-1	xxx	-1	xxx	-1	xxx	
+1	40	Alexandria (north)	SN_ZONE_21836_16	23603	1030	80	512	1	-1	1	90	999	-1	xxx	-1	xxx	-1	xxx	
+1	41	Red earth	SN_ZONE_21833_6	19010	535	-30	1875	1	-1	1	90	999	-1	xxx	-1	xxx	-1	xxx	
+1	42	Salt desert	SN_ZONE_21833_8	21576	1626	-81	1746	1	-1	1	90	999	-1	xxx	-1	xxx	-1	xxx	
+1	43	Baghdad	SN_ZONE_22010	22618	1075	-236	323	1	-1	1	118	999	-1	xxx	-1	xxx	-1	xxx	
+1	44	Phantom Desert	SN_STORE_MONGPORTAL	19793	138	-947	552	1	-1	1	118	999	-1	xxx	-1	xxx	-1	xxx	
+1	45	Arabian Coast	SN_ZONE_27000_01	19034	99	-1052	1518	1	-1	1	118	999	-1	xxx	-1	xxx	-1	xxx 	
+1	46	Sky Temple	RN_OTHER_SKYTEMPLE	27011	1756	2	991	1	-1	1	1	999	-1	xxx	-1	xxx	-1	xxx	
+1	47	Sky Temple A	RN_OTHER_SKYTEMPLE_A_01	24797	5	8	1475	1	-1	1	125	999	-1	xxx	-1	xxx	-1	xxx	
+1	48	Sky Temple B	RN_OTHER_SKYTEMPLE_B_01	24806	5	8	1475	1	-1	1	131	999	-1	xxx	-1	xxx	-1	xxx	
+//A'Dan Z'Ye Silkroad Private Server Editleri

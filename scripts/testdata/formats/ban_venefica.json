@@ -1,0 +1,4094 @@
+{
+ "source": {
+  "archive": "Data.pk2",
+  "path": "/prim/ani/mob/arabia/venefica/venefica_stand01.BAN",
+  "size": 926897
+ },
+ "header": {
+  "magic": "JMXVBAN ",
+  "version": "0102",
+  "reserved_hex": "0000000000000000",
+  "name_length": 16,
+  "name": "venefica_stand01",
+  "body_start": 40
+ },
+ "record_byte_size": 28,
+ "record_layout": [
+  "f32 rotation quaternion (x,y,z,w)",
+  "f32 position (x,y,z)"
+ ],
+ "keyframe_runs": [
+  {
+   "start_offset": 798,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 5883,
+   "record_count": 181,
+   "quaternion": [
+    0.637,
+    0.214,
+    0.451,
+    0.587
+   ],
+   "position": [
+    -3.968,
+    35.842,
+    0.035
+   ]
+  },
+  {
+   "start_offset": 10968,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    12.717,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 16054,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.928,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 21133,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.707,
+    -0.0,
+    0.707
+   ],
+   "position": [
+    0.0,
+    25.0,
+    20.0
+   ]
+  },
+  {
+   "start_offset": 26238,
+   "record_count": 180,
+   "quaternion": [
+    0.0,
+    -0.002,
+    -0.994,
+    -0.0
+   ],
+   "position": [
+    0.113,
+    -16.91,
+    7.312
+   ]
+  },
+  {
+   "start_offset": 31302,
+   "record_count": 181,
+   "quaternion": [
+    -0.392,
+    -0.555,
+    -0.631,
+    -0.375
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 36389,
+   "record_count": 181,
+   "quaternion": [
+    -0.079,
+    0.16,
+    0.138,
+    0.974
+   ],
+   "position": [
+    0.946,
+    -0.136,
+    0.809
+   ]
+  },
+  {
+   "start_offset": 41477,
+   "record_count": 181,
+   "quaternion": [
+    0.145,
+    -0.262,
+    0.041,
+    0.953
+   ],
+   "position": [
+    1.069,
+    0.0,
+    -0.001
+   ]
+  },
+  {
+   "start_offset": 46565,
+   "record_count": 181,
+   "quaternion": [
+    0.029,
+    -0.104,
+    0.007,
+    0.994
+   ],
+   "position": [
+    1.068,
+    0.0,
+    -0.002
+   ]
+  },
+  {
+   "start_offset": 51651,
+   "record_count": 181,
+   "quaternion": [
+    -0.166,
+    -0.171,
+    0.039,
+    0.97
+   ],
+   "position": [
+    2.099,
+    -0.0,
+    -0.27
+   ]
+  },
+  {
+   "start_offset": 56737,
+   "record_count": 181,
+   "quaternion": [
+    -0.063,
+    0.047,
+    0.085,
+    0.993
+   ],
+   "position": [
+    0.769,
+    0.0,
+    -0.032
+   ]
+  },
+  {
+   "start_offset": 61850,
+   "record_count": 180,
+   "quaternion": [
+    -0.046,
+    -0.707,
+    0.706,
+    0.008
+   ],
+   "position": [
+    0.688,
+    -0.0,
+    -0.546
+   ]
+  },
+  {
+   "start_offset": 66907,
+   "record_count": 181,
+   "quaternion": [
+    -0.001,
+    0.028,
+    -0.009,
+    1.0
+   ],
+   "position": [
+    0.665,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 71992,
+   "record_count": 181,
+   "quaternion": [
+    0.009,
+    0.085,
+    -0.081,
+    0.993
+   ],
+   "position": [
+    0.925,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 77077,
+   "record_count": 181,
+   "quaternion": [
+    0.01,
+    0.061,
+    -0.083,
+    0.995
+   ],
+   "position": [
+    1.184,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 82162,
+   "record_count": 181,
+   "quaternion": [
+    0.002,
+    0.006,
+    -0.031,
+    0.999
+   ],
+   "position": [
+    0.77,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 87248,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.013,
+    1.0
+   ],
+   "position": [
+    1.222,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 92356,
+   "record_count": 180,
+   "quaternion": [
+    -0.035,
+    0.706,
+    -0.706,
+    -0.035
+   ],
+   "position": [
+    0.62,
+    0.0,
+    0.825
+   ]
+  },
+  {
+   "start_offset": 97412,
+   "record_count": 181,
+   "quaternion": [
+    -0.003,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    1.422,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 102528,
+   "record_count": 180,
+   "quaternion": [
+    -0.128,
+    -0.415,
+    -0.901,
+    0.019
+   ],
+   "position": [
+    0.46,
+    -0.654,
+    0.288
+   ]
+  },
+  {
+   "start_offset": 107588,
+   "record_count": 181,
+   "quaternion": [
+    0.001,
+    -0.018,
+    -0.002,
+    1.0
+   ],
+   "position": [
+    0.669,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 112677,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    0.589,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 117793,
+   "record_count": 180,
+   "quaternion": [
+    -0.096,
+    0.405,
+    -0.906,
+    -0.082
+   ],
+   "position": [
+    0.46,
+    0.654,
+    0.288
+   ]
+  },
+  {
+   "start_offset": 122853,
+   "record_count": 181,
+   "quaternion": [
+    0.001,
+    0.008,
+    -0.062,
+    0.998
+   ],
+   "position": [
+    0.669,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 127942,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.589,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 133061,
+   "record_count": 180,
+   "quaternion": [
+    -0.0,
+    -1.0,
+    0.0,
+    -0.022
+   ],
+   "position": [
+    0.638,
+    -0.0,
+    -0.637
+   ]
+  },
+  {
+   "start_offset": 138153,
+   "record_count": 180,
+   "quaternion": [
+    -0.817,
+    -0.549,
+    0.163,
+    0.073
+   ],
+   "position": [
+    -0.248,
+    0.459,
+    0.239
+   ]
+  },
+  {
+   "start_offset": 143217,
+   "record_count": 181,
+   "quaternion": [
+    0.49,
+    0.098,
+    -0.519,
+    0.693
+   ],
+   "position": [
+    0.775,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 148308,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.961,
+    -0.0,
+    -0.277
+   ],
+   "position": [
+    2.727,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 153396,
+   "record_count": 181,
+   "quaternion": [
+    -0.759,
+    0.307,
+    0.356,
+    -0.452
+   ],
+   "position": [
+    2.195,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 158487,
+   "record_count": 181,
+   "quaternion": [
+    -0.44,
+    -0.03,
+    -0.182,
+    0.879
+   ],
+   "position": [
+    0.475,
+    -0.363,
+    0.089
+   ]
+  },
+  {
+   "start_offset": 163579,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.306,
+    -0.0,
+    0.952
+   ],
+   "position": [
+    0.377,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 168670,
+   "record_count": 181,
+   "quaternion": [
+    -0.041,
+    -0.366,
+    -0.04,
+    0.929
+   ],
+   "position": [
+    0.936,
+    -0.221,
+    -0.057
+   ]
+  },
+  {
+   "start_offset": 173762,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.285,
+    -0.0,
+    0.959
+   ],
+   "position": [
+    0.375,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 178853,
+   "record_count": 181,
+   "quaternion": [
+    0.078,
+    -0.436,
+    -0.043,
+    0.896
+   ],
+   "position": [
+    0.907,
+    0.117,
+    -0.05
+   ]
+  },
+  {
+   "start_offset": 183945,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.656,
+    0.0,
+    0.755
+   ],
+   "position": [
+    0.379,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 189033,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.658,
+    -0.714,
+    -0.239
+   ],
+   "position": [
+    0.004,
+    -0.374,
+    -0.432
+   ]
+  },
+  {
+   "start_offset": 194129,
+   "record_count": 181,
+   "quaternion": [
+    -0.413,
+    0.242,
+    0.537,
+    0.694
+   ],
+   "position": [
+    0.775,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 199220,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.491,
+    -0.0,
+    0.871
+   ],
+   "position": [
+    2.727,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 204308,
+   "record_count": 181,
+   "quaternion": [
+    -0.739,
+    -0.204,
+    0.135,
+    0.628
+   ],
+   "position": [
+    2.195,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 209399,
+   "record_count": 181,
+   "quaternion": [
+    -0.583,
+    0.308,
+    -0.562,
+    -0.5
+   ],
+   "position": [
+    0.475,
+    0.363,
+    0.089
+   ]
+  },
+  {
+   "start_offset": 214491,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.572,
+    -0.0,
+    0.821
+   ],
+   "position": [
+    0.377,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 219582,
+   "record_count": 181,
+   "quaternion": [
+    0.052,
+    -0.645,
+    0.025,
+    0.762
+   ],
+   "position": [
+    0.936,
+    0.221,
+    -0.057
+   ]
+  },
+  {
+   "start_offset": 224674,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.67,
+    0.0,
+    0.742
+   ],
+   "position": [
+    0.375,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 229765,
+   "record_count": 181,
+   "quaternion": [
+    -0.068,
+    -0.602,
+    0.058,
+    0.793
+   ],
+   "position": [
+    0.907,
+    -0.117,
+    -0.05
+   ]
+  },
+  {
+   "start_offset": 234857,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.608,
+    0.0,
+    0.794
+   ],
+   "position": [
+    0.379,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 239942,
+   "record_count": 181,
+   "quaternion": [
+    -0.17,
+    -0.148,
+    0.739,
+    0.634
+   ],
+   "position": [
+    1.066,
+    -2.026,
+    0.307
+   ]
+  },
+  {
+   "start_offset": 245031,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.411,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 250112,
+   "record_count": 181,
+   "quaternion": [
+    -0.452,
+    -0.543,
+    -0.543,
+    0.452
+   ],
+   "position": [
+    0.44,
+    0.0,
+    0.301
+   ]
+  },
+  {
+   "start_offset": 255197,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    1.033,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 260284,
+   "record_count": 181,
+   "quaternion": [
+    0.544,
+    0.452,
+    -0.452,
+    0.544
+   ],
+   "position": [
+    0.989,
+    -0.0,
+    -0.312
+   ]
+  },
+  {
+   "start_offset": 265368,
+   "record_count": 181,
+   "quaternion": [
+    0.022,
+    0.482,
+    -0.075,
+    0.872
+   ],
+   "position": [
+    1.838,
+    0.494,
+    -0.301
+   ]
+  },
+  {
+   "start_offset": 270459,
+   "record_count": 181,
+   "quaternion": [
+    -0.701,
+    0.219,
+    0.247,
+    0.632
+   ],
+   "position": [
+    1.197,
+    0.097,
+    -0.146
+   ]
+  },
+  {
+   "start_offset": 275550,
+   "record_count": 181,
+   "quaternion": [
+    -0.03,
+    0.075,
+    0.368,
+    0.926
+   ],
+   "position": [
+    2.879,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 280641,
+   "record_count": 181,
+   "quaternion": [
+    -0.007,
+    0.082,
+    0.368,
+    0.926
+   ],
+   "position": [
+    1.531,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 285733,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.914,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 290823,
+   "record_count": 181,
+   "quaternion": [
+    0.554,
+    0.321,
+    -0.587,
+    -0.495
+   ],
+   "position": [
+    2.115,
+    -0.249,
+    0.268
+   ]
+  },
+  {
+   "start_offset": 295913,
+   "record_count": 181,
+   "quaternion": [
+    -0.017,
+    -0.005,
+    0.262,
+    0.965
+   ],
+   "position": [
+    3.117,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 301003,
+   "record_count": 181,
+   "quaternion": [
+    -0.02,
+    -0.004,
+    0.313,
+    0.95
+   ],
+   "position": [
+    1.467,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 306094,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.031,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 311184,
+   "record_count": 181,
+   "quaternion": [
+    -0.716,
+    -0.063,
+    0.267,
+    0.642
+   ],
+   "position": [
+    1.456,
+    0.289,
+    0.003
+   ]
+  },
+  {
+   "start_offset": 316274,
+   "record_count": 181,
+   "quaternion": [
+    0.01,
+    0.07,
+    0.335,
+    0.94
+   ],
+   "position": [
+    3.117,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 321364,
+   "record_count": 181,
+   "quaternion": [
+    -0.04,
+    0.078,
+    0.236,
+    0.968
+   ],
+   "position": [
+    1.467,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 326455,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.031,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 331545,
+   "record_count": 181,
+   "quaternion": [
+    -0.712,
+    0.11,
+    0.068,
+    0.69
+   ],
+   "position": [
+    1.485,
+    -0.374,
+    -0.158
+   ]
+  },
+  {
+   "start_offset": 336635,
+   "record_count": 181,
+   "quaternion": [
+    -0.025,
+    0.014,
+    0.198,
+    0.98
+   ],
+   "position": [
+    3.117,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 341725,
+   "record_count": 181,
+   "quaternion": [
+    -0.016,
+    0.108,
+    0.212,
+    0.971
+   ],
+   "position": [
+    1.467,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 346816,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.031,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 351906,
+   "record_count": 181,
+   "quaternion": [
+    -0.705,
+    0.206,
+    0.003,
+    0.678
+   ],
+   "position": [
+    1.145,
+    -0.774,
+    0.078
+   ]
+  },
+  {
+   "start_offset": 356996,
+   "record_count": 181,
+   "quaternion": [
+    -0.008,
+    -0.06,
+    0.205,
+    0.977
+   ],
+   "position": [
+    3.117,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 362086,
+   "record_count": 181,
+   "quaternion": [
+    0.012,
+    0.01,
+    0.183,
+    0.983
+   ],
+   "position": [
+    1.467,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 367177,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.031,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 372289,
+   "record_count": 180,
+   "quaternion": [
+    -0.707,
+    0.0,
+    -0.707,
+    0.0
+   ],
+   "position": [
+    1.838,
+    0.494,
+    0.301
+   ]
+  },
+  {
+   "start_offset": 377352,
+   "record_count": 181,
+   "quaternion": [
+    0.695,
+    0.207,
+    -0.262,
+    0.638
+   ],
+   "position": [
+    1.197,
+    -0.097,
+    -0.146
+   ]
+  },
+  {
+   "start_offset": 382443,
+   "record_count": 181,
+   "quaternion": [
+    0.017,
+    0.048,
+    -0.399,
+    0.916
+   ],
+   "position": [
+    2.904,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 387534,
+   "record_count": 181,
+   "quaternion": [
+    -0.002,
+    0.056,
+    -0.4,
+    0.915
+   ],
+   "position": [
+    1.525,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 392626,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    1.921,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 397716,
+   "record_count": 181,
+   "quaternion": [
+    0.528,
+    -0.351,
+    -0.596,
+    0.494
+   ],
+   "position": [
+    2.115,
+    0.249,
+    0.268
+   ]
+  },
+  {
+   "start_offset": 402806,
+   "record_count": 181,
+   "quaternion": [
+    0.006,
+    -0.082,
+    -0.233,
+    0.969
+   ],
+   "position": [
+    3.128,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 407896,
+   "record_count": 181,
+   "quaternion": [
+    0.007,
+    -0.091,
+    -0.297,
+    0.951
+   ],
+   "position": [
+    1.454,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 412987,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.024,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 418077,
+   "record_count": 181,
+   "quaternion": [
+    0.708,
+    -0.09,
+    -0.268,
+    0.646
+   ],
+   "position": [
+    1.456,
+    -0.289,
+    0.003
+   ]
+  },
+  {
+   "start_offset": 423167,
+   "record_count": 181,
+   "quaternion": [
+    -0.025,
+    0.025,
+    -0.337,
+    0.941
+   ],
+   "position": [
+    3.127,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 428257,
+   "record_count": 181,
+   "quaternion": [
+    0.032,
+    0.024,
+    -0.285,
+    0.958
+   ],
+   "position": [
+    1.451,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 433348,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.022,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 438438,
+   "record_count": 181,
+   "quaternion": [
+    0.71,
+    0.092,
+    -0.069,
+    0.695
+   ],
+   "position": [
+    1.485,
+    0.374,
+    -0.158
+   ]
+  },
+  {
+   "start_offset": 443528,
+   "record_count": 181,
+   "quaternion": [
+    0.016,
+    -0.01,
+    -0.19,
+    0.982
+   ],
+   "position": [
+    3.11,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 448618,
+   "record_count": 181,
+   "quaternion": [
+    0.008,
+    0.082,
+    -0.246,
+    0.966
+   ],
+   "position": [
+    1.458,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 453709,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    1.034,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 458799,
+   "record_count": 181,
+   "quaternion": [
+    0.705,
+    0.219,
+    0.008,
+    0.674
+   ],
+   "position": [
+    1.145,
+    0.774,
+    0.078
+   ]
+  },
+  {
+   "start_offset": 463889,
+   "record_count": 181,
+   "quaternion": [
+    0.021,
+    -0.004,
+    -0.218,
+    0.976
+   ],
+   "position": [
+    3.125,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 468979,
+   "record_count": 181,
+   "quaternion": [
+    0.005,
+    0.09,
+    -0.183,
+    0.979
+   ],
+   "position": [
+    1.446,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 474070,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    1.033,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 479187,
+   "record_count": 180,
+   "quaternion": [
+    -0.373,
+    0.233,
+    -0.89,
+    0.123
+   ],
+   "position": [
+    -0.366,
+    1.308,
+    -0.825
+   ]
+  },
+  {
+   "start_offset": 484247,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.601,
+    0.0,
+    0.799
+   ],
+   "position": [
+    3.984,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 489335,
+   "record_count": 181,
+   "quaternion": [
+    0.116,
+    0.561,
+    0.095,
+    0.814
+   ],
+   "position": [
+    4.737,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 494423,
+   "record_count": 181,
+   "quaternion": [
+    0.012,
+    -0.707,
+    -0.012,
+    0.707
+   ],
+   "position": [
+    0.681,
+    0.0,
+    1.059
+   ]
+  },
+  {
+   "start_offset": 499540,
+   "record_count": 180,
+   "quaternion": [
+    -0.271,
+    -0.003,
+    -0.947,
+    -0.175
+   ],
+   "position": [
+    -0.78,
+    -0.31,
+    -1.165
+   ]
+  },
+  {
+   "start_offset": 504600,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.435,
+    0.0,
+    0.9
+   ],
+   "position": [
+    3.984,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 509688,
+   "record_count": 181,
+   "quaternion": [
+    -0.214,
+    0.506,
+    -0.057,
+    0.833
+   ],
+   "position": [
+    4.737,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 514776,
+   "record_count": 181,
+   "quaternion": [
+    -0.012,
+    -0.707,
+    0.012,
+    0.707
+   ],
+   "position": [
+    0.681,
+    -0.0,
+    1.059
+   ]
+  },
+  {
+   "start_offset": 519863,
+   "record_count": 181,
+   "quaternion": [
+    -0.5,
+    -0.5,
+    -0.5,
+    0.5
+   ],
+   "position": [
+    0.978,
+    0.0,
+    -1.683
+   ]
+  },
+  {
+   "start_offset": 524941,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.977,
+    0.165
+   ],
+   "position": [
+    0.059,
+    -0.121,
+    2.735
+   ]
+  },
+  {
+   "start_offset": 530035,
+   "record_count": 181,
+   "quaternion": [
+    0.262,
+    0.001,
+    0.293,
+    0.92
+   ],
+   "position": [
+    2.61,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 535121,
+   "record_count": 181,
+   "quaternion": [
+    0.098,
+    0.071,
+    0.206,
+    0.971
+   ],
+   "position": [
+    1.504,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 540208,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    1.425,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 545300,
+   "record_count": 181,
+   "quaternion": [
+    -0.693,
+    0.674,
+    -0.045,
+    0.252
+   ],
+   "position": [
+    0.984,
+    0.206,
+    -0.74
+   ]
+  },
+  {
+   "start_offset": 550392,
+   "record_count": 181,
+   "quaternion": [
+    -0.039,
+    -0.027,
+    -0.232,
+    0.972
+   ],
+   "position": [
+    1.332,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 555484,
+   "record_count": 181,
+   "quaternion": [
+    -0.155,
+    0.043,
+    0.235,
+    0.958
+   ],
+   "position": [
+    1.926,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 560576,
+   "record_count": 181,
+   "quaternion": [
+    -0.002,
+    0.047,
+    0.294,
+    0.955
+   ],
+   "position": [
+    4.231,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 565668,
+   "record_count": 181,
+   "quaternion": [
+    0.014,
+    0.082,
+    0.027,
+    0.996
+   ],
+   "position": [
+    4.153,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 570760,
+   "record_count": 181,
+   "quaternion": [
+    -0.001,
+    -0.057,
+    -0.056,
+    0.997
+   ],
+   "position": [
+    4.227,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 575853,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    3.065,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 580939,
+   "record_count": 181,
+   "quaternion": [
+    -0.57,
+    0.35,
+    -0.252,
+    0.7
+   ],
+   "position": [
+    1.699,
+    0.206,
+    -1.247
+   ]
+  },
+  {
+   "start_offset": 586025,
+   "record_count": 181,
+   "quaternion": [
+    -0.022,
+    -0.172,
+    0.045,
+    0.984
+   ],
+   "position": [
+    1.172,
+    -0.043,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 591111,
+   "record_count": 181,
+   "quaternion": [
+    -0.006,
+    0.272,
+    -0.054,
+    0.961
+   ],
+   "position": [
+    1.754,
+    -0.02,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 596197,
+   "record_count": 181,
+   "quaternion": [
+    0.053,
+    0.397,
+    -0.058,
+    0.914
+   ],
+   "position": [
+    4.436,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 601283,
+   "record_count": 181,
+   "quaternion": [
+    0.145,
+    0.059,
+    -0.058,
+    0.986
+   ],
+   "position": [
+    3.619,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 606369,
+   "record_count": 181,
+   "quaternion": [
+    0.047,
+    0.0,
+    0.068,
+    0.997
+   ],
+   "position": [
+    3.806,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 611456,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    2.589,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 616576,
+   "record_count": 180,
+   "quaternion": [
+    0.644,
+    -0.733,
+    -0.065,
+    0.211
+   ],
+   "position": [
+    0.983,
+    0.206,
+    0.74
+   ]
+  },
+  {
+   "start_offset": 621640,
+   "record_count": 181,
+   "quaternion": [
+    -0.002,
+    0.025,
+    -0.403,
+    0.915
+   ],
+   "position": [
+    1.362,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 626732,
+   "record_count": 181,
+   "quaternion": [
+    0.003,
+    -0.051,
+    0.252,
+    0.966
+   ],
+   "position": [
+    1.976,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 631824,
+   "record_count": 181,
+   "quaternion": [
+    0.051,
+    -0.13,
+    0.344,
+    0.929
+   ],
+   "position": [
+    4.184,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 636916,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.031,
+    -0.011,
+    0.999
+   ],
+   "position": [
+    4.038,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 642008,
+   "record_count": 181,
+   "quaternion": [
+    0.009,
+    0.036,
+    -0.088,
+    0.995
+   ],
+   "position": [
+    4.345,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 647101,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    3.044,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 652187,
+   "record_count": 181,
+   "quaternion": [
+    0.57,
+    -0.363,
+    -0.286,
+    0.679
+   ],
+   "position": [
+    1.699,
+    0.206,
+    1.247
+   ]
+  },
+  {
+   "start_offset": 657273,
+   "record_count": 181,
+   "quaternion": [
+    -0.047,
+    0.147,
+    -0.059,
+    0.986
+   ],
+   "position": [
+    1.191,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 662359,
+   "record_count": 181,
+   "quaternion": [
+    0.012,
+    -0.135,
+    0.001,
+    0.991
+   ],
+   "position": [
+    1.711,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 667445,
+   "record_count": 181,
+   "quaternion": [
+    0.013,
+    -0.5,
+    -0.059,
+    0.864
+   ],
+   "position": [
+    4.453,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 672531,
+   "record_count": 181,
+   "quaternion": [
+    -0.005,
+    -0.111,
+    0.005,
+    0.994
+   ],
+   "position": [
+    3.655,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 677617,
+   "record_count": 181,
+   "quaternion": [
+    0.005,
+    -0.063,
+    -0.01,
+    0.998
+   ],
+   "position": [
+    3.783,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 682704,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.586,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 687785,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.707,
+    -0.0,
+    0.707
+   ],
+   "position": [
+    0.066,
+    30.272,
+    1.396
+   ]
+  },
+  {
+   "start_offset": 692875,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.0,
+    -0.677,
+    0.736
+   ],
+   "position": [
+    10.45,
+    0.616,
+    -3.604
+   ]
+  },
+  {
+   "start_offset": 697962,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.003,
+    0.027,
+    1.0
+   ],
+   "position": [
+    1.221,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 703049,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.004,
+    0.027,
+    1.0
+   ],
+   "position": [
+    2.409,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 708136,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.002,
+    0.011,
+    1.0
+   ],
+   "position": [
+    2.472,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 713223,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.001,
+    -0.003,
+    1.0
+   ],
+   "position": [
+    2.473,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 718311,
+   "record_count": 181,
+   "quaternion": [
+    -0.016,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    2.511,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 723400,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.676,
+    0.736
+   ],
+   "position": [
+    7.682,
+    1.065,
+    -0.029
+   ]
+  },
+  {
+   "start_offset": 728486,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.027,
+    1.0
+   ],
+   "position": [
+    0.99,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 733572,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.014,
+    1.0
+   ],
+   "position": [
+    1.932,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 738658,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.005,
+    1.0
+   ],
+   "position": [
+    3.106,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 743744,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.023,
+    1.0
+   ],
+   "position": [
+    3.14,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 748830,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    -0.029,
+    1.0
+   ],
+   "position": [
+    3.141,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 753917,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    3.146,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 759007,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.676,
+    0.736
+   ],
+   "position": [
+    10.465,
+    0.587,
+    3.54
+   ]
+  },
+  {
+   "start_offset": 764094,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.003,
+    0.027,
+    1.0
+   ],
+   "position": [
+    1.192,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 769181,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.004,
+    0.027,
+    1.0
+   ],
+   "position": [
+    2.409,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 774268,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.472,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 779355,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.003,
+    0.008,
+    1.0
+   ],
+   "position": [
+    2.472,
+    0.055,
+    0.012
+   ]
+  },
+  {
+   "start_offset": 784443,
+   "record_count": 181,
+   "quaternion": [
+    -0.016,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    2.511,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 789532,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.676,
+    0.737
+   ],
+   "position": [
+    0.063,
+    1.059,
+    -0.029
+   ]
+  },
+  {
+   "start_offset": 794618,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    0.114,
+    0.993
+   ],
+   "position": [
+    0.985,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 799704,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.009,
+    1.0
+   ],
+   "position": [
+    1.945,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 804790,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.0,
+    -0.003,
+    1.0
+   ],
+   "position": [
+    3.309,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 809876,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.021,
+    1.0
+   ],
+   "position": [
+    3.341,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 814962,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    -0.026,
+    1.0
+   ],
+   "position": [
+    3.327,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 820049,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    3.339,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 825139,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.678,
+    0.735
+   ],
+   "position": [
+    0.657,
+    -2.21,
+    -5.736
+   ]
+  },
+  {
+   "start_offset": 830226,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.003,
+    0.027,
+    1.0
+   ],
+   "position": [
+    1.507,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 835313,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.004,
+    0.03,
+    1.0
+   ],
+   "position": [
+    2.925,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 840400,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.003,
+    0.012,
+    1.0
+   ],
+   "position": [
+    2.636,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 845487,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    0.001,
+    -0.003,
+    1.0
+   ],
+   "position": [
+    2.638,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 850575,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    2.644,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 855665,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.677,
+    0.736
+   ],
+   "position": [
+    0.668,
+    -2.208,
+    5.706
+   ]
+  },
+  {
+   "start_offset": 860752,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.003,
+    0.028,
+    1.0
+   ],
+   "position": [
+    1.498,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 865839,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.004,
+    0.029,
+    1.0
+   ],
+   "position": [
+    2.914,
+    -0.0,
+    0.0
+   ]
+  },
+  {
+   "start_offset": 870926,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.003,
+    0.011,
+    1.0
+   ],
+   "position": [
+    2.639,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 876013,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.001,
+    -0.005,
+    1.0
+   ],
+   "position": [
+    2.656,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 881101,
+   "record_count": 181,
+   "quaternion": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "position": [
+    2.642,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 886190,
+   "record_count": 181,
+   "quaternion": [
+    -0.231,
+    -0.231,
+    0.668,
+    0.668
+   ],
+   "position": [
+    9.695,
+    9.457,
+    13.007
+   ]
+  },
+  {
+   "start_offset": 891283,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.061,
+    0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 896372,
+   "record_count": 181,
+   "quaternion": [
+    -0.199,
+    -0.199,
+    0.679,
+    0.679
+   ],
+   "position": [
+    14.279,
+    14.102,
+    5.881
+   ]
+  },
+  {
+   "start_offset": 901465,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.061,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 906554,
+   "record_count": 181,
+   "quaternion": [
+    0.199,
+    0.199,
+    0.679,
+    0.679
+   ],
+   "position": [
+    14.325,
+    14.125,
+    -5.994
+   ]
+  },
+  {
+   "start_offset": 911647,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.061,
+    -0.0,
+    -0.0
+   ]
+  },
+  {
+   "start_offset": 916736,
+   "record_count": 181,
+   "quaternion": [
+    0.224,
+    0.224,
+    0.671,
+    0.671
+   ],
+   "position": [
+    9.75,
+    9.466,
+    -12.939
+   ]
+  },
+  {
+   "start_offset": 921829,
+   "record_count": 181,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    2.061,
+    0.0,
+    -0.0
+   ]
+  }
+ ],
+ "sample_records": [
+  {
+   "offset": 798,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "offset": 826,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "offset": 854,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "offset": 882,
+   "quaternion": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "duration_ms": 6000,
+ "frame_rate": 30,
+ "unknown_u32": 1,
+ "keyframes_per_bone": 181,
+ "timestamps": [
+  0,
+  33,
+  66,
+  100,
+  133,
+  166,
+  200,
+  233,
+  266,
+  300,
+  333,
+  366,
+  400,
+  433,
+  466,
+  500,
+  533,
+  566,
+  600,
+  633,
+  666,
+  700,
+  733,
+  766,
+  800,
+  833,
+  866,
+  900,
+  933,
+  966,
+  1000,
+  1033,
+  1066,
+  1100,
+  1133,
+  1166,
+  1200,
+  1233,
+  1266,
+  1300,
+  1333,
+  1366,
+  1400,
+  1433,
+  1466,
+  1500,
+  1533,
+  1566,
+  1600,
+  1633,
+  1666,
+  1700,
+  1733,
+  1766,
+  1800,
+  1833,
+  1866,
+  1900,
+  1933,
+  1966,
+  2000,
+  2033,
+  2066,
+  2100,
+  2133,
+  2166,
+  2200,
+  2233,
+  2266,
+  2300,
+  2333,
+  2366,
+  2400,
+  2433,
+  2466,
+  2500,
+  2533,
+  2566,
+  2600,
+  2633,
+  2666,
+  2700,
+  2733,
+  2766,
+  2800,
+  2833,
+  2866,
+  2900,
+  2933,
+  2966,
+  3000,
+  3033,
+  3066,
+  3100,
+  3133,
+  3166,
+  3200,
+  3233,
+  3266,
+  3300,
+  3333,
+  3366,
+  3400,
+  3433,
+  3466,
+  3500,
+  3533,
+  3566,
+  3600,
+  3633,
+  3666,
+  3700,
+  3733,
+  3766,
+  3800,
+  3833,
+  3866,
+  3900,
+  3933,
+  3966,
+  4000,
+  4033,
+  4066,
+  4100,
+  4133,
+  4166,
+  4200,
+  4233,
+  4266,
+  4300,
+  4333,
+  4366,
+  4400,
+  4433,
+  4466,
+  4500,
+  4533,
+  4566,
+  4600,
+  4633,
+  4666,
+  4700,
+  4733,
+  4766,
+  4800,
+  4833,
+  4866,
+  4900,
+  4933,
+  4966,
+  5000,
+  5033,
+  5066,
+  5100,
+  5133,
+  5166,
+  5200,
+  5233,
+  5266,
+  5300,
+  5333,
+  5366,
+  5400,
+  5433,
+  5466,
+  5500,
+  5533,
+  5566,
+  5600,
+  5633,
+  5666,
+  5700,
+  5733,
+  5766,
+  5800,
+  5833,
+  5866,
+  5900,
+  5933,
+  5966,
+  6000
+ ],
+ "bone_count": 182,
+ "bones": [
+  {
+   "name": "[root]",
+   "name_length": 6,
+   "keyframes": 181,
+   "keyframe_start": 798
+  },
+  {
+   "name": "weapon_01",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 5883
+  },
+  {
+   "name": "weapon_02",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 10968
+  },
+  {
+   "name": "weapon_end",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 16054
+  },
+  {
+   "name": "All",
+   "name_length": 3,
+   "keyframes": 181,
+   "keyframe_start": 21133
+  },
+  {
+   "name": "Bip02",
+   "name_length": 5,
+   "keyframes": 181,
+   "keyframe_start": 26214
+  },
+  {
+   "name": "Bip02 Pelvis",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 31302
+  },
+  {
+   "name": "Bip02 Spine",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 36389
+  },
+  {
+   "name": "Bip02 Spine1",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 41477
+  },
+  {
+   "name": "Bip02 Spine2",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 46565
+  },
+  {
+   "name": "Bip02 Neck",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 51651
+  },
+  {
+   "name": "Bip02 Head",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 56737
+  },
+  {
+   "name": "B_hair_01",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 61822
+  },
+  {
+   "name": "B_hair_02",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 66907
+  },
+  {
+   "name": "B_hair_03",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 71992
+  },
+  {
+   "name": "B_hair_04",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 77077
+  },
+  {
+   "name": "B_hair_05",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 82162
+  },
+  {
+   "name": "B_hair_end",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 87248
+  },
+  {
+   "name": "mask",
+   "name_length": 4,
+   "keyframes": 181,
+   "keyframe_start": 92328
+  },
+  {
+   "name": "mask_end",
+   "name_length": 8,
+   "keyframes": 181,
+   "keyframe_start": 97412
+  },
+  {
+   "name": "R_earring_01",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 102500
+  },
+  {
+   "name": "R_earring_02",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 107588
+  },
+  {
+   "name": "R_earring_end",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 112677
+  },
+  {
+   "name": "L_earring_01",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 117765
+  },
+  {
+   "name": "L_earring_02",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 122853
+  },
+  {
+   "name": "L_earring_end",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 127942
+  },
+  {
+   "name": "Bip02 Ponytail1",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 133033
+  },
+  {
+   "name": "Bip02 L Clavicle",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 138125
+  },
+  {
+   "name": "Bip02 L UpperArm",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 143217
+  },
+  {
+   "name": "Bip02 L Forearm",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 148308
+  },
+  {
+   "name": "Bip02 L Hand",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 153396
+  },
+  {
+   "name": "Bip02 L Finger0",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 158487
+  },
+  {
+   "name": "Bip02 L Finger01",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 163579
+  },
+  {
+   "name": "Bip02 L Finger1",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 168670
+  },
+  {
+   "name": "Bip02 L Finger11",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 173762
+  },
+  {
+   "name": "Bip02 L Finger2",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 178853
+  },
+  {
+   "name": "Bip02 L Finger21",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 183945
+  },
+  {
+   "name": "Bip02 R Clavicle",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 189037
+  },
+  {
+   "name": "Bip02 R UpperArm",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 194129
+  },
+  {
+   "name": "Bip02 R Forearm",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 199220
+  },
+  {
+   "name": "Bip02 R Hand",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 204308
+  },
+  {
+   "name": "Bip02 R Finger0",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 209399
+  },
+  {
+   "name": "Bip02 R Finger01",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 214491
+  },
+  {
+   "name": "Bip02 R Finger1",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 219582
+  },
+  {
+   "name": "Bip02 R Finger11",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 224674
+  },
+  {
+   "name": "Bip02 R Finger2",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 229765
+  },
+  {
+   "name": "Bip02 R Finger21",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 234857
+  },
+  {
+   "name": "hand_bone",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 239942
+  },
+  {
+   "name": "hand_bone_end",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 245031
+  },
+  {
+   "name": "chest",
+   "name_length": 5,
+   "keyframes": 181,
+   "keyframe_start": 250112
+  },
+  {
+   "name": "chest_end",
+   "name_length": 9,
+   "keyframes": 181,
+   "keyframe_start": 255197
+  },
+  {
+   "name": "clock_dummy",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 260284
+  },
+  {
+   "name": "L_matter",
+   "name_length": 8,
+   "keyframes": 181,
+   "keyframe_start": 265368
+  },
+  {
+   "name": "L_bigfeather_01",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 270459
+  },
+  {
+   "name": "L_bigfeather_02",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 275550
+  },
+  {
+   "name": "L_bigfeather_03",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 280641
+  },
+  {
+   "name": "L_bigfeather_end",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 285733
+  },
+  {
+   "name": "L_feather01_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 290823
+  },
+  {
+   "name": "L_feather01_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 295913
+  },
+  {
+   "name": "L_feather01_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 301003
+  },
+  {
+   "name": "L_feather01_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 306094
+  },
+  {
+   "name": "L_feather02_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 311184
+  },
+  {
+   "name": "L_feather02_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 316274
+  },
+  {
+   "name": "L_feather02_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 321364
+  },
+  {
+   "name": "L_feather02_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 326455
+  },
+  {
+   "name": "L_feather03_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 331545
+  },
+  {
+   "name": "L_feather03_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 336635
+  },
+  {
+   "name": "L_feather03_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 341725
+  },
+  {
+   "name": "L_feather03_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 346816
+  },
+  {
+   "name": "L_feather04_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 351906
+  },
+  {
+   "name": "L_feather04_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 356996
+  },
+  {
+   "name": "L_feather04_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 362086
+  },
+  {
+   "name": "L_feather04_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 367177
+  },
+  {
+   "name": "R_matter",
+   "name_length": 8,
+   "keyframes": 181,
+   "keyframe_start": 372261
+  },
+  {
+   "name": "R_bigfeather_01",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 377352
+  },
+  {
+   "name": "R_bigfeather_02",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 382443
+  },
+  {
+   "name": "R_bigfeather_03",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 387534
+  },
+  {
+   "name": "R_bigfeather_end",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 392626
+  },
+  {
+   "name": "R_feather01_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 397716
+  },
+  {
+   "name": "R_feather01_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 402806
+  },
+  {
+   "name": "R_feather01_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 407896
+  },
+  {
+   "name": "R_feather01_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 412987
+  },
+  {
+   "name": "R_feather02_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 418077
+  },
+  {
+   "name": "R_feather02_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 423167
+  },
+  {
+   "name": "R_feather02_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 428257
+  },
+  {
+   "name": "R_feather02_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 433348
+  },
+  {
+   "name": "R_feather03_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 438438
+  },
+  {
+   "name": "R_feather03_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 443528
+  },
+  {
+   "name": "R_feather03_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 448618
+  },
+  {
+   "name": "R_feather03_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 453709
+  },
+  {
+   "name": "R_feather04_01",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 458799
+  },
+  {
+   "name": "R_feather04_02",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 463889
+  },
+  {
+   "name": "R_feather04_03",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 468979
+  },
+  {
+   "name": "R_feather04_end",
+   "name_length": 15,
+   "keyframes": 181,
+   "keyframe_start": 474070
+  },
+  {
+   "name": "Bip02 L Thigh",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 479159
+  },
+  {
+   "name": "Bip02 L Calf",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 484247
+  },
+  {
+   "name": "Bip02 L Foot",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 489335
+  },
+  {
+   "name": "Bip02 L Toe0",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 494423
+  },
+  {
+   "name": "Bip02 R Thigh",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 499512
+  },
+  {
+   "name": "Bip02 R Calf",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 504600
+  },
+  {
+   "name": "Bip02 R Foot",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 509688
+  },
+  {
+   "name": "Bip02 R Toe0",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 514776
+  },
+  {
+   "name": "skirt_dummy",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 519863
+  },
+  {
+   "name": "F_skirt_01",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 524949
+  },
+  {
+   "name": "F_skirt_02",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 530035
+  },
+  {
+   "name": "F_skirt_03",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 535121
+  },
+  {
+   "name": "F_skirt_end",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 540208
+  },
+  {
+   "name": "R_Out_skirt02_01",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 545300
+  },
+  {
+   "name": "R_Out_skirt02_02",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 550392
+  },
+  {
+   "name": "R_Out_skirt02_03",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 555484
+  },
+  {
+   "name": "R_Out_skirt02_04",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 560576
+  },
+  {
+   "name": "R_Out_skirt02_05",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 565668
+  },
+  {
+   "name": "R_Out_skirt02_06",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 570760
+  },
+  {
+   "name": "R_Out_skirt02_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 575853
+  },
+  {
+   "name": "R_skirt_01",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 580939
+  },
+  {
+   "name": "R_skirt_02",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 586025
+  },
+  {
+   "name": "R_skirt_03",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 591111
+  },
+  {
+   "name": "R_skirt_04",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 596197
+  },
+  {
+   "name": "R_skirt_05",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 601283
+  },
+  {
+   "name": "R_skirt_06",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 606369
+  },
+  {
+   "name": "R_skirt_end",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 611456
+  },
+  {
+   "name": "L_Out_skirt02_01",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 616548
+  },
+  {
+   "name": "L_Out_skirt02_02",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 621640
+  },
+  {
+   "name": "L_Out_skirt02_03",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 626732
+  },
+  {
+   "name": "L_Out_skirt02_04",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 631824
+  },
+  {
+   "name": "L_Out_skirt02_05",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 636916
+  },
+  {
+   "name": "L_Out_skirt02_06",
+   "name_length": 16,
+   "keyframes": 181,
+   "keyframe_start": 642008
+  },
+  {
+   "name": "L_Out_skirt02_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 647101
+  },
+  {
+   "name": "L_skirt_01",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 652187
+  },
+  {
+   "name": "L_skirt_02",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 657273
+  },
+  {
+   "name": "L_skirt_03",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 662359
+  },
+  {
+   "name": "L_skirt_04",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 667445
+  },
+  {
+   "name": "L_skirt_05",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 672531
+  },
+  {
+   "name": "L_skirt_06",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 677617
+  },
+  {
+   "name": "L_skirt_end",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 682704
+  },
+  {
+   "name": "Chair",
+   "name_length": 5,
+   "keyframes": 181,
+   "keyframe_start": 687785
+  },
+  {
+   "name": "BL_chair_Dummy",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 692875
+  },
+  {
+   "name": "BL_chair_01",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 697962
+  },
+  {
+   "name": "BL_chair_02",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 703049
+  },
+  {
+   "name": "BL_chair_03",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 708136
+  },
+  {
+   "name": "BL_chair_04",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 713223
+  },
+  {
+   "name": "BL_chair_end",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 718311
+  },
+  {
+   "name": "B_chair_Dummy",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 723400
+  },
+  {
+   "name": "B_chair_01",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 728486
+  },
+  {
+   "name": "B_chair_02",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 733572
+  },
+  {
+   "name": "B_chair_03",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 738658
+  },
+  {
+   "name": "B_chair_04",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 743744
+  },
+  {
+   "name": "B_chair_05",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 748830
+  },
+  {
+   "name": "B_chair_end",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 753917
+  },
+  {
+   "name": "BR_chair_Dummy",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 759007
+  },
+  {
+   "name": "BR_chair_01",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 764094
+  },
+  {
+   "name": "BR_chair_02",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 769181
+  },
+  {
+   "name": "BR_chair_03",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 774268
+  },
+  {
+   "name": "BR_chair_04",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 779355
+  },
+  {
+   "name": "BR_chair_end",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 784443
+  },
+  {
+   "name": "F_chair_Dummy",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 789532
+  },
+  {
+   "name": "F_chair_01",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 794618
+  },
+  {
+   "name": "F_chair_02",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 799704
+  },
+  {
+   "name": "F_chair_03",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 804790
+  },
+  {
+   "name": "F_chair_04",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 809876
+  },
+  {
+   "name": "F_chair_05",
+   "name_length": 10,
+   "keyframes": 181,
+   "keyframe_start": 814962
+  },
+  {
+   "name": "F_chair_end",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 820049
+  },
+  {
+   "name": "FL_chair_Dummy",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 825139
+  },
+  {
+   "name": "FL_chair_01",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 830226
+  },
+  {
+   "name": "FL_chair_02",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 835313
+  },
+  {
+   "name": "FL_chair_03",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 840400
+  },
+  {
+   "name": "FL_chair_04",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 845487
+  },
+  {
+   "name": "FL_chair_end",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 850575
+  },
+  {
+   "name": "FR_chair_Dummy",
+   "name_length": 14,
+   "keyframes": 181,
+   "keyframe_start": 855665
+  },
+  {
+   "name": "FR_chair_01",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 860752
+  },
+  {
+   "name": "FR_chair_02",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 865839
+  },
+  {
+   "name": "FR_chair_03",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 870926
+  },
+  {
+   "name": "FR_chair_04",
+   "name_length": 11,
+   "keyframes": 181,
+   "keyframe_start": 876013
+  },
+  {
+   "name": "FR_chair_end",
+   "name_length": 12,
+   "keyframes": 181,
+   "keyframe_start": 881101
+  },
+  {
+   "name": "Effect_Bone01",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 886190
+  },
+  {
+   "name": "Effect_Bone01_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 891283
+  },
+  {
+   "name": "Effect_Bone02",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 896372
+  },
+  {
+   "name": "Effect_Bone02_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 901465
+  },
+  {
+   "name": "Effect_Bone03",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 906554
+  },
+  {
+   "name": "Effect_Bone03_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 911647
+  },
+  {
+   "name": "Effect_Bone04",
+   "name_length": 13,
+   "keyframes": 181,
+   "keyframe_start": 916736
+  },
+  {
+   "name": "Effect_Bone04_end",
+   "name_length": 17,
+   "keyframes": 181,
+   "keyframe_start": 921829
+  }
+ ],
+ "parsed_end": 926897,
+ "parse_exact": true
+}

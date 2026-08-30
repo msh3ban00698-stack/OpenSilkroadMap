@@ -1,0 +1,23 @@
+Worldmap_THIEFTOWN	도적마을	182	96	182	96	169	97	165	-37	876
+Worldmap_DONWHANG	돈황석굴던전	1	128	1	128	147	106	1620	474	48
+Worldmap_JINSI	진시황릉던전	2	128	7	128	172	102	963	107	1480
+Worldmap_OLDWOMAN_6	마인샤이탄(라히드6)	189	100	189	100	115	86	716	3628	1097
+Worldmap_CH_HWAN_QUEST	중국환퀘스트	182	89	182	89	167	98	588	0	299
+Worldmap_EU_HWAN_QUEST	유럽환퀘스트	182	87	182	87	78	104	1140	83	1638
+Worldmap_ROC	괴조로크둥지	189	99	192	102	110	91	1883	4117	1912
+Worldmap_PHARAOH_1	파라오 하급	191	113	196	118	75	74	644	538	1782
+Worldmap_PHARAOH_2	파라오 중급	191	120	196	125	75	74	644	538	1782
+Worldmap_PHARAOH_3	파라오 상급	178	120	184	125	75	74	644	538	1782
+Worldmap_TEMPLE	신전	10	128	16	128	0	0	0	0	0
+Worldmap_FORT_DUNGEON	참선굴(요새보상인던)	17	128	17	128	0	0	0	0	0
+Worldmap_FLAME_DUNGEON	화염산	18	128	18	128	0	0	0	0	0
+Worldmap_GM_EVENT	GM의 방	23	128	23	128	0	0	0	0	0
+Worldmap_TheEarth	디어스의 방	19	128	19	128	0	0	0	0	0
+Worldmap_Yuno	유노의 방	20	128	20	128	0	0	0	0	0
+Worldmap_Jupiter	유피테르의 방	21	128	21	128	0	0	0	0	0
+Worldmap_B	신전B	22	128	22	128	0	0	0	0	0
+Worldmap_Arabia_boss1	칼리아의 은신처	25	128	25	128	0	0	0	0	0
+Worldmap_other_skytemple_a	샴발라 (얼음)	217	100	224	92	131	105	1751	2	982
+Worldmap_other_skytemple_b	샴발라 (불)	226	100	233	92	131	105	1751	2	982
+Worldmap_other_skytemple_c	샴발라 (맹독)	217	90	224	82	131	105	1751	2	982
+Worldmap_other_skytemple_d	샴발라 (어둠)	226	90	223	82	131	105	1751	2	982

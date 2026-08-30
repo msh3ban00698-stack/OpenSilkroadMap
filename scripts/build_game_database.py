@@ -14,16 +14,30 @@ databases consumed by the map client:
         quests.json     quest definitions
         levels.json     experience curve
 
-Usage: uv run scripts/build_game_database.py
+Usage: uv run scripts/build_game_database.py [--source-dir DIR] [--output-dir DIR]
+
+Skill scan reads every skilldata_*.txt except *enc* and includes CH + EU
+skill codes. Phase H starter JSON under map/src/game/data/ is a separate
+committed dataset; this script writes the full runtime gamedata tree.
 """
 
 import glob
 import json
 import os
 import re
+import sys
 
-BASE = "game_source/Media/server_dep/silkroad/textdata"
-OUT = "map/public/assets/gamedata"
+import sro_paths
+
+BASE = sro_paths.textdata_dir(sro_paths.DEFAULT_SOURCE_DIR)
+OUT = sro_paths.DEFAULT_OUTPUT_DIR
+
+
+def configure(source_dir=None, output_dir=None):
+    global BASE, OUT
+    source = sro_paths.resolve_source_dir(source_dir)
+    BASE = sro_paths.textdata_dir(source)
+    OUT = sro_paths.resolve_output_dir(output_dir)
 
 
 def read_table(name):
@@ -298,27 +312,34 @@ def build_quests(names):
     return out
 
 
-def build_skills(names):
+def build_skills(names, base=None):
     skills = {}
-    for r in read_table("skilldata_10000.txt"):
-        if len(r) < 66 or r[0] != "1":
+    root = base or BASE
+    for path in sorted(glob.glob(os.path.join(root, "skilldata*.txt"))):
+        if "enc" in os.path.basename(path).lower():
             continue
-        code = r[3]
-        if not code.startswith("SKILL_CH"):
-            continue
-        sn = r[62] if len(r) > 62 else ""
-        icon = r[61] if len(r) > 61 else ""
-        skills[code] = {
-            "id": _int(r[1]),
-            "code": code,
-            "sn": sn,
-            "name": names.get(sn, code),
-            "reqLevel": _int(r[7]),
-            "sp": _int(r[8]),
-            "mp": _int(r[12]),
-            "cooldown": _int(r[14]),
-            "icon": os.path.basename(icon).replace(".ddj", "") if icon else "",
-        }
+        with open(path, encoding="utf-16", errors="replace") as f:
+            f.readline()
+            for line in f:
+                r = line.rstrip("\r\n").split("\t")
+                if len(r) < 66 or r[0] != "1":
+                    continue
+                code = r[3]
+                if not code.startswith(("SKILL_CH", "SKILL_EU")):
+                    continue
+                sn = r[62] if len(r) > 62 else ""
+                icon = r[61] if len(r) > 61 else ""
+                skills[code] = {
+                    "id": _int(r[1]),
+                    "code": code,
+                    "sn": sn,
+                    "name": names.get(sn, code),
+                    "reqLevel": _int(r[7]),
+                    "sp": _int(r[8]),
+                    "mp": _int(r[12]),
+                    "cooldown": _int(r[14]),
+                    "icon": os.path.basename(icon).replace(".ddj", "") if icon else "",
+                }
     return skills
 
 
@@ -346,7 +367,10 @@ def _float(v):
         return 0.0
 
 
-def main():
+def run():
+    if not os.path.isdir(BASE):
+        print(f"Error: Directory {BASE} not found.")
+        sys.exit(1)
     os.makedirs(OUT, exist_ok=True)
     print("names...")
     names = build_names()
@@ -388,6 +412,17 @@ def main():
 def json_dump(name, data):
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+
+
+def main(argv=None):
+    parser = sro_paths.make_parser(
+        "Build runtime gamedata JSON from extracted textdata",
+        source=True,
+        output=True,
+    )
+    args = parser.parse_args(argv)
+    configure(args.source_dir, args.output_dir)
+    run()
 
 
 if __name__ == "__main__":

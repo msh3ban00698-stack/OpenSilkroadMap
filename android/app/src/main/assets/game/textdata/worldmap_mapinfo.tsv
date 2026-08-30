@@ -1,0 +1,60 @@
+#section	WLocalmap																					
+0	0	월드맵	interface\worldmap\map\map_world_	128	128	128	128	4224	1408	46	113	177	70	0	192	192	0	xxx	UIIT_PAG_WORLDMAP	0	4x4	
+1	1	장안	interface\worldmap\map\map_jangan.ddj	1024	1024	1024	768	1024	768	166	99	170	96	96	96	96	96	xxx	UIIT_STT_JANGAN	1	xxx	
+2	1	돈황	interface\worldmap\map\map_donhwang.ddj	512	512	512	512	640	640	152	104	154	101	0	48	96	144	xxx	UIIT_STT_DONHWANG	1	xxx	
+3	1	호탄	interface\worldmap\map\map_khotan.ddj	512	1024	512	838	640	1047	134	95	136	91	48	96	192	0	xxx	UIIT_STT_KHOTAN	1	xxx	
+4	1	사마르칸트	interface\worldmap\map\map_samarkand.ddj	512	512	512	427	640	534	106	108	109	105	96	48	96	144	xxx	UIIT_STT_SAMARKAND	1	xxx	
+5	1	콘스탄티노플	interface\worldmap\map\map_constantinople.ddj	1024	1024	890	1024	890	1024	77	108	81	102	0	48	192	96	xxx	UIIT_STT_CONSTANTINOPLE	1	xxx	
+6	1	분쟁맵(점수전_별의피라미드)	interface\worldmap\map\map_war_star.ddj	1024	512	640	512	640	512	213	116	214	115	144	144	192	144	xxx	UIIT_STT_BATTLE_ARENA_MAP_STAR	1	xxx	
+7	1	분쟁맵(점수전_달의피라미드)	interface\worldmap\map\map_war_moon.ddj	1024	1024	768	640	768	640	212	116	214	114	96	-48	0	96	xxx	UIIT_STT_BATTLE_ARENA_MAP_MOON	1	xxx	
+8	1	분쟁맵(점수전_태양의피라미드)	interface\worldmap\map\map_war_sun.ddj	1024	1024	896	768	1024	878	214	116	216	114	96	-48	48	48	xxx	UIIT_STT_BATTLE_ARENA_MAP_SUN	1	xxx	
+9	1	분쟁맵(깃발전_용의길)	interface\worldmap\map\map_war_dragon.ddj	1024	1024	640	640	640	640	212	123	213	121	96	-48	144	96	xxx	UIIT_STT_BATTLE_ARENA_MAP_DRAGON	1	xxx	
+10	1	분쟁맵(깃발전_봉황의길)	interface\worldmap\map\map_war_bongbird.ddj	512	512	512	512	640	640	215	123	216	121	0	0	192	0	xxx	UIIT_STT_BATTLE_ARENA_MAP_BONGBIRD	1	xxx	
+11	1	분쟁맵(깃발전_주작의길)	interface\worldmap\map\map_war_joobird.ddj	1024	512	640	512	640	512	218	122	219	121	0	48	48	48	xxx	UIIT_STT_BATTLE_ARENA_MAP_JOOBIRD	1	xxx	
+1001	1	장안 요새맵 	interface\worldmap\map\map_fort_jangan.ddj	1024	1024	1024	819	1024	819	69	71	74	67	-48	48	48	0	INS_FORT_JA	SN_FORTRESS_JANGAN	0	xxx	
+1002	1	비적단 요새맵	interface\worldmap\map\map_fort_bijuckdan.ddj	1024	1024	964	1024	964	1024	77	71	81	67	48	0	48	-48	INS_FORT_BJ	SN_FORTRESS_BIJEOKDAN	0	xxx	
+1003	1	호탄 요새맵	interface\worldmap\map\map_fort_hotan.ddj	1024	1024	727	1024	727	1024	68	64	73	57	0	192	96	48	INS_FORT_HT	SN_FORTRESS_HOTAN	0	xxx	
+1004	1	콘스탄티노플 요새맵	interface\worldmap\map\map_fort_constantinople.ddj	1024	1024	1024	1024	1024	1024	91	63	94	60	0	192	192	0	INS_FORT_CT	SN_FORTRESS_CONSTANTINOPLE	0	xxx	1
+12	1	알렉산드리아	interface\worldmap\map\map_alex.ddj	1024	1024	878	1024	878	1024	46	96	51	89	0	0	192	0	xxx	SN_ZONE_21836_6	1	xxx	
+13	1	잊혀진세계-난파선 안	interface\worldmap\map\map_ship_in.ddj	1024	1024	1024	1024	1024	1024	238	117	251	104	0	0	0	0	xxx	UIIT_STT_GOD_WRECK	1	xxx	
+14	1	잊혀진세계-난파선 밖	interface\worldmap\map\map_ship_out.ddj	1024	1024	1024	1024	1024	1024	221	117	234	104	0	0	0	0	xxx	UIIT_STT_GOD_WRECK	1	xxx	
+15	1	잊혀진세계-토귀마을	interface\worldmap\map\map_togui.ddj	1024	1024	1024	777	1024	777	225	127	232	121	96	0	144	96	xxx	UIIT_STT_GOD_TOGUI	1	xxx	
+16	1	유피테르신전A	interface\worldmap\map\map_worship.ddj	256	256	256	256	768	1280	235	126	237	122	0	192	192	0	xxx	UIIT_STT_JUPITER_A	0	1x1	
+17	1	유피테르필드	interface\worldmap\map\map_jupiter_field.ddj	128	128	128	128	640	640	199	103	218	83	0	0	192	0	xxx	UIIT_STT_JUPITER_FIELD	0       4x4	
+18	1	바그다드 도시	interface\worldmap\map\map_bagdad.ddj	1024	1024	1024	725	1024	725	88	90	93	86	0	48	192	0	xxx	RN_ARABIA_TOWN_01	1	xxx	1
+19	1	바그다드 도시 (인던)	interface\worldmap\map\map_bagdad_dungeon.ddj	1024	1024	1024	725	1024	725	81	95	86	91	0	48	192	0	xxx	RN_ARABIA_DUNGEON_01	0	1x1	1
+20	1	무한의 전장	interface\worldmap\map\map_muhan.ddj	512	256	512	256	768	384	211	105	212	104	0	192	192	192	xxx	RN_MUHAN_01	0	1x1	1.5
+21	1	??? (??)	interface\worldmap\map\map_petra_dungeon.ddj	585	1024	585	1024	640	1024	77	89	81	82	0	192	0	192	xxx	RN_ARABIA_PETRA_01	0	xxx	
+22	1	??? ?? (??)	interface\worldmap\map\map_garden_dungeon.ddj	829	832	829	832	829	832	246	126	250	122	-40	0	-192	160	xxx	RN_ARABIA_GARDEN_01	0	xxx
+23	1	샴발라 (얼음)	interface\worldmap\map\map_other_skytemple_a.ddj	1024	1024	1024	1024	1024	1024	217	100	224	93	0	192	192	0	xxx	RN_OTHER_SKYTEMPLE_A_01	1	xxx	1.0
+24	1	샴발라 (불)	interface\worldmap\map\map_other_skytemple_b.ddj	1024	1024	1024	1024	1024	1024	226	100	233	93	0	192	192	0	xxx	RN_OTHER_SKYTEMPLE_B_01	1	xxx	1.0
+25	1	샴발라 (맹독)	interface\worldmap\map\map_other_skytemple_c.ddj	1024	1024	1024	1024	1024	1024	217	90	224	83	0	192	192	0	xxx	RN_OTHER_SKYTEMPLE_C_01	1	xxx	1.0
+26	1	샴발라 (죽음)	interface\worldmap\map\map_other_skytemple_d.ddj	1024	1024	1024	1024	1024	1024	226	90	233	83	0	192	192	0	xxx	RN_OTHER_SKYTEMPLE_D_01	1	xxx	1.0
+27	1	차원의 사막	interface\worldmap\map\map_dimensional_desert.ddj	1024	1024	1024	1024	650	400	235	95	247	88	0	192	192	0	xxx	RN_NEW_HUNTING_SECOND_FIELD_01	1	xxx	1.0
+
+#section	Dungeonmap																					
+2001	돈황석굴	F	1	4	32769	3	3	768	768	127	128	129	126	1.0 	interface\worldmap\dungeon\map_world_donf01_	1 	DH_A01_FLOOR01	1	0	0	0	0
+2002	돈황석굴	F	2	4	32769	3	3	768	768	127	128	129	126	1.0 	interface\worldmap\dungeon\map_world_donf02_	1 	DH_A01_FLOOR02	1	0	0	0	0
+2003	돈황석굴	F	3	4	32769	3	3	768	768	127	128	129	126	1.0 	interface\worldmap\dungeon\map_world_donf03_	1 	DH_A01_FLOOR03	1	0	0	0	0
+2004	돈황석굴	F	4	4	32769	3	3	768	768	127	128	129	126	1.0 	interface\worldmap\dungeon\map_world_donf04_	1 	DH_A01_FLOOR04	1	0	0	0	0
+2005	진시황릉	B	1	6	32775	6	8	768	1024	125	132	130	125	0.5 	interface\worldmap\dungeon\map_world_jinf01_	7 	QT_A01_FLOOR01	1	0	0	0	0
+2006	진시황릉	B	2	6	32774	22	10	1408	640	117	132	138	123	0.25 	interface\worldmap\dungeon\map_world_jinf02_	6 	QT_A01_FLOOR02	1	0	0	0	0
+2007	진시황릉	B	3	6	32773	24	24	768	768	116	139	139	116	0.125 	interface\worldmap\dungeon\map_world_jinf03_	5 	QT_A01_FLOOR03	1	0	0	0	0
+2008	진시황릉	B	4	6	32772	20	22	1280	1408	118	138	137	117	0.25 	interface\worldmap\dungeon\map_world_jinf04_	4 	QT_A01_FLOOR04	1	0	0	0	0
+2009	진시황릉	B	5	6	32771	19	20	1216	1280	119	137	137	118	0.25	interface\worldmap\dungeon\map_world_jinf05_	3 	QT_A01_FLOOR05	1	0	0	0	0
+2010	진시황릉	B	6	6	32770	12	10	768	640	122	132	133	123	0.25 	interface\worldmap\dungeon\map_world_jinf06_	2 	QT_A01_FLOOR06	1	0	0	0	0
+2011	이집트	F	1	1	32778	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	10	RN_SD_EGYPT1_01	1	0	0	0	0
+2012	이집트	F	1	1	32779	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	11	RN_SD_EGYPT1_01	1	0	0	0	0
+2013	이집트	F	1	1	32780	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	12	RN_SD_EGYPT1_01	1	0	0	0	0
+2014	이집트	F	1	1	32781	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	13	RN_SD_EGYPT1_01	1	0	0	0	0
+2015	이집트	F	1	1	32782	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	14	RN_SD_EGYPT1_01	1	0	0	0	0
+2016	이집트	F	1	1	32783	4	2	768	384	126	128	129	127	0.75	interface\worldmap\dungeon\map_world_shrine2	15	RN_SD_EGYPT1_02	1	0	0	0	0
+2017	이집트	F	1	1	32784	11	6	1408	768	123	130	133	125	0.5	interface\worldmap\dungeon\map_world_shrine	16	RN_SD_EGYPT1_01	1	0	0	0	0
+2018	참선굴(요새보상인던)	B	1	1	32785	3	3	768	768	127	128	129	126	1.0 	interface\worldmap\dungeon\map_world_donf01_	17	FORT_DUNGEON01	1	0	0	0	0
+2019	화염산	F	1	1	32786	14	16	896	1024	121	134	134	119	0.25	interface\worldmap\dungeon\map_world_mountain_	18	FLAME_DUNGEON01	1	0	0	0	0
+2020	유피테르신전A_보스1	F	1	1	32787	1	1	1024	1024	128	128	128	128	4	interface\worldmap\dungeon\map_world_jupiter_a_1_	19	RN_JUPITER_02	0	192	256	192	256
+2021	유피테르신전A_보스2	F	1	1	32788	1	1	1024	1024	128	128	128	128	4	interface\worldmap\dungeon\map_world_jupiter_a_2_	20	RN_JUPITER_03	0	192	256	192	256
+2022	유피테르신전A_보스3	F	1	1	32789	1	1	1024	1024	128	128	128	128	4	interface\worldmap\dungeon\map_world_jupiter_a_3_	21	RN_JUPITER_04	0	192	256	192	256
+2023	유피테르신전B	F	1	1	32790	4	4	1024	1024	126	129	129	126	1	interface\worldmap\dungeon\map_world_jupiter_b_	22	RN_JUPITER_01	0	64	128	64	0
+2024	칼리아의은신처	B	1	1	32793	2	2	1024	1024	127	128	128	127	2	interface\worldmap\dungeon\map_world_arabia_field_02_boss_	25	RN_ARABIA_FIELD_02_BOSS	0	128	256	128	256
+2025	비밀의방	F	1	1	32794	1	1	1024	1024	128	128	128	128	4	interface\worldmap\dungeon\map_world_jupiter_a_3_	26	RN_BOSS_DUNGEON_01	0	192	256	192	256

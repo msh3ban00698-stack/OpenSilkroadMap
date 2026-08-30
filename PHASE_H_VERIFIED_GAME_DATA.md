@@ -38,7 +38,10 @@ files under `map/src/game/data/` (committed, bundled by Vite):
 - `masteries.json` — mastery rows from `skillmasterydata.txt` +
   `learnablemastery.txt` (class -> mastery id mapping).
 
-Run it with `uv run scripts/generate_phase_h_data.py`. It is idempotent.
+Run it with `uv run scripts/generate_phase_h_data.py --source-dir game_source`.
+It is idempotent. This committed starter set is separate from the full runtime
+tree produced by `scripts/build_game_database.py` into
+`map/public/assets/gamedata/` (optional at runtime).
 
 ## Runtime (`map/src/game/`)
 

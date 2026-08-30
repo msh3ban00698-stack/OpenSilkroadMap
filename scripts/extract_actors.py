@@ -11,10 +11,13 @@ folders consumed by the client's generic actor loader:
 Usage: python3 scripts/extract_actors.py [npc|mob|all]
 """
 
+import argparse
 import json
 import os
 import re
 import sys
+
+import sro_paths
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,13 +29,9 @@ from extract_character import (  # noqa: E402
     parse_mesh,
     parse_skeleton,
 )
-from PIL import Image  # noqa: E402
 
-sys.path.insert(0, "/tmp/opencode/vsro")
-import pk2reader  # noqa: E402
-
-PK2 = "/tmp/opencode/vsro/pk2/Data.pk2"
 OUT_BASE = "map/public/assets/img/silkroad/game/actor"
+_pk2 = None
 
 ANIM_RULES = [
     ("walk", "walk"),
@@ -47,12 +46,9 @@ ANIM_RULES = [
 
 
 def data_pk2():
-    global _pk2
-    try:
-        return _pk2
-    except NameError:
-        _pk2 = pk2reader.PK2(PK2)
-        return _pk2
+    if _pk2 is None:
+        raise RuntimeError("PK2 archive is not open; call main() first")
+    return _pk2
 
 
 def read_pk2(rel):
@@ -150,6 +146,8 @@ def build_actor(name, bsr_path, out_dir):
                     print(f"  ! tex {tex_rel}: {e}")
                     tex_name = None
             if tex_name and os.path.exists(webp_path):
+                from PIL import Image
+
                 with Image.open(webp_path) as img:
                     if img.mode in ("RGBA", "LA", "P"):
                         hist = img.getchannel("A").histogram()
@@ -242,6 +240,8 @@ def convert_texture_tex(tex_rel, webp_path):
 
     from io import BytesIO
 
+    from PIL import Image
+
     blob = read_pk2(tex_rel)
     img = Image.open(BytesIO(blob[20:])).convert("RGBA")
     img.save(webp_path, quality=80)
@@ -274,7 +274,19 @@ MOB_ACTORS = {
 
 
 def main():
-    which = sys.argv[1] if len(sys.argv) > 1 else "npc"
+    parser = argparse.ArgumentParser(description="Extract NPC and monster actors from Data.pk2")
+    sro_paths.add_common_args(parser, pk2=True)
+    parser.add_argument("which", nargs="?", default="npc", choices=("npc", "mob", "all"))
+    args = parser.parse_args()
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
+    global _pk2
+    _pk2 = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Data.pk2"))
+    which = args.which
     todo = {}
     if which in ("npc", "all"):
         todo.update(NPC_ACTORS)

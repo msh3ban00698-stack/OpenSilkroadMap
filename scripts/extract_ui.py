@@ -5,22 +5,17 @@ Parses listing_media.txt (indentation tree) to resolve full package paths,
 extracts a curated set of login/select/loading/button textures, converts them
 from .ddj to .png and writes them to map/public/assets/img/silkroad/ui/.
 """
+import argparse
 import os
 import re
 import sys
-
-from PIL import Image
 from io import BytesIO
 
-PK2ROOT = "/tmp/opencode/vsro"
-sys.path.insert(0, PK2ROOT)
-import pk2reader  # noqa: E402
+import sro_paths
 
 OUT = os.path.join(
     os.path.dirname(__file__), "..", "map", "public", "assets", "img", "silkroad", "ui"
 )
-
-media = pk2reader.PK2(os.path.join(PK2ROOT, "pk2/Media.pk2"))
 
 TARGETS = {
     "loading_login_01_2011.ddj": "login_bg.png",
@@ -91,14 +86,28 @@ def parse_listing(path):
 
 
 def load_ddj(blob):
+    from PIL import Image
+
     return Image.open(BytesIO(blob[20:])).convert("RGBA")
 
 
 def main():
-    os.makedirs(OUT, exist_ok=True)
+    parser = argparse.ArgumentParser(description="Extract Silkroad UI art from Media.pk2")
+    sro_paths.add_common_args(parser, pk2=True)
+    parser.add_argument("--output-dir", default=None, help="UI output directory")
+    args = parser.parse_args()
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
+    media = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Media.pk2"))
+    out_dir = args.output_dir or OUT
+    os.makedirs(out_dir, exist_ok=True)
     wanted = {os.path.basename(k): k for k in TARGETS}
     found = {}
-    for p in parse_listing(os.path.join(PK2ROOT, "listing_media.txt")):
+    for p in parse_listing(sro_paths.listing_path(pk2_dir, "listing_media.txt")):
         base = os.path.basename(p)
         if base in wanted and base not in found:
             found[base] = p
@@ -116,7 +125,7 @@ def main():
         except Exception as e:
             print("DECODE FAIL:", pkg_path, e)
             continue
-        img.save(os.path.join(OUT, dest))
+        img.save(os.path.join(out_dir, dest))
         print(f"{dest}: {img.width}x{img.height}  <- {pkg_path}")
         ok += 1
     print(f"extracted {ok}/{len(TARGETS)}")

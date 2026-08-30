@@ -1,0 +1,95 @@
+{
+ "bsk": {
+  "w_cd_boat.bsk": {
+   "size": 722,
+   "count_u32_at_12": 6,
+   "magic": "JMXVBSK 0101",
+   "bone_names": [
+    "Bone01",
+    "Bone02",
+    "Bone03",
+    "Bone05",
+    "Bone02",
+    "Bone01",
+    "Bone05",
+    "Bone01"
+   ],
+   "first_bone_offset": 17
+  },
+  "flame_crazy_stand01.bsk": {
+   "size": 7513,
+   "count_u32_at_12": 55,
+   "magic": "JMXVBSK 0101",
+   "bone_names": [
+    "[root]",
+    "Bip01",
+    "Bone07",
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Pelvis",
+    "Bip01",
+    "Bip01 Spine"
+   ],
+   "first_bone_offset": 17
+  }
+ },
+ "bsr": {
+  "avatar_w_angel_wing_dress.bsr": {
+   "size": 549,
+   "magic": "JMXVRES 0109",
+   "table8_u32": [
+    201,
+    255,
+    387,
+    375,
+    391,
+    418,
+    422,
+    145
+   ],
+   "paths": [
+    "prim\\mtrl\\item\\etc\\avatar_w_angel_wing.bmt",
+    "prim\\mesh\\item\\etc\\avatar_w_angel_wing_dress_part1.bms",
+    "prim\\mesh\\item\\etc\\avatar_w_angel_wing_dress_part2.bms"
+   ]
+  },
+  "cj_table_01.bsr": {
+   "size": 337,
+   "magic": "JMXVRES 0109",
+   "table8_u32": [
+    187,
+    237,
+    298,
+    286,
+    302,
+    325,
+    329,
+    131
+   ],
+   "paths": [
+    "table_01.bms"
+   ]
+  },
+  "w_cd_buda_b_01.bsr": {
+   "size": 639,
+   "magic": "JMXVRES 0109",
+   "table8_u32": [
+    250,
+    322,
+    588,
+    576,
+    592,
+    627,
+    631,
+    134
+   ],
+   "paths": [
+    "prim\\mesh\\artifact\\china\\dunhuang\\budaa\\w_cd_buda_b_wall.bms",
+    "prim\\mtrl\\artifact\\china\\dunhuang\\budaa\\w_cd_buda_b_wall.bmt",
+    "prim\\mesh\\artifact\\china\\dunhuang\\budaa\\w_cd_buda_b_01.bms",
+    "prim\\mesh\\artifact\\china\\dunhuang\\budaa\\w_cd_buda_b_02.bms",
+    "prim\\mesh\\artifact\\china\\dunhuang\\budaa\\w_cd_buda_b_03.bms"
+   ]
+  }
+ }
+}

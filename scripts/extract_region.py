@@ -27,7 +27,10 @@ game_source/ tree and are never staged.
 
 import argparse
 import os
+import re
 import sys
+
+import sro_paths
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
 from generate_navmesh import parse_navmesh_obj_bsr  # noqa: E402  (reuse repo parser)
@@ -66,24 +69,27 @@ REGIONS = {
 
 def main():
     parser = argparse.ArgumentParser(description="Extract one region's source files from external vSRO PK2s")
-    parser.add_argument("--pk2-dir", required=True, help="Directory containing Data.pk2 and Media.pk2")
+    parser.add_argument("--pk2-dir", default=None, help="Directory containing Data.pk2 and Media.pk2 or a parent with pk2/")
     parser.add_argument("--reader-dir", default=None, help="Directory with pk2reader.py/jmblowfish.py (default: pk2-dir)")
-    parser.add_argument("--root", default="game_source", help="Output root (gitignored), default: game_source")
+    parser.add_argument("--root", default=None, help="Output root (gitignored), default: game_source")
     parser.add_argument("--region", type=int, default=32785, help="Region ID to extract (default: 32785)")
     args = parser.parse_args()
 
     if args.region not in REGIONS:
         sys.exit(f"Region {args.region} is not configured (available: {sorted(REGIONS)})")
 
-    reader_dir = args.reader_dir or args.pk2_dir
-    sys.path.insert(0, reader_dir)
-    from pk2reader import PK2  # noqa: E402  (custom reader lives next to the PK2s)
+    try:
+        pk2_dir = sro_paths.resolve_pk2_dir(args.pk2_dir)
+        reader_dir = sro_paths.resolve_reader_dir(args.reader_dir, pk2_dir)
+        pk2reader = sro_paths.require_pk2_reader(reader_dir)
+    except sro_paths.PipelineConfigError as exc:
+        sys.exit("Error: {0}".format(exc))
 
-    data_pk2 = PK2(os.path.join(args.pk2_dir, "Data.pk2"))
-    media_pk2 = PK2(os.path.join(args.pk2_dir, "Media.pk2"))
+    data_pk2 = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Data.pk2"))
+    media_pk2 = pk2reader.PK2(sro_paths.pk2_archive(pk2_dir, "Media.pk2"))
 
     cfg = REGIONS[args.region]
-    root = args.root
+    root = args.root or sro_paths.resolve_source_dir()
     extracted = []
     missing = []
 

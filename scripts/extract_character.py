@@ -23,8 +23,6 @@ import struct
 import sys
 import io
 
-from PIL import Image
-
 sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
 
 PRIM_DIR = os.path.join("game_source", "Data", "prim")
@@ -288,6 +286,8 @@ def build_bind_world(bones, extra_parents=None):
 
 
 def convert_texture(ddj_path, out_webp, flip=False):
+    from PIL import Image
+
     with open(ddj_path, "rb") as f:
         f.seek(20)
         dds_data = f.read()
@@ -378,6 +378,8 @@ def main():
             webp_path = os.path.join(out_dir, tex_name)
             if not os.path.exists(webp_path):
                 convert_texture(os.path.join(PRIM_DIR, tex_rel), webp_path)
+            from PIL import Image
+
             with Image.open(webp_path) as img:
                 if img.mode in ("RGBA", "LA", "P"):
                     hist = img.getchannel("A").histogram()

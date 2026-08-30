@@ -5,8 +5,13 @@ package (listings produced with `pk2_mate list` and a purpose-built Python PK2 r
 porting Veykril/pk2's Joymax Blowfish variant). Claims that are inferred rather than
 verified are explicitly marked **[assumed]**.
 
-All external material lives outside the repository (`/tmp/opencode/vsro/`); nothing
-from the package has been imported into the repo.
+**2026-08-29 correction:** `PK2 Files.7z` contains four archives (`Data`, `Map`,
+`Music`, `Particles`). `Media.pk2` is inside `VSRO-R Client.7z`, not inside
+`PK2 Files.7z`. Nested-archive listings, redacted configs, and blockers are in
+`VSRO_V193_SOURCE_INVENTORY.md` (this session did not re-walk PK2 interiors).
+
+All external material lives outside the repository. Supply the PK2 root with
+`--pk2-dir` or `SRO_PK2_DIR`; nothing from the package is imported into the repo.
 
 ---
 
@@ -17,8 +22,8 @@ from the package has been imported into the repo.
 
 | File                                    | Size (bytes)  | Content                                                                                                                                                                                             |
 | --------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PK2 Files.7z`                          | 1,546,426,717 | The 5 game PK2 archives (see below)                                                                                                                                                                 |
-| `VSRO-R Client.7z`                      | 195,170,460   | Game client (source of `Media.pk2`)                                                                                                                                                                 |
+| `PK2 Files.7z`                          | 1,546,426,717 | Four PK2 archives: `Data.pk2`, `Map.pk2`, `Music.pk2`, `Particles.pk2` (no `Media.pk2`)                                                                                                              |
+| `VSRO-R Client.7z`                      | 195,170,460   | Game client including `Media.pk2` (823,066,624 B)                                                                                                                                                   |
 | `Vietnam-R v193 Package Server.7z`      | 10,994,403    | Server binaries (`MachineManager.exe`, `smc.exe`, `ImageTrans.dll`, `MailSender.dll`, `SMPlugins/*.dll`, `Script/VIETNAM_LUA/luac.exe`, `helper.exe`)                                               |
 | `Database.7z`                           | 6,951,722     | SQL Server backups `SRO_CERTIFICATION.Bak`, `SRO_VT_ACCOUNT.Bak`, `SRO_VT_SHARD.Bak`, `SRO_VT_SHARDLOG.Bak`                                                                                         |
 | `VSRO-R Proxy v1005.rar`                | 448,117       | `VSROProxy.exe`, `proxy_cfg.ini`, `HWID_DLL/sr_proxy.dll`, `Auto Events/*.txt`, `Features/*.txt` (e.g. `BLOCKED_SKILL_IDS`, `FILTER_KEYWORDS`, `MALICIOUS_OPCODES`), `Message/*.txt`, Prerequisites |
@@ -130,7 +135,8 @@ Headers: `.t`=`JMXVMAPT1001`, `.o`/`.o2`=`JMXVMAPO1001`, `.m`=`JMXVMAPM1000`.
 - No tooling for Data `prim` 3D models/animations.
 - No item/skill/quest search surfaced in the UI (data is present in textdata).
 - No direct teleporter import flow (README TODO), though teleport data is present.
-- No automated pipeline script chaining the whole `game_source` → `map/public/assets` build.
+- Canonical pipeline entrypoint: `scripts/extract_sro.py` (`validate` / `extract` / `generate`).
+  PK2 reader (`pk2reader.py` / `jmblowfish.py`) is an external dependency, not in this repo.
 
 ## 7. Recommended Future Pipeline
 
