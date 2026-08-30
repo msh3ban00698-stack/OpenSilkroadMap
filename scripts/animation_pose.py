@@ -65,6 +65,60 @@ def load_keyframes(raw: bytes, bone_cap: int = 0):
     }
 
 
+def describe_animation(raw: bytes):
+    """Describe a BAN clip with ONLY proven facts (Phase 19 Part G).
+
+    Returns a dict with every field derived from source bytes or clearly
+    labelled UNKNOWN. frame_rate is reported as a header field but timestamps
+    are authoritative for timing (bandit_walk timestamps are non-uniform).
+    Looping is PROVEN when the first keyframe equals the last for every
+    channel. Root motion is reported from the Bip01 translation channel.
+    """
+    r = BAN.parse_ban(raw, keyframe_cap=0)
+    anim = load_keyframes(raw)
+    ts = anim["timestamps"]
+    channels = anim["channels"]
+    uniform = all(
+        ts[i + 1] - ts[i] == ts[1] - ts[0]
+        for i in range(len(ts) - 1))
+    loops = len(ts) > 1 and all(
+        len(ch) > 1
+        and all(abs(a - b) < 2e-3 for a, b in zip(ch[0][0], ch[-1][0]))
+        and all(abs(a - b) < 2e-3 for a, b in zip(ch[0][1], ch[-1][1]))
+        for ch in channels.values())
+    root = channels.get("Bip01", [])
+    root_positions = [ch[1] for ch in root]
+    root_drift = max(
+        max(abs(a - root_positions[0][k]) for a in (p[k] for p in root_positions))
+        for k in range(3)) if root_positions else 0.0
+    return {
+        "clip_count": 1,
+        "clip_name": r["header"]["name"],
+        "duration_ms": r["duration_ms"],
+        "keyframe_count": r["keyframes_per_bone"],
+        "timestamps": ts,
+        "timestamps_uniform": uniform,
+        "timestamps_non_uniform": not uniform,
+        "target_bones": list(channels.keys()),
+        "bone_count": len(channels),
+        "has_rotation": True,
+        "has_translation": True,
+        "has_scale": False,
+        "keyframe_stride_bytes": KEYFRAME_STRIDE,
+        "interpolation": "not stored in file; evaluator applies "
+                         "slerp(quat)+lerp(pos)",
+        "compression": "none (raw 28-byte records)",
+        "looping": loops,
+        "loop_evidence": "first keyframe == last keyframe for every channel"
+                         if loops else "no first==last keyframe match",
+        "root_motion": root_drift > 1e-3,
+        "root_drift_units": round(root_drift, 4),
+        "frame_rate_header": r["frame_rate"],
+        "timing_note": "timestamps are authoritative; frame_rate field nominal",
+        "unknown_u32": r["unknown_u32"],
+    }
+
+
 def _sample(channel, timestamps, t):
     """Interpolate (q, pos) at time t within [t0, tN] (clamped at ends)."""
     if not channel:

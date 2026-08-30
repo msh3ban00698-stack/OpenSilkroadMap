@@ -253,9 +253,9 @@ def _build_with(read_data, read_media, out_dir):
                 "duration_ms": anim["duration_ms"],
                 "timestamps": anim["timestamps"],
                 "channels": {
-                    name: [[round(x, 6) for x in q], [round(x, 6) for x in p]]
+                    name: [[[round(x, 6) for x in q], [round(x, 6) for x in p]]
+                           for q, p in recs]
                     for name, recs in anim["channels"].items()
-                    for q, p in [recs[0]]  # first keyframe only keeps JSON small
                 },
             }
             with open(os.path.join(anim_dir, stem + ".json"), "w") as fh:
