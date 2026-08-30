@@ -140,24 +140,34 @@ Evidence fixture: `scripts/testdata/formats/nvm_grid.json`; tests:
 
 ---
 
-## 3. `.bms` — static mesh (`JMXVBMS 0110`) — **STRUCTURE PARTIALLY PROVEN**
+## 3. `.bms` — static mesh (`JMXVBMS 0110`) — **STRUCTURE PROVEN; VERTEX LAYOUT PROVEN (44/52 B); SKINNING TAIL UNKNOWN**
 
-### Proven layout (both samples, `scripts/test_phase13_bms.py`, fixture `scripts/testdata/formats/bms_layout.json`)
+Phase 16 decodes the vertex layout that Phase 13 could not (the earlier
+"52.11 B" stride was an ERROR — the vertex section ends at `s1 = offset@0x10`,
+not `s2 = offset@0x14`). Full census of all 22,684 `Data.pk2` BMS files:
+
+| class | count | vertex_size | description |
+|---|---|---|---|
+| standard | 17,247 | 44 B | pos+normal+uv + 12 B tail |
+| lightmap | 5,399 | 52 B | pos+normal+uv+uv2 + 12 B tail |
+| morph80 | 5 | 80 B | 4 weight streams (morph/skin) |
+| morph_trailing | 1 | 80 B + trailing | 80 B + trailing bytes |
+| unproven | 32 | — | triangle section unparseable |
+
+### Proven layout (all 22,684 files, `scripts/bms_decoder.py`, tests `scripts/test_phase16_bms.py`, fixtures `scripts/testdata/formats/bms_phase16.json` + `scripts/testdata/formats/bms_samples/`)
 
 ```
 0x00  char[12]  magic = "JMXVBMS 0110"
-0x0C  u32       header_size (== first section offset: 118 / 133)
+0x0C  u32       header_size (== s0 = offset of vertex section)
 0x10  u32 x6    section offsets s1..s6 (ascending, all < file size)
-0x30  u32 x2    zero padding
-0x38  u32       end_offset (== file size - 4)
-0x3C  u32 x2    zero
-0x44  u32 x3    1, 0, 0
-0x50  u32       name1_len, char[] name1 (NOT 4-aligned after first)
-      u32       name2_len, char[] name2
-      u32       header_tail_unknown (94 / 58)
+0x28  u32 x2    zero padding
+0x30  u32       end_offset (== file size - 4)
+0x34  u32 x3    zero / 1, 0, 0
+0x40  u32       name1_len, char[] name1; name2_len, char[] name2
+      u32       skinned_vertex_count  (= u32@0x80-4 in all 11 samples; == vertex_count for skinned meshes)
 ────────────────────────────────────────────────────────────
-s0  vertex data: u32 vertex_count, then vertex records
-s1  bone table : u32 bone_count, then per-bone data (names "Bone01"...)
+s0  vertex data: u32 vertex_count, then vertex records (stride = (s1-s0-4)/vertex_count)
+s1  bone table : u32 bone_count, then per-bone [u32 name_len + name] + transform data
 s2  triangle list: u32 tri_count, then tri_count x 3 x u16 LE indices (stride 6)
 s3  4 B  (0)
 s4  4 B  (0)
@@ -166,28 +176,47 @@ s6  4 B  (0)
     then end_offset..EOF = 4 B (0)
 ```
 
-### Evidence
+### Vertex record layouts (PROVEN)
 
-| Sample | size | header_size | vertex_count | vertex stride (B) | bone_count | tri_count | tri indices < vcount | AABB (min/max) |
-|---|---|---|---|---|---|---|---|---|
-| Bagh_Petra_Core01 | 19,866 | 118 | 346 | **44.0** (fits: 4+346×44 = 15,228 = s1−s0) | 2 | 396 | yes (max 273 < 346) | (−22.29, 90.59, −22.29)…(22.29, 134.75, 22.29) |
-| demon_tower_mbrazier_fire | 45,251 | 133 | 786 | 52.114… (**NOT integer** → layout differs) | 0 | 684 | yes (max 765 < 786) | (−11.33, −0.28, −11.33)…(11.33, 71.79, 11.33) |
+```
+44 B "standard"  (17,247 files — items, nature, mob, npc, bldg, dun, artifact)
+   0  3x f32  position
+  12  3x f32  normal        (unit-length verified across all 44/44.5/45/50 samples)
+  24  2x f32  uv
+  32  f32     blend_weight  (0.0 = unskinned)
+  36  u32     bone_index    (0xFFFFFFFF = none; 0..N for skinned vertices)
+  40  u32     flags         (0 = unskinned, 2 = skinned/flagged)
+    tail @32 == [0, 0xFFFFFFFF, 0] for unflagged vertices in static meshes
 
-Header names: petra = `Bagh_Petra_Core01` / `Bagh_Petra_core01`; demon =
-`demon_tower_mbrazier_fire` / `Demon_Tower_Brazier_fire` (two case-variant names).
+52 B "lightmap"  (5,399 files — bldg/dungeon with lightmap UV)
+   0  3x f32  position
+  12  3x f32  normal        (unit-length verified)
+  24  2x f32  uv
+  32  2x f32  uv2           (lightmap UV; range 0.02..1e9 across v52_bldg sample)
+  40  f32     0.0
+  44  u32     0xFFFFFFFF
+  48  u32     0
+```
 
-### UNKNOWN
+### UNKNOWN / PARTIAL
 
-- Vertex record layout/stride: petra divides by 44 B (11 f32) but demon does
-  **not** (52.11 B) — petra's 44-B stride may be coincidental (11 f32 includes a
-  `nan` field in the first record → not a clean pos/normal/uv layout). **No
-  vertex decoder**.
-- `s1` bone table record layout (only names + weights visible; petra 2 bones,
-  demon 0 bones).
-- `header_tail_unknown` (94 / 58), `end_offset` semantics (== size−4 always).
-- Sections s3/s4/s6 (4 B zero) and tail 4 B.
-- Which index buffer the triangles reference (u16, ≤ vertex_count — proven valid
-  range only). Decoder: **none**.
+- **Skinned tail semantics (flags==2 vertices)**: blend_weight is 0.0/1.0; the
+  u32@36 reaches values far above local `bone_count` (npc_chicken: 14 bones,
+  indices 3..96) and `nature_tree` (0 bones) marks 19/36 vertices with flags=2
+  and u32@36 ∈ 8..34 **with duplicates** — therefore u32@36 is **NOT a local
+  bone index** (likely an external skeleton/palette reference, or a non-skinning
+  payload for leaf/billboard vertices). Not decodable without original code.
+  Static rendering uses only flags==0 vertices → unaffected.
+- `morph80` (5 files) and `morph_trailing` (1): 80 B/vertex with 4 f32 weight
+  streams; field-by-field layout UNKNOWN. Classified, not decoded.
+- The 7th optional header offset u32@0x28 (`off7`, e.g. nature_tree=2086) and
+  the trailing bytes after vertices in some lightmap files (~87–90 B).
+- `.bsk`/`.bsr`/`.ban` are decoded separately (see sections below / Phase 13);
+  the `.bsk`-side bone table record beyond names remains PARTIAL.
+- The `demon` 52.11-B "anomaly" from Phase 13 is resolved: demon is a **52 B
+  lightmap** mesh (786 vertices × 52 = 40,872 B, lightmap ddj path embedded)
+  with **90 B of trailing bytes** after the vertex array — the old non-integral
+  stride came from counting those trailing bytes as part of the vertex stride.
 
 ---
 

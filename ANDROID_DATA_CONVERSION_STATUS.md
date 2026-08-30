@@ -101,7 +101,7 @@ record counts, schema width, content spot checks) and listed in
 | Format | Files | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|
 | `ban` | 4,796 | **FULL layout** (Phase 13 Part D): magic/version; reserved; u32 name-len + name; u32 duration + frame-rate(30) + u32 UNKNOWN + kpb; kpb×u32 timestamps; bone count + per-bone name + kf-count + kpb×28-byte keyframes (quat + pos). Decoder `scripts/ban_decoder.py`, 8 tests. | semantic only: `u32`@body+8, reserved 8 bytes |
-| `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB. 12 tests. | vertex record layout (stride non-integral) |
+| `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB; **vertex layout PROVEN: 44 B standard (17,247) / 52 B lightmap (5,399) / 80 B morph (6) / 32 unproven**; `scripts/bms_decoder.py`, 16 tests (Phase 16). | skinned/flags==2 tail semantics (u32@36 is NOT a local bone index); 80 B morph fields; trailing bytes. Static (flags==0) meshes fully decodable. |
 | `nvm` | 6,041 | flat 8-byte nav-cell records; 96×96 (9,216) grid; f32 region; trailing fill. 5 tests. | nav-cell semantics |
 | `efp` | 3,395 | version tree + u32-length-prefixed command stream. 11 tests. | command-stream semantics |
 | `bsk` | 1,039 | magic/version; body sampled. 9 tests (shared). | bone/keyframe layout |

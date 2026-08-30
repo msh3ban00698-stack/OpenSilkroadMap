@@ -1,7 +1,7 @@
 {
  "description": "Proven references between Android runtime assets (Phase 13 Part N). Only edges reproduced from real data are present; status VERIFIED means the reference was reproduced from committed/live bytes, PARTIAL means the structure is proven but a downstream field is UNKNOWN.",
   "textdata_edges": 9,
-  "asset_edges": 14,
+  "asset_edges": 16,
  "edges": [
   {
    "from": {
@@ -301,6 +301,32 @@
     "relationship": "per-sector object overlay",
     "status": "PARTIAL",
     "evidence": "Phase 15: 4348 .o2 overlays; magic JMXVMAPO1001; offset12=0; variable data start >=16; parse_o2 proven only when data starts at 16"
+   },
+   {
+    "from": {
+     "kind": ".bms",
+     "role": "static mesh (JMXVBMS)"
+    },
+    "to": {
+     "kind": "vertices+triangles",
+     "role": "position/normal/uv[/uv2] + u16 index buffer"
+    },
+    "relationship": "s0 vertex records (stride = (s1-s0-4)/vcount) + s2 triangles",
+    "status": "VERIFIED",
+    "evidence": "Phase 16: 44 B standard layout (17,247 files) and 52 B lightmap layout (5,399) proven from live bytes; indices within vertex_count; AABB matches vertices"
+   },
+   {
+    "from": {
+     "kind": ".bms",
+     "role": "skinned/flagged vertices (flags==2)"
+    },
+    "to": {
+     "kind": "skeleton",
+     "role": "external bone/palette reference"
+    },
+    "relationship": "12 B tail [blend_weight f32, u32, u32 flags]",
+    "status": "PARTIAL",
+    "evidence": "Phase 16: u32@36 reaches 3..96 with local bone_count 14 (npc_chicken) and 8..34 with bone_count 0 (nature_tree) -> NOT a local bone index; likely external palette; static (flags==0) path unaffected"
    }
   ]
-}
+ }

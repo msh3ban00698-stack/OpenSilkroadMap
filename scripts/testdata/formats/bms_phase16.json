@@ -1,0 +1,1144 @@
+{
+  "npc_chicken": {
+    "path": "/prim/mesh/npc/animal/cj_chicken.bms",
+    "size": 8896,
+    "version": "0110",
+    "header_size": 104,
+    "offsets": [
+      6532,
+      7628,
+      8856,
+      8860,
+      8864,
+      8888
+    ],
+    "off7": 0,
+    "end_offset": 8892,
+    "names": [
+      "cj_chicken",
+      "cj_chicken"
+    ],
+    "skinned_vertex_count": 64,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 146,
+    "vertices_sample": [
+      {
+        "position": [
+          0.0127,
+          3.1151,
+          0.9637
+        ],
+        "normal": [
+          0.0,
+          0.8832,
+          0.4689
+        ],
+        "uv": [
+          0.7094,
+          0.5203
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -0.58,
+          2.8831,
+          0.8263
+        ],
+        "normal": [
+          -0.8672,
+          0.4949,
+          0.0561
+        ],
+        "uv": [
+          0.6848,
+          0.6024
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 14,
+    "bone_names": [
+      "Bip01 Spine",
+      "Bip01 Neck1",
+      "Bip01 Neck",
+      "Bip01 Tail",
+      "Bip01 R Thigh",
+      "Bip01 Pelvis",
+      "Bip01 Tail1",
+      "Bip01 Head",
+      "Bip01 Tail2",
+      "Bip01 R Calf",
+      "Bip01 R Foot",
+      "Bip01 L Thigh",
+      "Bip01 L Calf",
+      "Bip01 L Foot"
+    ],
+    "bone_unparsed_bytes": 876,
+    "triangle_count": 204,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        104,
+        119,
+        136
+      ],
+      [
+        136,
+        144,
+        104
+      ],
+      [
+        1,
+        2,
+        92
+      ]
+    ],
+    "aabb": [
+      -0.7884,
+      -0.0116,
+      -0.5471,
+      0.8139,
+      4.9228,
+      4.3144
+    ],
+    "extra_block_bytes": 0
+  },
+  "char_face": {
+    "path": "/prim/mesh/char/china/man/chinaman_adventurer_face.bms",
+    "size": 9686,
+    "version": "0110",
+    "header_size": 121,
+    "offsets": [
+      7165,
+      8214,
+      9646,
+      9650,
+      9654,
+      9678
+    ],
+    "off7": 0,
+    "end_offset": 9682,
+    "names": [
+      "chinaman_Adventurer_face",
+      "chinaman_body"
+    ],
+    "skinned_vertex_count": 88,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 160,
+    "vertices_sample": [
+      {
+        "position": [
+          -0.5045,
+          17.046,
+          0.749
+        ],
+        "normal": [
+          -0.5948,
+          -0.1364,
+          0.7922
+        ],
+        "uv": [
+          0.8293,
+          0.1911
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          0.0001,
+          16.9748,
+          0.8538
+        ],
+        "normal": [
+          0.0,
+          -0.1753,
+          0.9845
+        ],
+        "uv": [
+          0.8629,
+          0.2079
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 5,
+    "bone_names": [
+      "Bip01 Head",
+      "Bip01 Neck1",
+      "Bip01 L Clavicle",
+      "Bip01 Spine1",
+      "Bip01 R Clavicle"
+    ],
+    "bone_unparsed_bytes": 960,
+    "triangle_count": 238,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        89,
+        1,
+        0
+      ],
+      [
+        0,
+        80,
+        89
+      ],
+      [
+        2,
+        95,
+        3
+      ]
+    ],
+    "aabb": [
+      -0.8491,
+      14.6359,
+      -1.3639,
+      0.8494,
+      17.7085,
+      0.8538
+    ],
+    "extra_block_bytes": 0
+  },
+  "item_shield": {
+    "path": "/prim/mesh/item/china/armor/ch_shield_11_set_a.bms",
+    "size": 11788,
+    "version": "0110",
+    "header_size": 120,
+    "offsets": [
+      8880,
+      10088,
+      11748,
+      11752,
+      11756,
+      11780
+    ],
+    "off7": 0,
+    "end_offset": 11784,
+    "names": [
+      "ch_shield_11_set_a",
+      "ch_shield_11_set_a"
+    ],
+    "skinned_vertex_count": 87,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 199,
+    "vertices_sample": [
+      {
+        "position": [
+          -0.3421,
+          1.7038,
+          7.3088
+        ],
+        "normal": [
+          0.0362,
+          0.6508,
+          0.7584
+        ],
+        "uv": [
+          0.9871,
+          0.0041
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          0.3441,
+          1.574,
+          6.4142
+        ],
+        "normal": [
+          0.7406,
+          0.5921,
+          0.3177
+        ],
+        "uv": [
+          0.903,
+          0.0627
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 1,
+    "bone_names": [
+      "Bone01"
+    ],
+    "bone_unparsed_bytes": 1194,
+    "triangle_count": 276,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        112,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        162,
+        2,
+        4
+      ]
+    ],
+    "aabb": [
+      -5.2627,
+      0.2233,
+      -7.7529,
+      4.4054,
+      2.6814,
+      7.3088
+    ],
+    "extra_block_bytes": 0
+  },
+  "artifact_table": {
+    "path": "/prim/mesh/artifact/china/cj_ table_01.bms",
+    "size": 6849,
+    "version": "0110",
+    "header_size": 105,
+    "offsets": [
+      6357,
+      6361,
+      6809,
+      6813,
+      6817,
+      6841
+    ],
+    "off7": 0,
+    "end_offset": 6845,
+    "names": [
+      "cj_ table_01",
+      "cj_ table"
+    ],
+    "skinned_vertex_count": 0,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 142,
+    "vertices_sample": [
+      {
+        "position": [
+          -3.5987,
+          18.9674,
+          -0.3043
+        ],
+        "normal": [
+          -0.1442,
+          -0.5209,
+          -0.8413
+        ],
+        "uv": [
+          0.1748,
+          0.7381
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -3.5987,
+          21.6063,
+          -0.3043
+        ],
+        "normal": [
+          -0.2369,
+          0.8555,
+          -0.4605
+        ],
+        "uv": [
+          0.1748,
+          0.4998
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 74,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "aabb": [
+      -5.7986,
+      -0.0257,
+      -5.7408,
+      5.7986,
+      22.7141,
+      5.7408
+    ],
+    "extra_block_bytes": 0
+  },
+  "bldg_tree": {
+    "path": "/prim/mesh/bldg/arabia/Bagh_Arabia_F/ArabianF_B_tree01.BMS",
+    "size": 693013,
+    "version": "0110",
+    "header_size": 117,
+    "offsets": [
+      569833,
+      569837,
+      692973,
+      692977,
+      692981,
+      693005
+    ],
+    "off7": 0,
+    "end_offset": 693009,
+    "names": [
+      "ArabianF_B_tree01",
+      "ArabianF_Ftree01"
+    ],
+    "skinned_vertex_count": 8072,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 12948,
+    "vertices_sample": [
+      {
+        "position": [
+          -1070.0742,
+          -299.4754,
+          -914.9503
+        ],
+        "normal": [
+          0.731,
+          0.1286,
+          -0.6702
+        ],
+        "uv": [
+          -1.978,
+          0.4914
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -1126.1663,
+          -472.4069,
+          -961.2575
+        ],
+        "normal": [
+          0.6891,
+          -0.131,
+          -0.7127
+        ],
+        "uv": [
+          -1.9988,
+          0.6508
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 20522,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        1,
+        10454
+      ],
+      [
+        2,
+        10454,
+        1
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "aabb": [
+      -6563.0283,
+      -1114.4581,
+      -6091.3911,
+      5906.1548,
+      7053.4619,
+      5500.0327
+    ],
+    "extra_block_bytes": 0
+  },
+  "v52_bldg": {
+    "path": "/prim/mesh/bldg/arabia/Bagh_City/dungeon/Bagh_City_Dunin_L_01_01.BMS",
+    "size": 157415,
+    "version": "0110",
+    "header_size": 125,
+    "offsets": [
+      145607,
+      145611,
+      157375,
+      157379,
+      157383,
+      157407
+    ],
+    "off7": 0,
+    "end_offset": 157411,
+    "names": [
+      "Bagh_City_Dunin_L_01_01",
+      "Bagh_City_Dunin_01"
+    ],
+    "skinned_vertex_count": 0,
+    "vertex_format": {
+      "vertex_size": 52,
+      "layout": "lightmap",
+      "lightmap_path": "prim\\lightmap\\bldg\\arabia\\bagh_city\\dungeon\\bagh_city_dunin_l_01_01lightingmap.ddj",
+      "non_unit_normals": 0
+    },
+    "vertex_count": 2796,
+    "vertices_sample": [
+      {
+        "position": [
+          -262.273,
+          47.4814,
+          334.7354
+        ],
+        "normal": [
+          -0.7071,
+          -0.0,
+          -0.7071
+        ],
+        "uv": [
+          0.7927,
+          1.1426
+        ],
+        "uv2": [
+          0.1768,
+          0.2008
+        ],
+        "tail_u32s": [
+          0,
+          4294967295,
+          0
+        ]
+      },
+      {
+        "position": [
+          -262.2731,
+          151.9739,
+          334.7354
+        ],
+        "normal": [
+          -0.5547,
+          0.0,
+          -0.8321
+        ],
+        "uv": [
+          0.7927,
+          -0.1261
+        ],
+        "uv2": [
+          0.1768,
+          0.2834
+        ],
+        "tail_u32s": [
+          0,
+          4294967295,
+          0
+        ]
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 1960,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "aabb": [
+      -324.2503,
+      47.4812,
+      334.7068,
+      354.3885,
+      256.4669,
+      338.9455
+    ],
+    "extra_block_bytes": 0
+  },
+  "v44p5": {
+    "path": "/prim/mesh/artifact/europe/east eurpoe/euro_constan_bumship01_07.bms",
+    "size": 562,
+    "version": "0110",
+    "header_size": 134,
+    "offsets": [
+      490,
+      494,
+      522,
+      526,
+      530,
+      554
+    ],
+    "off7": 0,
+    "end_offset": 558,
+    "names": [
+      "Euro_Constan_bumship01_07",
+      "Euro_Constan_bumship01_07"
+    ],
+    "skinned_vertex_count": 0,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 8,
+    "vertices_sample": [
+      {
+        "position": [
+          -41.163,
+          242.5445,
+          346.6259
+        ],
+        "normal": [
+          -0.9818,
+          0.0957,
+          0.1637
+        ],
+        "uv": [
+          1.0151,
+          -0.0022
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -43.2543,
+          216.3863,
+          348.1758
+        ],
+        "normal": [
+          -0.9828,
+          0.0882,
+          0.162
+        ],
+        "uv": [
+          1.0151,
+          0.9985
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 4,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "aabb": [
+      -43.2543,
+      216.3863,
+      346.6259,
+      142.5984,
+      242.5445,
+      450.8748
+    ],
+    "extra_block_bytes": 0
+  },
+  "v50_avatar": {
+    "path": "/prim/mesh/avatar/booth_mob_mangyang.bms",
+    "size": 24195,
+    "version": "0110",
+    "header_size": 123,
+    "offsets": [
+      19267,
+      21901,
+      24155,
+      24159,
+      24163,
+      24187
+    ],
+    "off7": 0,
+    "end_offset": 24191,
+    "names": [
+      "booth_mob_mangyang",
+      "booth_mob_bigeyeghost"
+    ],
+    "skinned_vertex_count": 47,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 435,
+    "vertices_sample": [
+      {
+        "position": [
+          -8.219,
+          2.4597,
+          -0.6679
+        ],
+        "normal": [
+          -0.4695,
+          -0.0,
+          -0.8829
+        ],
+        "uv": [
+          0.5451,
+          0.965
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -8.219,
+          8.818,
+          -0.6679
+        ],
+        "normal": [
+          -0.4695,
+          -0.0,
+          -0.8829
+        ],
+        "uv": [
+          0.5451,
+          0.6059
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 2,
+    "bone_names": [
+      "Bone01",
+      "Bone02"
+    ],
+    "bone_unparsed_bytes": 2610,
+    "triangle_count": 375,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        2,
+        6,
+        0
+      ]
+    ],
+    "aabb": [
+      -14.7691,
+      -0.0663,
+      -8.9683,
+      -2.6251,
+      11.8971,
+      2.2045
+    ],
+    "extra_block_bytes": 0
+  },
+  "nature_tree": {
+    "path": "/prim/mesh/nature/Arabia/Masin/Bagh_Masin_GSmalltree_01.BMS",
+    "size": 2288,
+    "version": "0110",
+    "header_size": 132,
+    "offsets": [
+      1720,
+      1724,
+      2046,
+      2050,
+      2054,
+      2078
+    ],
+    "off7": 2086,
+    "end_offset": 2082,
+    "names": [
+      "Bagh_Masin_GSmalltree_01",
+      "Bagh_Masin_GSmalltree_01"
+    ],
+    "skinned_vertex_count": 19,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 36,
+    "vertices_sample": [
+      {
+        "position": [
+          -7.2437,
+          15.4639,
+          -0.8732
+        ],
+        "normal": [
+          -0.9946,
+          0.0986,
+          0.0335
+        ],
+        "uv": [
+          0.0178,
+          0.9323
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          -4.3437,
+          55.0481,
+          -1.5303
+        ],
+        "normal": [
+          -0.999,
+          0.0278,
+          0.0348
+        ],
+        "uv": [
+          0.0178,
+          0.6952
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 53,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        20,
+        1,
+        0
+      ],
+      [
+        32,
+        2,
+        3
+      ],
+      [
+        27,
+        4,
+        1
+      ]
+    ],
+    "aabb": [
+      -9.3318,
+      0.0251,
+      -9.7021,
+      9.3318,
+      219.9805,
+      9.7021
+    ],
+    "extra_block_bytes": 202
+  },
+  "petra": {
+    "path": "/prim/mesh/bldg/arabia/Bagh_Petra/Bagh_Petra_Core01.BMS",
+    "size": 19866,
+    "version": "0110",
+    "header_size": 118,
+    "offsets": [
+      15346,
+      17446,
+      19826,
+      19830,
+      19834,
+      19858
+    ],
+    "off7": 0,
+    "end_offset": 19862,
+    "names": [
+      "Bagh_Petra_Core01",
+      "Bagh_Petra_core01"
+    ],
+    "skinned_vertex_count": 94,
+    "vertex_format": {
+      "vertex_size": 44,
+      "layout": "standard",
+      "lightmap_path": null,
+      "non_unit_normals": 0
+    },
+    "vertex_count": 346,
+    "vertices_sample": [
+      {
+        "position": [
+          21.0082,
+          114.4431,
+          -0.0
+        ],
+        "normal": [
+          0.8864,
+          -0.456,
+          0.0792
+        ],
+        "uv": [
+          0.9928,
+          0.3205
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      },
+      {
+        "position": [
+          18.1936,
+          114.4431,
+          10.5041
+        ],
+        "normal": [
+          0.3803,
+          -0.8854,
+          0.2673
+        ],
+        "uv": [
+          0.8303,
+          0.3205
+        ],
+        "blend_weight": 0.0,
+        "bone_index": 4294967295,
+        "flags": 0
+      }
+    ],
+    "bone_count": 2,
+    "bone_names": [
+      "Bone01",
+      "Bone02"
+    ],
+    "bone_unparsed_bytes": 2076,
+    "triangle_count": 396,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        273,
+        2,
+        1
+      ],
+      [
+        2,
+        273,
+        256
+      ],
+      [
+        4,
+        272,
+        254
+      ]
+    ],
+    "aabb": [
+      -22.2913,
+      90.587,
+      -22.2913,
+      22.2913,
+      134.7488,
+      22.2913
+    ],
+    "extra_block_bytes": 0
+  },
+  "demon": {
+    "path": "/prim/mesh/dun/Demon/Fire/Demon_tower_Fire/demon_tower_mbrazier_fire.BMS",
+    "size": 45251,
+    "version": "0110",
+    "header_size": 133,
+    "offsets": [
+      41099,
+      41103,
+      45211,
+      45215,
+      45219,
+      45243
+    ],
+    "off7": 0,
+    "end_offset": 45247,
+    "names": [
+      "demon_tower_mbrazier_fire",
+      "Demon_Tower_Brazier_fire"
+    ],
+    "skinned_vertex_count": 58,
+    "vertex_format": {
+      "vertex_size": 52,
+      "layout": "lightmap",
+      "lightmap_path": "prim\\lightmap\\dun\\demon\\fire\\demon_tower_fire\\demon_tower_mbrazier_firelightingmap.ddj",
+      "non_unit_normals": 0
+    },
+    "vertex_count": 786,
+    "vertices_sample": [
+      {
+        "position": [
+          -9.0589,
+          22.1327,
+          -8.8013
+        ],
+        "normal": [
+          -0.5809,
+          0.2897,
+          -0.7607
+        ],
+        "uv": [
+          0.3945,
+          0.7031
+        ],
+        "uv2": [
+          0.2802,
+          0.4975
+        ],
+        "tail_u32s": [
+          0,
+          4294967295,
+          0
+        ]
+      },
+      {
+        "position": [
+          -9.0589,
+          28.5775,
+          -8.8013
+        ],
+        "normal": [
+          -0.6846,
+          -0.5572,
+          -0.4699
+        ],
+        "uv": [
+          0.3945,
+          0.6183
+        ],
+        "uv2": [
+          0.2802,
+          0.5369
+        ],
+        "tail_u32s": [
+          0,
+          4294967295,
+          0
+        ]
+      }
+    ],
+    "bone_count": 0,
+    "bone_names": [],
+    "bone_unparsed_bytes": 0,
+    "triangle_count": 684,
+    "triangle_prefix_bytes": 0,
+    "triangles_sample": [
+      [
+        742,
+        765,
+        0
+      ],
+      [
+        2,
+        746,
+        739
+      ],
+      [
+        739,
+        3,
+        2
+      ]
+    ],
+    "aabb": [
+      -11.3269,
+      -0.2767,
+      -11.3269,
+      11.3269,
+      71.7937,
+      11.3269
+    ],
+    "extra_block_bytes": 0
+  }
+}
