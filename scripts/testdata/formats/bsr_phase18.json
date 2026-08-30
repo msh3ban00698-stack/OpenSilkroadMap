@@ -1,0 +1,199 @@
+{
+ "samples": {
+  "bandit": {
+   "animations": [
+    "/prim/ani/mob/china/bandit/bandit_stand01.ban",
+    "/prim/ani/mob/china/bandit/bandit_stand02.ban",
+    "/prim/ani/mob/china/bandit/bandit_walk.ban",
+    "/prim/ani/mob/china/bandit/bandit_run.ban",
+    "/prim/ani/mob/china/bandit/bandit_attack01.ban",
+    "/prim/ani/mob/china/bandit/bandit_attack02.ban",
+    "/prim/ani/mob/china/bandit/bandit_damage01.ban",
+    "/prim/ani/mob/china/bandit/bandit_damage02.ban",
+    "/prim/ani/mob/china/bandit/bandit_die.ban",
+    "/prim/ani/mob/china/bandit/bandit_die_loop.ban",
+    "/prim/ani/mob/china/bandit/bandit_down.ban",
+    "/prim/ani/mob/china/bandit/bandit_downwait.ban",
+    "/prim/ani/mob/china/bandit/bandit_downdamage.ban",
+    "/prim/ani/mob/china/bandit/bandit_wakeup.ban",
+    "/prim/ani/mob/china/bandit/bandit_downdie.ban",
+    "/prim/ani/mob/china/bandit/bandit_attack03.ban"
+   ],
+   "effects": [
+    "/monster/status_bad_burn.efp",
+    "/monster/status_bad_eshock.efp",
+    "/monster/status_bad_frostbite.efp",
+    "/monster/status_bad_icing_off.efp",
+    "/monster/status_bad_icing_on.efp",
+    "/monster/status_bad_poison.efp",
+    "/monster/system_appear.efp"
+   ],
+   "group_order_ok": true,
+   "header_table": [
+    182,
+    312,
+    1211,
+    436,
+    1253,
+    1284,
+    2015,
+    126
+   ],
+   "is_character": true,
+   "materials": [
+    "/prim/mtrl/mob/china/bandit.bmt",
+    "/prim/mtrl/mob/china/bandit_clone.bmt",
+    "/prim/mtrl/mob/china/bandit_champ.bmt"
+   ],
+   "meshes": [
+    "/prim/mesh/mob/china/bandit_sword.bms",
+    "/prim/mesh/mob/china/bandit_part1.bms",
+    "/prim/mesh/mob/china/bandit_part2.bms"
+   ],
+   "path": "/res/mob/china/bandit.bsr",
+   "sha256": "05e5fe4f041a87c35652480bff88e1f5a97208fd75278fd1a3af33f2821d5543",
+   "size": 5017,
+   "skeleton": [
+    "/prim/skel/mob/china/bandit.bsk"
+   ],
+   "sounds": [
+    "/prim/snd/monster/cm_wg_walk.wav",
+    "/prim/snd/monster/cm_wg_walk.wav",
+    "/prim/snd/player/battswordswing1.wav",
+    "/prim/snd/monster/cm_bandit_shout_a.wav",
+    "/prim/snd/monster/cm_bandit_moan1.wav",
+    "/prim/snd/monster/cm_bandit_die.wav",
+    "/prim/snd/monster/cm_banditar_thud.wav",
+    "/prim/snd/player/battswordswing1.wav",
+    "/prim/snd/player/battswordswing2.wav",
+    "/prim/snd/monster/cm_bandit_shout_a.wav",
+    "/prim/snd/monster/cm_wg_walk.wav",
+    "/prim/snd/monster/cm_wg_walk.wav",
+    "/prim/snd/monster/cm_bandit_moan2.wav",
+    "/prim/snd/monster/cm_bandit_stand_a.wav",
+    "/prim/snd/player/bataxeswing1.wav",
+    "/prim/snd/monster/cm_bandit_shout_b.wav"
+   ]
+  },
+  "chinaquest_priest": {
+   "animations": [
+    "/prim/ani/npc/china/chinaquest_priest_basic.ban",
+    "/prim/ani/npc/china/chinaquest_priest_time.ban"
+   ],
+   "effects": [],
+   "group_order_ok": true,
+   "header_table": [
+    193,
+    246,
+    511,
+    400,
+    564,
+    595,
+    686,
+    137
+   ],
+   "is_character": true,
+   "materials": [
+    "/prim/mtrl/npc/china/chinaquest_priest.bmt"
+   ],
+   "meshes": [
+    "/prim/mesh/npc/china/chinaquest_priest_al.bms",
+    "/prim/mesh/npc/china/chinaquest_priest_part1.bms",
+    "/prim/mesh/npc/china/chinaquest_priest_part2.bms"
+   ],
+   "path": "/res/npc/npc/chinaquest_priest.bsr",
+   "sha256": "cdeb8be1b3f15b946bb754468eb51e1314bd9ccbc5952c2276122150da242a36",
+   "size": 717,
+   "skeleton": [
+    "/prim/skel/npc/china/chinaquest_priest.bsk"
+   ],
+   "sounds": []
+  },
+  "movoi": {
+   "animations": [
+    "/prim/ani/mob/europe/movoi/movoi_stand01.ban",
+    "/prim/ani/mob/europe/movoi/movoi_walk.ban",
+    "/prim/ani/mob/europe/movoi/movoi_run.ban",
+    "/prim/ani/mob/europe/movoi/movoi_attack01.ban",
+    "/prim/ani/mob/europe/movoi/movoi_attack02.ban",
+    "/prim/ani/mob/europe/movoi/movoi_attack03.ban",
+    "/prim/ani/mob/europe/movoi/movoi_die.ban",
+    "/prim/ani/mob/europe/movoi/movoi_die_rm.ban",
+    "/prim/ani/mob/europe/movoi/movoi_down.ban",
+    "/prim/ani/mob/europe/movoi/movoi_down_rm.ban",
+    "/prim/ani/mob/europe/movoi/movoi_down_damage.ban",
+    "/prim/ani/mob/europe/movoi/movoi_down_up.ban",
+    "/prim/ani/mob/europe/movoi/movoi_down_die.ban",
+    "/prim/ani/mob/europe/movoi/movoi_damage01.ban",
+    "/prim/ani/cos/p_seowon/p_seowon_pick.ban"
+   ],
+   "effects": [],
+   "group_order_ok": true,
+   "header_table": [
+    181,
+    310,
+    1137,
+    430,
+    1179,
+    1210,
+    1849,
+    125
+   ],
+   "is_character": true,
+   "materials": [
+    "/prim/mtrl/mob/europe/movoi.bmt",
+    "/prim/mtrl/mob/europe/movoi_clon.bmt",
+    "/prim/mtrl/mob/europe/movoi_champ.bmt"
+   ],
+   "meshes": [
+    "/prim/mesh/mob/europe/movoi01.bms",
+    "/prim/mesh/mob/europe/movoi_part1.bms",
+    "/prim/mesh/mob/europe/movoi_part2.bms"
+   ],
+   "path": "/res/mob/europe/movoi.bsr",
+   "sha256": "b60d754881e03087b681989ae79a5333913deab30a960a2f5137f3d69a0da1e3",
+   "size": 2920,
+   "skeleton": [
+    "/prim/skel/mob/europe/movoi.bsk"
+   ],
+   "sounds": [
+    "/prim/snd/eu_mob/eu_movoi_shout1.wav",
+    "/prim/snd/eu_mob/eu_movoi_shout2.wav",
+    "/prim/snd/eu_mob/eu_movoi_moan2.wav",
+    "/prim/snd/eu_mob/eu_movoi_die.wav",
+    "/prim/snd/eu_mob/eu_movoi_moan1.wav",
+    "/prim/snd/eu_mob/eu_movoi_moan1.wav"
+   ]
+  },
+  "tre_tree03": {
+   "animations": [],
+   "effects": [],
+   "group_order_ok": false,
+   "header_table": [
+    242,
+    310,
+    518,
+    506,
+    522,
+    553,
+    557,
+    130
+   ],
+   "is_character": false,
+   "materials": [
+    "/prim/mtrl/nature/common/tree/new-maple/tre_tree03_01.bmt"
+   ],
+   "meshes": [
+    "/prim/mesh/nature/common/tree/new-maple/tre_tree03_01.bms",
+    "/prim/mesh/nature/common/tree/new-maple/tre_tree03_01.bms",
+    "/prim/mesh/nature/common/tree/new-maple/tre_tree03_02.bms",
+    "/prim/mesh/nature/common/tree/new-maple/tre_tree03_03.bms"
+   ],
+   "path": "/res/nature/common/tree/new-maple/tre_tree03.bsr",
+   "sha256": "db58327075b13285c20c57ad5978a23c398a0a46165cff84eb1386d59b6ff26b",
+   "size": 712,
+   "skeleton": [],
+   "sounds": []
+  }
+ }
+}

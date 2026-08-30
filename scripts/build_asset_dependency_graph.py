@@ -55,7 +55,7 @@ ASSET_EDGES = [
         "to": {"kind": ".ban/.bsk", "role": "animation + skeleton refs"},
         "relationship": "u32-length-prefixed path groups (bmt/bms/ban/bsk/efp/wav)",
         "status": "VERIFIED",
-        "evidence": "Phase 18: bandit.bsr -> 3 bmt + 3 bms + 18 ban + 1 bsk; chinaquest_priest.bsr -> 1 bmt + 3 bms + 2 ban + 1 bsk; every ban/bsk path resolves in Data.pk2",
+        "evidence": "Phase 18: bandit.bsr -> 3 bmt + 3 bms + 16 ban + 1 bsk (+ 7 efp + 16 wav); chinaquest_priest.bsr -> 1 bmt + 3 bms + 2 ban + 1 bsk; every ban/bsk path resolves in Data.pk2",
     },
     {
         "from": {"kind": ".bmt", "role": "material (JMXVBMT)"},

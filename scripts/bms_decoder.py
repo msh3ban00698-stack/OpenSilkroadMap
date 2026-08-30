@@ -284,6 +284,49 @@ def parse_bone_table(data: bytes, header: dict) -> dict:
     }
 
 
+def parse_skin_data(data: bytes, header: dict, vertex_count: int) -> dict:
+    """Parse the vertex-skin block in the bone section (Phase 18 proven).
+
+    The block sits between the bone-name table and the triangle section
+    (offsets[0]..offsets[1]). For skinned meshes it is exactly
+    vertex_count * 6 bytes of [u8 b1][u16 w1][u8 b2][u16 w2] records:
+      * b1  -- local bone index (0..bone_count-1)
+      * w1  -- u16 weight in 1/65535
+      * b2  -- second influence bone index, or 0xFF = single influence
+      * w2  -- u16 weight (0xFF -> 0)
+    Two-influence records sum to ~65535. Returns dict with 'records' plus
+    validation facts; raises BmsFormatError when the block is not exactly
+    vertex_count*6 bytes (e.g. static meshes have no skin block).
+    """
+    bones = parse_bone_table(data, header)
+    o = bones["names_end"]
+    o1 = header["offsets"][1]
+    span = o1 - o
+    if span != vertex_count * 6:
+        raise BmsFormatError(
+            "skin block span %d != 6*%d (not a skinned mesh?)"
+            % (span, vertex_count))
+    records = []
+    for i in range(vertex_count):
+        b1, w1, b2, w2 = struct.unpack_from("<BHBH", data, o + i * 6)
+        if b1 >= bones["bone_count"] and b1 != 0xFF:
+            raise BmsFormatError("skin record %d b1 %d out of range" % (i, b1))
+        if w1 > 65535:
+            raise BmsFormatError("skin record %d w1 %d out of range" % (i, w1))
+        records.append({"bone1": b1, "weight1": w1,
+                        "bone2": b2, "weight2": w2})
+    two = [r for r in records
+           if r["bone2"] != 0xFF and r["weight2"] > 0]
+    return {
+        "record_bytes": span,
+        "records": records,
+        "single_influence": sum(1 for r in records if r["bone2"] == 0xFF),
+        "two_influence": len(two),
+        "two_influence_sums": [r["weight1"] + r["weight2"] for r in two],
+    }
+
+
+
 def parse_triangles(data: bytes, header: dict, vc: int) -> dict:
     o1 = header["offsets"][1]
     o2 = header["offsets"][2]
@@ -388,6 +431,11 @@ def parse_bms(data: bytes, cap: int | None = None) -> dict:
     info = detect_vertex_format(data, header)
     vertices, non_unit_normals = parse_vertices(data, header, info)
     bones = parse_bone_table(data, header)
+    skin = None
+    try:
+        skin = parse_skin_data(data, header, info["vertex_count"])
+    except BmsFormatError:
+        pass
     tris = parse_triangles(data, header, info["vertex_count"])
     aabb = parse_aabb(data, header)
     vertex_format = {
@@ -404,6 +452,7 @@ def parse_bms(data: bytes, cap: int | None = None) -> dict:
         "vertex_format": vertex_format,
         "vertices": vertices,
         "bones": bones,
+        "skin": skin,
         "triangles": tris,
         "parsed_end": header["end_offset"] + 4,
     }
