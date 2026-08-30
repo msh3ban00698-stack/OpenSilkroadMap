@@ -1,0 +1,831 @@
+{
+ "bandit": {
+  "BSK": {
+   "bone_count": 35,
+   "exact": true,
+   "path": "/prim/skel/mob/china/bandit.bsk",
+   "root": "Bip01",
+   "sha256": "c642c903f17fe3d39db832048d37f9ab821197ffefd614a5e549a78a8dd1ed77"
+  },
+  "BSR": {
+   "is_character": true,
+   "path": "/res/mob/china/bandit.bsr",
+   "sha256": "05e5fe4f041a87c35652480bff88e1f5a97208fd75278fd1a3af33f2821d5543"
+  },
+  "animation": [
+   {
+    "channel_count": 34,
+    "duration_ms": 2000,
+    "keyframe_count": 5,
+    "path": "/prim/ani/mob/china/bandit/bandit_stand01.ban",
+    "sha256": "1a916448e48bd33fb69c23e372b2f571c2984ce51a04f4522311281c704074f2"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 2000,
+    "keyframe_count": 18,
+    "path": "/prim/ani/mob/china/bandit/bandit_stand02.ban",
+    "sha256": "2ade7adc8afde8f2ebf869ee91e03034dd2728ba81db34ca489ff47415519f03"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1333,
+    "keyframe_count": 15,
+    "path": "/prim/ani/mob/china/bandit/bandit_walk.ban",
+    "sha256": "89e19be0434b20fc8f7d5c83a27b27c8eb01e3551659b9cfea11fc979cf7a535"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 833,
+    "keyframe_count": 25,
+    "path": "/prim/ani/mob/china/bandit/bandit_run.ban",
+    "sha256": "f28f983e3c065d97b1d9ea8aafdc149f2ab143ded2870490f963734eab9293b5"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1133,
+    "keyframe_count": 33,
+    "path": "/prim/ani/mob/china/bandit/bandit_attack01.ban",
+    "sha256": "4ba4d61bbc7d1c0fcf5224663a98f38169a5e62856ac38740daafc9fe3d7b2f9"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1500,
+    "keyframe_count": 40,
+    "path": "/prim/ani/mob/china/bandit/bandit_attack02.ban",
+    "sha256": "276d6bd11da362fb1231ca4d49db20735bdd4f675a9f3c631a8b91f9422138be"
+   },
+   {
+    "channel_count": 3,
+    "duration_ms": 366,
+    "keyframe_count": 5,
+    "path": "/prim/ani/mob/china/bandit/bandit_damage01.ban",
+    "sha256": "6f90fb17ab20e569671f1108c3bea96a1cbf23877e0a624c833b1f81c24d22df"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1666,
+    "keyframe_count": 24,
+    "path": "/prim/ani/mob/china/bandit/bandit_damage02.ban",
+    "sha256": "a90cfb269923f83f71ec05386f89938adf2b5ce5471a13dc9f8f1e0773b01fdd"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 2666,
+    "keyframe_count": 52,
+    "path": "/prim/ani/mob/china/bandit/bandit_die.ban",
+    "sha256": "3c5a6d8cf775a054358066255e6d8fb0cd5cd76d5c08ee07144516a32c2df9ba"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 333,
+    "keyframe_count": 2,
+    "path": "/prim/ani/mob/china/bandit/bandit_die_loop.ban",
+    "sha256": "fe3399ff04312963a949c597a9f3e5528a0e9edc6f17e29d94057292e909e4a4"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 833,
+    "keyframe_count": 18,
+    "path": "/prim/ani/mob/china/bandit/bandit_down.ban",
+    "sha256": "732ea695213c8682bf9dbd301cbf097a03c6476d66d547db3a24bda0610091ea"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 2000,
+    "keyframe_count": 5,
+    "path": "/prim/ani/mob/china/bandit/bandit_downwait.ban",
+    "sha256": "b8b8a130ef615c75fc628ce0218d359a8e18e901189d8a1ae4243f8f445cca3e"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 833,
+    "keyframe_count": 14,
+    "path": "/prim/ani/mob/china/bandit/bandit_downdamage.ban",
+    "sha256": "188bec81df65f6e20501f5cea6c91ee0e42e20cee6de04c625bd33d488206bcd"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1333,
+    "keyframe_count": 18,
+    "path": "/prim/ani/mob/china/bandit/bandit_wakeup.ban",
+    "sha256": "752aa93081c975181ecaab147d7768d9f6616ac298ba6670c00483bd62f5739d"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 300,
+    "keyframe_count": 2,
+    "path": "/prim/ani/mob/china/bandit/bandit_downdie.ban",
+    "sha256": "7fa933c3dd191242c2354c177c1c2a55d309995f2d6e9d05c5697548f1a37c9d"
+   },
+   {
+    "channel_count": 34,
+    "duration_ms": 1166,
+    "keyframe_count": 18,
+    "path": "/prim/ani/mob/china/bandit/bandit_attack03.ban",
+    "sha256": "e94220cfeb0eed3d0f6b62ab9219c671e235570762b3bf579adbcf4e328a31f6"
+   }
+  ],
+  "animation_duration": {
+   "bandit_attack01": 1133,
+   "bandit_attack02": 1500,
+   "bandit_attack03": 1166,
+   "bandit_damage01": 366,
+   "bandit_damage02": 1666,
+   "bandit_die": 2666,
+   "bandit_die_loop": 333,
+   "bandit_down": 833,
+   "bandit_downdamage": 833,
+   "bandit_downdie": 300,
+   "bandit_downwait": 2000,
+   "bandit_run": 833,
+   "bandit_stand01": 2000,
+   "bandit_stand02": 2000,
+   "bandit_wakeup": 1333,
+   "bandit_walk": 1333
+  },
+  "bone_count": 35,
+  "character": "bandit",
+  "mesh": [
+   {
+    "path": "/prim/mesh/mob/china/bandit_sword.bms",
+    "sha256": "16c0e5def4f07c313acf34347c48ca7dc9949429841f5e61cd768bb0b505a34c",
+    "skin": true,
+    "triangle_count": 134,
+    "vertex_count": 76
+   },
+   {
+    "path": "/prim/mesh/mob/china/bandit_part1.bms",
+    "sha256": "705ed73b21b3e856a0bac331b72adf7baeef0744e9279452d771c285356e5a8c",
+    "skin": true,
+    "triangle_count": 276,
+    "vertex_count": 214
+   },
+   {
+    "path": "/prim/mesh/mob/china/bandit_part2.bms",
+    "sha256": "d186dee6cf8a5dd101cc2a022969b12cfa2b7b109a8384dd429b0fc6ee76cc8e",
+    "skin": true,
+    "triangle_count": 766,
+    "vertex_count": 556
+   }
+  ],
+  "model": "/res/mob/china/bandit.bsr",
+  "proven_relationships": [
+   {
+    "edge": "npc_record->character_reference",
+    "evidence": "characterdata_*.txt col1 refid join -> col52 model path",
+    "source": "refid 1949",
+    "status": "PROVEN",
+    "target": "mob\\china\\bandit.bsr"
+   },
+   {
+    "edge": "character_reference->bsr",
+    "evidence": "bsr resolved and present in Data.pk2",
+    "source": "mob\\china\\bandit.bsr",
+    "status": "PROVEN",
+    "target": "/res/mob/china/bandit.bsr"
+   },
+   {
+    "edge": "bsr->bsk",
+    "evidence": "bsr skeleton list -> bsk, parse exact, 35 bones",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/skel/mob/china/bandit.bsk"
+   },
+   {
+    "edge": "bsk->skeleton",
+    "evidence": "FK bind world chained, root Bip01",
+    "source": "/prim/skel/mob/china/bandit.bsk",
+    "status": "PROVEN",
+    "target": "skeleton.json"
+   },
+   {
+    "edge": "bsr->bmt",
+    "evidence": "bsr materials list -> bmt",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/mtrl/mob/china/bandit.bmt"
+   },
+   {
+    "edge": "bsr->bms",
+    "evidence": "76 verts, 134 tris, skin_block=True",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/mesh/mob/china/bandit_sword.bms"
+   },
+   {
+    "edge": "bms->texture",
+    "evidence": "bms names[1] -> bmt material -> ddj",
+    "source": "/prim/mesh/mob/china/bandit_sword.bms",
+    "status": "PROVEN",
+    "target": "/prim/mtrl/mob/china/bandit_sword.ddj"
+   },
+   {
+    "edge": "bsr->bms",
+    "evidence": "214 verts, 276 tris, skin_block=True",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/mesh/mob/china/bandit_part1.bms"
+   },
+   {
+    "edge": "bms->texture",
+    "evidence": "bms names[1] -> bmt material -> ddj",
+    "source": "/prim/mesh/mob/china/bandit_part1.bms",
+    "status": "PROVEN",
+    "target": "/prim/mtrl/mob/china/bandit.ddj"
+   },
+   {
+    "edge": "bsr->bms",
+    "evidence": "556 verts, 766 tris, skin_block=True",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/mesh/mob/china/bandit_part2.bms"
+   },
+   {
+    "edge": "bms->texture",
+    "evidence": "bms names[1] -> bmt material -> ddj",
+    "source": "/prim/mesh/mob/china/bandit_part2.bms",
+    "status": "PROVEN",
+    "target": "/prim/mtrl/mob/china/bandit.ddj"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "2000 ms, 34 channels, 5 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_stand01.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "2000 ms, 34 channels, 18 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_stand02.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1333 ms, 34 channels, 15 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_walk.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "833 ms, 34 channels, 25 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_run.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1133 ms, 34 channels, 33 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_attack01.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1500 ms, 34 channels, 40 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_attack02.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "366 ms, 3 channels, 5 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_damage01.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1666 ms, 34 channels, 24 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_damage02.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "2666 ms, 34 channels, 52 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_die.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "333 ms, 34 channels, 2 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_die_loop.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "833 ms, 34 channels, 18 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_down.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "2000 ms, 34 channels, 5 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_downwait.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "833 ms, 34 channels, 14 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_downdamage.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1333 ms, 34 channels, 18 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_wakeup.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "300 ms, 34 channels, 2 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_downdie.ban"
+   },
+   {
+    "edge": "bsr->ban",
+    "evidence": "1166 ms, 34 channels, 18 keyframes",
+    "source": "/res/mob/china/bandit.bsr",
+    "status": "PROVEN",
+    "target": "/prim/ani/mob/china/bandit/bandit_attack03.ban"
+   },
+   {
+    "edge": "npc_record->world",
+    "evidence": "60 spawns, first sector 163x93",
+    "source": "refid 1949 npcpos",
+    "status": "PROVEN",
+    "target": "world coordinates"
+   }
+  ],
+  "skeleton": {
+   "bind_world_bone0": [
+    -2e-06,
+    6.936188,
+    4.174747
+   ],
+   "bone_count": 35,
+   "file": "android/app/src/main/assets/game/world/characters/bandit/skeleton.json",
+   "is_tree": true,
+   "root": "Bip01"
+  },
+  "source_file": "Data.pk2",
+  "status": "DONE",
+  "texture": [
+   {
+    "path": "/prim/mtrl/mob/china/bandit_sword.ddj",
+    "sha256": "1fad1b8c91a226d650b4a729a3a8a954b8db26ad154e9854217a9fe3bc2e6d30"
+   },
+   {
+    "path": "/prim/mtrl/mob/china/bandit.ddj",
+    "sha256": "33033677606ee855334aa0ddea01f91f29a5beaaec694d812444d98cf22d0c18"
+   },
+   {
+    "path": "/prim/mtrl/mob/china/bandit.ddj",
+    "sha256": "33033677606ee855334aa0ddea01f91f29a5beaaec694d812444d98cf22d0c18"
+   }
+  ],
+  "unknown_relationships": [
+   "BSK bone_type u8 semantics (census only, meaning unproven)",
+   "NPC placement heading/yaw (npcpos carries position, not yaw)",
+   "BAN header unknown_u32=1 field meaning"
+  ],
+  "vertex_count": 846,
+  "weight_format": "two influences per vertex (u16 bone index + u16 weight each); raw weight sum is not exactly 65535 so normalization is a renderer operation",
+  "world_placements": [
+   {
+    "region": 23971,
+    "sector": "163x93",
+    "world_x": 13533.55,
+    "world_z": 7684.31
+   },
+   {
+    "region": 23710,
+    "sector": "158x92",
+    "world_x": 4780.67,
+    "world_z": 6929.32
+   },
+   {
+    "region": 23200,
+    "sector": "160x90",
+    "world_x": 7890.53,
+    "world_z": 2809.15
+   },
+   {
+    "region": 23201,
+    "sector": "161x90",
+    "world_x": 9923.97,
+    "world_z": 2788.19
+   },
+   {
+    "region": 24221,
+    "sector": "157x94",
+    "world_x": 3734.73,
+    "world_z": 10286.5
+   },
+   {
+    "region": 23965,
+    "sector": "157x93",
+    "world_x": 3641.15,
+    "world_z": 8977.87
+   },
+   {
+    "region": 23708,
+    "sector": "156x92",
+    "world_x": 803.55,
+    "world_z": 7292.78
+   },
+   {
+    "region": 23708,
+    "sector": "156x92",
+    "world_x": 1549.12,
+    "world_z": 5790.26
+   },
+   {
+    "region": 23453,
+    "sector": "157x91",
+    "world_x": 3823.79,
+    "world_z": 4510.85
+   },
+   {
+    "region": 23453,
+    "sector": "157x91",
+    "world_x": 2898.99,
+    "world_z": 4720.35
+   },
+   {
+    "region": 23196,
+    "sector": "156x90",
+    "world_x": 1592.44,
+    "world_z": 3321.47
+   },
+   {
+    "region": 23452,
+    "sector": "156x91",
+    "world_x": 1373.5,
+    "world_z": 4796.68
+   },
+   {
+    "region": 23197,
+    "sector": "157x90",
+    "world_x": 2465.88,
+    "world_z": 2574.85
+   },
+   {
+    "region": 23198,
+    "sector": "158x90",
+    "world_x": 4259.92,
+    "world_z": 2496.38
+   },
+   {
+    "region": 23198,
+    "sector": "158x90",
+    "world_x": 4744.55,
+    "world_z": 3418.75
+   },
+   {
+    "region": 23199,
+    "sector": "159x90",
+    "world_x": 5803.19,
+    "world_z": 2439.98
+   },
+   {
+    "region": 23458,
+    "sector": "162x91",
+    "world_x": 12202.05,
+    "world_z": 4468.5
+   },
+   {
+    "region": 23459,
+    "sector": "163x91",
+    "world_x": 13845.66,
+    "world_z": 4108.23
+   },
+   {
+    "region": 24222,
+    "sector": "158x94",
+    "world_x": 5509.83,
+    "world_z": 9897.58
+   },
+   {
+    "region": 23966,
+    "sector": "158x93",
+    "world_x": 4353.33,
+    "world_z": 7809.67
+   },
+   {
+    "region": 23708,
+    "sector": "156x92",
+    "world_x": 1576.65,
+    "world_z": 6967.83
+   },
+   {
+    "region": 24220,
+    "sector": "156x94",
+    "world_x": 1198.01,
+    "world_z": 10305.03
+   },
+   {
+    "region": 23453,
+    "sector": "157x91",
+    "world_x": 2951.92,
+    "world_z": 5254.96
+   },
+   {
+    "region": 23455,
+    "sector": "159x91",
+    "world_x": 6326.25,
+    "world_z": 5498.31
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8458.05,
+    "world_z": 6471.4
+   },
+   {
+    "region": 23713,
+    "sector": "161x92",
+    "world_x": 9786.76,
+    "world_z": 6292.43
+   },
+   {
+    "region": 23457,
+    "sector": "161x91",
+    "world_x": 10662.89,
+    "world_z": 5485.75
+   },
+   {
+    "region": 23714,
+    "sector": "162x92",
+    "world_x": 12068.6,
+    "world_z": 5760.93
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 9114.03,
+    "world_z": 6432.06
+   },
+   {
+    "region": 23455,
+    "sector": "159x91",
+    "world_x": 7063.78,
+    "world_z": 5282.72
+   },
+   {
+    "region": 24477,
+    "sector": "157x95",
+    "world_x": 3721.04,
+    "world_z": 12150.02
+   },
+   {
+    "region": 24221,
+    "sector": "157x94",
+    "world_x": 2618.57,
+    "world_z": 11311.48
+   },
+   {
+    "region": 23454,
+    "sector": "158x91",
+    "world_x": 4454.13,
+    "world_z": 5661.54
+   },
+   {
+    "region": 23196,
+    "sector": "156x90",
+    "world_x": 724.69,
+    "world_z": 3583.85
+   },
+   {
+    "region": 23457,
+    "sector": "161x91",
+    "world_x": 9906.13,
+    "world_z": 5207.19
+   },
+   {
+    "region": 23457,
+    "sector": "161x91",
+    "world_x": 9794.61,
+    "world_z": 5556.95
+   },
+   {
+    "region": 23202,
+    "sector": "162x90",
+    "world_x": 13237.99,
+    "world_z": 2974.84
+   },
+   {
+    "region": 23203,
+    "sector": "163x90",
+    "world_x": 14431.54,
+    "world_z": 2805.9
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 9292.92,
+    "world_z": 4893.2
+   },
+   {
+    "region": 24734,
+    "sector": "158x96",
+    "world_x": 3840.29,
+    "world_z": 13862.56
+   },
+   {
+    "region": 24992,
+    "sector": "160x97",
+    "world_x": 8635.67,
+    "world_z": 15728.72
+   },
+   {
+    "region": 23455,
+    "sector": "159x91",
+    "world_x": 6991.96,
+    "world_z": 4123.87
+   },
+   {
+    "region": 23711,
+    "sector": "159x92",
+    "world_x": 7078.05,
+    "world_z": 7015.83
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8151.78,
+    "world_z": 7155.21
+   },
+   {
+    "region": 23713,
+    "sector": "161x92",
+    "world_x": 9791.32,
+    "world_z": 7155.53
+   },
+   {
+    "region": 23713,
+    "sector": "161x92",
+    "world_x": 10380.31,
+    "world_z": 6521.21
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8841.66,
+    "world_z": 3952.17
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 7873.63,
+    "world_z": 4542.52
+   },
+   {
+    "region": 23457,
+    "sector": "161x91",
+    "world_x": 11206.44,
+    "world_z": 4554.63
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8454.52,
+    "world_z": 5941.35
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8465.75,
+    "world_z": 5195.82
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8252.87,
+    "world_z": 5188.16
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8014.25,
+    "world_z": 5192.0
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8681.72,
+    "world_z": 5186.26
+   },
+   {
+    "region": 23456,
+    "sector": "160x91",
+    "world_x": 8902.57,
+    "world_z": 5184.57
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8220.98,
+    "world_z": 5963.78
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8347.69,
+    "world_z": 5920.55
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8603.39,
+    "world_z": 5923.01
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8786.84,
+    "world_z": 5910.99
+   },
+   {
+    "region": 23712,
+    "sector": "160x92",
+    "world_x": 8933.91,
+    "world_z": 5896.99
+   }
+  ]
+ },
+ "chinaman": {
+  "blockers": [
+   "BSR->skeleton edge: /res/char BSRs reference europeman_skel.bsk, not chinaman_skel.bsk; player skeleton is not BSR-referenced",
+   "spawn_reference: no static player spawn in the archives"
+  ],
+  "bone_count": 38,
+  "character": "chinaman",
+  "components": {
+   "animations": {
+    "evidence": "5 clips parse (walk/stand/run), all loop",
+    "path": "chinaman clips",
+    "status": "PROVEN"
+   },
+   "bsr": {
+    "evidence": "character-selection BSR resolves, but references /prim/skel/char/europe/europeman_skel.bsk (43 bones), NOT the China player skeleton /prim/skel/char/china/chinaman_skel.bsk",
+    "path": "/res/char/china/chinaman_fighter.bsr",
+    "status": "PROVEN"
+   },
+   "equipment": {
+    "evidence": "6 clothes + 1 weapon meshes parse with skin blocks",
+    "path": "clothes/weapon",
+    "status": "PROVEN"
+   },
+   "meshes": {
+    "evidence": "9 body/face/hair meshes parse with skin blocks",
+    "path": "body/face/hair",
+    "status": "PROVEN"
+   },
+   "skeleton": {
+    "evidence": "parse exact, 38 bones, single root Bip01, is_tree=True",
+    "path": "/prim/skel/char/china/chinaman_skel.bsk",
+    "status": "PROVEN"
+   },
+   "spawn_reference": {
+    "evidence": "player has no npcpos spawn; start/revival point is a game-server concept absent from static archives",
+    "path": null,
+    "status": "UNKNOWN"
+   },
+   "textures": {
+    "evidence": "3 material (.bmt) blobs present",
+    "path": "materials",
+    "status": "PROVEN"
+   }
+  },
+  "model": "/res/char/china/chinaman_fighter.bsr",
+  "proven_relationships": [
+   {
+    "edge": "skeleton->meshes",
+    "evidence": "9 body/face/hair meshes parse with skin blocks",
+    "status": "PROVEN"
+   },
+   {
+    "edge": "bsr->skeleton",
+    "evidence": "character-selection BSR resolves, but references /prim/skel/char/europe/europeman_skel.bsk (43 bones), NOT the China player skeleton /prim/skel/char/china/chinaman_skel.bsk",
+    "status": "PROVEN"
+   }
+  ],
+  "source_file": "Data.pk2",
+  "status": "PARTIAL",
+  "unknown_relationships": [
+   "player static spawn reference (no npcpos for the player)"
+  ]
+ }
+}
