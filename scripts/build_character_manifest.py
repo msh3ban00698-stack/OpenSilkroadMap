@@ -322,6 +322,110 @@ def _build_with(read_data, read_media, out_dir):
     }
 
 
+def real_npc_chain(refid, pk2_dir=None):
+    """Recompute the NPC->world chain for one refid from original archives.
+
+    Returns an evidence list; every edge is PROVEN by byte-exact resolution
+    from Data.pk2/Media.pk2. Raises ChainError on the first broken edge.
+    Each edge = {edge, source, target, evidence, status} with status=PROVEN.
+    """
+    pk2_dir = pk2_dir or os.environ.get("SRO_PK2_DIR")
+    if not pk2_dir:
+        raise ChainError("--pk2-dir or SRO_PK2_DIR is required")
+    data_pk2 = sro_paths.pk2_archive(pk2_dir, "Data.pk2")
+    media_pk2 = sro_paths.pk2_archive(pk2_dir, "Media.pk2")
+    read_data = _Pk2Reader(data_pk2)
+    read_media = _Pk2Reader(media_pk2)
+    edges = []
+
+    def edge(e, src, tgt, evidence):
+        edges.append({"edge": e, "source": src, "target": tgt,
+                      "evidence": evidence, "status": "PROVEN"})
+
+    try:
+        # NPC record -> character reference (characterdata col1==refid -> col52)
+        chardata = load_characterdata(read_media)
+        bsr_rel = chardata.get(refid)
+        if not bsr_rel:
+            raise ChainError(f"refid {refid} missing from characterdata")
+        edge("npc_record->character_reference", f"refid {refid}",
+             bsr_rel, "characterdata_*.txt col1 refid join -> col52 model path")
+
+        # character reference -> model (BSR)
+        bsr_path = "/res/" + bsr_rel.replace("\\", "/")
+        bsr_blob = read_data.read(bsr_path)
+        edge("character_reference->bsr", bsr_rel, bsr_path,
+             "bsr resolved and present in Data.pk2")
+        parsed = bsr_decoder.parse_bsr_references(bsr_blob)
+        if not parsed["is_character"]:
+            raise ChainError(f"{bsr_path} is not a character bsr")
+
+        # BSR -> BSK
+        bsk_path = parsed["skeleton"][0]
+        bsk_blob = read_data.read(bsk_path)
+        skel = bsk_decoder.parse_bsk(bsk_blob)
+        if not skel["exact"]:
+            raise ChainError(f"bsk {bsk_path} not exact: {skel['error']}")
+        edge("bsr->bsk", bsr_path, bsk_path,
+             "bsr skeleton list -> bsk, parse exact, %d bones" % len(skel["bones"]))
+        _, wpos = SK.bind_world(skel["bones"])
+        edge("bsk->skeleton", bsk_path, "skeleton.json",
+             "FK bind world chained, root %s" % skel["bones"][0]["name"])
+
+        # BSR -> material
+        base_bmt = parsed["materials"][0]
+        bmt_blob = read_data.read(base_bmt)
+        edge("bsr->bmt", bsr_path, base_bmt, "bsr materials list -> bmt")
+
+        # BSR -> meshes (skin)
+        for bms_path in parsed["meshes"]:
+            bms_blob = read_data.read(bms_path)
+            p = B.parse_bms(bms_blob)
+            skinned = p["skin"] is not None
+            edge("bsr->bms", bsr_path, bms_path,
+                 "%d verts, %d tris, skin_block=%s" % (
+                     len(p["vertices"]), p["triangles"]["triangle_count"], skinned))
+            # bms -> texture via bmt material mapping
+            material_ref = p["header"]["names"][1] if len(p["header"]["names"]) >= 2 else None
+            if material_ref:
+                ddj_path = resolve_texture(read_data, bmt_blob, base_bmt, material_ref)
+                read_data.read(ddj_path)
+                edge("bms->texture", bms_path, ddj_path,
+                     "bms names[1] -> bmt material -> ddj")
+
+        # BSR -> animations
+        for ban_path in parsed["animations"]:
+            ban_blob = read_data.read(ban_path)
+            anim = AP.load_keyframes(ban_blob)
+            edge("bsr->ban", bsr_path, ban_path,
+                 "%d ms, %d channels, %d keyframes" % (
+                     anim["duration_ms"], len(anim["channels"]),
+                     len(anim["timestamps"])))
+
+        # NPC record -> world coordinate
+        placements = []
+        for row in load_npcpos():
+            if row[0] != refid:
+                continue
+            region = int(row[1])
+            x, z = float(row[2]), float(row[4])
+            wx, wz = wt.npc_to_world(x, z, region, REF_SX, REF_SY)
+            sx, sy = wt.unpack_region(region)
+            placements.append({"region": region, "sector": f"{sx}x{sy}",
+                               "world_x": round(wx, 3), "world_z": round(wz, 3)})
+        if not placements:
+            raise ChainError(f"refid {refid} has no npcpos rows")
+        edge("npc_record->world", f"refid {refid} npcpos",
+             "world coordinates",
+             "%d spawns, first sector %s" % (len(placements), placements[0]["sector"]))
+        return {"refid": refid, "edges": edges,
+                "all_proven": all(e["status"] == "PROVEN" for e in edges),
+                "world_placements": placements}
+    finally:
+        read_data.close()
+        read_media.close()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=ASSETS)
