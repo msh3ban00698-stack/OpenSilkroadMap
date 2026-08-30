@@ -2,6 +2,7 @@
  "description": "Proven references between Android runtime assets (Phase 13 Part N). Only edges reproduced from real data are present; status VERIFIED means the reference was reproduced from committed/live bytes, PARTIAL means the structure is proven but a downstream field is UNKNOWN.",
  "textdata_edges": 9,
  "asset_edges": 17,
+ "phase19_bandit_edges": 27,
  "edges": [
   {
    "from": {
@@ -340,6 +341,357 @@
    "relationship": "s0 vertex records (stride = (s1-s0-4)/vcount) + s2 triangles",
    "status": "VERIFIED",
    "evidence": "Phase 16: 44 B standard layout (17,247 files) and 52 B lightmap layout (5,399) proven from live bytes; indices within vertex_count; AABB matches vertices"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mtrl/mob/china/bandit.bmt"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr material path group (.bmt) lists /prim/mtrl/mob/china/bandit.bmt (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mtrl/mob/china/bandit_clone.bmt"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr material path group (.bmt) lists /prim/mtrl/mob/china/bandit_clone.bmt (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mtrl/mob/china/bandit_champ.bmt"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr material path group (.bmt) lists /prim/mtrl/mob/china/bandit_champ.bmt (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mesh/mob/china/bandit_sword.bms"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr mesh path group (.bms) lists /prim/mesh/mob/china/bandit_sword.bms (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mesh/mob/china/bandit_part1.bms"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr mesh path group (.bms) lists /prim/mesh/mob/china/bandit_part1.bms (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/mesh/mob/china/bandit_part2.bms"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr mesh path group (.bms) lists /prim/mesh/mob/china/bandit_part2.bms (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_stand01.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_stand01.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_stand02.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_stand02.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_walk.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_walk.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_run.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_run.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_attack01.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_attack01.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_attack02.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_attack02.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_damage01.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_damage01.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_damage02.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_damage02.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_die.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_die.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_die_loop.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_die_loop.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_down.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_down.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_downwait.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_downwait.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_downdamage.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_downdamage.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_wakeup.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_wakeup.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_downdie.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_downdie.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/ani/mob/china/bandit/bandit_attack03.ban"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr animation path group (.ban) lists /prim/ani/mob/china/bandit/bandit_attack03.ban (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsr skeleton path group (.bsk) lists /prim/skel/mob/china/bandit.bsk (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "bones[35]"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "bsk parses exactly with 35 bone records (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "bms:bandit_sword"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "all 1 mesh bone names present in skeleton (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "bms:bandit_part1"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "all 18 mesh bone names present in skeleton (test_phase19_bsr_chain.py)"
+  },
+  {
+   "from": {
+    "kind": "bandit.bsr",
+    "role": "bms:bandit_part2"
+   },
+   "to": {
+    "kind": "bandit chain",
+    "role": "/prim/skel/mob/china/bandit.bsk"
+   },
+   "relationship": "proven edge (Phase 19 Part E)",
+   "status": "VERIFIED",
+   "evidence": "all 17 mesh bone names present in skeleton (test_phase19_bsr_chain.py)"
   }
  ]
 }

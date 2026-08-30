@@ -117,3 +117,72 @@ def resolve_character(parsed):
         "ban": parsed["animations"],
         "bsk": parsed["skeleton"],
     }
+
+
+def proven_edges(bsr, bsk=None, bms_by_path=None, bsr_label=None):
+    """Emit PROVEN dependency edges for a character .bsr (Part E).
+
+    Args:
+      bsr:       dict from parse_bsr_references
+      bsk:       optional dict from parse_bsk (skeleton evidence)
+      bms_by_path: optional dict {normalized_bms_path: parsed_bms dict}
+      bsr_label: optional display name for the .bsr (else first skeleton path)
+
+    Only edges that the source data actually proves are emitted; every edge
+    carries an 'evidence' string and status 'PROVEN'. Mesh-bone-to-skeleton
+    edges are PROVEN only when the mesh bone names form a subset of the
+    skeleton bone names.
+    """
+    bsr_name = bsr_label or (bsr.get("skeleton") or ["<bsr>"])[0]
+    edges = []
+    for bmt in bsr.get("materials", []):
+        edges.append({
+            "source": bsr_name, "target": bmt,
+            "evidence": "bsr material path group (.bmt) lists %s" % bmt,
+            "status": "PROVEN",
+        })
+    for bms in bsr.get("meshes", []):
+        edges.append({
+            "source": bsr_name, "target": bms,
+            "evidence": "bsr mesh path group (.bms) lists %s" % bms,
+            "status": "PROVEN",
+        })
+    for ban in bsr.get("animations", []):
+        edges.append({
+            "source": bsr_name, "target": ban,
+            "evidence": "bsr animation path group (.ban) lists %s" % ban,
+            "status": "PROVEN",
+        })
+    for skel in bsr.get("skeleton", []):
+        edges.append({
+            "source": bsr_name, "target": skel,
+            "evidence": "bsr skeleton path group (.bsk) lists %s" % skel,
+            "status": "PROVEN",
+        })
+    if bsk is not None and bsk.get("exact"):
+        edges.append({
+            "source": skel if bsr.get("skeleton") else "<bsk>",
+            "target": "bones[%d]" % len(bsk.get("bones", [])),
+            "evidence": "bsk parses exactly with %d bone records" % len(
+                bsk.get("bones", [])),
+            "status": "PROVEN",
+        })
+        skel_names = {b["name"] for b in bsk.get("bones", [])}
+        for bms_path, bms in (bms_by_path or {}).items():
+            mesh_names = bms.get("bones", {}).get("bone_names", [])
+            missing = [n for n in mesh_names if n not in skel_names]
+            if not missing:
+                edges.append({
+                    "source": bms_path, "target": skel,
+                    "evidence": "all %d mesh bone names present in skeleton"
+                                % len(mesh_names),
+                    "status": "PROVEN",
+                })
+            else:
+                edges.append({
+                    "source": bms_path, "target": skel,
+                    "evidence": "mesh bone names missing from skeleton: %s"
+                                % missing,
+                    "status": "UNKNOWN",
+                })
+    return edges

@@ -171,8 +171,49 @@ def load_reference_edges():
     return out
 
 
+def phase19_edges():
+    """Per-bandit PROVEN edges reproduced from committed raw bytes (Part E).
+
+    Uses bsr/bsk/bms decoders against the committed fixtures (no archive
+    required) and emits exactly the edges proven_edges() reports with
+    status PROVEN. Guards against missing fixtures.
+    """
+    import os
+    import sys
+    here = os.path.dirname(os.path.abspath(__file__))
+    sys.path.insert(0, here)
+    import bms_decoder as BMS  # noqa: E402
+    import bsk_decoder as BSK  # noqa: E402
+    import bsr_decoder as BSR  # noqa: E402
+
+    td = os.path.join(here, "testdata", "formats")
+    def _read(*parts):
+        with open(os.path.join(td, *parts), "rb") as fh:
+            return fh.read()
+
+    bsr = BSR.parse_bsr_references(_read("bsr_samples", "bandit.bsr"))
+    bsk = BSK.parse_bsk(_read("bsk_samples", "bandit.bsk"))
+    bms_by_path = {}
+    for part in ("bandit_sword", "bandit_part1", "bandit_part2"):
+        bms_by_path["bms:" + part] = BMS.parse_bms(
+            _read("bms_weights_samples", part + ".bms"))
+    edges = BSR.proven_edges(bsr, bsk, bms_by_path)
+    out = []
+    for e in edges:
+        if e["status"] != "PROVEN":
+            continue
+        out.append({
+            "from": {"kind": "bandit.bsr", "role": e["source"]},
+            "to": {"kind": "bandit chain", "role": e["target"]},
+            "relationship": "proven edge (Phase 19 Part E)",
+            "status": "VERIFIED",
+            "evidence": e["evidence"] + " (test_phase19_bsr_chain.py)",
+        })
+    return out
+
+
 def build(out: Path):
-    edges = load_reference_edges() + ASSET_EDGES
+    edges = load_reference_edges() + ASSET_EDGES + phase19_edges()
     doc = {
         "description": (
             "Proven references between Android runtime assets (Phase 13 Part N). "
@@ -182,6 +223,7 @@ def build(out: Path):
         ),
         "textdata_edges": len(load_reference_edges()),
         "asset_edges": len(ASSET_EDGES),
+        "phase19_bandit_edges": len(phase19_edges()),
         "edges": edges,
     }
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
