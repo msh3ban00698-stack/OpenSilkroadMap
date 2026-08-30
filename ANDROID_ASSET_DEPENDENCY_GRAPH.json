@@ -1,0 +1,254 @@
+{
+ "description": "Proven references between Android runtime assets (Phase 13 Part N). Only edges reproduced from real data are present; status VERIFIED means the reference was reproduced from committed/live bytes, PARTIAL means the structure is proven but a downstream field is UNKNOWN.",
+ "textdata_edges": 9,
+ "asset_edges": 10,
+ "edges": [
+  {
+   "from": {
+    "kind": "npcpos.tsv",
+    "role": "character_refid"
+   },
+   "to": {
+    "kind": "characterdata_*.txt (tiers)",
+    "role": "refid"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "1180/1180 matched; every distinct spawn character refid resolves to a characterdata entry"
+  },
+  {
+   "from": {
+    "kind": "npcpos.tsv",
+    "role": "region_code"
+   },
+   "to": {
+    "kind": "regioncode.tsv",
+    "role": "region_id"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "1800/1855 matched; 1800/1855 distinct region codes exist in regioncode.tsv; the 55 unmatched include 21 negative (dungeon/instance) codes"
+  },
+  {
+   "from": {
+    "kind": "refquestrewarditems.tsv",
+    "role": "item_code"
+   },
+   "to": {
+    "kind": "itemdata_*.txt (tiers)",
+    "role": "item code"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "316/318 matched; 2 unmatched: ITEM_QNO_EU_CONS_12_02 (not in checked tiers) and 'xxx' placeholder"
+  },
+  {
+   "from": {
+    "kind": "refqusetreward.tsv",
+    "role": "quest_code"
+   },
+   "to": {
+    "kind": "refquestrewarditems.tsv",
+    "role": "quest_code"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "140/140 matched; every reward-item quest code exists in the quest reward list"
+  },
+  {
+   "from": {
+    "kind": "teleportdata.tsv",
+    "role": "gate_id"
+   },
+   "to": {
+    "kind": "teleportbuilding.tsv",
+    "role": "gate_id"
+   },
+   "relationship": "column join",
+   "status": "PARTIAL",
+   "evidence": "101/135 matched; unmatched: 0 (special), 19495-19497 and 2011 not in teleportbuilding"
+  },
+  {
+   "from": {
+    "kind": "refshopgoods.tsv",
+    "role": "shop_id"
+   },
+   "to": {
+    "kind": "refshop.tsv",
+    "role": "shop_id"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "1/1 matched; committed set holds a single shop id (15)"
+  },
+  {
+   "from": {
+    "kind": "refshopgoods.tsv",
+    "role": "category_code"
+   },
+   "to": {
+    "kind": "refshoptab.txt",
+    "role": "tab code"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "164/164 matched; every refshopgoods category code exists in refshoptab.txt col3"
+  },
+  {
+   "from": {
+    "kind": "worldmap_instanceinfo.tsv",
+    "role": "region_cell_x"
+   },
+   "to": {
+    "kind": "regions.tsv",
+    "role": "cell"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "23/23 matched; all instance cells (e.g. ThiefTown 182:96) exist in regions.tsv"
+  },
+  {
+   "from": {
+    "kind": "worldmap_mapinfo.tsv",
+    "role": "texture_ddj_path"
+   },
+   "to": {
+    "kind": "Media.pk2 interface/ *.ddj",
+    "role": "texture"
+   },
+   "relationship": "column join",
+   "status": "PARTIAL",
+   "evidence": "31/57 matched; 31/57 paths resolve to a file in Media.pk2 (all *.ddj); the unresolved set includes extension-less 'map_world_' style entries"
+  },
+  {
+   "from": {
+    "kind": ".o2",
+    "role": "object instance overlay (Map.pk2)"
+   },
+   "to": {
+    "kind": "object.ifo",
+    "role": "bsr path index (Data.pk2)"
+   },
+   "relationship": "nameI index -> bsr path",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part B: 9 distinct bsr refs of const_76x103 resolve via object.ifo"
+  },
+  {
+   "from": {
+    "kind": ".bsr",
+    "role": "mesh resource (JMXVRES)"
+   },
+   "to": {
+    "kind": ".bmt",
+    "role": "material (JMXVBMT)"
+   },
+   "relationship": "material path string",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part F: bsr header embeds .bmt path (e.g. avatar_w_angel_wing.bmt)"
+  },
+  {
+   "from": {
+    "kind": ".bsr",
+    "role": "mesh resource (JMXVRES)"
+   },
+   "to": {
+    "kind": ".bms",
+    "role": "static mesh parts (JMXVBMS)"
+   },
+   "relationship": "mesh part path list",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part F: bsr body lists .bms parts (part1/part2)"
+  },
+  {
+   "from": {
+    "kind": ".bmt",
+    "role": "material (JMXVBMT)"
+   },
+   "to": {
+    "kind": ".ddj",
+    "role": "texture (JMXVDDJ -> DDS)"
+   },
+   "relationship": "bare ddj filename resolved against bmt directory",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part B: bmt ddj refs resolved under /prim/mtrl/... in Data.pk2"
+  },
+  {
+   "from": {
+    "kind": "characterdata_*.txt",
+    "role": "character definitions"
+   },
+   "to": {
+    "kind": ".bsr",
+    "role": "character model"
+   },
+   "relationship": "model path column (col 52)",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part J: refid 2023 -> npc\\npc\\chinaquest_priest.bsr"
+  },
+  {
+   "from": {
+    "kind": ".ddj",
+    "role": "texture (JMXVDDJ)"
+   },
+   "to": {
+    "kind": "DDS",
+    "role": "embedded image"
+   },
+   "relationship": "20-byte header + DDS body",
+   "status": "VERIFIED",
+   "evidence": "Phase 10/12: DDJ_HEADER=20; every .ddj carries a DDS body"
+  },
+  {
+   "from": {
+    "kind": ".ban",
+    "role": "animation (JMXVBAN)"
+   },
+   "to": {
+    "kind": "bones",
+    "role": "skeleton bone names"
+   },
+   "relationship": "bone name table + quat/pos keyframes",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part D: full .ban layout proven"
+  },
+  {
+   "from": {
+    "kind": ".bsk",
+    "role": "skeleton (JMXVBSK)"
+   },
+   "to": {
+    "kind": "bones",
+    "role": "skeleton bone names"
+   },
+   "relationship": "embedded bone name table ([root], Bip01*, BoneNN)",
+   "status": "VERIFIED",
+   "evidence": "Phase 13 Part F: bsk embeds skeleton bone names"
+  },
+  {
+   "from": {
+    "kind": ".nvm",
+    "role": "navmesh (JMXVNVM)"
+   },
+   "to": {
+    "kind": "navmesh cells",
+    "role": "navigation grid"
+   },
+   "relationship": "flat 8-byte nav-cell records (4 x u16)",
+   "status": "PARTIAL",
+   "evidence": "Phase 13 Part E: structure proven; record semantics UNKNOWN"
+  },
+  {
+   "from": {
+    "kind": ".efp",
+    "role": "particle effect (JMXVEFF)"
+   },
+   "to": {
+    "kind": "commands",
+    "role": "emitter command stream"
+   },
+   "relationship": "u32-length-prefixed ASCII command tokens",
+   "status": "PARTIAL",
+   "evidence": "Phase 13 Part G: command vocabulary proven; params UNKNOWN"
+  }
+ ]
+}

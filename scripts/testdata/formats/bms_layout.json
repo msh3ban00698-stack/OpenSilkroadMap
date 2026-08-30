@@ -1,0 +1,126 @@
+{
+ "petra": {
+  "size": 19866,
+  "header_size": 118,
+  "section_offsets": [
+   118,
+   15346,
+   17446,
+   19826,
+   19830,
+   19834,
+   19858
+  ],
+  "end_offset": 19862,
+  "region_sizes": [
+   118,
+   15228,
+   2100,
+   2380,
+   4,
+   4,
+   24,
+   4,
+   4
+  ],
+  "header_names": [
+   "Bagh_Petra_Core01",
+   "Bagh_Petra_core01"
+  ],
+  "header_tail_unknown_u32": 94,
+  "section0_vertex_count": 346,
+  "section0_vertex_stride_bytes": 44.0,
+  "section1_bone_count": 2,
+  "triangle_section_index": 2,
+  "triangle_count": 396,
+  "triangle_record_stride": 6,
+  "triangle_first_indices": [
+   [
+    273,
+    2,
+    1
+   ],
+   [
+    2,
+    273,
+    256
+   ],
+   [
+    4,
+    272,
+    254
+   ]
+  ],
+  "aabb_section_index": 5,
+  "aabb_floats": [
+   -22.291,
+   90.587,
+   -22.291,
+   22.291,
+   134.749,
+   22.291
+  ]
+ },
+ "demon": {
+  "size": 45251,
+  "header_size": 133,
+  "section_offsets": [
+   133,
+   41099,
+   41103,
+   45211,
+   45215,
+   45219,
+   45243
+  ],
+  "end_offset": 45247,
+  "region_sizes": [
+   133,
+   40966,
+   4,
+   4108,
+   4,
+   4,
+   24,
+   4,
+   4
+  ],
+  "header_names": [
+   "demon_tower_mbrazier_fire",
+   "Demon_Tower_Brazier_fire"
+  ],
+  "header_tail_unknown_u32": 58,
+  "section0_vertex_count": 786,
+  "section0_vertex_stride_bytes": 52.11450381679389,
+  "section1_bone_count": 0,
+  "triangle_section_index": 2,
+  "triangle_count": 684,
+  "triangle_record_stride": 6,
+  "triangle_first_indices": [
+   [
+    742,
+    765,
+    0
+   ],
+   [
+    2,
+    746,
+    739
+   ],
+   [
+    739,
+    3,
+    2
+   ]
+  ],
+  "aabb_section_index": 5,
+  "aabb_floats": [
+   -11.327,
+   -0.277,
+   -11.327,
+   11.327,
+   71.794,
+   11.327
+  ]
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "family_prefix": "interface/worldmap/map/map_world_",
+ "tile_count": 632,
+ "tile_total_bytes": 10158692,
+ "size_histogram": {
+  "8340": 570,
+  "65684": 1,
+  "87528": 61
+ },
+ "x_min": 46,
+ "x_max": 216,
+ "n_x": 72,
+ "y_min": 72,
+ "y_max": 113,
+ "n_y": 20,
+ "in_bounds_46_177_70_113": 587,
+ "out_of_bounds": 45,
+ "tile_px": 128,
+ "tsv_row0": [
+  "0",
+  "0",
+  "월드맵",
+  "interface\\worldmap\\map\\map_world_",
+  "128",
+  "128",
+  "128",
+  "128",
+  "4224",
+  "1408",
+  "46",
+  "113",
+  "177",
+  "70",
+  "0",
+  "192",
+  "192",
+  "0",
+  "xxx",
+  "UIIT_PAG_WORLDMAP",
+  "0",
+  "4x4",
+  ""
+ ],
+ "sample_tiles": [
+  {
+   "path": "/interface/worldmap/map/map_world_46x73.ddj",
+   "size": 8340
+  },
+  {
+   "path": "/interface/worldmap/map/map_world_46x77.ddj",
+   "size": 8340
+  },
+  {
+   "path": "/interface/worldmap/map/map_world_46x81.ddj",
+   "size": 8340
+  }
+ ]
+}

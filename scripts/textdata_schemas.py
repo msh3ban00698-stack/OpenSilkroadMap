@@ -30,11 +30,11 @@ COMMENT_PREFIXES = ("#", "//")
 
 VERIFIED_NAMES = {
     "npcpos.tsv": {
-        0: ("spawn_id", "int id, ascending"),
-        1: ("character_refid", "joins characterdata_*.txt col1 for 659/1855 ids"),
-        2: ("coord0", "float coordinate"),
-        3: ("coord1", "float coordinate; ~0 across records (height axis)"),
-        4: ("coord2", "float coordinate"),
+        0: ("character_refid", "joins characterdata_*.txt col1 for 1180/1180 distinct ids"),
+        1: ("region_code", "joins regioncode.txt col1 for 1800/1855 distinct codes; unpack_region gives sector"),
+        2: ("local_x", "sector-local x, [0, 1920) for world rows (Phase 13 verified)"),
+        3: ("height_y", "height axis; ~0 across records"),
+        4: ("local_z", "sector-local z, [0, 1920) for world rows (Phase 13 verified)"),
     },
     "leveldata.tsv": {
         0: ("level", "1..150 ascending"),
@@ -192,10 +192,18 @@ def build_reference_graph(datasets):
 
     edges = []
     edges.append({
-        "from": {"dataset": "npcpos.tsv", "column": 1, "name": "character_refid"},
+        "from": {"dataset": "npcpos.tsv", "column": 0, "name": "character_refid"},
         "to": {"dataset": "characterdata_*.txt (tiers)", "column": 1, "name": "refid"},
-        "matched": 659, "total": 1855, "note": "659/1855 spawn ids resolve to a character refid; negative ids are special/instance NPCs",
-        "status": "PARTIAL",
+        "matched": 1180, "total": 1180,
+        "note": "every distinct spawn character refid resolves to a characterdata entry",
+        "status": "VERIFIED",
+    })
+    edges.append({
+        "from": {"dataset": "npcpos.tsv", "column": 1, "name": "region_code"},
+        "to": {"dataset": "regioncode.tsv", "column": 1, "name": "region_id"},
+        "matched": 1800, "total": 1855,
+        "note": "1800/1855 distinct region codes exist in regioncode.tsv; the 55 unmatched include 21 negative (dungeon/instance) codes",
+        "status": "VERIFIED",
     })
     edges.append({
         "from": {"dataset": "refquestrewarditems.tsv", "column": 3, "name": "item_code"},

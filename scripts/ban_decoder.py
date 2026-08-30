@@ -1,22 +1,31 @@
-"""Partial decoder for the JMXVBAN animation format (VSRO-R 1.193).
+"""Full decoder for the JMXVBAN animation format (VSRO-R 1.193).
 
-Only the structure proven from real archive samples is decoded (see
-FORMAT_RESEARCH.md / DATA_FORMAT_CATALOG.md for evidence):
+The complete layout below is PROVEN from three real archive files (see
+FORMAT_RESEARCH.md for evidence): ferry 171 B, royalsoldier 29,686 B,
+venefica 926,897 B -- each parses exactly to the last byte.
 
-  offset  size  field
-  ------  ----  -----
-  0x00    8     magic b"JMXVBAN 0102"
-  0x0C    8     zero bytes (UNKNOWN semantics)
-  0x14    4     u32 LE animation-name length
-  0x18    N     animation name bytes (NUL terminated at 0x18+length)
-  ...     --    body: embedded bone names + keyframe records
+  offset    size      field
+  ------    ----      -----
+  0x00      8         magic b"JMXVBAN "
+  0x08      4         version b"0102"
+  0x0C      8         reserved (zeros, UNKNOWN semantics)
+  0x14      4         u32 animation-name length
+  0x18      N         animation name (no trailing NUL; body follows at name_end)
+  --- body (starts at name_end) ---
+  0        4         u32 duration_ms            (8000 / 2966 / 6000)
+  4        4         u32 frame_rate             (30 in all proven samples)
+  8        4         u32 UNKNOWN                (1 / 0 / 1)
+  12       4         u32 keyframes_per_bone (kpb)  (3 / 27 / 181)
+  16       kpb*4     u32 timestamp_ms each      (ascending; first 0, last=duration)
+  +4       4         u32 bone_count             (1 / 38 / 182)
+  then bone_count x:
+    4       u32   bone name length
+    N       bone name bytes (no trailing NUL)
+    4       u32   per-bone keyframe count (equals kpb in all proven samples)
+    kpb*28  keyframe records (28 B = 4 x f32 rotation quaternion + 3 x f32 position)
 
-Keyframe record (28 bytes, stride proven on 3 independent real files):
-  0..15   4 x f32 LE normalized rotation quaternion
-  16..27  3 x f32 LE position
-
-Unknown fields (all u32 LE present after the name) are exposed via
-``header_after_name`` but their semantics are NOT asserted.
+The 0x0C reserved block and the body u32 at offset 8 remain UNKNOWN and are
+reported verbatim, never asserted.
 """
 
 from __future__ import annotations
@@ -54,7 +63,7 @@ def parse_ban_header(data: bytes) -> dict:
         "reserved_hex": data[0x0C:0x14].hex(),
         "name_length": name_len,
         "name": name_text,
-        "body_start": name_end + 1,
+        "body_start": name_end,
     }
 
 
@@ -93,6 +102,81 @@ def find_keyframe_runs(data: bytes, body_start: int, min_run: int = 2) -> list[d
         else:
             i += 1
     return runs
+
+
+def parse_ban(data: bytes, keyframe_cap: int = 4) -> dict:
+    """Parse the complete proven BAN layout. Reports, never invents.
+
+    Verifies the parse by asserting the bone records end exactly at the file
+    length; any deviation raises BanFormatError (layout not proven for that file).
+    """
+    header = parse_ban_header(data)
+    body = header["body_start"]
+    if body + 20 > len(data):
+        raise BanFormatError("body shorter than 5-field header")
+    duration, frame_rate, unknown, kpb = struct.unpack_from("<4I", data, body)
+    ts_off = body + 16
+    if ts_off + kpb * 4 > len(data):
+        raise BanFormatError("timestamp table exceeds file")
+    timestamps = list(struct.unpack_from(f"<{kpb}I", data, ts_off))
+    bones_off = ts_off + kpb * 4
+    if bones_off + 4 > len(data):
+        raise BanFormatError("no bone count")
+    bone_count = struct.unpack_from("<I", data, bones_off)[0]
+
+    bones: list[dict] = []
+    o = bones_off + 4
+    sample_keyframes = []
+    for _ in range(bone_count):
+        if o + 4 > len(data):
+            raise BanFormatError("bone name length out of range")
+        nl = struct.unpack_from("<I", data, o)[0]
+        name_bytes = data[o + 4:o + 4 + nl]
+        if o + 4 + nl + 4 > len(data):
+            raise BanFormatError("bone name exceeds file")
+        try:
+            name = name_bytes.decode("ascii")
+        except UnicodeDecodeError:
+            name = name_bytes.decode("latin-1")
+        o += 4 + nl
+        perbone = struct.unpack_from("<I", data, o)[0]
+        o += 4
+        kf_start = o
+        if o + perbone * KEYFRAME_STRIDE > len(data):
+            raise BanFormatError("keyframe block exceeds file")
+        bones.append({"name": name, "name_length": nl, "keyframes": perbone,
+                      "keyframe_start": kf_start})
+        if not sample_keyframes and perbone:
+            for i in range(min(keyframe_cap, perbone)):
+                off = kf_start + i * KEYFRAME_STRIDE
+                q = struct.unpack_from("<4f", data, off)
+                p = struct.unpack_from("<3f", data, off + 16)
+                sample_keyframes.append({
+                    "bone": name,
+                    "offset": off,
+                    "quaternion": [round(x, 4) for x in q],
+                    "position": [round(x, 4) for x in p],
+                })
+        o += perbone * KEYFRAME_STRIDE
+
+    if o != len(data):
+        raise BanFormatError(f"parse consumed {o} bytes but file is {len(data)}")
+
+    ts_sorted = all(a < b for a, b in zip(timestamps, timestamps[1:]))
+    return {
+        "header": header,
+        "duration_ms": duration,
+        "frame_rate": frame_rate,
+        "unknown_u32": unknown,
+        "keyframes_per_bone": kpb,
+        "timestamps": timestamps,
+        "timestamps_ascending": ts_sorted,
+        "bone_count": bone_count,
+        "bones": bones,
+        "sample_keyframes": sample_keyframes,
+        "record_byte_size": KEYFRAME_STRIDE,
+        "parsed_end": o,
+    }
 
 
 def decode_keyframes(data: bytes, record_cap: int = 8) -> dict:

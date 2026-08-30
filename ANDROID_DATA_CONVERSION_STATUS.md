@@ -67,11 +67,16 @@ record counts, schema width, content spot checks) and listed in
   assets are absent. Schema/join provenance: `TEXTDATA_SCHEMAS.json`,
   `DATA_REFERENCE_GRAPH.json`.
 
-## 4. PARTIALLY DECODED (Phase 12 decoder committed for a proven subset)
+## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|
-| `ban` | 4,796 | magic/version; name length + name; 28-byte keyframe records (normalized rotation quaternion + position) — decoder `scripts/ban_decoder.py`, 10 tests incl. live archive check | all u32 fields after the name; keyframe→bone linkage; time encoding |
+| `ban` | 4,796 | **FULL layout** (Phase 13 Part D): magic/version; reserved; u32 name-len + name; u32 duration + frame-rate(30) + u32 UNKNOWN + kpb; kpb×u32 timestamps; bone count + per-bone name + kf-count + kpb×28-byte keyframes (quat + pos). Decoder `scripts/ban_decoder.py`, 8 tests. | semantic only: `u32`@body+8, reserved 8 bytes |
+| `bms` | 22,948 | header offset table (6 sections + names); s0 vertices / s1 bones / s2 triangles / s5 AABB. 12 tests. | vertex record layout (stride non-integral) |
+| `nvm` | 6,041 | flat 8-byte nav-cell records; 96×96 (9,216) grid; f32 region; trailing fill. 5 tests. | nav-cell semantics |
+| `efp` | 3,395 | version tree + u32-length-prefixed command stream. 11 tests. | command-stream semantics |
+| `bsk` | 1,039 | magic/version; body sampled. 9 tests (shared). | bone/keyframe layout |
+| `bsr` | 7,549 | magic `JMXVRES`; u32-length-prefixed `.bmt`/`.bms` paths. 9 tests (shared). | record layout |
 
 ## 5. DECODED, conversion deferred (backlog, do not claim as done)
 
@@ -80,10 +85,10 @@ record counts, schema width, content spot checks) and listed in
 | `ddj` (the 39,740 not yet converted) | 47,495 | container + DDS payload extraction proven | convert remaining textures |
 | `tga` | 15 | header verified | decode + convert |
 | `m` (remaining height grids) | 4,491 | 23 grids converted in Phase 10 | convert all grids |
-| `nvm` navmesh | 6,041 | magic + samples; header carries LE floats (extents) and count-like fields, layout NOT proven (see FORMAT_RESEARCH.md) | full structure, extraction of walkable surfaces |
-| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven; `bms` offset-table header documented | full geometry/material pipeline |
-| `bsk` | 1,040 | magic confirmed | skeleton decode |
-| `efp` | 3,395 | magic confirmed; 5 version variants documented (0010/0011/0012/0013/0000) | particle system decode |
+| `nvm` navmesh | 6,041 | partial structure proven (see section 4) | full structure, extraction of walkable surfaces |
+| `bms` / `bsr` / `t` / `o` / `o2` / `bmt` | ~44,000 | magic confirmed; `o2` instance parsing proven; `bms`/`bsr` partial structure (section 4) | full geometry/material pipeline |
+| `bsk` | 1,039 | magic confirmed + body sampled (section 4) | skeleton decode |
+| `efp` | 3,395 | version tree + command stream proven (section 4) | particle system decode |
 | `wav` (2,454 remaining) / `ogg` (0 remaining) | 2,454 | decode proven on samples; **Phase 12 converted all 50 `ogg` + 431 `wav`** (`/prim/snd/monster`) with provenance manifest | convert remaining wav sets |
 | `2dt` (CNIF text-data) | 51 | container magic confirmed | CNIF string-table decode |
 
@@ -100,15 +105,15 @@ record counts, schema width, content spot checks) and listed in
 ## 7. Summary
 
 - Real data in Android-consumable form (committed): prior ~7,755 textures/audio +
-  23 `.hg` + `regions.tsv` + 21 textdata TSVs (Phase 11) + **29 worldmap
-  textures (WebP) + 50 OGG + 431 WAV** with provenance manifests
-  (`TEXTURE_CONVERSION_MANIFEST.tsv`, `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12).
-- Formats fully decoded: **13** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
-  ddj, m, o2 — the last three through committed Phase 5–10 converters).
-- Formats with a committed decoder for a proven subset: **1** (`ban`, Phase 12:
-  header + name + keyframe records).
-- Formats decoded at sample level (magic verified), decoder pending: **12**
-  (bms, bsr, nvm, t, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk — 13 entries;
-  `ban` promoted to partial; `o` stays pending, `m`/`o2` promoted to decoded).
+  23 `.hg` + `regions.tsv` + 21 textdata TSVs (Phase 11) + **663 worldmap
+  textures (WebP: 632 `map_world_` tiles + 31 named) + 50 OGG + 431 WAV** with
+  provenance manifests (`TEXTURE_CONVERSION_MANIFEST.tsv`,
+  `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12 + Phase 13 Part C).
+- Formats fully decoded: **14** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
+  ddj, m, o2, ban — the last four through committed Phase 5–13 converters).
+- Formats with a committed decoder for a proven subset: **5** (nvm, bms, efp,
+  bsk, bsr — Phase 13 partial structure).
+- Formats decoded at sample level (magic verified), decoder pending: **8**
+  (t, o, bmt, cpd, dof, mfo, 2dt, sfk).
 - Formats fully unknown: **4** (`dat`, `db`, `scc`, `msf`) + encrypted client
   skill tables (7 files; plaintext equivalents exist).

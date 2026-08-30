@@ -60,13 +60,29 @@ class BanHeaderTests(unittest.TestCase):
             self.assertEqual(doc["header"]["name_length"], len(name))
             self.assertEqual(doc["header"]["name"], name)
 
-    def test_body_start_after_nul(self):
+    def test_body_start_is_name_end_no_nul(self):
+        # Phase 13 Part D: proven from real bytes that the animation name has NO
+        # trailing NUL; the body (5-field header) starts immediately at name_end.
         for key in FIXTURES:
             doc = load_fixture(key)
             self.assertEqual(
                 doc["header"]["body_start"],
-                doc["header"]["name_length"] + 0x19,
+                doc["header"]["name_length"] + 0x18,
             )
+
+    def test_full_parse_lands_exactly_on_file_end(self):
+        # Phase 13 Part D: complete proven layout (duration/fps/kpb/timestamps/
+        # bone_count/bones) parses each file to the last byte.
+        for key in FIXTURES:
+            doc = load_fixture(key)
+            self.assertTrue(doc["parse_exact"])
+            self.assertEqual(doc["parsed_end"], doc["source"]["size"])
+            self.assertEqual(doc["frame_rate"], 30)
+            self.assertEqual(doc["keyframes_per_bone"],
+                             len(doc["timestamps"]))
+            self.assertEqual(len(doc["bones"]), doc["bone_count"])
+            self.assertEqual(doc["timestamps"][0], 0)
+            self.assertEqual(doc["timestamps"][-1], doc["duration_ms"])
 
 
 class BanKeyframeTests(unittest.TestCase):

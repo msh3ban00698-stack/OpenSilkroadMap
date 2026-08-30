@@ -306,24 +306,24 @@
    "columns_detail": [
     {
      "dominant": "int",
-     "evidence": "int id, ascending",
-     "name": "spawn_id",
-     "types": {
-      "int": 18457
-     }
-    },
-    {
-     "dominant": "int",
-     "evidence": "joins characterdata_*.txt col1 for 659/1855 ids",
+     "evidence": "joins characterdata_*.txt col1 for 1180/1180 distinct ids",
      "name": "character_refid",
      "types": {
       "int": 18457
      }
     },
     {
+     "dominant": "int",
+     "evidence": "joins regioncode.txt col1 for 1800/1855 distinct codes; unpack_region gives sector",
+     "name": "region_code",
+     "types": {
+      "int": 18457
+     }
+    },
+    {
      "dominant": "float",
-     "evidence": "float coordinate",
-     "name": "coord0",
+     "evidence": "sector-local x, [0, 1920) for world rows (Phase 13 verified)",
+     "name": "local_x",
      "types": {
       "float": 18230,
       "int": 227
@@ -331,8 +331,8 @@
     },
     {
      "dominant": "float",
-     "evidence": "float coordinate; ~0 across records (height axis)",
-     "name": "coord1",
+     "evidence": "height axis; ~0 across records",
+     "name": "height_y",
      "types": {
       "float": 16020,
       "int": 2437
@@ -340,8 +340,8 @@
     },
     {
      "dominant": "float",
-     "evidence": "float coordinate",
-     "name": "coord2",
+     "evidence": "sector-local z, [0, 1920) for world rows (Phase 13 verified)",
+     "name": "local_z",
      "types": {
       "float": 18182,
       "int": 275
@@ -2627,17 +2627,33 @@
  "edges": [
   {
    "from": {
-    "column": 1,
+    "column": 0,
     "dataset": "npcpos.tsv",
     "name": "character_refid"
    },
-   "matched": 659,
-   "note": "659/1855 spawn ids resolve to a character refid; negative ids are special/instance NPCs",
-   "status": "PARTIAL",
+   "matched": 1180,
+   "note": "every distinct spawn character refid resolves to a characterdata entry",
+   "status": "VERIFIED",
    "to": {
     "column": 1,
     "dataset": "characterdata_*.txt (tiers)",
     "name": "refid"
+   },
+   "total": 1180
+  },
+  {
+   "from": {
+    "column": 1,
+    "dataset": "npcpos.tsv",
+    "name": "region_code"
+   },
+   "matched": 1800,
+   "note": "1800/1855 distinct region codes exist in regioncode.tsv; the 55 unmatched include 21 negative (dungeon/instance) codes",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "regioncode.tsv",
+    "name": "region_id"
    },
    "total": 1855
   },

@@ -31,19 +31,15 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 | `ddj` | `JMXVDDJ 1000` | 47,495 files, 2,200.6 MB (largest format by bytes). Container header `JMXVDDJ 1000` then embedded DDS textures. | Prior phases verified `ddj -> DDS` extraction and conversion (`scripts/convert_ddjs.py`, `scripts/dds_decode.py`); ~7,755 Android texture outputs produced across Phases 5–8. |
 | `m` | `JMXVMAPM1000` | 4,491 files, 416.6 MB. Terrain height grid. | **Phase 10 decodes `.m` fully** (`scripts/world_terrain.py`, 97×97 height grid per cell); 23 real grids committed as `.hg`. |
 | `o2` | `JMXVMAPO1001` | 4,348 files, 8.3 MB. Object overlay/instance. | **Phase 10 parses `.o2` instances** (committed fixtures `const_76x103_objects.json`). |
+| `ban` | `JMXVBAN 0102` | 4,796 files, 235.2 MB. Animation. | **Phase 13 Part D proves FULL layout** (`scripts/ban_decoder.py`): magic/version, 8-byte reserved, u32 name-len + name, u32 duration + frame-rate(30) + u32 UNKNOWN + kpb, kpb×u32 timestamps, bone count + per-bone name + kf-count + kpb×28-byte keyframes (4×f32 quat + 3×f32 pos). Tests: `scripts/test_phase13_ban.py` (8 GREEN). |
 
 ## 2. PARSEABLE formats (magic confirmed, decoder not yet committed)
 
 | Ext | Magic | Files / Bytes | Notes |
 |---|---|---|---|
-| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | Static geometry/mesh. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN. |
-| `bsr` | `JMXVRES 0109` | 7,549 / 12.9 MB | Object resource. |
-| `nvm` | `JMXVNVM 1000` | 6,041 / 778.6 MB | Navmesh. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN (no proven count fields). |
 | `t` | `JMXVMAPT1001` | 4,989 / 700.4 MB | Tile/zone. |
 | `o` | `JMXVMAPO1000` | 4,491 / 3.5 MB | Map overlay. |
 | `bmt` | `JMXVBMT 0102` | 4,269 / 2.1 MB | Material. |
-| `efp` | `JMXVEFF 0011` | 3,395 / 95.1 MB | Particle effect. Phase 12 header evidence in `FORMAT_RESEARCH.md`; full layout UNKNOWN. |
-| `bsk` | `JMXVBSK 0101` | 1,040 / 4.0 MB | Skeleton (sample `flame_crazy_stand01.bsk` 7,513 B). |
 | `cpd` | `JMXVCPD 0101` | 124 / 34.1 KB | Object/character detail. |
 | `dof` | `JMXVDOF 0101` | 34 / 4.3 MB | Depth-of-field shader data. |
 | `mfo` | `JMXVMFO 1000` | 2 / 16.4 KB | Uncommon object container. |
@@ -54,7 +50,11 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 
 | Ext | Magic | Files / Bytes | Decoder | Proven subset | Remaining UNKNOWN |
 |---|---|---|---|---|---|
-| `ban` | `JMXVBAN 0102` | 4,796 / 235.2 MB | `scripts/ban_decoder.py` (Phase 12) | magic/version; name-length u32 + NUL-terminated name; 28-byte keyframe records = 4×f32 normalized rotation quaternion + 3×f32 position (stride proven on 3 real files; contiguous runs = 3/27/181 records on samples). Tests: `scripts/test_phase12_formats.py` (10 tests, live-archive check passes). | all u32 fields after the name (durations/counts/bone linkage); keyframe→bone association; time/frame-index encoding. See `FORMAT_RESEARCH.md`. |
+| `bms` | `JMXVBMS 0110` | 22,948 / 603.5 MB | `scripts/test_phase13_bms.py` (12 GREEN) | header = header_size + 6 section offsets + end_offset + 2 length-prefixed names; s0 vertices / s1 bones / s2 triangles (u32 count + 3×u16) / s5 AABB. | vertex record layout (stride non-integral: Petra 44.0 B, demon 52.11 B); remaining section semantics. |
+| `nvm` | `JMXVNVM 1000` | 6,041 / 778.6 MB | `scripts/test_phase13_nvm.py` (5 GREEN) | flat 8-byte LE nav-cell records (4×u16); dominant 9,216 = 96×96 grid; post-grid f32 region (~37,814 B); trailing −20.0 fill. | nav-cell record semantics; region meaning. |
+| `efp` | `JMXVEFF xxxx` | 3,395 / 95.1 MB | `scripts/test_phase13_efp.py` (11 GREEN) | version tree (0000×7/0010×1/0011×1,820/0012×408/0013×1,158); u32-length-prefixed ASCII command stream. | command-stream semantics / parameters. |
+| `bsk` | `JMXVBSK 0101` | 1,039 / 4.0 MB | `scripts/test_phase13_bsk_bsr.py` (9 GREEN) | magic/version; body sampled. | bone/keyframe layout (bone-name count ≠ count@12 → not a plain count). |
+| `bsr` | `JMXVRES 0109/0108/0107` | 7,549 / 12.9 MB | `scripts/test_phase13_bsk_bsr.py` (9 GREEN) | magic is `JMXVRES` (NOT `JMXVBSR`); body = u32-length-prefixed `.bmt`/`.bms` paths. | record layout. |
 
 ## 3. TEXT formats (decoded)
 
@@ -87,9 +87,9 @@ Status vocabulary (consistent with `COMPLETE_SOURCE_INVENTORY.*` and
 
 | Status | Files | Formats |
 |---|---:|---:|
-| VERIFIED | 11,790 | wav, ogg, tga, tmp, ddj (conversion proven in prior phases), m, o2 (Phase 10 decoders) |
-| PARTIAL | 4,796 | ban (Phase 12 decoder: header + keyframe records) |
-| PARSEABLE | 102,430 | bms, bsr, nvm, t, o, bmt, efp, bsk, cpd, dof, mfo, 2dt, sfk, plus the ext-less `Media /icon/action/cos_cmd_inventory` file (a `JMXVDDJ 1000` container) |
+| VERIFIED | 16,586 | wav, ogg, tga, tmp, ddj (conversion proven in prior phases), m, o2 (Phase 10 decoders), ban (Phase 13 Part D full layout) |
+| PARTIAL | 40,973 | bms, nvm, efp, bsk, bsr (Phase 13 structural/partial decoders) |
+| PARSEABLE | 61,457 | t, o, bmt, cpd, dof, mfo, 2dt, sfk, plus the ext-less `Media /icon/action/cos_cmd_inventory` file (a `JMXVDDJ 1000` container) |
 | TEXT | 516 | txt (441), ifo (12), ini (1), c (40), vsh (8), psh (14) |
 | UNKNOWN | 99 | dat (79), db (1), msf (2), scc (17) — bytes for these formats total 96.5 MB |
 

@@ -1,0 +1,143 @@
+{
+ "0000": {
+  "file_count": 7,
+  "size_min": 2275,
+  "size_median": 75328,
+  "size_max": 140990,
+  "u32_prefixed_ascii_runs": 161,
+  "total_ascii_runs": 434,
+  "token_vocab_size": 43,
+  "top_tokens": [
+   "NONAME",
+   "meshes\\cho-won-004.bms",
+   "textures\\plazma3.ddj",
+   "textures\\lightning.ddj",
+   "meshes\\levelup03.bms",
+   "textures\\n-light-g.ddj",
+   "textures\\lightning5.ddj",
+   "textures\\01ring.ddj",
+   "textures\\s-light-y.ddj",
+   "textures\\won-light-up-i.ddj"
+  ],
+  "head_field_u32_top": [
+   50397967,
+   33623824,
+   335610114,
+   33620483,
+   50397705
+  ],
+  "sample_path": "/skill/china/cold_ganggi_motion_a.efp"
+ },
+ "0010": {
+  "file_count": 1,
+  "size_min": 10998,
+  "size_median": 10998,
+  "size_max": 10998,
+  "u32_prefixed_ascii_runs": 180,
+  "total_ascii_runs": 192,
+  "token_vocab_size": 35,
+  "top_tokens": [
+   "StaticEmit",
+   "SetGraphDiffuse",
+   "NormalTimeLife",
+   "NormalTimeExtinct",
+   "SetConeVel",
+   "RenderPlate",
+   "ViewBillboard",
+   "Program",
+   "LinkMode",
+   "ProgramUpdate"
+  ],
+  "head_field_u32_top": [
+   230
+  ],
+  "sample_path": "/skill/china/water_hide_keep_a.efp"
+ },
+ "0011": {
+  "file_count": 1820,
+  "size_min": 1149,
+  "size_median": 11269,
+  "size_max": 193327,
+  "u32_prefixed_ascii_runs": 448245,
+  "total_ascii_runs": 533049,
+  "token_vocab_size": 1878,
+  "top_tokens": [
+   "StaticEmit",
+   "SetGraphDiffuse",
+   "SetGraphScale",
+   "NormalTimeLife",
+   "NormalTimeExtinct",
+   "Program",
+   "ProgramUpdate",
+   "LinkMode",
+   "ViewNone",
+   "RenderMesh"
+  ],
+  "head_field_u32_top": [
+   91,
+   94,
+   92,
+   93,
+   96
+  ],
+  "sample_path": "/battle/deco_charge_light_a.efp"
+ },
+ "0012": {
+  "file_count": 408,
+  "size_min": 1429,
+  "size_median": 19089,
+  "size_max": 219427,
+  "u32_prefixed_ascii_runs": 199248,
+  "total_ascii_runs": 234220,
+  "token_vocab_size": 803,
+  "top_tokens": [
+   "StaticEmit",
+   "SetGraphDiffuse",
+   "SetGraphScale",
+   "NormalTimeLife",
+   "NormalTimeExtinct",
+   "Program",
+   "ProgramUpdate",
+   "RenderMesh",
+   "LinkMode",
+   "ViewNone"
+  ],
+  "head_field_u32_top": [
+   1065353216,
+   1056964608,
+   1073741824,
+   1061997773,
+   1066192077
+  ],
+  "sample_path": "/cos/dust_fortress_death.efp"
+ },
+ "0013": {
+  "file_count": 1158,
+  "size_min": 1944,
+  "size_median": 27394,
+  "size_max": 527410,
+  "u32_prefixed_ascii_runs": 868149,
+  "total_ascii_runs": 1037536,
+  "token_vocab_size": 1459,
+  "top_tokens": [
+   "StaticEmit",
+   "SetGraphDiffuse",
+   "SetGraphScale",
+   "NormalTimeLife",
+   "NormalTimeExtinct",
+   "Program",
+   "ProgramUpdate",
+   "LinkMode",
+   "ViewNone",
+   "SetShapeRotVel"
+  ],
+  "head_field_u32_top": [
+   1065353216,
+   1073741824,
+   1069547520,
+   1056964608,
+   1048576000
+  ],
+  "sample_path": "/co/p2skill_ass_bird_attack3.efp"
+ }
+}

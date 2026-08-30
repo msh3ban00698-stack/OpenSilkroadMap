@@ -7,6 +7,8 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.opensilkroadmap.app.game.Camera2D;
+
 /**
  * Android-native renderer of a REAL sector terrain height field.
  *
@@ -25,6 +27,9 @@ public class NativeWorldRenderer extends View {
   private float camX;
   private float camZ;
   private float pixelsPerUnit = 0.5f;
+
+  /** Follow/clamp camera that owns the center/scale and the viewport transform. */
+  private final Camera2D camera = new Camera2D();
 
   private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
   private final Paint wirePaint = new Paint();
@@ -62,6 +67,9 @@ public class NativeWorldRenderer extends View {
     if (grid == null) {
       return;
     }
+    camera.setViewport(getWidth(), getHeight());
+    camera.setScale(pixelsPerUnit);
+    camera.follow(camX, camZ);
     float step = grid.step();
     int size = grid.size();
     float w = size * step;
@@ -106,10 +114,10 @@ public class NativeWorldRenderer extends View {
   }
 
   private float vx(float wx, float wz) {
-    return (wx - camX) * pixelsPerUnit + getWidth() / 2f;
+    return (float) ((wx - camera.x()) * camera.scale() + getWidth() / 2.0);
   }
 
   private float vy(float wx, float wz) {
-    return (camZ - wz) * pixelsPerUnit + getHeight() / 2f;
+    return (float) ((camera.y() - wz) * camera.scale() + getHeight() / 2.0);
   }
 }
