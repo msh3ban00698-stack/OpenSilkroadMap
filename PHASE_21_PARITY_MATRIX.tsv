@@ -1,0 +1,65 @@
+system_id	category	original_basis	android_status	android_evidence	notes
+account_creation	account	server/DB (unopened)	F	web mock storage.ts	no server; characterdata indexed only
+character_stats	character	characterdata*.txt	F	characterdata.tsv index manifest	stats columns not decoded
+exp_progression	progression	leveldata.txt / levelgold.txt	D	leveldata.tsv + LevelDataTable.java	no runtime consumer
+sp_skills	character	skilldata*.txt	F	skilldata.tsv index	*enc encrypted
+inventory	item	inventory rules (absent)	F	web inventory_panel.ts	no native
+items	item	itemdata*.txt	F	itemdata.tsv index manifest	not decoded
+item_grades_plus	item	server/DB	F	none	no source
+item_attributes	item	itemdata*.txt	F	none	not decoded
+item_drops	item	server/DB	F	none	no source
+starting_items	character	server creation rules	F	web 7 starter items	not source-verified
+silk_premium	currency	server/DB	F	none	no source
+npcs	npc	npcpos.txt + characterdata + bsr/bsk/bms/ban/ddj	B	CharacterCatalog+CharacterMeshIndex+NativeWorldRenderer; 473 models	no AI/interaction
+npc_ai	npc	server logic	F	none	none
+player_model	player	chinaman bsr/bsk/bms	B	player manifest PARTIAL	BSR mismatch, no spawn
+player_movement	gameplay	client input	F	web player_control.ts	no native
+player_combat	gameplay	client/server logic	F	none	none
+npc_combat	gameplay	server logic	F	none	none
+monsters	mob	characterdata + bsr/bsk/bms	B	mob models converted	no AI/combat
+spawn_system	world	npcpos.txt	B	npcpos.tsv + NpcSpawnIndex + renderer placement	no spawn/despawn lifecycle
+character_animations	animation	ban full	B	ban_decoder+animation_pose+Pose	playback not device-run; 2 anomalies
+npc_animations	animation	ban full	B	same pipeline per-NPC	none
+bsk_bms_formats	format	bsk/bms/bsr raw	A	bsk/bms/bsr decoders + MSH/skeleton loaders	offline conversion; runtime loads converted
+equipment_rendering	item	equipment rules	F	none	no equipment system
+weapons	item	itemdata	F	none	player weapon mesh only
+armor	item	itemdata	F	none	none
+character_skins	player	skin variants	F	none	none
+effects	fx	efp	F	efp partial decode	no runtime
+maps	world	RegionInfo + minimap + t/m/o	B	regions.tsv + minimap + terrain samples	no full 3D
+terrain	world	m (4,491)	B	world_terrain.py + 23 .hg + WorldTerrainSet	23/4491
+world_sectors	world	RegionInfo.txt	B	regions.tsv + RegionCatalog/WorldGrid	coordinate system
+collision	world	nvm	F	nvm partial decode	no runtime
+camera	render	camera rules	B	Camera2D follow/clamp	generic; not authentic
+input	render	input handling	F	web joystick	no native
+ui	render	UI assets	B	GameHudView + web HUD	partial
+shops	economy	refshop*.txt	D	refshop.tsv/refshopgoods.tsv; RefShopGoodsTable DEAD	no runtime
+storage	economy	warehouse rules	F	web warehouse_panel.ts	no native
+quests	content	questdata + Lua	D	questdata.tsv; QuestDataTable DEAD	Lua not decoded; no runtime
+party	social	server logic	F	none	none
+guild	social	server logic	F	none	none
+chat	social	server logic	F	none	none
+trade	economy	server logic	F	none	none
+skills	combat	skilldata*.txt	F	skilldata.tsv index	enc blocked; no runtime
+buffs_debuffs	combat	server logic	F	none	none
+status_effects	combat	server logic	F	none	none
+networking	network	protocol (absent)	F	none	none
+server_comm	network	protocol (absent)	F	none	none
+game_loop	runtime	client tick	C	GameLoop fixed-dt	real tick UNKNOWN
+timing	runtime	client tick	G	none	authentic tick unknown
+randomness	runtime	RNG rules	F	none	none
+formulas	runtime	compiled logic	G	none	no source
+damage_calc	combat	compiled logic	F	none	no source
+defense_calc	combat	compiled logic	F	none	no source
+movement_speed	combat	compiled logic	F	none	no source values
+attack_speed	combat	compiled logic	F	none	no source values
+spawn_despawn	world	server logic	F	none	none
+npc_player_interaction	world	server logic	F	none	none
+audio	media	wav/ogg	D	431 wav + 50 ogg converted	no playback
+localization	media	textdata UTF-16	D	21 TSVs	no consumer
+configuration	config	server.cfg	D	inventoried only	not runtime
+save_load	persist	local storage	F	web localStorage	no native
+database_persistence	persist	SQL .Bak	F	none	not restored
+security_validation	security	proxy/HWID	F	none	none
+minimap	media	ddj minimap	B	NativeMinimapRenderer + 7737 PNG	wired, not device-run
+object_mesh_rendering	world	o2/ifo/bsr/bms	B	MeshObjectIndex + 6 MSH1	2D canvas
