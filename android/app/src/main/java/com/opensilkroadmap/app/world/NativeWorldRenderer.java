@@ -36,13 +36,19 @@ import java.util.Map;
  * rotated by the REAL placement heading (theta) at the VERIFIED world
  * coordinate. No placeholder geometry is ever drawn.
  *
+ * <p>When a {@link CharacterCatalog} and its loaded models are attached, the
+ * renderer instances real NPCs by refid via the catalog and draws each real
+ * character's mesh parts at their verified world coordinate.
+ *
  * <p>Rendering is device-side only; this class has no game logic.
  */
 public class NativeWorldRenderer extends View {
   private WorldTerrainSet world;
   private NpcSpawnIndex npc;
   private MeshObjectIndex meshObjects;
-  private CharacterMeshIndex characters;
+  private CharacterCatalog characterCatalog;
+  private Map<String, CharacterMeshIndex> characterModels =
+      new HashMap<String, CharacterMeshIndex>();
   private Pose characterPose;
   private boolean objectsVisible = true;
   private boolean charactersVisible = true;
@@ -115,12 +121,24 @@ public class NativeWorldRenderer extends View {
     invalidate();
   }
 
-  /**
-   * Attaches the real character index (Phase 18, bind-pose skinning);
-   * null hides characters.
-   */
-  public void setCharacters(CharacterMeshIndex characters) {
-    this.characters = characters;
+  /** Attaches the character catalog (refid -> key) and loaded models. */
+  public void setCharacters(CharacterCatalog catalog,
+                            Map<String, CharacterMeshIndex> models) {
+    this.characterCatalog = catalog;
+    this.characterModels = (models == null)
+        ? new HashMap<String, CharacterMeshIndex>() : models;
+    shaderCache.clear();
+    invalidate();
+  }
+
+  public void setCharacterCatalog(CharacterCatalog catalog) {
+    this.characterCatalog = catalog;
+    invalidate();
+  }
+
+  public void setCharacterModels(Map<String, CharacterMeshIndex> models) {
+    this.characterModels = (models == null)
+        ? new HashMap<String, CharacterMeshIndex>() : models;
     shaderCache.clear();
     invalidate();
   }
@@ -129,8 +147,8 @@ public class NativeWorldRenderer extends View {
    * Attaches an optional pose (Phase 19). When non-null, characters are
    * skinned at that pose instead of the static bind pose. Null restores the
    * bind-pose fallback. Sampling a real clip is done via
-   * {@code characters.poseAt(name, tMs)}; the animation clock is not wired
-   * here (device runtime NOT EXECUTED).
+   * {@code CharacterMeshIndex.poseAt(name, tMs)} on a loaded model; the
+   * animation clock is not wired here (device runtime NOT EXECUTED).
    */
   public void setCharacterPose(Pose pose) {
     this.characterPose = pose;
@@ -354,26 +372,46 @@ public class NativeWorldRenderer extends View {
   }
 
   private void drawCharacters(Canvas canvas) {
-    if (!charactersVisible || characters == null || world == null) {
+    if (!charactersVisible || characterCatalog == null
+        || characterModels.isEmpty() || world == null || npc == null) {
       return;
     }
-    for (CharacterMeshIndex.Instance inst : characters.instances()) {
-      // Static bind pose is the fallback; a pose re-skins every vertex.
-      // Placement heading is UNKNOWN (theta = 0).
-      for (CharacterMeshIndex.Part part : inst.parts) {
+    int sx0 = Integer.MAX_VALUE, sy0 = Integer.MAX_VALUE;
+    int sx1 = Integer.MIN_VALUE, sy1 = Integer.MIN_VALUE;
+    for (WorldTerrainSet.Sector s : world.sectors()) {
+      sx0 = Math.min(sx0, s.sx);
+      sy0 = Math.min(sy0, s.sy);
+      sx1 = Math.max(sx1, s.sx);
+      sy1 = Math.max(sy1, s.sy);
+    }
+    if (sx0 > sx1 || sy0 > sy1) {
+      return;
+    }
+    int refSx = sx0;
+    int refSy = sy0;
+    for (NpcSpawnIndex.Spawn sp : npc.inWindow(sx0, sx1, sy0, sy1)) {
+      String key = characterCatalog.keyFor(sp.characterRefId);
+      CharacterMeshIndex model = key == null ? null : characterModels.get(key);
+      if (model == null) {
+        continue; // fail-closed: unloaded/unknown character stays a marker
+      }
+      float wx = sp.worldX(refSx);
+      float wz = sp.worldZ(refSy);
+      for (CharacterMeshIndex.Part part : model.parts()) {
         float[] positions = part.bindPositions;
-        if (characterPose != null) {
+        if (part.skinned && characterPose != null) {
           try {
             positions = CharacterRenderer.skin(
-                characters.skeleton(), characterPose, part.mesh);
+                model.skeleton(), characterPose,
+                (StaticMeshAsset.SkinnedMesh) part.mesh);
           } catch (IOException e) {
-            positions = part.bindPositions; // fail-closed fallback
+            positions = part.bindPositions;
           }
+        } else if (!part.skinned) {
+          positions = part.mesh.positions;
         }
-        drawTexturedTriangles(
-            canvas, positions, part.mesh.uvs, part.mesh.indices,
-            part.mesh.triangleCount, part.texture, inst.worldX, inst.worldZ,
-            1f, 0f);
+        drawTexturedTriangles(canvas, positions, part.mesh.uvs, part.mesh.indices,
+            part.mesh.triangleCount, part.texture, wx, wz, 1f, 0f);
       }
     }
   }

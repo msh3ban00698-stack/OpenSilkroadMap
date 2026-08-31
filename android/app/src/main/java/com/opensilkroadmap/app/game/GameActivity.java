@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.world.CharacterCatalog;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
@@ -18,7 +19,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Phase 15 native world runtime host. Loads the verified world region windows
@@ -42,12 +45,15 @@ public final class GameActivity extends Activity {
   private static final String WORLD_REGIONS_ASSET = "game/world/world_regions.tsv";
   private static final String WORLD_INDEX_ASSET = "game/world/world_index.tsv";
   private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
+  private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
 
   private NativeWorldRenderer world;
   private WorldTerrainSet terrain;
   private NpcSpawnIndex npc;
   private MeshObjectIndex meshObjects;
-  private CharacterMeshIndex characters;
+  private CharacterCatalog characterCatalog;
+  private Map<String, CharacterMeshIndex> characterModels =
+      new HashMap<String, CharacterMeshIndex>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +69,8 @@ public final class GameActivity extends Activity {
     if (region != null) {
       meshObjects = MeshObjectIndex.load(getAssets(), region.refSx, region.refSy);
     }
-    characters = CharacterMeshIndex.load(getAssets(), region == null ? 0 : region.refSx,
-        region == null ? 0 : region.refSy);
+    characterCatalog = loadCharacterCatalog();
+    characterModels = loadCharacterModels(region, npc);
 
     FrameLayout root = new FrameLayout(this);
     root.setBackgroundColor(Color.rgb(16, 16, 20));
@@ -74,7 +80,7 @@ public final class GameActivity extends Activity {
       world.setWorld(terrain);
       world.setNpcSpawns(npc);
       world.setMeshObjects(meshObjects);
-      world.setCharacters(characters);
+      world.setCharacters(characterCatalog, characterModels);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
     root.addView(world, new FrameLayout.LayoutParams(
@@ -152,11 +158,10 @@ public final class GameActivity extends Activity {
         sb.append("objects ").append(meshObjects.instanceCount())
             .append(" placements, real BMS mesh parts\n");
       }
-      if (characters != null) {
-        sb.append("characters ").append(characters.instanceCount())
-            .append(" placements, ").append(characters.parts().size())
-            .append(" skinned parts, ").append(characters.skeleton().boneCount)
-            .append(" bones (bind pose)\n");
+      if (characterCatalog != null) {
+        sb.append("characters ").append(characterCatalog.count())
+            .append(" catalog rows, ").append(characterModels.size())
+            .append(" models loaded (bind pose)\n");
       }
       if (data != null) {
         sb.append(data.summary()).append('\n');
@@ -183,8 +188,13 @@ public final class GameActivity extends Activity {
   }
 
   /** Package-private for the instrumented test (same package). */
-  CharacterMeshIndex characters() {
-    return characters;
+  CharacterCatalog characterCatalog() {
+    return characterCatalog;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  Map<String, CharacterMeshIndex> characterModels() {
+    return characterModels;
   }
 
   private int dp(int value) {
@@ -215,6 +225,35 @@ public final class GameActivity extends Activity {
     } catch (IOException e) {
       return null;
     }
+  }
+
+  private CharacterCatalog loadCharacterCatalog() {
+    try {
+      return CharacterCatalog.parse(new InputStreamReader(
+          getAssets().open(CHARACTER_INDEX_ASSET), StandardCharsets.UTF_8));
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private Map<String, CharacterMeshIndex> loadCharacterModels(
+      WorldRegion region, NpcSpawnIndex npc) {
+    Map<String, CharacterMeshIndex> models = new HashMap<String, CharacterMeshIndex>();
+    if (characterCatalog == null || npc == null || region == null) {
+      return models;
+    }
+    for (NpcSpawnIndex.Spawn sp :
+        npc.inWindow(region.sx0, region.sx1, region.sy0, region.sy1)) {
+      String key = characterCatalog.keyFor(sp.characterRefId);
+      if (key == null || models.containsKey(key)) {
+        continue;
+      }
+      CharacterMeshIndex m = CharacterMeshIndex.load(getAssets(), key);
+      if (m != null) {
+        models.put(key, m);
+      }
+    }
+    return models;
   }
 
   private GameDataCatalog loadDataCatalog() {
