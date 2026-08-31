@@ -181,6 +181,25 @@ record counts, schema width, content spot checks) and listed in
 - Proof artifacts: `scripts/build_phase19_evidence.py` + committed
   `phase19_evidence.json` (bandit DONE / chinaman PARTIAL).
 
+### Phase 20: data-driven character runtime (bulk shared store)
+
+- **Shared store** committed under `android/app/src/main/assets/game/world/characters/`:
+  `index.tsv` (`refid key variant status spawn_count`, 1,094 rows), `coverage.json`
+  (audit), `shared/{skel,mesh,tex,anim}/` deduped by slug (355 / 1585 / 655 /
+  2300 files), `<key>/manifest.json` + `<key>/provenance.json` +
+  `<key>/npc_placements.tsv` (473 NPC keys) and `player/` (PARTIAL).
+- **Models**: 477 distinct `.bsr` → 473 PROVEN (99.16%), 1 PARTIAL (karkadann,
+  triangle-section parse), 3 UNKNOWN (not characters: `gate_pulley`,
+  `property_recall`, `ins_quest_teleport`).
+- **Java** `CharacterCatalog` (refid→key index) + key-based
+  `CharacterMeshIndex.load(AssetManager, key)` (shared-store loader); NPCs
+  instanced by `characterRefId` in `NativeWorldRenderer`.
+- **Bandit directory migrated**: `game/world/characters/bandit/` is superseded by
+  the shared store and left in place (not deleted).
+- Pipeline: `scripts/character_resolve.py`, `scripts/build_character_manifest.py`
+  (`convert_character`/`convert_player`), `scripts/build_character_catalog.py`
+  (bulk driver). See `PHASE_20_REPORT.md`.
+
 ## 4. DECODED / PARTIALLY DECODED (Phase 12–13 decoders committed)
 
 | Format | Files | Proven subset | Remaining UNKNOWN |
@@ -225,7 +244,10 @@ record counts, schema width, content spot checks) and listed in
   `AUDIO_CONVERSION_MANIFEST.tsv`) (Phase 12 + Phase 13 Part C) + **Phase 17
   real object assets** (`game/world/objects/`: 6 MSH1 + 6 PNG + models/placements)
   + **Phase 18 character assets** (`game/world/characters/bandit/`: skeleton.json,
-  3 MSH v2 + 3 PNG, anims.tsv + 2 anim JSON, npc_placements.tsv, provenance.json).
+  3 MSH v2 + 3 PNG, anims.tsv + 2 anim JSON, npc_placements.tsv, provenance.json)
+  + **Phase 20 character runtime** (`game/world/characters/`: shared store
+  355 skel / 1585 mesh / 655 tex / 2300 anim + 473 NPC manifests + player +
+  `index.tsv` + `coverage.json`).
 - Formats fully decoded: **16** (wav, ogg, tga, tmp, txt, ifo, ini, c, vsh, psh,
   ddj, m, o2, ban, **bsk, bsr** — bsk/bsr via committed Phase 18 decoders).
 - Formats with a committed decoder for a proven subset: **3** (nvm, bms, efp —
