@@ -124,6 +124,64 @@ public class AnimStateResolverTest {
   }
 
   @Test
+  public void downAndWakeupResolveFromProvenClips() {
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("mob_stand", 2000),
+        clip("mob_down", 833),
+        clip("mob_wakeup", 1333));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals("mob_down", m.get(AnimState.DOWN).name);
+    assertEquals("mob_wakeup", m.get(AnimState.WAKEUP).name);
+    assertFalse(m.get(AnimState.DOWN).name.equals("mob_wakeup"));
+  }
+
+  @Test
+  public void downFamilyGroupsUnderDownNotDamageOrDeath() {
+    // downdamage/downdie/downwait are down-family; the canonical "down" clip wins.
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("bandit_down", 833),
+        clip("bandit_downwait", 2000),
+        clip("bandit_downdamage", 833),
+        clip("bandit_downdie", 300));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals("bandit_down", m.get(AnimState.DOWN).name);
+    assertFalse(m.containsKey(AnimState.DAMAGE));
+    assertFalse(m.containsKey(AnimState.DEATH));
+  }
+
+  @Test
+  public void fullBanditManifestResolvesEightStates() {
+    // The committed bandit anims.tsv clip names in manifest order.
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("bandit_stand01", 2000),
+        clip("bandit_stand02", 2000),
+        clip("bandit_walk", 1333),
+        clip("bandit_run", 833),
+        clip("bandit_attack01", 1133),
+        clip("bandit_attack02", 1500),
+        clip("bandit_damage01", 366),
+        clip("bandit_damage02", 1666),
+        clip("bandit_die", 2666),
+        clip("bandit_die_loop", 333),
+        clip("bandit_down", 833),
+        clip("bandit_downwait", 2000),
+        clip("bandit_downdamage", 833),
+        clip("bandit_wakeup", 1333),
+        clip("bandit_downdie", 300),
+        clip("bandit_attack03", 1166));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals(8, m.size());
+    assertEquals("bandit_stand01", m.get(AnimState.IDLE).name);
+    assertEquals("bandit_walk", m.get(AnimState.WALK).name);
+    assertEquals("bandit_run", m.get(AnimState.RUN).name);
+    assertEquals("bandit_attack01", m.get(AnimState.ATTACK).name);
+    assertEquals("bandit_damage01", m.get(AnimState.DAMAGE).name);
+    assertEquals("bandit_die", m.get(AnimState.DEATH).name);
+    assertEquals("bandit_down", m.get(AnimState.DOWN).name);
+    assertEquals("bandit_wakeup", m.get(AnimState.WAKEUP).name);
+  }
+
+  @Test
   public void keywordMatchWordStartSemantics() {
     assertTrue(AnimStateResolver.keywordMatch("bandit_stand01", "stand"));
     assertTrue(AnimStateResolver.keywordMatch("chinaman_fighter_walkforward", "walk"));

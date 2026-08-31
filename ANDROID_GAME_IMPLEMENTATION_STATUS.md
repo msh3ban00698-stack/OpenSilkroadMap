@@ -1,6 +1,6 @@
 # Android Game Implementation Status (native game core)
 
-Date: 2026-08-31 (updated for Phase 27)
+Date: 2026-08-31 (updated for Phase 28)
 Scope: Status of the Android-native systems (Phase 9 Part B + Phase 22 native
 runtime migration). All behavior is Android-free Java (runs under `./gradlew test`)
 with thin native Views; every value is traceable to verified real source or marked
@@ -24,6 +24,24 @@ client-code parameters, movement has only debug `/fast`/`/setspeed`.
 `Phase27SourceEvidenceTest` (5 tests) asserts these. Bounded real-JUnit
 verification: **139 PASS / 0 FAIL**. See `PHASE_27_REPORT.md` and
 `PHASE_26_REPORT.md` (runtime: `CharacterWorld`, evidence-based, fail-closed).
+
+Phase 28 (2026-08-31): **source runtime semantics recovery**. The `Data.pk2`
+`.ban` corpus (4,691 clips) proves the animation-state vocabulary
+(`attack`/`damage`/`die`/`down`/`wakeup`/`sit`/`pickup`/`stun`/`blocking`…);
+`characterdata_5000.txt` yields 13 player class templates (`CHAR_CH_MAN_*` →
+BSR); `characterdata_25000.txt` (Jangan) is a 3,736-row entity catalog with 120
+distinct meshes and no position column; `skilldata.tsv` is an unparsed 7-file
+stub. `AnimState` + `AnimStateResolver` were extended with the proven `DOWN`
+(knockdown) and `WAKEUP` (recovery) states (the bandit manifest now resolves 8
+states). The native-runtime audit confirms the Android gameplay runtime is 100%
+native (no WebView/Capacitor/browser); the retired wrapper stays under
+`legacy/capacitor/`; the separate `map/` web project carries a TS browser
+prototype (DEAD, not the Android runtime). Evidence in
+`scripts/testdata/formats/phase28_source_evidence.json` (builder
+`scripts/build_phase28_evidence.py`); matrix in
+`PHASE_28_SOURCE_RUNTIME_MATRIX.tsv`; `Phase28SourceEvidenceTest` (6 tests) + 3
+new `AnimStateResolverTest` cases. Bounded real-JUnit verification: **148 PASS /
+0 FAIL**. ANDROID RUNTIME: NOT EXECUTED. See `PHASE_28_REPORT.md`.
 
 ---
 
@@ -88,8 +106,8 @@ Package `com.opensilkroadmap.app.game`, `android/app/src/main/java/` + tests.
   (no-hardcode rule), `verify_phase8_manifest_rules.py`, full Deno/Python/web
   regression matrix (all green), `deno task build` exit 0.
 - EXECUTED here (pure-JVM JUnit harness, real JUnit 4.13.2, JDK present): the
-  world/game runtime suite — **139 PASS / 0 FAIL** as of Phase 27 (harness
-  `/tmp/opencode/ph26build/phase26_build_and_run.sh`, see Phase 26/27 reports).
+  world/game runtime suite — **148 PASS / 0 FAIL** as of Phase 28 (harness
+  `/tmp/opencode/ph28build/phase28_build_and_run.sh`, see Phase 26/27/28 reports).
 - NOT EXECUTED: Gradle wrapper (`./gradlew test`) and instrumented
   (`./gradlew connectedAndroidTest`) runs — no Android SDK/emulator in this
   environment. No fake execution is claimed.

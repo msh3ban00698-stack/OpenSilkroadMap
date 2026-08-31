@@ -15,6 +15,9 @@ import java.util.Map;
  * no resolved clip falls back to idle (or clears playback when idle itself is
  * absent). One-shot states ({@code ATTACK}, {@code DAMAGE}) return to idle when
  * the clip completes; {@code DEATH} is terminal and holds its final frame.
+ * {@code DOWN} and {@code WAKEUP} are proven clip states whose transition order
+ * is client code (UNKNOWN), so the runtime never drives them and they hold
+ * their final frame rather than auto-transitioning.
  *
  * <p>Pure JVM: state selection and timing only; pose sampling and rendering are
  * done by the Android {@code NativeWorldRenderer} via

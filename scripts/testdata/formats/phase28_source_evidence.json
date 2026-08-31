@@ -1,0 +1,349 @@
+{
+ "animation_vocabulary": {
+  "ban_distinct": 4299,
+  "ban_total": 4691,
+  "core_counts": {
+   "attack": 925,
+   "blocking": 2,
+   "damage": 358,
+   "die": 343,
+   "down": 131,
+   "downdamage": 33,
+   "downdie": 35,
+   "downup": 19,
+   "downwait": 30,
+   "loop": 61,
+   "pickup": 6,
+   "ready": 79,
+   "rm": 277,
+   "run": 273,
+   "runforward": 9,
+   "sitbreath": 7,
+   "sitground": 7,
+   "sitstand": 7,
+   "stand": 504,
+   "stun": 2,
+   "up": 96,
+   "wait": 67,
+   "wakeup": 17,
+   "walk": 248,
+   "walkbackward": 3,
+   "walkforward": 9
+  },
+  "distinct_action_tokens": 254,
+  "player_chinaman_count": 74
+ },
+ "bandit_clip_set": [
+  "bandit_stand01",
+  "bandit_stand02",
+  "bandit_walk",
+  "bandit_run",
+  "bandit_attack01",
+  "bandit_attack02",
+  "bandit_damage01",
+  "bandit_damage02",
+  "bandit_die",
+  "bandit_die_loop",
+  "bandit_down",
+  "bandit_downwait",
+  "bandit_downdamage",
+  "bandit_wakeup",
+  "bandit_downdie",
+  "bandit_attack03"
+ ],
+ "conclusions": {
+  "animation_states": "PROVEN from .ban corpus: stand/walk/run/attack/damage/die/down/wakeup + sit/pickup/stun/blocking variants; transition order UNKNOWN",
+  "camera": "modes PROVEN (FREE/THIRD_PERSON/QUARTER_VIEW); numeric parameters UNKNOWN",
+  "input": "UNKNOWN (fail-closed) - OptionSet key->action semantics require client code",
+  "movement": "UNKNOWN (fail-closed) - no speed table anywhere",
+  "skill_semantics": "UNVERIFIED - skilldata.tsv is an unparsed source-file list",
+  "spawn": "UNKNOWN (fail-closed) - reaffirmed: char-gen tables carry no position columns"
+ },
+ "jangan_region_chargen": {
+  "distinct_bsr": 120,
+  "first_row_code": "COS_GUARD_CH_BOW_01_002",
+  "first_row_refid": "20000",
+  "has_position_column": false,
+  "lines": 3736,
+  "path": "/server_dep/silkroad/textdata/characterdata_25000.txt",
+  "sample_bsr": [
+   "cos\\ch_guard_bow.bsr",
+   "cos\\is_guard_blade.bsr",
+   "cos\\is_guard_bow.bsr",
+   "cos\\eu_guard_spear.bsr",
+   "cos\\eu_guard_bow.bsr",
+   "mob\\fortress\\fw_taese.bsr",
+   "mob\\fortress\\fw_bigspider.bsr",
+   "mob\\fortress\\fw_hagiazo.bsr",
+   "mob\\fortress\\fw_darkeagle.bsr",
+   "mob\\fortress\\fw_whitetiger.bsr",
+   "mob\\fortress\\fw_hyeongcheon.bsr",
+   "mob\\fortress\\fw_mujigi.bsr"
+  ]
+ },
+ "native_runtime_audit": {
+  "android_gameplay_runtime_native": true,
+  "map_web_project": {
+   "browser_game_prototype": "map/src/game/ (TS, wired via initGameFlow)",
+   "not_android_runtime": true,
+   "separate_deliverable": true
+  },
+  "retired_wrapper": "legacy/capacitor/ (preserved reference, not a runtime path)",
+  "webview_capacitor_in_android_runtime": false
+ },
+ "phase": "phase28",
+ "player_chinaman_actions": [
+  [
+   "standcity",
+   8
+  ],
+  [
+   "sword",
+   6
+  ],
+  [
+   "runforward",
+   5
+  ],
+  [
+   "walkforward",
+   5
+  ],
+  [
+   "sitbreath",
+   4
+  ],
+  [
+   "sitground",
+   4
+  ],
+  [
+   "sitstand",
+   4
+  ],
+  [
+   "return",
+   2
+  ],
+  [
+   "walkbackward",
+   2
+  ],
+  [
+   "",
+   1
+  ],
+  [
+   "behardhit",
+   1
+  ],
+  [
+   "benormalhit",
+   1
+  ],
+  [
+   "blocking",
+   1
+  ],
+  [
+   "cho",
+   1
+  ],
+  [
+   "diehardhit",
+   1
+  ],
+  [
+   "down",
+   1
+  ],
+  [
+   "downdamage",
+   1
+  ],
+  [
+   "downdie",
+   1
+  ],
+  [
+   "downwait",
+   1
+  ],
+  [
+   "geomgang",
+   1
+  ],
+  [
+   "geomin",
+   1
+  ],
+  [
+   "handhookl",
+   1
+  ],
+  [
+   "handhookr",
+   1
+  ],
+  [
+   "handstraightl",
+   1
+  ],
+  [
+   "handstraightr",
+   1
+  ],
+  [
+   "jil",
+   1
+  ],
+  [
+   "l",
+   1
+  ],
+  [
+   "longcut",
+   1
+  ],
+  [
+   "loop",
+   1
+  ],
+  [
+   "lower",
+   1
+  ],
+  [
+   "magicassobj",
+   1
+  ],
+  [
+   "magicassself",
+   1
+  ],
+  [
+   "pickup",
+   1
+  ],
+  [
+   "r",
+   1
+  ],
+  [
+   "reborn",
+   1
+  ],
+  [
+   "shortcut",
+   1
+  ],
+  [
+   "standbattle",
+   1
+  ],
+  [
+   "standroll",
+   1
+  ],
+  [
+   "stun",
+   1
+  ],
+  [
+   "upper",
+   1
+  ],
+  [
+   "vendor",
+   1
+  ],
+  [
+   "vingha",
+   1
+  ],
+  [
+   "wakeup",
+   1
+  ]
+ ],
+ "player_class_templates": [
+  {
+   "bsr": "char\\china\\chinaman_adventurer.bsr",
+   "code": "CHAR_CH_MAN_ADVENTURER",
+   "refid": "1907"
+  },
+  {
+   "bsr": "char\\china\\chinaman_bogy.bsr",
+   "code": "CHAR_CH_MAN_BOGY",
+   "refid": "1908"
+  },
+  {
+   "bsr": "char\\china\\chinaman_fighter.bsr",
+   "code": "CHAR_CH_MAN_FIGHTER",
+   "refid": "1909"
+  },
+  {
+   "bsr": "char\\china\\chinaman_merchant.bsr",
+   "code": "CHAR_CH_MAN_MERCHANT",
+   "refid": "1910"
+  },
+  {
+   "bsr": "char\\china\\chinaman_monk.bsr",
+   "code": "CHAR_CH_MAN_MONK",
+   "refid": "1911"
+  },
+  {
+   "bsr": "char\\china\\chinaman_monkey.bsr",
+   "code": "CHAR_CH_MAN_MONKEY",
+   "refid": "1912"
+  },
+  {
+   "bsr": "char\\china\\chinaman_necromancer.bsr",
+   "code": "CHAR_CH_MAN_NECROMANCER",
+   "refid": "1913"
+  },
+  {
+   "bsr": "char\\china\\chinaman_nobleboy.bsr",
+   "code": "CHAR_CH_MAN_NOBLEBOY",
+   "refid": "1914"
+  },
+  {
+   "bsr": "char\\china\\chinaman_performer.bsr",
+   "code": "CHAR_CH_MAN_PERFORMER",
+   "refid": "1915"
+  },
+  {
+   "bsr": "char\\china\\chinaman_priest.bsr",
+   "code": "CHAR_CH_MAN_PRIEST",
+   "refid": "1916"
+  },
+  {
+   "bsr": "char\\china\\chinaman_scholar.bsr",
+   "code": "CHAR_CH_MAN_SCHOLAR",
+   "refid": "1917"
+  },
+  {
+   "bsr": "char\\china\\chinaman_tattoo.bsr",
+   "code": "CHAR_CH_MAN_TATTOO",
+   "refid": "1918"
+  },
+  {
+   "bsr": "char\\china\\chinaman_warrior.bsr",
+   "code": "CHAR_CH_MAN_WARRIOR",
+   "refid": "1919"
+  }
+ ],
+ "skill_data": {
+  "lines": [
+   "SkillData_5000.txt",
+   "SkillData_10000.txt",
+   "SkillData_15000.txt",
+   "SkillData_20000.txt",
+   "SkillData_25000.txt",
+   "SkillData_30000.txt",
+   "SkillData_35000.txt"
+  ],
+  "note": "skilldata.tsv is an unparsed source-file list; skill cadence/semantics remain UNVERIFIED",
+  "parsed_semantics": false
+ }
+}

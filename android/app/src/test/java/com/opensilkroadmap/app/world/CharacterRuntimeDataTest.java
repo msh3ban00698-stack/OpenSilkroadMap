@@ -157,6 +157,10 @@ public class CharacterRuntimeDataTest {
         return "damage";
       case DEATH:
         return "die";
+      case DOWN:
+        return "down";
+      case WAKEUP:
+        return "wakeup";
       default:
         throw new IllegalArgumentException("unknown state " + s);
     }

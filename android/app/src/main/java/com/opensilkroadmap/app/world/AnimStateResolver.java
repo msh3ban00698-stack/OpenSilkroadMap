@@ -27,6 +27,11 @@ import java.util.Map;
  *   <li>{@link AnimState#DEATH} — word starting with {@code die} and not
  *       {@code down} and not {@code loop} (excludes down-death and the
  *       post-death loop)</li>
+ *   <li>{@link AnimState#DOWN} — word starting with {@code down} (knockdown
+ *       family: {@code down}/{@code downwait}/{@code downup}/{@code downdamage}/
+ *       {@code downdie}); the first such clip in manifest order wins, so the
+ *       canonical {@code down} transition clip is preferred</li>
+ *   <li>{@link AnimState#WAKEUP} — word starting with {@code wakeup} (recovery)</li>
  * </ul>
  *
  * <p>Fail-closed: states with no matching clip are simply absent from the
@@ -51,6 +56,8 @@ public final class AnimStateResolver {
     put(out, clips, AnimState.ATTACK, "attack", false, false);
     put(out, clips, AnimState.DAMAGE, "damage", true, false);
     put(out, clips, AnimState.DEATH, "die", true, true);
+    put(out, clips, AnimState.DOWN, "down", false, false);
+    put(out, clips, AnimState.WAKEUP, "wakeup", false, false);
     return out;
   }
 
