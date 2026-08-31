@@ -204,12 +204,79 @@ public final class CharacterMeshIndex {
    * delegated to {@link IdleAnimResolver}; a null result keeps the bind pose.
    */
   public Anim idleAnim() {
+    int idx = IdleAnimResolver.resolve(clipList());
+    return idx < 0 ? null : anims.get(idx);
+  }
+
+  /**
+   * Builds a per-entity animation state machine resolved from this character's
+   * committed clip list. Each returned animator is independent, so multiple
+   * characters of the same key animate with their own state and clock.
+   */
+  public CharacterAnimator buildAnimator() {
+    return new CharacterAnimator(AnimStateResolver.resolve(clipList()));
+  }
+
+  private List<IdleAnimResolver.Clip> clipList() {
     List<IdleAnimResolver.Clip> clips = new ArrayList<IdleAnimResolver.Clip>();
     for (Anim a : anims) {
       clips.add(new IdleAnimResolver.Clip(a.name, a.durationMs));
     }
-    int idx = IdleAnimResolver.resolve(clips);
-    return idx < 0 ? null : anims.get(idx);
+    return clips;
+  }
+
+  /**
+   * Parses a committed manifest's animation list into clip descriptors (name +
+   * real duration). Pure JVM, Android-free, so tests can enumerate every
+   * committed manifest without an {@link AssetManager}.
+   */
+  public static List<IdleAnimResolver.Clip> parseManifestClips(Reader manifestReader)
+      throws IOException {
+    Map<String, Object> manifest = (Map<String, Object>)
+        new JsonParser(readAll(manifestReader)).parse();
+    List<?> animList = (List<?>) manifest.get("anims");
+    List<IdleAnimResolver.Clip> clips = new ArrayList<IdleAnimResolver.Clip>();
+    if (animList != null) {
+      for (Object ao : animList) {
+        Map<String, Object> a = (Map<String, Object>) ao;
+        clips.add(new IdleAnimResolver.Clip(
+            asString(a.get("name")), asInt(a.get("duration_ms"))));
+      }
+    }
+    return clips;
+  }
+
+  /**
+   * Returns the shared asset paths referenced by a committed manifest
+   * (skeleton, meshes, textures, animations) as relative paths under
+   * {@code game/world/characters/}. Pure JVM, Android-free, so the
+   * enumeration test can verify every referenced file is committed.
+   */
+  public static List<String> parseManifestAssetPaths(Reader manifestReader)
+      throws IOException {
+    Map<String, Object> manifest = (Map<String, Object>)
+        new JsonParser(readAll(manifestReader)).parse();
+    List<String> refs = new ArrayList<String>();
+    Object skel = manifest.get("skeleton");
+    if (skel != null) {
+      refs.add("shared/skel/" + asString(skel) + ".json");
+    }
+    List<?> meshes = (List<?>) manifest.get("meshes");
+    if (meshes != null) {
+      for (Object mo : meshes) {
+        Map<String, Object> m = (Map<String, Object>) mo;
+        refs.add("shared/mesh/" + asString(m.get("msh")) + ".msh");
+        refs.add("shared/tex/" + asString(m.get("tex")) + ".png");
+      }
+    }
+    List<?> animList = (List<?>) manifest.get("anims");
+    if (animList != null) {
+      for (Object ao : animList) {
+        Map<String, Object> a = (Map<String, Object>) ao;
+        refs.add("shared/anim/" + asString(a.get("anim")) + ".json");
+      }
+    }
+    return refs;
   }
 
   /**

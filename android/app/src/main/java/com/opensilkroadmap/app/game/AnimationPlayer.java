@@ -73,6 +73,19 @@ public final class AnimationPlayer {
     return looping;
   }
 
+  /** True when a non-looping clip has reached its final frame. */
+  public boolean isFinished() {
+    return !looping && durationMs > 0 && elapsedMs >= durationMs;
+  }
+
+  /** Clears any active clip; the player then reports no animation. */
+  public void clear() {
+    name = "";
+    durationMs = 0;
+    looping = true;
+    elapsedMs = 0.0;
+  }
+
   public void reset() {
     elapsedMs = 0.0;
   }

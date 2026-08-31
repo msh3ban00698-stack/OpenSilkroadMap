@@ -42,6 +42,35 @@ public class AnimationPlayerTest {
   }
 
   @Test
+  public void nonLoopingReportsFinishedAtEnd() {
+    AnimationPlayer p = new AnimationPlayer();
+    p.setClip("die", 1000, false);
+    assertTrue(!p.isFinished());
+    p.advance(0.5);
+    assertTrue(!p.isFinished());
+    p.advance(1.0);
+    assertTrue(p.isFinished());
+  }
+
+  @Test
+  public void loopingNeverReportsFinished() {
+    AnimationPlayer p = new AnimationPlayer();
+    p.setClip("stand", 1000, true);
+    p.advance(5.0);
+    assertTrue(!p.isFinished());
+  }
+
+  @Test
+  public void clearRemovesActiveClip() {
+    AnimationPlayer p = new AnimationPlayer();
+    p.setClip("stand", 2000);
+    p.clear();
+    assertEquals("", p.name());
+    assertEquals(0, p.durationMs());
+    assertEquals(0, p.currentTimeMs());
+  }
+
+  @Test
   public void ignoresNonPositiveDelta() {
     AnimationPlayer p = new AnimationPlayer();
     p.setClip("stand", 2000);

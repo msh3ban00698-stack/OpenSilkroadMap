@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
-import com.opensilkroadmap.app.game.AnimationPlayer;
 import com.opensilkroadmap.app.game.Camera2D;
 import com.opensilkroadmap.app.game.InputController;
 
@@ -55,9 +54,8 @@ public class NativeWorldRenderer extends View {
   private Map<String, CharacterMeshIndex> characterModels =
       new HashMap<String, CharacterMeshIndex>();
   private Pose characterPose;
-  private final Map<String, AnimationPlayer> animPlayers =
-      new HashMap<String, AnimationPlayer>();
-  private final Map<String, Pose> characterPoses = new HashMap<String, Pose>();
+  private final Map<NpcSpawnIndex.Spawn, CharacterEntity> characterEntities =
+      new HashMap<NpcSpawnIndex.Spawn, CharacterEntity>();
   private boolean objectsVisible = true;
   private boolean charactersVisible = true;
   private float worldMinH;
@@ -137,74 +135,41 @@ public class NativeWorldRenderer extends View {
     this.characterCatalog = catalog;
     this.characterModels = (models == null)
         ? new HashMap<String, CharacterMeshIndex>() : models;
-    rebuildAnimPlayers();
+    characterEntities.clear();
     shaderCache.clear();
     invalidate();
   }
 
   public void setCharacterCatalog(CharacterCatalog catalog) {
     this.characterCatalog = catalog;
+    characterEntities.clear();
     invalidate();
   }
 
   public void setCharacterModels(Map<String, CharacterMeshIndex> models) {
     this.characterModels = (models == null)
         ? new HashMap<String, CharacterMeshIndex>() : models;
-    rebuildAnimPlayers();
+    characterEntities.clear();
     shaderCache.clear();
     invalidate();
   }
 
   /**
-   * Builds a per-key {@link AnimationPlayer} from each model's committed idle
-   * clip (real stand animation + duration). Characters without a recognizable
-   * stand clip stay at the bind pose.
-   */
-  private void rebuildAnimPlayers() {
-    animPlayers.clear();
-    characterPoses.clear();
-    for (Map.Entry<String, CharacterMeshIndex> e : characterModels.entrySet()) {
-      CharacterMeshIndex.Anim idle = e.getValue().idleAnim();
-      if (idle != null) {
-        AnimationPlayer p = new AnimationPlayer();
-        p.setClip(idle.name, idle.durationMs);
-        animPlayers.put(e.getKey(), p);
-      }
-    }
-  }
-
-  /**
-   * Advances every character's animation clock and re-samples its pose from the
-   * committed clip. Called once per frame from the game-loop host. Characters
-   * without a clip are left unchanged (bind pose).
+   * Advances every spawned character's independent animation clock. Called once
+   * per frame from the game-loop host. Poses are re-sampled per draw from each
+   * entity's active clip; characters without a clip stay at the bind pose.
    */
   public void advanceAnimations(double dtSeconds) {
-    if (animPlayers.isEmpty()) {
-      return;
-    }
-    for (Map.Entry<String, AnimationPlayer> e : animPlayers.entrySet()) {
-      AnimationPlayer p = e.getValue();
-      CharacterMeshIndex model = characterModels.get(e.getKey());
-      if (model == null) {
-        continue;
-      }
-      p.advance(dtSeconds);
-      Pose pose = null;
-      try {
-        pose = model.poseAt(p.name(), p.currentTimeMs());
-      } catch (IOException ex) {
-        pose = null;
-      }
-      characterPoses.put(e.getKey(), pose);
+    for (CharacterEntity e : characterEntities.values()) {
+      e.update(dtSeconds);
     }
   }
 
   /**
-   * Attaches an optional pose (Phase 19). When non-null, characters are
-   * skinned at that pose instead of the static bind pose. Null restores the
-   * bind-pose fallback. Sampling a real clip is done via
-   * {@code CharacterMeshIndex.poseAt(name, tMs)} on a loaded model; the
-   * animation clock is not wired here (device runtime NOT EXECUTED).
+   * Attaches an optional global fallback pose. When non-null, characters with
+   * no active animation clip are skinned at this pose instead of the static
+   * bind pose. Null restores the bind-pose fallback. Per-instance animated
+   * poses (from {@link #advanceAnimations}) always take precedence.
    */
   public void setCharacterPose(Pose pose) {
     this.characterPose = pose;
@@ -455,18 +420,20 @@ public class NativeWorldRenderer extends View {
     }
     int refSx = sx0;
     int refSy = sy0;
-    for (NpcSpawnIndex.Spawn sp : npc.inWindow(sx0, sx1, sy0, sy1)) {
+    List<NpcSpawnIndex.Spawn> spawns = npc.inWindow(sx0, sx1, sy0, sy1);
+    for (NpcSpawnIndex.Spawn sp : spawns) {
       String key = characterCatalog.keyFor(sp.characterRefId);
       CharacterMeshIndex model = key == null ? null : characterModels.get(key);
       if (model == null) {
         continue; // fail-closed: unloaded/unknown character stays a marker
       }
-      float wx = sp.worldX(refSx);
-      float wz = sp.worldZ(refSy);
-      Pose pose = characterPoses.get(key);
+      CharacterEntity entity = entityFor(sp, model);
+      Pose pose = poseFor(entity);
       if (pose == null) {
         pose = characterPose;
       }
+      float wx = sp.worldX(refSx);
+      float wz = sp.worldZ(refSy);
       for (CharacterMeshIndex.Part part : model.parts()) {
         float[] positions = part.bindPositions;
         if (part.skinned && pose != null) {
@@ -484,6 +451,33 @@ public class NativeWorldRenderer extends View {
             part.mesh.triangleCount, part.texture, wx, wz, 1f, 0f);
       }
     }
+    pruneEntities(spawns);
+  }
+
+  /**
+   * Returns the persistent per-spawn entity, creating it on first sight and
+   * replacing it if the resolved model changed.
+   */
+  private CharacterEntity entityFor(NpcSpawnIndex.Spawn sp, CharacterMeshIndex model) {
+    CharacterEntity e = characterEntities.get(sp);
+    if (e == null || e.index() != model) {
+      e = new CharacterEntity(model);
+      characterEntities.put(sp, e);
+    }
+    return e;
+  }
+
+  /** Samples an entity's active pose; null means bind pose (or sampling error). */
+  private Pose poseFor(CharacterEntity e) {
+    return e.pose();
+  }
+
+  /** Drops entities whose spawn fell out of the visible sector window. */
+  private void pruneEntities(List<NpcSpawnIndex.Spawn> visible) {
+    if (characterEntities.isEmpty()) {
+      return;
+    }
+    characterEntities.keySet().retainAll(visible);
   }
 
   /**

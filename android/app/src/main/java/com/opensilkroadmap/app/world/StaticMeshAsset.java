@@ -256,6 +256,14 @@ public final class StaticMeshAsset {
       weight1[i] = readLeU16(in);
       bone2[i] = in.readUnsignedByte();
       weight2[i] = readLeU16(in);
+      // 255 is the original "no influence" sentinel in SRO skinned meshes;
+      // a sentinel slot must never contribute to the weight sum.
+      if (bone1[i] == 255) {
+        weight1[i] = 0;
+      }
+      if (bone2[i] == 255) {
+        weight2[i] = 0;
+      }
     }
     int[] indices = new int[triangleCount * 3];
     for (int i = 0; i < indices.length; i++) {
@@ -285,7 +293,8 @@ public final class StaticMeshAsset {
       }
     }
     for (int i = 0; i < vertexCount; i++) {
-      if (bone1[i] >= boneCount || bone2[i] >= boneCount) {
+      if ((bone1[i] != 255 && bone1[i] >= boneCount)
+          || (bone2[i] != 255 && bone2[i] >= boneCount)) {
         throw new IOException("skin bone " + bone1[i] + "/" + bone2[i]
             + " out of range");
       }

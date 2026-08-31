@@ -34,9 +34,12 @@ public final class IdleAnimResolver {
     if (clips == null || clips.isEmpty()) {
       return -1;
     }
+    Clip idle = AnimStateResolver.resolve(clips).get(AnimState.IDLE);
+    if (idle == null) {
+      return -1;
+    }
     for (int i = 0; i < clips.size(); i++) {
-      String n = clips.get(i).name;
-      if (n != null && n.toLowerCase().contains("stand")) {
+      if (idle.name.equals(clips.get(i).name)) {
         return i;
       }
     }
