@@ -1,0 +1,1095 @@
+{
+ "cameradata": {
+  "file": "/config/cameradata.txt",
+  "first_line": "-1",
+  "rows": [
+   [
+    "79",
+    "107",
+    "1205",
+    "80",
+    "396",
+    "30",
+    "10",
+    "0",
+    "50"
+   ],
+   [
+    "77",
+    "105",
+    "1466",
+    "79",
+    "1488",
+    "30",
+    "10",
+    "270",
+    "50"
+   ]
+  ],
+  "schema_semantics": "UNKNOWN (9 numeric fields; near/far/distance/fov/height/angle candidates NOT asserted)"
+ },
+ "character_skeletons": {
+  "chinaman_skel": {
+   "bone_count": 38,
+   "bone_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Spine_Base",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "exact": true,
+   "path": "/prim/skel/char/china/chinaman_skel.bsk",
+   "sha256": "29ef2f8118553d9dcb8edfdd55573860f5b31888479ddecaa3e537c564660232"
+  },
+  "chinawoman_skel": {
+   "bone_count": 40,
+   "bone_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Spine_Base",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bone01",
+    "Bone02"
+   ],
+   "exact": true,
+   "path": "/prim/skel/char/china/chinawoman_skel.bsk",
+   "sha256": "e1583f236d52a735e5feb78f446730d623187b834ef0c3d5e3bb1a9465e75913"
+  },
+  "europeman_skel": {
+   "bone_count": 43,
+   "bone_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Spine_Base",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid2",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "cloak01",
+    "cloak02",
+    "cloak03",
+    "cloak04",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "exact": true,
+   "path": "/prim/skel/char/europe/europeman_skel.bsk",
+   "sha256": "cf827d8d79ca9e129858ec9e8b25c7bd576d7e62971091d92e6734ac9218b627"
+  },
+  "europewoman_skel": {
+   "bone_count": 45,
+   "bone_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Spine_Base",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid2",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bone01",
+    "Bone02",
+    "cloak01",
+    "cloak02",
+    "cloak03",
+    "cloak04"
+   ],
+   "exact": true,
+   "path": "/prim/skel/char/europe/europewoman_skel.bsk",
+   "sha256": "f4b54db3d0c2876d1c8eace802e0c63e023a6c273c36e473c3ecf7e0eb6058d4"
+  }
+ },
+ "china_bsr_skeleton_histogram": {
+  "/prim/skel/char/china/chinaman_hwan_hair.bsk": 1,
+  "/prim/skel/char/china/chinaman_skel.bsk": 1,
+  "/prim/skel/char/china/chinawoman_hwan_hair.bsk": 1,
+  "/prim/skel/char/europe/europeman_skel.bsk": 14,
+  "/prim/skel/char/europe/europewoman_skel.bsk": 13
+ },
+ "china_bsr_skeletons": [
+  {
+   "animations": 160,
+   "bsr": "/res/char/china/char_cpd.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "cb043ccec74c9d15aad43b9a6764182bbd9b51b6c99818ba48062b7e8484f1f0",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_adventurer.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "969f54b896fc5ab2aaa51214556b6b14adf17a7c002a165daef8433e06f29e16",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_bogy.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "27b596dde33fd3edc5ce5ebcea36a1b5cd449bd8797cb9c2861424250c2d3ae5",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_fighter.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "7a3e80cda5fe4518ddbf1edafb563c0fc5d5256611d286114ffb8b254d1c915f",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 1,
+   "bsr": "/res/char/china/chinaman_hwan_hair.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 4,
+   "sha256": "efc5c5d82b713da0800bffe2e56ea1210400c028c424ece4b3ab3cc6580566dc",
+   "skeleton": [
+    "/prim/skel/char/china/chinaman_hwan_hair.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_merchant.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "a84c326e81a4f0f5341bdefa90e1c063ef559cf269efccd3ebba62ab3aa37048",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_monk.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "2b58d1097021772d62f3e3911c8f4fb21e7b8699387bcf756813b8937513b1bf",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 221,
+   "bsr": "/res/char/china/chinaman_monkey.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "ac574f041ae7bf52fdf257cc4e647f6df08d3686fb670e162bc358b6af2241a5",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_necromancer.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "e38ebea39bc4b7150653d40d8bfcb427c04d7060cc9395f9016a2931f00f8b18",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_nobleboy.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "1d734065beac20e46b8b3cdf69194f8e7839ec1c35aac241bc2ba6c88df901d9",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_performer.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "65b85b643dfd3bbcbc7f4b3ea1a820bcbf7b418310fae64aea6e2449be4ac7b8",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_priest.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "fbff5b08fa70b95f8915a6a7b340f27257ba7eb586ef26a3146ea8cf59030558",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_scholar.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "a1a8be226cb6924c763eca3ea7b1be82e147cabd45c79238a814158af428a31d",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 76,
+   "bsr": "/res/char/china/chinaman_spidey.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "37405e799ccf17d80898045c8b1c7d2f6252945ea55e307ddc11208483595834",
+   "skeleton": [
+    "/prim/skel/char/china/chinaman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinaman_tattoo.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "f0968cca8afc92573c4a91a6b0a71a7dfa5a2161fef1270cc6341a81d64bf882",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinaman_warrior.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "c8ae7f35f624cef7baf7a78beedaa33998f6fdcacaae64c7253094065bc126c7",
+   "skeleton": [
+    "/prim/skel/char/europe/europeman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_adventurer.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "85dc34da2b86f958e422f7b7828766138b38f4252be41101a8d134a9d7458a86",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinawoman_assassin.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "3448ec27c5fe05d7cde76e051f168e8b03a9476976ea59ea4a13974a06318865",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinawoman_bogy.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "90ee66239851d61cc96488cccaf98d40bfd750d0f98e9426c3cac45e03bf7753",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinawoman_fighter.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "a51d03c97c4de4740dca644aa3dfb88700d85fde85785f033320edc84994f1bb",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_fox.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "ffe054032fd80884ca6e2abafa8d7dae595e61100d2f6155d609fffb44c857bc",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 1,
+   "bsr": "/res/char/china/chinawoman_hwan_hair.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 3,
+   "sha256": "9282ae67846af4575cd68e18647414bb443f28ae917a6202b0406a64a7700207",
+   "skeleton": [
+    "/prim/skel/char/china/chinawoman_hwan_hair.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 212,
+   "bsr": "/res/char/china/chinawoman_kangsi.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "4e0ba6914dd5f50cce3000972b51ebe5e453634f7390c3f050a272ab10adc46e",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_kisaeng.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "567c969ac69259b633aa35a6869326c2125b6d26f63b5d037d5340a8cd846fbf",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_merchant.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "dd4d6204912286b32d0b56142e1c29b7e2589272b9affcc89672eff26b91f89b",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinawoman_necromencerb.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "40af24752084955c6f8662610b1de6a922c8d28949bf804d0986be4684088a86",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_necromencerw.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "c9c873334df41a62580e2f5945607cd914e2fef974c97b0f99d27d9e0533e6a3",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_noblegirl.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "23e0f135d74faa4d0c3f6169df7bdef12c5938cccd621892aae2c5cb5df46405",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 217,
+   "bsr": "/res/char/china/chinawoman_scholar.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "bd4314a5106b3b21347ffd57eef38c34c4c39e25c521b0f98917b2fe5219c67a",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  },
+  {
+   "animations": 218,
+   "bsr": "/res/char/china/chinawoman_warrior.bsr",
+   "is_character": true,
+   "materials": 1,
+   "meshes": 9,
+   "sha256": "dbc2e19c4ad2b81987652c13ac1e9124364a75cfd936aacca5d9a3d9e7f17b92",
+   "skeleton": [
+    "/prim/skel/char/europe/europewoman_skel.bsk"
+   ],
+   "skeleton_less": false
+  }
+ ],
+ "command_verbs": {
+  "camera": null,
+  "fast": null,
+  "getpos": null,
+  "setfov": null,
+  "setspeed": null,
+  "zoom": null
+ },
+ "gear_chain": {
+  "clothes_01_aa": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_aa.bms",
+   "bones": [
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 L Forearm",
+    "Bip01 L Hand"
+   ],
+   "membership": {
+    "chinaman_skel": true,
+    "chinawoman_skel": true,
+    "clothes_sa": false,
+    "europeman_skel": true,
+    "europewoman_skel": true,
+    "sword_01": false
+   },
+   "sha256": "e69716140580dd736404c1dfdc9b7793fc200fe6956cf064ceba9f27b7fe5529"
+  },
+  "clothes_01_ba": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_ba.bms",
+   "bones": [
+    "Bip01 Neck1",
+    "Bip01 Neck",
+    "Bip01 Spine1",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 Spine",
+    "Bip01 Pelvis",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm"
+   ],
+   "membership": {
+    "chinaman_skel": true,
+    "chinawoman_skel": true,
+    "clothes_sa": false,
+    "europeman_skel": true,
+    "europewoman_skel": true,
+    "sword_01": false
+   },
+   "sha256": "af2b75175324e7b3b7c3fd878ded59468bf18b0be222e2c7f591e63702f020ab"
+  },
+  "clothes_01_fa": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_fa.bms",
+   "bones": [
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0"
+   ],
+   "membership": {
+    "chinaman_skel": true,
+    "chinawoman_skel": true,
+    "clothes_sa": false,
+    "europeman_skel": true,
+    "europewoman_skel": true,
+    "sword_01": false
+   },
+   "sha256": "9636dc759141705b68d7154e7a26477a4828c1b8a4bf72557f6ee1cee8832531"
+  },
+  "clothes_01_ha": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_ha.bms",
+   "bones": [
+    "Bip01 Head"
+   ],
+   "membership": {
+    "chinaman_skel": true,
+    "chinawoman_skel": true,
+    "clothes_sa": false,
+    "europeman_skel": true,
+    "europewoman_skel": true,
+    "sword_01": false
+   },
+   "sha256": "421fb0f9ecfccd136399b622e3a0e9931d5fcaf8a9151d312e218b5041ac4db1"
+  },
+  "clothes_01_la": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_la.bms",
+   "bones": [
+    "Bip01 Pelvis",
+    "Bip01 L Thigh",
+    "Bip01 Spine",
+    "Bip01 R Thigh",
+    "Bip01 L Calf",
+    "Bip01 R Calf"
+   ],
+   "membership": {
+    "chinaman_skel": true,
+    "chinawoman_skel": true,
+    "clothes_sa": false,
+    "europeman_skel": true,
+    "europewoman_skel": true,
+    "sword_01": false
+   },
+   "sha256": "d27d3e881f4059c825a740a4bf51430856de99d117bd6959a30c512670c2b647"
+  },
+  "clothes_01_sa": {
+   "bms": "/prim/mesh/item/china/man_item/clothes_01_sa.bms",
+   "bones": [
+    "Bone05",
+    "Bone03"
+   ],
+   "membership": {
+    "chinaman_skel": false,
+    "chinawoman_skel": false,
+    "clothes_sa": true,
+    "europeman_skel": false,
+    "europewoman_skel": false,
+    "sword_01": false
+   },
+   "sha256": "1f8fa75e93ee6d6db9a2bb080d953a52d13bd5267ae14c3568649eac58fab1c6"
+  },
+  "sword_01": {
+   "bms": "/prim/mesh/item/china/weapon/sword_01.bms",
+   "bones": [
+    "Bone01"
+   ],
+   "membership": {
+    "chinaman_skel": false,
+    "chinawoman_skel": true,
+    "clothes_sa": true,
+    "europeman_skel": false,
+    "europewoman_skel": true,
+    "sword_01": true
+   },
+   "sha256": "83996b0ac16c8229332016c442339af354a18456647c8dfd0e5483ac869192d4"
+  }
+ },
+ "item_skeletons": {
+  "clothes_sa": {
+   "bone_count": 5,
+   "bone_names": [
+    "Bone01",
+    "Bone05",
+    "Bone06",
+    "Bone03",
+    "Bone04"
+   ],
+   "exact": true,
+   "path": "/prim/skel/item/china/clothes_sa.bsk",
+   "sha256": "5ce75a15c2f7961ff8d707f15cdb9db06b9f50fb5119106c5300bff0ae40fca6"
+  },
+  "sword_01": {
+   "bone_count": 4,
+   "bone_names": [
+    "Bone01",
+    "Bone02",
+    "ai_start",
+    "ai_end"
+   ],
+   "exact": true,
+   "path": "/prim/skel/item/china/weapon/sword_01.bsk",
+   "sha256": "574b8f13b59e290ae7c936fd68c5a23d0f150a4c037c565824779ce6860ecb57"
+  }
+ },
+ "itemdata_clothes": {
+  "clothes_01_aa": {
+   "bsr": "item\\china\\man_item\\clothes_01_aa.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_AA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_aa.ddj",
+   "id": "971"
+  },
+  "clothes_01_ba": {
+   "bsr": "item\\china\\man_item\\clothes_01_ba.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_BA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_ba.ddj",
+   "id": "899"
+  },
+  "clothes_01_fa": {
+   "bsr": "item\\china\\man_item\\clothes_01_fa.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_FA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_fa.ddj",
+   "id": "1007"
+  },
+  "clothes_01_ha": {
+   "bsr": "item\\china\\man_item\\clothes_01_ha.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_HA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_ha.ddj",
+   "id": "791"
+  },
+  "clothes_01_la": {
+   "bsr": "item\\china\\man_item\\clothes_01_la.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_LA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_la.ddj",
+   "id": "935"
+  },
+  "clothes_01_sa": {
+   "bsr": "item\\china\\man_item\\clothes_01_sa.bsr",
+   "code": "ITEM_CH_M_CLOTHES_01_SA_A",
+   "ddj": "item\\china\\man_item\\clothes_01_sa.ddj",
+   "id": "863"
+  }
+ },
+ "itemdata_sword": {
+  "bsr": "item\\china\\weapon\\sword_01.bsr",
+  "code": "ITEM_CH_SWORD_01_A",
+  "ddj": "item\\china\\weapon\\sword_01.ddj",
+  "id": "71"
+ },
+ "phase": "phase25",
+ "player_anims": [
+  {
+   "ban": "/prim/ani/char/china/man/chinaman_standbattle.ban",
+   "channel_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "channels": 37,
+   "europeman_only_channels": [],
+   "sha256": "5cd3762ee8a5ded81ea191477decb522c4062f8c8da150f82337d57479379ac4"
+  },
+  {
+   "ban": "/prim/ani/char/china/man/chinaman_fighter_standcity.ban",
+   "channel_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "channels": 37,
+   "europeman_only_channels": [],
+   "sha256": "949449af95a9ad9b79428ee612d8bfab8e320b5c60ed914ed76725f19d2a3149"
+  },
+  {
+   "ban": "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",
+   "channel_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "channels": 37,
+   "europeman_only_channels": [],
+   "sha256": "fa2b93288b7fe3944fdb90e09d80e8943cfc68062e5acd6215a0836d1573a28b"
+  },
+  {
+   "ban": "/prim/ani/char/china/man/chinaman_fighter_runforward_sword.ban",
+   "channel_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "channels": 37,
+   "europeman_only_channels": [],
+   "sha256": "4585ddd16b9ff1c672ce7061ddbea4445664d8fe1409c6e219398705f56cb24d"
+  },
+  {
+   "ban": "/prim/ani/char/china/man/chinaman_fighter_runforward.ban",
+   "channel_names": [
+    "Bip01",
+    "Bip01 Pelvis",
+    "Bip01 Spine",
+    "Bip01 Spine1",
+    "Bip01 Neck",
+    "Bip01 Neck1",
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 L UpperArm",
+    "Bip01 L Forearm",
+    "Bip01 L Hand",
+    "Bip01 L Finger0",
+    "Bip01 L Finger01",
+    "Bip01 L Finger1",
+    "Bip01 L Finger11",
+    "Bip01 L Finger2",
+    "Bip01 L Finger21",
+    "Bip01 L HandMid2",
+    "Bip01 L HandMid",
+    "Bip01 R Clavicle",
+    "Bip01 R UpperArm",
+    "Bip01 R Forearm",
+    "Bip01 R Hand",
+    "Bip01 R Finger0",
+    "Bip01 R Finger01",
+    "Bip01 R Finger1",
+    "Bip01 R Finger11",
+    "Bip01 R Finger2",
+    "Bip01 R Finger21",
+    "Bip01 R HandMid",
+    "cloak01",
+    "cloak02",
+    "cloak03",
+    "cloak04",
+    "Bip01 L Thigh",
+    "Bip01 L Calf",
+    "Bip01 L Foot",
+    "Bip01 L Toe0",
+    "Bip01 R Thigh",
+    "Bip01 R Calf",
+    "Bip01 R Foot",
+    "Bip01 R Toe0"
+   ],
+   "channels": 42,
+   "europeman_only_channels": [
+    "Bip01 L HandMid2",
+    "cloak01",
+    "cloak02",
+    "cloak03",
+    "cloak04"
+   ],
+   "sha256": "d74907923fbf15f10fc61358220c5b5ba804c739ae01f99df115182cf39a2419"
+  }
+ ],
+ "player_identity": {
+  "option_intro_name": "IntroName = \"script\\intro\\constantinoplefw.txt\"",
+  "option_map": "Map = \"0\"",
+  "option_start_character": "StartCharacter = \"1907\"",
+  "start_character_row": {
+   "code": "CHAR_CH_MAN_ADVENTURER",
+   "cols41_48": [
+    "6341",
+    "0",
+    "8000",
+    "0",
+    "18000",
+    "16",
+    "50",
+    "100"
+   ],
+   "level": "1",
+   "model": "char\\china\\chinaman_adventurer.bsr",
+   "radius": "100",
+   "refid": "1907"
+  }
+ },
+ "spawn": {
+  "conclusion": "No static server-side start/spawn table exists in Data.pk2, Map.pk2 or Media.pk2. The only start evidence is client config (option.txt StartCharacter=1907, Map=0) and cinematic intro S_CameraInsert coordinates, neither of which is a spawn table. Player start location is set by the server runtime: UNKNOWN from client data, fail-closed.",
+  "searched_data_substrings": [
+   "startpos",
+   "spawn",
+   "birth",
+   "newchar",
+   "login"
+  ],
+  "searched_map_substrings": [
+   "startpos",
+   "spawn",
+   "birth",
+   "newchar",
+   "login"
+  ],
+  "searched_media_substrings": [
+   "start",
+   "birth",
+   "spawn",
+   "login",
+   "newchar",
+   "create"
+  ],
+  "status": "UNKNOWN"
+ }
+}

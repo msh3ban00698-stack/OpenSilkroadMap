@@ -26,5 +26,5 @@
   "/prim/mesh/item/china/man_item/clothes_01_sa.bms",
   "/prim/mesh/item/china/weapon/sword_01.bms"
  ],
- "note": "PARTIAL: BSR references europeman_skel (43 bones) not chinaman_skel; no static spawn"
+ "note": "PARTIAL: BSR references europeman_skel (43 bones) not chinaman_skel; no static spawn. Phase 25 source recovery: europeman binding is systematic (all 30 /res/char/china/*.bsr bind European skeletons); chinaman_fighter_runforward.ban animates europeman-only bones (cloak01-04, Bip01 L HandMid2); clothes_01_sa binds clothes_sa.bsk and sword_01 binds sword_01.bsk item skeletons (see scripts/testdata/formats/phase25_source_evidence.json)."
 }

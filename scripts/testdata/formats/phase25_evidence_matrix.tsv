@@ -1,0 +1,18 @@
+fact	status	source_archive	source_path	evidence
+StartCharacter=1907 (CHAR_CH_MAN_ADVENTURER)	PROVEN	Media.pk2	/config/option.txt	StartCharacter = "1907"
+StartCharacter model = chinaman_adventurer.bsr	PROVEN	Media.pk2	/server_dep/silkroad/textdata/characterdata_5000.txt	row 1907 cols2,52; radius=100 col48; level=1 col57
+China char BSR -> europeman_skel systematic (14/30)	PROVEN	Data.pk2	/res/char/china/*.bsr	30 BSRs parsed; histogram europeman=14
+China char BSR -> europewoman_skel (13/30)	PROVEN	Data.pk2	/res/char/china/*.bsr	histogram europewoman=13
+chinaman_skel used only by chinaman_spidey (1/30)	PROVEN	Data.pk2	/res/char/china/chinaman_spidey.bsr	skeleton group chinaman_skel.bsk; 38 bones
+chinaman_fighter_runforward.ban animates europeman-only bones	PROVEN	Data.pk2	/prim/ani/char/china/man/chinaman_fighter_runforward.ban	42 channels incl. cloak01-04 + Bip01 L HandMid2 (europeman-only)
+clothes_01_aa/ba/fa/ha/la bind character-skeleton bones	PROVEN	Data.pk2	/prim/mesh/item/china/man_item/clothes_01_{aa,ba,fa,ha,la}.bms	bone tables = Bip01-family, present in all 4 character skeletons
+clothes_01_sa binds item skeleton clothes_sa.bsk	PROVEN	Data.pk2	/prim/mesh/item/china/man_item/clothes_01_sa.bms	bones Bone03/Bone05 in clothes_sa.bsk (5 bones)
+sword_01 binds item skeleton sword_01.bsk	PROVEN	Data.pk2	/prim/mesh/item/china/weapon/sword_01.bms	bone Bone01; sword_01.bsk = Bone01/Bone02/ai_start/ai_end
+itemdata default clothes rows (col52 bsr / col54 ddj)	PROVEN	Media.pk2	/server_dep/silkroad/textdata/itemdata_5000.txt	ITEM_CH_M_CLOTHES_01_{AA,BA,FA,HA,LA,SA}_A ids 971/899/1007/791/935/863
+itemdata sword row = ITEM_CH_SWORD_01_A id 71	PROVEN	Media.pk2	/server_dep/silkroad/textdata/itemdata_5000.txt	col52 item\china\weapon\sword_01.bsr; col54 sword_01.ddj
+cameradata.txt two 9-field rows	PROVEN	Media.pk2	/config/cameradata.txt	rows 79 107 1205 80 396 30 10 0 50 / 77 105 1466 79 1488 30 10 270 50
+camera field semantics	UNKNOWN	Media.pk2	/config/cameradata.txt	no schema; candidate near/far/distance/fov NOT asserted
+command.txt debug verbs /setspeed /setfov /camera /zoom /fast	PROVEN	Media.pk2	/config/command.txt	verb codes 600/500/114/110/111
+CharacterData cols41-48 identical across CH archetypes (6341 0 8000 0 18000 16 50 100)	PROVEN	Media.pk2	/server_dep/silkroad/textdata/characterdata_5000.txt	ADVENTURER/FIGHTER (male+female) identical -> generic stats, not class move speeds
+player walk/run speed values	UNKNOWN	n/a	n/a	no movement table in any PK2; /setspeed is a client debug verb
+player spawn/start table	UNKNOWN	n/a	n/a	no start/spawn table in Data/Map/Media; start is server-runtime
