@@ -37,8 +37,11 @@ import java.util.Map;
  * no models, materials, normals, or textures are invented. Missing terrain
  * fails closed; no other region is substituted.
  *
- * <p>The WebView {@code MainActivity} (Capacitor) remains the app launcher;
- * this native activity is reachable independently and uses no WebView.
+ * <p>This native activity is now the app launcher (see
+ * {@code AndroidManifest.xml}); the legacy {@code MainActivity} WebView entry has
+ * been retired to a redirect. The runtime is driven by a fixed-timestep
+ * {@link GameLoop} heartbeat fed by a monotonic {@link GameClock}; no WebView or
+ * Capacitor runtime is used.
  */
 public final class GameActivity extends Activity {
 
@@ -54,6 +57,22 @@ public final class GameActivity extends Activity {
   private CharacterCatalog characterCatalog;
   private Map<String, CharacterMeshIndex> characterModels =
       new HashMap<String, CharacterMeshIndex>();
+
+  private final GameClock clock = new GameClock();
+  private final GameLoop loop = new GameLoop();
+  private boolean running;
+
+  private final Runnable frame = new Runnable() {
+    @Override
+    public void run() {
+      if (!running || world == null) {
+        return;
+      }
+      loop.advance(clock.tick(System.nanoTime()));
+      world.postInvalidateOnAnimation();
+      world.postOnAnimation(this);
+    }
+  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +117,31 @@ public final class GameActivity extends Activity {
     root.addView(overlay, labelParams);
 
     setContentView(root);
+    start();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    start();
+  }
+
+  @Override
+  protected void onPause() {
+    stop();
+    super.onPause();
+  }
+
+  private void start() {
+    if (running || world == null) {
+      return;
+    }
+    running = true;
+    world.postOnAnimation(frame);
+  }
+
+  private void stop() {
+    running = false;
   }
 
   private WorldRegion selectRegion(WorldTerrainIndex index, List<WorldRegion> regions) {

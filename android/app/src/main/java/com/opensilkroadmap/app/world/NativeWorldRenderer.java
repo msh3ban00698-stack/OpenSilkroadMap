@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.game.Camera2D;
+import com.opensilkroadmap.app.game.InputController;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -62,6 +63,9 @@ public class NativeWorldRenderer extends View {
   /** Follow/clamp camera that owns the center/scale and the viewport transform. */
   private final Camera2D camera = new Camera2D();
 
+  /** Engine-agnostic input accumulator (drag pan + pinch zoom); drained per frame. */
+  private final InputController input = new InputController();
+
   private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
   private final Paint wirePaint = new Paint();
   private final Paint markerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -79,7 +83,6 @@ public class NativeWorldRenderer extends View {
   private float lastTouchY;
   private boolean panning;
   private float pinchStartDistance;
-  private float pinchStartScale;
 
   public NativeWorldRenderer(Context context) {
     this(context, null);
@@ -222,25 +225,21 @@ public class NativeWorldRenderer extends View {
         if (event.getPointerCount() == 2) {
           panning = false;
           pinchStartDistance = distance(event);
-          pinchStartScale = pixelsPerUnit;
         }
         return true;
       case MotionEvent.ACTION_MOVE:
         if (event.getPointerCount() >= 2 && pinchStartDistance > 0f) {
           float d = distance(event);
           if (d > 0f) {
-            float next = pinchStartScale * (d / pinchStartDistance);
-            if (next > 0f) {
-              pixelsPerUnit = next;
-              invalidate();
-            }
+            input.pinchZoom(d / pinchStartDistance);
+            pinchStartDistance = d;
           }
         } else if (panning && event.getPointerCount() == 1) {
           float dx = event.getX() - lastTouchX;
           float dy = event.getY() - lastTouchY;
           lastTouchX = event.getX();
           lastTouchY = event.getY();
-          panByPixels(dx, dy);
+          input.drag(dx, dy);
         }
         return true;
       case MotionEvent.ACTION_POINTER_UP:
@@ -263,9 +262,23 @@ public class NativeWorldRenderer extends View {
     return (float) Math.sqrt(dx * dx + dy * dy);
   }
 
+  /** Drains accumulated pan/zoom intents into the camera (frame-consistent). */
+  public void applyInput() {
+    float px = input.consumePanX();
+    float py = input.consumePanY();
+    if (px != 0f || py != 0f) {
+      panByPixels(px, py);
+    }
+    float z = input.consumeZoom();
+    if (z != 1f) {
+      zoomBy(z);
+    }
+  }
+
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
+    applyInput();
     if (world == null) {
       return;
     }

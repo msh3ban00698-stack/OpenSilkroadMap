@@ -1,9 +1,14 @@
-# Android Game Implementation Status (Phase 9 native game core)
+# Android Game Implementation Status (native game core)
 
-Date: 2026-08-29
-Scope: Status of the first Android-native systems implemented in Phase 9 Part B.
-All behavior is Android-free Java (runs under `./gradlew test`) with thin native
-Views; every value is traceable to verified real source or marked UNKNOWN.
+Date: 2026-08-31 (updated for Phase 22)
+Scope: Status of the Android-native systems (Phase 9 Part B + Phase 22 native
+runtime migration). All behavior is Android-free Java (runs under `./gradlew test`)
+with thin native Views; every value is traceable to verified real source or marked
+UNKNOWN.
+
+Phase 22 (2026-08-31): removed the Capacitor/WebView runtime. `GameActivity` is
+now the launcher; the retired wrapper is preserved under `legacy/capacitor/`. See
+`WEB_RUNTIME_AUDIT.md` and `PHASE_22_REPORT.md`.
 
 ---
 
@@ -15,6 +20,12 @@ Package `com.opensilkroadmap.app.game`, `android/app/src/main/java/` + tests.
 - `GameLoop.java` — fixed-dt accumulator (default 0.05 s, catch-up cap 0.25 s).
   Engine scaffolding, not authentic VSRO timing (real tick rate UNKNOWN).
 - `GameLoopTest.java` — 6 tests.
+- `GameClock.java` — monotonic frame clock; converts a time source to a clamped
+  per-frame delta (default clamp 0.1 s). Phase 22.
+- `GameClockTest.java` — 6 tests.
+- `InputController.java` — Android-free gesture accumulator (drag pan, pinch
+  zoom, joystick direction); drained per frame by the renderer. Phase 22.
+- `InputControllerTest.java` — 6 tests.
 
 ### 1.2 Rendering/camera
 - `Camera2D.java` — follow + world clamp; centers when the viewport exceeds the world.
@@ -45,8 +56,10 @@ Package `com.opensilkroadmap.app.game`, `android/app/src/main/java/` + tests.
 - `GameActivity.java` — loads real `game/regions.tsv` via AssetManager; optional
   provider from `assets/game/manifest.json`; default HUD cell (182,96) = TOWN
   ThiefTown (VERIFIED) — a camera default, not a spawn claim; registered in
-  `AndroidManifest.xml` (exported, sensorLandscape). WebView MainActivity stays the
-  launcher.
+  `AndroidManifest.xml` as the LAUNCHER (Phase 22). Drives a fixed-timestep
+  `GameLoop` heartbeat with a monotonic `GameClock`; no WebView.
+- `MainActivity.java` — Phase 22: retired from Capacitor `BridgeActivity`; now a
+  plain `Activity` that redirects to `GameActivity`.
 - Instrumented `GameActivityTest.java` — 2 tests (launch + fallback states).
 
 ## 2. Reused unchanged
