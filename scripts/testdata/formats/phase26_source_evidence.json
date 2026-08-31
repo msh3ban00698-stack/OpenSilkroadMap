@@ -1,0 +1,168 @@
+{
+ "combat": {
+  "col13_14_semantics": "UNVERIFIED: values order by weapon type (fist 1500 > sword 1200 > spear 1166 > bow 840), consistent with an attack-cadence column in ms, but the exact meaning (cast/pre-delay/attack interval) is not documented and is NOT asserted.",
+  "damage_formulas": "UNKNOWN: col69 packed effect encoding not decoded",
+  "damage_landing_frame": "UNKNOWN: client/server code, not archive data",
+  "skilldata_attack_rows": [
+   {
+    "code": "SKILL_PUNCH_01",
+    "col13": "1500",
+    "col14": "1500",
+    "col69": "6386804",
+    "refid": "172"
+   },
+   {
+    "code": "SKILL_CH_SWORD_BASE_01",
+    "col13": "1200",
+    "col14": "1200",
+    "col69": "6386804",
+    "refid": "173"
+   },
+   {
+    "code": "SKILL_CH_SPEAR_BASE_01",
+    "col13": "1166",
+    "col14": "1166",
+    "col69": "6386804",
+    "refid": "195"
+   },
+   {
+    "code": "SKILL_CH_BOW_BASE_01",
+    "col13": "840",
+    "col14": "840",
+    "col69": "6386804",
+    "refid": "217"
+   }
+  ],
+  "targeting_range_cooldowns": "UNKNOWN: no decoded skill schema in repo"
+ },
+ "movement": {
+  "conclusion": "Locomotion clips carry no baked forward (z) root translation; x/y ranges are weight-shift bobble only. Movement speed is NOT derivable from animation data and no speed table exists in the PK2 archives: walk/run speeds remain UNKNOWN (fail-closed).",
+  "locomotion_root_motion": [
+   {
+    "ban": "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",
+    "bip01_keys": 26,
+    "bip01_present": true,
+    "bip01_x_range": 0.152,
+    "bip01_y_range": 0.3547,
+    "bip01_z_range": 0.0,
+    "channels": 37,
+    "cyclic_first_equals_last": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "forward_z_drift": 0.0
+   },
+   {
+    "ban": "/prim/ani/char/china/man/chinaman_fighter_runforward.ban",
+    "bip01_keys": 13,
+    "bip01_present": true,
+    "bip01_x_range": 0.7255,
+    "bip01_y_range": 0.7921,
+    "bip01_z_range": 0.0,
+    "channels": 42,
+    "cyclic_first_equals_last": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "forward_z_drift": 0.0
+   },
+   {
+    "ban": "/prim/ani/char/china/man/chinaman_fighter_runforward_sword.ban",
+    "bip01_keys": 18,
+    "bip01_present": true,
+    "bip01_x_range": 0.1566,
+    "bip01_y_range": 0.6682,
+    "bip01_z_range": 0.0,
+    "channels": 37,
+    "cyclic_first_equals_last": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "forward_z_drift": 0.0
+   }
+  ]
+ },
+ "phase": "phase26",
+ "player_animations": {
+  "bsr": "/res/char/china/chinaman_fighter.bsr",
+  "census": {
+   "categories": {
+    "attack": 0,
+    "die": 6,
+    "hit": 2,
+    "other": 24,
+    "run": 8,
+    "sit": 3,
+    "skill": 160,
+    "stand": 10,
+    "walk": 4
+   },
+   "samples": {
+    "attack": [],
+    "die": [
+     "chinaman_a_diehardhit.ban",
+     "chinaman_a_diehardhit_loop.ban",
+     "chinaman_a_down.ban",
+     "chinaman_a_downwait.ban",
+     "chinaman_a_downdamage.ban"
+    ],
+    "hit": [
+     "chinaman_a_benormalhit.ban",
+     "chinaman_a_behardhit.ban"
+    ],
+    "other": [
+     "man_pose.ban",
+     "chinaman_a_blocking.ban",
+     "chinaman_a_handstraightl.ban",
+     "chinaman_a_handstraightr.ban",
+     "chinaman_a_handhookl.ban"
+    ],
+    "run": [
+     "spear_run_fighter.ban",
+     "bow_run_fighter.ban",
+     "chinaman_fighter_runforward.ban",
+     "nasrun1_man_run.ban",
+     "nasrun1_man_ready.ban"
+    ],
+    "sit": [
+     "chinaman_a_sitground.ban",
+     "chinaman_a_sitbreath.ban",
+     "chinaman_a_sitstand.ban"
+    ],
+    "skill": [
+     "skill_ch_spear_base_a.ban",
+     "skill_ch_spear_base_b.ban",
+     "skill_ch_spear_base_c.ban",
+     "skill_ch_spear_base_d.ban",
+     "skill_ch_spear_spin_wait.ban"
+    ],
+    "stand": [
+     "spear_stand_city_fighter.ban",
+     "spear_stand.ban",
+     "spear_stand_city02.ban",
+     "bow_stand.ban",
+     "chinaman_fighter_standcity.ban"
+    ],
+    "walk": [
+     "spear_walk_fighter.ban",
+     "chinaman_fighter_walkforward.ban",
+     "chinaman_walkbackward.ban",
+     "cart_walk.ban"
+    ]
+   },
+   "total": 217,
+   "word_start_attack_clips": 0
+  },
+  "committed_manifest_clips": [
+   "chinaman_standbattle",
+   "chinaman_fighter_standcity",
+   "chinaman_fighter_walkforward",
+   "chinaman_fighter_runforward_sword",
+   "chinaman_fighter_runforward"
+  ],
+  "reconciliation": "The committed player manifest carries 5 locomotion clips only; the BSR's attack clips are skill-named (skill_ch_sword_*), so the keyword state resolver (word-start 'attack') does NOT map them - the player's ATTACK/DAMAGE/DEATH states resolve to MISSING (fail-closed, no guessed idle fallback). NPC attack/damage/death clips (e.g. bandit_attack01) DO resolve via the keyword resolver."
+ }
+}

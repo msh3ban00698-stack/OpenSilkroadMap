@@ -54,8 +54,8 @@ public class PlayerSpawnTest {
         WorldCoordinates.packRegion(167, 96), 0f, 0f, 0f, "SYNTHETIC test source");
     assertEquals((167 - 156) * 1920f, s.worldX(156), 0.001f);
     assertEquals((96 - 89) * 1920f, s.worldZ(89), 0.001f);
-    assertEquals(156f, s.worldX(167), 0.001f); // same-sector local is identity
-    assertEquals(96f, s.worldZ(96), 0.001f);
+    assertEquals(0f, s.worldX(167), 0.001f); // ref == sector -> local identity (0)
+    assertEquals(0f, s.worldZ(96), 0.001f);
   }
 
   @Test

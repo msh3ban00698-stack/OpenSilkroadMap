@@ -138,8 +138,8 @@ public class PlayerWorldRegionTest {
     TsvTable teleports = TsvTable.loadDefault("teleportdata.tsv");
     boolean gate = false;
     for (String[] row : teleports.rows()) {
-      if ("GATE_CH".equals(TsvTable.strAt(row, 1).trim())) {
-        assertEquals("25000", TsvTable.strAt(row, 4).trim());
+      if ("GATE_CH".equals(TsvTable.strAt(row, 2).trim())) {
+        assertEquals("25000", TsvTable.strAt(row, 5).trim());
         gate = true;
       }
     }

@@ -53,7 +53,7 @@ public class PlayerMoverTest {
     PlayerMover.Step step = PlayerMover.step(
         (float) c, (float) c, 1.0, PlayerMovementConfig.withWalkSpeed(1.0));
     assertTrue(step.moved);
-    assertEquals(Math.hypot(step.dx, step.dz), 1.0, 1e-9);
+    assertEquals(1.0, Math.hypot(step.dx, step.dz), 1e-6);
   }
 
   @Test

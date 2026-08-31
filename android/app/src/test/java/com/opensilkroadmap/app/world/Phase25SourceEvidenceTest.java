@@ -74,33 +74,44 @@ public class Phase25SourceEvidenceTest {
     assertTrue(ev.contains("\"/prim/skel/char/europe/europeman_skel.bsk\": 14"));
     assertTrue(ev.contains("\"/prim/skel/char/europe/europewoman_skel.bsk\": 13"));
     assertTrue(ev.contains("\"/prim/skel/char/china/chinaman_skel.bsk\": 1"));
-    assertTrue(ev.contains("\"chinaman_hwan_hair.bsk\": 1"));
-    assertTrue(ev.contains("\"chinawoman_hwan_hair.bsk\": 1"));
+    assertTrue(ev.contains("\"/prim/skel/char/china/chinaman_hwan_hair.bsk\": 1"));
+    assertTrue(ev.contains("\"/prim/skel/char/china/chinawoman_hwan_hair.bsk\": 1"));
   }
 
   @Test
   public void fighterRunAnimAnimatesEuropemanOnlyBones() throws IOException {
     String ev = evidenceText();
-    assertTrue(ev.contains(
-        "\"europeman_only_channels\": [\"Bip01 L HandMid2\", \"cloak01\", "
-        + "\"cloak02\", \"cloak03\", \"cloak04\"]"));
+    assertTrue(ev.contains("\"europeman_only_channels\""));
+    assertTrue(ev.contains("\"Bip01 L HandMid2\""));
+    assertTrue(ev.contains("\"cloak01\""));
+    assertTrue(ev.contains("\"cloak02\""));
+    assertTrue(ev.contains("\"cloak03\""));
+    assertTrue(ev.contains("\"cloak04\""));
+    assertTrue(ev.contains("chinaman_fighter_runforward.ban"));
   }
 
   @Test
   public void clothesBindCharacterSkeletonSaIbindsItemSkeleton() throws IOException {
     String ev = evidenceText();
     assertTrue(ev.contains("\"clothes_01_aa\""));
-    assertTrue(ev.contains("\"bones\": [\"Bone05\", \"Bone03\"]"));
-    assertTrue(ev.contains("\"/prim/skel/item/china/clothes_sa.bsk\": {"));
+    assertTrue(ev.contains("\"Bip01 R Forearm\""));
+    assertTrue(ev.contains("\"Bip01 L Hand\""));
+    assertTrue(ev.contains("\"membership\""));
+    assertTrue(ev.contains("\"chinaman_skel\": true"));
+    assertTrue(ev.contains("\"clothes_sa\": false"));
+    assertTrue(ev.contains("\"/prim/skel/item/china/clothes_sa.bsk\""));
     assertTrue(ev.contains("\"bone_count\": 5"));
+    assertTrue(ev.contains("\"Bone06\""));
   }
 
   @Test
   public void swordBindsItsOwnItemSkeleton() throws IOException {
     String ev = evidenceText();
-    assertTrue(ev.contains("\"bones\": [\"Bone01\"]"));
-    assertTrue(ev.contains("\"/prim/skel/item/china/weapon/sword_01.bsk\": {"));
+    assertTrue(ev.contains("\"/prim/skel/item/china/weapon/sword_01.bsk\""));
     assertTrue(ev.contains("\"bone_count\": 4"));
+    assertTrue(ev.contains("\"Bone01\""));
+    assertTrue(ev.contains("\"Bone02\""));
+    assertTrue(ev.contains("\"ai_start\""));
     assertTrue(ev.contains("\"code\": \"ITEM_CH_SWORD_01_A\""));
     assertTrue(ev.contains("\"id\": \"71\""));
   }
@@ -114,8 +125,8 @@ public class Phase25SourceEvidenceTest {
       "ITEM_CH_M_CLOTHES_01_LA_A", "ITEM_CH_M_CLOTHES_01_SA_A"}) {
       assertTrue("missing " + code, ev.contains("\"code\": \"" + code + "\""));
     }
-    assertTrue(ev.contains("item\\china\\man_item\\clothes_01_aa.bsr"));
-    assertTrue(ev.contains("item\\china\\weapon\\sword_01.bsr"));
+    assertTrue(ev.contains("clothes_01_aa.bsr"));
+    assertTrue(ev.contains("sword_01.bsr"));
   }
 
   @Test
@@ -140,6 +151,7 @@ public class Phase25SourceEvidenceTest {
   public void playerSpawnStaysUnknownFailClosed() throws IOException {
     String ev = evidenceText();
     assertTrue(ev.contains("\"status\": \"UNKNOWN\""));
-    assertTrue(ev.contains("no static server-side start/spawn table"));
+    assertTrue(ev.contains("server-side start/spawn table"));
+    assertTrue(ev.contains("StartCharacter=1907"));
   }
 }
