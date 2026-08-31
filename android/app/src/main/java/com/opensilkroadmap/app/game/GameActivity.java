@@ -68,7 +68,9 @@ public final class GameActivity extends Activity {
       if (!running || world == null) {
         return;
       }
-      loop.advance(clock.tick(System.nanoTime()));
+      double dt = clock.tick(System.nanoTime());
+      loop.advance(dt);
+      world.advanceAnimations(dt);
       world.postInvalidateOnAnimation();
       world.postOnAnimation(this);
     }
@@ -205,7 +207,7 @@ public final class GameActivity extends Activity {
       if (characterCatalog != null) {
         sb.append("characters ").append(characterCatalog.count())
             .append(" catalog rows, ").append(characterModels.size())
-            .append(" models loaded (bind pose)\n");
+            .append(" models loaded (idle anim)\n");
       }
       if (data != null) {
         sb.append(data.summary()).append('\n');

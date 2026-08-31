@@ -152,6 +152,8 @@ public final class CharacterMeshIndex {
   private final List<Part> parts;
   private final List<Anim> anims;
   private final Map<String, String> animSlugByName;
+  private final Map<String, Map<String, Object>> animJsonCache =
+      new HashMap<String, Map<String, Object>>();
 
   private CharacterMeshIndex(AssetManager assets, String key, Skeleton skeleton,
       List<Part> parts, List<Anim> anims, Map<String, String> animSlugByName) {
@@ -185,11 +187,29 @@ public final class CharacterMeshIndex {
     if (slug == null) {
       throw new IOException("unknown animation: " + animName);
     }
-    String path = CHARACTERS_ROOT + SHARED + "anim/" + slug + ".json";
-    String text = readAll(
-        new InputStreamReader(assets.open(path), StandardCharsets.UTF_8));
-    Map<String, Object> root = (Map<String, Object>) new JsonParser(text).parse();
+    Map<String, Object> root = animJsonCache.get(slug);
+    if (root == null) {
+      String path = CHARACTERS_ROOT + SHARED + "anim/" + slug + ".json";
+      String text = readAll(
+          new InputStreamReader(assets.open(path), StandardCharsets.UTF_8));
+      root = (Map<String, Object>) new JsonParser(text).parse();
+      animJsonCache.put(slug, root);
+    }
     return Pose.sample(skeleton, root, tMs);
+  }
+
+  /**
+   * The character's idle/stand animation (for standing still in the world), or
+   * null when the manifest has no recognizable stand clip. Selection is
+   * delegated to {@link IdleAnimResolver}; a null result keeps the bind pose.
+   */
+  public Anim idleAnim() {
+    List<IdleAnimResolver.Clip> clips = new ArrayList<IdleAnimResolver.Clip>();
+    for (Anim a : anims) {
+      clips.add(new IdleAnimResolver.Clip(a.name, a.durationMs));
+    }
+    int idx = IdleAnimResolver.resolve(clips);
+    return idx < 0 ? null : anims.get(idx);
   }
 
   /**

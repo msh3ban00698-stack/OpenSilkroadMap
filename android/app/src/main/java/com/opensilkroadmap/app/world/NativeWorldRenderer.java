@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.game.AnimationPlayer;
 import com.opensilkroadmap.app.game.Camera2D;
 import com.opensilkroadmap.app.game.InputController;
 
@@ -39,7 +40,10 @@ import java.util.Map;
  *
  * <p>When a {@link CharacterCatalog} and its loaded models are attached, the
  * renderer instances real NPCs by refid via the catalog and draws each real
- * character's mesh parts at their verified world coordinate.
+ * character's mesh parts at their verified world coordinate. Each character
+ * that has a committed stand/idle clip is animated in a loop via
+ * {@link #advanceAnimations}; characters without a stand clip stay at the bind
+ * pose.
  *
  * <p>Rendering is device-side only; this class has no game logic.
  */
@@ -51,6 +55,9 @@ public class NativeWorldRenderer extends View {
   private Map<String, CharacterMeshIndex> characterModels =
       new HashMap<String, CharacterMeshIndex>();
   private Pose characterPose;
+  private final Map<String, AnimationPlayer> animPlayers =
+      new HashMap<String, AnimationPlayer>();
+  private final Map<String, Pose> characterPoses = new HashMap<String, Pose>();
   private boolean objectsVisible = true;
   private boolean charactersVisible = true;
   private float worldMinH;
@@ -130,6 +137,7 @@ public class NativeWorldRenderer extends View {
     this.characterCatalog = catalog;
     this.characterModels = (models == null)
         ? new HashMap<String, CharacterMeshIndex>() : models;
+    rebuildAnimPlayers();
     shaderCache.clear();
     invalidate();
   }
@@ -142,8 +150,53 @@ public class NativeWorldRenderer extends View {
   public void setCharacterModels(Map<String, CharacterMeshIndex> models) {
     this.characterModels = (models == null)
         ? new HashMap<String, CharacterMeshIndex>() : models;
+    rebuildAnimPlayers();
     shaderCache.clear();
     invalidate();
+  }
+
+  /**
+   * Builds a per-key {@link AnimationPlayer} from each model's committed idle
+   * clip (real stand animation + duration). Characters without a recognizable
+   * stand clip stay at the bind pose.
+   */
+  private void rebuildAnimPlayers() {
+    animPlayers.clear();
+    characterPoses.clear();
+    for (Map.Entry<String, CharacterMeshIndex> e : characterModels.entrySet()) {
+      CharacterMeshIndex.Anim idle = e.getValue().idleAnim();
+      if (idle != null) {
+        AnimationPlayer p = new AnimationPlayer();
+        p.setClip(idle.name, idle.durationMs);
+        animPlayers.put(e.getKey(), p);
+      }
+    }
+  }
+
+  /**
+   * Advances every character's animation clock and re-samples its pose from the
+   * committed clip. Called once per frame from the game-loop host. Characters
+   * without a clip are left unchanged (bind pose).
+   */
+  public void advanceAnimations(double dtSeconds) {
+    if (animPlayers.isEmpty()) {
+      return;
+    }
+    for (Map.Entry<String, AnimationPlayer> e : animPlayers.entrySet()) {
+      AnimationPlayer p = e.getValue();
+      CharacterMeshIndex model = characterModels.get(e.getKey());
+      if (model == null) {
+        continue;
+      }
+      p.advance(dtSeconds);
+      Pose pose = null;
+      try {
+        pose = model.poseAt(p.name(), p.currentTimeMs());
+      } catch (IOException ex) {
+        pose = null;
+      }
+      characterPoses.put(e.getKey(), pose);
+    }
   }
 
   /**
@@ -410,12 +463,16 @@ public class NativeWorldRenderer extends View {
       }
       float wx = sp.worldX(refSx);
       float wz = sp.worldZ(refSy);
+      Pose pose = characterPoses.get(key);
+      if (pose == null) {
+        pose = characterPose;
+      }
       for (CharacterMeshIndex.Part part : model.parts()) {
         float[] positions = part.bindPositions;
-        if (part.skinned && characterPose != null) {
+        if (part.skinned && pose != null) {
           try {
             positions = CharacterRenderer.skin(
-                model.skeleton(), characterPose,
+                model.skeleton(), pose,
                 (StaticMeshAsset.SkinnedMesh) part.mesh);
           } catch (IOException e) {
             positions = part.bindPositions;
