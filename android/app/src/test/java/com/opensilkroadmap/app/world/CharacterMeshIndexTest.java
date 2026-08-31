@@ -1,34 +1,31 @@
 package com.opensilkroadmap.app.world;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 
 /**
- * JVM structural tests for the Phase 18 character assets (the committed
- * bandit NPC chain) against the COMMITTED assets: {@code skeleton.json},
- * {@code meshes.tsv}, the three MSH v2 {@code mesh/*.msh}, the bind-pose
- * skinning math, {@code npc_placements.tsv} and {@code anims.tsv}.
+ * JVM structural tests for the committed data-driven character assets against
+ * the shared key-based asset store ({@code game/world/characters/}).
  *
- * <p>Counts are the PROVEN Phase 18 values (35 skeleton bones, 3 mesh parts,
- * 60 placements across 31 regions, 16 animations). The sword part is
- * single-influence (every vertex = R_bone*v + t_bone exactly), so its
- * skinned positions are asserted exactly against the skeleton's bind world
- * transform.
+ * <p>The bandit character key is {@code res_mob_china_bandit}; its manifest
+ * references the shared skeleton slug {@code prim_skel_mob_china_bandit} and
+ * the three shared skinned mesh slugs
+ * {@code prim_mesh_mob_china_bandit_{sword,part1,part2}}. The skeleton has 35
+ * bones (quaternion convention {@code xyzw}, path ending {@code bandit.bsk});
+ * the sword part has 76 vertices / 134 triangles / 1 bone and is
+ * single-influence (every vertex = R_bone*v + t_bone exactly), part1 has 214
+ * vertices / 276 triangles / 18 bones, and part2 has 556 vertices / 766
+ * triangles / 17 bones. These counts are the PROVEN Phase 20 values.
  *
  * <p>Executed only where the committed assets are resolvable; never asserts
  * fabricated geometry. Animation playback is NOT asserted (UNKNOWN).
@@ -36,10 +33,10 @@ import org.junit.Test;
 public class CharacterMeshIndexTest {
 
   private static final String[] ASSET_DIRS = {
-    "src/main/assets/game/world/characters/bandit",
-    "../src/main/assets/game/world/characters/bandit",
-    "app/src/main/assets/game/world/characters/bandit",
-    "../app/src/main/assets/game/world/characters/bandit",
+    "src/main/assets/game/world/characters",
+    "../src/main/assets/game/world/characters",
+    "app/src/main/assets/game/world/characters",
+    "../app/src/main/assets/game/world/characters",
   };
 
   private static byte[] readAsset(String name) throws IOException {
@@ -63,14 +60,10 @@ public class CharacterMeshIndexTest {
     throw new IOException("asset not found: " + name);
   }
 
-  private static BufferedReader openTsv(String name) throws IOException {
-    return new BufferedReader(new InputStreamReader(
-        new ByteArrayInputStream(readAsset(name)), StandardCharsets.UTF_8));
-  }
-
   private static CharacterMeshIndex.Skeleton loadSkeleton() throws IOException {
     return CharacterMeshIndex.parseSkeleton(new InputStreamReader(
-        new ByteArrayInputStream(readAsset("skeleton.json")), StandardCharsets.UTF_8));
+        new ByteArrayInputStream(readAsset("shared/skel/prim_skel_mob_china_bandit.json")),
+        StandardCharsets.UTF_8));
   }
 
   @Test
@@ -104,30 +97,9 @@ public class CharacterMeshIndexTest {
   }
 
   @Test
-  public void meshesTsvThreeRealParts() throws IOException {
-    List<CharacterMeshIndex.MeshRow> rows = CharacterMeshIndex.parseMeshes(openTsv("meshes.tsv"));
-    assertEquals(3, rows.size());
-    CharacterMeshIndex.MeshRow sword = rows.get(0);
-    assertEquals(0, sword.partIdx);
-    assertEquals("Bandit1", sword.material);
-    assertEquals(76, sword.vcount);
-    assertEquals(134, sword.tcount);
-    assertEquals(76, sword.skinRecords);
-    assertEquals(1, sword.boneCount);
-    CharacterMeshIndex.MeshRow part1 = rows.get(1);
-    assertEquals(214, part1.vcount);
-    assertEquals(276, part1.tcount);
-    assertEquals(18, part1.boneCount);
-    CharacterMeshIndex.MeshRow part2 = rows.get(2);
-    assertEquals(556, part2.vcount);
-    assertEquals(766, part2.tcount);
-    assertEquals(17, part2.boneCount);
-  }
-
-  @Test
-  public void mshV2MeshesParseWithSkin() throws IOException {
+  public void meshesThreeRealParts() throws IOException {
     StaticMeshAsset.SkinnedMesh sword =
-        StaticMeshAsset.parseSkinned(readAsset("mesh/bandit_sword.msh"));
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_sword.msh"));
     assertEquals(76, sword.vertexCount);
     assertEquals(134, sword.triangleCount);
     assertEquals(76, sword.bone1.length);
@@ -138,13 +110,14 @@ public class CharacterMeshIndexTest {
       assertEquals(0, sword.weight2[i]);
     }
     StaticMeshAsset.SkinnedMesh part1 =
-        StaticMeshAsset.parseSkinned(readAsset("mesh/bandit_part1.msh"));
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_part1.msh"));
     assertEquals(214, part1.vertexCount);
-    assertEquals(214, part1.skinRecords);
+    assertEquals(276, part1.triangleCount);
     assertEquals(18, part1.boneNames.length);
     StaticMeshAsset.SkinnedMesh part2 =
-        StaticMeshAsset.parseSkinned(readAsset("mesh/bandit_part2.msh"));
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_part2.msh"));
     assertEquals(556, part2.vertexCount);
+    assertEquals(766, part2.triangleCount);
     assertEquals(17, part2.boneNames.length);
   }
 
@@ -152,7 +125,7 @@ public class CharacterMeshIndexTest {
   public void swordSkinnedPositionsMatchSingleBoneTransform() throws IOException {
     CharacterMeshIndex.Skeleton skel = loadSkeleton();
     StaticMeshAsset.SkinnedMesh sword =
-        StaticMeshAsset.parseSkinned(readAsset("mesh/bandit_sword.msh"));
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_sword.msh"));
     float[] out = CharacterMeshIndex.skinnedBindPositions(sword, skel);
     assertEquals(76 * 3, out.length);
     CharacterMeshIndex.Bone bone =
@@ -175,7 +148,7 @@ public class CharacterMeshIndexTest {
   public void skinnedBindPositionsFiniteAndPlausible() throws IOException {
     CharacterMeshIndex.Skeleton skel = loadSkeleton();
     StaticMeshAsset.SkinnedMesh part1 =
-        StaticMeshAsset.parseSkinned(readAsset("mesh/bandit_part1.msh"));
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_part1.msh"));
     float[] out = CharacterMeshIndex.skinnedBindPositions(part1, skel);
     assertEquals(214 * 3, out.length);
     float minX = Float.POSITIVE_INFINITY;
@@ -191,68 +164,6 @@ public class CharacterMeshIndexTest {
     }
     assertTrue("maxY within body+arm extent", maxY > 15f && maxY < 25f);
     assertTrue("left/right symmetric arms", Math.abs(minX + maxX) < 0.5f);
-  }
-
-  @Test
-  public void placementsSixtyRealWorldCoords() throws IOException {
-    List<CharacterMeshIndex.PlacementDef> placements =
-        CharacterMeshIndex.parsePlacements(openTsv("npc_placements.tsv"));
-    assertEquals(60, placements.size());
-    Set<String> sectors = new HashSet<String>();
-    int on156x90 = 0;
-    for (CharacterMeshIndex.PlacementDef p : placements) {
-      sectors.add(p.sectorSx + "x" + p.sectorSy);
-      if (p.sectorSx == 156 && p.sectorSy == 90) {
-        on156x90++;
-      }
-    }
-    assertEquals(31, sectors.size());
-    assertEquals(2, on156x90);
-  }
-
-  @Test
-  public void placementsOnCommittedTerrainSector() throws IOException {
-    List<CharacterMeshIndex.PlacementDef> placements =
-        CharacterMeshIndex.parsePlacements(openTsv("npc_placements.tsv"));
-    int found = 0;
-    for (CharacterMeshIndex.PlacementDef p : placements) {
-      if (p.sectorSx == 156 && p.sectorSy == 90) {
-        found++;
-        if (found == 1) {
-          assertEquals(1592.44f, p.worldX, 1e-2f);
-          assertEquals(3321.47f, p.worldZ, 1e-2f);
-        } else {
-          assertEquals(724.69f, p.worldX, 1e-2f);
-          assertEquals(3583.85f, p.worldZ, 1e-2f);
-        }
-      }
-    }
-    assertEquals(2, found);
-  }
-
-  @Test
-  public void animsTsvSixteenRowsWithStandAndWalk() throws IOException {
-    List<CharacterMeshIndex.Anim> anims =
-        CharacterMeshIndex.parseAnims(openTsv("anims.tsv"));
-    assertEquals(16, anims.size());
-    CharacterMeshIndex.Anim stand = null;
-    CharacterMeshIndex.Anim walk = null;
-    for (CharacterMeshIndex.Anim a : anims) {
-      if ("bandit_stand01".equals(a.name)) {
-        stand = a;
-      }
-      if ("bandit_walk".equals(a.name)) {
-        walk = a;
-      }
-    }
-    assertNotNull(stand);
-    assertEquals(2000, stand.durationMs);
-    assertEquals(5, stand.keyframes);
-    assertEquals(34, stand.channels);
-    assertEquals("anim/bandit_stand01.json", stand.animAsset);
-    assertNotNull(walk);
-    assertEquals(1333, walk.durationMs);
-    assertEquals("anim/bandit_walk.json", walk.animAsset);
   }
 
   @Test

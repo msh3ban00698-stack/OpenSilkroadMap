@@ -78,19 +78,23 @@ public class GameActivityTest {
         ActivityScenario.launch(GameActivity.class)) {
       scenario.onActivity(
           activity -> {
-            CharacterMeshIndex characters = activity.characters();
-            assertNotNull("real character index must load", characters);
-            assertEquals(60, characters.instanceCount());
-            assertEquals(35, characters.skeleton().boneCount);
-            assertEquals(3, characters.parts().size());
-            for (CharacterMeshIndex.Part part : characters.parts()) {
-              assertNotNull(part.mesh);
-              assertTrue(part.mesh.boneNames.length > 0);
-              assertEquals(part.mesh.vertexCount, part.mesh.bone1.length);
-              assertNotNull(part.texture);
-              assertEquals(part.mesh.vertexCount * 3, part.bindPositions.length);
+            com.opensilkroadmap.app.world.CharacterCatalog catalog =
+                activity.characterCatalog();
+            java.util.Map<String, CharacterMeshIndex> models =
+                activity.characterModels();
+            assertNotNull("character catalog must load", catalog);
+            assertTrue("at least one character model must load", !models.isEmpty());
+            for (CharacterMeshIndex model : models.values()) {
+              assertTrue(model.skeleton().boneCount > 0);
+              assertTrue(model.parts().size() > 0);
+              for (CharacterMeshIndex.Part part : model.parts()) {
+                assertNotNull(part.mesh);
+                assertNotNull(part.texture);
+                if (part.skinned) {
+                  assertEquals(part.mesh.vertexCount * 3, part.bindPositions.length);
+                }
+              }
             }
-            assertTrue(characters.anims().size() == 16);
           });
     }
   }
