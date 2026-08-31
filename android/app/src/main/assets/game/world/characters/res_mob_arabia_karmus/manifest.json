@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_stand01",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_stand01.ban",
+   "channels": 103,
+   "duration_ms": 1666,
+   "keyframes": 51,
+   "name": "sabra_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_walk",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_walk.ban",
+   "channels": 103,
+   "duration_ms": 4000,
+   "keyframes": 166,
+   "name": "sabra_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_attack01",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_attack01.ban",
+   "channels": 103,
+   "duration_ms": 2000,
+   "keyframes": 61,
+   "name": "sabra_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_damage01",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_damage01.ban",
+   "channels": 103,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "sabra_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_die",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_die.ban",
+   "channels": 103,
+   "duration_ms": 4000,
+   "keyframes": 121,
+   "name": "sabra_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_attack02",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_attack02.ban",
+   "channels": 103,
+   "duration_ms": 3000,
+   "keyframes": 91,
+   "name": "sabra_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_run",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_run.ban",
+   "channels": 103,
+   "duration_ms": 1666,
+   "keyframes": 108,
+   "name": "sabra_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_attack03",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_attack03.ban",
+   "channels": 103,
+   "duration_ms": 3666,
+   "keyframes": 111,
+   "name": "sabra_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_attack04",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_attack04.ban",
+   "channels": 103,
+   "duration_ms": 4000,
+   "keyframes": 121,
+   "name": "sabra_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_die_rm.ban",
+   "channels": 103,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "sabra_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_down",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_down.ban",
+   "channels": 103,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "sabra_down"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_down_rm",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_down_rm.ban",
+   "channels": 103,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "sabra_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_down_damage",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_down_damage.ban",
+   "channels": 103,
+   "duration_ms": 600,
+   "keyframes": 19,
+   "name": "sabra_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_sabra_sabra_down_up",
+   "ban_path": "/prim/ani/mob/arabia/sabra/sabra_down_up.ban",
+   "channels": 103,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "sabra_down_up"
+  }
+ ],
+ "key": "res_mob_arabia_karmus",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/sabra_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/karmos_512.ddj",
+   "material": "sabra",
+   "msh": "prim_mesh_mob_arabia_sabra_part1",
+   "skin_records": 645,
+   "skinned": true,
+   "tcount": 594,
+   "tex": "prim_mtrl_mob_arabia_karmos_512",
+   "vcount": 645
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/sabra_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/karmos_512.ddj",
+   "material": "sabra",
+   "msh": "prim_mesh_mob_arabia_sabra_part2_part1",
+   "skin_records": 824,
+   "skinned": true,
+   "tcount": 810,
+   "tex": "prim_mtrl_mob_arabia_karmos_512",
+   "vcount": 824
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/sabra_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/arabia/karmos_512.ddj",
+   "material": "sabra",
+   "msh": "prim_mesh_mob_arabia_sabra_part2_part2_part1",
+   "skin_records": 199,
+   "skinned": true,
+   "tcount": 200,
+   "tex": "prim_mtrl_mob_arabia_karmos_512",
+   "vcount": 199
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/sabra_part2_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/karmos_512.ddj",
+   "material": "sabra",
+   "msh": "prim_mesh_mob_arabia_sabra_part2_part2_part2",
+   "skin_records": 211,
+   "skinned": true,
+   "tcount": 214,
+   "tex": "prim_mtrl_mob_arabia_karmos_512",
+   "vcount": 211
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_sabra",
+ "skeleton_path": "/prim/skel/mob/arabia/sabra.bsk"
+}

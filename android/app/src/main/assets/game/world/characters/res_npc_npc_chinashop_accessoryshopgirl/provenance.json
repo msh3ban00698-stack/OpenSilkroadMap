@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinashop_accessoryshopgirl_basic.ban",
+  "/prim/ani/npc/china/chinashop_accessoryshopgirl_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinashop_accessoryshopgirl.bmt",
+ "bsk": "/prim/skel/npc/china/chinashop_accessoryshopgirl.bsk",
+ "bsr": "/res/npc/npc/chinashop_accessoryshopgirl.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinashop_accessoryshopgirl_2s.bms",
+  "/prim/mesh/npc/china/chinashop_accessoryshopgirl_al_2s.bms",
+  "/prim/mesh/npc/china/chinashop_accessoryshopgirl_part1.bms",
+  "/prim/mesh/npc/china/chinashop_accessoryshopgirl_part2.bms"
+ ]
+}

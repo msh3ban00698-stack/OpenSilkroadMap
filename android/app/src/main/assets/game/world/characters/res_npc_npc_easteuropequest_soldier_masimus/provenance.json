@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_soldier_masimus.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_soldier_masimus.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Soldier_Masimus.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_2s_01.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_2s_02.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_arm.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_part2.bms"
+ ]
+}

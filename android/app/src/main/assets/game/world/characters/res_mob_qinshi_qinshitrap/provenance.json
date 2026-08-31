@@ -1,0 +1,11 @@
+{
+ "animations": [
+  "/prim/ani/mob/qinshi/qinshitrap.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/qinshi/qinshitrap.bmt",
+ "bsk": "/prim/skel/mob/qinshi/qinshitrap.bsk",
+ "bsr": "/res/mob/qinshi/QinshiTrap.bsr",
+ "meshes": [
+  "/prim/mesh/mob/qinshi/qinshitrap.bms"
+ ]
+}

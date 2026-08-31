@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_stand01",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_stand01.ban",
+   "channels": 52,
+   "duration_ms": 3333,
+   "keyframes": 47,
+   "name": "blackrobberarcher_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_stand02",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_stand02.ban",
+   "channels": 52,
+   "duration_ms": 3333,
+   "keyframes": 93,
+   "name": "blackrobberarcher_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_walk",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_walk.ban",
+   "channels": 52,
+   "duration_ms": 1333,
+   "keyframes": 22,
+   "name": "blackrobberarcher_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_run",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_run.ban",
+   "channels": 52,
+   "duration_ms": 800,
+   "keyframes": 14,
+   "name": "blackrobberarcher_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_attack01",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack01.ban",
+   "channels": 52,
+   "duration_ms": 3000,
+   "keyframes": 70,
+   "name": "blackrobberarcher_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_attack02",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack02.ban",
+   "channels": 52,
+   "duration_ms": 4166,
+   "keyframes": 74,
+   "name": "blackrobberarcher_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_die",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_die.ban",
+   "channels": 52,
+   "duration_ms": 3533,
+   "keyframes": 83,
+   "name": "blackrobberarcher_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_die_loop.ban",
+   "channels": 52,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "blackrobberarcher_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_down",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_down.ban",
+   "channels": 52,
+   "duration_ms": 966,
+   "keyframes": 23,
+   "name": "blackrobberarcher_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_downwait",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_downwait.ban",
+   "channels": 52,
+   "duration_ms": 1666,
+   "keyframes": 7,
+   "name": "blackrobberarcher_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_downdamage",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_downdamage.ban",
+   "channels": 52,
+   "duration_ms": 900,
+   "keyframes": 15,
+   "name": "blackrobberarcher_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_wakeup",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_wakeup.ban",
+   "channels": 52,
+   "duration_ms": 1400,
+   "keyframes": 31,
+   "name": "blackrobberarcher_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_help",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_help.ban",
+   "channels": 52,
+   "duration_ms": 2500,
+   "keyframes": 60,
+   "name": "blackrobberarcher_help"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_damage01",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_damage01.ban",
+   "channels": 12,
+   "duration_ms": 533,
+   "keyframes": 8,
+   "name": "blackrobberarcher_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_damage02",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_damage02.ban",
+   "channels": 52,
+   "duration_ms": 1100,
+   "keyframes": 22,
+   "name": "blackrobberarcher_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_blackrobberarcher_blackrobberarcher_attack03",
+   "ban_path": "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack03.ban",
+   "channels": 52,
+   "duration_ms": 4166,
+   "keyframes": 95,
+   "name": "blackrobberarcher_attack03"
+  }
+ ],
+ "key": "res_mob_sd_darkscout",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/darkscout_weapon.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/sd/darkscout.ddj",
+   "material": "darkscout",
+   "msh": "prim_mesh_mob_sd_darkscout_weapon",
+   "skin_records": 44,
+   "skinned": true,
+   "tcount": 76,
+   "tex": "prim_mtrl_mob_sd_darkscout",
+   "vcount": 44
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/darkscout_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/darkscout.ddj",
+   "material": "darkscout",
+   "msh": "prim_mesh_mob_sd_darkscout_part1",
+   "skin_records": 546,
+   "skinned": true,
+   "tcount": 772,
+   "tex": "prim_mtrl_mob_sd_darkscout",
+   "vcount": 546
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/darkscout_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/darkscout.ddj",
+   "material": "darkscout",
+   "msh": "prim_mesh_mob_sd_darkscout_part2",
+   "skin_records": 445,
+   "skinned": true,
+   "tcount": 594,
+   "tex": "prim_mtrl_mob_sd_darkscout",
+   "vcount": 445
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_blackrobberarcher",
+ "skeleton_path": "/prim/skel/mob/oasis/blackrobberarcher.bsk"
+}

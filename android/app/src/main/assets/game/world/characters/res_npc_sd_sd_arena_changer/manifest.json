@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_arena_changer_stand01",
+   "ban_path": "/prim/ani/npc/sd/sd_arena_changer_stand01.ban",
+   "channels": 34,
+   "duration_ms": 4000,
+   "keyframes": 10,
+   "name": "sd_arena_changer_stand01"
+  }
+ ],
+ "key": "res_npc_sd_sd_arena_changer",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_arena_changer_box.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_arena_changer_box.ddj",
+   "material": "SD_arena_changer_box",
+   "msh": "prim_mesh_npc_sd_sd_arena_changer_box",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 188,
+   "tex": "prim_mtrl_npc_sd_sd_arena_changer_box",
+   "vcount": 234
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_arena_changer_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_arena_changer.ddj",
+   "material": "SD_arena_changer",
+   "msh": "prim_mesh_npc_sd_sd_arena_changer_part1",
+   "skin_records": 563,
+   "skinned": true,
+   "tcount": 737,
+   "tex": "prim_mtrl_npc_sd_sd_arena_changer",
+   "vcount": 563
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_arena_changer_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_arena_changer.ddj",
+   "material": "SD_arena_changer",
+   "msh": "prim_mesh_npc_sd_sd_arena_changer_part2",
+   "skin_records": 663,
+   "skinned": true,
+   "tcount": 913,
+   "tex": "prim_mtrl_npc_sd_sd_arena_changer",
+   "vcount": 663
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_arena_changer",
+ "skeleton_path": "/prim/skel/npc/sd/sd_arena_changer.bsk"
+}

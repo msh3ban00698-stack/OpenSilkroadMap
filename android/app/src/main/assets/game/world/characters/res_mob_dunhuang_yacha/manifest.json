@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_die",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_die.ban",
+   "channels": 45,
+   "duration_ms": 4000,
+   "keyframes": 105,
+   "name": "yacha_die"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_stand01",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_stand01.ban",
+   "channels": 45,
+   "duration_ms": 2666,
+   "keyframes": 12,
+   "name": "yacha_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_stand02",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_stand02.ban",
+   "channels": 45,
+   "duration_ms": 2666,
+   "keyframes": 25,
+   "name": "yacha_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_run",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_run.ban",
+   "channels": 45,
+   "duration_ms": 1066,
+   "keyframes": 19,
+   "name": "yacha_run"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_damage02",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_damage02.ban",
+   "channels": 45,
+   "duration_ms": 1666,
+   "keyframes": 34,
+   "name": "yacha_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_down",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_down.ban",
+   "channels": 45,
+   "duration_ms": 833,
+   "keyframes": 22,
+   "name": "yacha_down"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_down_rm",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_down_rm.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 12,
+   "name": "yacha_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_down_damage",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_down_damage.ban",
+   "channels": 45,
+   "duration_ms": 500,
+   "keyframes": 13,
+   "name": "yacha_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_down_up",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_down_up.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 30,
+   "name": "yacha_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_walk",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_walk.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "yacha_walk"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_damage01",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_damage01.ban",
+   "channels": 10,
+   "duration_ms": 433,
+   "keyframes": 5,
+   "name": "yacha_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_attack01",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_attack01.ban",
+   "channels": 45,
+   "duration_ms": 4000,
+   "keyframes": 103,
+   "name": "yacha_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_yacha_yacha_attack02",
+   "ban_path": "/prim/ani/mob/wchina/yacha/yacha_attack02.ban",
+   "channels": 45,
+   "duration_ms": 3600,
+   "keyframes": 120,
+   "name": "yacha_attack02"
+  }
+ ],
+ "key": "res_mob_dunhuang_yacha",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/wchina/yacha02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/wchina/yacha.ddj",
+   "material": "yacha",
+   "msh": "prim_mesh_mob_wchina_yacha02",
+   "skin_records": 154,
+   "skinned": true,
+   "tcount": 136,
+   "tex": "prim_mtrl_mob_wchina_yacha",
+   "vcount": 154
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/yacha03.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/mob/wchina/yacha.ddj",
+   "material": "yacha_2side",
+   "msh": "prim_mesh_mob_wchina_yacha03",
+   "skin_records": 50,
+   "skinned": true,
+   "tcount": 48,
+   "tex": "prim_mtrl_mob_wchina_yacha",
+   "vcount": 50
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/yacha01.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/mob/wchina/yacha.ddj",
+   "material": "yacha_2side",
+   "msh": "prim_mesh_mob_wchina_yacha01",
+   "skin_records": 91,
+   "skinned": true,
+   "tcount": 114,
+   "tex": "prim_mtrl_mob_wchina_yacha",
+   "vcount": 91
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/yacha_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/wchina/yacha.ddj",
+   "material": "yacha",
+   "msh": "prim_mesh_mob_wchina_yacha_part1",
+   "skin_records": 507,
+   "skinned": true,
+   "tcount": 688,
+   "tex": "prim_mtrl_mob_wchina_yacha",
+   "vcount": 507
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/yacha_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/wchina/yacha.ddj",
+   "material": "yacha",
+   "msh": "prim_mesh_mob_wchina_yacha_part2",
+   "skin_records": 400,
+   "skinned": true,
+   "tcount": 467,
+   "tex": "prim_mtrl_mob_wchina_yacha",
+   "vcount": 400
+  }
+ ],
+ "skeleton": "prim_skel_mob_wchina_yacha",
+ "skeleton_path": "/prim/skel/mob/wchina/yacha.bsk"
+}

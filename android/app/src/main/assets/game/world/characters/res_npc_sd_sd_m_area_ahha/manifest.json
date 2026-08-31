@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_m_area_ahha_stand",
+   "ban_path": "/prim/ani/npc/sd/sd_m_area_ahha_stand.ban",
+   "channels": 34,
+   "duration_ms": 2666,
+   "keyframes": 8,
+   "name": "sd_m_area_ahha_stand"
+  }
+ ],
+ "key": "res_npc_sd_sd_m_area_ahha",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_ahha_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_ahha.ddj",
+   "material": "SD_m_area_ahha",
+   "msh": "prim_mesh_npc_sd_sd_m_area_ahha_part1",
+   "skin_records": 566,
+   "skinned": true,
+   "tcount": 734,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_ahha",
+   "vcount": 566
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_ahha_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_ahha.ddj",
+   "material": "SD_m_area_ahha",
+   "msh": "prim_mesh_npc_sd_sd_m_area_ahha_part2",
+   "skin_records": 548,
+   "skinned": true,
+   "tcount": 718,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_ahha",
+   "vcount": 548
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_ahha_rol.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_ahha_rol.ddj",
+   "material": "SD_m_area_ahha_rol",
+   "msh": "prim_mesh_npc_sd_sd_m_area_ahha_rol",
+   "skin_records": 160,
+   "skinned": true,
+   "tcount": 167,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_ahha_rol",
+   "vcount": 160
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_m_area_ahha",
+ "skeleton_path": "/prim/skel/npc/sd/sd_m_area_ahha.bsk"
+}

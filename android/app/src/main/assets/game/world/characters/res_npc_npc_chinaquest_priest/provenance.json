@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaquest_priest_basic.ban",
+  "/prim/ani/npc/china/chinaquest_priest_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinaquest_priest.bmt",
+ "bsk": "/prim/skel/npc/china/chinaquest_priest.bsk",
+ "bsr": "/res/npc/npc/chinaquest_priest.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinaquest_priest_al.bms",
+  "/prim/mesh/npc/china/chinaquest_priest_part1.bms",
+  "/prim/mesh/npc/china/chinaquest_priest_part2.bms"
+ ]
+}

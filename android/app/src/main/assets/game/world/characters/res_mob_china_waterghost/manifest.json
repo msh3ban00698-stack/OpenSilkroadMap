@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_stand01",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_stand01.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 31,
+   "name": "waterghost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_walk",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_walk.ban",
+   "channels": 35,
+   "duration_ms": 1333,
+   "keyframes": 28,
+   "name": "waterghost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_run",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_run.ban",
+   "channels": 35,
+   "duration_ms": 666,
+   "keyframes": 19,
+   "name": "waterghost_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_attack01",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_attack01.ban",
+   "channels": 35,
+   "duration_ms": 1666,
+   "keyframes": 38,
+   "name": "waterghost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_attack02",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_attack02.ban",
+   "channels": 35,
+   "duration_ms": 3666,
+   "keyframes": 61,
+   "name": "waterghost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_damage01",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_damage01.ban",
+   "channels": 6,
+   "duration_ms": 400,
+   "keyframes": 10,
+   "name": "waterghost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_damage02",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_damage02.ban",
+   "channels": 35,
+   "duration_ms": 400,
+   "keyframes": 10,
+   "name": "waterghost_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_die",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_die.ban",
+   "channels": 35,
+   "duration_ms": 2000,
+   "keyframes": 17,
+   "name": "waterghost_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_die_loop",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_die_loop.ban",
+   "channels": 35,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "waterghost_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_stand02",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_stand02.ban",
+   "channels": 35,
+   "duration_ms": 2000,
+   "keyframes": 34,
+   "name": "waterghost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_down",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_down.ban",
+   "channels": 35,
+   "duration_ms": 1000,
+   "keyframes": 27,
+   "name": "waterghost_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_downwait",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_downwait.ban",
+   "channels": 35,
+   "duration_ms": 1666,
+   "keyframes": 51,
+   "name": "waterghost_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_downdamage",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_downdamage.ban",
+   "channels": 35,
+   "duration_ms": 533,
+   "keyframes": 19,
+   "name": "waterghost_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_wakeup",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_wakeup.ban",
+   "channels": 35,
+   "duration_ms": 1166,
+   "keyframes": 36,
+   "name": "waterghost_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_downdie",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_downdie.ban",
+   "channels": 35,
+   "duration_ms": 233,
+   "keyframes": 2,
+   "name": "waterghost_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_china_waterghost_waterghost_attack03",
+   "ban_path": "/prim/ani/mob/china/waterghost/waterghost_attack03.ban",
+   "channels": 35,
+   "duration_ms": 1866,
+   "keyframes": 24,
+   "name": "waterghost_attack03"
+  }
+ ],
+ "key": "res_mob_china_waterghost",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/waterghost_bottle.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/china/waterghost_bottle.ddj",
+   "material": "WaterGhost_bottle",
+   "msh": "prim_mesh_mob_china_waterghost_bottle",
+   "skin_records": 64,
+   "skinned": true,
+   "tcount": 102,
+   "tex": "prim_mtrl_mob_china_waterghost_bottle",
+   "vcount": 64
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/waterghost_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/china/waterghost.ddj",
+   "material": "waterghost",
+   "msh": "prim_mesh_mob_china_waterghost_part1",
+   "skin_records": 180,
+   "skinned": true,
+   "tcount": 236,
+   "tex": "prim_mtrl_mob_china_waterghost",
+   "vcount": 180
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/waterghost_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/china/waterghost.ddj",
+   "material": "waterghost",
+   "msh": "prim_mesh_mob_china_waterghost_part2",
+   "skin_records": 523,
+   "skinned": true,
+   "tcount": 706,
+   "tex": "prim_mtrl_mob_china_waterghost",
+   "vcount": 523
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_waterghost",
+ "skeleton_path": "/prim/skel/mob/china/waterghost.bsk"
+}

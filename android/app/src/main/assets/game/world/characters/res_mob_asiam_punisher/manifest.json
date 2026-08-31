@@ -1,0 +1,181 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_stand01",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_stand01.ban",
+   "channels": 68,
+   "duration_ms": 2666,
+   "keyframes": 24,
+   "name": "punisher_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_walk",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_walk.ban",
+   "channels": 68,
+   "duration_ms": 1333,
+   "keyframes": 13,
+   "name": "punisher_walk"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_run",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_run.ban",
+   "channels": 68,
+   "duration_ms": 666,
+   "keyframes": 11,
+   "name": "punisher_run"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_attack01",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_attack01.ban",
+   "channels": 68,
+   "duration_ms": 2066,
+   "keyframes": 61,
+   "name": "punisher_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_attack02",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_attack02.ban",
+   "channels": 72,
+   "duration_ms": 2700,
+   "keyframes": 67,
+   "name": "punisher_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_attack03",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_attack03.ban",
+   "channels": 72,
+   "duration_ms": 2966,
+   "keyframes": 70,
+   "name": "punisher_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_damage01",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_damage01.ban",
+   "channels": 7,
+   "duration_ms": 400,
+   "keyframes": 5,
+   "name": "punisher_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_die_rm",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_die_rm.ban",
+   "channels": 72,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "punisher_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_die",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_die.ban",
+   "channels": 72,
+   "duration_ms": 1866,
+   "keyframes": 56,
+   "name": "punisher_die"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_down",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_down.ban",
+   "channels": 68,
+   "duration_ms": 1066,
+   "keyframes": 24,
+   "name": "punisher_down"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_downrm",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_downrm.ban",
+   "channels": 68,
+   "duration_ms": 2666,
+   "keyframes": 16,
+   "name": "punisher_downrm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_downdamage",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_downdamage.ban",
+   "channels": 68,
+   "duration_ms": 333,
+   "keyframes": 10,
+   "name": "punisher_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_downup",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_downup.ban",
+   "channels": 68,
+   "duration_ms": 1433,
+   "keyframes": 31,
+   "name": "punisher_downup"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_punisher_punisher_downdie",
+   "ban_path": "/prim/ani/mob/asiam/punisher/punisher_downdie.ban",
+   "channels": 68,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "punisher_downdie"
+  }
+ ],
+ "key": "res_mob_asiam_punisher",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/asiam/punisher_2side.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/asiam/punisher.ddj",
+   "material": "punisher_2side",
+   "msh": "prim_mesh_mob_asiam_punisher_2side",
+   "skin_records": 34,
+   "skinned": true,
+   "tcount": 32,
+   "tex": "prim_mtrl_mob_asiam_punisher",
+   "vcount": 34
+  },
+  {
+   "bms_path": "/prim/mesh/mob/asiam/punisher_axe.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/asiam/punisher.ddj",
+   "material": "punisher",
+   "msh": "prim_mesh_mob_asiam_punisher_axe",
+   "skin_records": 250,
+   "skinned": true,
+   "tcount": 284,
+   "tex": "prim_mtrl_mob_asiam_punisher",
+   "vcount": 250
+  },
+  {
+   "bms_path": "/prim/mesh/mob/asiam/punisher_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/asiam/punisher.ddj",
+   "material": "punisher",
+   "msh": "prim_mesh_mob_asiam_punisher_part1",
+   "skin_records": 522,
+   "skinned": true,
+   "tcount": 685,
+   "tex": "prim_mtrl_mob_asiam_punisher",
+   "vcount": 522
+  },
+  {
+   "bms_path": "/prim/mesh/mob/asiam/punisher_part2_part1.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/mob/asiam/punisher.ddj",
+   "material": "punisher",
+   "msh": "prim_mesh_mob_asiam_punisher_part2_part1",
+   "skin_records": 126,
+   "skinned": true,
+   "tcount": 145,
+   "tex": "prim_mtrl_mob_asiam_punisher",
+   "vcount": 126
+  },
+  {
+   "bms_path": "/prim/mesh/mob/asiam/punisher_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/asiam/punisher.ddj",
+   "material": "punisher",
+   "msh": "prim_mesh_mob_asiam_punisher_part2_part2",
+   "skin_records": 515,
+   "skinned": true,
+   "tcount": 758,
+   "tex": "prim_mtrl_mob_asiam_punisher",
+   "vcount": 515
+  }
+ ],
+ "skeleton": "prim_skel_mob_asiam_punisher",
+ "skeleton_path": "/prim/skel/mob/asiam/punisher.bsk"
+}

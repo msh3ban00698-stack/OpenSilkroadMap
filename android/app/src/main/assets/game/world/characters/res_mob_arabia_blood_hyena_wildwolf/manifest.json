@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_stand01",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_stand01.ban",
+   "channels": 42,
+   "duration_ms": 4200,
+   "keyframes": 87,
+   "name": "hyena_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_walk",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_walk.ban",
+   "channels": 42,
+   "duration_ms": 1333,
+   "keyframes": 31,
+   "name": "hyena_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_run",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_run.ban",
+   "channels": 42,
+   "duration_ms": 666,
+   "keyframes": 18,
+   "name": "hyena_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_attack01",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_attack01.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 42,
+   "name": "hyena_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_attack02",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_attack02.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 38,
+   "name": "hyena_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_attack03",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_attack03.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 44,
+   "name": "hyena_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_damage",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_damage.ban",
+   "channels": 14,
+   "duration_ms": 500,
+   "keyframes": 6,
+   "name": "hyena_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_die",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_die.ban",
+   "channels": 42,
+   "duration_ms": 1333,
+   "keyframes": 36,
+   "name": "hyena_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_die_rm",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_die_rm.ban",
+   "channels": 42,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "hyena_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_down",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_down.ban",
+   "channels": 42,
+   "duration_ms": 1000,
+   "keyframes": 24,
+   "name": "hyena_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_down_rm",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_down_rm.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 15,
+   "name": "hyena_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_down_damage",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_down_damage.ban",
+   "channels": 42,
+   "duration_ms": 1000,
+   "keyframes": 19,
+   "name": "hyena_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_down_up",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_down_up.ban",
+   "channels": 42,
+   "duration_ms": 1000,
+   "keyframes": 23,
+   "name": "hyena_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_down_die",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_down_die.ban",
+   "channels": 42,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "hyena_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_hyena_hyena_attack05",
+   "ban_path": "/prim/ani/mob/sd/hyena/hyena_attack05.ban",
+   "channels": 42,
+   "duration_ms": 3000,
+   "keyframes": 55,
+   "name": "hyena_attack05"
+  }
+ ],
+ "key": "res_mob_arabia_blood_hyena_wildwolf",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/hyena_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/hyena.ddj",
+   "material": "hyena",
+   "msh": "prim_mesh_mob_sd_hyena_part1",
+   "skin_records": 559,
+   "skinned": true,
+   "tcount": 736,
+   "tex": "prim_mtrl_mob_sd_hyena",
+   "vcount": 559
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/hyena_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/hyena.ddj",
+   "material": "hyena",
+   "msh": "prim_mesh_mob_sd_hyena_part2",
+   "skin_records": 990,
+   "skinned": true,
+   "tcount": 1287,
+   "tex": "prim_mtrl_mob_sd_hyena",
+   "vcount": 990
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_hyena",
+ "skeleton_path": "/prim/skel/mob/sd/hyena.bsk"
+}

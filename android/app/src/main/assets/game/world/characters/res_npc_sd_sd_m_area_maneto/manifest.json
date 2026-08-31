@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_m_area_maneto_stand01",
+   "ban_path": "/prim/ani/npc/sd/sd_m_area_maneto_stand01.ban",
+   "channels": 46,
+   "duration_ms": 5066,
+   "keyframes": 46,
+   "name": "sd_m_area_maneto_stand01"
+  }
+ ],
+ "key": "res_npc_sd_sd_m_area_maneto",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_maneto_01.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_maneto.ddj",
+   "material": "SD_m_area_maneto_2al",
+   "msh": "prim_mesh_npc_sd_sd_m_area_maneto_01",
+   "skin_records": 88,
+   "skinned": true,
+   "tcount": 88,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_maneto",
+   "vcount": 88
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_maneto_2al.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_maneto.ddj",
+   "material": "SD_m_area_maneto_2al",
+   "msh": "prim_mesh_npc_sd_sd_m_area_maneto_2al",
+   "skin_records": 209,
+   "skinned": true,
+   "tcount": 240,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_maneto",
+   "vcount": 209
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_maneto_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_maneto.ddj",
+   "material": "SD_m_area_maneto",
+   "msh": "prim_mesh_npc_sd_sd_m_area_maneto_part1",
+   "skin_records": 535,
+   "skinned": true,
+   "tcount": 674,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_maneto",
+   "vcount": 535
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_maneto_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_maneto.ddj",
+   "material": "SD_m_area_maneto",
+   "msh": "prim_mesh_npc_sd_sd_m_area_maneto_part2_part1",
+   "skin_records": 518,
+   "skinned": true,
+   "tcount": 644,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_maneto",
+   "vcount": 518
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_maneto_part2_part2.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_maneto.ddj",
+   "material": "SD_m_area_maneto",
+   "msh": "prim_mesh_npc_sd_sd_m_area_maneto_part2_part2",
+   "skin_records": 370,
+   "skinned": true,
+   "tcount": 474,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_maneto",
+   "vcount": 370
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_m_area_maneto",
+ "skeleton_path": "/prim/skel/npc/sd/sd_m_area_maneto.bsk"
+}

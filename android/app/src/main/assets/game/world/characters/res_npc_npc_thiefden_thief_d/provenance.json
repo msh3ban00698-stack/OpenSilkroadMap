@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaquest_merchant_basic.ban",
+  "/prim/ani/npc/china/chinaquest_merchant_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/thiefden_thief_d.bmt",
+ "bsk": "/prim/skel/npc/china/thiefden_thief_d.bsk",
+ "bsr": "/res/npc/npc/thiefden_thief_d.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/thiefden_thief_d_2s.bms",
+  "/prim/mesh/npc/china/thiefden_thief_d_al.bms",
+  "/prim/mesh/npc/china/thiefden_thief_d_part1.bms",
+  "/prim/mesh/npc/china/thiefden_thief_d_part2.bms"
+ ]
+}

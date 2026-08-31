@@ -1,0 +1,26 @@
+{
+ "animations": [
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_stand02.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_walk.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_run.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack01.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack05.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack06.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack08.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_die.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_die_rm.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack02.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_stand01.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack03.ban",
+  "/prim/ani/mob/arabia/giant_demon/giant_demon_attack04.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/arabia/giant_demon.bmt",
+ "bsk": "/prim/skel/mob/arabia/giant_demon.bsk",
+ "bsr": "/res/mob/arabia/giant_demon.bsr",
+ "meshes": [
+  "/prim/mesh/mob/arabia/giant_demon_01.bms",
+  "/prim/mesh/mob/arabia/giant_demon_part1.bms",
+  "/prim/mesh/mob/arabia/giant_demon_part2_part1.bms",
+  "/prim/mesh/mob/arabia/giant_demon_part2_part2.bms"
+ ]
+}

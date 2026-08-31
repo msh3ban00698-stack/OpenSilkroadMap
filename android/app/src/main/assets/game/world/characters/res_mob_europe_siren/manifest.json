@@ -1,0 +1,161 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_stand01",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_stand01.ban",
+   "channels": 34,
+   "duration_ms": 3333,
+   "keyframes": 8,
+   "name": "siren_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_walk",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_walk.ban",
+   "channels": 34,
+   "duration_ms": 2666,
+   "keyframes": 8,
+   "name": "siren_walk"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_attack01",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_attack01.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "siren_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_attack02",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_attack02.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 17,
+   "name": "siren_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_attack03",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_attack03.ban",
+   "channels": 34,
+   "duration_ms": 3333,
+   "keyframes": 28,
+   "name": "siren_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_damage01",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_damage01.ban",
+   "channels": 2,
+   "duration_ms": 1500,
+   "keyframes": 5,
+   "name": "siren_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_down",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_down.ban",
+   "channels": 34,
+   "duration_ms": 1500,
+   "keyframes": 20,
+   "name": "siren_down"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_down_rm",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_down_rm.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "siren_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_down_damage",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_down_damage.ban",
+   "channels": 34,
+   "duration_ms": 500,
+   "keyframes": 6,
+   "name": "siren_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_down_up",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_down_up.ban",
+   "channels": 34,
+   "duration_ms": 833,
+   "keyframes": 7,
+   "name": "siren_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_down_die",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_down_die.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "siren_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_die",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_die.ban",
+   "channels": 34,
+   "duration_ms": 1500,
+   "keyframes": 20,
+   "name": "siren_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_siren_siren_die_rm",
+   "ban_path": "/prim/ani/mob/europe/siren/siren_die_rm.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "siren_die_rm"
+  }
+ ],
+ "key": "res_mob_europe_siren",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/europe/siren01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/europe/siren.ddj",
+   "material": "siren",
+   "msh": "prim_mesh_mob_europe_siren01",
+   "skin_records": 204,
+   "skinned": true,
+   "tcount": 196,
+   "tex": "prim_mtrl_mob_europe_siren",
+   "vcount": 204
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/siren02.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/mob/europe/siren.ddj",
+   "material": "siren_2side",
+   "msh": "prim_mesh_mob_europe_siren02",
+   "skin_records": 48,
+   "skinned": true,
+   "tcount": 39,
+   "tex": "prim_mtrl_mob_europe_siren",
+   "vcount": 48
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/siren_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/europe/siren.ddj",
+   "material": "siren",
+   "msh": "prim_mesh_mob_europe_siren_part1",
+   "skin_records": 472,
+   "skinned": true,
+   "tcount": 648,
+   "tex": "prim_mtrl_mob_europe_siren",
+   "vcount": 472
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/siren_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/europe/siren.ddj",
+   "material": "siren",
+   "msh": "prim_mesh_mob_europe_siren_part2",
+   "skin_records": 733,
+   "skinned": true,
+   "tcount": 625,
+   "tex": "prim_mtrl_mob_europe_siren",
+   "vcount": 733
+  }
+ ],
+ "skeleton": "prim_skel_mob_europe_siren",
+ "skeleton_path": "/prim/skel/mob/europe/siren.bsk"
+}

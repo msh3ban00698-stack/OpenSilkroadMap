@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_guild_agent.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_guild_agent.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_guild_agent.bsk",
+ "bsr": "/res/npc/sd/sd_guild_agent.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_guild_agent_part1.bms",
+  "/prim/mesh/npc/sd/sd_guild_agent_part2.bms"
+ ]
+}

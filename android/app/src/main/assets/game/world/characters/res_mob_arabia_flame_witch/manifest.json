@@ -1,0 +1,177 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_stand01",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_stand01.ban",
+   "channels": 119,
+   "duration_ms": 3000,
+   "keyframes": 25,
+   "name": "flame_witch_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_walk",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_walk.ban",
+   "channels": 119,
+   "duration_ms": 2333,
+   "keyframes": 25,
+   "name": "flame_witch_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_run",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_run.ban",
+   "channels": 119,
+   "duration_ms": 1833,
+   "keyframes": 23,
+   "name": "flame_witch_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_attack1",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_attack1.ban",
+   "channels": 119,
+   "duration_ms": 3633,
+   "keyframes": 75,
+   "name": "flame_witch_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_attack2",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_attack2.ban",
+   "channels": 119,
+   "duration_ms": 3233,
+   "keyframes": 45,
+   "name": "flame_witch_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_attack3",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_attack3.ban",
+   "channels": 119,
+   "duration_ms": 3500,
+   "keyframes": 60,
+   "name": "flame_witch_attack3"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_damege1",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_damege1.ban",
+   "channels": 119,
+   "duration_ms": 333,
+   "keyframes": 5,
+   "name": "flame_witch_damege1"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_die",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_die.ban",
+   "channels": 119,
+   "duration_ms": 3466,
+   "keyframes": 66,
+   "name": "flame_witch_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_witch_flame_witch_die_rm",
+   "ban_path": "/prim/ani/mob/god/flame_witch/flame_witch_die_rm.ban",
+   "channels": 119,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "flame_witch_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_witch_flame_witch_attack04",
+   "ban_path": "/prim/ani/mob/arabia/flame_witch/flame_witch_attack04.ban",
+   "channels": 119,
+   "duration_ms": 2500,
+   "keyframes": 51,
+   "name": "flame_witch_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_witch_flame_witch_attack05",
+   "ban_path": "/prim/ani/mob/arabia/flame_witch/flame_witch_attack05.ban",
+   "channels": 119,
+   "duration_ms": 3000,
+   "keyframes": 59,
+   "name": "flame_witch_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_charm_witch_charm_witch_attack04",
+   "ban_path": "/prim/ani/mob/jupiter/charm_witch/charm_witch_attack04.ban",
+   "channels": 119,
+   "duration_ms": 3333,
+   "keyframes": 75,
+   "name": "charm_witch_attack04"
+  }
+ ],
+ "key": "res_mob_arabia_flame_witch",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch_part1",
+   "skin_records": 443,
+   "skinned": true,
+   "tcount": 574,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 443
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch_part2_part1",
+   "skin_records": 417,
+   "skinned": true,
+   "tcount": 595,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 417
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch_part2_part2_part1",
+   "skin_records": 406,
+   "skinned": true,
+   "tcount": 576,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 406
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch_part2_part2_part2.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch_part2_part2_part2",
+   "skin_records": 154,
+   "skinned": true,
+   "tcount": 189,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 154
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch01_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch01_part1",
+   "skin_records": 413,
+   "skinned": true,
+   "tcount": 504,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 413
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_witch01_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_witch.ddj",
+   "material": "flame_witch",
+   "msh": "prim_mesh_mob_god_flame_witch01_part2",
+   "skin_records": 413,
+   "skinned": true,
+   "tcount": 504,
+   "tex": "prim_mtrl_mob_arabia_flame_witch",
+   "vcount": 413
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_flame_witch",
+ "skeleton_path": "/prim/skel/mob/god/flame_witch.bsk"
+}

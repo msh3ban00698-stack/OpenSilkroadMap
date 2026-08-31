@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_guild_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/arabia_guild.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_guild.bsk",
+ "bsr": "/res/npc/npc/arabia_guild.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_guild_2al.bms",
+  "/prim/mesh/npc/sd/sd_m_area_guild_book.bms",
+  "/prim/mesh/npc/sd/sd_m_area_guild_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_guild_part2.bms"
+ ]
+}

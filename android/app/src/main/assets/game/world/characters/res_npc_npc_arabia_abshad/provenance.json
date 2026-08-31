@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_abshad_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_abshad.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_abshad.bsk",
+ "bsr": "/res/npc/npc/arabia_abshad.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_abshad_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_abshad_part2.bms"
+ ]
+}

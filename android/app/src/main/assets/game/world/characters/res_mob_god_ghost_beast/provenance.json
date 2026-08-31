@@ -1,0 +1,22 @@
+{
+ "animations": [
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_stand01.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_damage.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_walk.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_run.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_attack01.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_attack02.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_attack03.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_die.ban",
+  "/prim/ani/mob/god/ghost_beast/ghost_beast_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/god/ghost_beast.bmt",
+ "bsk": "/prim/skel/mob/god/ghost_beast.bsk",
+ "bsr": "/res/mob/god/ghost_beast.bsr",
+ "meshes": [
+  "/prim/mesh/mob/god/ghost_beast_part1.bms",
+  "/prim/mesh/mob/god/ghost_beast_part2_part1.bms",
+  "/prim/mesh/mob/god/ghost_beast_part2_part2_part1.bms",
+  "/prim/mesh/mob/god/ghost_beast_part2_part2_part2.bms"
+ ]
+}

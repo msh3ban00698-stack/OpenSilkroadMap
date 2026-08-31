@@ -1,0 +1,19 @@
+{
+ "animations": [
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand01.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand02.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand03.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand04.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_walk.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_attack01.ban",
+  "/prim/ani/npc/qinshi/chinaetc_qinshiquest_run.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/qinshi/chinaetc_qinshiquest.bmt",
+ "bsk": "/prim/skel/npc/qinshi/chinaetc_qinshiquest.bsk",
+ "bsr": "/res/npc/npc/Chinaetc_QinshiQuest.bsr",
+ "meshes": [
+  "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_al.bms",
+  "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_part1.bms",
+  "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_part2.bms"
+ ]
+}

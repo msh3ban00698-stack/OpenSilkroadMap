@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_khaled_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_khaled.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_khaled.bsk",
+ "bsr": "/res/npc/npc/arabia_khaled.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_khaled_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_khaled_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_khaled_part2_part2.bms"
+ ]
+}

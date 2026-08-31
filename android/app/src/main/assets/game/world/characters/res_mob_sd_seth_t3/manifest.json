@@ -1,0 +1,273 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_stand01",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_stand01.ban",
+   "channels": 120,
+   "duration_ms": 2666,
+   "keyframes": 22,
+   "name": "seth_t3_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack12",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack12.ban",
+   "channels": 120,
+   "duration_ms": 3333,
+   "keyframes": 35,
+   "name": "seth_t3_attack12"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack15",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack15.ban",
+   "channels": 120,
+   "duration_ms": 2166,
+   "keyframes": 29,
+   "name": "seth_t3_attack15"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack16",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack16.ban",
+   "channels": 120,
+   "duration_ms": 5000,
+   "keyframes": 39,
+   "name": "seth_t3_attack16"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_die",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_die.ban",
+   "channels": 120,
+   "duration_ms": 6933,
+   "keyframes": 80,
+   "name": "seth_t3_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_die_rm",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_die_rm.ban",
+   "channels": 120,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "seth_t3_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack10_shot",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack10_shot.ban",
+   "channels": 128,
+   "duration_ms": 2333,
+   "keyframes": 24,
+   "name": "seth_t3_attack10_shot"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack10_ready",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack10_ready.ban",
+   "channels": 128,
+   "duration_ms": 3000,
+   "keyframes": 57,
+   "name": "seth_t3_attack10_ready"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack13_ready",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack13_ready.ban",
+   "channels": 120,
+   "duration_ms": 2000,
+   "keyframes": 20,
+   "name": "seth_t3_attack13_ready"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack10_wait",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack10_wait.ban",
+   "channels": 128,
+   "duration_ms": 1000,
+   "keyframes": 9,
+   "name": "seth_t3_attack10_wait"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack14_ready",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack14_ready.ban",
+   "channels": 120,
+   "duration_ms": 2000,
+   "keyframes": 13,
+   "name": "seth_t3_attack14_ready"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack13_wait",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack13_wait.ban",
+   "channels": 120,
+   "duration_ms": 1000,
+   "keyframes": 8,
+   "name": "seth_t3_attack13_wait"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack14_wait",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack14_wait.ban",
+   "channels": 120,
+   "duration_ms": 1000,
+   "keyframes": 7,
+   "name": "seth_t3_attack14_wait"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack13_shot",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack13_shot.ban",
+   "channels": 120,
+   "duration_ms": 3000,
+   "keyframes": 31,
+   "name": "seth_t3_attack13_shot"
+  },
+  {
+   "anim": "prim_ani_mob_sd_seth_seth_t3_attack14_shot",
+   "ban_path": "/prim/ani/mob/sd/seth/seth_t3_attack14_shot.ban",
+   "channels": 120,
+   "duration_ms": 1866,
+   "keyframes": 16,
+   "name": "seth_t3_attack14_shot"
+  }
+ ],
+ "key": "res_mob_sd_seth_t3",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_02.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_02.ddj",
+   "material": "seth_02",
+   "msh": "prim_mesh_mob_sd_seth_t3_02",
+   "skin_records": 1320,
+   "skinned": true,
+   "tcount": 1696,
+   "tex": "prim_mtrl_mob_sd_seth_02",
+   "vcount": 1320
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_02.ddj",
+   "material": "seth_02",
+   "msh": "prim_mesh_mob_sd_seth_t3_03",
+   "skin_records": 20,
+   "skinned": true,
+   "tcount": 16,
+   "tex": "prim_mtrl_mob_sd_seth_02",
+   "vcount": 20
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_04.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_02.ddj",
+   "material": "seth_02",
+   "msh": "prim_mesh_mob_sd_seth_t3_04",
+   "skin_records": 46,
+   "skinned": true,
+   "tcount": 56,
+   "tex": "prim_mtrl_mob_sd_seth_02",
+   "vcount": 46
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_05.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_05",
+   "skin_records": 44,
+   "skinned": true,
+   "tcount": 50,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 44
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_06.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_06",
+   "skin_records": 29,
+   "skinned": true,
+   "tcount": 30,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 29
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_07.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_07",
+   "skin_records": 35,
+   "skinned": true,
+   "tcount": 40,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 35
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_08.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_03.ddj",
+   "material": "seth_03",
+   "msh": "prim_mesh_mob_sd_seth_t3_08",
+   "skin_records": 189,
+   "skinned": true,
+   "tcount": 260,
+   "tex": "prim_mtrl_mob_sd_seth_03",
+   "vcount": 189
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_01_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_01_part1",
+   "skin_records": 351,
+   "skinned": true,
+   "tcount": 470,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 351
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_01_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_01_part2_part1",
+   "skin_records": 345,
+   "skinned": true,
+   "tcount": 462,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 345
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_01_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_01_part2_part2_part1",
+   "skin_records": 918,
+   "skinned": true,
+   "tcount": 869,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 918
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_01_part2_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_01_part2_part2_part2",
+   "skin_records": 1134,
+   "skinned": true,
+   "tcount": 1290,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 1134
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/seth_t3_09.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/seth_01.ddj",
+   "material": "seth_01",
+   "msh": "prim_mesh_mob_sd_seth_t3_09",
+   "skin_records": 109,
+   "skinned": true,
+   "tcount": 86,
+   "tex": "prim_mtrl_mob_sd_seth_01",
+   "vcount": 109
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_seth_t3",
+ "skeleton_path": "/prim/skel/mob/sd/seth_t3.bsk"
+}

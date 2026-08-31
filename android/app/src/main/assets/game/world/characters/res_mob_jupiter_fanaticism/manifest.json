@@ -1,0 +1,145 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_stand01",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_stand01.ban",
+   "channels": 40,
+   "duration_ms": 3333,
+   "keyframes": 17,
+   "name": "fanaticism_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_walk",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_walk.ban",
+   "channels": 40,
+   "duration_ms": 2000,
+   "keyframes": 13,
+   "name": "fanaticism_walk"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_run",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_run.ban",
+   "channels": 40,
+   "duration_ms": 1333,
+   "keyframes": 13,
+   "name": "fanaticism_run"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_attack01",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_attack01.ban",
+   "channels": 40,
+   "duration_ms": 2000,
+   "keyframes": 22,
+   "name": "fanaticism_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_attack02",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_attack02.ban",
+   "channels": 40,
+   "duration_ms": 3000,
+   "keyframes": 32,
+   "name": "fanaticism_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_attack03",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_attack03.ban",
+   "channels": 40,
+   "duration_ms": 2000,
+   "keyframes": 20,
+   "name": "fanaticism_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_attack04",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_attack04.ban",
+   "channels": 40,
+   "duration_ms": 4000,
+   "keyframes": 23,
+   "name": "fanaticism_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_attack05",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_attack05.ban",
+   "channels": 40,
+   "duration_ms": 3000,
+   "keyframes": 29,
+   "name": "fanaticism_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_damage1",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_damage1.ban",
+   "channels": 1,
+   "duration_ms": 400,
+   "keyframes": 4,
+   "name": "fanaticism_damage1"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_die",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_die.ban",
+   "channels": 40,
+   "duration_ms": 4500,
+   "keyframes": 46,
+   "name": "fanaticism_die"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_fanaticism_fanaticism_die_rm",
+   "ban_path": "/prim/ani/mob/jupiter/fanaticism/fanaticism_die_rm.ban",
+   "channels": 40,
+   "duration_ms": 4500,
+   "keyframes": 2,
+   "name": "fanaticism_die_rm"
+  }
+ ],
+ "key": "res_mob_jupiter_fanaticism",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/fanaticism/fanaticism_01_02.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/jupiter/fanaticism_01.ddj",
+   "material": "fanaticism_01",
+   "msh": "prim_mesh_mob_jupiter_fanaticism_fanaticism_01_02",
+   "skin_records": 92,
+   "skinned": true,
+   "tcount": 136,
+   "tex": "prim_mtrl_mob_jupiter_fanaticism_01",
+   "vcount": 92
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/fanaticism/fanaticism_02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/jupiter/fanaticism_02.ddj",
+   "material": "fanaticism_02",
+   "msh": "prim_mesh_mob_jupiter_fanaticism_fanaticism_02",
+   "skin_records": 219,
+   "skinned": true,
+   "tcount": 390,
+   "tex": "prim_mtrl_mob_jupiter_fanaticism_02",
+   "vcount": 219
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/fanaticism/fanaticism_01_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/fanaticism_01.ddj",
+   "material": "fanaticism_01",
+   "msh": "prim_mesh_mob_jupiter_fanaticism_fanaticism_01_part1",
+   "skin_records": 674,
+   "skinned": true,
+   "tcount": 1065,
+   "tex": "prim_mtrl_mob_jupiter_fanaticism_01",
+   "vcount": 674
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/fanaticism/fanaticism_01_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/jupiter/fanaticism_01.ddj",
+   "material": "fanaticism_01",
+   "msh": "prim_mesh_mob_jupiter_fanaticism_fanaticism_01_part2",
+   "skin_records": 1084,
+   "skinned": true,
+   "tcount": 1689,
+   "tex": "prim_mtrl_mob_jupiter_fanaticism_01",
+   "vcount": 1084
+  }
+ ],
+ "skeleton": "prim_skel_mob_jupiter_fanaticism",
+ "skeleton_path": "/prim/skel/mob/jupiter/fanaticism.bsk"
+}

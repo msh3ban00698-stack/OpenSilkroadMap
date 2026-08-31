@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_stand01",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_stand01.ban",
+   "channels": 119,
+   "duration_ms": 2666,
+   "keyframes": 14,
+   "name": "baal_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_walk",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_walk.ban",
+   "channels": 119,
+   "duration_ms": 1666,
+   "keyframes": 31,
+   "name": "baal_walk"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_run",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_run.ban",
+   "channels": 119,
+   "duration_ms": 866,
+   "keyframes": 23,
+   "name": "baal_run"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack01",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack01.ban",
+   "channels": 119,
+   "duration_ms": 3066,
+   "keyframes": 81,
+   "name": "baal_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack02",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack02.ban",
+   "channels": 119,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "baal_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack03",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack03.ban",
+   "channels": 119,
+   "duration_ms": 3000,
+   "keyframes": 58,
+   "name": "baal_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack04",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack04.ban",
+   "channels": 119,
+   "duration_ms": 3766,
+   "keyframes": 81,
+   "name": "baal_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack05",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack05.ban",
+   "channels": 119,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "baal_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack06",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack06.ban",
+   "channels": 119,
+   "duration_ms": 3000,
+   "keyframes": 58,
+   "name": "baal_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack07",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack07.ban",
+   "channels": 119,
+   "duration_ms": 3000,
+   "keyframes": 58,
+   "name": "baal_attack07"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_baal_baal_attack14",
+   "ban_path": "/prim/ani/mob/jupiter/baal/baal_attack14.ban",
+   "channels": 119,
+   "duration_ms": 6166,
+   "keyframes": 150,
+   "name": "baal_attack14"
+  }
+ ],
+ "key": "res_mob_jupiter_baal",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part1",
+   "skin_records": 780,
+   "skinned": true,
+   "tcount": 1228,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 780
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part2_part1",
+   "skin_records": 694,
+   "skinned": true,
+   "tcount": 988,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 694
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part2_part2_part1",
+   "skin_records": 390,
+   "skinned": true,
+   "tcount": 544,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 390
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part2_part2_part2_part1",
+   "skin_records": 410,
+   "skinned": true,
+   "tcount": 562,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 410
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part2_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part2_part2_part2_part2_part1",
+   "skin_records": 856,
+   "skinned": true,
+   "tcount": 1092,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 856
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/baal/baal_part2_part2_part2_part2_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/jupiter/baal.ddj",
+   "material": "baal",
+   "msh": "prim_mesh_mob_jupiter_baal_baal_part2_part2_part2_part2_part2",
+   "skin_records": 867,
+   "skinned": true,
+   "tcount": 1134,
+   "tex": "prim_mtrl_mob_jupiter_baal",
+   "vcount": 867
+  }
+ ],
+ "skeleton": "prim_skel_mob_jupiter_baal",
+ "skeleton_path": "/prim/skel/mob/jupiter/baal.bsk"
+}

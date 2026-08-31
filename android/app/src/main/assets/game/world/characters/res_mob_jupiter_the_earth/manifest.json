@@ -1,0 +1,233 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_stand01",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_stand01.ban",
+   "channels": 34,
+   "duration_ms": 2666,
+   "keyframes": 5,
+   "name": "kyklopess_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_walk",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_walk.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 32,
+   "name": "kyklopess_walk"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_run",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_run.ban",
+   "channels": 34,
+   "duration_ms": 1066,
+   "keyframes": 18,
+   "name": "kyklopess_run"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_attack01",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_attack01.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 24,
+   "name": "kyklopess_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_attack03",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_attack03.ban",
+   "channels": 34,
+   "duration_ms": 2466,
+   "keyframes": 30,
+   "name": "kyklopess_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_die",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_die.ban",
+   "channels": 34,
+   "duration_ms": 1366,
+   "keyframes": 21,
+   "name": "kyklopess_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_die_rm",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_die_rm.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "kyklopess_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_down",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_down.ban",
+   "channels": 34,
+   "duration_ms": 1000,
+   "keyframes": 20,
+   "name": "kyklopess_down"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_down_rm",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_down_rm.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 4,
+   "name": "kyklopess_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_down_damage",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_down_damage.ban",
+   "channels": 34,
+   "duration_ms": 500,
+   "keyframes": 10,
+   "name": "kyklopess_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_down_up",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_down_up.ban",
+   "channels": 34,
+   "duration_ms": 666,
+   "keyframes": 9,
+   "name": "kyklopess_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_down_die",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_down_die.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "kyklopess_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_attack02",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_attack02.ban",
+   "channels": 34,
+   "duration_ms": 2233,
+   "keyframes": 30,
+   "name": "kyklopess_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_europe_kyklopess_kyklopess_attack04",
+   "ban_path": "/prim/ani/mob/europe/kyklopess/kyklopess_attack04.ban",
+   "channels": 34,
+   "duration_ms": 3133,
+   "keyframes": 69,
+   "name": "kyklopess_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack05",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack05.ban",
+   "channels": 34,
+   "duration_ms": 3933,
+   "keyframes": 36,
+   "name": "the_earth_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack09",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack09.ban",
+   "channels": 34,
+   "duration_ms": 5066,
+   "keyframes": 66,
+   "name": "the_earth_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack11_shot",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack11_shot.ban",
+   "channels": 34,
+   "duration_ms": 1933,
+   "keyframes": 29,
+   "name": "the_earth_attack11_shot"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack13",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack13.ban",
+   "channels": 34,
+   "duration_ms": 4100,
+   "keyframes": 61,
+   "name": "the_earth_attack13"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack14",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack14.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "the_earth_attack14"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack15",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack15.ban",
+   "channels": 34,
+   "duration_ms": 8466,
+   "keyframes": 54,
+   "name": "the_earth_attack15"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack11_ready",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack11_ready.ban",
+   "channels": 34,
+   "duration_ms": 2400,
+   "keyframes": 25,
+   "name": "the_earth_attack11_ready"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_the_earth_the_earth_attack11_wait",
+   "ban_path": "/prim/ani/mob/jupiter/the_earth/the_earth_attack11_wait.ban",
+   "channels": 34,
+   "duration_ms": 1000,
+   "keyframes": 2,
+   "name": "the_earth_attack11_wait"
+  }
+ ],
+ "key": "res_mob_jupiter_the_earth",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/europe/kyklopess01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/jupiter/the_earth.ddj",
+   "material": "kyklopess",
+   "msh": "prim_mesh_mob_europe_kyklopess01",
+   "skin_records": 97,
+   "skinned": true,
+   "tcount": 98,
+   "tex": "prim_mtrl_mob_jupiter_the_earth",
+   "vcount": 97
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/kyklopess02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/jupiter/the_earth.ddj",
+   "material": "kyklopess",
+   "msh": "prim_mesh_mob_europe_kyklopess02",
+   "skin_records": 104,
+   "skinned": true,
+   "tcount": 125,
+   "tex": "prim_mtrl_mob_jupiter_the_earth",
+   "vcount": 104
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/kyklopess_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/jupiter/the_earth.ddj",
+   "material": "kyklopess",
+   "msh": "prim_mesh_mob_europe_kyklopess_part1",
+   "skin_records": 350,
+   "skinned": true,
+   "tcount": 534,
+   "tex": "prim_mtrl_mob_jupiter_the_earth",
+   "vcount": 350
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/kyklopess_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/jupiter/the_earth.ddj",
+   "material": "kyklopess",
+   "msh": "prim_mesh_mob_europe_kyklopess_part2",
+   "skin_records": 361,
+   "skinned": true,
+   "tcount": 491,
+   "tex": "prim_mtrl_mob_jupiter_the_earth",
+   "vcount": 361
+  }
+ ],
+ "skeleton": "prim_skel_mob_europe_kyklopess",
+ "skeleton_path": "/prim/skel/mob/europe/kyklopess.bsk"
+}

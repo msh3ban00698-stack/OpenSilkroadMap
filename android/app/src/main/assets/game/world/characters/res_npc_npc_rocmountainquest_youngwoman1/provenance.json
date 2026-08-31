@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/rocmountainquest_youngwoman1.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/rocmountainquest_youngwoman1.bmt",
+ "bsk": "/prim/skel/npc/common/rocmountainquest_youngwoman1.bsk",
+ "bsr": "/res/npc/npc/RocMountainQuest_YoungWoman1.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman102.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman103.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman101_part1.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman101_part2.bms"
+ ]
+}

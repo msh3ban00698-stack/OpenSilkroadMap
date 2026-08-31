@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_sheherazade_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_sheherazade.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_sheherazade.bsk",
+ "bsr": "/res/npc/npc/arabia_sheherazade.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_sheherazade_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_sheherazade_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_sheherazade_part2_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_sheherazade_part2_part2_part2.bms"
+ ]
+}

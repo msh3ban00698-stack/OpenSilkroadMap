@@ -1,0 +1,225 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_stand01",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_stand01.ban",
+   "channels": 99,
+   "duration_ms": 5333,
+   "keyframes": 31,
+   "name": "geenie_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_stand02",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_stand02.ban",
+   "channels": 99,
+   "duration_ms": 5333,
+   "keyframes": 42,
+   "name": "geenie_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack01",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack01.ban",
+   "channels": 99,
+   "duration_ms": 3500,
+   "keyframes": 52,
+   "name": "geenie_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack02",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack02.ban",
+   "channels": 99,
+   "duration_ms": 3000,
+   "keyframes": 51,
+   "name": "geenie_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack03",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack03.ban",
+   "channels": 99,
+   "duration_ms": 3000,
+   "keyframes": 47,
+   "name": "geenie_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack05",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack05.ban",
+   "channels": 99,
+   "duration_ms": 3000,
+   "keyframes": 52,
+   "name": "geenie_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack06",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack06.ban",
+   "channels": 99,
+   "duration_ms": 2000,
+   "keyframes": 24,
+   "name": "geenie_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack08",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack08.ban",
+   "channels": 99,
+   "duration_ms": 1000,
+   "keyframes": 12,
+   "name": "geenie_attack08"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_attack09",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_attack09.ban",
+   "channels": 99,
+   "duration_ms": 4000,
+   "keyframes": 50,
+   "name": "geenie_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_die",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_die.ban",
+   "channels": 99,
+   "duration_ms": 4833,
+   "keyframes": 85,
+   "name": "geenie_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_walk",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_walk.ban",
+   "channels": 99,
+   "duration_ms": 5333,
+   "keyframes": 27,
+   "name": "geenie_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_geenie_geenie_run",
+   "ban_path": "/prim/ani/mob/arabia/geenie/geenie_run.ban",
+   "channels": 99,
+   "duration_ms": 4000,
+   "keyframes": 25,
+   "name": "geenie_run"
+  }
+ ],
+ "key": "res_mob_arabia_geenie",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_01",
+   "skin_records": 100,
+   "skinned": true,
+   "tcount": 144,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 100
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_02",
+   "skin_records": 80,
+   "skinned": true,
+   "tcount": 108,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 80
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_03",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 54,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 40
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_04.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_04",
+   "skin_records": 66,
+   "skinned": true,
+   "tcount": 80,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 66
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_05.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_05",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 54,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 40
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_06.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_06",
+   "skin_records": 110,
+   "skinned": true,
+   "tcount": 160,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 110
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_under_07.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie_under.ddj",
+   "material": "geenie_under",
+   "msh": "prim_mesh_mob_arabia_geenie_under_07",
+   "skin_records": 234,
+   "skinned": true,
+   "tcount": 372,
+   "tex": "prim_mtrl_mob_arabia_geenie_under",
+   "vcount": 234
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie.ddj",
+   "material": "geenie",
+   "msh": "prim_mesh_mob_arabia_geenie_part1",
+   "skin_records": 367,
+   "skinned": true,
+   "tcount": 468,
+   "tex": "prim_mtrl_mob_arabia_geenie",
+   "vcount": 367
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie.ddj",
+   "material": "geenie",
+   "msh": "prim_mesh_mob_arabia_geenie_part2_part1",
+   "skin_records": 370,
+   "skinned": true,
+   "tcount": 472,
+   "tex": "prim_mtrl_mob_arabia_geenie",
+   "vcount": 370
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/geenie_part2_part2.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/arabia/geenie.ddj",
+   "material": "geenie",
+   "msh": "prim_mesh_mob_arabia_geenie_part2_part2",
+   "skin_records": 2182,
+   "skinned": true,
+   "tcount": 2833,
+   "tex": "prim_mtrl_mob_arabia_geenie",
+   "vcount": 2182
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_geenie",
+ "skeleton_path": "/prim/skel/mob/arabia/geenie.bsk"
+}

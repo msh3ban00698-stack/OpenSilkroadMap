@@ -1,0 +1,11 @@
+{
+ "animations": [
+  "/prim/ani/npc/qinshi/treasurebox.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/qinshi/treasurebox.bmt",
+ "bsk": "/prim/skel/npc/qinshi/trasurebox.bsk",
+ "bsr": "/res/npc/npc/TreasureBox.bsr",
+ "meshes": [
+  "/prim/mesh/npc/qinshi/treasurebox.bms"
+ ]
+}

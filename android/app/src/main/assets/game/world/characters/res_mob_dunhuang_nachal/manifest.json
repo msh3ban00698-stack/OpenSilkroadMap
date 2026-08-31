@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_stand01",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_stand01.ban",
+   "channels": 16,
+   "duration_ms": 3333,
+   "keyframes": 8,
+   "name": "nachal_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_walk",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_walk.ban",
+   "channels": 16,
+   "duration_ms": 3333,
+   "keyframes": 8,
+   "name": "nachal_walk"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_run",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_run.ban",
+   "channels": 16,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "nachal_run"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_attack01",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_attack01.ban",
+   "channels": 16,
+   "duration_ms": 5000,
+   "keyframes": 39,
+   "name": "nachal_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_damage01",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_damage01.ban",
+   "channels": 16,
+   "duration_ms": 500,
+   "keyframes": 7,
+   "name": "nachal_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_damage02",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_damage02.ban",
+   "channels": 16,
+   "duration_ms": 1000,
+   "keyframes": 12,
+   "name": "nachal_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_die",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_die.ban",
+   "channels": 16,
+   "duration_ms": 3333,
+   "keyframes": 15,
+   "name": "nachal_die"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_down",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_down.ban",
+   "channels": 16,
+   "duration_ms": 1000,
+   "keyframes": 15,
+   "name": "nachal_down"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_down_wait",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_down_wait.ban",
+   "channels": 16,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "nachal_down_wait"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_down_damage",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_down_damage.ban",
+   "channels": 16,
+   "duration_ms": 500,
+   "keyframes": 11,
+   "name": "nachal_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_down_up",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_down_up.ban",
+   "channels": 16,
+   "duration_ms": 833,
+   "keyframes": 8,
+   "name": "nachal_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_nachal_nachal_down_die",
+   "ban_path": "/prim/ani/mob/wchina/nachal/nachal_down_die.ban",
+   "channels": 16,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "nachal_down_die"
+  }
+ ],
+ "key": "res_mob_dunhuang_nachal",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/wchina/nachal.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/wchina/nachal.ddj",
+   "material": "nachal",
+   "msh": "prim_mesh_mob_wchina_nachal",
+   "skin_records": 951,
+   "skinned": true,
+   "tcount": 839,
+   "tex": "prim_mtrl_mob_wchina_nachal",
+   "vcount": 951
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/nachal01.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/wchina/nachal.ddj",
+   "material": "nachal_2side",
+   "msh": "prim_mesh_mob_wchina_nachal01",
+   "skin_records": 84,
+   "skinned": true,
+   "tcount": 88,
+   "tex": "prim_mtrl_mob_wchina_nachal",
+   "vcount": 84
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/nachal_face.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/mob/wchina/nachal.ddj",
+   "material": "nachal",
+   "msh": "prim_mesh_mob_wchina_nachal_face",
+   "skin_records": 307,
+   "skinned": true,
+   "tcount": 432,
+   "tex": "prim_mtrl_mob_wchina_nachal",
+   "vcount": 307
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/nachal_face01.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/mob/wchina/nachal.ddj",
+   "material": "nachal",
+   "msh": "prim_mesh_mob_wchina_nachal_face01",
+   "skin_records": 109,
+   "skinned": true,
+   "tcount": 142,
+   "tex": "prim_mtrl_mob_wchina_nachal",
+   "vcount": 109
+  }
+ ],
+ "skeleton": "prim_skel_mob_wchina_nachal",
+ "skeleton_path": "/prim/skel/mob/wchina/nachal.bsk"
+}

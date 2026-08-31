@@ -1,0 +1,26 @@
+{
+ "animations": [
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_stand01.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_walk.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_run.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_attack01.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_attack02.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_damage01.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_damage02.ban",
+  "/prim/ani/mob/china/gunpowderghost/gunpowderghost_die.ban",
+  "/prim/ani/mob/china/earthghost_die_loop.ban",
+  "/prim/ani/mob/china/earthghost_down.ban",
+  "/prim/ani/mob/china/earthghost_downwait.ban",
+  "/prim/ani/mob/china/earthghost_downdamage.ban",
+  "/prim/ani/mob/china/earthghost_wakeup.ban",
+  "/prim/ani/mob/china/earthghost_downdie.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/god/togui_boom.bmt",
+ "bsk": "/prim/skel/mob/china/gunpowderghost.bsk",
+ "bsr": "/res/mob/god/togui_boom.bsr",
+ "meshes": [
+  "/prim/mesh/mob/china/gunpowderghost_part1.bms",
+  "/prim/mesh/mob/china/gunpowderghost_part2_part1.bms",
+  "/prim/mesh/mob/china/gunpowderghost_part2_part2.bms"
+ ]
+}

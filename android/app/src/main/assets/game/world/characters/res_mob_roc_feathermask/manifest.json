@@ -1,0 +1,177 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_stand01",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_stand01.ban",
+   "channels": 60,
+   "duration_ms": 2666,
+   "keyframes": 24,
+   "name": "feathermask_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_walk",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_walk.ban",
+   "channels": 60,
+   "duration_ms": 1333,
+   "keyframes": 36,
+   "name": "feathermask_walk"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_run",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_run.ban",
+   "channels": 60,
+   "duration_ms": 1000,
+   "keyframes": 22,
+   "name": "feathermask_run"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_attack01",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_attack01.ban",
+   "channels": 60,
+   "duration_ms": 1466,
+   "keyframes": 41,
+   "name": "feathermask_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_attack02",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_attack02.ban",
+   "channels": 60,
+   "duration_ms": 2000,
+   "keyframes": 36,
+   "name": "feathermask_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_attack03",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_attack03.ban",
+   "channels": 60,
+   "duration_ms": 2500,
+   "keyframes": 62,
+   "name": "feathermask_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_damage02",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_damage02.ban",
+   "channels": 60,
+   "duration_ms": 1066,
+   "keyframes": 27,
+   "name": "feathermask_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_die",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_die.ban",
+   "channels": 60,
+   "duration_ms": 2166,
+   "keyframes": 49,
+   "name": "feathermask_die"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_die_rm",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_die_rm.ban",
+   "channels": 60,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "feathermask_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_down",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_down.ban",
+   "channels": 60,
+   "duration_ms": 866,
+   "keyframes": 26,
+   "name": "feathermask_down"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_down_rm",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_down_rm.ban",
+   "channels": 60,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "feathermask_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_down_damage",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_down_damage.ban",
+   "channels": 60,
+   "duration_ms": 833,
+   "keyframes": 20,
+   "name": "feathermask_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_down_up",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_down_up.ban",
+   "channels": 60,
+   "duration_ms": 1466,
+   "keyframes": 31,
+   "name": "feathermask_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_down_die",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_down_die.ban",
+   "channels": 60,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "feathermask_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_roc_feathermask_feathermask_damage01",
+   "ban_path": "/prim/ani/mob/roc/feathermask/feathermask_damage01.ban",
+   "channels": 8,
+   "duration_ms": 400,
+   "keyframes": 4,
+   "name": "feathermask_damage01"
+  }
+ ],
+ "key": "res_mob_roc_feathermask",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/roc/feathermask01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/roc/feathermask.ddj",
+   "material": "feathermask",
+   "msh": "prim_mesh_mob_roc_feathermask01",
+   "skin_records": 30,
+   "skinned": true,
+   "tcount": 56,
+   "tex": "prim_mtrl_mob_roc_feathermask",
+   "vcount": 30
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/feathermask_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/roc/feathermask.ddj",
+   "material": "feathermask",
+   "msh": "prim_mesh_mob_roc_feathermask_part1",
+   "skin_records": 624,
+   "skinned": true,
+   "tcount": 773,
+   "tex": "prim_mtrl_mob_roc_feathermask",
+   "vcount": 624
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/feathermask_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/roc/feathermask.ddj",
+   "material": "feathermask",
+   "msh": "prim_mesh_mob_roc_feathermask_part2_part1",
+   "skin_records": 184,
+   "skinned": true,
+   "tcount": 246,
+   "tex": "prim_mtrl_mob_roc_feathermask",
+   "vcount": 184
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/feathermask_part2_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/roc/feathermask.ddj",
+   "material": "feathermask",
+   "msh": "prim_mesh_mob_roc_feathermask_part2_part2",
+   "skin_records": 357,
+   "skinned": true,
+   "tcount": 446,
+   "tex": "prim_mtrl_mob_roc_feathermask",
+   "vcount": 357
+  }
+ ],
+ "skeleton": "prim_skel_mob_roc_feathermask",
+ "skeleton_path": "/prim/skel/mob/roc/feathermask.bsk"
+}

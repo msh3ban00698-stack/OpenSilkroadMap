@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_t_area_accessory.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_t_area_accessory.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_t_area_accessory.bsk",
+ "bsr": "/res/npc/sd/sd_t_area_accessory.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_t_area_accessory_arm.bms",
+  "/prim/mesh/npc/sd/sd_t_area_accessory_part1.bms",
+  "/prim/mesh/npc/sd/sd_t_area_accessory_part2.bms"
+ ]
+}

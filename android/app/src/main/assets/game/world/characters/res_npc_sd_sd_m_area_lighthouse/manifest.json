@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_m_area_lighthouse_stand",
+   "ban_path": "/prim/ani/npc/sd/sd_m_area_lighthouse_stand.ban",
+   "channels": 34,
+   "duration_ms": 2666,
+   "keyframes": 12,
+   "name": "sd_m_area_lighthouse_stand"
+  }
+ ],
+ "key": "res_npc_sd_sd_m_area_lighthouse",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_lighthouse_lamp.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_lighthouse.ddj",
+   "material": "SD_m_area_lighthouse",
+   "msh": "prim_mesh_npc_sd_sd_m_area_lighthouse_lamp",
+   "skin_records": 132,
+   "skinned": true,
+   "tcount": 152,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_lighthouse",
+   "vcount": 132
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_lighthouse_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_lighthouse.ddj",
+   "material": "SD_m_area_lighthouse",
+   "msh": "prim_mesh_npc_sd_sd_m_area_lighthouse_part1",
+   "skin_records": 565,
+   "skinned": true,
+   "tcount": 728,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_lighthouse",
+   "vcount": 565
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_lighthouse_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_lighthouse.ddj",
+   "material": "SD_m_area_lighthouse",
+   "msh": "prim_mesh_npc_sd_sd_m_area_lighthouse_part2",
+   "skin_records": 582,
+   "skinned": true,
+   "tcount": 788,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_lighthouse",
+   "vcount": 582
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_m_area_lighthouse",
+ "skeleton_path": "/prim/skel/npc/sd/sd_m_area_lighthouse.bsk"
+}

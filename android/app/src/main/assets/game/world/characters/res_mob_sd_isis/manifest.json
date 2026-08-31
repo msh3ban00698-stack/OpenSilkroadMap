@@ -1,0 +1,137 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_stand01",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_stand01.ban",
+   "channels": 85,
+   "duration_ms": 2666,
+   "keyframes": 7,
+   "name": "isis_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_walk",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_walk.ban",
+   "channels": 85,
+   "duration_ms": 1333,
+   "keyframes": 19,
+   "name": "isis_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack01",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack01.ban",
+   "channels": 87,
+   "duration_ms": 2866,
+   "keyframes": 41,
+   "name": "isis_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack02",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack02.ban",
+   "channels": 87,
+   "duration_ms": 2833,
+   "keyframes": 39,
+   "name": "isis_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack03",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack03.ban",
+   "channels": 85,
+   "duration_ms": 3200,
+   "keyframes": 44,
+   "name": "isis_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack04",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack04.ban",
+   "channels": 85,
+   "duration_ms": 2000,
+   "keyframes": 25,
+   "name": "isis_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack05",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack05.ban",
+   "channels": 85,
+   "duration_ms": 1133,
+   "keyframes": 23,
+   "name": "isis_attack05"
+  }
+ ],
+ "key": "res_mob_sd_isis",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/isis02.ddj",
+   "material": "isis02",
+   "msh": "prim_mesh_mob_sd_isis02",
+   "skin_records": 479,
+   "skinned": true,
+   "tcount": 480,
+   "tex": "prim_mtrl_mob_sd_isis02",
+   "vcount": 479
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis01_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/isis.ddj",
+   "material": "isis01",
+   "msh": "prim_mesh_mob_sd_isis01_part1",
+   "skin_records": 118,
+   "skinned": true,
+   "tcount": 128,
+   "tex": "prim_mtrl_mob_sd_isis",
+   "vcount": 118
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis01_part2.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/sd/isis.ddj",
+   "material": "isis01",
+   "msh": "prim_mesh_mob_sd_isis01_part2",
+   "skin_records": 114,
+   "skinned": true,
+   "tcount": 120,
+   "tex": "prim_mtrl_mob_sd_isis",
+   "vcount": 114
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/isis.ddj",
+   "material": "isis",
+   "msh": "prim_mesh_mob_sd_isis_part1",
+   "skin_records": 1138,
+   "skinned": true,
+   "tcount": 1582,
+   "tex": "prim_mtrl_mob_sd_isis",
+   "vcount": 1138
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/isis.ddj",
+   "material": "isis",
+   "msh": "prim_mesh_mob_sd_isis_part2_part1",
+   "skin_records": 120,
+   "skinned": true,
+   "tcount": 150,
+   "tex": "prim_mtrl_mob_sd_isis",
+   "vcount": 120
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/isis_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/isis.ddj",
+   "material": "isis",
+   "msh": "prim_mesh_mob_sd_isis_part2_part2",
+   "skin_records": 119,
+   "skinned": true,
+   "tcount": 148,
+   "tex": "prim_mtrl_mob_sd_isis",
+   "vcount": 119
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_isis",
+ "skeleton_path": "/prim/skel/mob/sd/isis.bsk"
+}

@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_stand01",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_stand01.ban",
+   "channels": 47,
+   "duration_ms": 2666,
+   "keyframes": 15,
+   "name": "antelope_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_walk",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_walk.ban",
+   "channels": 47,
+   "duration_ms": 1333,
+   "keyframes": 13,
+   "name": "antelope_walk"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_run",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_run.ban",
+   "channels": 47,
+   "duration_ms": 1000,
+   "keyframes": 22,
+   "name": "antelope_run"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_attack01",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_attack01.ban",
+   "channels": 47,
+   "duration_ms": 2500,
+   "keyframes": 51,
+   "name": "antelope_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_attack02",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_attack02.ban",
+   "channels": 47,
+   "duration_ms": 2833,
+   "keyframes": 50,
+   "name": "antelope_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_attack03",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_attack03.ban",
+   "channels": 47,
+   "duration_ms": 3766,
+   "keyframes": 66,
+   "name": "antelope_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_damage02",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_damage02.ban",
+   "channels": 47,
+   "duration_ms": 1300,
+   "keyframes": 30,
+   "name": "antelope_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_die",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_die.ban",
+   "channels": 47,
+   "duration_ms": 2333,
+   "keyframes": 55,
+   "name": "antelope_die"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_down",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_down.ban",
+   "channels": 47,
+   "duration_ms": 1066,
+   "keyframes": 24,
+   "name": "antelope_down"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_downwait",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_downwait.ban",
+   "channels": 47,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "antelope_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_downdamage",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_downdamage.ban",
+   "channels": 47,
+   "duration_ms": 433,
+   "keyframes": 10,
+   "name": "antelope_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_downup",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_downup.ban",
+   "channels": 47,
+   "duration_ms": 1833,
+   "keyframes": 31,
+   "name": "antelope_downup"
+  },
+  {
+   "anim": "prim_ani_mob_roc_goat_goat_damage01",
+   "ban_path": "/prim/ani/mob/roc/goat/goat_damage01.ban",
+   "channels": 7,
+   "duration_ms": 500,
+   "keyframes": 5,
+   "name": "goat_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_antelope_antelope_down_die",
+   "ban_path": "/prim/ani/mob/roc/antelope/antelope_down_die.ban",
+   "channels": 47,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "antelope_down_die"
+  }
+ ],
+ "key": "res_mob_roc_antelope",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/roc/goat_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/roc/antelope.ddj",
+   "material": "goat",
+   "msh": "prim_mesh_mob_roc_goat_part1",
+   "skin_records": 1054,
+   "skinned": true,
+   "tcount": 1219,
+   "tex": "prim_mtrl_mob_roc_antelope",
+   "vcount": 1054
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/goat_part2_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/roc/antelope.ddj",
+   "material": "goat",
+   "msh": "prim_mesh_mob_roc_goat_part2_part1",
+   "skin_records": 164,
+   "skinned": true,
+   "tcount": 219,
+   "tex": "prim_mtrl_mob_roc_antelope",
+   "vcount": 164
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/goat_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/roc/antelope.ddj",
+   "material": "goat",
+   "msh": "prim_mesh_mob_roc_goat_part2_part2",
+   "skin_records": 178,
+   "skinned": true,
+   "tcount": 244,
+   "tex": "prim_mtrl_mob_roc_antelope",
+   "vcount": 178
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/goat_hook.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/roc/antelope.ddj",
+   "material": "goat",
+   "msh": "prim_mesh_mob_roc_goat_hook",
+   "skin_records": 138,
+   "skinned": true,
+   "tcount": 140,
+   "tex": "prim_mtrl_mob_roc_antelope",
+   "vcount": 138
+  }
+ ],
+ "skeleton": "prim_skel_mob_roc_goat",
+ "skeleton_path": "/prim/skel/mob/roc/goat.bsk"
+}

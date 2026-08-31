@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_ferry_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_ferry.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_ferry.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_ferry.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_ferry_book.bms",
+  "/prim/mesh/npc/sd/sd_m_area_ferry_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_ferry_part2.bms"
+ ]
+}

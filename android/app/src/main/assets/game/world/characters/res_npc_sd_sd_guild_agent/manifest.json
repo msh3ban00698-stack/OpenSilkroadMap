@@ -1,0 +1,41 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_guild_agent",
+   "ban_path": "/prim/ani/npc/sd/sd_guild_agent.ban",
+   "channels": 35,
+   "duration_ms": 4000,
+   "keyframes": 15,
+   "name": "sd_guild_agent"
+  }
+ ],
+ "key": "res_npc_sd_sd_guild_agent",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent.ddj",
+   "material": "SD_guild_agent",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent_part1",
+   "skin_records": 363,
+   "skinned": true,
+   "tcount": 467,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent",
+   "vcount": 363
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent.ddj",
+   "material": "SD_guild_agent",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent_part2",
+   "skin_records": 198,
+   "skinned": true,
+   "tcount": 243,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent",
+   "vcount": 198
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_guild_agent",
+ "skeleton_path": "/prim/skel/npc/sd/sd_guild_agent.bsk"
+}

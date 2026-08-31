@@ -1,0 +1,205 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_stand01",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_stand01.ban",
+   "channels": 65,
+   "duration_ms": 2000,
+   "keyframes": 20,
+   "name": "redeyeghost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_stand02",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_stand02.ban",
+   "channels": 65,
+   "duration_ms": 3000,
+   "keyframes": 39,
+   "name": "redeyeghost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_walk",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_walk.ban",
+   "channels": 65,
+   "duration_ms": 666,
+   "keyframes": 32,
+   "name": "redeyeghost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_run",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_run.ban",
+   "channels": 65,
+   "duration_ms": 500,
+   "keyframes": 18,
+   "name": "redeyeghost_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_attack01",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_attack01.ban",
+   "channels": 65,
+   "duration_ms": 1500,
+   "keyframes": 34,
+   "name": "redeyeghost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_attack02",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_attack02.ban",
+   "channels": 65,
+   "duration_ms": 3000,
+   "keyframes": 51,
+   "name": "redeyeghost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_damage01",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_damage01.ban",
+   "channels": 17,
+   "duration_ms": 533,
+   "keyframes": 12,
+   "name": "redeyeghost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_damage02",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_damage02.ban",
+   "channels": 65,
+   "duration_ms": 1166,
+   "keyframes": 38,
+   "name": "redeyeghost_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_die",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_die.ban",
+   "channels": 65,
+   "duration_ms": 1700,
+   "keyframes": 50,
+   "name": "redeyeghost_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_die_loop.ban",
+   "channels": 65,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "redeyeghost_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_down",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_down.ban",
+   "channels": 65,
+   "duration_ms": 900,
+   "keyframes": 20,
+   "name": "redeyeghost_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_downdamage",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_downdamage.ban",
+   "channels": 65,
+   "duration_ms": 1033,
+   "keyframes": 30,
+   "name": "redeyeghost_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_downup",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_downup.ban",
+   "channels": 65,
+   "duration_ms": 1100,
+   "keyframes": 20,
+   "name": "redeyeghost_downup"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_downwait",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_downwait.ban",
+   "channels": 65,
+   "duration_ms": 2000,
+   "keyframes": 20,
+   "name": "redeyeghost_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_downdie",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_downdie.ban",
+   "channels": 65,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "redeyeghost_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_attack03",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_attack03.ban",
+   "channels": 65,
+   "duration_ms": 3833,
+   "keyframes": 55,
+   "name": "redeyeghost_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redeyeghost_redeyeghost_attack04",
+   "ban_path": "/prim/ani/mob/oasis/redeyeghost/redeyeghost_attack04.ban",
+   "channels": 65,
+   "duration_ms": 3000,
+   "keyframes": 45,
+   "name": "redeyeghost_attack04"
+  }
+ ],
+ "key": "res_mob_sd_achnish",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redeyeghost_tooth.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/mob/sd/redeyeghost_tooth.ddj",
+   "material": "redeyeghost_tooth",
+   "msh": "prim_mesh_mob_oasis_redeyeghost_tooth",
+   "skin_records": 28,
+   "skinned": true,
+   "tcount": 20,
+   "tex": "prim_mtrl_mob_sd_redeyeghost_tooth",
+   "vcount": 28
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redeyeghost_body_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/achnish.ddj",
+   "material": "redeyeghost_body",
+   "msh": "prim_mesh_mob_oasis_redeyeghost_body_part1",
+   "skin_records": 202,
+   "skinned": true,
+   "tcount": 208,
+   "tex": "prim_mtrl_mob_sd_achnish",
+   "vcount": 202
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redeyeghost_body_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/achnish.ddj",
+   "material": "redeyeghost_body",
+   "msh": "prim_mesh_mob_oasis_redeyeghost_body_part2_part1",
+   "skin_records": 226,
+   "skinned": true,
+   "tcount": 250,
+   "tex": "prim_mtrl_mob_sd_achnish",
+   "vcount": 226
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redeyeghost_body_part2_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/achnish.ddj",
+   "material": "redeyeghost_body",
+   "msh": "prim_mesh_mob_oasis_redeyeghost_body_part2_part2_part1",
+   "skin_records": 156,
+   "skinned": true,
+   "tcount": 239,
+   "tex": "prim_mtrl_mob_sd_achnish",
+   "vcount": 156
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redeyeghost_body_part2_part2_part2.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/sd/achnish.ddj",
+   "material": "redeyeghost_body",
+   "msh": "prim_mesh_mob_oasis_redeyeghost_body_part2_part2_part2",
+   "skin_records": 108,
+   "skinned": true,
+   "tcount": 170,
+   "tex": "prim_mtrl_mob_sd_achnish",
+   "vcount": 108
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_redeyeghost",
+ "skeleton_path": "/prim/skel/mob/oasis/redeyeghost.bsk"
+}

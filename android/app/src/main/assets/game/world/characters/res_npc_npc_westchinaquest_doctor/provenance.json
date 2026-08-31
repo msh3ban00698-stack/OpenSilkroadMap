@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinashop_herbalistman_basic.ban",
+  "/prim/ani/npc/china/chinashop_herbalistman_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinaquest_doctor.bmt",
+ "bsk": "/prim/skel/npc/china/chinaquest_doctor.bsk",
+ "bsr": "/res/npc/npc/westchinaquest_doctor.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinaquest_doctor_al_2s.bms",
+  "/prim/mesh/npc/china/chinaquest_doctor_yak.bms",
+  "/prim/mesh/npc/china/chinaquest_doctor_part1.bms",
+  "/prim/mesh/npc/china/chinaquest_doctor_part2.bms"
+ ]
+}

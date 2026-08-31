@@ -1,0 +1,149 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_attack01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_attack01.ban",
+   "channels": 63,
+   "duration_ms": 1666,
+   "keyframes": 60,
+   "name": "bonehunter_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_stand01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_stand01.ban",
+   "channels": 65,
+   "duration_ms": 2333,
+   "keyframes": 24,
+   "name": "bonehunter_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_walk",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_walk.ban",
+   "channels": 63,
+   "duration_ms": 1333,
+   "keyframes": 28,
+   "name": "bonehunter_walk"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_run",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_run.ban",
+   "channels": 63,
+   "duration_ms": 800,
+   "keyframes": 22,
+   "name": "bonehunter_run"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_attack02",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_attack02.ban",
+   "channels": 63,
+   "duration_ms": 2500,
+   "keyframes": 60,
+   "name": "bonehunter_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_attack03",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_attack03.ban",
+   "channels": 63,
+   "duration_ms": 1666,
+   "keyframes": 60,
+   "name": "bonehunter_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_damage01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_damage01.ban",
+   "channels": 6,
+   "duration_ms": 400,
+   "keyframes": 7,
+   "name": "bonehunter_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_damage02",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_damage02.ban",
+   "channels": 63,
+   "duration_ms": 1166,
+   "keyframes": 29,
+   "name": "bonehunter_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_down",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_down.ban",
+   "channels": 63,
+   "duration_ms": 866,
+   "keyframes": 22,
+   "name": "bonehunter_down"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_downwait",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_downwait.ban",
+   "channels": 63,
+   "duration_ms": 1800,
+   "keyframes": 9,
+   "name": "bonehunter_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_downdamage",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_downdamage.ban",
+   "channels": 63,
+   "duration_ms": 466,
+   "keyframes": 10,
+   "name": "bonehunter_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_downup",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_downup.ban",
+   "channels": 63,
+   "duration_ms": 1200,
+   "keyframes": 19,
+   "name": "bonehunter_downup"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonehunter_bonehunter_downdie",
+   "ban_path": "/prim/ani/mob/taklamakan/bonehunter/bonehunter_downdie.ban",
+   "channels": 63,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bonehunter_downdie"
+  }
+ ],
+ "key": "res_mob_taklamakan_bonehunter",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonehunter_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonehunter.ddj",
+   "material": "bonehunter",
+   "msh": "prim_mesh_mob_taklamakan_bonehunter_part1",
+   "skin_records": 956,
+   "skinned": true,
+   "tcount": 1107,
+   "tex": "prim_mtrl_mob_taklamakan_bonehunter",
+   "vcount": 956
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonehunter_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonehunter.ddj",
+   "material": "bonehunter",
+   "msh": "prim_mesh_mob_taklamakan_bonehunter_part2_part1",
+   "skin_records": 258,
+   "skinned": true,
+   "tcount": 345,
+   "tex": "prim_mtrl_mob_taklamakan_bonehunter",
+   "vcount": 258
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonehunter_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonehunter.ddj",
+   "material": "bonehunter",
+   "msh": "prim_mesh_mob_taklamakan_bonehunter_part2_part2",
+   "skin_records": 218,
+   "skinned": true,
+   "tcount": 226,
+   "tex": "prim_mtrl_mob_taklamakan_bonehunter",
+   "vcount": 218
+  }
+ ],
+ "skeleton": "prim_skel_mob_taklamakan_bonehunter",
+ "skeleton_path": "/prim/skel/mob/taklamakan/bonehunter.bsk"
+}

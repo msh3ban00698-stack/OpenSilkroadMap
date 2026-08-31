@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_casia_centralasiashop_weapon",
+   "ban_path": "/prim/ani/npc/casia/centralasiashop_weapon.ban",
+   "channels": 43,
+   "duration_ms": 2000,
+   "keyframes": 6,
+   "name": "centralasiashop_weapon"
+  }
+ ],
+ "key": "res_npc_npc_centralasiashop_weapon",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_weapon_2s.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_weaponl.ddj",
+   "material": "CentralAsiaShop_Weapon_2s",
+   "msh": "prim_mesh_npc_casia_centralasiashop_weapon_2s",
+   "skin_records": 68,
+   "skinned": true,
+   "tcount": 74,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_weaponl",
+   "vcount": 68
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_weapon_al_2s.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_weaponl.ddj",
+   "material": "CentralAsiaShop_Weapon_al_2s",
+   "msh": "prim_mesh_npc_casia_centralasiashop_weapon_al_2s",
+   "skin_records": 177,
+   "skinned": true,
+   "tcount": 256,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_weaponl",
+   "vcount": 177
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_weapon_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_weaponl.ddj",
+   "material": "ChinaEtc_EuropeGirl",
+   "msh": "prim_mesh_npc_casia_centralasiashop_weapon_part1",
+   "skin_records": 288,
+   "skinned": true,
+   "tcount": 335,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_weaponl",
+   "vcount": 288
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_weapon_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_weaponl.ddj",
+   "material": "ChinaEtc_EuropeGirl",
+   "msh": "prim_mesh_npc_casia_centralasiashop_weapon_part2",
+   "skin_records": 368,
+   "skinned": true,
+   "tcount": 377,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_weaponl",
+   "vcount": 368
+  }
+ ],
+ "skeleton": "prim_skel_npc_casia_centralasiashop_weapon",
+ "skeleton_path": "/prim/skel/npc/casia/centralasiashop_weapon.bsk"
+}

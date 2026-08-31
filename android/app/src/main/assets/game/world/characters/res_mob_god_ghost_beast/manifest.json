@@ -1,0 +1,129 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_stand01",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_stand01.ban",
+   "channels": 65,
+   "duration_ms": 1200,
+   "keyframes": 22,
+   "name": "ghost_beast_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_damage",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_damage.ban",
+   "channels": 9,
+   "duration_ms": 333,
+   "keyframes": 5,
+   "name": "ghost_beast_damage"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_walk",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_walk.ban",
+   "channels": 65,
+   "duration_ms": 1066,
+   "keyframes": 17,
+   "name": "ghost_beast_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_run",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_run.ban",
+   "channels": 65,
+   "duration_ms": 800,
+   "keyframes": 19,
+   "name": "ghost_beast_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_attack01",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_attack01.ban",
+   "channels": 65,
+   "duration_ms": 2133,
+   "keyframes": 46,
+   "name": "ghost_beast_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_attack02",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_attack02.ban",
+   "channels": 65,
+   "duration_ms": 3000,
+   "keyframes": 58,
+   "name": "ghost_beast_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_attack03",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_attack03.ban",
+   "channels": 65,
+   "duration_ms": 3500,
+   "keyframes": 62,
+   "name": "ghost_beast_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_die",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_die.ban",
+   "channels": 65,
+   "duration_ms": 2666,
+   "keyframes": 54,
+   "name": "ghost_beast_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_beast_ghost_beast_die_rm",
+   "ban_path": "/prim/ani/mob/god/ghost_beast/ghost_beast_die_rm.ban",
+   "channels": 65,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ghost_beast_die_rm"
+  }
+ ],
+ "key": "res_mob_god_ghost_beast",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_beast_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_beast.ddj",
+   "material": "ghost_beast",
+   "msh": "prim_mesh_mob_god_ghost_beast_part1",
+   "skin_records": 1321,
+   "skinned": true,
+   "tcount": 1657,
+   "tex": "prim_mtrl_mob_god_ghost_beast",
+   "vcount": 1321
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_beast_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_beast.ddj",
+   "material": "ghost_beast",
+   "msh": "prim_mesh_mob_god_ghost_beast_part2_part1",
+   "skin_records": 551,
+   "skinned": true,
+   "tcount": 731,
+   "tex": "prim_mtrl_mob_god_ghost_beast",
+   "vcount": 551
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_beast_part2_part2_part1.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_beast.ddj",
+   "material": "ghost_beast",
+   "msh": "prim_mesh_mob_god_ghost_beast_part2_part2_part1",
+   "skin_records": 256,
+   "skinned": true,
+   "tcount": 352,
+   "tex": "prim_mtrl_mob_god_ghost_beast",
+   "vcount": 256
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_beast_part2_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_beast.ddj",
+   "material": "ghost_beast",
+   "msh": "prim_mesh_mob_god_ghost_beast_part2_part2_part2",
+   "skin_records": 373,
+   "skinned": true,
+   "tcount": 469,
+   "tex": "prim_mtrl_mob_god_ghost_beast",
+   "vcount": 373
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_ghost_beast",
+ "skeleton_path": "/prim/skel/mob/god/ghost_beast.bsk"
+}

@@ -1,0 +1,30 @@
+{
+ "animations": [
+  "/prim/ani/mob/sd/sandman/sandman_stand01.ban",
+  "/prim/ani/mob/sd/sandman/sandman_walk.ban",
+  "/prim/ani/mob/sd/sandman/sandman_run.ban",
+  "/prim/ani/mob/sd/sandman/sandman_attack1.ban",
+  "/prim/ani/mob/sd/sandman/sandman_attack2.ban",
+  "/prim/ani/mob/sd/sandman/sandman_attack3.ban",
+  "/prim/ani/mob/sd/sandman/sandman_attack4.ban",
+  "/prim/ani/mob/sd/sandman/sandman_attack5.ban",
+  "/prim/ani/mob/sd/sandman/sandman_damage1.ban",
+  "/prim/ani/mob/sd/sandman/sandman_down.ban",
+  "/prim/ani/mob/sd/sandman/sandman_down_rm.ban",
+  "/prim/ani/mob/sd/sandman/sandman_down_damage.ban",
+  "/prim/ani/mob/sd/sandman/sandman_down_up.ban",
+  "/prim/ani/mob/sd/sandman/sandman_down_die.ban",
+  "/prim/ani/mob/sd/sandman/sandman_die.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/sd/sandman.bmt",
+ "bsk": "/prim/skel/mob/sd/sandman.bsk",
+ "bsr": "/res/mob/sd/sandman.bsr",
+ "meshes": [
+  "/prim/mesh/mob/sd/sandman01.bms",
+  "/prim/mesh/mob/sd/sandman02.bms",
+  "/prim/mesh/mob/sd/sandman_part1.bms",
+  "/prim/mesh/mob/sd/sandman_part2_part1.bms",
+  "/prim/mesh/mob/sd/sandman_part2_part2_part1.bms",
+  "/prim/mesh/mob/sd/sandman_part2_part2_part2.bms"
+ ]
+}

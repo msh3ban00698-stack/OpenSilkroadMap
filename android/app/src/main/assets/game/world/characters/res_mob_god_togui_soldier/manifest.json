@@ -1,0 +1,161 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_stand02",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_stand02.ban",
+   "channels": 35,
+   "duration_ms": 5500,
+   "keyframes": 53,
+   "name": "soldierearthghost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_run",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_run.ban",
+   "channels": 35,
+   "duration_ms": 733,
+   "keyframes": 29,
+   "name": "soldierearthghost_run"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_damage02",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_damage02.ban",
+   "channels": 35,
+   "duration_ms": 1000,
+   "keyframes": 18,
+   "name": "soldierearthghost_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_walk",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_walk.ban",
+   "channels": 35,
+   "duration_ms": 1200,
+   "keyframes": 22,
+   "name": "soldierearthghost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_stand01",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_stand01.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 5,
+   "name": "soldierearthghost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_attack01",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_attack01.ban",
+   "channels": 35,
+   "duration_ms": 4466,
+   "keyframes": 87,
+   "name": "soldierearthghost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_attack02",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_attack02.ban",
+   "channels": 35,
+   "duration_ms": 2500,
+   "keyframes": 29,
+   "name": "soldierearthghost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_damage01",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_damage01.ban",
+   "channels": 4,
+   "duration_ms": 400,
+   "keyframes": 8,
+   "name": "soldierearthghost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_down",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_down.ban",
+   "channels": 35,
+   "duration_ms": 1100,
+   "keyframes": 27,
+   "name": "soldierearthghost_down"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_down_wait",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_down_wait.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 14,
+   "name": "soldierearthghost_down_wait"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_down_damage",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_down_damage.ban",
+   "channels": 35,
+   "duration_ms": 600,
+   "keyframes": 16,
+   "name": "soldierearthghost_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_down_up",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_down_up.ban",
+   "channels": 35,
+   "duration_ms": 1366,
+   "keyframes": 20,
+   "name": "soldierearthghost_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_wchina_soldierearthghost_soldierearthghost_down_die",
+   "ban_path": "/prim/ani/mob/wchina/soldierearthghost/soldierearthghost_down_die.ban",
+   "channels": 71,
+   "duration_ms": 333,
+   "keyframes": 5,
+   "name": "soldierearthghost_down_die"
+  }
+ ],
+ "key": "res_mob_god_togui_soldier",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/wchina/soldierearthghost01_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/god/togui_soldier.ddj",
+   "material": "soldierearthghost",
+   "msh": "prim_mesh_mob_wchina_soldierearthghost01_part1",
+   "skin_records": 630,
+   "skinned": true,
+   "tcount": 746,
+   "tex": "prim_mtrl_mob_god_togui_soldier",
+   "vcount": 630
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/soldierearthghost01_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_soldier.ddj",
+   "material": "soldierearthghost",
+   "msh": "prim_mesh_mob_wchina_soldierearthghost01_part2",
+   "skin_records": 214,
+   "skinned": true,
+   "tcount": 230,
+   "tex": "prim_mtrl_mob_god_togui_soldier",
+   "vcount": 214
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/soldierearthghost02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/god/togui_soldier.ddj",
+   "material": "soldierearthghost",
+   "msh": "prim_mesh_mob_wchina_soldierearthghost02",
+   "skin_records": 96,
+   "skinned": true,
+   "tcount": 112,
+   "tex": "prim_mtrl_mob_god_togui_soldier",
+   "vcount": 96
+  },
+  {
+   "bms_path": "/prim/mesh/mob/wchina/soldierearthghost_ax.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_soldier.ddj",
+   "material": "soldierearthghost",
+   "msh": "prim_mesh_mob_wchina_soldierearthghost_ax",
+   "skin_records": 129,
+   "skinned": true,
+   "tcount": 148,
+   "tex": "prim_mtrl_mob_god_togui_soldier",
+   "vcount": 129
+  }
+ ],
+ "skeleton": "prim_skel_mob_wchina_soldierearthghost",
+ "skeleton_path": "/prim/skel/mob/wchina/soldierearthghost.bsk"
+}

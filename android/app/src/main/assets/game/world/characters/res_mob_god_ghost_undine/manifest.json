@@ -1,0 +1,213 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_stand01",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_stand01.ban",
+   "channels": 116,
+   "duration_ms": 2933,
+   "keyframes": 35,
+   "name": "ghost_undine_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_walk",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_walk.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "ghost_undine_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_run",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_run.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "ghost_undine_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack01",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack01.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 33,
+   "name": "ghost_undine_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack02",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack02.ban",
+   "channels": 116,
+   "duration_ms": 3000,
+   "keyframes": 40,
+   "name": "ghost_undine_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack03_wait",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack03_wait.ban",
+   "channels": 116,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "ghost_undine_attack03_wait"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack03_shot",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack03_shot.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 30,
+   "name": "ghost_undine_attack03_shot"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack04",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack04.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 34,
+   "name": "ghost_undine_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack05",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack05.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 34,
+   "name": "ghost_undine_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_die",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_die.ban",
+   "channels": 116,
+   "duration_ms": 2333,
+   "keyframes": 50,
+   "name": "ghost_undine_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_die_rm",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_die_rm.ban",
+   "channels": 116,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ghost_undine_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_god_ghost_undine_ghost_undine_attack03_ready",
+   "ban_path": "/prim/ani/mob/god/ghost_undine/ghost_undine_attack03_ready.ban",
+   "channels": 116,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "ghost_undine_attack03_ready"
+  }
+ ],
+ "key": "res_mob_god_ghost_undine",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine01.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine01",
+   "skin_records": 228,
+   "skinned": true,
+   "tcount": 208,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 228
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine02.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine02.ddj",
+   "material": "4 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine02",
+   "skin_records": 575,
+   "skinned": true,
+   "tcount": 644,
+   "tex": "prim_mtrl_mob_god_ghost_undine02",
+   "vcount": 575
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part1",
+   "skin_records": 1032,
+   "skinned": true,
+   "tcount": 1383,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 1032
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part2_part1",
+   "skin_records": 341,
+   "skinned": true,
+   "tcount": 470,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 341
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part2_part2_part1",
+   "skin_records": 342,
+   "skinned": true,
+   "tcount": 472,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 342
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part2_part2_part2_part1",
+   "skin_records": 174,
+   "skinned": true,
+   "tcount": 267,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 174
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part2_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part2_part2_part2_part2_part1",
+   "skin_records": 526,
+   "skinned": true,
+   "tcount": 760,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 526
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine_part2_part2_part2_part2_part2.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine_part2_part2_part2_part2_part2",
+   "skin_records": 267,
+   "skinned": true,
+   "tcount": 326,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 267
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/ghost_undine03.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_undine.ddj",
+   "material": "1 - Default",
+   "msh": "prim_mesh_mob_god_ghost_undine03",
+   "skin_records": 36,
+   "skinned": true,
+   "tcount": 36,
+   "tex": "prim_mtrl_mob_god_ghost_undine",
+   "vcount": 36
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_ghost_undine",
+ "skeleton_path": "/prim/skel/mob/god/ghost_undine.bsk"
+}

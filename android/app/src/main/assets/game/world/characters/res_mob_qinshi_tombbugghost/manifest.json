@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_stand01.ban",
+   "channels": 39,
+   "duration_ms": 2000,
+   "keyframes": 38,
+   "name": "tombbughost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_stand02",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_stand02.ban",
+   "channels": 39,
+   "duration_ms": 2500,
+   "keyframes": 58,
+   "name": "tombbughost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_walk",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_walk.ban",
+   "channels": 39,
+   "duration_ms": 800,
+   "keyframes": 27,
+   "name": "tombbughost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_run",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_run.ban",
+   "channels": 39,
+   "duration_ms": 533,
+   "keyframes": 27,
+   "name": "tombbughost_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_attack01.ban",
+   "channels": 39,
+   "duration_ms": 3166,
+   "keyframes": 72,
+   "name": "tombbughost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_attack02.ban",
+   "channels": 39,
+   "duration_ms": 4000,
+   "keyframes": 93,
+   "name": "tombbughost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_attack03.ban",
+   "channels": 67,
+   "duration_ms": 2666,
+   "keyframes": 76,
+   "name": "tombbughost_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_attack04.ban",
+   "channels": 39,
+   "duration_ms": 2333,
+   "keyframes": 68,
+   "name": "tombbughost_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_attack06",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_attack06.ban",
+   "channels": 39,
+   "duration_ms": 1666,
+   "keyframes": 47,
+   "name": "tombbughost_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_damage01.ban",
+   "channels": 16,
+   "duration_ms": 333,
+   "keyframes": 7,
+   "name": "tombbughost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_die.ban",
+   "channels": 39,
+   "duration_ms": 1333,
+   "keyframes": 30,
+   "name": "tombbughost_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_die_rm.ban",
+   "channels": 39,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombbughost_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_down",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_down.ban",
+   "channels": 39,
+   "duration_ms": 1000,
+   "keyframes": 40,
+   "name": "tombbughost_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_down_rm.ban",
+   "channels": 39,
+   "duration_ms": 400,
+   "keyframes": 14,
+   "name": "tombbughost_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_down_damage.ban",
+   "channels": 39,
+   "duration_ms": 500,
+   "keyframes": 11,
+   "name": "tombbughost_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_down_up.ban",
+   "channels": 39,
+   "duration_ms": 433,
+   "keyframes": 7,
+   "name": "tombbughost_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombbughost_tombbughost_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombbughost/tombbughost_down_die.ban",
+   "channels": 39,
+   "duration_ms": 266,
+   "keyframes": 2,
+   "name": "tombbughost_down_die"
+  }
+ ],
+ "key": "res_mob_qinshi_tombbugghost",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombbugghost_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/qinshi/tombbugghost.ddj",
+   "material": "tombbugghost",
+   "msh": "prim_mesh_mob_qinshi_tombbugghost_part1",
+   "skin_records": 192,
+   "skinned": true,
+   "tcount": 255,
+   "tex": "prim_mtrl_mob_qinshi_tombbugghost",
+   "vcount": 192
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombbugghost_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/qinshi/tombbugghost.ddj",
+   "material": "tombbugghost",
+   "msh": "prim_mesh_mob_qinshi_tombbugghost_part2",
+   "skin_records": 292,
+   "skinned": true,
+   "tcount": 373,
+   "tex": "prim_mtrl_mob_qinshi_tombbugghost",
+   "vcount": 292
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_tombbugghost",
+ "skeleton_path": "/prim/skel/mob/qinshi/tombbugghost.bsk"
+}

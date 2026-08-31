@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_gravekeeper",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_gravekeeper.ban",
+   "channels": 36,
+   "duration_ms": 5000,
+   "keyframes": 38,
+   "name": "easteuropequest_gravekeeper"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_gravekeeper",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_gravekeeper_2.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_gravekeeper_2.ddj",
+   "material": "EastEuropeQuest_GraveKeeper_2",
+   "msh": "prim_mesh_npc_europe_easteuropequest_gravekeeper_2",
+   "skin_records": 130,
+   "skinned": true,
+   "tcount": 100,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_gravekeeper_2",
+   "vcount": 130
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_gravekeeper_3.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_gravekeeper.ddj",
+   "material": "EastEuropeQuest_GraveKeeper",
+   "msh": "prim_mesh_npc_europe_easteuropequest_gravekeeper_3",
+   "skin_records": 33,
+   "skinned": true,
+   "tcount": 15,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_gravekeeper",
+   "vcount": 33
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_gravekeeper_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_gravekeeper.ddj",
+   "material": "EastEuropeQuest_GraveKeeper",
+   "msh": "prim_mesh_npc_europe_easteuropequest_gravekeeper_part1",
+   "skin_records": 411,
+   "skinned": true,
+   "tcount": 533,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_gravekeeper",
+   "vcount": 411
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_gravekeeper_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_gravekeeper.ddj",
+   "material": "EastEuropeQuest_GraveKeeper",
+   "msh": "prim_mesh_npc_europe_easteuropequest_gravekeeper_part2",
+   "skin_records": 262,
+   "skinned": true,
+   "tcount": 313,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_gravekeeper",
+   "vcount": 262
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_gravekeeper",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_gravekeeper.bsk"
+}

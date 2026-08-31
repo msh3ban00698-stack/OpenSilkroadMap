@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_casia_centralasiashop_special",
+   "ban_path": "/prim/ani/npc/casia/centralasiashop_special.ban",
+   "channels": 37,
+   "duration_ms": 8166,
+   "keyframes": 44,
+   "name": "centralasiashop_special"
+  }
+ ],
+ "key": "res_npc_npc_centralasiashop_special",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_special_al.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_special_al.ddj",
+   "material": "CentralAsiaShop_Special_al",
+   "msh": "prim_mesh_npc_casia_centralasiashop_special_al",
+   "skin_records": 102,
+   "skinned": true,
+   "tcount": 124,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_special_al",
+   "vcount": 102
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_special_al_1.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_special_al.ddj",
+   "material": "CentralAsiaShop_Special_al",
+   "msh": "prim_mesh_npc_casia_centralasiashop_special_al_1",
+   "skin_records": 35,
+   "skinned": true,
+   "tcount": 31,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_special_al",
+   "vcount": 35
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_special_al_2.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_special_al.ddj",
+   "material": "CentralAsiaShop_Special_al",
+   "msh": "prim_mesh_npc_casia_centralasiashop_special_al_2",
+   "skin_records": 16,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_special_al",
+   "vcount": 16
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_special_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_special.ddj",
+   "material": "CentralAsiaShop_Special",
+   "msh": "prim_mesh_npc_casia_centralasiashop_special_part1",
+   "skin_records": 354,
+   "skinned": true,
+   "tcount": 466,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_special",
+   "vcount": 354
+  },
+  {
+   "bms_path": "/prim/mesh/npc/casia/centralasiashop_special_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/casia/centralasiashop_special.ddj",
+   "material": "CentralAsiaShop_Special",
+   "msh": "prim_mesh_npc_casia_centralasiashop_special_part2",
+   "skin_records": 257,
+   "skinned": true,
+   "tcount": 298,
+   "tex": "prim_mtrl_npc_casia_centralasiashop_special",
+   "vcount": 257
+  }
+ ],
+ "skeleton": "prim_skel_npc_casia_centralasiashop_special",
+ "skeleton_path": "/prim/skel/npc/casia/centralasiashop_special.bsk"
+}

@@ -1,0 +1,25 @@
+{
+ "animations": [
+  "/prim/ani/mob/karakoram/penonf/penonf_stand01.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_stand02.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_walk.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_run.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_damage01.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_damage02.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_down.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_down_rm.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_down_up.ban",
+  "/prim/ani/mob/karakoram/penonf/penonf_down_die.ban",
+  "/prim/ani/mob/karakoram/penonf/penonw_attack01.ban",
+  "/prim/ani/mob/karakoram/penonf/penonw_attack02.ban",
+  "/prim/ani/mob/karakoram/penonf/penonw_down_damage.ban",
+  "/prim/ani/mob/karakoram/penonf/penonw_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/karakoram/penonw.bmt",
+ "bsk": "/prim/skel/mob/karakoram/penonf.bsk",
+ "bsr": "/res/mob/karakoram/penon_w.bsr",
+ "meshes": [
+  "/prim/mesh/mob/karakoram/penonf_part1.bms",
+  "/prim/mesh/mob/karakoram/penonf_part2.bms"
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_stand01",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_stand01.ban",
+   "channels": 102,
+   "duration_ms": 2666,
+   "keyframes": 33,
+   "name": "togui_eider_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_stand02",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_stand02.ban",
+   "channels": 102,
+   "duration_ms": 3200,
+   "keyframes": 76,
+   "name": "togui_eider_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak1",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak1.ban",
+   "channels": 102,
+   "duration_ms": 2000,
+   "keyframes": 48,
+   "name": "togui_eider_attacak1"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak2",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak2.ban",
+   "channels": 102,
+   "duration_ms": 3566,
+   "keyframes": 73,
+   "name": "togui_eider_attacak2"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak3_ready",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak3_ready.ban",
+   "channels": 102,
+   "duration_ms": 1666,
+   "keyframes": 47,
+   "name": "togui_eider_attacak3_ready"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak3_wait",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak3_wait.ban",
+   "channels": 102,
+   "duration_ms": 2300,
+   "keyframes": 70,
+   "name": "togui_eider_attacak3_wait"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak3_shot",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak3_shot.ban",
+   "channels": 102,
+   "duration_ms": 3266,
+   "keyframes": 78,
+   "name": "togui_eider_attacak3_shot"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_attacak4",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_attacak4.ban",
+   "channels": 102,
+   "duration_ms": 3166,
+   "keyframes": 71,
+   "name": "togui_eider_attacak4"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_die",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_die.ban",
+   "channels": 102,
+   "duration_ms": 5366,
+   "keyframes": 66,
+   "name": "togui_eider_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_die_rm",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_die_rm.ban",
+   "channels": 102,
+   "duration_ms": 33,
+   "keyframes": 2,
+   "name": "togui_eider_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_walk",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_walk.ban",
+   "channels": 102,
+   "duration_ms": 1200,
+   "keyframes": 24,
+   "name": "togui_eider_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_eider_togui_eider_run",
+   "ban_path": "/prim/ani/mob/god/togui_eider/togui_eider_run.ban",
+   "channels": 102,
+   "duration_ms": 866,
+   "keyframes": 35,
+   "name": "togui_eider_run"
+  }
+ ],
+ "key": "res_mob_god_togui_elder",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider01.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider01.ddj",
+   "material": "1111",
+   "msh": "prim_mesh_mob_god_togui_eider01",
+   "skin_records": 446,
+   "skinned": true,
+   "tcount": 610,
+   "tex": "prim_mtrl_mob_god_togui_eider01",
+   "vcount": 446
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider01.ddj",
+   "material": "1111",
+   "msh": "prim_mesh_mob_god_togui_eider02",
+   "skin_records": 94,
+   "skinned": true,
+   "tcount": 176,
+   "tex": "prim_mtrl_mob_god_togui_eider01",
+   "vcount": 94
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part1",
+   "skin_records": 1086,
+   "skinned": true,
+   "tcount": 1579,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 1086
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part1",
+   "skin_records": 295,
+   "skinned": true,
+   "tcount": 353,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 295
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part2_part1",
+   "skin_records": 312,
+   "skinned": true,
+   "tcount": 364,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 312
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part2_part2_part1",
+   "skin_records": 393,
+   "skinned": true,
+   "tcount": 511,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 393
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part2_part2_part2_part1",
+   "skin_records": 376,
+   "skinned": true,
+   "tcount": 405,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 376
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part2_part2_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part2_part2_part2_part2_part1",
+   "skin_records": 191,
+   "skinned": true,
+   "tcount": 230,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 191
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_eider_part2_part2_part2_part2_part2_part2.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/god/togui_eider.ddj",
+   "material": "CM_h_gauntlet",
+   "msh": "prim_mesh_mob_god_togui_eider_part2_part2_part2_part2_part2_part2",
+   "skin_records": 186,
+   "skinned": true,
+   "tcount": 222,
+   "tex": "prim_mtrl_mob_god_togui_eider",
+   "vcount": 186
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_togui_eider",
+ "skeleton_path": "/prim/skel/mob/god/togui_eider.bsk"
+}

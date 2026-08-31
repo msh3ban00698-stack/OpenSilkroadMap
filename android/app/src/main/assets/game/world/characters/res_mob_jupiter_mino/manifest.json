@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_stand01",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_stand01.ban",
+   "channels": 62,
+   "duration_ms": 2666,
+   "keyframes": 12,
+   "name": "flame_cowking_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_walk",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_walk.ban",
+   "channels": 62,
+   "duration_ms": 1066,
+   "keyframes": 18,
+   "name": "flame_cowking_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_run",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_run.ban",
+   "channels": 62,
+   "duration_ms": 933,
+   "keyframes": 17,
+   "name": "flame_cowking_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack01",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack01.ban",
+   "channels": 62,
+   "duration_ms": 2066,
+   "keyframes": 37,
+   "name": "flame_cowking_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack02",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack02.ban",
+   "channels": 62,
+   "duration_ms": 3166,
+   "keyframes": 47,
+   "name": "flame_cowking_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack03",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack03.ban",
+   "channels": 62,
+   "duration_ms": 3800,
+   "keyframes": 65,
+   "name": "flame_cowking_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack04_ready",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_ready.ban",
+   "channels": 62,
+   "duration_ms": 2666,
+   "keyframes": 25,
+   "name": "flame_cowking_attack04_ready"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack04_wait",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_wait.ban",
+   "channels": 62,
+   "duration_ms": 1000,
+   "keyframes": 4,
+   "name": "flame_cowking_attack04_wait"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack04_shot",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_shot.ban",
+   "channels": 62,
+   "duration_ms": 2500,
+   "keyframes": 39,
+   "name": "flame_cowking_attack04_shot"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_attack05",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_attack05.ban",
+   "channels": 62,
+   "duration_ms": 3000,
+   "keyframes": 36,
+   "name": "flame_cowking_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_die",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_die.ban",
+   "channels": 62,
+   "duration_ms": 2733,
+   "keyframes": 83,
+   "name": "flame_cowking_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_cowking_flame_cowking_die_rm",
+   "ban_path": "/prim/ani/mob/god/flame_cowking/flame_cowking_die_rm.ban",
+   "channels": 62,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "flame_cowking_die_rm"
+  }
+ ],
+ "key": "res_mob_jupiter_mino",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_cowking01.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/jupiter/mino.ddj",
+   "material": "flame_cowking",
+   "msh": "prim_mesh_mob_god_flame_cowking01",
+   "skin_records": 300,
+   "skinned": true,
+   "tcount": 480,
+   "tex": "prim_mtrl_mob_jupiter_mino",
+   "vcount": 300
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_cowking_weapon.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/jupiter/mino_weapon.ddj",
+   "material": "flame_cowking01",
+   "msh": "prim_mesh_mob_god_flame_cowking_weapon",
+   "skin_records": 323,
+   "skinned": true,
+   "tcount": 444,
+   "tex": "prim_mtrl_mob_jupiter_mino_weapon",
+   "vcount": 323
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_cowking_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/jupiter/mino.ddj",
+   "material": "flame_cowking",
+   "msh": "prim_mesh_mob_god_flame_cowking_part1",
+   "skin_records": 1892,
+   "skinned": true,
+   "tcount": 2783,
+   "tex": "prim_mtrl_mob_jupiter_mino",
+   "vcount": 1892
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_cowking_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/jupiter/mino.ddj",
+   "material": "flame_cowking",
+   "msh": "prim_mesh_mob_god_flame_cowking_part2_part1",
+   "skin_records": 533,
+   "skinned": true,
+   "tcount": 830,
+   "tex": "prim_mtrl_mob_jupiter_mino",
+   "vcount": 533
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_cowking_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/mino.ddj",
+   "material": "flame_cowking",
+   "msh": "prim_mesh_mob_god_flame_cowking_part2_part2",
+   "skin_records": 304,
+   "skinned": true,
+   "tcount": 398,
+   "tex": "prim_mtrl_mob_jupiter_mino",
+   "vcount": 304
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_flame_cowking",
+ "skeleton_path": "/prim/skel/mob/god/flame_cowking.bsk"
+}

@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_stand01",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_stand01.ban",
+   "channels": 53,
+   "duration_ms": 2666,
+   "keyframes": 11,
+   "name": "gwhitespider_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_stand02",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_stand02.ban",
+   "channels": 53,
+   "duration_ms": 3000,
+   "keyframes": 57,
+   "name": "gwhitespider_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_walk",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_walk.ban",
+   "channels": 53,
+   "duration_ms": 800,
+   "keyframes": 21,
+   "name": "gwhitespider_walk"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_run",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_run.ban",
+   "channels": 53,
+   "duration_ms": 466,
+   "keyframes": 21,
+   "name": "gwhitespider_run"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_attack01",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_attack01.ban",
+   "channels": 53,
+   "duration_ms": 2200,
+   "keyframes": 56,
+   "name": "gwhitespider_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_attack02",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_attack02.ban",
+   "channels": 53,
+   "duration_ms": 2333,
+   "keyframes": 63,
+   "name": "gwhitespider_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_damage01",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_damage01.ban",
+   "channels": 53,
+   "duration_ms": 933,
+   "keyframes": 14,
+   "name": "gwhitespider_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_damage02",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_damage02.ban",
+   "channels": 53,
+   "duration_ms": 1333,
+   "keyframes": 46,
+   "name": "gwhitespider_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_die",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_die.ban",
+   "channels": 53,
+   "duration_ms": 5036,
+   "keyframes": 147,
+   "name": "gwhitespider_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_die_loop",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_die_loop.ban",
+   "channels": 53,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "gwhitespider_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_down",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_down.ban",
+   "channels": 53,
+   "duration_ms": 1166,
+   "keyframes": 27,
+   "name": "gwhitespider_down"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_down_rm",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_down_rm.ban",
+   "channels": 53,
+   "duration_ms": 2000,
+   "keyframes": 23,
+   "name": "gwhitespider_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_down_damage",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_down_damage.ban",
+   "channels": 53,
+   "duration_ms": 633,
+   "keyframes": 18,
+   "name": "gwhitespider_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_down_up",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_down_up.ban",
+   "channels": 53,
+   "duration_ms": 1666,
+   "keyframes": 16,
+   "name": "gwhitespider_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_gwhitespider_gwhitespider_down_die",
+   "ban_path": "/prim/ani/mob/karakoram/gwhitespider/gwhitespider_down_die.ban",
+   "channels": 53,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "gwhitespider_down_die"
+  }
+ ],
+ "key": "res_mob_karakoram_gwhitespider",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/gwhitespider_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/karakoram/gwhitespider.ddj",
+   "material": "gwhitespider",
+   "msh": "prim_mesh_mob_karakoram_gwhitespider_part1",
+   "skin_records": 124,
+   "skinned": true,
+   "tcount": 216,
+   "tex": "prim_mtrl_mob_karakoram_gwhitespider",
+   "vcount": 124
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/gwhitespider_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/karakoram/gwhitespider.ddj",
+   "material": "gwhitespider",
+   "msh": "prim_mesh_mob_karakoram_gwhitespider_part2_part1",
+   "skin_records": 124,
+   "skinned": true,
+   "tcount": 216,
+   "tex": "prim_mtrl_mob_karakoram_gwhitespider",
+   "vcount": 124
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/gwhitespider_part2_part2.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/karakoram/gwhitespider.ddj",
+   "material": "gwhitespider",
+   "msh": "prim_mesh_mob_karakoram_gwhitespider_part2_part2",
+   "skin_records": 229,
+   "skinned": true,
+   "tcount": 394,
+   "tex": "prim_mtrl_mob_karakoram_gwhitespider",
+   "vcount": 229
+  }
+ ],
+ "skeleton": "prim_skel_mob_karakoram_gwhitespider",
+ "skeleton_path": "/prim/skel/mob/karakoram/gwhitespider.bsk"
+}

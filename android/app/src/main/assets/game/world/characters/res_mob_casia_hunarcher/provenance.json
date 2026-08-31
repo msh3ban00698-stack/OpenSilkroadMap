@@ -1,0 +1,24 @@
+{
+ "animations": [
+  "/prim/ani/mob/casia/hunarcher/hunarcher_stand01.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_walk.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_run.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_attack01.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_attack02.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_attack03.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_damage01.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_die.ban",
+  "/prim/ani/mob/casia/hunarcher/hunarcher_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/casia/hunarcher.bmt",
+ "bsk": "/prim/skel/mob/casia/hun.bsk",
+ "bsr": "/res/mob/casia/hunarcher.bsr",
+ "meshes": [
+  "/prim/mesh/mob/casia/hun_bow.bms",
+  "/prim/mesh/mob/casia/hun_part1.bms",
+  "/prim/mesh/mob/casia/hun_part2.bms",
+  "/prim/mesh/mob/casia/hung02.bms",
+  "/prim/mesh/mob/casia/hung_part1.bms",
+  "/prim/mesh/mob/casia/hung_part2.bms"
+ ]
+}

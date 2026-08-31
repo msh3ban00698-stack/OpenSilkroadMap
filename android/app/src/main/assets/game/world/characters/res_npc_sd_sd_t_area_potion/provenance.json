@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_t_area_potion.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_t_area_potion.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_t_area_potion.bsk",
+ "bsr": "/res/npc/sd/sd_t_area_potion.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_t_area_potion_2al.bms",
+  "/prim/mesh/npc/sd/sd_t_area_potion_part1.bms",
+  "/prim/mesh/npc/sd/sd_t_area_potion_part2_part1.bms",
+  "/prim/mesh/npc/sd/sd_t_area_potion_part2_part2.bms"
+ ]
+}

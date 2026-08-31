@@ -1,0 +1,101 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_westchinaquest_hyunjang_basic",
+   "ban_path": "/prim/ani/npc/china/westchinaquest_hyunjang_basic.ban",
+   "channels": 72,
+   "duration_ms": 3333,
+   "keyframes": 12,
+   "name": "westchinaquest_hyunjang_basic"
+  }
+ ],
+ "key": "res_npc_npc_westchinaquest_hyunjang",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_2s.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang.ddj",
+   "material": "WestChinaQuest_HyunJang_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_2s",
+   "skin_records": 54,
+   "skinned": true,
+   "tcount": 48,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang",
+   "vcount": 54
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_al_2s.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang_horse_al.ddj",
+   "material": "WestChinaQuest_HyunJang_horse_al_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_al_2s",
+   "skin_records": 84,
+   "skinned": true,
+   "tcount": 54,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang_horse_al",
+   "vcount": 84
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_horse_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang_horse.ddj",
+   "material": "WestChinaQuest_HyunJang_horse _2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_horse_2s",
+   "skin_records": 30,
+   "skinned": true,
+   "tcount": 28,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang_horse",
+   "vcount": 30
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_horse_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang_horse.ddj",
+   "material": "WestChinaQuest_HyunJang_horse",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_horse_part1",
+   "skin_records": 202,
+   "skinned": true,
+   "tcount": 285,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang_horse",
+   "vcount": 202
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_horse_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang_horse.ddj",
+   "material": "WestChinaQuest_HyunJang_horse",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_horse_part2",
+   "skin_records": 328,
+   "skinned": true,
+   "tcount": 463,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang_horse",
+   "vcount": 328
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang.ddj",
+   "material": "WestChinaQuest_HyunJang",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_part1",
+   "skin_records": 381,
+   "skinned": true,
+   "tcount": 479,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang",
+   "vcount": 381
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_hyunjang_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_hyunjang.ddj",
+   "material": "WestChinaQuest_HyunJang",
+   "msh": "prim_mesh_npc_china_westchinaquest_hyunjang_part2",
+   "skin_records": 343,
+   "skinned": true,
+   "tcount": 400,
+   "tex": "prim_mtrl_npc_china_westchinaquest_hyunjang",
+   "vcount": 343
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_westchinaquest_hyunjang",
+ "skeleton_path": "/prim/skel/npc/china/westchinaquest_hyunjang.bsk"
+}

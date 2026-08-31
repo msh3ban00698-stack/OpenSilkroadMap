@@ -1,0 +1,161 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_stand01",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_stand01.ban",
+   "channels": 94,
+   "duration_ms": 3000,
+   "keyframes": 64,
+   "name": "isyutaru_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_stand02",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_stand02.ban",
+   "channels": 94,
+   "duration_ms": 3000,
+   "keyframes": 64,
+   "name": "isyutaru_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_walk",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_walk.ban",
+   "channels": 94,
+   "duration_ms": 2666,
+   "keyframes": 47,
+   "name": "isyutaru_walk"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_run",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_run.ban",
+   "channels": 94,
+   "duration_ms": 2666,
+   "keyframes": 47,
+   "name": "isyutaru_run"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_attack01",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_attack01.ban",
+   "channels": 94,
+   "duration_ms": 2666,
+   "keyframes": 68,
+   "name": "isyutaru_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_attack02",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_attack02.ban",
+   "channels": 94,
+   "duration_ms": 3166,
+   "keyframes": 73,
+   "name": "isyutaru_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_damage02",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_damage02.ban",
+   "channels": 94,
+   "duration_ms": 1000,
+   "keyframes": 28,
+   "name": "isyutaru_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_die",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_die.ban",
+   "channels": 94,
+   "duration_ms": 4000,
+   "keyframes": 73,
+   "name": "isyutaru_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_damage01",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_damage01.ban",
+   "channels": 94,
+   "duration_ms": 1000,
+   "keyframes": 28,
+   "name": "isyutaru_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_isyutaru_isyutaru_attack03",
+   "ban_path": "/prim/ani/mob/karakoram/isyutaru/isyutaru_attack03.ban",
+   "channels": 94,
+   "duration_ms": 6333,
+   "keyframes": 177,
+   "name": "isyutaru_attack03"
+  }
+ ],
+ "key": "res_mob_karakoram_isyutaru",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_wings.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_wings.ddj",
+   "material": "isyutaru_wings",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_wings",
+   "skin_records": 246,
+   "skinned": true,
+   "tcount": 438,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_wings",
+   "vcount": 246
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_body_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_body.ddj",
+   "material": "isyutaru_body",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_body_part1",
+   "skin_records": 189,
+   "skinned": true,
+   "tcount": 260,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_body",
+   "vcount": 189
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_body_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_body.ddj",
+   "material": "isyutaru_body",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_body_part2_part1",
+   "skin_records": 200,
+   "skinned": true,
+   "tcount": 260,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_body",
+   "vcount": 200
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_body_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_body.ddj",
+   "material": "isyutaru_body",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_body_part2_part2_part1",
+   "skin_records": 1072,
+   "skinned": true,
+   "tcount": 1342,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_body",
+   "vcount": 1072
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_body_part2_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_body.ddj",
+   "material": "isyutaru_body",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_body_part2_part2_part2_part1",
+   "skin_records": 384,
+   "skinned": true,
+   "tcount": 499,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_body",
+   "vcount": 384
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/isyutaru_body_part2_part2_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/karakoram/isyutaru_body.ddj",
+   "material": "isyutaru_body",
+   "msh": "prim_mesh_mob_karakoram_isyutaru_body_part2_part2_part2_part2",
+   "skin_records": 391,
+   "skinned": true,
+   "tcount": 504,
+   "tex": "prim_mtrl_mob_karakoram_isyutaru_body",
+   "vcount": 391
+  }
+ ],
+ "skeleton": "prim_skel_mob_karakoram_isyutaru",
+ "skeleton_path": "/prim/skel/mob/karakoram/isyutaru.bsk"
+}

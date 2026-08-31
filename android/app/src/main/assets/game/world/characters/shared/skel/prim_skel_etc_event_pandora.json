@@ -1,0 +1,121 @@
+{
+ "path": "/prim/skel/etc/event_pandora.bsk",
+ "bone_count": 4,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bone01",
+   "parent": "",
+   "children": [
+    "Bone02"
+   ],
+   "rot_parent": [
+    -0.707107,
+    -0.707107,
+    -0.0,
+    -0.0
+   ],
+   "tr_parent": [
+    0.0,
+    15.578896,
+    -0.036096
+   ],
+   "bind_world_rot": [
+    -0.707107,
+    -0.707107,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_pos": [
+    0.0,
+    15.578896,
+    -0.036096
+   ]
+  },
+  {
+   "name": "Bone02",
+   "parent": "Bone01",
+   "children": [
+    "Bone03"
+   ],
+   "rot_parent": [
+    0.0,
+    0.613114,
+    0.0,
+    0.789995
+   ],
+   "tr_parent": [
+    3.049961,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.55861,
+    -0.55861,
+    -0.433537,
+    0.433537
+   ],
+   "bind_world_pos": [
+    0.0,
+    18.628857,
+    -0.036095
+   ]
+  },
+  {
+   "name": "Bone03",
+   "parent": "Bone02",
+   "children": [
+    "Bone04"
+   ],
+   "rot_parent": [
+    -0.003146,
+    -0.984418,
+    -0.017702,
+    0.174921
+   ],
+   "tr_parent": [
+    9.291807,
+    0.0,
+    2e-06
+   ],
+   "bind_world_rot": [
+    -0.51597,
+    -0.53302,
+    0.46464,
+    -0.483503
+   ],
+   "bind_world_pos": [
+    0.0,
+    20.934922,
+    8.965002
+   ]
+  },
+  {
+   "name": "Bone04",
+   "parent": "Bone03",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    17.538357,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.51597,
+    -0.53302,
+    0.46464,
+    -0.483503
+   ],
+   "bind_world_pos": [
+    1e-06,
+    22.701636,
+    -8.484144
+   ]
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinashop_spacialmerchant_basic",
+   "ban_path": "/prim/ani/npc/china/chinashop_spacialmerchant_basic.ban",
+   "channels": 35,
+   "duration_ms": 5666,
+   "keyframes": 35,
+   "name": "chinashop_spacialmerchant_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinashop_spacialmerchant_time",
+   "ban_path": "/prim/ani/npc/china/chinashop_spacialmerchant_time.ban",
+   "channels": 35,
+   "duration_ms": 2266,
+   "keyframes": 12,
+   "name": "chinashop_spacialmerchant_time"
+  }
+ ],
+ "key": "res_npc_npc_chinashop_spacialmerchant",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_spacialmerchant_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_spacialmerchant.ddj",
+   "material": "ChinaShop_SpacialMerchant_2s",
+   "msh": "prim_mesh_npc_china_chinashop_spacialmerchant_2s",
+   "skin_records": 8,
+   "skinned": true,
+   "tcount": 4,
+   "tex": "prim_mtrl_npc_china_chinashop_spacialmerchant",
+   "vcount": 8
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_spacialmerchant_jupan.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_spacialmerchant.ddj",
+   "material": "ChinaShop_SpacialMerchant",
+   "msh": "prim_mesh_npc_china_chinashop_spacialmerchant_jupan",
+   "skin_records": 24,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_npc_china_chinashop_spacialmerchant",
+   "vcount": 24
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_spacialmerchant_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_spacialmerchant.ddj",
+   "material": "ChinaShop_SpacialMerchant",
+   "msh": "prim_mesh_npc_china_chinashop_spacialmerchant_part1",
+   "skin_records": 256,
+   "skinned": true,
+   "tcount": 294,
+   "tex": "prim_mtrl_npc_china_chinashop_spacialmerchant",
+   "vcount": 256
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_spacialmerchant_part2_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_spacialmerchant.ddj",
+   "material": "ChinaShop_SpacialMerchant",
+   "msh": "prim_mesh_npc_china_chinashop_spacialmerchant_part2_part1",
+   "skin_records": 252,
+   "skinned": true,
+   "tcount": 280,
+   "tex": "prim_mtrl_npc_china_chinashop_spacialmerchant",
+   "vcount": 252
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_spacialmerchant_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_spacialmerchant.ddj",
+   "material": "ChinaShop_SpacialMerchant",
+   "msh": "prim_mesh_npc_china_chinashop_spacialmerchant_part2_part2",
+   "skin_records": 184,
+   "skinned": true,
+   "tcount": 210,
+   "tex": "prim_mtrl_npc_china_chinashop_spacialmerchant",
+   "vcount": 184
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinashop_spacialmerchant",
+ "skeleton_path": "/prim/skel/npc/china/chinashop_spacialmerchant.bsk"
+}

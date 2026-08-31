@@ -1,0 +1,101 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_stand01",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand01.ban",
+   "channels": 35,
+   "duration_ms": 4000,
+   "keyframes": 10,
+   "name": "chinaetc_qinshiquest_stand01"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_stand02",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand02.ban",
+   "channels": 35,
+   "duration_ms": 7000,
+   "keyframes": 46,
+   "name": "chinaetc_qinshiquest_stand02"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_stand03",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand03.ban",
+   "channels": 35,
+   "duration_ms": 8000,
+   "keyframes": 30,
+   "name": "chinaetc_qinshiquest_stand03"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_stand04",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_stand04.ban",
+   "channels": 35,
+   "duration_ms": 8000,
+   "keyframes": 21,
+   "name": "chinaetc_qinshiquest_stand04"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_walk",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_walk.ban",
+   "channels": 35,
+   "duration_ms": 1500,
+   "keyframes": 29,
+   "name": "chinaetc_qinshiquest_walk"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_attack01",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_attack01.ban",
+   "channels": 35,
+   "duration_ms": 8000,
+   "keyframes": 34,
+   "name": "chinaetc_qinshiquest_attack01"
+  },
+  {
+   "anim": "prim_ani_npc_qinshi_chinaetc_qinshiquest_run",
+   "ban_path": "/prim/ani/npc/qinshi/chinaetc_qinshiquest_run.ban",
+   "channels": 35,
+   "duration_ms": 1500,
+   "keyframes": 29,
+   "name": "chinaetc_qinshiquest_run"
+  }
+ ],
+ "key": "res_npc_npc_chinaetc_qinshiquest",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_al.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/qinshi/chinaetc_qinshiquest.ddj",
+   "material": "chinaetc_qinshiQuest",
+   "msh": "prim_mesh_npc_qinshi_chinaetc_qinshiquest_al",
+   "skin_records": 60,
+   "skinned": true,
+   "tcount": 62,
+   "tex": "prim_mtrl_npc_qinshi_chinaetc_qinshiquest",
+   "vcount": 60
+  },
+  {
+   "bms_path": "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/qinshi/chinaetc_qinshiquest.ddj",
+   "material": "chinaetc_qinshiQuest",
+   "msh": "prim_mesh_npc_qinshi_chinaetc_qinshiquest_part1",
+   "skin_records": 456,
+   "skinned": true,
+   "tcount": 612,
+   "tex": "prim_mtrl_npc_qinshi_chinaetc_qinshiquest",
+   "vcount": 456
+  },
+  {
+   "bms_path": "/prim/mesh/npc/qinshi/chinaetc_qinshiquest_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/qinshi/chinaetc_qinshiquest.ddj",
+   "material": "chinaetc_qinshiQuest",
+   "msh": "prim_mesh_npc_qinshi_chinaetc_qinshiquest_part2",
+   "skin_records": 283,
+   "skinned": true,
+   "tcount": 348,
+   "tex": "prim_mtrl_npc_qinshi_chinaetc_qinshiquest",
+   "vcount": 283
+  }
+ ],
+ "skeleton": "prim_skel_npc_qinshi_chinaetc_qinshiquest",
+ "skeleton_path": "/prim/skel/npc/qinshi/chinaetc_qinshiquest.bsk"
+}

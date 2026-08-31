@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/rocmountainshop_villagechief01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/arabia_karem.bmt",
+ "bsk": "/prim/skel/npc/common/rocmountainshop_villagechief.bsk",
+ "bsr": "/res/npc/npc/arabia_karem.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/rocmountainshop_villagechief02.bms",
+  "/prim/mesh/npc/common/rocmountainshop_villagechief03.bms",
+  "/prim/mesh/npc/common/rocmountainshop_villagechief01_part1.bms",
+  "/prim/mesh/npc/common/rocmountainshop_villagechief01_part2.bms"
+ ]
+}

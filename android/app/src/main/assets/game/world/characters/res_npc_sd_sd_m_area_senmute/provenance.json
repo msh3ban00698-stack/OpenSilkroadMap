@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_senmute_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_senmute.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_senmute.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_senmute.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_senmute_2al.bms",
+  "/prim/mesh/npc/sd/sd_m_area_senmute_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_senmute_part2_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_senmute_part2_part2.bms"
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "animations": [
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_stand01.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack01.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack02.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack03.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_damage01.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_damage02.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_down.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downwait.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downdamage.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downup.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_walk.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_run.ban",
+  "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downdie.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/taklamakan/bonesoldier.bmt",
+ "bsk": "/prim/skel/mob/taklamakan/bonesoldier.bsk",
+ "bsr": "/res/mob/taklamakan/bonesoldier.bsr",
+ "meshes": [
+  "/prim/mesh/mob/taklamakan/bonesoldier01.bms",
+  "/prim/mesh/mob/taklamakan/bonesoldier_part1.bms",
+  "/prim/mesh/mob/taklamakan/bonesoldier_part2_part1.bms",
+  "/prim/mesh/mob/taklamakan/bonesoldier_part2_part2.bms"
+ ]
+}

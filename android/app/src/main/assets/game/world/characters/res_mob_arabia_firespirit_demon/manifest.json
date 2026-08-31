@@ -1,0 +1,293 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_stand01",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_stand01.ban",
+   "channels": 88,
+   "duration_ms": 3000,
+   "keyframes": 91,
+   "name": "flame_spirit_f_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_walk",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_walk.ban",
+   "channels": 88,
+   "duration_ms": 2333,
+   "keyframes": 71,
+   "name": "flame_spirit_f_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_attack01",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_attack01.ban",
+   "channels": 88,
+   "duration_ms": 2000,
+   "keyframes": 61,
+   "name": "flame_spirit_f_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_damage01",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_damage01.ban",
+   "channels": 88,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "flame_spirit_f_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_die",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_die.ban",
+   "channels": 88,
+   "duration_ms": 2666,
+   "keyframes": 81,
+   "name": "flame_spirit_f_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_attack02",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_attack02.ban",
+   "channels": 88,
+   "duration_ms": 4000,
+   "keyframes": 121,
+   "name": "flame_spirit_f_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_run",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_run.ban",
+   "channels": 88,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "flame_spirit_f_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_attack03",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_attack03.ban",
+   "channels": 88,
+   "duration_ms": 2000,
+   "keyframes": 61,
+   "name": "flame_spirit_f_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_attack04",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_attack04.ban",
+   "channels": 88,
+   "duration_ms": 4000,
+   "keyframes": 121,
+   "name": "flame_spirit_f_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_down",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_down.ban",
+   "channels": 88,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "flame_spirit_f_down"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_down_damage",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_down_damage.ban",
+   "channels": 88,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "flame_spirit_f_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_down_up",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_down_up.ban",
+   "channels": 88,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "flame_spirit_f_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_flame_spirit_flame_spirit_f_attack05",
+   "ban_path": "/prim/ani/mob/arabia/flame_spirit/flame_spirit_f_attack05.ban",
+   "channels": 88,
+   "duration_ms": 3000,
+   "keyframes": 91,
+   "name": "flame_spirit_f_attack05"
+  }
+ ],
+ "key": "res_mob_arabia_firespirit_demon",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit l elbow01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_l_elbow01",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit l elbow02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_l_elbow02",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit l elbow03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_l_elbow03",
+   "skin_records": 15,
+   "skinned": true,
+   "tcount": 18,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 15
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit r elbow01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_r_elbow01",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit r elbow02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_r_elbow02",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit r elbow03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_r_elbow03",
+   "skin_records": 15,
+   "skinned": true,
+   "tcount": 18,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 15
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit",
+   "skin_records": 608,
+   "skinned": true,
+   "tcount": 1008,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 608
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_l_hand.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_l_hand",
+   "skin_records": 261,
+   "skinned": true,
+   "tcount": 320,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 261
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone",
+   "skin_records": 49,
+   "skinned": true,
+   "tcount": 56,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 49
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone01",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone02",
+   "skin_records": 15,
+   "skinned": true,
+   "tcount": 18,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 15
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone03",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone04.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone04",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_legstone05.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_legstone05",
+   "skin_records": 11,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 11
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/flame_spirit_r_hand.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/arabia/flame_spirit.ddj",
+   "material": "flame_spirit",
+   "msh": "prim_mesh_mob_arabia_flame_spirit_r_hand",
+   "skin_records": 261,
+   "skinned": true,
+   "tcount": 320,
+   "tex": "prim_mtrl_mob_arabia_flame_spirit",
+   "vcount": 261
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_flame_spirit",
+ "skeleton_path": "/prim/skel/mob/arabia/flame_spirit.bsk"
+}

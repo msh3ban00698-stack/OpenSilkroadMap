@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_arena_manager_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_arena_manager.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_arena_manager.bsk",
+ "bsr": "/res/NPC/sd/sd_arena_manager.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_arena_manager_part1.bms",
+  "/prim/mesh/npc/sd/sd_arena_manager_part2.bms"
+ ]
+}

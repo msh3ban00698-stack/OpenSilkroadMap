@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinaetc_kisaeng3_basic",
+   "ban_path": "/prim/ani/npc/china/chinaetc_kisaeng3_basic.ban",
+   "channels": 35,
+   "duration_ms": 4000,
+   "keyframes": 23,
+   "name": "chinaetc_kisaeng3_basic"
+  }
+ ],
+ "key": "res_npc_npc_chinaetc_kisaeng3",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_kisaeng3_hair.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_kisaeng3_al.ddj",
+   "material": "chinaetc_kisaeng3_al",
+   "msh": "prim_mesh_npc_china_chinaetc_kisaeng3_hair",
+   "skin_records": 74,
+   "skinned": true,
+   "tcount": 75,
+   "tex": "prim_mtrl_npc_china_chinaetc_kisaeng3_al",
+   "vcount": 74
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_kisaeng3_skirt.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_kisaeng3.ddj",
+   "material": "chinaetc_kisaeng302",
+   "msh": "prim_mesh_npc_china_chinaetc_kisaeng3_skirt",
+   "skin_records": 122,
+   "skinned": true,
+   "tcount": 114,
+   "tex": "prim_mtrl_npc_china_chinaetc_kisaeng3",
+   "vcount": 122
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_kisaeng3_umbrella.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_kisaeng3.ddj",
+   "material": "chinaetc_kisaeng3_01",
+   "msh": "prim_mesh_npc_china_chinaetc_kisaeng3_umbrella",
+   "skin_records": 17,
+   "skinned": true,
+   "tcount": 9,
+   "tex": "prim_mtrl_npc_china_chinaetc_kisaeng3",
+   "vcount": 17
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_kisaeng3_body_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_kisaeng3.ddj",
+   "material": "chinaetc_kisaeng3_01",
+   "msh": "prim_mesh_npc_china_chinaetc_kisaeng3_body_part1",
+   "skin_records": 396,
+   "skinned": true,
+   "tcount": 512,
+   "tex": "prim_mtrl_npc_china_chinaetc_kisaeng3",
+   "vcount": 396
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_kisaeng3_body_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_kisaeng3.ddj",
+   "material": "chinaetc_kisaeng3_01",
+   "msh": "prim_mesh_npc_china_chinaetc_kisaeng3_body_part2",
+   "skin_records": 263,
+   "skinned": true,
+   "tcount": 299,
+   "tex": "prim_mtrl_npc_china_chinaetc_kisaeng3",
+   "vcount": 263
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinaetc_kisaeng3",
+ "skeleton_path": "/prim/skel/npc/china/chinaetc_kisaeng3.bsk"
+}

@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_stand01",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_stand01.ban",
+   "channels": 74,
+   "duration_ms": 2666,
+   "keyframes": 5,
+   "name": "hunarcher_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_walk",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_walk.ban",
+   "channels": 74,
+   "duration_ms": 1600,
+   "keyframes": 32,
+   "name": "hunarcher_walk"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_run",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_run.ban",
+   "channels": 74,
+   "duration_ms": 666,
+   "keyframes": 25,
+   "name": "hunarcher_run"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_attack01",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_attack01.ban",
+   "channels": 74,
+   "duration_ms": 2000,
+   "keyframes": 36,
+   "name": "hunarcher_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_attack02",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_attack02.ban",
+   "channels": 74,
+   "duration_ms": 2600,
+   "keyframes": 54,
+   "name": "hunarcher_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_attack03",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_attack03.ban",
+   "channels": 74,
+   "duration_ms": 3000,
+   "keyframes": 51,
+   "name": "hunarcher_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_damage01",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_damage01.ban",
+   "channels": 4,
+   "duration_ms": 666,
+   "keyframes": 8,
+   "name": "hunarcher_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_die",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_die.ban",
+   "channels": 74,
+   "duration_ms": 2166,
+   "keyframes": 48,
+   "name": "hunarcher_die"
+  },
+  {
+   "anim": "prim_ani_mob_casia_hunarcher_hunarcher_die_rm",
+   "ban_path": "/prim/ani/mob/casia/hunarcher/hunarcher_die_rm.ban",
+   "channels": 74,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "hunarcher_die_rm"
+  }
+ ],
+ "key": "res_mob_casia_hunarcher",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/casia/hun_bow.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hun_bow",
+   "skin_records": 64,
+   "skinned": true,
+   "tcount": 92,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 64
+  },
+  {
+   "bms_path": "/prim/mesh/mob/casia/hun_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hun_part1",
+   "skin_records": 543,
+   "skinned": true,
+   "tcount": 708,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 543
+  },
+  {
+   "bms_path": "/prim/mesh/mob/casia/hun_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hun_part2",
+   "skin_records": 325,
+   "skinned": true,
+   "tcount": 440,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 325
+  },
+  {
+   "bms_path": "/prim/mesh/mob/casia/hung02.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hung02",
+   "skin_records": 24,
+   "skinned": true,
+   "tcount": 28,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 24
+  },
+  {
+   "bms_path": "/prim/mesh/mob/casia/hung_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hung_part1",
+   "skin_records": 504,
+   "skinned": true,
+   "tcount": 684,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 504
+  },
+  {
+   "bms_path": "/prim/mesh/mob/casia/hung_part2.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/casia/hunarcher.ddj",
+   "material": "hun",
+   "msh": "prim_mesh_mob_casia_hung_part2",
+   "skin_records": 234,
+   "skinned": true,
+   "tcount": 312,
+   "tex": "prim_mtrl_mob_casia_hunarcher",
+   "vcount": 234
+  }
+ ],
+ "skeleton": "prim_skel_mob_casia_hun",
+ "skeleton_path": "/prim/skel/mob/casia/hun.bsk"
+}

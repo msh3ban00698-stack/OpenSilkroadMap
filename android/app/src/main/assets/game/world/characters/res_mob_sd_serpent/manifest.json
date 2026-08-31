@@ -1,0 +1,145 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_stand01",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_stand01.ban",
+   "channels": 45,
+   "duration_ms": 3200,
+   "keyframes": 68,
+   "name": "ladon_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_walk",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_walk.ban",
+   "channels": 45,
+   "duration_ms": 3200,
+   "keyframes": 65,
+   "name": "ladon_walk"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_attack01",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_attack01.ban",
+   "channels": 45,
+   "duration_ms": 1866,
+   "keyframes": 34,
+   "name": "ladon_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_attack02",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_attack02.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 19,
+   "name": "ladon_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_attack03",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_attack03.ban",
+   "channels": 45,
+   "duration_ms": 2666,
+   "keyframes": 30,
+   "name": "ladon_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_damage01",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_damage01.ban",
+   "channels": 7,
+   "duration_ms": 3200,
+   "keyframes": 7,
+   "name": "ladon_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_die",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_die.ban",
+   "channels": 45,
+   "duration_ms": 1000,
+   "keyframes": 15,
+   "name": "ladon_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_die_rm",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_die_rm.ban",
+   "channels": 45,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ladon_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_down",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_down.ban",
+   "channels": 45,
+   "duration_ms": 1000,
+   "keyframes": 16,
+   "name": "ladon_down"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_down_rm",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_down_rm.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 4,
+   "name": "ladon_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_down_damage",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_down_damage.ban",
+   "channels": 45,
+   "duration_ms": 500,
+   "keyframes": 7,
+   "name": "ladon_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_down_up",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_down_up.ban",
+   "channels": 45,
+   "duration_ms": 1100,
+   "keyframes": 20,
+   "name": "ladon_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_down_die",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_down_die.ban",
+   "channels": 45,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ladon_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_ladon_ladon_attack04_sd",
+   "ban_path": "/prim/ani/mob/europe/ladon/ladon_attack04_sd.ban",
+   "channels": 45,
+   "duration_ms": 2833,
+   "keyframes": 32,
+   "name": "ladon_attack04_sd"
+  }
+ ],
+ "key": "res_mob_sd_serpent",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/europe/ladon_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/serpent.ddj",
+   "material": "ladon",
+   "msh": "prim_mesh_mob_europe_ladon_part1",
+   "skin_records": 608,
+   "skinned": true,
+   "tcount": 854,
+   "tex": "prim_mtrl_mob_sd_serpent",
+   "vcount": 608
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/ladon_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/sd/serpent.ddj",
+   "material": "ladon",
+   "msh": "prim_mesh_mob_europe_ladon_part2",
+   "skin_records": 179,
+   "skinned": true,
+   "tcount": 216,
+   "tex": "prim_mtrl_mob_sd_serpent",
+   "vcount": 179
+  }
+ ],
+ "skeleton": "prim_skel_mob_europe_ladon",
+ "skeleton_path": "/prim/skel/mob/europe/ladon.bsk"
+}

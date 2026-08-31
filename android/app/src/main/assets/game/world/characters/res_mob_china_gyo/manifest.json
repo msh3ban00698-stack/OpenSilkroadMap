@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_stand01",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_stand01.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 43,
+   "name": "gyo_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_stand02",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_stand02.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 33,
+   "name": "gyo_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_walk",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_walk.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 55,
+   "name": "gyo_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_run",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_run.ban",
+   "channels": 36,
+   "duration_ms": 500,
+   "keyframes": 23,
+   "name": "gyo_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_attack01",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_attack01.ban",
+   "channels": 36,
+   "duration_ms": 1566,
+   "keyframes": 35,
+   "name": "gyo_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_attack02",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_attack02.ban",
+   "channels": 36,
+   "duration_ms": 1833,
+   "keyframes": 43,
+   "name": "gyo_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_damage01",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_damage01.ban",
+   "channels": 13,
+   "duration_ms": 300,
+   "keyframes": 7,
+   "name": "gyo_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_damage02",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_damage02.ban",
+   "channels": 36,
+   "duration_ms": 766,
+   "keyframes": 18,
+   "name": "gyo_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_die",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_die.ban",
+   "channels": 36,
+   "duration_ms": 2100,
+   "keyframes": 41,
+   "name": "gyo_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_die_loop",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_die_loop.ban",
+   "channels": 36,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "gyo_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_down",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_down.ban",
+   "channels": 36,
+   "duration_ms": 966,
+   "keyframes": 23,
+   "name": "gyo_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_downwait",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_downwait.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 15,
+   "name": "gyo_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_downdamage",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_downdamage.ban",
+   "channels": 36,
+   "duration_ms": 300,
+   "keyframes": 9,
+   "name": "gyo_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_wakeup",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_wakeup.ban",
+   "channels": 36,
+   "duration_ms": 666,
+   "keyframes": 13,
+   "name": "gyo_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_gyo_gyo_downdie",
+   "ban_path": "/prim/ani/mob/china/gyo/gyo_downdie.ban",
+   "channels": 36,
+   "duration_ms": 200,
+   "keyframes": 2,
+   "name": "gyo_downdie"
+  }
+ ],
+ "key": "res_mob_china_gyo",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/gyo_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/china/gyo.ddj",
+   "material": "Gyo",
+   "msh": "prim_mesh_mob_china_gyo_part1",
+   "skin_records": 180,
+   "skinned": true,
+   "tcount": 230,
+   "tex": "prim_mtrl_mob_china_gyo",
+   "vcount": 180
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/gyo_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/china/gyo.ddj",
+   "material": "Gyo",
+   "msh": "prim_mesh_mob_china_gyo_part2",
+   "skin_records": 514,
+   "skinned": true,
+   "tcount": 760,
+   "tex": "prim_mtrl_mob_china_gyo",
+   "vcount": 514
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_gyo",
+ "skeleton_path": "/prim/skel/mob/china/gyo.bsk"
+}

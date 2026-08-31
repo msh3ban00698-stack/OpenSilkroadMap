@@ -1,0 +1,145 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_stand01",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_stand01.ban",
+   "channels": 32,
+   "duration_ms": 2666,
+   "keyframes": 43,
+   "name": "devilbug_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_attack01",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_attack01.ban",
+   "channels": 32,
+   "duration_ms": 1733,
+   "keyframes": 33,
+   "name": "devilbug_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_stand02",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_stand02.ban",
+   "channels": 32,
+   "duration_ms": 2666,
+   "keyframes": 68,
+   "name": "devilbug_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_walk",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_walk.ban",
+   "channels": 32,
+   "duration_ms": 2666,
+   "keyframes": 43,
+   "name": "devilbug_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_run",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_run.ban",
+   "channels": 32,
+   "duration_ms": 2000,
+   "keyframes": 43,
+   "name": "devilbug_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_damage01",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_damage01.ban",
+   "channels": 17,
+   "duration_ms": 366,
+   "keyframes": 9,
+   "name": "devilbug_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_damage02",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_damage02.ban",
+   "channels": 32,
+   "duration_ms": 700,
+   "keyframes": 15,
+   "name": "devilbug_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_die",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_die.ban",
+   "channels": 32,
+   "duration_ms": 1666,
+   "keyframes": 39,
+   "name": "devilbug_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_die_loop",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_die_loop.ban",
+   "channels": 32,
+   "duration_ms": 233,
+   "keyframes": 2,
+   "name": "devilbug_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_down",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_down.ban",
+   "channels": 32,
+   "duration_ms": 1000,
+   "keyframes": 42,
+   "name": "devilbug_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_downwait",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_downwait.ban",
+   "channels": 32,
+   "duration_ms": 1666,
+   "keyframes": 28,
+   "name": "devilbug_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_downdamage",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_downdamage.ban",
+   "channels": 32,
+   "duration_ms": 400,
+   "keyframes": 13,
+   "name": "devilbug_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_wakeup",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_wakeup.ban",
+   "channels": 32,
+   "duration_ms": 933,
+   "keyframes": 19,
+   "name": "devilbug_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_devilbug_devilbug_downdie",
+   "ban_path": "/prim/ani/mob/china/devilbug/devilbug_downdie.ban",
+   "channels": 32,
+   "duration_ms": 200,
+   "keyframes": 2,
+   "name": "devilbug_downdie"
+  }
+ ],
+ "key": "res_mob_wchina_devilbug",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/devilbug.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/china/devilbug.ddj",
+   "material": "DevilBug",
+   "msh": "prim_mesh_mob_china_devilbug",
+   "skin_records": 475,
+   "skinned": true,
+   "tcount": 622,
+   "tex": "prim_mtrl_mob_china_devilbug",
+   "vcount": 475
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/devilbug_wing.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/china/devilbug.ddj",
+   "material": "DevilBug_2side",
+   "msh": "prim_mesh_mob_china_devilbug_wing",
+   "skin_records": 36,
+   "skinned": true,
+   "tcount": 36,
+   "tex": "prim_mtrl_mob_china_devilbug",
+   "vcount": 36
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_devilbug",
+ "skeleton_path": "/prim/skel/mob/china/devilbug.bsk"
+}

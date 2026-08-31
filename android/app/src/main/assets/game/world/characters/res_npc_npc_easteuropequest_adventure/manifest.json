@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_adventure",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_adventure.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "easteuropequest_adventure"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_adventure",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_adventure_hr.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_adventure.ddj",
+   "material": "EastEuropeQuest_Adventure",
+   "msh": "prim_mesh_npc_europe_easteuropequest_adventure_hr",
+   "skin_records": 9,
+   "skinned": true,
+   "tcount": 7,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_adventure",
+   "vcount": 9
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_adventure_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_adventure.ddj",
+   "material": "EastEuropeQuest_Adventure",
+   "msh": "prim_mesh_npc_europe_easteuropequest_adventure_part1",
+   "skin_records": 542,
+   "skinned": true,
+   "tcount": 719,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_adventure",
+   "vcount": 542
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_adventure_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_adventure.ddj",
+   "material": "EastEuropeQuest_Adventure",
+   "msh": "prim_mesh_npc_europe_easteuropequest_adventure_part2",
+   "skin_records": 382,
+   "skinned": true,
+   "tcount": 485,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_adventure",
+   "vcount": 382
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_adventure",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_adventure.bsk"
+}

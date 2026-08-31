@@ -1,0 +1,201 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_stand01",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_stand01.ban",
+   "channels": 35,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "rogue_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_walk",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_walk.ban",
+   "channels": 35,
+   "duration_ms": 1333,
+   "keyframes": 13,
+   "name": "rogue_walk"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_run",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_run.ban",
+   "channels": 35,
+   "duration_ms": 800,
+   "keyframes": 14,
+   "name": "rogue_run"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_attack01",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_attack01.ban",
+   "channels": 35,
+   "duration_ms": 1833,
+   "keyframes": 21,
+   "name": "rogue_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_attack02",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_attack02.ban",
+   "channels": 35,
+   "duration_ms": 1600,
+   "keyframes": 42,
+   "name": "rogue_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_attack03",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_attack03.ban",
+   "channels": 35,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "rogue_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_damage01",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_damage01.ban",
+   "channels": 3,
+   "duration_ms": 1833,
+   "keyframes": 6,
+   "name": "rogue_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_die",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_die.ban",
+   "channels": 35,
+   "duration_ms": 1833,
+   "keyframes": 30,
+   "name": "rogue_die"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_die_rm",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_die_rm.ban",
+   "channels": 35,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "rogue_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_down",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_down.ban",
+   "channels": 35,
+   "duration_ms": 1500,
+   "keyframes": 29,
+   "name": "rogue_down"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_downrm",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_downrm.ban",
+   "channels": 35,
+   "duration_ms": 1666,
+   "keyframes": 3,
+   "name": "rogue_downrm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_downdamage",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_downdamage.ban",
+   "channels": 35,
+   "duration_ms": 500,
+   "keyframes": 10,
+   "name": "rogue_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_downup",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_downup.ban",
+   "channels": 35,
+   "duration_ms": 500,
+   "keyframes": 8,
+   "name": "rogue_downup"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_rogue_downdie",
+   "ban_path": "/prim/ani/mob/asiam/rogue/rogue_downdie.ban",
+   "channels": 35,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "rogue_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_rogue_cruelraider_attack04",
+   "ban_path": "/prim/ani/mob/asiam/rogue/cruelraider_attack04.ban",
+   "channels": 35,
+   "duration_ms": 1933,
+   "keyframes": 32,
+   "name": "cruelraider_attack04"
+  }
+ ],
+ "key": "res_mob_sd_raider",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_add_l.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/raider.ddj",
+   "material": "raider",
+   "msh": "prim_mesh_mob_sd_raider_add_l",
+   "skin_records": 111,
+   "skinned": true,
+   "tcount": 160,
+   "tex": "prim_mtrl_mob_sd_raider",
+   "vcount": 111
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_add_s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/raider_add.ddj",
+   "material": "raider_add_s",
+   "msh": "prim_mesh_mob_sd_raider_add_s",
+   "skin_records": 152,
+   "skinned": true,
+   "tcount": 192,
+   "tex": "prim_mtrl_mob_sd_raider_add",
+   "vcount": 152
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_hair.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/raider.ddj",
+   "material": "raider",
+   "msh": "prim_mesh_mob_sd_raider_hair",
+   "skin_records": 14,
+   "skinned": true,
+   "tcount": 10,
+   "tex": "prim_mtrl_mob_sd_raider",
+   "vcount": 14
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_weapon.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/sd/raider.ddj",
+   "material": "raider",
+   "msh": "prim_mesh_mob_sd_raider_weapon",
+   "skin_records": 56,
+   "skinned": true,
+   "tcount": 70,
+   "tex": "prim_mtrl_mob_sd_raider",
+   "vcount": 56
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/sd/raider.ddj",
+   "material": "raider",
+   "msh": "prim_mesh_mob_sd_raider_part1",
+   "skin_records": 401,
+   "skinned": true,
+   "tcount": 598,
+   "tex": "prim_mtrl_mob_sd_raider",
+   "vcount": 401
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/raider_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/sd/raider.ddj",
+   "material": "raider",
+   "msh": "prim_mesh_mob_sd_raider_part2",
+   "skin_records": 415,
+   "skinned": true,
+   "tcount": 550,
+   "tex": "prim_mtrl_mob_sd_raider",
+   "vcount": 415
+  }
+ ],
+ "skeleton": "prim_skel_mob_asiam_rogue",
+ "skeleton_path": "/prim/skel/mob/asiam/rogue.bsk"
+}

@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_stand01.ban",
+   "channels": 61,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "snakewoman_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_walk",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_walk.ban",
+   "channels": 61,
+   "duration_ms": 2000,
+   "keyframes": 13,
+   "name": "snakewoman_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack01.ban",
+   "channels": 61,
+   "duration_ms": 1666,
+   "keyframes": 20,
+   "name": "snakewoman_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_run",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_run.ban",
+   "channels": 61,
+   "duration_ms": 1333,
+   "keyframes": 17,
+   "name": "snakewoman_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack02.ban",
+   "channels": 61,
+   "duration_ms": 1833,
+   "keyframes": 26,
+   "name": "snakewoman_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack03.ban",
+   "channels": 61,
+   "duration_ms": 2133,
+   "keyframes": 25,
+   "name": "snakewoman_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_die.ban",
+   "channels": 61,
+   "duration_ms": 1666,
+   "keyframes": 33,
+   "name": "snakewoman_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_die_rm.ban",
+   "channels": 61,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakewoman_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_down",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_down.ban",
+   "channels": 61,
+   "duration_ms": 1000,
+   "keyframes": 23,
+   "name": "snakewoman_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_damage.ban",
+   "channels": 61,
+   "duration_ms": 1000,
+   "keyframes": 25,
+   "name": "snakewoman_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_up.ban",
+   "channels": 61,
+   "duration_ms": 1866,
+   "keyframes": 33,
+   "name": "snakewoman_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_die.ban",
+   "channels": 61,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakewoman_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakewoman_snakewoman_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/snakewoman/snakewoman_damage01.ban",
+   "channels": 2,
+   "duration_ms": 500,
+   "keyframes": 8,
+   "name": "snakewoman_damage01"
+  }
+ ],
+ "key": "res_mob_qinshi_snakewoman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakewoman01.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakewoman.ddj",
+   "material": "snakewoman_2side",
+   "msh": "prim_mesh_mob_qinshi_snakewoman01",
+   "skin_records": 99,
+   "skinned": true,
+   "tcount": 114,
+   "tex": "prim_mtrl_mob_qinshi_snakewoman",
+   "vcount": 99
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakewoman02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakewoman.ddj",
+   "material": "snakewoman",
+   "msh": "prim_mesh_mob_qinshi_snakewoman02",
+   "skin_records": 352,
+   "skinned": true,
+   "tcount": 572,
+   "tex": "prim_mtrl_mob_qinshi_snakewoman",
+   "vcount": 352
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakewoman_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakewoman.ddj",
+   "material": "snakewoman",
+   "msh": "prim_mesh_mob_qinshi_snakewoman_part1",
+   "skin_records": 984,
+   "skinned": true,
+   "tcount": 1446,
+   "tex": "prim_mtrl_mob_qinshi_snakewoman",
+   "vcount": 984
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakewoman_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakewoman.ddj",
+   "material": "snakewoman",
+   "msh": "prim_mesh_mob_qinshi_snakewoman_part2_part1",
+   "skin_records": 310,
+   "skinned": true,
+   "tcount": 376,
+   "tex": "prim_mtrl_mob_qinshi_snakewoman",
+   "vcount": 310
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakewoman_part2_part2.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakewoman.ddj",
+   "material": "snakewoman",
+   "msh": "prim_mesh_mob_qinshi_snakewoman_part2_part2",
+   "skin_records": 83,
+   "skinned": true,
+   "tcount": 86,
+   "tex": "prim_mtrl_mob_qinshi_snakewoman",
+   "vcount": 83
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_snakewoman",
+ "skeleton_path": "/prim/skel/mob/qinshi/snakewoman.bsk"
+}

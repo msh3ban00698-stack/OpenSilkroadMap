@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiaquest_soldier_we2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiaquest_soldier_we2.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiaquest_soldier_we2.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaQuest_Soldier_We2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiaquest_soldier_we2_2s.bms",
+  "/prim/mesh/npc/casia/centralasiaquest_soldier_we2_al.bms",
+  "/prim/mesh/npc/casia/centralasiaquest_soldier_we2_01_part1.bms",
+  "/prim/mesh/npc/casia/centralasiaquest_soldier_we2_01_part2.bms"
+ ]
+}

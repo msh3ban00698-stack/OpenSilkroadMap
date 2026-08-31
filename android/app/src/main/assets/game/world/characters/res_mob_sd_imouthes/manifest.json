@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_stand01",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_stand01.ban",
+   "channels": 45,
+   "duration_ms": 2000,
+   "keyframes": 9,
+   "name": "imouthes_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_stand02",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_stand02.ban",
+   "channels": 45,
+   "duration_ms": 3500,
+   "keyframes": 35,
+   "name": "imouthes_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_walk",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_walk.ban",
+   "channels": 45,
+   "duration_ms": 1066,
+   "keyframes": 14,
+   "name": "imouthes_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_run",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_run.ban",
+   "channels": 45,
+   "duration_ms": 800,
+   "keyframes": 15,
+   "name": "imouthes_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_attack01",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_attack01.ban",
+   "channels": 45,
+   "duration_ms": 3300,
+   "keyframes": 49,
+   "name": "imouthes_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_attack04",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_attack04.ban",
+   "channels": 45,
+   "duration_ms": 3133,
+   "keyframes": 37,
+   "name": "imouthes_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_damage",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_damage.ban",
+   "channels": 10,
+   "duration_ms": 333,
+   "keyframes": 6,
+   "name": "imouthes_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_die",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_die.ban",
+   "channels": 45,
+   "duration_ms": 2333,
+   "keyframes": 70,
+   "name": "imouthes_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_die_rm",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_die_rm.ban",
+   "channels": 45,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "imouthes_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_down",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_down.ban",
+   "channels": 45,
+   "duration_ms": 1166,
+   "keyframes": 23,
+   "name": "imouthes_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_down_rm",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_down_rm.ban",
+   "channels": 45,
+   "duration_ms": 833,
+   "keyframes": 5,
+   "name": "imouthes_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_down_damage",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_down_damage.ban",
+   "channels": 45,
+   "duration_ms": 1000,
+   "keyframes": 12,
+   "name": "imouthes_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_down_up",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_down_up.ban",
+   "channels": 45,
+   "duration_ms": 1500,
+   "keyframes": 22,
+   "name": "imouthes_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_imouthes_imouthes_down_die",
+   "ban_path": "/prim/ani/mob/sd/imouthes/imouthes_down_die.ban",
+   "channels": 45,
+   "duration_ms": 3333,
+   "keyframes": 9,
+   "name": "imouthes_down_die"
+  }
+ ],
+ "key": "res_mob_sd_imouthes",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/imouthes02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/imouthes02.ddj",
+   "material": "Material #2",
+   "msh": "prim_mesh_mob_sd_imouthes02",
+   "skin_records": 46,
+   "skinned": true,
+   "tcount": 40,
+   "tex": "prim_mtrl_mob_sd_imouthes02",
+   "vcount": 46
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/imouthes_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/imouthes2.ddj",
+   "material": "imouthes",
+   "msh": "prim_mesh_mob_sd_imouthes_part1",
+   "skin_records": 535,
+   "skinned": true,
+   "tcount": 675,
+   "tex": "prim_mtrl_mob_sd_imouthes2",
+   "vcount": 535
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/imouthes_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/imouthes2.ddj",
+   "material": "imouthes",
+   "msh": "prim_mesh_mob_sd_imouthes_part2_part1",
+   "skin_records": 516,
+   "skinned": true,
+   "tcount": 723,
+   "tex": "prim_mtrl_mob_sd_imouthes2",
+   "vcount": 516
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/imouthes_part2_part2.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/sd/imouthes2.ddj",
+   "material": "imouthes",
+   "msh": "prim_mesh_mob_sd_imouthes_part2_part2",
+   "skin_records": 112,
+   "skinned": true,
+   "tcount": 144,
+   "tex": "prim_mtrl_mob_sd_imouthes2",
+   "vcount": 112
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_imouthes",
+ "skeleton_path": "/prim/skel/mob/sd/imouthes.bsk"
+}

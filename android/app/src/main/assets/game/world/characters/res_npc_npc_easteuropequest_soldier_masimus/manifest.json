@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_soldier_masimus",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_soldier_masimus.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 23,
+   "name": "easteuropequest_soldier_masimus"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_soldier_masimus",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_2s_01.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.ddj",
+   "material": "EastEuropeQuest_Soldier_Masimus_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_masimus_2s_01",
+   "skin_records": 145,
+   "skinned": true,
+   "tcount": 196,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_masimus",
+   "vcount": 145
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_2s_02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.ddj",
+   "material": "EastEuropeQuest_Soldier_Masimus_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_masimus_2s_02",
+   "skin_records": 56,
+   "skinned": true,
+   "tcount": 66,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_masimus",
+   "vcount": 56
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_arm.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.ddj",
+   "material": "EastEuropeQuest_Soldier_Masimus_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_masimus_arm",
+   "skin_records": 60,
+   "skinned": true,
+   "tcount": 80,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_masimus",
+   "vcount": 60
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.ddj",
+   "material": "EastEuropeQuest_Soldier_Masimus",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_masimus_part1",
+   "skin_records": 406,
+   "skinned": true,
+   "tcount": 556,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_masimus",
+   "vcount": 406
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_masimus_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_masimus.ddj",
+   "material": "EastEuropeQuest_Soldier_Masimus",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_masimus_part2",
+   "skin_records": 399,
+   "skinned": true,
+   "tcount": 542,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_masimus",
+   "vcount": 399
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_soldier_masimus",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_soldier_masimus.bsk"
+}

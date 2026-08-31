@@ -1,0 +1,141 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_stand01",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_stand01.ban",
+   "channels": 73,
+   "duration_ms": 2666,
+   "keyframes": 20,
+   "name": "sphinx_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_walk",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_walk.ban",
+   "channels": 73,
+   "duration_ms": 1600,
+   "keyframes": 26,
+   "name": "sphinx_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_run",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_run.ban",
+   "channels": 73,
+   "duration_ms": 1000,
+   "keyframes": 16,
+   "name": "sphinx_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_attack01",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_attack01.ban",
+   "channels": 73,
+   "duration_ms": 2300,
+   "keyframes": 45,
+   "name": "sphinx_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_attack02",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_attack02.ban",
+   "channels": 73,
+   "duration_ms": 2066,
+   "keyframes": 49,
+   "name": "sphinx_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_attack03",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_attack03.ban",
+   "channels": 73,
+   "duration_ms": 2166,
+   "keyframes": 25,
+   "name": "sphinx_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_attack04",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_attack04.ban",
+   "channels": 73,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "sphinx_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_die",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_die.ban",
+   "channels": 73,
+   "duration_ms": 2933,
+   "keyframes": 67,
+   "name": "sphinx_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sphinx_sphinx_die_rm",
+   "ban_path": "/prim/ani/mob/sd/sphinx/sphinx_die_rm.ban",
+   "channels": 73,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "sphinx_die_rm"
+  }
+ ],
+ "key": "res_mob_sd_sphinx",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/sphinx01.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/sd/sphinx.ddj",
+   "material": "sphinx",
+   "msh": "prim_mesh_mob_sd_sphinx01",
+   "skin_records": 150,
+   "skinned": true,
+   "tcount": 254,
+   "tex": "prim_mtrl_mob_sd_sphinx",
+   "vcount": 150
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sphinx02.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/sd/sphinx.ddj",
+   "material": "sphinx",
+   "msh": "prim_mesh_mob_sd_sphinx02",
+   "skin_records": 326,
+   "skinned": true,
+   "tcount": 358,
+   "tex": "prim_mtrl_mob_sd_sphinx",
+   "vcount": 326
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sphinx03.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/sd/sphinx.ddj",
+   "material": "sphinx",
+   "msh": "prim_mesh_mob_sd_sphinx03",
+   "skin_records": 326,
+   "skinned": true,
+   "tcount": 358,
+   "tex": "prim_mtrl_mob_sd_sphinx",
+   "vcount": 326
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sphinx_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/sd/sphinx.ddj",
+   "material": "sphinx",
+   "msh": "prim_mesh_mob_sd_sphinx_part1",
+   "skin_records": 477,
+   "skinned": true,
+   "tcount": 699,
+   "tex": "prim_mtrl_mob_sd_sphinx",
+   "vcount": 477
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sphinx_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/sphinx.ddj",
+   "material": "sphinx",
+   "msh": "prim_mesh_mob_sd_sphinx_part2",
+   "skin_records": 967,
+   "skinned": true,
+   "tcount": 1213,
+   "tex": "prim_mtrl_mob_sd_sphinx",
+   "vcount": 967
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_sphinx",
+ "skeleton_path": "/prim/skel/mob/sd/sphinx.bsk"
+}

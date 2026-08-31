@@ -1,0 +1,1242 @@
+{
+ "path": "/prim/skel/npc/sd/sd_t_area_potion.bsk",
+ "bone_count": 43,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bip01",
+   "parent": "",
+   "children": [
+    "Bip01 Pelvis"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.707106,
+    0.0,
+    0.707107
+   ],
+   "tr_parent": [
+    0.0,
+    10.069546,
+    0.373085
+   ],
+   "bind_world_rot": [
+    -0.0,
+    0.707106,
+    0.0,
+    0.707107
+   ],
+   "bind_world_pos": [
+    0.0,
+    10.069546,
+    0.373085
+   ]
+  },
+  {
+   "name": "Bip01 Pelvis",
+   "parent": "Bip01",
+   "children": [
+    "Bip01 Spine"
+   ],
+   "rot_parent": [
+    0.499999,
+    0.5,
+    0.5,
+    0.500001
+   ],
+   "tr_parent": [
+    -0.064189,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.707106,
+    0.707107,
+    1e-06,
+    1e-06
+   ],
+   "bind_world_pos": [
+    -0.0,
+    10.069546,
+    0.437274
+   ]
+  },
+  {
+   "name": "Bip01 Spine",
+   "parent": "Bip01 Pelvis",
+   "children": [
+    "Bip01 L Thigh",
+    "Bip01 R Thigh",
+    "Spine_Base"
+   ],
+   "rot_parent": [
+    2e-06,
+    -0.128332,
+    1e-06,
+    0.991731
+   ],
+   "tr_parent": [
+    0.31319,
+    0.0,
+    -0.001099
+   ],
+   "bind_world_rot": [
+    0.70126,
+    0.70126,
+    -0.090745,
+    0.090744
+   ],
+   "bind_world_pos": [
+    -0.0,
+    10.382735,
+    0.438374
+   ]
+  },
+  {
+   "name": "Spine_Base",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 Spine1"
+   ],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.70126,
+    0.70126,
+    -0.090745,
+    0.090744
+   ],
+   "bind_world_pos": [
+    -0.0,
+    10.382735,
+    0.438374
+   ]
+  },
+  {
+   "name": "Bip01 Spine1",
+   "parent": "Spine_Base",
+   "children": [
+    "Bip01 Spine2"
+   ],
+   "rot_parent": [
+    0.0,
+    0.118024,
+    -0.0,
+    0.993011
+   ],
+   "tr_parent": [
+    1.427954,
+    -0.0,
+    -0.000879
+   ],
+   "bind_world_rot": [
+    0.707069,
+    0.707069,
+    -0.007345,
+    0.007344
+   ],
+   "bind_world_pos": [
+    1e-06,
+    11.763878,
+    0.075751
+   ]
+  },
+  {
+   "name": "Bip01 Spine2",
+   "parent": "Bip01 Spine1",
+   "children": [
+    "Bip01 Neck",
+    "Bone01",
+    "Bone03"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.130759,
+    -0.0,
+    0.991414
+   ],
+   "tr_parent": [
+    1.13488,
+    -0.0,
+    -0.001343
+   ],
+   "bind_world_rot": [
+    0.701958,
+    0.701958,
+    0.085174,
+    -0.085175
+   ],
+   "bind_world_pos": [
+    1e-06,
+    12.898542,
+    0.053519
+   ]
+  },
+  {
+   "name": "Bip01 Neck",
+   "parent": "Bip01 Spine2",
+   "children": [
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 R Clavicle"
+   ],
+   "rot_parent": [
+    -0.0,
+    -0.336326,
+    1e-06,
+    0.941746
+   ],
+   "tr_parent": [
+    2.225918,
+    0.0,
+    0.014815
+   ],
+   "bind_world_rot": [
+    0.689713,
+    0.689712,
+    -0.155875,
+    0.155874
+   ],
+   "bind_world_pos": [
+    0.0,
+    15.063409,
+    0.571472
+   ]
+  },
+  {
+   "name": "Bip01 Head",
+   "parent": "Bip01 Neck",
+   "children": [
+    "Bip01 Ponytail1"
+   ],
+   "rot_parent": [
+    0.0,
+    0.129304,
+    -0.0,
+    0.991605
+   ],
+   "tr_parent": [
+    0.489523,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.704078,
+    0.704077,
+    -0.065384,
+    0.065383
+   ],
+   "bind_world_pos": [
+    0.0,
+    15.505357,
+    0.360961
+   ]
+  },
+  {
+   "name": "Bip01 Ponytail1",
+   "parent": "Bip01 Head",
+   "children": [
+    "Bip01 Ponytail11"
+   ],
+   "rot_parent": [
+    0.0,
+    0.395424,
+    -1e-06,
+    0.918499
+   ],
+   "tr_parent": [
+    1.679679,
+    -2e-06,
+    -0.654971
+   ],
+   "bind_world_rot": [
+    0.672548,
+    0.672549,
+    0.218354,
+    -0.218355
+   ],
+   "bind_world_pos": [
+    -0.0,
+    17.276919,
+    0.695435
+   ]
+  },
+  {
+   "name": "Bip01 Ponytail11",
+   "parent": "Bip01 Ponytail1",
+   "children": [
+    "Bip01 Ponytail12"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.124725,
+    -0.0,
+    0.992191
+   ],
+   "tr_parent": [
+    0.365958,
+    -0.0,
+    -0.000521
+   ],
+   "bind_world_rot": [
+    0.640062,
+    0.640063,
+    0.300533,
+    -0.300534
+   ],
+   "bind_world_pos": [
+    -1e-06,
+    17.572778,
+    0.910826
+   ]
+  },
+  {
+   "name": "Bip01 Ponytail12",
+   "parent": "Bip01 Ponytail11",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    0.814414,
+    -2e-06,
+    0.580284
+   ],
+   "tr_parent": [
+    0.674915,
+    0.0,
+    0.000281
+   ],
+   "bind_world_rot": [
+    0.126658,
+    0.126661,
+    0.69567,
+    -0.695671
+   ],
+   "bind_world_pos": [
+    -1e-06,
+    18.004075,
+    1.429953
+   ]
+  },
+  {
+   "name": "Bip01 L Clavicle",
+   "parent": "Bip01 Neck",
+   "children": [
+    "Bip01 L UpperArm"
+   ],
+   "rot_parent": [
+    -0.66582,
+    -0.66582,
+    0.238085,
+    0.238083
+   ],
+   "tr_parent": [
+    -0.482486,
+    0.390698,
+    0.479648
+   ],
+   "bind_world_rot": [
+    0.12085,
+    -1e-06,
+    0.0,
+    0.992671
+   ],
+   "bind_world_pos": [
+    0.390697,
+    14.421549,
+    0.345925
+   ]
+  },
+  {
+   "name": "Bip01 L UpperArm",
+   "parent": "Bip01 L Clavicle",
+   "children": [
+    "Bip01 L Forearm"
+   ],
+   "rot_parent": [
+    -0.120867,
+    -0.016158,
+    0.012077,
+    0.992464
+   ],
+   "tr_parent": [
+    0.952014,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -4.2e-05,
+    -0.0175,
+    0.010035,
+    0.999797
+   ],
+   "bind_world_pos": [
+    1.342711,
+    14.421548,
+    0.345926
+   ]
+  },
+  {
+   "name": "Bip01 L Forearm",
+   "parent": "Bip01 L UpperArm",
+   "children": [
+    "Bip01 L Hand"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.034139,
+    -0.0,
+    0.999417
+   ],
+   "tr_parent": [
+    2.345882,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.000385,
+    0.016642,
+    0.010028,
+    0.999811
+   ],
+   "bind_world_pos": [
+    3.686684,
+    14.468626,
+    0.428012
+   ]
+  },
+  {
+   "name": "Bip01 L Hand",
+   "parent": "Bip01 L Forearm",
+   "children": [
+    "Bip01 L Finger0",
+    "Bip01 L Finger1",
+    "Bip01 L Finger2"
+   ],
+   "rot_parent": [
+    0.70677,
+    0.008811,
+    -0.008804,
+    0.707333
+   ],
+   "tr_parent": [
+    2.779564,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.70613,
+    0.027666,
+    -0.013475,
+    0.707413
+   ],
+   "bind_world_pos": [
+    6.464149,
+    14.524328,
+    0.335491
+   ]
+  },
+  {
+   "name": "Bip01 L Finger0",
+   "parent": "Bip01 L Hand",
+   "children": [
+    "Bip01 L Finger01"
+   ],
+   "rot_parent": [
+    -0.581186,
+    0.038938,
+    -0.235702,
+    0.777915
+   ],
+   "tr_parent": [
+    0.496256,
+    -0.39221,
+    0.197091
+   ],
+   "bind_world_rot": [
+    0.132174,
+    0.223335,
+    -0.133647,
+    0.956447
+   ],
+   "bind_world_pos": [
+    6.940627,
+    14.336264,
+    -0.084681
+   ]
+  },
+  {
+   "name": "Bip01 L Finger01",
+   "parent": "Bip01 L Finger0",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.096848,
+    0.0,
+    0.995299
+   ],
+   "tr_parent": [
+    0.373748,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.118609,
+    0.129655,
+    -0.145819,
+    0.97358
+   ],
+   "bind_world_pos": [
+    7.26374,
+    14.262781,
+    -0.257556
+   ]
+  },
+  {
+   "name": "Bip01 L Finger1",
+   "parent": "Bip01 L Hand",
+   "children": [
+    "Bip01 L Finger11"
+   ],
+   "rot_parent": [
+    -0.001551,
+    -0.063169,
+    -0.024665,
+    0.997697
+   ],
+   "tr_parent": [
+    0.938749,
+    -0.263366,
+    0.021796
+   ],
+   "bind_world_rot": [
+    0.701873,
+    0.000353,
+    -0.075455,
+    0.708295
+   ],
+   "bind_world_pos": [
+    7.386247,
+    14.520686,
+    0.017988
+   ]
+  },
+  {
+   "name": "Bip01 L Finger11",
+   "parent": "Bip01 L Finger1",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.038849,
+    -0.0,
+    0.999245
+   ],
+   "tr_parent": [
+    0.418924,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.698412,
+    -0.027163,
+    -0.102665,
+    0.707774
+   ],
+   "bind_world_pos": [
+    7.800401,
+    14.476115,
+    -0.026594
+   ]
+  },
+  {
+   "name": "Bip01 L Finger2",
+   "parent": "Bip01 L Hand",
+   "children": [
+    "Bip01 L Finger21"
+   ],
+   "rot_parent": [
+    -0.001331,
+    -0.080664,
+    -0.02138,
+    0.996511
+   ],
+   "tr_parent": [
+    0.945591,
+    0.10724,
+    8.5e-05
+   ],
+   "bind_world_rot": [
+    0.701046,
+    -0.014378,
+    -0.085475,
+    0.707829
+   ],
+   "bind_world_pos": [
+    7.414185,
+    14.543418,
+    0.387541
+   ]
+  },
+  {
+   "name": "Bip01 L Finger21",
+   "parent": "Bip01 L Finger2",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.034596,
+    -0.0,
+    0.999401
+   ],
+   "tr_parent": [
+    0.397013,
+    0.0,
+    -1e-06
+   ],
+   "bind_world_rot": [
+    0.697669,
+    -0.038858,
+    -0.109677,
+    0.706908
+   ],
+   "bind_world_pos": [
+    7.805233,
+    14.487375,
+    0.348043
+   ]
+  },
+  {
+   "name": "Bip01 R Clavicle",
+   "parent": "Bip01 Neck",
+   "children": [
+    "Bip01 R UpperArm"
+   ],
+   "rot_parent": [
+    0.66582,
+    -0.66582,
+    -0.238083,
+    0.238085
+   ],
+   "tr_parent": [
+    -0.482486,
+    -0.390696,
+    0.47965
+   ],
+   "bind_world_rot": [
+    1e-06,
+    0.12085,
+    -0.992671,
+    0.0
+   ],
+   "bind_world_pos": [
+    -0.390697,
+    14.421549,
+    0.345924
+   ]
+  },
+  {
+   "name": "Bip01 R UpperArm",
+   "parent": "Bip01 R Clavicle",
+   "children": [
+    "Bip01 R Forearm"
+   ],
+   "rot_parent": [
+    0.120867,
+    -0.016158,
+    -0.012077,
+    0.992464
+   ],
+   "tr_parent": [
+    0.952014,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.017498,
+    -4.2e-05,
+    -0.999797,
+    -0.010035
+   ],
+   "bind_world_pos": [
+    -1.34271,
+    14.421548,
+    0.345923
+   ]
+  },
+  {
+   "name": "Bip01 R Forearm",
+   "parent": "Bip01 R UpperArm",
+   "children": [
+    "Bip01 R Hand"
+   ],
+   "rot_parent": [
+    0.0,
+    0.034139,
+    0.0,
+    0.999417
+   ],
+   "tr_parent": [
+    2.345882,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.016644,
+    -0.000385,
+    -0.999811,
+    -0.010028
+   ],
+   "bind_world_pos": [
+    -3.686684,
+    14.468626,
+    0.428001
+   ]
+  },
+  {
+   "name": "Bip01 R Hand",
+   "parent": "Bip01 R Forearm",
+   "children": [
+    "Bip01 R Finger0",
+    "Bip01 R Finger1",
+    "Bip01 R Finger2"
+   ],
+   "rot_parent": [
+    -0.70677,
+    0.008811,
+    0.008804,
+    0.707333
+   ],
+   "tr_parent": [
+    2.779563,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.027667,
+    0.70613,
+    -0.707413,
+    0.013476
+   ],
+   "bind_world_pos": [
+    -6.464148,
+    14.524328,
+    0.335472
+   ]
+  },
+  {
+   "name": "Bip01 R Finger0",
+   "parent": "Bip01 R Hand",
+   "children": [
+    "Bip01 R Finger01"
+   ],
+   "rot_parent": [
+    0.581186,
+    0.038938,
+    0.235702,
+    0.777915
+   ],
+   "tr_parent": [
+    0.496256,
+    0.39221,
+    0.197091
+   ],
+   "bind_world_rot": [
+    0.223336,
+    0.132174,
+    -0.956446,
+    0.133647
+   ],
+   "bind_world_pos": [
+    -6.940625,
+    14.336264,
+    -0.084701
+   ]
+  },
+  {
+   "name": "Bip01 R Finger01",
+   "parent": "Bip01 R Finger0",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    -0.096848,
+    -0.0,
+    0.995299
+   ],
+   "tr_parent": [
+    0.373747,
+    -1e-06,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.129657,
+    0.118609,
+    -0.97358,
+    0.145819
+   ],
+   "bind_world_pos": [
+    -7.263737,
+    14.262781,
+    -0.257577
+   ]
+  },
+  {
+   "name": "Bip01 R Finger1",
+   "parent": "Bip01 R Hand",
+   "children": [
+    "Bip01 R Finger11"
+   ],
+   "rot_parent": [
+    0.001551,
+    -0.063169,
+    0.024665,
+    0.997697
+   ],
+   "tr_parent": [
+    0.938749,
+    0.263366,
+    0.021796
+   ],
+   "bind_world_rot": [
+    0.000354,
+    0.701873,
+    -0.708295,
+    0.075456
+   ],
+   "bind_world_pos": [
+    -7.386246,
+    14.520686,
+    0.017967
+   ]
+  },
+  {
+   "name": "Bip01 R Finger11",
+   "parent": "Bip01 R Finger1",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.038849,
+    -0.0,
+    0.999245
+   ],
+   "tr_parent": [
+    0.418923,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.027162,
+    0.698411,
+    -0.707774,
+    0.102666
+   ],
+   "bind_world_pos": [
+    -7.800398,
+    14.476115,
+    -0.026616
+   ]
+  },
+  {
+   "name": "Bip01 R Finger2",
+   "parent": "Bip01 R Hand",
+   "children": [
+    "Bip01 R Finger21"
+   ],
+   "rot_parent": [
+    0.001331,
+    -0.080664,
+    0.02138,
+    0.996511
+   ],
+   "tr_parent": [
+    0.94559,
+    -0.10724,
+    8.5e-05
+   ],
+   "bind_world_rot": [
+    -0.014377,
+    0.701046,
+    -0.707829,
+    0.085476
+   ],
+   "bind_world_pos": [
+    -7.414184,
+    14.543418,
+    0.38752
+   ]
+  },
+  {
+   "name": "Bip01 R Finger21",
+   "parent": "Bip01 R Finger2",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.034596,
+    -0.0,
+    0.999401
+   ],
+   "tr_parent": [
+    0.397014,
+    -0.0,
+    -1e-06
+   ],
+   "bind_world_rot": [
+    -0.038857,
+    0.697669,
+    -0.706908,
+    0.109678
+   ],
+   "bind_world_pos": [
+    -7.805233,
+    14.487375,
+    0.348021
+   ]
+  },
+  {
+   "name": "Bone03",
+   "parent": "Bip01 Spine2",
+   "children": [
+    "Bone04"
+   ],
+   "rot_parent": [
+    -0.442392,
+    -0.206697,
+    -0.857599,
+    -0.161525
+   ],
+   "tr_parent": [
+    0.29788,
+    0.533191,
+    0.561747
+   ],
+   "bind_world_rot": [
+    -0.660097,
+    0.46854,
+    0.224736,
+    0.542436
+   ],
+   "bind_world_pos": [
+    0.533191,
+    13.322122,
+    -0.420688
+   ]
+  },
+  {
+   "name": "Bone04",
+   "parent": "Bone03",
+   "children": [],
+   "rot_parent": [
+    -0.117883,
+    -0.062717,
+    -0.069644,
+    0.988595
+   ],
+   "tr_parent": [
+    0.686156,
+    0.0,
+    1e-06
+   ],
+   "bind_world_rot": [
+    -0.735049,
+    0.356711,
+    0.281028,
+    0.503472
+   ],
+   "bind_world_pos": [
+    0.848774,
+    13.064984,
+    -0.973045
+   ]
+  },
+  {
+   "name": "Bone01",
+   "parent": "Bip01 Spine2",
+   "children": [
+    "Bone02"
+   ],
+   "rot_parent": [
+    -0.503451,
+    0.170879,
+    -0.835295,
+    0.140073
+   ],
+   "tr_parent": [
+    0.340275,
+    -0.535425,
+    0.492741
+   ],
+   "bind_world_rot": [
+    -0.45969,
+    0.627232,
+    0.556428,
+    0.292666
+   ],
+   "bind_world_pos": [
+    -0.535425,
+    13.346783,
+    -0.343544
+   ]
+  },
+  {
+   "name": "Bone02",
+   "parent": "Bone01",
+   "children": [],
+   "rot_parent": [
+    0.084753,
+    -0.012008,
+    0.070069,
+    0.993863
+   ],
+   "tr_parent": [
+    0.78829,
+    0.0,
+    1e-06
+   ],
+   "bind_world_rot": [
+    -0.381433,
+    0.699237,
+    0.52588,
+    0.298373
+   ],
+   "bind_world_pos": [
+    -0.855521,
+    13.148947,
+    -1.036221
+   ]
+  },
+  {
+   "name": "Bip01 L Thigh",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 L Calf"
+   ],
+   "rot_parent": [
+    -0.154956,
+    -0.005451,
+    -0.986912,
+    -0.044305
+   ],
+   "tr_parent": [
+    -0.302594,
+    0.675789,
+    0.080781
+   ],
+   "bind_world_rot": [
+    -0.737707,
+    0.67458,
+    0.019307,
+    0.01891
+   ],
+   "bind_world_pos": [
+    0.675789,
+    10.069546,
+    0.437275
+   ]
+  },
+  {
+   "name": "Bip01 L Calf",
+   "parent": "Bip01 L Thigh",
+   "children": [
+    "Bip01 L Foot"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.049264,
+    -0.0,
+    0.998786
+   ],
+   "tr_parent": [
+    4.618334,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.737762,
+    0.674693,
+    -0.017059,
+    -0.014346
+   ],
+   "bind_world_pos": [
+    1.087458,
+    5.476361,
+    0.187896
+   ]
+  },
+  {
+   "name": "Bip01 L Foot",
+   "parent": "Bip01 L Calf",
+   "children": [
+    "Bip01 L Toe0"
+   ],
+   "rot_parent": [
+    -0.001035,
+    -0.025435,
+    0.015483,
+    0.999556
+   ],
+   "tr_parent": [
+    4.509659,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.727407,
+    0.686198,
+    0.00219,
+    0.002322
+   ],
+   "bind_world_pos": [
+    1.488808,
+    0.989088,
+    0.388709
+   ]
+  },
+  {
+   "name": "Bip01 L Toe0",
+   "parent": "Bip01 L Foot",
+   "children": [],
+   "rot_parent": [
+    -0.020465,
+    -0.701999,
+    0.020744,
+    0.711581
+   ],
+   "tr_parent": [
+    0.936314,
+    -0.001825,
+    0.924491
+   ],
+   "bind_world_rot": [
+    -0.501885,
+    0.5017,
+    0.526289,
+    0.468432
+   ],
+   "bind_world_pos": [
+    1.545175,
+    0.060391,
+    -0.54173
+   ]
+  },
+  {
+   "name": "Bip01 R Thigh",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 R Calf"
+   ],
+   "rot_parent": [
+    -0.154957,
+    0.005448,
+    -0.986912,
+    0.044304
+   ],
+   "tr_parent": [
+    -0.302594,
+    -0.675789,
+    0.080785
+   ],
+   "bind_world_rot": [
+    -0.67458,
+    0.737707,
+    0.018909,
+    0.019308
+   ],
+   "bind_world_pos": [
+    -0.675789,
+    10.069545,
+    0.437273
+   ]
+  },
+  {
+   "name": "Bip01 R Calf",
+   "parent": "Bip01 R Thigh",
+   "children": [
+    "Bip01 R Foot"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.049264,
+    0.0,
+    0.998786
+   ],
+   "tr_parent": [
+    4.618335,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.674693,
+    0.737762,
+    -0.014347,
+    -0.017058
+   ],
+   "bind_world_pos": [
+    -1.087456,
+    5.47636,
+    0.187893
+   ]
+  },
+  {
+   "name": "Bip01 R Foot",
+   "parent": "Bip01 R Calf",
+   "children": [
+    "Bip01 R Toe0"
+   ],
+   "rot_parent": [
+    0.001035,
+    -0.025435,
+    -0.015483,
+    0.999556
+   ],
+   "tr_parent": [
+    4.509659,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.686198,
+    0.727407,
+    0.002321,
+    0.002191
+   ],
+   "bind_world_pos": [
+    -1.488806,
+    0.989087,
+    0.388704
+   ]
+  },
+  {
+   "name": "Bip01 R Toe0",
+   "parent": "Bip01 R Foot",
+   "children": [],
+   "rot_parent": [
+    0.020465,
+    -0.701999,
+    -0.020744,
+    0.711581
+   ],
+   "tr_parent": [
+    0.936314,
+    0.001825,
+    0.924491
+   ],
+   "bind_world_rot": [
+    -0.501701,
+    0.501885,
+    0.468431,
+    0.526289
+   ],
+   "bind_world_pos": [
+    -1.54517,
+    0.060391,
+    -0.541734
+   ]
+  }
+ ]
+}

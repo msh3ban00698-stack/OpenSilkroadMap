@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_stand03",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_stand03.ban",
+   "channels": 59,
+   "duration_ms": 2000,
+   "keyframes": 18,
+   "name": "mad_general_stand03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_walk03",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_walk03.ban",
+   "channels": 59,
+   "duration_ms": 1333,
+   "keyframes": 27,
+   "name": "mad_general_walk03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_run03",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_run03.ban",
+   "channels": 59,
+   "duration_ms": 1066,
+   "keyframes": 25,
+   "name": "mad_general_run03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_attack08",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_attack08.ban",
+   "channels": 59,
+   "duration_ms": 3500,
+   "keyframes": 74,
+   "name": "mad_general_attack08"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_attack09",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_attack09.ban",
+   "channels": 59,
+   "duration_ms": 3000,
+   "keyframes": 59,
+   "name": "mad_general_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_attack10",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_attack10.ban",
+   "channels": 59,
+   "duration_ms": 3000,
+   "keyframes": 60,
+   "name": "mad_general_attack10"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_attack11",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_attack11.ban",
+   "channels": 59,
+   "duration_ms": 2500,
+   "keyframes": 45,
+   "name": "mad_general_attack11"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_die",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_die.ban",
+   "channels": 59,
+   "duration_ms": 3466,
+   "keyframes": 79,
+   "name": "mad_general_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_die_rm.ban",
+   "channels": 59,
+   "duration_ms": 766,
+   "keyframes": 2,
+   "name": "mad_general_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_attack14",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_attack14.ban",
+   "channels": 59,
+   "duration_ms": 3000,
+   "keyframes": 54,
+   "name": "mad_general_attack14"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_shot",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_shot.ban",
+   "channels": 59,
+   "duration_ms": 2466,
+   "keyframes": 50,
+   "name": "mad_general_shot"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_ready",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_ready.ban",
+   "channels": 59,
+   "duration_ms": 1066,
+   "keyframes": 21,
+   "name": "mad_general_ready"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mad_general_mad_general_wait",
+   "ban_path": "/prim/ani/mob/arabia/mad_general/mad_general_wait.ban",
+   "channels": 59,
+   "duration_ms": 1466,
+   "keyframes": 35,
+   "name": "mad_general_wait"
+  }
+ ],
+ "key": "res_mob_arabia_mad_general_3",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mad_general_weapon_01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/mad_general_weapon.ddj",
+   "material": "mad_general_weapon",
+   "msh": "prim_mesh_mob_arabia_mad_general_weapon_01",
+   "skin_records": 287,
+   "skinned": true,
+   "tcount": 456,
+   "tex": "prim_mtrl_mob_arabia_mad_general_weapon",
+   "vcount": 287
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mad_general_weapon_02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/mad_general_weapon.ddj",
+   "material": "mad_general_weapon",
+   "msh": "prim_mesh_mob_arabia_mad_general_weapon_02",
+   "skin_records": 503,
+   "skinned": true,
+   "tcount": 688,
+   "tex": "prim_mtrl_mob_arabia_mad_general_weapon",
+   "vcount": 503
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mad_general_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/mad_general.ddj",
+   "material": "mad_general",
+   "msh": "prim_mesh_mob_arabia_mad_general_part1",
+   "skin_records": 1602,
+   "skinned": true,
+   "tcount": 2089,
+   "tex": "prim_mtrl_mob_arabia_mad_general",
+   "vcount": 1602
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mad_general_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/mad_general.ddj",
+   "material": "mad_general",
+   "msh": "prim_mesh_mob_arabia_mad_general_part2_part1",
+   "skin_records": 471,
+   "skinned": true,
+   "tcount": 595,
+   "tex": "prim_mtrl_mob_arabia_mad_general",
+   "vcount": 471
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mad_general_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/mad_general.ddj",
+   "material": "mad_general",
+   "msh": "prim_mesh_mob_arabia_mad_general_part2_part2",
+   "skin_records": 722,
+   "skinned": true,
+   "tcount": 992,
+   "tex": "prim_mtrl_mob_arabia_mad_general",
+   "vcount": 722
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_mad_general",
+ "skeleton_path": "/prim/skel/mob/arabia/mad_general.bsk"
+}

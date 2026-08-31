@@ -1,0 +1,149 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_stand01",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_stand01.ban",
+   "channels": 71,
+   "duration_ms": 2666,
+   "keyframes": 59,
+   "name": "griffin_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_walk",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_walk.ban",
+   "channels": 71,
+   "duration_ms": 2000,
+   "keyframes": 60,
+   "name": "griffin_walk"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_run",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_run.ban",
+   "channels": 71,
+   "duration_ms": 1666,
+   "keyframes": 59,
+   "name": "griffin_run"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_attack01",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_attack01.ban",
+   "channels": 71,
+   "duration_ms": 3000,
+   "keyframes": 79,
+   "name": "griffin_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_attack02",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_attack02.ban",
+   "channels": 71,
+   "duration_ms": 2733,
+   "keyframes": 43,
+   "name": "griffin_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_attack03",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_attack03.ban",
+   "channels": 71,
+   "duration_ms": 2000,
+   "keyframes": 63,
+   "name": "griffin_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_attack04",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_attack04.ban",
+   "channels": 71,
+   "duration_ms": 4000,
+   "keyframes": 93,
+   "name": "griffin_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_damage1",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_damage1.ban",
+   "channels": 6,
+   "duration_ms": 333,
+   "keyframes": 4,
+   "name": "griffin_damage1"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_die",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_die.ban",
+   "channels": 71,
+   "duration_ms": 3400,
+   "keyframes": 58,
+   "name": "griffin_die"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_griffin_griffin_die_rm",
+   "ban_path": "/prim/ani/mob/jupiter/griffin/griffin_die_rm.ban",
+   "channels": 71,
+   "duration_ms": 166,
+   "keyframes": 2,
+   "name": "griffin_die_rm"
+  }
+ ],
+ "key": "res_mob_jupiter_griffin",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/griffin/griffin_01.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/jupiter/griffin.ddj",
+   "material": "griffin",
+   "msh": "prim_mesh_mob_jupiter_griffin_griffin_01",
+   "skin_records": 157,
+   "skinned": true,
+   "tcount": 173,
+   "tex": "prim_mtrl_mob_jupiter_griffin",
+   "vcount": 157
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/griffin/griffin_02.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/jupiter/griffin.ddj",
+   "material": "griffin",
+   "msh": "prim_mesh_mob_jupiter_griffin_griffin_02",
+   "skin_records": 157,
+   "skinned": true,
+   "tcount": 173,
+   "tex": "prim_mtrl_mob_jupiter_griffin",
+   "vcount": 157
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/griffin/griffin_part1.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/jupiter/griffin.ddj",
+   "material": "griffin",
+   "msh": "prim_mesh_mob_jupiter_griffin_griffin_part1",
+   "skin_records": 60,
+   "skinned": true,
+   "tcount": 82,
+   "tex": "prim_mtrl_mob_jupiter_griffin",
+   "vcount": 60
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/griffin/griffin_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/griffin.ddj",
+   "material": "griffin",
+   "msh": "prim_mesh_mob_jupiter_griffin_griffin_part2_part1",
+   "skin_records": 419,
+   "skinned": true,
+   "tcount": 620,
+   "tex": "prim_mtrl_mob_jupiter_griffin",
+   "vcount": 419
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/griffin/griffin_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/jupiter/griffin.ddj",
+   "material": "griffin",
+   "msh": "prim_mesh_mob_jupiter_griffin_griffin_part2_part2",
+   "skin_records": 1246,
+   "skinned": true,
+   "tcount": 1820,
+   "tex": "prim_mtrl_mob_jupiter_griffin",
+   "vcount": 1246
+  }
+ ],
+ "skeleton": "prim_skel_mob_jupiter_griffin",
+ "skeleton_path": "/prim/skel/mob/jupiter/griffin.bsk"
+}

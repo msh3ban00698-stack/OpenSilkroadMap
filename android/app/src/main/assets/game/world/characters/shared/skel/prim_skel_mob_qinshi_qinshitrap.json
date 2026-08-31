@@ -1,0 +1,63 @@
+{
+ "path": "/prim/skel/mob/qinshi/qinshitrap.bsk",
+ "bone_count": 2,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bone01",
+   "parent": "",
+   "children": [
+    "Bone02"
+   ],
+   "rot_parent": [
+    -0.504384,
+    -0.495574,
+    0.495577,
+    0.504387
+   ],
+   "tr_parent": [
+    -1.174167,
+    3.798882,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.504384,
+    -0.495574,
+    0.495577,
+    0.504387
+   ],
+   "bind_world_pos": [
+    -1.174167,
+    3.798882,
+    -0.0
+   ]
+  },
+  {
+   "name": "Bone02",
+   "parent": "Bone01",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    54.05603,
+    -3e-06,
+    7e-06
+   ],
+   "bind_world_rot": [
+    -0.504384,
+    -0.495574,
+    0.495577,
+    0.504387
+   ],
+   "bind_world_pos": [
+    -0.221784,
+    57.846519,
+    -3e-06
+   ]
+  }
+ ]
+}

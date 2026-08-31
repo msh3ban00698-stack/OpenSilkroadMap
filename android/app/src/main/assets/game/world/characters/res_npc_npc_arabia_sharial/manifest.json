@@ -1,0 +1,89 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_arabia_arabia_sharial_stand01",
+   "ban_path": "/prim/ani/npc/arabia/arabia_sharial_stand01.ban",
+   "channels": 83,
+   "duration_ms": 12666,
+   "keyframes": 30,
+   "name": "arabia_sharial_stand01"
+  }
+ ],
+ "key": "res_npc_npc_arabia_sharial",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_attach.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_attach",
+   "skin_records": 46,
+   "skinned": true,
+   "tcount": 44,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 46
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_cape.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_cape",
+   "skin_records": 60,
+   "skinned": true,
+   "tcount": 88,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 60
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_hat.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_hat",
+   "skin_records": 225,
+   "skinned": true,
+   "tcount": 266,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 225
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_part1",
+   "skin_records": 465,
+   "skinned": true,
+   "tcount": 599,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 465
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_part2_part1",
+   "skin_records": 313,
+   "skinned": true,
+   "tcount": 418,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 313
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_sharial_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_sharial.ddj",
+   "material": "Arabia_Sharial",
+   "msh": "prim_mesh_npc_arabia_arabia_sharial_part2_part2",
+   "skin_records": 724,
+   "skinned": true,
+   "tcount": 977,
+   "tex": "prim_mtrl_npc_arabia_arabia_sharial",
+   "vcount": 724
+  }
+ ],
+ "skeleton": "prim_skel_npc_arabia_arabia_sharial",
+ "skeleton_path": "/prim/skel/npc/arabia/arabia_sharial.bsk"
+}

@@ -1,0 +1,253 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_stand01",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_stand01.ban",
+   "channels": 91,
+   "duration_ms": 3333,
+   "keyframes": 32,
+   "name": "babilion_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_walk",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_walk.ban",
+   "channels": 91,
+   "duration_ms": 1666,
+   "keyframes": 34,
+   "name": "babilion_walk"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_run",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_run.ban",
+   "channels": 91,
+   "duration_ms": 1000,
+   "keyframes": 34,
+   "name": "babilion_run"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack01",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack01.ban",
+   "channels": 91,
+   "duration_ms": 2133,
+   "keyframes": 59,
+   "name": "babilion_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack02",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack02.ban",
+   "channels": 91,
+   "duration_ms": 3033,
+   "keyframes": 83,
+   "name": "babilion_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack03",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack03.ban",
+   "channels": 91,
+   "duration_ms": 3533,
+   "keyframes": 76,
+   "name": "babilion_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack05",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack05.ban",
+   "channels": 91,
+   "duration_ms": 3633,
+   "keyframes": 95,
+   "name": "babilion_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack06",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack06.ban",
+   "channels": 91,
+   "duration_ms": 4666,
+   "keyframes": 105,
+   "name": "babilion_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack09",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack09.ban",
+   "channels": 91,
+   "duration_ms": 4833,
+   "keyframes": 123,
+   "name": "babilion_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack11_shot",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack11_shot.ban",
+   "channels": 91,
+   "duration_ms": 1600,
+   "keyframes": 26,
+   "name": "babilion_attack11_shot"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack11_ready",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack11_ready.ban",
+   "channels": 91,
+   "duration_ms": 7200,
+   "keyframes": 148,
+   "name": "babilion_attack11_ready"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_attack11_wait",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_attack11_wait.ban",
+   "channels": 91,
+   "duration_ms": 1000,
+   "keyframes": 13,
+   "name": "babilion_attack11_wait"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_emotion01",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_emotion01.ban",
+   "channels": 91,
+   "duration_ms": 3333,
+   "keyframes": 65,
+   "name": "babilion_emotion01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_emotion02",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_emotion02.ban",
+   "channels": 91,
+   "duration_ms": 5533,
+   "keyframes": 126,
+   "name": "babilion_emotion02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_emotion03",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_emotion03.ban",
+   "channels": 91,
+   "duration_ms": 4666,
+   "keyframes": 41,
+   "name": "babilion_emotion03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_emotion04",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_emotion04.ban",
+   "channels": 91,
+   "duration_ms": 9133,
+   "keyframes": 124,
+   "name": "babilion_emotion04"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_babilion_babilion_die",
+   "ban_path": "/prim/ani/mob/jupiter/babilion/babilion_die.ban",
+   "channels": 91,
+   "duration_ms": 10200,
+   "keyframes": 180,
+   "name": "babilion_die"
+  }
+ ],
+ "key": "res_mob_jupiter_babilion",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion01.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion01",
+   "skin_records": 766,
+   "skinned": true,
+   "tcount": 1064,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 766
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion2.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion2",
+   "skin_records": 138,
+   "skinned": true,
+   "tcount": 192,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 138
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part1",
+   "skin_records": 208,
+   "skinned": true,
+   "tcount": 266,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 208
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part1",
+   "skin_records": 765,
+   "skinned": true,
+   "tcount": 1061,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 765
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part2_part1",
+   "skin_records": 350,
+   "skinned": true,
+   "tcount": 465,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 350
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part2_part2_part1",
+   "skin_records": 141,
+   "skinned": true,
+   "tcount": 158,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 141
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part2_part2_part2_part1",
+   "skin_records": 194,
+   "skinned": true,
+   "tcount": 243,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 194
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part2_part2_part2_part2_part1.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part2_part2_part2_part2_part1",
+   "skin_records": 86,
+   "skinned": true,
+   "tcount": 99,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 86
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/babilion/babilion_part2_part2_part2_part2_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/jupiter/babilion.ddj",
+   "material": "body_map",
+   "msh": "prim_mesh_mob_jupiter_babilion_babilion_part2_part2_part2_part2_part2_part2",
+   "skin_records": 284,
+   "skinned": true,
+   "tcount": 372,
+   "tex": "prim_mtrl_mob_jupiter_babilion",
+   "vcount": 284
+  }
+ ],
+ "skeleton": "prim_skel_mob_jupiter_babilion",
+ "skeleton_path": "/prim/skel/mob/jupiter/babilion.bsk"
+}

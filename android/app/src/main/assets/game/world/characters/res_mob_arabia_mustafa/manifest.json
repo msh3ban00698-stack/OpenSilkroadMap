@@ -1,0 +1,205 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_stand01",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_stand01.ban",
+   "channels": 133,
+   "duration_ms": 2333,
+   "keyframes": 6,
+   "name": "mustafa_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_walk",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_walk.ban",
+   "channels": 130,
+   "duration_ms": 1333,
+   "keyframes": 7,
+   "name": "mustafa_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_run",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_run.ban",
+   "channels": 133,
+   "duration_ms": 1000,
+   "keyframes": 7,
+   "name": "mustafa_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_attack01",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_attack01.ban",
+   "channels": 133,
+   "duration_ms": 2000,
+   "keyframes": 11,
+   "name": "mustafa_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_attack02",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_attack02.ban",
+   "channels": 133,
+   "duration_ms": 1333,
+   "keyframes": 32,
+   "name": "mustafa_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_attack03",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_attack03.ban",
+   "channels": 133,
+   "duration_ms": 3333,
+   "keyframes": 17,
+   "name": "mustafa_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_attack04",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_attack04.ban",
+   "channels": 133,
+   "duration_ms": 1333,
+   "keyframes": 8,
+   "name": "mustafa_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_attack05",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_attack05.ban",
+   "channels": 133,
+   "duration_ms": 4000,
+   "keyframes": 34,
+   "name": "mustafa_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_die",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_die.ban",
+   "channels": 133,
+   "duration_ms": 4333,
+   "keyframes": 20,
+   "name": "mustafa_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_die_rm.ban",
+   "channels": 133,
+   "duration_ms": 1000,
+   "keyframes": 2,
+   "name": "mustafa_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mustafa_mustafa_stand02",
+   "ban_path": "/prim/ani/mob/arabia/mustafa/mustafa_stand02.ban",
+   "channels": 133,
+   "duration_ms": 5000,
+   "keyframes": 8,
+   "name": "mustafa_stand02"
+  }
+ ],
+ "key": "res_mob_arabia_mustafa",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_accessory.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_accessory",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 63,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 72
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_cape.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_cape",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 131,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 96
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_hand.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_hand",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 1443,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 980
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_horn.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa_01.ddj",
+   "material": "mustafa_01",
+   "msh": "prim_mesh_mob_arabia_mustafa_horn",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 1059,
+   "tex": "prim_mtrl_mob_arabia_mustafa_01",
+   "vcount": 584
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_part1.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_part1",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 1669,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 1096
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_part2_part1.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_part2_part1",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 81,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 63
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_part2_part2.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa.ddj",
+   "material": "mustafa",
+   "msh": "prim_mesh_mob_arabia_mustafa_part2_part2",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 72,
+   "tex": "prim_mtrl_mob_arabia_mustafa",
+   "vcount": 54
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_hair_part1.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa_01.ddj",
+   "material": "mustafa_01",
+   "msh": "prim_mesh_mob_arabia_mustafa_hair_part1",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 574,
+   "tex": "prim_mtrl_mob_arabia_mustafa_01",
+   "vcount": 353
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/mustafa_hair_part2.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/mob/arabia/mustafa_01.ddj",
+   "material": "mustafa_01",
+   "msh": "prim_mesh_mob_arabia_mustafa_hair_part2",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 574,
+   "tex": "prim_mtrl_mob_arabia_mustafa_01",
+   "vcount": 353
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_mustafa",
+ "skeleton_path": "/prim/skel/mob/arabia/mustafa.bsk"
+}

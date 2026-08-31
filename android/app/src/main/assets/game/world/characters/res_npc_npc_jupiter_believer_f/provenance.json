@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/jupiter/jupiter_believer_f_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/jupiter/jupiter_believer_f.bmt",
+ "bsk": "/prim/skel/npc/jupiter/jupiter_believer_f.bsk",
+ "bsr": "/res/npc/npc/JUPITER_believer_f.bsr",
+ "meshes": [
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part2_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part2_part2.bms",
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_02_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_believer_f_02_part2.bms"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_steward",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_steward.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "easteuropequest_steward"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_steward",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_steward_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_steward.ddj",
+   "material": "EastEuropeQuest_Steward",
+   "msh": "prim_mesh_npc_europe_easteuropequest_steward_part1",
+   "skin_records": 345,
+   "skinned": true,
+   "tcount": 523,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_steward",
+   "vcount": 345
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_steward_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_steward.ddj",
+   "material": "EastEuropeQuest_Steward",
+   "msh": "prim_mesh_npc_europe_easteuropequest_steward_part2",
+   "skin_records": 319,
+   "skinned": true,
+   "tcount": 469,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_steward",
+   "vcount": 319
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_steward",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_steward.bsk"
+}

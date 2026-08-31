@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/blackrobber_stand01.ban",
+  "/prim/ani/npc/china/blackrobber_stand02.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/blackrobber.bmt",
+ "bsk": "/prim/skel/npc/china/blackrobber.bsk",
+ "bsr": "/res/npc/npc/thiefden_thief_a.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/blackrobber_body_part1.bms",
+  "/prim/mesh/npc/china/blackrobber_body_part2.bms"
+ ]
+}

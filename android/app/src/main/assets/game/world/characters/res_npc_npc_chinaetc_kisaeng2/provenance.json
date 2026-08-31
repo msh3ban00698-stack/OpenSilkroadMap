@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaetc_kisaeng2_basic.ban",
+  "/prim/ani/npc/china/chinaetc_kisaeng2_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinaetc_kisaeng2.bmt",
+ "bsk": "/prim/skel/npc/china/chinaetc_kisaeng2.bsk",
+ "bsr": "/res/npc/npc/chinaetc_kisaeng2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinaetc_kisaeng2_hair.bms",
+  "/prim/mesh/npc/china/chinaetc_kisaeng2_skirt.bms",
+  "/prim/mesh/npc/china/chinaetc_kisaeng2_body_part1.bms",
+  "/prim/mesh/npc/china/chinaetc_kisaeng2_body_part2.bms"
+ ]
+}

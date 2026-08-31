@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/rocmountainquest_slave2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/rocmountainquest_slave2.bmt",
+ "bsk": "/prim/skel/npc/common/rocmountainquest_slave2.bsk",
+ "bsr": "/res/npc/npc/RocMountainQuest_Slave2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/rocmountainquest_slave202.bms",
+  "/prim/mesh/npc/common/rocmountainquest_slave203.bms",
+  "/prim/mesh/npc/common/rocmountainquest_slave201_part1.bms",
+  "/prim/mesh/npc/common/rocmountainquest_slave201_part2.bms"
+ ]
+}

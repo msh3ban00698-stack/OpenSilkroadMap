@@ -1,0 +1,229 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_stand01",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_stand01.ban",
+   "channels": 64,
+   "duration_ms": 2666,
+   "keyframes": 13,
+   "name": "togui_general_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_walk",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_walk.ban",
+   "channels": 64,
+   "duration_ms": 2000,
+   "keyframes": 31,
+   "name": "togui_general_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_run",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_run.ban",
+   "channels": 64,
+   "duration_ms": 1066,
+   "keyframes": 25,
+   "name": "togui_general_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_attack1",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_attack1.ban",
+   "channels": 64,
+   "duration_ms": 2066,
+   "keyframes": 44,
+   "name": "togui_general_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_attack4",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_attack4.ban",
+   "channels": 64,
+   "duration_ms": 2333,
+   "keyframes": 50,
+   "name": "togui_general_attack4"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_attack5",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_attack5.ban",
+   "channels": 64,
+   "duration_ms": 2333,
+   "keyframes": 50,
+   "name": "togui_general_attack5"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_damage1",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_damage1.ban",
+   "channels": 6,
+   "duration_ms": 500,
+   "keyframes": 5,
+   "name": "togui_general_damage1"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_die",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_die.ban",
+   "channels": 64,
+   "duration_ms": 2466,
+   "keyframes": 44,
+   "name": "togui_general_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_die_rm",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_die_rm.ban",
+   "channels": 64,
+   "duration_ms": 33,
+   "keyframes": 2,
+   "name": "togui_general_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_attack2",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_attack2.ban",
+   "channels": 64,
+   "duration_ms": 3066,
+   "keyframes": 55,
+   "name": "togui_general_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_god_togui_general_togui_general_attack3",
+   "ban_path": "/prim/ani/mob/god/togui_general/togui_general_attack3.ban",
+   "channels": 64,
+   "duration_ms": 3066,
+   "keyframes": 55,
+   "name": "togui_general_attack3"
+  }
+ ],
+ "key": "res_mob_god_togui_general",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general01",
+   "skin_records": 185,
+   "skinned": true,
+   "tcount": 284,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 185
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general02",
+   "skin_records": 185,
+   "skinned": true,
+   "tcount": 284,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 185
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general03",
+   "skin_records": 306,
+   "skinned": true,
+   "tcount": 348,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 306
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general04.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general04",
+   "skin_records": 206,
+   "skinned": true,
+   "tcount": 240,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 206
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general05.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general05",
+   "skin_records": 206,
+   "skinned": true,
+   "tcount": 240,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 206
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general06.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general01.ddj",
+   "material": "togui_general01",
+   "msh": "prim_mesh_mob_god_togui_general06",
+   "skin_records": 401,
+   "skinned": true,
+   "tcount": 482,
+   "tex": "prim_mtrl_mob_god_togui_general01",
+   "vcount": 401
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general07.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general07",
+   "skin_records": 48,
+   "skinned": true,
+   "tcount": 46,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 48
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general_part1",
+   "skin_records": 655,
+   "skinned": true,
+   "tcount": 821,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 655
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general_part2_part1",
+   "skin_records": 528,
+   "skinned": true,
+   "tcount": 633,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 528
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general_part2_part2_part1",
+   "skin_records": 231,
+   "skinned": true,
+   "tcount": 281,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 231
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/togui_general_part2_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui_general.ddj",
+   "material": "togui_general",
+   "msh": "prim_mesh_mob_god_togui_general_part2_part2_part2",
+   "skin_records": 238,
+   "skinned": true,
+   "tcount": 291,
+   "tex": "prim_mtrl_mob_god_togui_general",
+   "vcount": 238
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_togui_general",
+ "skeleton_path": "/prim/skel/mob/god/togui_general.bsk"
+}

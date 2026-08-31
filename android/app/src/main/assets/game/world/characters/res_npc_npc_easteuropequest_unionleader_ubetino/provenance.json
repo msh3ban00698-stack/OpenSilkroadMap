@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_unionleader_ubetino.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_unionleader_ubetino.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_unionleader_ubetino.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_UnionLeader_Ubetino.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_2s.bms",
+  "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_part2.bms"
+ ]
+}

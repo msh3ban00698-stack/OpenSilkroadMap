@@ -1,0 +1,157 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_stand01",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_stand01.ban",
+   "channels": 36,
+   "duration_ms": 2666,
+   "keyframes": 5,
+   "name": "movoi_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_walk",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_walk.ban",
+   "channels": 36,
+   "duration_ms": 1000,
+   "keyframes": 14,
+   "name": "movoi_walk"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_run",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_run.ban",
+   "channels": 36,
+   "duration_ms": 800,
+   "keyframes": 21,
+   "name": "movoi_run"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_attack01",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_attack01.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 34,
+   "name": "movoi_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_attack02",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_attack02.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 34,
+   "name": "movoi_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_attack03",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_attack03.ban",
+   "channels": 36,
+   "duration_ms": 2500,
+   "keyframes": 47,
+   "name": "movoi_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_die",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_die.ban",
+   "channels": 36,
+   "duration_ms": 2066,
+   "keyframes": 55,
+   "name": "movoi_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_die_rm",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_die_rm.ban",
+   "channels": 36,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "movoi_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_down",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_down.ban",
+   "channels": 36,
+   "duration_ms": 1000,
+   "keyframes": 28,
+   "name": "movoi_down"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_down_rm",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_down_rm.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "movoi_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_down_damage",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_down_damage.ban",
+   "channels": 36,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "movoi_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_down_up",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_down_up.ban",
+   "channels": 36,
+   "duration_ms": 666,
+   "keyframes": 12,
+   "name": "movoi_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_down_die",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_down_die.ban",
+   "channels": 36,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "movoi_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_europe_movoi_movoi_damage01",
+   "ban_path": "/prim/ani/mob/europe/movoi/movoi_damage01.ban",
+   "channels": 4,
+   "duration_ms": 400,
+   "keyframes": 4,
+   "name": "movoi_damage01"
+  }
+ ],
+ "key": "res_mob_arabia_uneg",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/europe/movoi01.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/mob/arabia/uneg.ddj",
+   "material": "movoi",
+   "msh": "prim_mesh_mob_europe_movoi01",
+   "skin_records": 256,
+   "skinned": true,
+   "tcount": 300,
+   "tex": "prim_mtrl_mob_arabia_uneg",
+   "vcount": 256
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/movoi_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/uneg.ddj",
+   "material": "movoi",
+   "msh": "prim_mesh_mob_europe_movoi_part1",
+   "skin_records": 654,
+   "skinned": true,
+   "tcount": 748,
+   "tex": "prim_mtrl_mob_arabia_uneg",
+   "vcount": 654
+  },
+  {
+   "bms_path": "/prim/mesh/mob/europe/movoi_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/arabia/uneg.ddj",
+   "material": "movoi",
+   "msh": "prim_mesh_mob_europe_movoi_part2",
+   "skin_records": 136,
+   "skinned": true,
+   "tcount": 160,
+   "tex": "prim_mtrl_mob_arabia_uneg",
+   "vcount": 136
+  }
+ ],
+ "skeleton": "prim_skel_mob_europe_movoi",
+ "skeleton_path": "/prim/skel/mob/europe/movoi.bsk"
+}

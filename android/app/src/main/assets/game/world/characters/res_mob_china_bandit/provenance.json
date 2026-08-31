@@ -1,0 +1,28 @@
+{
+ "animations": [
+  "/prim/ani/mob/china/bandit/bandit_stand01.ban",
+  "/prim/ani/mob/china/bandit/bandit_stand02.ban",
+  "/prim/ani/mob/china/bandit/bandit_walk.ban",
+  "/prim/ani/mob/china/bandit/bandit_run.ban",
+  "/prim/ani/mob/china/bandit/bandit_attack01.ban",
+  "/prim/ani/mob/china/bandit/bandit_attack02.ban",
+  "/prim/ani/mob/china/bandit/bandit_damage01.ban",
+  "/prim/ani/mob/china/bandit/bandit_damage02.ban",
+  "/prim/ani/mob/china/bandit/bandit_die.ban",
+  "/prim/ani/mob/china/bandit/bandit_die_loop.ban",
+  "/prim/ani/mob/china/bandit/bandit_down.ban",
+  "/prim/ani/mob/china/bandit/bandit_downwait.ban",
+  "/prim/ani/mob/china/bandit/bandit_downdamage.ban",
+  "/prim/ani/mob/china/bandit/bandit_wakeup.ban",
+  "/prim/ani/mob/china/bandit/bandit_downdie.ban",
+  "/prim/ani/mob/china/bandit/bandit_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/china/bandit.bmt",
+ "bsk": "/prim/skel/mob/china/bandit.bsk",
+ "bsr": "/res/mob/china/bandit.bsr",
+ "meshes": [
+  "/prim/mesh/mob/china/bandit_sword.bms",
+  "/prim/mesh/mob/china/bandit_part1.bms",
+  "/prim/mesh/mob/china/bandit_part2.bms"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/westchinaquest_priest_basic.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/westchinaquest_priest.bmt",
+ "bsk": "/prim/skel/npc/china/westchinaquest_priest.bsk",
+ "bsr": "/res/npc/npc/westchinaquest_priest.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/westchinaquest_priest_yumjoo.bms",
+  "/prim/mesh/npc/china/westchinaquest_priest_part1.bms",
+  "/prim/mesh/npc/china/westchinaquest_priest_part2_part1.bms",
+  "/prim/mesh/npc/china/westchinaquest_priest_part2_part2.bms"
+ ]
+}

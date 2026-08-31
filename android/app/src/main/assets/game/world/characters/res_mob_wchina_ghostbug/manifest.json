@@ -1,0 +1,137 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_stand01",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_stand01.ban",
+   "channels": 38,
+   "duration_ms": 2666,
+   "keyframes": 43,
+   "name": "ghostbug_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_stand02",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_stand02.ban",
+   "channels": 38,
+   "duration_ms": 4500,
+   "keyframes": 73,
+   "name": "ghostbug_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_walk",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_walk.ban",
+   "channels": 38,
+   "duration_ms": 2666,
+   "keyframes": 43,
+   "name": "ghostbug_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_attack01",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_attack01.ban",
+   "channels": 38,
+   "duration_ms": 866,
+   "keyframes": 19,
+   "name": "ghostbug_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_damage01",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_damage01.ban",
+   "channels": 7,
+   "duration_ms": 266,
+   "keyframes": 8,
+   "name": "ghostbug_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_damage02",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_damage02.ban",
+   "channels": 38,
+   "duration_ms": 633,
+   "keyframes": 13,
+   "name": "ghostbug_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_die",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_die.ban",
+   "channels": 38,
+   "duration_ms": 2666,
+   "keyframes": 35,
+   "name": "ghostbug_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_die_loop",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_die_loop.ban",
+   "channels": 38,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ghostbug_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_down",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_down.ban",
+   "channels": 38,
+   "duration_ms": 1333,
+   "keyframes": 33,
+   "name": "ghostbug_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_downwait",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_downwait.ban",
+   "channels": 38,
+   "duration_ms": 1500,
+   "keyframes": 17,
+   "name": "ghostbug_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_downdamage",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_downdamage.ban",
+   "channels": 38,
+   "duration_ms": 666,
+   "keyframes": 10,
+   "name": "ghostbug_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_wakeup",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_wakeup.ban",
+   "channels": 38,
+   "duration_ms": 1033,
+   "keyframes": 17,
+   "name": "ghostbug_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_ghostbug_ghostbug_downdie",
+   "ban_path": "/prim/ani/mob/china/ghostbug/ghostbug_downdie.ban",
+   "channels": 38,
+   "duration_ms": 166,
+   "keyframes": 2,
+   "name": "ghostbug_downdie"
+  }
+ ],
+ "key": "res_mob_wchina_ghostbug",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/ghostbug_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/china/ghostbug.ddj",
+   "material": "GhostBug",
+   "msh": "prim_mesh_mob_china_ghostbug_part1",
+   "skin_records": 207,
+   "skinned": true,
+   "tcount": 254,
+   "tex": "prim_mtrl_mob_china_ghostbug",
+   "vcount": 207
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/ghostbug_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/china/ghostbug.ddj",
+   "material": "GhostBug",
+   "msh": "prim_mesh_mob_china_ghostbug_part2",
+   "skin_records": 150,
+   "skinned": true,
+   "tcount": 182,
+   "tex": "prim_mtrl_mob_china_ghostbug",
+   "vcount": 150
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_ghostbug",
+ "skeleton_path": "/prim/skel/mob/china/ghostbug.bsk"
+}

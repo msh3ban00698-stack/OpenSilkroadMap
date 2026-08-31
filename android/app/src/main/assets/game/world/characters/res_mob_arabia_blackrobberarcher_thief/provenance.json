@@ -1,0 +1,29 @@
+{
+ "animations": [
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_stand01.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_stand02.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_walk.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_run.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack01.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack02.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_die.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_die_loop.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_down.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_downwait.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_downdamage.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_wakeup.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_help.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_damage01.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_damage02.ban",
+  "/prim/ani/mob/oasis/blackrobberarcher/blackrobberarcher_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/arabia/blackrobberarcher_thief.bmt",
+ "bsk": "/prim/skel/mob/oasis/blackrobberarcher.bsk",
+ "bsr": "/res/mob/arabia/blackrobberarcher_thief.bsr",
+ "meshes": [
+  "/prim/mesh/mob/oasis/blackrobberarcher_archer.bms",
+  "/prim/mesh/mob/oasis/blackrobberarcher_body_part2_part1.bms",
+  "/prim/mesh/mob/oasis/blackrobberarcher_body_part1.bms",
+  "/prim/mesh/mob/oasis/blackrobberarcher_body_part2_part2.bms"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/etc/event_pandora_stand01.ban",
+  "/prim/ani/etc/event_pandora_attack01.ban",
+  "/prim/ani/etc/event_pandora_die.ban",
+  "/prim/ani/etc/event_pandora_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/etc/event_pandora.bmt",
+ "bsk": "/prim/skel/etc/event_pandora.bsk",
+ "bsr": "/res/etc/event_pandora.bsr",
+ "meshes": [
+  "/prim/mesh/etc/event_pandora.bms"
+ ]
+}

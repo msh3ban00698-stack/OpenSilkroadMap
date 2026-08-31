@@ -1,0 +1,181 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_stand01",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_stand01.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 10,
+   "name": "yeowa_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_stand02",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_stand02.ban",
+   "channels": 56,
+   "duration_ms": 5500,
+   "keyframes": 36,
+   "name": "yeowa_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_walk",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_walk.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 15,
+   "name": "yeowa_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_run",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_run.ban",
+   "channels": 56,
+   "duration_ms": 1333,
+   "keyframes": 15,
+   "name": "yeowa_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_attack01",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_attack01.ban",
+   "channels": 56,
+   "duration_ms": 1333,
+   "keyframes": 34,
+   "name": "yeowa_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_attack02",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_attack02.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 50,
+   "name": "yeowa_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_attack03",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_attack03.ban",
+   "channels": 56,
+   "duration_ms": 2500,
+   "keyframes": 40,
+   "name": "yeowa_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_damage01",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_damage01.ban",
+   "channels": 9,
+   "duration_ms": 500,
+   "keyframes": 9,
+   "name": "yeowa_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_damage02",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_damage02.ban",
+   "channels": 56,
+   "duration_ms": 2333,
+   "keyframes": 32,
+   "name": "yeowa_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_die",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_die.ban",
+   "channels": 56,
+   "duration_ms": 3033,
+   "keyframes": 62,
+   "name": "yeowa_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_die_rm",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_die_rm.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "yeowa_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_down",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_down.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 30,
+   "name": "yeowa_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_down_wait",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_down_wait.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "yeowa_down_wait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_down_damage",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_down_damage.ban",
+   "channels": 56,
+   "duration_ms": 800,
+   "keyframes": 18,
+   "name": "yeowa_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_down_up",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_down_up.ban",
+   "channels": 56,
+   "duration_ms": 1533,
+   "keyframes": 30,
+   "name": "yeowa_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_down_die",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_down_die.ban",
+   "channels": 56,
+   "duration_ms": 166,
+   "keyframes": 4,
+   "name": "yeowa_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_yeowa_yeowa_attack04",
+   "ban_path": "/prim/ani/mob/oasis/yeowa/yeowa_attack04.ban",
+   "channels": 56,
+   "duration_ms": 2933,
+   "keyframes": 35,
+   "name": "yeowa_attack04"
+  }
+ ],
+ "key": "res_mob_qinshi_blacksnake",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/yeowa_part1.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/qinshi/blacksnake.ddj",
+   "material": "yeowa",
+   "msh": "prim_mesh_mob_oasis_yeowa_part1",
+   "skin_records": 488,
+   "skinned": true,
+   "tcount": 656,
+   "tex": "prim_mtrl_mob_qinshi_blacksnake",
+   "vcount": 488
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/yeowa_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/qinshi/blacksnake.ddj",
+   "material": "yeowa",
+   "msh": "prim_mesh_mob_oasis_yeowa_part2_part1",
+   "skin_records": 369,
+   "skinned": true,
+   "tcount": 459,
+   "tex": "prim_mtrl_mob_qinshi_blacksnake",
+   "vcount": 369
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/yeowa_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/qinshi/blacksnake.ddj",
+   "material": "yeowa",
+   "msh": "prim_mesh_mob_oasis_yeowa_part2_part2",
+   "skin_records": 529,
+   "skinned": true,
+   "tcount": 667,
+   "tex": "prim_mtrl_mob_qinshi_blacksnake",
+   "vcount": 529
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_yeowa",
+ "skeleton_path": "/prim/skel/mob/oasis/yeowa.bsk"
+}

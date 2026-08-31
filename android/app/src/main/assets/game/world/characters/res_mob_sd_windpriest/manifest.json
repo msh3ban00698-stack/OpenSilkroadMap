@@ -1,0 +1,177 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_stand01",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_stand01.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "windpriest_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_stand02",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_stand02.ban",
+   "channels": 42,
+   "duration_ms": 3500,
+   "keyframes": 36,
+   "name": "windpriest_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_walk",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_walk.ban",
+   "channels": 42,
+   "duration_ms": 1066,
+   "keyframes": 14,
+   "name": "windpriest_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_run",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_run.ban",
+   "channels": 42,
+   "duration_ms": 800,
+   "keyframes": 13,
+   "name": "windpriest_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_attack01",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_attack01.ban",
+   "channels": 42,
+   "duration_ms": 2333,
+   "keyframes": 40,
+   "name": "windpriest_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_attack04",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_attack04.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 30,
+   "name": "windpriest_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_attack05",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_attack05.ban",
+   "channels": 42,
+   "duration_ms": 2166,
+   "keyframes": 18,
+   "name": "windpriest_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_damage",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_damage.ban",
+   "channels": 10,
+   "duration_ms": 333,
+   "keyframes": 5,
+   "name": "windpriest_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_die",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_die.ban",
+   "channels": 42,
+   "duration_ms": 2333,
+   "keyframes": 70,
+   "name": "windpriest_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_down",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_down.ban",
+   "channels": 42,
+   "duration_ms": 1166,
+   "keyframes": 23,
+   "name": "windpriest_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_down_rm",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_down_rm.ban",
+   "channels": 42,
+   "duration_ms": 833,
+   "keyframes": 5,
+   "name": "windpriest_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_down_up",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_down_up.ban",
+   "channels": 42,
+   "duration_ms": 1500,
+   "keyframes": 22,
+   "name": "windpriest_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_down_die",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_down_die.ban",
+   "channels": 42,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "windpriest_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_die_rm",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_die_rm.ban",
+   "channels": 42,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "windpriest_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_windpriest_windpriest_down_damage",
+   "ban_path": "/prim/ani/mob/sd/windpriest/windpriest_down_damage.ban",
+   "channels": 42,
+   "duration_ms": 1000,
+   "keyframes": 12,
+   "name": "windpriest_down_damage"
+  }
+ ],
+ "key": "res_mob_sd_windpriest",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/windpriest02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/windpries2.ddj",
+   "material": "windpriest02",
+   "msh": "prim_mesh_mob_sd_windpriest02",
+   "skin_records": 465,
+   "skinned": true,
+   "tcount": 712,
+   "tex": "prim_mtrl_mob_sd_windpries2",
+   "vcount": 465
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/windpriest_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/windpriest2.ddj",
+   "material": "windpriest",
+   "msh": "prim_mesh_mob_sd_windpriest_part1",
+   "skin_records": 453,
+   "skinned": true,
+   "tcount": 616,
+   "tex": "prim_mtrl_mob_sd_windpriest2",
+   "vcount": 453
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/windpriest_part2_part1.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/sd/windpriest2.ddj",
+   "material": "windpriest",
+   "msh": "prim_mesh_mob_sd_windpriest_part2_part1",
+   "skin_records": 419,
+   "skinned": true,
+   "tcount": 532,
+   "tex": "prim_mtrl_mob_sd_windpriest2",
+   "vcount": 419
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/windpriest_part2_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/sd/windpriest2.ddj",
+   "material": "windpriest",
+   "msh": "prim_mesh_mob_sd_windpriest_part2_part2",
+   "skin_records": 323,
+   "skinned": true,
+   "tcount": 394,
+   "tex": "prim_mtrl_mob_sd_windpriest2",
+   "vcount": 323
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_windpriest",
+ "skeleton_path": "/prim/skel/mob/sd/windpriest.bsk"
+}

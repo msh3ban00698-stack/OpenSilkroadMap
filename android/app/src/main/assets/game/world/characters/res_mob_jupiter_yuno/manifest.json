@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_stand01",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_stand01.ban",
+   "channels": 71,
+   "duration_ms": 2666,
+   "keyframes": 7,
+   "name": "yuno_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_walk",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_walk.ban",
+   "channels": 71,
+   "duration_ms": 1333,
+   "keyframes": 18,
+   "name": "yuno_walk"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack01",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack01.ban",
+   "channels": 71,
+   "duration_ms": 3133,
+   "keyframes": 43,
+   "name": "yuno_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack02",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack02.ban",
+   "channels": 71,
+   "duration_ms": 3000,
+   "keyframes": 45,
+   "name": "yuno_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack03",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack03.ban",
+   "channels": 71,
+   "duration_ms": 4400,
+   "keyframes": 50,
+   "name": "yuno_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack08",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack08.ban",
+   "channels": 71,
+   "duration_ms": 4200,
+   "keyframes": 67,
+   "name": "yuno_attack08"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack09_shot",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack09_shot.ban",
+   "channels": 71,
+   "duration_ms": 2066,
+   "keyframes": 31,
+   "name": "yuno_attack09_shot"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack09_ready",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack09_ready.ban",
+   "channels": 71,
+   "duration_ms": 3000,
+   "keyframes": 27,
+   "name": "yuno_attack09_ready"
+  },
+  {
+   "anim": "prim_ani_mob_jupiter_yuno_yuno_attack09_wait",
+   "ban_path": "/prim/ani/mob/jupiter/yuno/yuno_attack09_wait.ban",
+   "channels": 71,
+   "duration_ms": 1000,
+   "keyframes": 5,
+   "name": "yuno_attack09_wait"
+  }
+ ],
+ "key": "res_mob_jupiter_yuno",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno01.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno.ddj",
+   "material": "yuno",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno01",
+   "skin_records": 404,
+   "skinned": true,
+   "tcount": 588,
+   "tex": "prim_mtrl_mob_jupiter_yuno",
+   "vcount": 404
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno.ddj",
+   "material": "yuno",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno_part1",
+   "skin_records": 445,
+   "skinned": true,
+   "tcount": 528,
+   "tex": "prim_mtrl_mob_jupiter_yuno",
+   "vcount": 445
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno.ddj",
+   "material": "yuno",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno_part2_part1",
+   "skin_records": 445,
+   "skinned": true,
+   "tcount": 529,
+   "tex": "prim_mtrl_mob_jupiter_yuno",
+   "vcount": 445
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno_part2_part2_part1.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno.ddj",
+   "material": "yuno",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno_part2_part2_part1",
+   "skin_records": 1006,
+   "skinned": true,
+   "tcount": 1225,
+   "tex": "prim_mtrl_mob_jupiter_yuno",
+   "vcount": 1006
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno_part2_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno.ddj",
+   "material": "yuno",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno_part2_part2_part2",
+   "skin_records": 337,
+   "skinned": true,
+   "tcount": 475,
+   "tex": "prim_mtrl_mob_jupiter_yuno",
+   "vcount": 337
+  },
+  {
+   "bms_path": "/prim/mesh/mob/jupiter/yuno/yuno_weapon.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/jupiter/yuno_weapon.ddj",
+   "material": "yuno_weapon",
+   "msh": "prim_mesh_mob_jupiter_yuno_yuno_weapon",
+   "skin_records": 382,
+   "skinned": true,
+   "tcount": 382,
+   "tex": "prim_mtrl_mob_jupiter_yuno_weapon",
+   "vcount": 382
+  }
+ ],
+ "skeleton": "prim_skel_mob_jupiter_yuno",
+ "skeleton_path": "/prim/skel/mob/jupiter/yuno.bsk"
+}

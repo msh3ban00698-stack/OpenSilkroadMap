@@ -1,0 +1,97 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinasystem_shaman_time",
+   "ban_path": "/prim/ani/npc/china/chinasystem_shaman_time.ban",
+   "channels": 35,
+   "duration_ms": 4000,
+   "keyframes": 18,
+   "name": "chinasystem_shaman_time"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinasystem_shaman_basic",
+   "ban_path": "/prim/ani/npc/china/chinasystem_shaman_basic.ban",
+   "channels": 36,
+   "duration_ms": 3333,
+   "keyframes": 19,
+   "name": "chinasystem_shaman_basic"
+  }
+ ],
+ "key": "res_npc_npc_chinasystem_shaman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_2s.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman.ddj",
+   "material": "ChinaSystem_Shaman_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_2s",
+   "skin_records": 139,
+   "skinned": true,
+   "tcount": 136,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman",
+   "vcount": 139
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_al_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman_al.ddj",
+   "material": "ChinaSystem_Shaman_al_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_al_2s",
+   "skin_records": 77,
+   "skinned": true,
+   "tcount": 108,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman_al",
+   "vcount": 77
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_tabaco.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman_tiger.ddj",
+   "material": "ChinaSystem_Shaman_tiger",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_tabaco",
+   "skin_records": 45,
+   "skinned": true,
+   "tcount": 34,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman_tiger",
+   "vcount": 45
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_tiger.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman_tiger.ddj",
+   "material": "ChinaSystem_Shaman_tiger",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_tiger",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 412,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman_tiger",
+   "vcount": 309
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman.ddj",
+   "material": "ChinaSystem_Shaman",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_part1",
+   "skin_records": 370,
+   "skinned": true,
+   "tcount": 486,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman",
+   "vcount": 370
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_shaman_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_shaman.ddj",
+   "material": "ChinaSystem_Shaman",
+   "msh": "prim_mesh_npc_china_chinasystem_shaman_part2",
+   "skin_records": 305,
+   "skinned": true,
+   "tcount": 451,
+   "tex": "prim_mtrl_npc_china_chinasystem_shaman",
+   "vcount": 305
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinasystem_shaman",
+ "skeleton_path": "/prim/skel/npc/china/chinasystem_shaman.bsk"
+}

@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_stand01",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_stand01.ban",
+   "channels": 56,
+   "duration_ms": 2266,
+   "keyframes": 29,
+   "name": "mujigi_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_stand02",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_stand02.ban",
+   "channels": 56,
+   "duration_ms": 3700,
+   "keyframes": 56,
+   "name": "mujigi_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_walk",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_walk.ban",
+   "channels": 56,
+   "duration_ms": 1666,
+   "keyframes": 28,
+   "name": "mujigi_walk"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_run",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_run.ban",
+   "channels": 56,
+   "duration_ms": 800,
+   "keyframes": 22,
+   "name": "mujigi_run"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_attack01",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_attack01.ban",
+   "channels": 56,
+   "duration_ms": 1966,
+   "keyframes": 47,
+   "name": "mujigi_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_attack02",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_attack02.ban",
+   "channels": 56,
+   "duration_ms": 2766,
+   "keyframes": 60,
+   "name": "mujigi_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_attack03",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_attack03.ban",
+   "channels": 56,
+   "duration_ms": 2666,
+   "keyframes": 78,
+   "name": "mujigi_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_damage01",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_damage01.ban",
+   "channels": 21,
+   "duration_ms": 633,
+   "keyframes": 12,
+   "name": "mujigi_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_damage02",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_damage02.ban",
+   "channels": 56,
+   "duration_ms": 2366,
+   "keyframes": 51,
+   "name": "mujigi_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_die",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_die.ban",
+   "channels": 56,
+   "duration_ms": 3666,
+   "keyframes": 88,
+   "name": "mujigi_die"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_die_loop",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_die_loop.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "mujigi_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_down",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_down.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 32,
+   "name": "mujigi_down"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_down_rm",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_down_rm.ban",
+   "channels": 56,
+   "duration_ms": 1866,
+   "keyframes": 18,
+   "name": "mujigi_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_down_damage",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_down_damage.ban",
+   "channels": 56,
+   "duration_ms": 433,
+   "keyframes": 14,
+   "name": "mujigi_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_down_up",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_down_up.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 39,
+   "name": "mujigi_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_mujigi_mujigi_down_die",
+   "ban_path": "/prim/ani/mob/khotan/mujigi/mujigi_down_die.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "mujigi_down_die"
+  }
+ ],
+ "key": "res_mob_khotan_mujigi",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/khotan/mujigi_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/khotan/mujigi.ddj",
+   "material": "mujigi",
+   "msh": "prim_mesh_mob_khotan_mujigi_part1",
+   "skin_records": 230,
+   "skinned": true,
+   "tcount": 270,
+   "tex": "prim_mtrl_mob_khotan_mujigi",
+   "vcount": 230
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/mujigi_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/khotan/mujigi.ddj",
+   "material": "mujigi",
+   "msh": "prim_mesh_mob_khotan_mujigi_part2_part1",
+   "skin_records": 302,
+   "skinned": true,
+   "tcount": 393,
+   "tex": "prim_mtrl_mob_khotan_mujigi",
+   "vcount": 302
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/mujigi_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/khotan/mujigi.ddj",
+   "material": "mujigi",
+   "msh": "prim_mesh_mob_khotan_mujigi_part2_part2",
+   "skin_records": 376,
+   "skinned": true,
+   "tcount": 443,
+   "tex": "prim_mtrl_mob_khotan_mujigi",
+   "vcount": 376
+  }
+ ],
+ "skeleton": "prim_skel_mob_khotan_mujigi",
+ "skeleton_path": "/prim/skel/mob/khotan/mujigi.bsk"
+}

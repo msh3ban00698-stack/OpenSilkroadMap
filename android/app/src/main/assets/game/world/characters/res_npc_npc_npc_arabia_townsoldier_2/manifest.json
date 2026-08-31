@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_arabia_npc_arabia_townsoldier_1_stand01",
+   "ban_path": "/prim/ani/npc/arabia/npc_arabia_townsoldier_1_stand01.ban",
+   "channels": 40,
+   "duration_ms": 7333,
+   "keyframes": 12,
+   "name": "npc_arabia_townsoldier_1_stand01"
+  }
+ ],
+ "key": "res_npc_npc_npc_arabia_townsoldier_2",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/arabia/npc_arabia_townsoldier_1_weapon.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/arabia/npc_arabia_townsoldier_2.ddj",
+   "material": "npc_arabia_townsoldier_1",
+   "msh": "prim_mesh_npc_arabia_npc_arabia_townsoldier_1_weapon",
+   "skin_records": 128,
+   "skinned": true,
+   "tcount": 230,
+   "tex": "prim_mtrl_npc_arabia_npc_arabia_townsoldier_2",
+   "vcount": 128
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/npc_arabia_townsoldier_1_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/npc_arabia_townsoldier_2.ddj",
+   "material": "npc_arabia_townsoldier_1",
+   "msh": "prim_mesh_npc_arabia_npc_arabia_townsoldier_1_part1",
+   "skin_records": 282,
+   "skinned": true,
+   "tcount": 363,
+   "tex": "prim_mtrl_npc_arabia_npc_arabia_townsoldier_2",
+   "vcount": 282
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/npc_arabia_townsoldier_1_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/npc_arabia_townsoldier_2.ddj",
+   "material": "npc_arabia_townsoldier_1",
+   "msh": "prim_mesh_npc_arabia_npc_arabia_townsoldier_1_part2",
+   "skin_records": 590,
+   "skinned": true,
+   "tcount": 829,
+   "tex": "prim_mtrl_npc_arabia_npc_arabia_townsoldier_2",
+   "vcount": 590
+  }
+ ],
+ "skeleton": "prim_skel_npc_arabia_npc_arabia_townsoldier_1",
+ "skeleton_path": "/prim/skel/npc/arabia/npc_arabia_townsoldier_1.bsk"
+}

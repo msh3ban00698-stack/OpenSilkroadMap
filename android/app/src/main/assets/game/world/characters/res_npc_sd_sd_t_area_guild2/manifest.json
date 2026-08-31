@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_t_area_guild2_stand01",
+   "ban_path": "/prim/ani/npc/sd/sd_t_area_guild2_stand01.ban",
+   "channels": 40,
+   "duration_ms": 2666,
+   "keyframes": 11,
+   "name": "sd_t_area_guild2_stand01"
+  }
+ ],
+ "key": "res_npc_sd_sd_t_area_guild2",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_t_area_guild2_2al.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_t_area_guild2.ddj",
+   "material": "SD_t_area_guild2_2al",
+   "msh": "prim_mesh_npc_sd_sd_t_area_guild2_2al",
+   "skin_records": 30,
+   "skinned": true,
+   "tcount": 40,
+   "tex": "prim_mtrl_npc_sd_sd_t_area_guild2",
+   "vcount": 30
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_t_area_guild2_s1.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_t_area_guild2_s.ddj",
+   "material": "SD_t_area_guild2_s",
+   "msh": "prim_mesh_npc_sd_sd_t_area_guild2_s1",
+   "skin_records": 177,
+   "skinned": true,
+   "tcount": 272,
+   "tex": "prim_mtrl_npc_sd_sd_t_area_guild2_s",
+   "vcount": 177
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_t_area_guild2_s2.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_t_area_guild2_s.ddj",
+   "material": "SD_t_area_guild2_s",
+   "msh": "prim_mesh_npc_sd_sd_t_area_guild2_s2",
+   "skin_records": 189,
+   "skinned": true,
+   "tcount": 260,
+   "tex": "prim_mtrl_npc_sd_sd_t_area_guild2_s",
+   "vcount": 189
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_t_area_guild2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_t_area_guild2.ddj",
+   "material": "SD_t_area_guild2",
+   "msh": "prim_mesh_npc_sd_sd_t_area_guild2_part1",
+   "skin_records": 757,
+   "skinned": true,
+   "tcount": 1112,
+   "tex": "prim_mtrl_npc_sd_sd_t_area_guild2",
+   "vcount": 757
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_t_area_guild2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_t_area_guild2.ddj",
+   "material": "SD_t_area_guild2",
+   "msh": "prim_mesh_npc_sd_sd_t_area_guild2_part2",
+   "skin_records": 237,
+   "skinned": true,
+   "tcount": 291,
+   "tex": "prim_mtrl_npc_sd_sd_t_area_guild2",
+   "vcount": 237
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_t_area_guild2",
+ "skeleton_path": "/prim/skel/npc/sd/sd_t_area_guild2.bsk"
+}

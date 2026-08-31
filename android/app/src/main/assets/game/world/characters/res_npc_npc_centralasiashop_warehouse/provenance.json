@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiashop_warehouse.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiashop_warehouse.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiashop_warehouse.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaShop_Warehouse.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiashop_warehouse_box.bms",
+  "/prim/mesh/npc/casia/centralasiashop_warehouse_part1.bms",
+  "/prim/mesh/npc/casia/centralasiashop_warehouse_part2.bms",
+  "/prim/mesh/npc/casia/centralasiashop_warehouse_al_2s.bms",
+  "/prim/mesh/npc/casia/centralasiashop_warehouse_al_dtx.bms"
+ ]
+}

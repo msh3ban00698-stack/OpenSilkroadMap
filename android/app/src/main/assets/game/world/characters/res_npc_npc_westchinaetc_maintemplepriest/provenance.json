@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/westchinaetc_maintemplepriest_basic.ban",
+  "/prim/ani/npc/china/westchinaetc_maintemplepriest_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/westchinaetc_maintemplepriest.bmt",
+ "bsk": "/prim/skel/npc/china/westchinaetc_maintemplepriest.bsk",
+ "bsr": "/res/npc/npc/westchinaetc_maintemplepriest.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/westchinaetc_maintemplepriest_al.bms",
+  "/prim/mesh/npc/china/westchinaetc_maintemplepriest_part1.bms",
+  "/prim/mesh/npc/china/westchinaetc_maintemplepriest_part2.bms"
+ ]
+}

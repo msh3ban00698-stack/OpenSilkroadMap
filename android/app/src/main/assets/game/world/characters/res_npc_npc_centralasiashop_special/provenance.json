@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiashop_special.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiashop_special.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiashop_special.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaShop_Special.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiashop_special_al.bms",
+  "/prim/mesh/npc/casia/centralasiashop_special_al_1.bms",
+  "/prim/mesh/npc/casia/centralasiashop_special_al_2.bms",
+  "/prim/mesh/npc/casia/centralasiashop_special_part1.bms",
+  "/prim/mesh/npc/casia/centralasiashop_special_part2.bms"
+ ]
+}

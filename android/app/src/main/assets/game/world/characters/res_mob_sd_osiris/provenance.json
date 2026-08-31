@@ -1,0 +1,23 @@
+{
+ "animations": [
+  "/prim/ani/mob/sd/osiris/osiris_stand01.ban",
+  "/prim/ani/mob/sd/osiris/osiris_walk.ban",
+  "/prim/ani/mob/sd/osiris/osiris_run.ban",
+  "/prim/ani/mob/sd/osiris/osiris_attack01.ban",
+  "/prim/ani/mob/sd/osiris/osiris_attack02.ban",
+  "/prim/ani/mob/sd/osiris/osiris_attack03.ban",
+  "/prim/ani/mob/sd/osiris/osiris_attack04.ban",
+  "/prim/ani/mob/sd/osiris/osiris_attack05.ban",
+  "/prim/ani/mob/sd/osiris/osiris_die.ban",
+  "/prim/ani/mob/sd/osiris/osiris_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/sd/osiris.bmt",
+ "bsk": "/prim/skel/mob/sd/osiris.bsk",
+ "bsr": "/res/mob/sd/osiris.bsr",
+ "meshes": [
+  "/prim/mesh/mob/sd/osiris01.bms",
+  "/prim/mesh/mob/sd/osiris_part1.bms",
+  "/prim/mesh/mob/sd/osiris_part2_part1.bms",
+  "/prim/mesh/mob/sd/osiris_part2_part2.bms"
+ ]
+}

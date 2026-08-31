@@ -1,0 +1,17 @@
+{
+ "animations": [
+  "/prim/ani/npc/open_market_juel.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/npc/open_market_juel.bmt",
+ "bsk": "/prim/skel/npc/npc/open_market_juel.bsk",
+ "bsr": "/res/NPC/NPC/open_market_juel.bsr",
+ "meshes": [
+  "/prim/mesh/npc/npc/open_market_juel_part1.bms",
+  "/prim/mesh/npc/npc/open_market_juel_part2_part1.bms",
+  "/prim/mesh/npc/npc/open_market_juel_part2_part2_part1.bms",
+  "/prim/mesh/npc/npc/open_market_juel_part2_part2_part2.bms",
+  "/prim/mesh/npc/npc/open_market_juel_01_part1.bms",
+  "/prim/mesh/npc/npc/open_market_juel_01_part2_part1.bms",
+  "/prim/mesh/npc/npc/open_market_juel_01_part2_part2.bms"
+ ]
+}

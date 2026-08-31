@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_waterman_1_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_waterman_1.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_waterman_1.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_waterman_1.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_waterman_1_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_waterman_1_part2.bms"
+ ]
+}

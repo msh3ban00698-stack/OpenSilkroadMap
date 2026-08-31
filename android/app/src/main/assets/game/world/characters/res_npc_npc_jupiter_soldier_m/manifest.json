@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_jupiter_jupiter_soldier_m_stand01",
+   "ban_path": "/prim/ani/npc/jupiter/jupiter_soldier_m_stand01.ban",
+   "channels": 40,
+   "duration_ms": 2141,
+   "keyframes": 12,
+   "name": "jupiter_soldier_m_stand01"
+  }
+ ],
+ "key": "res_npc_npc_jupiter_soldier_m",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_soldier_m_01.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_soldier_m.ddj",
+   "material": "JUPITER_soldier_m",
+   "msh": "prim_mesh_npc_jupiter_jupiter_soldier_m_01",
+   "skin_records": 398,
+   "skinned": true,
+   "tcount": 426,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_soldier_m",
+   "vcount": 398
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_soldier_m_03.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_soldier_m.ddj",
+   "material": "JUPITER_soldier_m",
+   "msh": "prim_mesh_npc_jupiter_jupiter_soldier_m_03",
+   "skin_records": 368,
+   "skinned": true,
+   "tcount": 540,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_soldier_m",
+   "vcount": 368
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_soldier_m_02_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_soldier_m.ddj",
+   "material": "JUPITER_soldier_m",
+   "msh": "prim_mesh_npc_jupiter_jupiter_soldier_m_02_part1",
+   "skin_records": 449,
+   "skinned": true,
+   "tcount": 604,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_soldier_m",
+   "vcount": 449
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_soldier_m_02_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_soldier_m.ddj",
+   "material": "JUPITER_soldier_m",
+   "msh": "prim_mesh_npc_jupiter_jupiter_soldier_m_02_part2",
+   "skin_records": 457,
+   "skinned": true,
+   "tcount": 640,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_soldier_m",
+   "vcount": 457
+  }
+ ],
+ "skeleton": "prim_skel_npc_jupiter_jupiter_soldier_m",
+ "skeleton_path": "/prim/skel/npc/jupiter/jupiter_soldier_m.bsk"
+}

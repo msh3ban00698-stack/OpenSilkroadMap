@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_gravekeeper.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_gravekeeper.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_gravekeeper.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_GraveKeeper.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_gravekeeper_2.bms",
+  "/prim/mesh/npc/europe/easteuropequest_gravekeeper_3.bms",
+  "/prim/mesh/npc/europe/easteuropequest_gravekeeper_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_gravekeeper_part2.bms"
+ ]
+}

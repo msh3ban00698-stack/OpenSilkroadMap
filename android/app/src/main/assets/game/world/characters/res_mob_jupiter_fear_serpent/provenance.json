@@ -1,0 +1,22 @@
+{
+ "animations": [
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_stand01.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_walk.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_run.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_attack01.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_attack02.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_attack03.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_attack04.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_damage.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_die.ban",
+  "/prim/ani/mob/jupiter/fear_serpent/fear_serpent_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/jupiter/fear_serpent.bmt",
+ "bsk": "/prim/skel/mob/jupiter/fear_serpent.bsk",
+ "bsr": "/res/mob/Jupiter/fear_serpent.bsr",
+ "meshes": [
+  "/prim/mesh/mob/jupiter/fear_serpent/fear_serpent_part1.bms",
+  "/prim/mesh/mob/jupiter/fear_serpent/fear_serpent_part2_part1.bms",
+  "/prim/mesh/mob/jupiter/fear_serpent/fear_serpent_part2_part2.bms"
+ ]
+}

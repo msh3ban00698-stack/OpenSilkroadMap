@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/khotan/khotanetc_soldier_basic.ban",
+  "/prim/ani/npc/khotan/khotanetc_soldier_basic2.ban",
+  "/prim/ani/npc/khotan/khotanetc_soldier_basic3.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/khotan/khotanetc_soldierpalace2.bmt",
+ "bsk": "/prim/skel/npc/khotan/khotanetc_soldierpalace.bsk",
+ "bsr": "/res/npc/npc/khotanetc_soldierpalace2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_2s.bms",
+  "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_al.bms",
+  "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_part1.bms",
+  "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_part2.bms"
+ ]
+}

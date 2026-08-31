@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_soldier_alex.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_soldier_alex.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_soldier_alex.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Soldier_Alex.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_soldier_alex_2s_01.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_alex_2s_02.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_alex_arm.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_alex_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_alex_part2.bms"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_lighthouse_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_lighthouse.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_lighthouse.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_lighthouse.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_lighthouse_lamp.bms",
+  "/prim/mesh/npc/sd/sd_m_area_lighthouse_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_lighthouse_part2.bms"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/westchinaquest_oldman_time.ban",
+  "/prim/ani/npc/china/westchinaquest_oldman_basic.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/westchinaquest_oldman.bmt",
+ "bsk": "/prim/skel/npc/china/westchinaquest_oldman.bsk",
+ "bsr": "/res/npc/npc/westchinaquest_oldman.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/westchinaquest_oldman_2s.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_al_2s.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_al_2s_02.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_tree.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_part1.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_part2_part1.bms",
+  "/prim/mesh/npc/china/westchinaquest_oldman_part2_part2.bms"
+ ]
+}

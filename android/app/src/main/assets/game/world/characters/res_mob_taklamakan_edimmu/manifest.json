@@ -1,0 +1,149 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_stand01",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_stand01.ban",
+   "channels": 63,
+   "duration_ms": 4000,
+   "keyframes": 7,
+   "name": "edimmu_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_walk",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_walk.ban",
+   "channels": 63,
+   "duration_ms": 2000,
+   "keyframes": 21,
+   "name": "edimmu_walk"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_run",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_run.ban",
+   "channels": 63,
+   "duration_ms": 1500,
+   "keyframes": 21,
+   "name": "edimmu_run"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_attack01",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_attack01.ban",
+   "channels": 63,
+   "duration_ms": 2000,
+   "keyframes": 15,
+   "name": "edimmu_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_attack02",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_attack02.ban",
+   "channels": 63,
+   "duration_ms": 2500,
+   "keyframes": 29,
+   "name": "edimmu_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_attack03",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_attack03.ban",
+   "channels": 63,
+   "duration_ms": 2500,
+   "keyframes": 23,
+   "name": "edimmu_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_down",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_down.ban",
+   "channels": 63,
+   "duration_ms": 533,
+   "keyframes": 9,
+   "name": "edimmu_down"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_downwait",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_downwait.ban",
+   "channels": 63,
+   "duration_ms": 1800,
+   "keyframes": 22,
+   "name": "edimmu_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_downdamage",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_downdamage.ban",
+   "channels": 63,
+   "duration_ms": 433,
+   "keyframes": 10,
+   "name": "edimmu_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_downup",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_downup.ban",
+   "channels": 63,
+   "duration_ms": 566,
+   "keyframes": 5,
+   "name": "edimmu_downup"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_die",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_die.ban",
+   "channels": 63,
+   "duration_ms": 733,
+   "keyframes": 11,
+   "name": "edimmu_die"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_die_rm",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_die_rm.ban",
+   "channels": 63,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "edimmu_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_edimmu_edimmu_downdie",
+   "ban_path": "/prim/ani/mob/taklamakan/edimmu/edimmu_downdie.ban",
+   "channels": 63,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "edimmu_downdie"
+  }
+ ],
+ "key": "res_mob_taklamakan_edimmu",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/edimmu_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/edimmu.ddj",
+   "material": "edimmu",
+   "msh": "prim_mesh_mob_taklamakan_edimmu_part1",
+   "skin_records": 501,
+   "skinned": true,
+   "tcount": 598,
+   "tex": "prim_mtrl_mob_taklamakan_edimmu",
+   "vcount": 501
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/edimmu_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/edimmu.ddj",
+   "material": "edimmu",
+   "msh": "prim_mesh_mob_taklamakan_edimmu_part2_part1",
+   "skin_records": 224,
+   "skinned": true,
+   "tcount": 276,
+   "tex": "prim_mtrl_mob_taklamakan_edimmu",
+   "vcount": 224
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/edimmu_part2_part2.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/edimmu.ddj",
+   "material": "edimmu",
+   "msh": "prim_mesh_mob_taklamakan_edimmu_part2_part2",
+   "skin_records": 123,
+   "skinned": true,
+   "tcount": 174,
+   "tex": "prim_mtrl_mob_taklamakan_edimmu",
+   "vcount": 123
+  }
+ ],
+ "skeleton": "prim_skel_mob_taklamakan_edimmu",
+ "skeleton_path": "/prim/skel/mob/taklamakan/edimmu.bsk"
+}

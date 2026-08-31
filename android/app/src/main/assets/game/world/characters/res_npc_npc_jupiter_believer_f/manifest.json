@@ -1,0 +1,89 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_jupiter_jupiter_believer_f_stand01",
+   "ban_path": "/prim/ani/npc/jupiter/jupiter_believer_f_stand01.ban",
+   "channels": 88,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "jupiter_believer_f_stand01"
+  }
+ ],
+ "key": "res_npc_npc_jupiter_believer_f",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_01_part1",
+   "skin_records": 219,
+   "skinned": true,
+   "tcount": 280,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 219
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_01_part2_part1",
+   "skin_records": 648,
+   "skinned": true,
+   "tcount": 944,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 648
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_01_part2_part2_part1",
+   "skin_records": 186,
+   "skinned": true,
+   "tcount": 249,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 186
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_01_part2_part2_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_01_part2_part2_part2",
+   "skin_records": 140,
+   "skinned": true,
+   "tcount": 193,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 140
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_02_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_02_part1",
+   "skin_records": 126,
+   "skinned": true,
+   "tcount": 160,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 126
+  },
+  {
+   "bms_path": "/prim/mesh/npc/jupiter/jupiter_believer_f_02_part2.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/npc/jupiter/jupiter_investigation_f.ddj",
+   "material": "JUPITER_believer_f",
+   "msh": "prim_mesh_npc_jupiter_jupiter_believer_f_02_part2",
+   "skin_records": 39,
+   "skinned": true,
+   "tcount": 40,
+   "tex": "prim_mtrl_npc_jupiter_jupiter_investigation_f",
+   "vcount": 39
+  }
+ ],
+ "skeleton": "prim_skel_npc_jupiter_jupiter_believer_f",
+ "skeleton_path": "/prim/skel/npc/jupiter/jupiter_believer_f.bsk"
+}

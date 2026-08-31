@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/khotan/khotanshop_smith_basic.ban",
+  "/prim/ani/npc/khotan/khotanshop_smith_basic2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/khotan/khotanshop_smith.bmt",
+ "bsk": "/prim/skel/npc/khotan/khotanshop_smith.bsk",
+ "bsr": "/res/npc/npc/khotanshop_smith.bsr",
+ "meshes": [
+  "/prim/mesh/npc/khotan/khotanshop_smith_2s.bms",
+  "/prim/mesh/npc/khotan/khotanshop_smith_al.bms",
+  "/prim/mesh/npc/khotan/khotanshop_smith_part1.bms",
+  "/prim/mesh/npc/khotan/khotanshop_smith_part2.bms"
+ ]
+}

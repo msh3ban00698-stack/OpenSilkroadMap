@@ -1,0 +1,3001 @@
+{
+ "path": "/prim/skel/mob/arabia/sabra.bsk",
+ "bone_count": 104,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bip01",
+   "parent": "",
+   "children": [
+    "Bip01 Pelvis",
+    "root_Bone"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.707106,
+    0.0,
+    0.707107
+   ],
+   "tr_parent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.0,
+    0.707106,
+    0.0,
+    0.707107
+   ],
+   "bind_world_pos": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 Pelvis",
+   "parent": "Bip01",
+   "children": [
+    "Bip01 Spine",
+    "stem_01"
+   ],
+   "rot_parent": [
+    0.499999,
+    0.5,
+    0.5,
+    0.500001
+   ],
+   "tr_parent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.707106,
+    0.707107,
+    1e-06,
+    1e-06
+   ],
+   "bind_world_pos": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 Spine",
+   "parent": "Bip01 Pelvis",
+   "children": [
+    "Bip01 L Thigh",
+    "Bip01 R Thigh",
+    "Spine_Base"
+   ],
+   "rot_parent": [
+    2e-06,
+    -0.000398,
+    1e-06,
+    1.0
+   ],
+   "tr_parent": [
+    1.745367,
+    2e-06,
+    -1e-05
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.745367,
+    1e-05
+   ]
+  },
+  {
+   "name": "Spine_Base",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 Spine1"
+   ],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.745367,
+    1e-05
+   ]
+  },
+  {
+   "name": "Bip01 Spine1",
+   "parent": "Spine_Base",
+   "children": [
+    "Bip01 Spine2"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012831,
+    -0.0,
+    -1e-05
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.758198,
+    1e-05
+   ]
+  },
+  {
+   "name": "Bip01 Spine2",
+   "parent": "Bip01 Spine1",
+   "children": [
+    "Bip01 Spine3"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012831,
+    -0.0,
+    -1e-05
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.77103,
+    1e-05
+   ]
+  },
+  {
+   "name": "Bip01 Spine3",
+   "parent": "Bip01 Spine2",
+   "children": [
+    "Bip01 Neck"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012831,
+    -0.0,
+    -1e-05
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.783861,
+    1e-05
+   ]
+  },
+  {
+   "name": "Bip01 Neck",
+   "parent": "Bip01 Spine3",
+   "children": [
+    "Bip01 Head",
+    "Bip01 L Clavicle",
+    "Bip01 R Clavicle"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012831,
+    -0.0,
+    -6e-06
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.000282,
+    0.000281
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.796692,
+    6e-06
+   ]
+  },
+  {
+   "name": "Bip01 Head",
+   "parent": "Bip01 Neck",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    0.000399,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.007403,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    0.0,
+    -1e-06
+   ],
+   "bind_world_pos": [
+    -0.0,
+    1.804094,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 L Clavicle",
+   "parent": "Bip01 Neck",
+   "children": [
+    "Bip01 L UpperArm"
+   ],
+   "rot_parent": [
+    -0.707107,
+    -0.707107,
+    0.000283,
+    0.000281
+   ],
+   "tr_parent": [
+    0.0,
+    0.003455,
+    6e-06
+   ],
+   "bind_world_rot": [
+    0.0,
+    -1e-06,
+    0.0,
+    1.0
+   ],
+   "bind_world_pos": [
+    0.003455,
+    1.796692,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 L UpperArm",
+   "parent": "Bip01 L Clavicle",
+   "children": [
+    "Bip01 L Forearm"
+   ],
+   "rot_parent": [
+    -0.037063,
+    -0.03353,
+    -0.670044,
+    0.740637
+   ],
+   "tr_parent": [
+    0.012831,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.037062,
+    -0.033531,
+    -0.670044,
+    0.740637
+   ],
+   "bind_world_pos": [
+    0.016286,
+    1.796692,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 L Forearm",
+   "parent": "Bip01 L UpperArm",
+   "children": [
+    "Bip01 L Hand"
+   ],
+   "rot_parent": [
+    0.0,
+    0.099833,
+    -0.0,
+    0.995004
+   ],
+   "tr_parent": [
+    0.02961,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.030016,
+    0.040577,
+    -0.670397,
+    0.740284
+   ],
+   "bind_world_pos": [
+    0.019242,
+    1.767377,
+    0.002942
+   ]
+  },
+  {
+   "name": "Bip01 L Hand",
+   "parent": "Bip01 L Forearm",
+   "children": [
+    "Bip01 L Finger0"
+   ],
+   "rot_parent": [
+    0.706825,
+    -0.0,
+    -0.0,
+    0.707388
+   ],
+   "tr_parent": [
+    0.029611,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.544484,
+    -0.445149,
+    -0.502912,
+    0.502453
+   ],
+   "bind_world_pos": [
+    0.022139,
+    1.738058,
+    -2.9e-05
+   ]
+  },
+  {
+   "name": "Bip01 L Finger0",
+   "parent": "Bip01 L Hand",
+   "children": [],
+   "rot_parent": [
+    0.000398,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012338,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.544684,
+    -0.44535,
+    -0.502734,
+    0.502236
+   ],
+   "bind_world_pos": [
+    0.023346,
+    1.725842,
+    -0.001267
+   ]
+  },
+  {
+   "name": "Bip01 R Clavicle",
+   "parent": "Bip01 Neck",
+   "children": [
+    "Bip01 R UpperArm"
+   ],
+   "rot_parent": [
+    0.707107,
+    -0.707107,
+    -0.000281,
+    0.000283
+   ],
+   "tr_parent": [
+    0.0,
+    -0.003455,
+    6e-06
+   ],
+   "bind_world_rot": [
+    1e-06,
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "bind_world_pos": [
+    -0.003455,
+    1.796692,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 R UpperArm",
+   "parent": "Bip01 R Clavicle",
+   "children": [
+    "Bip01 R Forearm"
+   ],
+   "rot_parent": [
+    0.037063,
+    -0.03353,
+    0.670044,
+    0.740637
+   ],
+   "tr_parent": [
+    0.012831,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.03353,
+    -0.037063,
+    -0.740637,
+    0.670044
+   ],
+   "bind_world_pos": [
+    -0.016286,
+    1.796692,
+    0.0
+   ]
+  },
+  {
+   "name": "Bip01 R Forearm",
+   "parent": "Bip01 R UpperArm",
+   "children": [
+    "Bip01 R Hand"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.099833,
+    0.0,
+    0.995004
+   ],
+   "tr_parent": [
+    0.02961,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.040578,
+    0.030015,
+    -0.740284,
+    0.670397
+   ],
+   "bind_world_pos": [
+    -0.019242,
+    1.767377,
+    0.002941
+   ]
+  },
+  {
+   "name": "Bip01 R Hand",
+   "parent": "Bip01 R Forearm",
+   "children": [
+    "Bip01 R Finger0"
+   ],
+   "rot_parent": [
+    -0.706825,
+    0.0,
+    0.0,
+    0.707388
+   ],
+   "tr_parent": [
+    0.029611,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.445149,
+    0.544484,
+    -0.502453,
+    0.502913
+   ],
+   "bind_world_pos": [
+    -0.022139,
+    1.738058,
+    -2.9e-05
+   ]
+  },
+  {
+   "name": "Bip01 R Finger0",
+   "parent": "Bip01 R Hand",
+   "children": [],
+   "rot_parent": [
+    -0.000398,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.012338,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.445349,
+    0.544684,
+    -0.502236,
+    0.502735
+   ],
+   "bind_world_pos": [
+    -0.023346,
+    1.725842,
+    -0.001267
+   ]
+  },
+  {
+   "name": "Bip01 L Thigh",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 L Calf"
+   ],
+   "rot_parent": [
+    -0.050377,
+    -1e-06,
+    -0.99873,
+    -0.0
+   ],
+   "tr_parent": [
+    -1.745366,
+    0.960769,
+    0.001397
+   ],
+   "bind_world_rot": [
+    -0.706223,
+    0.706223,
+    0.03534,
+    0.035341
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.0,
+    1e-06
+   ]
+  },
+  {
+   "name": "Bip01 L Calf",
+   "parent": "Bip01 L Thigh",
+   "children": [
+    "Bip01 L Foot"
+   ],
+   "rot_parent": [
+    0.0,
+    0.099833,
+    0.0,
+    0.995004
+   ],
+   "tr_parent": [
+    0.049351,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.706223,
+    0.706223,
+    -0.035341,
+    -0.03534
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.049104,
+    -0.004925
+   ]
+  },
+  {
+   "name": "Bip01 L Foot",
+   "parent": "Bip01 L Calf",
+   "children": [
+    "Bip01 L Toe0"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.049979,
+    -0.0,
+    0.99875
+   ],
+   "tr_parent": [
+    0.049351,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.707107,
+    0.707107,
+    -0.0,
+    1e-06
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.098209,
+    1e-06
+   ]
+  },
+  {
+   "name": "Bip01 L Toe0",
+   "parent": "Bip01 L Foot",
+   "children": [
+    "Bip01 L Toe01"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ],
+   "tr_parent": [
+    0.011351,
+    0.0,
+    0.014608
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.109559,
+    -0.014606
+   ]
+  },
+  {
+   "name": "Bip01 L Toe01",
+   "parent": "Bip01 L Toe0",
+   "children": [
+    "Bip01 L Toe02"
+   ],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.001481,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.109559,
+    -0.016087
+   ]
+  },
+  {
+   "name": "Bip01 L Toe02",
+   "parent": "Bip01 L Toe01",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.001481,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    0.960769,
+    -0.109559,
+    -0.017568
+   ]
+  },
+  {
+   "name": "Bip01 R Thigh",
+   "parent": "Bip01 Spine",
+   "children": [
+    "Bip01 R Calf"
+   ],
+   "rot_parent": [
+    -0.050377,
+    -1e-06,
+    -0.99873,
+    -0.0
+   ],
+   "tr_parent": [
+    -1.745366,
+    -0.960769,
+    0.001403
+   ],
+   "bind_world_rot": [
+    -0.706223,
+    0.706223,
+    0.03534,
+    0.035341
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    0.0,
+    -1e-06
+   ]
+  },
+  {
+   "name": "Bip01 R Calf",
+   "parent": "Bip01 R Thigh",
+   "children": [
+    "Bip01 R Foot"
+   ],
+   "rot_parent": [
+    0.0,
+    0.099833,
+    0.0,
+    0.995004
+   ],
+   "tr_parent": [
+    0.049351,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.706223,
+    0.706223,
+    -0.035341,
+    -0.03534
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    -0.049104,
+    -0.004928
+   ]
+  },
+  {
+   "name": "Bip01 R Foot",
+   "parent": "Bip01 R Calf",
+   "children": [
+    "Bip01 R Toe0"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.049979,
+    -0.0,
+    0.99875
+   ],
+   "tr_parent": [
+    0.049351,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.707107,
+    0.707107,
+    -0.0,
+    1e-06
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    -0.098209,
+    -1e-06
+   ]
+  },
+  {
+   "name": "Bip01 R Toe0",
+   "parent": "Bip01 R Foot",
+   "children": [
+    "Bip01 R Toe01"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.707107,
+    0.0,
+    0.707107
+   ],
+   "tr_parent": [
+    0.011351,
+    0.0,
+    0.014608
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    -0.109559,
+    -0.014609
+   ]
+  },
+  {
+   "name": "Bip01 R Toe01",
+   "parent": "Bip01 R Toe0",
+   "children": [
+    "Bip01 R Toe02"
+   ],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.001481,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    -0.109559,
+    -0.01609
+   ]
+  },
+  {
+   "name": "Bip01 R Toe02",
+   "parent": "Bip01 R Toe01",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.001481,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    -0.960769,
+    -0.109559,
+    -0.01757
+   ]
+  },
+  {
+   "name": "stem_01",
+   "parent": "Bip01 Pelvis",
+   "children": [
+    "stem_02"
+   ],
+   "rot_parent": [
+    0.707108,
+    0.0,
+    0.0,
+    0.707106
+   ],
+   "tr_parent": [
+    0.695244,
+    1e-06,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.5,
+    0.5,
+    -0.5,
+    -0.5
+   ],
+   "bind_world_pos": [
+    0.0,
+    0.695244,
+    0.0
+   ]
+  },
+  {
+   "name": "stem_02",
+   "parent": "stem_01",
+   "children": [
+    "stem_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -8e-06,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    2.460425,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.499995,
+    0.500003,
+    -0.500005,
+    -0.499996
+   ],
+   "bind_world_pos": [
+    -2e-06,
+    3.155669,
+    -0.0
+   ]
+  },
+  {
+   "name": "stem_03",
+   "parent": "stem_02",
+   "children": [
+    "stem_04"
+   ],
+   "rot_parent": [
+    0.0,
+    2e-06,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.933542,
+    0.0,
+    5.4e-05
+   ],
+   "bind_world_rot": [
+    0.499997,
+    0.500002,
+    -0.500004,
+    -0.499998
+   ],
+   "bind_world_pos": [
+    -8.8e-05,
+    5.089211,
+    -1e-06
+   ]
+  },
+  {
+   "name": "stem_04",
+   "parent": "stem_03",
+   "children": [
+    "stem_05"
+   ],
+   "rot_parent": [
+    1e-06,
+    6e-06,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.887267,
+    0.0,
+    2.1e-05
+   ],
+   "bind_world_rot": [
+    0.499999,
+    0.499999,
+    -0.500001,
+    -0.500001
+   ],
+   "bind_world_pos": [
+    -0.000131,
+    6.976478,
+    -1e-06
+   ]
+  },
+  {
+   "name": "stem_05",
+   "parent": "stem_04",
+   "children": [
+    "sabra_Head",
+    "stem_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.883413,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.499998,
+    0.499998,
+    -0.500002,
+    -0.500002
+   ],
+   "bind_world_pos": [
+    -0.000131,
+    8.859891,
+    -2e-06
+   ]
+  },
+  {
+   "name": "stem_end",
+   "parent": "stem_05",
+   "children": [],
+   "rot_parent": [
+    2e-06,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    2.640553,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.499997,
+    0.499997,
+    -0.500003,
+    -0.500003
+   ],
+   "bind_world_pos": [
+    -0.00013,
+    11.500445,
+    -2e-06
+   ]
+  },
+  {
+   "name": "sabra_Head",
+   "parent": "stem_05",
+   "children": [
+    "petal_bone"
+   ],
+   "rot_parent": [
+    -0.707109,
+    0.0,
+    0.0,
+    0.707104
+   ],
+   "tr_parent": [
+    2.640268,
+    -0.0,
+    -0.000131
+   ],
+   "bind_world_rot": [
+    0.707107,
+    0.707107,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_pos": [
+    1e-06,
+    11.50016,
+    -2e-06
+   ]
+  },
+  {
+   "name": "petal_bone",
+   "parent": "sabra_Head",
+   "children": [
+    "E_petal_01",
+    "N_petal_01",
+    "S_petal_01",
+    "W_petal_01",
+    "petal_bone_end",
+    "stamen_01"
+   ],
+   "rot_parent": [
+    -0.707107,
+    -0.707107,
+    0.0,
+    0.0
+   ],
+   "tr_parent": [
+    0.0,
+    1e-06,
+    -1e-06
+   ],
+   "bind_world_rot": [
+    0.0,
+    1e-06,
+    -0.0,
+    1.0
+   ],
+   "bind_world_pos": [
+    2e-06,
+    11.50016,
+    -1e-06
+   ]
+  },
+  {
+   "name": "petal_bone_end",
+   "parent": "petal_bone",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    3.278124,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.0,
+    1e-06,
+    -0.0,
+    1.0
+   ],
+   "bind_world_pos": [
+    3.278125,
+    11.500159,
+    -5e-06
+   ]
+  },
+  {
+   "name": "E_petal_01",
+   "parent": "petal_bone",
+   "children": [
+    "E_petal_02"
+   ],
+   "rot_parent": [
+    -0.614838,
+    -0.349248,
+    0.349247,
+    0.614839
+   ],
+   "tr_parent": [
+    0.505263,
+    0.004358,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.614838,
+    -0.349247,
+    0.349247,
+    0.614839
+   ],
+   "bind_world_pos": [
+    0.505265,
+    11.504518,
+    -2e-06
+   ]
+  },
+  {
+   "name": "E_petal_02",
+   "parent": "E_petal_01",
+   "children": [
+    "E_petal_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -0.305016,
+    0.0,
+    0.952347
+   ],
+   "tr_parent": [
+    2.189941,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.479013,
+    -0.52014,
+    0.520141,
+    0.479015
+   ],
+   "bind_world_pos": [
+    1.626746,
+    13.385508,
+    0.0
+   ]
+  },
+  {
+   "name": "E_petal_03",
+   "parent": "E_petal_02",
+   "children": [
+    "E_petal_04"
+   ],
+   "rot_parent": [
+    4e-06,
+    -0.126635,
+    1e-06,
+    0.991949
+   ],
+   "tr_parent": [
+    1.457948,
+    -0.0,
+    4.1e-05
+   ],
+   "bind_world_rot": [
+    -0.409288,
+    -0.57661,
+    0.576616,
+    0.409292
+   ],
+   "bind_world_pos": [
+    1.506885,
+    14.838521,
+    2e-06
+   ]
+  },
+  {
+   "name": "E_petal_04",
+   "parent": "E_petal_03",
+   "children": [
+    "E_petal_end"
+   ],
+   "rot_parent": [
+    5e-06,
+    -0.080604,
+    -3e-06,
+    0.996746
+   ],
+   "tr_parent": [
+    1.371763,
+    0.0,
+    0.060718
+   ],
+   "bind_world_rot": [
+    -0.361474,
+    -0.607722,
+    0.607731,
+    0.361486
+   ],
+   "bind_world_pos": [
+    0.996984,
+    16.113441,
+    2e-06
+   ]
+  },
+  {
+   "name": "E_petal_end",
+   "parent": "E_petal_04",
+   "children": [],
+   "rot_parent": [
+    7e-06,
+    -0.0,
+    1e-06,
+    1.0
+   ],
+   "tr_parent": [
+    0.957659,
+    0.0,
+    -1e-06
+   ],
+   "bind_world_rot": [
+    -0.361473,
+    -0.607718,
+    0.607736,
+    0.361488
+   ],
+   "bind_world_pos": [
+    0.539867,
+    16.95496,
+    1.1e-05
+   ]
+  },
+  {
+   "name": "S_petal_01",
+   "parent": "petal_bone",
+   "children": [
+    "S_petal_02"
+   ],
+   "rot_parent": [
+    -0.182997,
+    0.182996,
+    0.683016,
+    0.683018
+   ],
+   "tr_parent": [
+    -4e-06,
+    0.004358,
+    -0.505267
+   ],
+   "bind_world_rot": [
+    -0.182997,
+    0.182996,
+    0.683016,
+    0.683018
+   ],
+   "bind_world_pos": [
+    -2e-06,
+    11.504518,
+    -0.505268
+   ]
+  },
+  {
+   "name": "S_petal_02",
+   "parent": "S_petal_01",
+   "children": [
+    "S_petal_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -0.272771,
+    0.0,
+    0.962079
+   ],
+   "tr_parent": [
+    2.177913,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.010251,
+    -0.01025,
+    0.707032,
+    0.707033
+   ],
+   "bind_world_pos": [
+    1e-06,
+    13.390698,
+    -1.594136
+   ]
+  },
+  {
+   "name": "S_petal_03",
+   "parent": "S_petal_02",
+   "children": [
+    "S_petal_04"
+   ],
+   "rot_parent": [
+    3e-06,
+    -0.164988,
+    2e-06,
+    0.986296
+   ],
+   "tr_parent": [
+    1.421636,
+    -0.0,
+    4e-05
+   ],
+   "bind_world_rot": [
+    0.126764,
+    -0.126759,
+    0.695653,
+    0.695651
+   ],
+   "bind_world_pos": [
+    3e-06,
+    14.811734,
+    -1.552884
+   ]
+  },
+  {
+   "name": "S_petal_04",
+   "parent": "S_petal_03",
+   "children": [
+    "S_petal_end"
+   ],
+   "rot_parent": [
+    6e-06,
+    -0.068509,
+    -3e-06,
+    0.997651
+   ],
+   "tr_parent": [
+    1.430884,
+    0.0,
+    0.063334
+   ],
+   "bind_world_rot": [
+    0.174129,
+    -0.174115,
+    0.685332,
+    0.685334
+   ],
+   "bind_world_pos": [
+    2e-06,
+    16.128311,
+    -0.98891
+   ]
+  },
+  {
+   "name": "S_petal_end",
+   "parent": "S_petal_04",
+   "children": [],
+   "rot_parent": [
+    6e-06,
+    -1e-06,
+    1e-06,
+    1.0
+   ],
+   "tr_parent": [
+    0.940735,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.174134,
+    -0.174112,
+    0.685334,
+    0.685332
+   ],
+   "bind_world_pos": [
+    9e-06,
+    16.954959,
+    -0.539872
+   ]
+  },
+  {
+   "name": "W_petal_01",
+   "parent": "petal_bone",
+   "children": [
+    "W_petal_02"
+   ],
+   "rot_parent": [
+    -0.350075,
+    -0.614367,
+    -0.614367,
+    -0.350076
+   ],
+   "tr_parent": [
+    -0.505271,
+    0.004358,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.350076,
+    -0.614367,
+    -0.614367,
+    -0.350076
+   ],
+   "bind_world_pos": [
+    -0.505269,
+    11.504518,
+    -1e-06
+   ]
+  },
+  {
+   "name": "W_petal_02",
+   "parent": "W_petal_01",
+   "children": [
+    "W_petal_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -0.294911,
+    0.0,
+    0.955525
+   ],
+   "tr_parent": [
+    2.184868,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.51569,
+    -0.483803,
+    -0.483801,
+    -0.515689
+   ],
+   "bind_world_pos": [
+    -1.619089,
+    13.38416,
+    -1e-06
+   ]
+  },
+  {
+   "name": "W_petal_03",
+   "parent": "W_petal_02",
+   "children": [
+    "W_petal_04"
+   ],
+   "rot_parent": [
+    3e-06,
+    -0.141455,
+    2e-06,
+    0.989945
+   ],
+   "tr_parent": [
+    1.452185,
+    0.0,
+    4e-05
+   ],
+   "bind_world_rot": [
+    -0.578943,
+    -0.405992,
+    -0.405989,
+    -0.578937
+   ],
+   "bind_world_pos": [
+    -1.526483,
+    14.833389,
+    -2e-06
+   ]
+  },
+  {
+   "name": "W_petal_04",
+   "parent": "W_petal_03",
+   "children": [
+    "W_petal_end"
+   ],
+   "rot_parent": [
+    8e-06,
+    -0.074909,
+    -3e-06,
+    0.99719
+   ],
+   "tr_parent": [
+    1.379526,
+    0.0,
+    0.061061
+   ],
+   "bind_world_rot": [
+    -0.607733,
+    -0.361488,
+    -0.361475,
+    -0.607719
+   ],
+   "bind_world_pos": [
+    -0.999088,
+    16.109584,
+    1e-06
+   ]
+  },
+  {
+   "name": "W_petal_end",
+   "parent": "W_petal_04",
+   "children": [],
+   "rot_parent": [
+    8e-06,
+    -1e-06,
+    1e-06,
+    1.0
+   ],
+   "tr_parent": [
+    0.962046,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.607738,
+    -0.36149,
+    -0.361473,
+    -0.607715
+   ],
+   "bind_world_pos": [
+    -0.539881,
+    16.95496,
+    -5e-06
+   ]
+  },
+  {
+   "name": "N_petal_01",
+   "parent": "petal_bone",
+   "children": [
+    "N_petal_02"
+   ],
+   "rot_parent": [
+    -0.681992,
+    -0.681993,
+    -0.186778,
+    0.186778
+   ],
+   "tr_parent": [
+    -4e-06,
+    0.004358,
+    0.505266
+   ],
+   "bind_world_rot": [
+    -0.681992,
+    -0.681993,
+    -0.186778,
+    0.186779
+   ],
+   "bind_world_pos": [
+    -2e-06,
+    11.504518,
+    0.505265
+   ]
+  },
+  {
+   "name": "N_petal_02",
+   "parent": "N_petal_01",
+   "children": [
+    "N_petal_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -0.294236,
+    0.0,
+    0.955733
+   ],
+   "tr_parent": [
+    2.195292,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.706759,
+    -0.70676,
+    0.022158,
+    -0.022155
+   ],
+   "bind_world_pos": [
+    -2e-06,
+    13.393469,
+    1.623823
+   ]
+  },
+  {
+   "name": "N_petal_03",
+   "parent": "N_petal_02",
+   "children": [
+    "N_petal_04"
+   ],
+   "rot_parent": [
+    3e-06,
+    -0.142475,
+    2e-06,
+    0.989798
+   ],
+   "tr_parent": [
+    1.422847,
+    0.0,
+    4e-05
+   ],
+   "bind_world_rot": [
+    -0.696394,
+    -0.696392,
+    0.122629,
+    -0.122622
+   ],
+   "bind_world_pos": [
+    -3e-06,
+    14.813519,
+    1.53466
+   ]
+  },
+  {
+   "name": "N_petal_04",
+   "parent": "N_petal_03",
+   "children": [
+    "N_petal_end"
+   ],
+   "rot_parent": [
+    7e-06,
+    -0.074435,
+    -4e-06,
+    0.997226
+   ],
+   "tr_parent": [
+    1.413956,
+    -0.0,
+    0.062585
+   ],
+   "bind_world_rot": [
+    -0.685333,
+    -0.685334,
+    0.17413,
+    -0.174113
+   ],
+   "bind_world_pos": [
+    -2e-06,
+    16.12105,
+    0.992857
+   ]
+  },
+  {
+   "name": "N_petal_end",
+   "parent": "N_petal_04",
+   "children": [],
+   "rot_parent": [
+    7e-06,
+    -1e-06,
+    1e-06,
+    1.0
+   ],
+   "tr_parent": [
+    0.948998,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.685335,
+    -0.685332,
+    0.174135,
+    -0.174109
+   ],
+   "bind_world_pos": [
+    -9e-06,
+    16.954961,
+    0.539876
+   ]
+  },
+  {
+   "name": "stamen_01",
+   "parent": "petal_bone",
+   "children": [
+    "stamen_02"
+   ],
+   "rot_parent": [
+    -0.5,
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "tr_parent": [
+    -1e-06,
+    0.062845,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.5,
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "bind_world_pos": [
+    1e-06,
+    11.563005,
+    -1e-06
+   ]
+  },
+  {
+   "name": "stamen_02",
+   "parent": "stamen_01",
+   "children": [
+    "stamen_03"
+   ],
+   "rot_parent": [
+    1e-06,
+    -9e-06,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    3.191412,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.499995,
+    -0.500004,
+    0.500005,
+    0.499996
+   ],
+   "bind_world_pos": [
+    3e-06,
+    14.754417,
+    1e-06
+   ]
+  },
+  {
+   "name": "stamen_03",
+   "parent": "stamen_02",
+   "children": [
+    "stamen_04"
+   ],
+   "rot_parent": [
+    -0.0,
+    2e-06,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.819177,
+    0.0,
+    5.1e-05
+   ],
+   "bind_world_rot": [
+    -0.499996,
+    -0.500003,
+    0.500004,
+    0.499997
+   ],
+   "bind_world_pos": [
+    -8.2e-05,
+    16.573594,
+    2e-06
+   ]
+  },
+  {
+   "name": "stamen_04",
+   "parent": "stamen_03",
+   "children": [
+    "stamen_05"
+   ],
+   "rot_parent": [
+    1e-06,
+    8e-06,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.633041,
+    0.0,
+    1.8e-05
+   ],
+   "bind_world_rot": [
+    -0.499999,
+    -0.499999,
+    0.500001,
+    0.500001
+   ],
+   "bind_world_pos": [
+    -0.000124,
+    18.206635,
+    3e-06
+   ]
+  },
+  {
+   "name": "stamen_05",
+   "parent": "stamen_04",
+   "children": [
+    "stamen_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.466629,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.499998,
+    -0.499998,
+    0.500002,
+    0.500003
+   ],
+   "bind_world_pos": [
+    -0.000123,
+    19.673264,
+    4e-06
+   ]
+  },
+  {
+   "name": "stamen_end",
+   "parent": "stamen_05",
+   "children": [],
+   "rot_parent": [
+    2e-06,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.328608,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.499997,
+    -0.499997,
+    0.500003,
+    0.500004
+   ],
+   "bind_world_pos": [
+    -0.000122,
+    21.001872,
+    5e-06
+   ]
+  },
+  {
+   "name": "root_Bone",
+   "parent": "Bip01",
+   "children": [
+    "E_root_01",
+    "NE_root_01",
+    "NW_root_01",
+    "N_root_01",
+    "SE_root_01",
+    "SW_root_01",
+    "S_root_01",
+    "W_root_01",
+    "root_Bone_end"
+   ],
+   "rot_parent": [
+    -0.5,
+    -0.5,
+    -0.5,
+    -0.5
+   ],
+   "tr_parent": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.707107,
+    -0.707107,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_pos": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "root_Bone_end",
+   "parent": "root_Bone",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    4.408057,
+    0.0,
+    1e-06
+   ],
+   "bind_world_rot": [
+    -0.707107,
+    -0.707107,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_pos": [
+    1e-06,
+    4.408057,
+    -1e-06
+   ]
+  },
+  {
+   "name": "SW_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "SW_root_02"
+   ],
+   "rot_parent": [
+    -0.653298,
+    0.653298,
+    -0.270558,
+    -0.270558
+   ],
+   "tr_parent": [
+    -0.0,
+    -0.583399,
+    0.597768
+   ],
+   "bind_world_rot": [
+    0.382627,
+    -1e-06,
+    -0.923903,
+    -1e-06
+   ],
+   "bind_world_pos": [
+    -0.583399,
+    -0.0,
+    -0.597768
+   ]
+  },
+  {
+   "name": "SW_root_02",
+   "parent": "SW_root_01",
+   "children": [
+    "SW_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    7.8e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.52493,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.382698,
+    -1e-06,
+    -0.923873,
+    -1e-06
+   ],
+   "bind_world_pos": [
+    -0.954626,
+    0.0,
+    -0.968904
+   ]
+  },
+  {
+   "name": "SW_root_03",
+   "parent": "SW_root_02",
+   "children": [
+    "SW_root_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    7.3e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.735605,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.382766,
+    -2e-06,
+    -0.923845,
+    -1e-06
+   ],
+   "bind_world_pos": [
+    -1.474761,
+    1e-06,
+    -1.489072
+   ]
+  },
+  {
+   "name": "SW_root_end",
+   "parent": "SW_root_03",
+   "children": [],
+   "rot_parent": [
+    1e-06,
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.746662,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.382766,
+    -3e-06,
+    -0.923845,
+    -1e-06
+   ],
+   "bind_world_pos": [
+    -2.002636,
+    1e-06,
+    -2.017136
+   ]
+  },
+  {
+   "name": "S_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "S_root_02"
+   ],
+   "rot_parent": [
+    -0.50006,
+    -0.50006,
+    -0.49994,
+    0.499941
+   ],
+   "tr_parent": [
+    -0.0,
+    -0.000182,
+    0.809593
+   ],
+   "bind_world_rot": [
+    -0.0,
+    -0.707022,
+    0.0,
+    -0.707191
+   ],
+   "bind_world_pos": [
+    -0.000182,
+    -0.0,
+    -0.809593
+   ]
+  },
+  {
+   "name": "S_root_02",
+   "parent": "S_root_01",
+   "children": [
+    "S_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.000121,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.745311,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.0,
+    -0.707108,
+    0.0,
+    -0.707106
+   ],
+   "bind_world_pos": [
+    -4e-06,
+    0.0,
+    -1.554904
+   ]
+  },
+  {
+   "name": "S_root_03",
+   "parent": "S_root_02",
+   "children": [
+    "S_root_04"
+   ],
+   "rot_parent": [
+    0.0,
+    9.1e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.05726,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -1e-06,
+    -0.707172,
+    1e-06,
+    -0.707042
+   ],
+   "bind_world_pos": [
+    -6e-06,
+    1e-06,
+    -2.612164
+   ]
+  },
+  {
+   "name": "S_root_04",
+   "parent": "S_root_03",
+   "children": [
+    "S_root_end"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.00017,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.004398,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -1e-06,
+    -0.707052,
+    1e-06,
+    -0.707162
+   ],
+   "bind_world_pos": [
+    -0.000191,
+    1e-06,
+    -3.616562
+   ]
+  },
+  {
+   "name": "S_root_end",
+   "parent": "S_root_04",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    4e-06,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.148879,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -1e-06,
+    -0.707054,
+    1e-06,
+    -0.707159
+   ],
+   "bind_world_pos": [
+    -1.2e-05,
+    1e-06,
+    -4.765442
+   ]
+  },
+  {
+   "name": "SE_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "SE_root_02"
+   ],
+   "rot_parent": [
+    0.270639,
+    -0.270638,
+    0.653265,
+    0.653265
+   ],
+   "tr_parent": [
+    0.0,
+    0.597768,
+    0.583399
+   ],
+   "bind_world_rot": [
+    -0.923856,
+    1e-06,
+    0.38274,
+    1e-06
+   ],
+   "bind_world_pos": [
+    0.597768,
+    0.0,
+    -0.583399
+   ]
+  },
+  {
+   "name": "SE_root_02",
+   "parent": "SE_root_01",
+   "children": [
+    "SE_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    7.8e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.52493,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.923886,
+    1e-06,
+    0.382669,
+    1e-06
+   ],
+   "bind_world_pos": [
+    0.968904,
+    -0.0,
+    -0.954626
+   ]
+  },
+  {
+   "name": "SE_root_03",
+   "parent": "SE_root_02",
+   "children": [
+    "SE_root_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    7.3e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.735605,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.923914,
+    1e-06,
+    0.382601,
+    2e-06
+   ],
+   "bind_world_pos": [
+    1.489072,
+    -0.0,
+    -1.474761
+   ]
+  },
+  {
+   "name": "SE_root_end",
+   "parent": "SE_root_03",
+   "children": [],
+   "rot_parent": [
+    1e-06,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.746662,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.923914,
+    1e-06,
+    0.382601,
+    3e-06
+   ],
+   "bind_world_pos": [
+    2.017135,
+    -1e-06,
+    -2.002636
+   ]
+  },
+  {
+   "name": "E_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "E_root_02"
+   ],
+   "rot_parent": [
+    -0.707107,
+    -0.707107,
+    -4e-06,
+    -0.000173
+   ],
+   "tr_parent": [
+    -1e-06,
+    0.809593,
+    0.000182
+   ],
+   "bind_world_rot": [
+    0.000125,
+    0.000119,
+    0.0,
+    -1.0
+   ],
+   "bind_world_pos": [
+    0.809593,
+    -1e-06,
+    -0.000182
+   ]
+  },
+  {
+   "name": "E_root_02",
+   "parent": "E_root_01",
+   "children": [
+    "E_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.000121,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.745311,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.000125,
+    -1e-06,
+    0.0,
+    -1.0
+   ],
+   "bind_world_pos": [
+    1.554904,
+    -1e-06,
+    -4e-06
+   ]
+  },
+  {
+   "name": "E_root_03",
+   "parent": "E_root_02",
+   "children": [
+    "E_root_04"
+   ],
+   "rot_parent": [
+    1e-06,
+    9.1e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.05726,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.000125,
+    -9.2e-05,
+    0.0,
+    -1.0
+   ],
+   "bind_world_pos": [
+    2.612164,
+    -1e-06,
+    -7e-06
+   ]
+  },
+  {
+   "name": "E_root_04",
+   "parent": "E_root_03",
+   "children": [
+    "E_root_end"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.00017,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.004398,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    0.000125,
+    7.8e-05,
+    0.0,
+    -1.0
+   ],
+   "bind_world_pos": [
+    3.616562,
+    -2e-06,
+    -0.000192
+   ]
+  },
+  {
+   "name": "E_root_end",
+   "parent": "E_root_04",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    4e-06,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.148879,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.000125,
+    7.4e-05,
+    0.0,
+    -1.0
+   ],
+   "bind_world_pos": [
+    4.765441,
+    -2e-06,
+    -1.3e-05
+   ]
+  },
+  {
+   "name": "NE_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "NE_root_02"
+   ],
+   "rot_parent": [
+    -0.270557,
+    0.270558,
+    0.653298,
+    0.653298
+   ],
+   "tr_parent": [
+    0.0,
+    0.583399,
+    -0.597768
+   ],
+   "bind_world_rot": [
+    -0.923903,
+    0.0,
+    -0.382626,
+    0.0
+   ],
+   "bind_world_pos": [
+    0.583399,
+    0.0,
+    0.597768
+   ]
+  },
+  {
+   "name": "NE_root_02",
+   "parent": "NE_root_01",
+   "children": [
+    "NE_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    7.8e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.52493,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.923874,
+    0.0,
+    -0.382698,
+    0.0
+   ],
+   "bind_world_pos": [
+    0.954626,
+    -0.0,
+    0.968904
+   ]
+  },
+  {
+   "name": "NE_root_03",
+   "parent": "NE_root_02",
+   "children": [
+    "NE_root_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    7.3e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.735605,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.923846,
+    -0.0,
+    -0.382765,
+    2e-06
+   ],
+   "bind_world_pos": [
+    1.474761,
+    -1e-06,
+    1.489071
+   ]
+  },
+  {
+   "name": "NE_root_end",
+   "parent": "NE_root_03",
+   "children": [],
+   "rot_parent": [
+    1e-06,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.746662,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.923846,
+    -1e-06,
+    -0.382765,
+    3e-06
+   ],
+   "bind_world_pos": [
+    2.002637,
+    -2e-06,
+    2.017134
+   ]
+  },
+  {
+   "name": "N_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "N_root_02"
+   ],
+   "rot_parent": [
+    -0.499939,
+    0.499939,
+    0.500061,
+    0.500061
+   ],
+   "tr_parent": [
+    0.0,
+    -0.000178,
+    -0.809593
+   ],
+   "bind_world_rot": [
+    -0.707193,
+    0.0,
+    -0.70702,
+    -0.0
+   ],
+   "bind_world_pos": [
+    -0.000178,
+    0.0,
+    0.809593
+   ]
+  },
+  {
+   "name": "N_root_02",
+   "parent": "N_root_01",
+   "children": [
+    "N_root_03"
+   ],
+   "rot_parent": [
+    0.0,
+    0.000121,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.745311,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.707108,
+    0.0,
+    -0.707105,
+    -0.0
+   ],
+   "bind_world_pos": [
+    4e-06,
+    0.0,
+    1.554904
+   ]
+  },
+  {
+   "name": "N_root_03",
+   "parent": "N_root_02",
+   "children": [
+    "N_root_04"
+   ],
+   "rot_parent": [
+    0.0,
+    9.1e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.05726,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.707044,
+    -0.0,
+    -0.70717,
+    -0.0
+   ],
+   "bind_world_pos": [
+    8e-06,
+    0.0,
+    2.612164
+   ]
+  },
+  {
+   "name": "N_root_04",
+   "parent": "N_root_03",
+   "children": [
+    "N_root_end"
+   ],
+   "rot_parent": [
+    -0.0,
+    -0.00017,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.004398,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.707164,
+    -0.0,
+    -0.70705,
+    -0.0
+   ],
+   "bind_world_pos": [
+    -0.000171,
+    1e-06,
+    3.616562
+   ]
+  },
+  {
+   "name": "N_root_end",
+   "parent": "N_root_04",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    4e-06,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.148879,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    -0.707161,
+    -0.0,
+    -0.707052,
+    -0.0
+   ],
+   "bind_world_pos": [
+    1.6e-05,
+    1e-06,
+    4.765441
+   ]
+  },
+  {
+   "name": "NW_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "NW_root_02"
+   ],
+   "rot_parent": [
+    0.27056,
+    0.270559,
+    -0.653297,
+    0.653298
+   ],
+   "tr_parent": [
+    -0.0,
+    -0.583396,
+    -0.597771
+   ],
+   "bind_world_rot": [
+    -0.0,
+    -0.923902,
+    -0.0,
+    0.382629
+   ],
+   "bind_world_pos": [
+    -0.583396,
+    -0.0,
+    0.597771
+   ]
+  },
+  {
+   "name": "NW_root_02",
+   "parent": "NW_root_01",
+   "children": [
+    "NW_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    7.8e-05,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.52493,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.0,
+    -0.923873,
+    -0.0,
+    0.382701
+   ],
+   "bind_world_pos": [
+    -0.954622,
+    0.0,
+    0.968909
+   ]
+  },
+  {
+   "name": "NW_root_03",
+   "parent": "NW_root_02",
+   "children": [
+    "NW_root_end"
+   ],
+   "rot_parent": [
+    2e-06,
+    7.3e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.735605,
+    -0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.0,
+    -0.923845,
+    1e-06,
+    0.382768
+   ],
+   "bind_world_pos": [
+    -1.474754,
+    1e-06,
+    1.489079
+   ]
+  },
+  {
+   "name": "NW_root_end",
+   "parent": "NW_root_03",
+   "children": [],
+   "rot_parent": [
+    1e-06,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.746661,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    0.0,
+    -0.923845,
+    2e-06,
+    0.382768
+   ],
+   "bind_world_pos": [
+    -2.002627,
+    2e-06,
+    2.017145
+   ]
+  },
+  {
+   "name": "W_root_01",
+   "parent": "root_Bone",
+   "children": [
+    "W_root_02"
+   ],
+   "rot_parent": [
+    0.707107,
+    -0.707107,
+    -0.0,
+    -0.000173
+   ],
+   "tr_parent": [
+    1e-06,
+    -0.809593,
+    0.000178
+   ],
+   "bind_world_rot": [
+    0.000122,
+    0.000122,
+    1.0,
+    0.0
+   ],
+   "bind_world_pos": [
+    -0.809593,
+    1e-06,
+    -0.000178
+   ]
+  },
+  {
+   "name": "W_root_02",
+   "parent": "W_root_01",
+   "children": [
+    "W_root_03"
+   ],
+   "rot_parent": [
+    -0.0,
+    0.000121,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    0.745311,
+    0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    2e-06,
+    0.000122,
+    1.0,
+    0.0
+   ],
+   "bind_world_pos": [
+    -1.554904,
+    1e-06,
+    4e-06
+   ]
+  },
+  {
+   "name": "W_root_03",
+   "parent": "W_root_02",
+   "children": [
+    "W_root_04"
+   ],
+   "rot_parent": [
+    1e-06,
+    9.1e-05,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.05726,
+    -0.0,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -8.9e-05,
+    0.000123,
+    1.0,
+    0.0
+   ],
+   "bind_world_pos": [
+    -2.612164,
+    1e-06,
+    7e-06
+   ]
+  },
+  {
+   "name": "W_root_04",
+   "parent": "W_root_03",
+   "children": [
+    "W_root_end"
+   ],
+   "rot_parent": [
+    0.0,
+    -0.00017,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.004398,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    8.1e-05,
+    0.000123,
+    1.0,
+    0.0
+   ],
+   "bind_world_pos": [
+    -3.616562,
+    2e-06,
+    -0.000172
+   ]
+  },
+  {
+   "name": "W_root_end",
+   "parent": "W_root_04",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    4e-06,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    1.148879,
+    0.0,
+    0.0
+   ],
+   "bind_world_rot": [
+    7.7e-05,
+    0.000123,
+    1.0,
+    0.0
+   ],
+   "bind_world_pos": [
+    -4.765442,
+    2e-06,
+    1.3e-05
+   ]
+  }
+ ]
+}

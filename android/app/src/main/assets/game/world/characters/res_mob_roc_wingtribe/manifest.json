@@ -1,0 +1,217 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_stand01",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_stand01.ban",
+   "channels": 87,
+   "duration_ms": 2000,
+   "keyframes": 21,
+   "name": "wingtribe_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_run",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_run.ban",
+   "channels": 87,
+   "duration_ms": 1000,
+   "keyframes": 42,
+   "name": "wingtribe_run"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_attack01",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_attack01.ban",
+   "channels": 87,
+   "duration_ms": 1500,
+   "keyframes": 38,
+   "name": "wingtribe_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_attack03",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_attack03.ban",
+   "channels": 87,
+   "duration_ms": 2000,
+   "keyframes": 45,
+   "name": "wingtribe_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_damage02",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_damage02.ban",
+   "channels": 87,
+   "duration_ms": 1233,
+   "keyframes": 32,
+   "name": "wingtribe_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_walk",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_walk.ban",
+   "channels": 87,
+   "duration_ms": 1166,
+   "keyframes": 33,
+   "name": "wingtribe_walk"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_die",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_die.ban",
+   "channels": 87,
+   "duration_ms": 3833,
+   "keyframes": 83,
+   "name": "wingtribe_die"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_down",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_down.ban",
+   "channels": 87,
+   "duration_ms": 933,
+   "keyframes": 23,
+   "name": "wingtribe_down"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_down_rm",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_down_rm.ban",
+   "channels": 87,
+   "duration_ms": 2666,
+   "keyframes": 7,
+   "name": "wingtribe_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_down_damage",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_down_damage.ban",
+   "channels": 87,
+   "duration_ms": 466,
+   "keyframes": 12,
+   "name": "wingtribe_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_down_up",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_down_up.ban",
+   "channels": 87,
+   "duration_ms": 1266,
+   "keyframes": 25,
+   "name": "wingtribe_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_die_rm",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_die_rm.ban",
+   "channels": 87,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "wingtribe_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_damage01",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_damage01.ban",
+   "channels": 87,
+   "duration_ms": 500,
+   "keyframes": 13,
+   "name": "wingtribe_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_roc_wingtribe_wingtribe_down_die",
+   "ban_path": "/prim/ani/mob/roc/wingtribe/wingtribe_down_die.ban",
+   "channels": 87,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "wingtribe_down_die"
+  }
+ ],
+ "key": "res_mob_roc_wingtribe",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_2side_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe_2side",
+   "msh": "prim_mesh_mob_roc_wingtribe_2side_part1",
+   "skin_records": 132,
+   "skinned": true,
+   "tcount": 96,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 132
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_2side_part2.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe_2side",
+   "msh": "prim_mesh_mob_roc_wingtribe_2side_part2",
+   "skin_records": 129,
+   "skinned": true,
+   "tcount": 104,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 129
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe",
+   "msh": "prim_mesh_mob_roc_wingtribe_part1",
+   "skin_records": 430,
+   "skinned": true,
+   "tcount": 554,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 430
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe",
+   "msh": "prim_mesh_mob_roc_wingtribe_part2_part1",
+   "skin_records": 138,
+   "skinned": true,
+   "tcount": 192,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 138
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe",
+   "msh": "prim_mesh_mob_roc_wingtribe_part2_part2_part1",
+   "skin_records": 330,
+   "skinned": true,
+   "tcount": 414,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 330
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe",
+   "msh": "prim_mesh_mob_roc_wingtribe_part2_part2_part2_part1",
+   "skin_records": 285,
+   "skinned": true,
+   "tcount": 356,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 285
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_part2_part2_part2_part2.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribespear.ddj",
+   "material": "wingtribe",
+   "msh": "prim_mesh_mob_roc_wingtribe_part2_part2_part2_part2",
+   "skin_records": 83,
+   "skinned": true,
+   "tcount": 104,
+   "tex": "prim_mtrl_mob_roc_wingtribespear",
+   "vcount": 83
+  },
+  {
+   "bms_path": "/prim/mesh/mob/roc/wingtribe_archer.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/roc/wingtribe_weapon.ddj",
+   "material": "wingtribe_weapon",
+   "msh": "prim_mesh_mob_roc_wingtribe_archer",
+   "skin_records": 100,
+   "skinned": true,
+   "tcount": 138,
+   "tex": "prim_mtrl_mob_roc_wingtribe_weapon",
+   "vcount": 100
+  }
+ ],
+ "skeleton": "prim_skel_mob_roc_wingtribe",
+ "skeleton_path": "/prim/skel/mob/roc/wingtribe.bsk"
+}

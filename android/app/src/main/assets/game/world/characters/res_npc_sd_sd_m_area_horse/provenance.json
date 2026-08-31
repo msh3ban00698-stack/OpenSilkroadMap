@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_horse_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_horse.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_horse.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_horse.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_horse_left.bms",
+  "/prim/mesh/npc/sd/sd_m_area_horse_right.bms",
+  "/prim/mesh/npc/sd/sd_m_area_horse_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_horse_part2.bms"
+ ]
+}

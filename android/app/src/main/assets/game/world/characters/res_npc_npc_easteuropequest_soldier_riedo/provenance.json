@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_soldier_riedo.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_soldier_riedo.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_soldier_riedo.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Soldier_Riedo.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_soldier_riedo_2s_01.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_riedo_2s_02.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_riedo_arm.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_riedo_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_soldier_riedo_part2.bms"
+ ]
+}

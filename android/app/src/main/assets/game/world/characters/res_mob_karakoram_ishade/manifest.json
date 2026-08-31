@@ -1,0 +1,181 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_stand01",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_stand01.ban",
+   "channels": 56,
+   "duration_ms": 2666,
+   "keyframes": 26,
+   "name": "ishade_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_attack01",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_attack01.ban",
+   "channels": 56,
+   "duration_ms": 2666,
+   "keyframes": 59,
+   "name": "ishade_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_attack03",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_attack03.ban",
+   "channels": 56,
+   "duration_ms": 3000,
+   "keyframes": 46,
+   "name": "ishade_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_attack02",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_attack02.ban",
+   "channels": 58,
+   "duration_ms": 2000,
+   "keyframes": 30,
+   "name": "ishade_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_damage01",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_damage01.ban",
+   "channels": 10,
+   "duration_ms": 500,
+   "keyframes": 11,
+   "name": "ishade_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_damage02",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_damage02.ban",
+   "channels": 56,
+   "duration_ms": 1500,
+   "keyframes": 40,
+   "name": "ishade_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_die",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_die.ban",
+   "channels": 56,
+   "duration_ms": 1166,
+   "keyframes": 31,
+   "name": "ishade_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_die_rm",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_die_rm.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 5,
+   "name": "ishade_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_down",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_down.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 22,
+   "name": "ishade_down"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_down_wait",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_down_wait.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 4,
+   "name": "ishade_down_wait"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_down_damage",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_down_damage.ban",
+   "channels": 56,
+   "duration_ms": 500,
+   "keyframes": 13,
+   "name": "ishade_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_down_up",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_down_up.ban",
+   "channels": 56,
+   "duration_ms": 2333,
+   "keyframes": 53,
+   "name": "ishade_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_down_die",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_down_die.ban",
+   "channels": 56,
+   "duration_ms": 166,
+   "keyframes": 4,
+   "name": "ishade_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_ishade_ishade_stand02",
+   "ban_path": "/prim/ani/mob/karakoram/ishade/ishade_stand02.ban",
+   "channels": 56,
+   "duration_ms": 4333,
+   "keyframes": 63,
+   "name": "ishade_stand02"
+  }
+ ],
+ "key": "res_mob_karakoram_ishade",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/ishade_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/karakoram/ishade.ddj",
+   "material": "ishade",
+   "msh": "prim_mesh_mob_karakoram_ishade_part1",
+   "skin_records": 262,
+   "skinned": true,
+   "tcount": 309,
+   "tex": "prim_mtrl_mob_karakoram_ishade",
+   "vcount": 262
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/ishade_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/karakoram/ishade.ddj",
+   "material": "ishade",
+   "msh": "prim_mesh_mob_karakoram_ishade_part2_part1",
+   "skin_records": 262,
+   "skinned": true,
+   "tcount": 309,
+   "tex": "prim_mtrl_mob_karakoram_ishade",
+   "vcount": 262
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/ishade_part2_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/karakoram/ishade.ddj",
+   "material": "ishade",
+   "msh": "prim_mesh_mob_karakoram_ishade_part2_part2",
+   "skin_records": 671,
+   "skinned": true,
+   "tcount": 937,
+   "tex": "prim_mtrl_mob_karakoram_ishade",
+   "vcount": 671
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/ishade01_part1.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/karakoram/ishade.ddj",
+   "material": "ishade_2side",
+   "msh": "prim_mesh_mob_karakoram_ishade01_part1",
+   "skin_records": 12,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_mob_karakoram_ishade",
+   "vcount": 12
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/ishade01_part2.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/mob/karakoram/ishade.ddj",
+   "material": "ishade_2side",
+   "msh": "prim_mesh_mob_karakoram_ishade01_part2",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 24,
+   "tex": "prim_mtrl_mob_karakoram_ishade",
+   "vcount": 40
+  }
+ ],
+ "skeleton": "prim_skel_mob_karakoram_ishade",
+ "skeleton_path": "/prim/skel/mob/karakoram/ishade.bsk"
+}

@@ -1,0 +1,20 @@
+{
+ "anims": [],
+ "key": "res_npc_npc_gacha_machine",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/npc/gacha_machine.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/npc/gacha_machine.ddj",
+   "material": "gacha_machine",
+   "msh": "prim_mesh_npc_npc_gacha_machine",
+   "skin_records": 1259,
+   "skinned": true,
+   "tcount": 962,
+   "tex": "prim_mtrl_npc_npc_gacha_machine",
+   "vcount": 1259
+  }
+ ],
+ "skeleton": "prim_skel_npc_npc_gacha_machine",
+ "skeleton_path": "/prim/skel/npc/npc/gacha_machine.bsk"
+}

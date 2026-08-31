@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_khotan_khotanshop_smith_basic",
+   "ban_path": "/prim/ani/npc/khotan/khotanshop_smith_basic.ban",
+   "channels": 35,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "khotanshop_smith_basic"
+  },
+  {
+   "anim": "prim_ani_npc_khotan_khotanshop_smith_basic2",
+   "ban_path": "/prim/ani/npc/khotan/khotanshop_smith_basic2.ban",
+   "channels": 35,
+   "duration_ms": 6666,
+   "keyframes": 33,
+   "name": "khotanshop_smith_basic2"
+  }
+ ],
+ "key": "res_npc_npc_khotanshop_smith",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanshop_smith_2s.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanshop_smith.ddj",
+   "material": "khotanShop_Smith_2s",
+   "msh": "prim_mesh_npc_khotan_khotanshop_smith_2s",
+   "skin_records": 64,
+   "skinned": true,
+   "tcount": 100,
+   "tex": "prim_mtrl_npc_khotan_khotanshop_smith",
+   "vcount": 64
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanshop_smith_al.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanshop_smith_al.ddj",
+   "material": "khotanShop_Smith_al",
+   "msh": "prim_mesh_npc_khotan_khotanshop_smith_al",
+   "skin_records": 24,
+   "skinned": true,
+   "tcount": 16,
+   "tex": "prim_mtrl_npc_khotan_khotanshop_smith_al",
+   "vcount": 24
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanshop_smith_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanshop_smith.ddj",
+   "material": "khotanShop_Smith",
+   "msh": "prim_mesh_npc_khotan_khotanshop_smith_part1",
+   "skin_records": 349,
+   "skinned": true,
+   "tcount": 503,
+   "tex": "prim_mtrl_npc_khotan_khotanshop_smith",
+   "vcount": 349
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanshop_smith_part2.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanshop_smith.ddj",
+   "material": "khotanShop_Smith",
+   "msh": "prim_mesh_npc_khotan_khotanshop_smith_part2",
+   "skin_records": 280,
+   "skinned": true,
+   "tcount": 345,
+   "tex": "prim_mtrl_npc_khotan_khotanshop_smith",
+   "vcount": 280
+  }
+ ],
+ "skeleton": "prim_skel_npc_khotan_khotanshop_smith",
+ "skeleton_path": "/prim/skel/npc/khotan/khotanshop_smith.bsk"
+}

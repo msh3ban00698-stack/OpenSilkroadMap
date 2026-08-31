@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_stand01",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_stand01.ban",
+   "channels": 53,
+   "duration_ms": 2666,
+   "keyframes": 11,
+   "name": "whitespider_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_stand02",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_stand02.ban",
+   "channels": 53,
+   "duration_ms": 3000,
+   "keyframes": 57,
+   "name": "whitespider_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_walk",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_walk.ban",
+   "channels": 53,
+   "duration_ms": 666,
+   "keyframes": 21,
+   "name": "whitespider_walk"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_run",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_run.ban",
+   "channels": 53,
+   "duration_ms": 400,
+   "keyframes": 21,
+   "name": "whitespider_run"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_attack01",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_attack01.ban",
+   "channels": 53,
+   "duration_ms": 1833,
+   "keyframes": 48,
+   "name": "whitespider_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_attack02",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_attack02.ban",
+   "channels": 53,
+   "duration_ms": 2333,
+   "keyframes": 63,
+   "name": "whitespider_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_damage01",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_damage01.ban",
+   "channels": 53,
+   "duration_ms": 933,
+   "keyframes": 14,
+   "name": "whitespider_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_damage02",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_damage02.ban",
+   "channels": 53,
+   "duration_ms": 1333,
+   "keyframes": 46,
+   "name": "whitespider_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_down",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_down.ban",
+   "channels": 53,
+   "duration_ms": 1166,
+   "keyframes": 27,
+   "name": "whitespider_down"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_downwait",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_downwait.ban",
+   "channels": 53,
+   "duration_ms": 2000,
+   "keyframes": 23,
+   "name": "whitespider_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_downdamage",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_downdamage.ban",
+   "channels": 53,
+   "duration_ms": 633,
+   "keyframes": 18,
+   "name": "whitespider_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_downup",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_downup.ban",
+   "channels": 53,
+   "duration_ms": 1833,
+   "keyframes": 13,
+   "name": "whitespider_downup"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_downdie",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_downdie.ban",
+   "channels": 53,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "whitespider_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_die",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_die.ban",
+   "channels": 53,
+   "duration_ms": 5036,
+   "keyframes": 147,
+   "name": "whitespider_die"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_whitespider_whitespider_die_loop",
+   "ban_path": "/prim/ani/mob/khotan/whitespider/whitespider_die_loop.ban",
+   "channels": 53,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "whitespider_die_loop"
+  }
+ ],
+ "key": "res_mob_khotan_whitespider",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/khotan/whitespider_part1.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/khotan/whitespider.ddj",
+   "material": "whitespider",
+   "msh": "prim_mesh_mob_khotan_whitespider_part1",
+   "skin_records": 229,
+   "skinned": true,
+   "tcount": 394,
+   "tex": "prim_mtrl_mob_khotan_whitespider",
+   "vcount": 229
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/whitespider_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/khotan/whitespider.ddj",
+   "material": "whitespider",
+   "msh": "prim_mesh_mob_khotan_whitespider_part2_part1",
+   "skin_records": 124,
+   "skinned": true,
+   "tcount": 216,
+   "tex": "prim_mtrl_mob_khotan_whitespider",
+   "vcount": 124
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/whitespider_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/khotan/whitespider.ddj",
+   "material": "whitespider",
+   "msh": "prim_mesh_mob_khotan_whitespider_part2_part2",
+   "skin_records": 124,
+   "skinned": true,
+   "tcount": 216,
+   "tex": "prim_mtrl_mob_khotan_whitespider",
+   "vcount": 124
+  }
+ ],
+ "skeleton": "prim_skel_mob_khotan_whitespider",
+ "skeleton_path": "/prim/skel/mob/khotan/whitespider.bsk"
+}

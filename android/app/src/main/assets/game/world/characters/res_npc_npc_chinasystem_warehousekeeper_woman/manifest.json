@@ -1,0 +1,97 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_westchinasystem_warehousekeeper_woman_basic",
+   "ban_path": "/prim/ani/npc/china/westchinasystem_warehousekeeper_woman_basic.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 11,
+   "name": "westchinasystem_warehousekeeper_woman_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_westchinasystem_warehousekeeper_woman_time",
+   "ban_path": "/prim/ani/npc/china/westchinasystem_warehousekeeper_woman_time.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 10,
+   "name": "westchinasystem_warehousekeeper_woman_time"
+  }
+ ],
+ "key": "res_npc_npc_chinasystem_warehousekeeper_woman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_key.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_box.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_box",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_key",
+   "skin_records": 196,
+   "skinned": true,
+   "tcount": 138,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_box",
+   "vcount": 196
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_key_al_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_chain.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_chain",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_key_al_2s",
+   "skin_records": 12,
+   "skinned": true,
+   "tcount": 6,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_chain",
+   "vcount": 12
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_2s.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_woman.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_woman_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_woman_2s",
+   "skin_records": 67,
+   "skinned": true,
+   "tcount": 101,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_woman",
+   "vcount": 67
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_al_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_woman_al.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_woman_al_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_woman_al_2s",
+   "skin_records": 163,
+   "skinned": true,
+   "tcount": 174,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_woman_al",
+   "vcount": 163
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_woman.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_woman",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_woman_part1",
+   "skin_records": 513,
+   "skinned": true,
+   "tcount": 771,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_woman",
+   "vcount": 513
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_woman.ddj",
+   "material": "ChinaSystem_WarehouseKeeper_woman",
+   "msh": "prim_mesh_npc_china_chinasystem_warehousekeeper_woman_part2",
+   "skin_records": 172,
+   "skinned": true,
+   "tcount": 192,
+   "tex": "prim_mtrl_npc_china_chinasystem_warehousekeeper_woman",
+   "vcount": 172
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinasystem_warehousekeeper_woman",
+ "skeleton_path": "/prim/skel/npc/china/chinasystem_warehousekeeper_woman.bsk"
+}

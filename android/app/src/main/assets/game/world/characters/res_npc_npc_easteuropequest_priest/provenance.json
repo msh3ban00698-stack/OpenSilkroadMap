@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_priest.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_priest.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_priest.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Priest.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_priest_2s.bms",
+  "/prim/mesh/npc/europe/easteuropequest_priest_ear.bms",
+  "/prim/mesh/npc/europe/easteuropequest_priest_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_priest_part2.bms"
+ ]
+}

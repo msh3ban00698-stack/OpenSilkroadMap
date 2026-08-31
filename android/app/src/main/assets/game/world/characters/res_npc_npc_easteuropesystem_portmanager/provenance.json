@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropesystem_portmanager.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropesystem_portmanager.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropesystem_portmanager.bsk",
+ "bsr": "/res/npc/npc/EastEuropeSystem_PortManager.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropesystem_portmanager_2s.bms",
+  "/prim/mesh/npc/europe/easteuropesystem_portmanager_part1.bms",
+  "/prim/mesh/npc/europe/easteuropesystem_portmanager_part2.bms"
+ ]
+}

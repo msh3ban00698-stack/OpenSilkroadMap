@@ -1,0 +1,121 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_stand1",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_stand1.ban",
+   "channels": 34,
+   "duration_ms": 5333,
+   "keyframes": 50,
+   "name": "apis_stand1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_run",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_run.ban",
+   "channels": 34,
+   "duration_ms": 533,
+   "keyframes": 17,
+   "name": "apis_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_attack1",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_attack1.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 48,
+   "name": "apis_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_attack2",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_attack2.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 42,
+   "name": "apis_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_attack4",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_attack4.ban",
+   "channels": 34,
+   "duration_ms": 2166,
+   "keyframes": 23,
+   "name": "apis_attack4"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_walk",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_walk.ban",
+   "channels": 34,
+   "duration_ms": 1600,
+   "keyframes": 21,
+   "name": "apis_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_attack3",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_attack3.ban",
+   "channels": 34,
+   "duration_ms": 3566,
+   "keyframes": 71,
+   "name": "apis_attack3"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_attack5",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_attack5.ban",
+   "channels": 34,
+   "duration_ms": 3333,
+   "keyframes": 69,
+   "name": "apis_attack5"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_damage01",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_damage01.ban",
+   "channels": 4,
+   "duration_ms": 1000,
+   "keyframes": 6,
+   "name": "apis_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_die",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_die.ban",
+   "channels": 34,
+   "duration_ms": 3000,
+   "keyframes": 62,
+   "name": "apis_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_apis_apis_die_rm",
+   "ban_path": "/prim/ani/mob/sd/apis/apis_die_rm.ban",
+   "channels": 34,
+   "duration_ms": 3000,
+   "keyframes": 2,
+   "name": "apis_die_rm"
+  }
+ ],
+ "key": "res_mob_sd_apis",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/apis_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/sd/apis.ddj",
+   "material": "apis",
+   "msh": "prim_mesh_mob_sd_apis_part1",
+   "skin_records": 711,
+   "skinned": true,
+   "tcount": 1022,
+   "tex": "prim_mtrl_mob_sd_apis",
+   "vcount": 711
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/apis_part2.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/sd/apis.ddj",
+   "material": "apis",
+   "msh": "prim_mesh_mob_sd_apis_part2",
+   "skin_records": 307,
+   "skinned": true,
+   "tcount": 470,
+   "tex": "prim_mtrl_mob_sd_apis",
+   "vcount": 307
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_apis",
+ "skeleton_path": "/prim/skel/mob/sd/apis.bsk"
+}

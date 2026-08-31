@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_choukri_stand_01.ban",
+  "/prim/ani/npc/arabia/arabia_choukri_stand_02.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/khotan/arabia_choukri.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_choukri.bsk",
+ "bsr": "/res/npc/npc/arabia_choukri.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_choukri_01.bms",
+  "/prim/mesh/npc/arabia/arabia_choukri_02.bms",
+  "/prim/mesh/npc/arabia/arabia_choukri_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_choukri_part2.bms"
+ ]
+}

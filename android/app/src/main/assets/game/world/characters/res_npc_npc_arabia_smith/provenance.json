@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_smith_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_smith.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_smith.bsk",
+ "bsr": "/res/npc/npc/arabia_smith.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_smith_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_smith_part2.bms"
+ ]
+}

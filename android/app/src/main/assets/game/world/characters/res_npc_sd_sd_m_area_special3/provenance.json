@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_special3_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_special3.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_special3.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_special3.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_special3_2al.bms",
+  "/prim/mesh/npc/sd/sd_m_area_special3_joopan.bms",
+  "/prim/mesh/npc/sd/sd_m_area_special3_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_special3_part2.bms"
+ ]
+}

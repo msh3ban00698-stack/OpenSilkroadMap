@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_thief_agent_changer",
+   "ban_path": "/prim/ani/npc/sd/sd_thief_agent_changer.ban",
+   "channels": 39,
+   "duration_ms": 5333,
+   "keyframes": 9,
+   "name": "sd_thief_agent_changer"
+  }
+ ],
+ "key": "res_npc_sd_sd_thief_agent_changer",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_thief_agent_changer_2al.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_thief_agent_changer.ddj",
+   "material": "SD_thief_agent_changer_2al",
+   "msh": "prim_mesh_npc_sd_sd_thief_agent_changer_2al",
+   "skin_records": 125,
+   "skinned": true,
+   "tcount": 137,
+   "tex": "prim_mtrl_npc_sd_sd_thief_agent_changer",
+   "vcount": 125
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_thief_agent_changer_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_thief_agent_changer.ddj",
+   "material": "SD_thief_agent_changer",
+   "msh": "prim_mesh_npc_sd_sd_thief_agent_changer_part1",
+   "skin_records": 614,
+   "skinned": true,
+   "tcount": 764,
+   "tex": "prim_mtrl_npc_sd_sd_thief_agent_changer",
+   "vcount": 614
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_thief_agent_changer_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_thief_agent_changer.ddj",
+   "material": "SD_thief_agent_changer",
+   "msh": "prim_mesh_npc_sd_sd_thief_agent_changer_part2_part1",
+   "skin_records": 421,
+   "skinned": true,
+   "tcount": 587,
+   "tex": "prim_mtrl_npc_sd_sd_thief_agent_changer",
+   "vcount": 421
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_thief_agent_changer_part2_part2.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_thief_agent_changer.ddj",
+   "material": "SD_thief_agent_changer",
+   "msh": "prim_mesh_npc_sd_sd_thief_agent_changer_part2_part2",
+   "skin_records": 352,
+   "skinned": true,
+   "tcount": 488,
+   "tex": "prim_mtrl_npc_sd_sd_thief_agent_changer",
+   "vcount": 352
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_thief_agent_changer",
+ "skeleton_path": "/prim/skel/npc/sd/sd_thief_agent_changer.bsk"
+}

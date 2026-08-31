@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/jupiter/jupiter_investigation_m_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/jupiter/jupiter_investigation_m.bmt",
+ "bsk": "/prim/skel/npc/jupiter/jupiter_investigation_m.bsk",
+ "bsr": "/res/npc/npc/JUPITER_investigation_m.bsr",
+ "meshes": [
+  "/prim/mesh/npc/jupiter/jupiter_investigation_m_02.bms",
+  "/prim/mesh/npc/jupiter/jupiter_investigation_m_03.bms",
+  "/prim/mesh/npc/jupiter/jupiter_investigation_m_01_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_investigation_m_01_part2.bms"
+ ]
+}

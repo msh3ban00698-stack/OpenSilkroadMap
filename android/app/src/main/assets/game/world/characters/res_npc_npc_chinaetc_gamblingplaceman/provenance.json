@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaetc_gamblingplaceman_basic.ban",
+  "/prim/ani/npc/china/chinaetc_gamblingplaceman_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinaetc_gamblingplaceman.bmt",
+ "bsk": "/prim/skel/npc/china/chinaetc_gamblingplaceman.bsk",
+ "bsr": "/res/npc/npc/chinaetc_gamblingplaceman.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinaetc_gamblingplaceman_al_2s.bms",
+  "/prim/mesh/npc/china/chinaetc_gamblingplaceman_stick.bms",
+  "/prim/mesh/npc/china/chinaetc_gamblingplaceman_part1.bms",
+  "/prim/mesh/npc/china/chinaetc_gamblingplaceman_part2_part1.bms",
+  "/prim/mesh/npc/china/chinaetc_gamblingplaceman_part2_part2.bms"
+ ]
+}

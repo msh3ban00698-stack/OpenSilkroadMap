@@ -1,0 +1,241 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_char_china_man_chinaman_standbattle",
+   "ban_path": "/prim/ani/char/china/man/chinaman_standbattle.ban",
+   "channels": 37,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "chinaman_standbattle"
+  },
+  {
+   "anim": "prim_ani_char_china_man_chinaman_fighter_standcity",
+   "ban_path": "/prim/ani/char/china/man/chinaman_fighter_standcity.ban",
+   "channels": 37,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "chinaman_fighter_standcity"
+  },
+  {
+   "anim": "prim_ani_char_china_man_chinaman_fighter_walkforward",
+   "ban_path": "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",
+   "channels": 37,
+   "duration_ms": 1166,
+   "keyframes": 26,
+   "name": "chinaman_fighter_walkforward"
+  },
+  {
+   "anim": "prim_ani_char_china_man_chinaman_fighter_runforward_sword",
+   "ban_path": "/prim/ani/char/china/man/chinaman_fighter_runforward_sword.ban",
+   "channels": 37,
+   "duration_ms": 666,
+   "keyframes": 18,
+   "name": "chinaman_fighter_runforward_sword"
+  },
+  {
+   "anim": "prim_ani_char_china_man_chinaman_fighter_runforward",
+   "ban_path": "/prim/ani/char/china/man/chinaman_fighter_runforward.ban",
+   "channels": 42,
+   "duration_ms": 800,
+   "keyframes": 13,
+   "name": "chinaman_fighter_runforward"
+  }
+ ],
+ "key": "player",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_pelvis.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_pelvis",
+   "skin_records": 79,
+   "skinned": true,
+   "tcount": 120,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 79
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_torso_lower.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_torso_lower",
+   "skin_records": 63,
+   "skinned": true,
+   "tcount": 94,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 63
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_torso_upper.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_torso_upper",
+   "skin_records": 64,
+   "skinned": true,
+   "tcount": 74,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 64
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_arm_upper.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_arm_upper",
+   "skin_records": 144,
+   "skinned": true,
+   "tcount": 182,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 144
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_arm_lower.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_arm_lower",
+   "skin_records": 168,
+   "skinned": true,
+   "tcount": 200,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 168
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_thigh.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_thigh",
+   "skin_records": 82,
+   "skinned": true,
+   "tcount": 112,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 82
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/man_calf.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_man_calf",
+   "skin_records": 118,
+   "skinned": true,
+   "tcount": 142,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 118
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/chinaman_fighter_face.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_body.ddj",
+   "material": "chinaman_body",
+   "msh": "prim_mesh_char_china_man_chinaman_fighter_face",
+   "skin_records": 178,
+   "skinned": true,
+   "tcount": 254,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_body",
+   "vcount": 178
+  },
+  {
+   "bms_path": "/prim/mesh/char/china/man/chinaman_fighter_hair.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/char/china/man/chinaman_fighter_hair.ddj",
+   "material": "chinaman_hair",
+   "msh": "prim_mesh_char_china_man_chinaman_fighter_hair",
+   "skin_records": 123,
+   "skinned": true,
+   "tcount": 140,
+   "tex": "prim_mtrl_char_china_man_chinaman_fighter_hair",
+   "vcount": 123
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_aa.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_aa.ddj",
+   "material": "clothes_01_aa",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_aa",
+   "skin_records": 48,
+   "skinned": true,
+   "tcount": 52,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_aa",
+   "vcount": 48
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_ba.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_ba.ddj",
+   "material": "clothes_01_ba",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_ba",
+   "skin_records": 208,
+   "skinned": true,
+   "tcount": 284,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_ba",
+   "vcount": 208
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_fa.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_fa.ddj",
+   "material": "clothes_01_fa",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_fa",
+   "skin_records": 134,
+   "skinned": true,
+   "tcount": 156,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_fa",
+   "vcount": 134
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_ha.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_ha.ddj",
+   "material": "clothes_01_ha",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_ha",
+   "skin_records": 68,
+   "skinned": true,
+   "tcount": 108,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_ha",
+   "vcount": 68
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_la.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_la.ddj",
+   "material": "clothes_01_la",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_la",
+   "skin_records": 230,
+   "skinned": true,
+   "tcount": 328,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_la",
+   "vcount": 230
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/man_item/clothes_01_sa.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/item/china/man_item/clothes_01_sa.ddj",
+   "material": "clothes_01_sa",
+   "msh": "prim_mesh_item_china_man_item_clothes_01_sa",
+   "skin_records": 16,
+   "skinned": true,
+   "tcount": 12,
+   "tex": "prim_mtrl_item_china_man_item_clothes_01_sa",
+   "vcount": 16
+  },
+  {
+   "bms_path": "/prim/mesh/item/china/weapon/sword_01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/item/china/weapon/sword1_2_3.ddj",
+   "material": "sword1_2_3",
+   "msh": "prim_mesh_item_china_weapon_sword_01",
+   "skin_records": 84,
+   "skinned": true,
+   "tcount": 102,
+   "tex": "prim_mtrl_item_china_weapon_sword1_2_3",
+   "vcount": 84
+  }
+ ],
+ "skeleton": "prim_skel_char_china_chinaman_skel",
+ "skeleton_path": "/prim/skel/char/china/chinaman_skel.bsk"
+}

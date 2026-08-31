@@ -1,0 +1,85 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinashop_smith_basic",
+   "ban_path": "/prim/ani/npc/china/chinashop_smith_basic.ban",
+   "channels": 37,
+   "duration_ms": 5000,
+   "keyframes": 8,
+   "name": "chinashop_smith_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinashop_smith_time",
+   "ban_path": "/prim/ani/npc/china/chinashop_smith_time.ban",
+   "channels": 37,
+   "duration_ms": 3000,
+   "keyframes": 30,
+   "name": "chinashop_smith_time"
+  }
+ ],
+ "key": "res_npc_npc_westchinashop_smith",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinashop_smith_al_2s.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/npc/china/westchinashop_smith.ddj",
+   "material": "WestChinaShop_Smith_al_2s",
+   "msh": "prim_mesh_npc_china_westchinashop_smith_al_2s",
+   "skin_records": 67,
+   "skinned": true,
+   "tcount": 86,
+   "tex": "prim_mtrl_npc_china_westchinashop_smith",
+   "vcount": 67
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinashop_smith_hammer.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/westchinashop_smith.ddj",
+   "material": "WestChinaShop_Smith_al_2s",
+   "msh": "prim_mesh_npc_china_westchinashop_smith_hammer",
+   "skin_records": 36,
+   "skinned": true,
+   "tcount": 22,
+   "tex": "prim_mtrl_npc_china_westchinashop_smith",
+   "vcount": 36
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinashop_smith_tree.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/npc/china/westchinashop_smith_tree.ddj",
+   "material": "WestChinaShop_Smith_TREE",
+   "msh": "prim_mesh_npc_china_westchinashop_smith_tree",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 18,
+   "tex": "prim_mtrl_npc_china_westchinashop_smith_tree",
+   "vcount": 21
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinashop_smith_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinashop_smith.ddj",
+   "material": "WestChinaShop_Smith",
+   "msh": "prim_mesh_npc_china_westchinashop_smith_part1",
+   "skin_records": 435,
+   "skinned": true,
+   "tcount": 586,
+   "tex": "prim_mtrl_npc_china_westchinashop_smith",
+   "vcount": 435
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinashop_smith_part2.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/npc/china/westchinashop_smith.ddj",
+   "material": "WestChinaShop_Smith",
+   "msh": "prim_mesh_npc_china_westchinashop_smith_part2",
+   "skin_records": 128,
+   "skinned": true,
+   "tcount": 146,
+   "tex": "prim_mtrl_npc_china_westchinashop_smith",
+   "vcount": 128
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_westchinashop_smith",
+ "skeleton_path": "/prim/skel/npc/china/westchinashop_smith.bsk"
+}

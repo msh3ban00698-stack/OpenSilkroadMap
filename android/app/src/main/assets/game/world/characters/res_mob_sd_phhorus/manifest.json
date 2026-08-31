@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_stand01",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_stand01.ban",
+   "channels": 56,
+   "duration_ms": 3333,
+   "keyframes": 16,
+   "name": "phhorus_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_walk",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_walk.ban",
+   "channels": 56,
+   "duration_ms": 1333,
+   "keyframes": 12,
+   "name": "phhorus_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_run",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_run.ban",
+   "channels": 56,
+   "duration_ms": 1066,
+   "keyframes": 13,
+   "name": "phhorus_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack01",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack01.ban",
+   "channels": 56,
+   "duration_ms": 1933,
+   "keyframes": 45,
+   "name": "phhorus_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack02",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack02.ban",
+   "channels": 56,
+   "duration_ms": 1500,
+   "keyframes": 28,
+   "name": "phhorus_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack03",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack03.ban",
+   "channels": 56,
+   "duration_ms": 2133,
+   "keyframes": 47,
+   "name": "phhorus_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack04_shot",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack04_shot.ban",
+   "channels": 56,
+   "duration_ms": 1400,
+   "keyframes": 22,
+   "name": "phhorus_attack04_shot"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack04_ready",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack04_ready.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 16,
+   "name": "phhorus_attack04_ready"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack04_wait",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack04_wait.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 17,
+   "name": "phhorus_attack04_wait"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_die",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_die.ban",
+   "channels": 56,
+   "duration_ms": 2333,
+   "keyframes": 35,
+   "name": "phhorus_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_die_rm",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_die_rm.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "phhorus_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_phhorus_phhorus_attack07",
+   "ban_path": "/prim/ani/mob/sd/phhorus/phhorus_attack07.ban",
+   "channels": 56,
+   "duration_ms": 933,
+   "keyframes": 13,
+   "name": "phhorus_attack07"
+  }
+ ],
+ "key": "res_mob_sd_phhorus",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/phhorus_staff.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/phhorus_staff.ddj",
+   "material": "phhorus_staff",
+   "msh": "prim_mesh_mob_sd_phhorus_staff",
+   "skin_records": 236,
+   "skinned": true,
+   "tcount": 338,
+   "tex": "prim_mtrl_mob_sd_phhorus_staff",
+   "vcount": 236
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/phhorus_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/phhorus.ddj",
+   "material": "phhorus",
+   "msh": "prim_mesh_mob_sd_phhorus_part1",
+   "skin_records": 566,
+   "skinned": true,
+   "tcount": 840,
+   "tex": "prim_mtrl_mob_sd_phhorus",
+   "vcount": 566
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/phhorus_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/phhorus.ddj",
+   "material": "phhorus",
+   "msh": "prim_mesh_mob_sd_phhorus_part2_part2",
+   "skin_records": 333,
+   "skinned": true,
+   "tcount": 508,
+   "tex": "prim_mtrl_mob_sd_phhorus",
+   "vcount": 333
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/phhorus_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/phhorus.ddj",
+   "material": "phhorus",
+   "msh": "prim_mesh_mob_sd_phhorus_part2_part1",
+   "skin_records": 1018,
+   "skinned": true,
+   "tcount": 1340,
+   "tex": "prim_mtrl_mob_sd_phhorus",
+   "vcount": 1018
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_phhorus",
+ "skeleton_path": "/prim/skel/mob/sd/phhorus.bsk"
+}

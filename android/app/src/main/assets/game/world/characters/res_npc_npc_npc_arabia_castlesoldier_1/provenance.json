@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/npc_arabia_castlesoldier_1_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/npc_arabia_castlesoldier_1.bmt",
+ "bsk": "/prim/skel/npc/arabia/npc_arabia_castlesoldier_1.bsk",
+ "bsr": "/res/npc/npc/npc_arabia_castlesoldier_1.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/npc_arabia_castlesoldier_1_weapon.bms",
+  "/prim/mesh/npc/arabia/npc_arabia_castlesoldier_1_part1.bms",
+  "/prim/mesh/npc/arabia/npc_arabia_castlesoldier_1_part2.bms"
+ ]
+}

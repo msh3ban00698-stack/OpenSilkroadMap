@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/jupiter/jupiter_soldier_f_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/jupiter/jupiter_soldier_f.bmt",
+ "bsk": "/prim/skel/npc/jupiter/jupiter_soldier_f.bsk",
+ "bsr": "/res/npc/npc/JUPITER_soldier_f.bsr",
+ "meshes": [
+  "/prim/mesh/npc/jupiter/jupiter_soldier_f_01_part1.bms",
+  "/prim/mesh/npc/jupiter/jupiter_soldier_f_01_part2.bms",
+  "/prim/mesh/npc/jupiter/jupiter_soldier_f_02.bms",
+  "/prim/mesh/npc/jupiter/jupiter_soldier_f_03.bms"
+ ]
+}

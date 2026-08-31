@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinasystem_bookmakergirl_ani_basic.ban",
+  "/prim/ani/npc/china/chinasystem_bookmakergirl_ani_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinasystem_bookmakergirl.bmt",
+ "bsk": "/prim/skel/npc/china/chinasystem_bookmakergirl.bsk",
+ "bsr": "/res/npc/npc/chinasystem_bookmakergirl.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinasystem_bookmakergirl_2s01.bms",
+  "/prim/mesh/npc/china/chinasystem_bookmakergirl_al_2s.bms",
+  "/prim/mesh/npc/china/chinasystem_bookmakergirl_part1.bms",
+  "/prim/mesh/npc/china/chinasystem_bookmakergirl_part2.bms"
+ ]
+}

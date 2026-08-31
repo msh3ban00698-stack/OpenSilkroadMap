@@ -1,0 +1,177 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_stand01",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_stand01.ban",
+   "channels": 69,
+   "duration_ms": 2666,
+   "keyframes": 23,
+   "name": "selkis_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_walk",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_walk.ban",
+   "channels": 69,
+   "duration_ms": 1066,
+   "keyframes": 21,
+   "name": "selkis_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_run",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_run.ban",
+   "channels": 69,
+   "duration_ms": 1066,
+   "keyframes": 23,
+   "name": "selkis_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack01",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack01.ban",
+   "channels": 69,
+   "duration_ms": 1866,
+   "keyframes": 32,
+   "name": "selkis_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack02",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack02.ban",
+   "channels": 69,
+   "duration_ms": 2066,
+   "keyframes": 47,
+   "name": "selkis_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack03",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack03.ban",
+   "channels": 69,
+   "duration_ms": 3000,
+   "keyframes": 65,
+   "name": "selkis_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack04",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack04.ban",
+   "channels": 69,
+   "duration_ms": 4000,
+   "keyframes": 63,
+   "name": "selkis_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack05",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack05.ban",
+   "channels": 69,
+   "duration_ms": 3000,
+   "keyframes": 54,
+   "name": "selkis_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack06",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack06.ban",
+   "channels": 69,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "selkis_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_attack07",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_attack07.ban",
+   "channels": 69,
+   "duration_ms": 1200,
+   "keyframes": 16,
+   "name": "selkis_attack07"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_die",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_die.ban",
+   "channels": 69,
+   "duration_ms": 2833,
+   "keyframes": 52,
+   "name": "selkis_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_selkis_selkis_die_rm",
+   "ban_path": "/prim/ani/mob/sd/selkis/selkis_die_rm.ban",
+   "channels": 69,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "selkis_die_rm"
+  }
+ ],
+ "key": "res_mob_sd_selkis",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis02.ddj",
+   "material": "selkis02",
+   "msh": "prim_mesh_mob_sd_selkis02",
+   "skin_records": 238,
+   "skinned": true,
+   "tcount": 436,
+   "tex": "prim_mtrl_mob_sd_selkis02",
+   "vcount": 238
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis03.ddj",
+   "material": "selkis03",
+   "msh": "prim_mesh_mob_sd_selkis03",
+   "skin_records": 305,
+   "skinned": true,
+   "tcount": 420,
+   "tex": "prim_mtrl_mob_sd_selkis03",
+   "vcount": 305
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis.ddj",
+   "material": "selkis",
+   "msh": "prim_mesh_mob_sd_selkis_part1",
+   "skin_records": 867,
+   "skinned": true,
+   "tcount": 1302,
+   "tex": "prim_mtrl_mob_sd_selkis",
+   "vcount": 867
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis.ddj",
+   "material": "selkis",
+   "msh": "prim_mesh_mob_sd_selkis_part2_part1",
+   "skin_records": 225,
+   "skinned": true,
+   "tcount": 368,
+   "tex": "prim_mtrl_mob_sd_selkis",
+   "vcount": 225
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis.ddj",
+   "material": "selkis",
+   "msh": "prim_mesh_mob_sd_selkis_part2_part2_part1",
+   "skin_records": 739,
+   "skinned": true,
+   "tcount": 1161,
+   "tex": "prim_mtrl_mob_sd_selkis",
+   "vcount": 739
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/selkis_part2_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/selkis.ddj",
+   "material": "selkis",
+   "msh": "prim_mesh_mob_sd_selkis_part2_part2_part2",
+   "skin_records": 505,
+   "skinned": true,
+   "tcount": 721,
+   "tex": "prim_mtrl_mob_sd_selkis",
+   "vcount": 505
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_selkis",
+ "skeleton_path": "/prim/skel/mob/sd/selkis.bsk"
+}

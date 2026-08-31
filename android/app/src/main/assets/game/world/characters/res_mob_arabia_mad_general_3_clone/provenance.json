@@ -1,0 +1,24 @@
+{
+ "animations": [
+  "/prim/ani/mob/arabia/mad_general/mad_general_stand03.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_walk03.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_run03.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_attack08.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_attack09.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_attack10.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_attack11.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_die.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_die_rm.ban",
+  "/prim/ani/mob/arabia/mad_general/mad_general_attack14.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/arabia/mad_general_clone.bmt",
+ "bsk": "/prim/skel/mob/arabia/mad_general.bsk",
+ "bsr": "/res/mob/arabia/mad_general_3_clone.bsr",
+ "meshes": [
+  "/prim/mesh/mob/arabia/mad_general_weapon_01.bms",
+  "/prim/mesh/mob/arabia/mad_general_weapon_02.bms",
+  "/prim/mesh/mob/arabia/mad_general_part1.bms",
+  "/prim/mesh/mob/arabia/mad_general_part2_part1.bms",
+  "/prim/mesh/mob/arabia/mad_general_part2_part2.bms"
+ ]
+}

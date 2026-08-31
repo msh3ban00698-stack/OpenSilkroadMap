@@ -1,0 +1,161 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_stand01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_stand01.ban",
+   "channels": 56,
+   "duration_ms": 2333,
+   "keyframes": 21,
+   "name": "bonesoldier_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_attack01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack01.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 51,
+   "name": "bonesoldier_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_attack02",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack02.ban",
+   "channels": 54,
+   "duration_ms": 2500,
+   "keyframes": 50,
+   "name": "bonesoldier_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_attack03",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_attack03.ban",
+   "channels": 54,
+   "duration_ms": 1666,
+   "keyframes": 46,
+   "name": "bonesoldier_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_damage01",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_damage01.ban",
+   "channels": 3,
+   "duration_ms": 400,
+   "keyframes": 7,
+   "name": "bonesoldier_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_damage02",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_damage02.ban",
+   "channels": 54,
+   "duration_ms": 1166,
+   "keyframes": 27,
+   "name": "bonesoldier_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_down",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_down.ban",
+   "channels": 54,
+   "duration_ms": 833,
+   "keyframes": 21,
+   "name": "bonesoldier_down"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_downwait",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downwait.ban",
+   "channels": 54,
+   "duration_ms": 1833,
+   "keyframes": 10,
+   "name": "bonesoldier_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_downdamage",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downdamage.ban",
+   "channels": 54,
+   "duration_ms": 466,
+   "keyframes": 10,
+   "name": "bonesoldier_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_downup",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downup.ban",
+   "channels": 54,
+   "duration_ms": 1200,
+   "keyframes": 19,
+   "name": "bonesoldier_downup"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_walk",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_walk.ban",
+   "channels": 54,
+   "duration_ms": 1333,
+   "keyframes": 26,
+   "name": "bonesoldier_walk"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_run",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_run.ban",
+   "channels": 54,
+   "duration_ms": 800,
+   "keyframes": 20,
+   "name": "bonesoldier_run"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_bonesoldier_bonesoldier_downdie",
+   "ban_path": "/prim/ani/mob/taklamakan/bonesoldier/bonesoldier_downdie.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "bonesoldier_downdie"
+  }
+ ],
+ "key": "res_mob_taklamakan_bonesoldier",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonesoldier01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonesoldier.ddj",
+   "material": "bonesoldier",
+   "msh": "prim_mesh_mob_taklamakan_bonesoldier01",
+   "skin_records": 46,
+   "skinned": true,
+   "tcount": 72,
+   "tex": "prim_mtrl_mob_taklamakan_bonesoldier",
+   "vcount": 46
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonesoldier_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonesoldier.ddj",
+   "material": "bonesoldier",
+   "msh": "prim_mesh_mob_taklamakan_bonesoldier_part1",
+   "skin_records": 805,
+   "skinned": true,
+   "tcount": 1014,
+   "tex": "prim_mtrl_mob_taklamakan_bonesoldier",
+   "vcount": 805
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonesoldier_part2_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonesoldier.ddj",
+   "material": "bonesoldier",
+   "msh": "prim_mesh_mob_taklamakan_bonesoldier_part2_part1",
+   "skin_records": 219,
+   "skinned": true,
+   "tcount": 270,
+   "tex": "prim_mtrl_mob_taklamakan_bonesoldier",
+   "vcount": 219
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/bonesoldier_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/bonesoldier.ddj",
+   "material": "bonesoldier",
+   "msh": "prim_mesh_mob_taklamakan_bonesoldier_part2_part2",
+   "skin_records": 218,
+   "skinned": true,
+   "tcount": 226,
+   "tex": "prim_mtrl_mob_taklamakan_bonesoldier",
+   "vcount": 218
+  }
+ ],
+ "skeleton": "prim_skel_mob_taklamakan_bonesoldier",
+ "skeleton_path": "/prim/skel/mob/taklamakan/bonesoldier.bsk"
+}

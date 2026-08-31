@@ -1,0 +1,17 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/westchinasystem_warehousekeeper_woman_basic.ban",
+  "/prim/ani/npc/china/westchinasystem_warehousekeeper_woman_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinasystem_warehousekeeper_woman.bmt",
+ "bsk": "/prim/skel/npc/china/chinasystem_warehousekeeper_woman.bsk",
+ "bsr": "/res/npc/npc/chinasystem_warehousekeeper_woman.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_key.bms",
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_key_al_2s.bms",
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_2s.bms",
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_al_2s.bms",
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_part1.bms",
+  "/prim/mesh/npc/china/chinasystem_warehousekeeper_woman_part2.bms"
+ ]
+}

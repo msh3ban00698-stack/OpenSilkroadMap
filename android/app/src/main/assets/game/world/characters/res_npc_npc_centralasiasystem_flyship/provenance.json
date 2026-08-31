@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiasystem_flyship.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiasystem_flyship.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiasystem_flyship.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaSystem_Flyship.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiasystem_flyship_2s.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_flyship_al.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_flyship_part1.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_flyship_part2.bms"
+ ]
+}

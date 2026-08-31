@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/thiefden_thief_c_basic.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/thiefden_thief_c.bmt",
+ "bsk": "/prim/skel/npc/china/thiefden_thief_c.bsk",
+ "bsr": "/res/npc/npc/thiefden_thief_c.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/thiefden_thief_c_part1.bms",
+  "/prim/mesh/npc/china/thiefden_thief_c_part2.bms"
+ ]
+}

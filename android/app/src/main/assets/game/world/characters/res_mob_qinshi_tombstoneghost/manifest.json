@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_stoneghost_stoneghost_stand02",
+   "ban_path": "/prim/ani/mob/china/stoneghost/stoneghost_stand02.ban",
+   "channels": 35,
+   "duration_ms": 5333,
+   "keyframes": 31,
+   "name": "stoneghost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_stand01.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 27,
+   "name": "tombstoneghost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_stand02",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_stand02.ban",
+   "channels": 35,
+   "duration_ms": 5333,
+   "keyframes": 34,
+   "name": "tombstoneghost_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_walk",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_walk.ban",
+   "channels": 35,
+   "duration_ms": 1333,
+   "keyframes": 30,
+   "name": "tombstoneghost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_run",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_run.ban",
+   "channels": 35,
+   "duration_ms": 666,
+   "keyframes": 22,
+   "name": "tombstoneghost_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_attack01.ban",
+   "channels": 35,
+   "duration_ms": 2233,
+   "keyframes": 84,
+   "name": "tombstoneghost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_attack02.ban",
+   "channels": 35,
+   "duration_ms": 1000,
+   "keyframes": 31,
+   "name": "tombstoneghost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_attack03.ban",
+   "channels": 69,
+   "duration_ms": 4233,
+   "keyframes": 78,
+   "name": "tombstoneghost_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_attack04.ban",
+   "channels": 35,
+   "duration_ms": 1833,
+   "keyframes": 37,
+   "name": "tombstoneghost_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_damage01.ban",
+   "channels": 5,
+   "duration_ms": 333,
+   "keyframes": 7,
+   "name": "tombstoneghost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_die.ban",
+   "channels": 35,
+   "duration_ms": 3100,
+   "keyframes": 77,
+   "name": "tombstoneghost_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_die_rm.ban",
+   "channels": 35,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombstoneghost_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_down",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_down.ban",
+   "channels": 35,
+   "duration_ms": 1000,
+   "keyframes": 23,
+   "name": "tombstoneghost_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_down_rm.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 19,
+   "name": "tombstoneghost_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_down_damage.ban",
+   "channels": 35,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "tombstoneghost_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_down_up.ban",
+   "channels": 35,
+   "duration_ms": 1133,
+   "keyframes": 31,
+   "name": "tombstoneghost_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombstoneghost_tombstoneghost_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombstoneghost/tombstoneghost_down_die.ban",
+   "channels": 35,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombstoneghost_down_die"
+  }
+ ],
+ "key": "res_mob_qinshi_tombstoneghost",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombstoneghost_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/qinshi/tombstoneghost.ddj",
+   "material": "tombstoneGhost",
+   "msh": "prim_mesh_mob_qinshi_tombstoneghost_part1",
+   "skin_records": 457,
+   "skinned": true,
+   "tcount": 660,
+   "tex": "prim_mtrl_mob_qinshi_tombstoneghost",
+   "vcount": 457
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombstoneghost_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/qinshi/tombstoneghost.ddj",
+   "material": "tombstoneGhost",
+   "msh": "prim_mesh_mob_qinshi_tombstoneghost_part2",
+   "skin_records": 206,
+   "skinned": true,
+   "tcount": 263,
+   "tex": "prim_mtrl_mob_qinshi_tombstoneghost",
+   "vcount": 206
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_tombstoneghost",
+ "skeleton_path": "/prim/skel/mob/qinshi/tombstoneghost.bsk"
+}

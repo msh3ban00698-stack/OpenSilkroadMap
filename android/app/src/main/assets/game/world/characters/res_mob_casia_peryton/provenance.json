@@ -1,0 +1,25 @@
+{
+ "animations": [
+  "/prim/ani/mob/casia/peryton/peryton_stand01.ban",
+  "/prim/ani/mob/casia/peryton/peryton_walk.ban",
+  "/prim/ani/mob/casia/peryton/peryton_run.ban",
+  "/prim/ani/mob/casia/peryton/peryton_attack01.ban",
+  "/prim/ani/mob/casia/peryton/peryton_attack02.ban",
+  "/prim/ani/mob/casia/peryton/peryton_attack03.ban",
+  "/prim/ani/mob/casia/peryton/peryton_damage01.ban",
+  "/prim/ani/mob/casia/peryton/peryton_down.ban",
+  "/prim/ani/mob/casia/peryton/peryton_down_rm.ban",
+  "/prim/ani/mob/casia/peryton/peryton_down_damage.ban",
+  "/prim/ani/mob/casia/peryton/peryton_down_up.ban",
+  "/prim/ani/mob/casia/peryton/peryton_downdie.ban",
+  "/prim/ani/mob/casia/peryton/peryton_die.ban",
+  "/prim/ani/mob/casia/peryton/peryton_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/casia/peryton.bmt",
+ "bsk": "/prim/skel/mob/casia/peryton.bsk",
+ "bsr": "/res/mob/casia/peryton.bsr",
+ "meshes": [
+  "/prim/mesh/mob/casia/peryton_part1.bms",
+  "/prim/mesh/mob/casia/peryton_part2.bms"
+ ]
+}

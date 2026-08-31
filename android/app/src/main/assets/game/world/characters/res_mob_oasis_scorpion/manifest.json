@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_stand01",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_stand01.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "scorpion_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_stand02",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_stand02.ban",
+   "channels": 54,
+   "duration_ms": 1866,
+   "keyframes": 36,
+   "name": "scorpion_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_walk",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_walk.ban",
+   "channels": 54,
+   "duration_ms": 1166,
+   "keyframes": 16,
+   "name": "scorpion_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_run",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_run.ban",
+   "channels": 54,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "scorpion_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_attack01",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_attack01.ban",
+   "channels": 54,
+   "duration_ms": 1700,
+   "keyframes": 46,
+   "name": "scorpion_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_attack02",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_attack02.ban",
+   "channels": 54,
+   "duration_ms": 1200,
+   "keyframes": 25,
+   "name": "scorpion_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_attack03",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_attack03.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 17,
+   "name": "scorpion_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_damage01",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_damage01.ban",
+   "channels": 17,
+   "duration_ms": 533,
+   "keyframes": 7,
+   "name": "scorpion_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_damage02",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_damage02.ban",
+   "channels": 54,
+   "duration_ms": 2100,
+   "keyframes": 63,
+   "name": "scorpion_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_die",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_die.ban",
+   "channels": 54,
+   "duration_ms": 1933,
+   "keyframes": 51,
+   "name": "scorpion_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_die_loop.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 4,
+   "name": "scorpion_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_down",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_down.ban",
+   "channels": 54,
+   "duration_ms": 1300,
+   "keyframes": 28,
+   "name": "scorpion_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_downwait",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_downwait.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 10,
+   "name": "scorpion_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_downup",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_downup.ban",
+   "channels": 54,
+   "duration_ms": 1166,
+   "keyframes": 25,
+   "name": "scorpion_downup"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_downdamage",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_downdamage.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 22,
+   "name": "scorpion_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_scorpion_scorpion_downdie",
+   "ban_path": "/prim/ani/mob/oasis/scorpion/scorpion_downdie.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "scorpion_downdie"
+  }
+ ],
+ "key": "res_mob_oasis_scorpion",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/scorpion_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/oasis/scorpion.ddj",
+   "material": "scorpion",
+   "msh": "prim_mesh_mob_oasis_scorpion_part1",
+   "skin_records": 228,
+   "skinned": true,
+   "tcount": 235,
+   "tex": "prim_mtrl_mob_oasis_scorpion",
+   "vcount": 228
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/scorpion_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/oasis/scorpion.ddj",
+   "material": "scorpion",
+   "msh": "prim_mesh_mob_oasis_scorpion_part2_part1",
+   "skin_records": 228,
+   "skinned": true,
+   "tcount": 235,
+   "tex": "prim_mtrl_mob_oasis_scorpion",
+   "vcount": 228
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/scorpion_part2_part2.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/oasis/scorpion.ddj",
+   "material": "scorpion",
+   "msh": "prim_mesh_mob_oasis_scorpion_part2_part2",
+   "skin_records": 248,
+   "skinned": true,
+   "tcount": 418,
+   "tex": "prim_mtrl_mob_oasis_scorpion",
+   "vcount": 248
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_scorpion",
+ "skeleton_path": "/prim/skel/mob/oasis/scorpion.bsk"
+}

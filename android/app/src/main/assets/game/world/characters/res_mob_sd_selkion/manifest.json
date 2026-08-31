@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_stand01",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_stand01.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "redscorpion_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_stand02",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_stand02.ban",
+   "channels": 54,
+   "duration_ms": 1866,
+   "keyframes": 36,
+   "name": "redscorpion_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_walk",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_walk.ban",
+   "channels": 54,
+   "duration_ms": 1166,
+   "keyframes": 16,
+   "name": "redscorpion_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_run",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_run.ban",
+   "channels": 54,
+   "duration_ms": 500,
+   "keyframes": 16,
+   "name": "redscorpion_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_attack01",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_attack01.ban",
+   "channels": 54,
+   "duration_ms": 1700,
+   "keyframes": 46,
+   "name": "redscorpion_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_attack02",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_attack02.ban",
+   "channels": 54,
+   "duration_ms": 1200,
+   "keyframes": 25,
+   "name": "redscorpion_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_attack03",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_attack03.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 17,
+   "name": "redscorpion_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_damage01",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_damage01.ban",
+   "channels": 54,
+   "duration_ms": 600,
+   "keyframes": 8,
+   "name": "redscorpion_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_damage02",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_damage02.ban",
+   "channels": 54,
+   "duration_ms": 2166,
+   "keyframes": 64,
+   "name": "redscorpion_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_die",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_die.ban",
+   "channels": 54,
+   "duration_ms": 1933,
+   "keyframes": 51,
+   "name": "redscorpion_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_die_loop.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 4,
+   "name": "redscorpion_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_down",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_down.ban",
+   "channels": 54,
+   "duration_ms": 1300,
+   "keyframes": 28,
+   "name": "redscorpion_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_down_rm",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_down_rm.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 10,
+   "name": "redscorpion_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_down_damage",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_down_damage.ban",
+   "channels": 54,
+   "duration_ms": 933,
+   "keyframes": 21,
+   "name": "redscorpion_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_down_up",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_down_up.ban",
+   "channels": 54,
+   "duration_ms": 1166,
+   "keyframes": 25,
+   "name": "redscorpion_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_redscorpion_redscorpion_down_die",
+   "ban_path": "/prim/ani/mob/oasis/redscorpion/redscorpion_down_die.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "redscorpion_down_die"
+  }
+ ],
+ "key": "res_mob_sd_selkion",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redscorpion_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/selkion.ddj",
+   "material": "redscorpion",
+   "msh": "prim_mesh_mob_oasis_redscorpion_part1",
+   "skin_records": 369,
+   "skinned": true,
+   "tcount": 484,
+   "tex": "prim_mtrl_mob_sd_selkion",
+   "vcount": 369
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redscorpion_part2_part1.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/mob/sd/selkion.ddj",
+   "material": "redscorpion",
+   "msh": "prim_mesh_mob_oasis_redscorpion_part2_part1",
+   "skin_records": 90,
+   "skinned": true,
+   "tcount": 128,
+   "tex": "prim_mtrl_mob_sd_selkion",
+   "vcount": 90
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/redscorpion_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/selkion.ddj",
+   "material": "redscorpion",
+   "msh": "prim_mesh_mob_oasis_redscorpion_part2_part2",
+   "skin_records": 259,
+   "skinned": true,
+   "tcount": 276,
+   "tex": "prim_mtrl_mob_sd_selkion",
+   "vcount": 259
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_redscorpion",
+ "skeleton_path": "/prim/skel/mob/oasis/redscorpion.bsk"
+}

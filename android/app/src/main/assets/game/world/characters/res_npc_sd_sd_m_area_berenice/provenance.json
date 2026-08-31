@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_berenice_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_berenice.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_berenice.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_berenice.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_berenice_2al.bms",
+  "/prim/mesh/npc/sd/sd_m_area_berenice_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_berenice_part2.bms"
+ ]
+}

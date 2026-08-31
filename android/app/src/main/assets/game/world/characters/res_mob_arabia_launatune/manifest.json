@@ -1,0 +1,269 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_stand01",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_stand01.ban",
+   "channels": 179,
+   "duration_ms": 4666,
+   "keyframes": 72,
+   "name": "launatune_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_walk",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_walk.ban",
+   "channels": 179,
+   "duration_ms": 2000,
+   "keyframes": 37,
+   "name": "launatune_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_run",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_run.ban",
+   "channels": 179,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "launatune_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack01",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack01.ban",
+   "channels": 179,
+   "duration_ms": 2500,
+   "keyframes": 61,
+   "name": "launatune_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack02",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack02.ban",
+   "channels": 179,
+   "duration_ms": 2500,
+   "keyframes": 62,
+   "name": "launatune_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack04",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack04.ban",
+   "channels": 181,
+   "duration_ms": 4000,
+   "keyframes": 95,
+   "name": "launatune_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack07",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack07.ban",
+   "channels": 179,
+   "duration_ms": 5000,
+   "keyframes": 133,
+   "name": "launatune_attack07"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_die",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_die.ban",
+   "channels": 179,
+   "duration_ms": 2900,
+   "keyframes": 73,
+   "name": "launatune_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_die_rm.ban",
+   "channels": 179,
+   "duration_ms": 2900,
+   "keyframes": 19,
+   "name": "launatune_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_stand02",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_stand02.ban",
+   "channels": 179,
+   "duration_ms": 4666,
+   "keyframes": 99,
+   "name": "launatune_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack05",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack05.ban",
+   "channels": 181,
+   "duration_ms": 4000,
+   "keyframes": 98,
+   "name": "launatune_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack03",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack03.ban",
+   "channels": 181,
+   "duration_ms": 3000,
+   "keyframes": 76,
+   "name": "launatune_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_launatune_launatune_attack06",
+   "ban_path": "/prim/ani/mob/arabia/launatune/launatune_attack06.ban",
+   "channels": 183,
+   "duration_ms": 4000,
+   "keyframes": 104,
+   "name": "launatune_attack06"
+  }
+ ],
+ "key": "res_mob_arabia_launatune",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_tail.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake.ddj",
+   "material": "launatune_snake",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_tail",
+   "skin_records": 191,
+   "skinned": true,
+   "tcount": 356,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake",
+   "vcount": 191
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_staff.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake.ddj",
+   "material": "launatune_snake",
+   "msh": "prim_mesh_mob_arabia_launatune_staff",
+   "skin_records": 431,
+   "skinned": true,
+   "tcount": 792,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake",
+   "vcount": 431
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake_02.ddj",
+   "material": "launatune_snake_02",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_part1",
+   "skin_records": 410,
+   "skinned": true,
+   "tcount": 474,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake_02",
+   "vcount": 410
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake_02.ddj",
+   "material": "launatune_snake_02",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_part2",
+   "skin_records": 294,
+   "skinned": true,
+   "tcount": 326,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake_02",
+   "vcount": 294
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_head_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake.ddj",
+   "material": "launatune_snake",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_head_part1",
+   "skin_records": 558,
+   "skinned": true,
+   "tcount": 706,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake",
+   "vcount": 558
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_head_part2_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake.ddj",
+   "material": "launatune_snake",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_head_part2_part1",
+   "skin_records": 284,
+   "skinned": true,
+   "tcount": 359,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake",
+   "vcount": 284
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_snake_head_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune_snake.ddj",
+   "material": "launatune_snake",
+   "msh": "prim_mesh_mob_arabia_launatune_snake_head_part2_part2",
+   "skin_records": 318,
+   "skinned": true,
+   "tcount": 461,
+   "tex": "prim_mtrl_mob_arabia_launatune_snake",
+   "vcount": 318
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_skirt.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_skirt",
+   "skin_records": 108,
+   "skinned": true,
+   "tcount": 164,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 108
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_hand_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_hand_part1",
+   "skin_records": 297,
+   "skinned": true,
+   "tcount": 429,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 297
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_hand_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_hand_part2_part1",
+   "skin_records": 297,
+   "skinned": true,
+   "tcount": 427,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 297
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_hand_part2_part2.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_hand_part2_part2",
+   "skin_records": 62,
+   "skinned": true,
+   "tcount": 84,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 62
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_part1",
+   "skin_records": 1179,
+   "skinned": true,
+   "tcount": 1807,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 1179
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/launatune_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/launatune.ddj",
+   "material": "launatune",
+   "msh": "prim_mesh_mob_arabia_launatune_part2",
+   "skin_records": 819,
+   "skinned": true,
+   "tcount": 1124,
+   "tex": "prim_mtrl_mob_arabia_launatune",
+   "vcount": 819
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_launatune",
+ "skeleton_path": "/prim/skel/mob/arabia/launatune.bsk"
+}

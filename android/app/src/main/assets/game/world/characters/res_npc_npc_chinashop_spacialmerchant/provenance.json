@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinashop_spacialmerchant_basic.ban",
+  "/prim/ani/npc/china/chinashop_spacialmerchant_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinashop_spacialmerchant.bmt",
+ "bsk": "/prim/skel/npc/china/chinashop_spacialmerchant.bsk",
+ "bsr": "/res/npc/npc/chinashop_spacialmerchant.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinashop_spacialmerchant_2s.bms",
+  "/prim/mesh/npc/china/chinashop_spacialmerchant_jupan.bms",
+  "/prim/mesh/npc/china/chinashop_spacialmerchant_part1.bms",
+  "/prim/mesh/npc/china/chinashop_spacialmerchant_part2_part1.bms",
+  "/prim/mesh/npc/china/chinashop_spacialmerchant_part2_part2.bms"
+ ]
+}

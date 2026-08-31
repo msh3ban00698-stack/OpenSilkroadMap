@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_khotan_khotansystem_turtleshipticketagent_basic",
+   "ban_path": "/prim/ani/npc/khotan/khotansystem_turtleshipticketagent_basic.ban",
+   "channels": 35,
+   "duration_ms": 4666,
+   "keyframes": 30,
+   "name": "khotansystem_turtleshipticketagent_basic"
+  },
+  {
+   "anim": "prim_ani_npc_khotan_khotansystem_turtleshipticketagent_basic2",
+   "ban_path": "/prim/ani/npc/khotan/khotansystem_turtleshipticketagent_basic2.ban",
+   "channels": 35,
+   "duration_ms": 7100,
+   "keyframes": 85,
+   "name": "khotansystem_turtleshipticketagent_basic2"
+  }
+ ],
+ "key": "res_npc_npc_khotansystem_turtleshipticketagent",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotansystem_turtleshipticketagent_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotansystem_turtleshipticketagent.ddj",
+   "material": "khotanSystem_TurtleShipTicketAgent_2s",
+   "msh": "prim_mesh_npc_khotan_khotansystem_turtleshipticketagent_2s",
+   "skin_records": 14,
+   "skinned": true,
+   "tcount": 10,
+   "tex": "prim_mtrl_npc_khotan_khotansystem_turtleshipticketagent",
+   "vcount": 14
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotansystem_turtleshipticketagent_al_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotansystem_turtleshipticketagent_al.ddj",
+   "material": "khotanSystem_TurtleShipTicketAgent_al_2s",
+   "msh": "prim_mesh_npc_khotan_khotansystem_turtleshipticketagent_al_2s",
+   "skin_records": 32,
+   "skinned": true,
+   "tcount": 22,
+   "tex": "prim_mtrl_npc_khotan_khotansystem_turtleshipticketagent_al",
+   "vcount": 32
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotansystem_turtleshipticketagent_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotansystem_turtleshipticketagent.ddj",
+   "material": "khotanSystem_TurtleShipTicketAgent",
+   "msh": "prim_mesh_npc_khotan_khotansystem_turtleshipticketagent_part1",
+   "skin_records": 364,
+   "skinned": true,
+   "tcount": 553,
+   "tex": "prim_mtrl_npc_khotan_khotansystem_turtleshipticketagent",
+   "vcount": 364
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotansystem_turtleshipticketagent_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotansystem_turtleshipticketagent.ddj",
+   "material": "khotanSystem_TurtleShipTicketAgent",
+   "msh": "prim_mesh_npc_khotan_khotansystem_turtleshipticketagent_part2",
+   "skin_records": 277,
+   "skinned": true,
+   "tcount": 351,
+   "tex": "prim_mtrl_npc_khotan_khotansystem_turtleshipticketagent",
+   "vcount": 277
+  }
+ ],
+ "skeleton": "prim_skel_npc_khotan_khotansystem_turtleshipticketagent",
+ "skeleton_path": "/prim/skel/npc/khotan/khotansystem_turtleshipticketagent.bsk"
+}

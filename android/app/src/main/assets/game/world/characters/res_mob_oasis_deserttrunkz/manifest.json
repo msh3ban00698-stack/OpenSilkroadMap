@@ -1,0 +1,201 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_stand01",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_stand01.ban",
+   "channels": 112,
+   "duration_ms": 3333,
+   "keyframes": 33,
+   "name": "deserttrunkz_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_stand02",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_stand02.ban",
+   "channels": 112,
+   "duration_ms": 5333,
+   "keyframes": 63,
+   "name": "deserttrunkz_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_stand03",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_stand03.ban",
+   "channels": 112,
+   "duration_ms": 4000,
+   "keyframes": 35,
+   "name": "deserttrunkz_stand03"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_attack01",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_attack01.ban",
+   "channels": 112,
+   "duration_ms": 3333,
+   "keyframes": 60,
+   "name": "deserttrunkz_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_attack02",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_attack02.ban",
+   "channels": 112,
+   "duration_ms": 3600,
+   "keyframes": 68,
+   "name": "deserttrunkz_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_help",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_help.ban",
+   "channels": 112,
+   "duration_ms": 3666,
+   "keyframes": 56,
+   "name": "deserttrunkz_help"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_damage01",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_damage01.ban",
+   "channels": 19,
+   "duration_ms": 733,
+   "keyframes": 17,
+   "name": "deserttrunkz_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_damage02",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_damage02.ban",
+   "channels": 112,
+   "duration_ms": 1600,
+   "keyframes": 29,
+   "name": "deserttrunkz_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_die",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_die.ban",
+   "channels": 112,
+   "duration_ms": 6233,
+   "keyframes": 119,
+   "name": "deserttrunkz_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_die_loop.ban",
+   "channels": 112,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "deserttrunkz_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_down",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_down.ban",
+   "channels": 112,
+   "duration_ms": 666,
+   "keyframes": 18,
+   "name": "deserttrunkz_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_downwait",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_downwait.ban",
+   "channels": 112,
+   "duration_ms": 2000,
+   "keyframes": 27,
+   "name": "deserttrunkz_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_downdamage",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_downdamage.ban",
+   "channels": 112,
+   "duration_ms": 666,
+   "keyframes": 15,
+   "name": "deserttrunkz_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_downup",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_downup.ban",
+   "channels": 112,
+   "duration_ms": 1333,
+   "keyframes": 27,
+   "name": "deserttrunkz_downup"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_deserttrunkz_deserttrunkz_downdie",
+   "ban_path": "/prim/ani/mob/oasis/deserttrunkz/deserttrunkz_downdie.ban",
+   "channels": 112,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "deserttrunkz_downdie"
+  }
+ ],
+ "key": "res_mob_oasis_deserttrunkz",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_leaves.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz_2side",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_leaves",
+   "skin_records": 116,
+   "skinned": true,
+   "tcount": 116,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 116
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_body_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_body_part1",
+   "skin_records": 104,
+   "skinned": true,
+   "tcount": 120,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 104
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_body_part2_part1_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_body_part2_part1_part1",
+   "skin_records": 116,
+   "skinned": true,
+   "tcount": 147,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 116
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_body_part2_part1_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_body_part2_part1_part2_part1",
+   "skin_records": 113,
+   "skinned": true,
+   "tcount": 141,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 113
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_body_part2_part1_part2_part2.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_body_part2_part1_part2_part2",
+   "skin_records": 92,
+   "skinned": true,
+   "tcount": 88,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 92
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/deserttrunkz_body_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/oasis/deserttrunkz.ddj",
+   "material": "deserttrunkz",
+   "msh": "prim_mesh_mob_oasis_deserttrunkz_body_part2_part2",
+   "skin_records": 440,
+   "skinned": true,
+   "tcount": 584,
+   "tex": "prim_mtrl_mob_oasis_deserttrunkz",
+   "vcount": 440
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_deserttrunkz",
+ "skeleton_path": "/prim/skel/mob/oasis/deserttrunkz.bsk"
+}

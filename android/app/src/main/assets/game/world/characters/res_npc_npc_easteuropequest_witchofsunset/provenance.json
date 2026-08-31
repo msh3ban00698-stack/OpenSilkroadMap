@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_witchofsunset.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_witchofsunset.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_witchofsunset.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_WitchOfSunset.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_witchofsunset_3.bms",
+  "/prim/mesh/npc/europe/easteuropequest_witchofsunset_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_witchofsunset_part2.bms"
+ ]
+}

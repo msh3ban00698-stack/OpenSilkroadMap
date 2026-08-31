@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_t_area_smith_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_t_area_smith.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_t_area_smith.bsk",
+ "bsr": "/res/npc/sd/sd_t_area_smith.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_t_area_smith_arm.bms",
+  "/prim/mesh/npc/sd/sd_t_area_smith_s.bms",
+  "/prim/mesh/npc/sd/sd_t_area_smith_part1.bms",
+  "/prim/mesh/npc/sd/sd_t_area_smith_part2.bms"
+ ]
+}

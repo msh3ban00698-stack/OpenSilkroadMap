@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/mob/qinshi/snaketrap.ban",
+  "/prim/ani/mob/qinshi/snaketrap01.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/qinshi/snaketrap.bmt",
+ "bsk": "/prim/skel/mob/qinshi/snaketrap.bsk",
+ "bsr": "/res/mob/qinshi/SnakeTrap.bsr",
+ "meshes": [
+  "/prim/mesh/mob/qinshi/snaketrap01.bms",
+  "/prim/mesh/mob/qinshi/snaketrap02.bms",
+  "/prim/mesh/mob/qinshi/snaketrap03.bms",
+  "/prim/mesh/mob/qinshi/snaketrap04.bms"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinashop_stableman_basic.ban",
+  "/prim/ani/npc/china/chinashop_stableman_basic02.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinashop_stableman.bmt",
+ "bsk": "/prim/skel/npc/china/chinashop_stableman.bsk",
+ "bsr": "/res/npc/npc/chinashop_stableman.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinashop_stableman_horse_2s.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_horse_al_2s.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_tong.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_part1.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_part2.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_horse_part1.bms",
+  "/prim/mesh/npc/china/chinashop_stableman_horse_part2.bms"
+ ]
+}

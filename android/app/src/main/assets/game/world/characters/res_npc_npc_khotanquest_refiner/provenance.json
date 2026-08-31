@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/khotan/khotanquest_refiner_basic.ban",
+  "/prim/ani/npc/khotan/khotanquest_refiner_basic2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/khotan/khotanquest_refiner.bmt",
+ "bsk": "/prim/skel/npc/khotan/khotanquest_refiner.bsk",
+ "bsr": "/res/npc/npc/khotanquest_refiner.bsr",
+ "meshes": [
+  "/prim/mesh/npc/khotan/khotanquest_refiner_al.bms",
+  "/prim/mesh/npc/khotan/khotanquest_refiner_part1.bms",
+  "/prim/mesh/npc/khotan/khotanquest_refiner_part2.bms",
+  "/prim/mesh/npc/khotan/khotanquest_refiner_tool.bms",
+  "/prim/mesh/npc/khotan/khotanquest_refiner_tool2.bms"
+ ]
+}

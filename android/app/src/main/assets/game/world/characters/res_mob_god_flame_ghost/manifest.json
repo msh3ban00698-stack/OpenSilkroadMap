@@ -1,0 +1,189 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_stand01.ban",
+   "channels": 82,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "snakeman_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_walk",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_walk.ban",
+   "channels": 82,
+   "duration_ms": 2000,
+   "keyframes": 12,
+   "name": "snakeman_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_run",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_run.ban",
+   "channels": 82,
+   "duration_ms": 1333,
+   "keyframes": 9,
+   "name": "snakeman_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_attack01.ban",
+   "channels": 82,
+   "duration_ms": 3000,
+   "keyframes": 38,
+   "name": "snakeman_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_attack02.ban",
+   "channels": 82,
+   "duration_ms": 2000,
+   "keyframes": 31,
+   "name": "snakeman_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_attack03.ban",
+   "channels": 82,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "snakeman_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_attack04.ban",
+   "channels": 82,
+   "duration_ms": 2033,
+   "keyframes": 21,
+   "name": "snakeman_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_damage01.ban",
+   "channels": 7,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "snakeman_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_die.ban",
+   "channels": 82,
+   "duration_ms": 1533,
+   "keyframes": 32,
+   "name": "snakeman_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_die_rm.ban",
+   "channels": 82,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakeman_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_down",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_down.ban",
+   "channels": 82,
+   "duration_ms": 1000,
+   "keyframes": 25,
+   "name": "snakeman_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_down_up.ban",
+   "channels": 82,
+   "duration_ms": 1866,
+   "keyframes": 32,
+   "name": "snakeman_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_down_damage.ban",
+   "channels": 82,
+   "duration_ms": 833,
+   "keyframes": 19,
+   "name": "snakeman_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_down_rm.ban",
+   "channels": 82,
+   "duration_ms": 2333,
+   "keyframes": 8,
+   "name": "snakeman_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeman_snakeman_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakeman/snakeman_down_die.ban",
+   "channels": 82,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakeman_down_die"
+  }
+ ],
+ "key": "res_mob_god_flame_ghost",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeman_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/god/flame_ghost.ddj",
+   "material": "snakeman",
+   "msh": "prim_mesh_mob_qinshi_snakeman_part1",
+   "skin_records": 483,
+   "skinned": true,
+   "tcount": 742,
+   "tex": "prim_mtrl_mob_god_flame_ghost",
+   "vcount": 483
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeman_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_ghost.ddj",
+   "material": "snakeman",
+   "msh": "prim_mesh_mob_qinshi_snakeman_part2_part1",
+   "skin_records": 178,
+   "skinned": true,
+   "tcount": 244,
+   "tex": "prim_mtrl_mob_god_flame_ghost",
+   "vcount": 178
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeman_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_ghost.ddj",
+   "material": "snakeman",
+   "msh": "prim_mesh_mob_qinshi_snakeman_part2_part2_part1",
+   "skin_records": 334,
+   "skinned": true,
+   "tcount": 451,
+   "tex": "prim_mtrl_mob_god_flame_ghost",
+   "vcount": 334
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeman_part2_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_ghost.ddj",
+   "material": "snakeman",
+   "msh": "prim_mesh_mob_qinshi_snakeman_part2_part2_part2",
+   "skin_records": 240,
+   "skinned": true,
+   "tcount": 293,
+   "tex": "prim_mtrl_mob_god_flame_ghost",
+   "vcount": 240
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeman01.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/mob/god/flame_ghost.ddj",
+   "material": "snakeman",
+   "msh": "prim_mesh_mob_qinshi_snakeman01",
+   "skin_records": 315,
+   "skinned": true,
+   "tcount": 498,
+   "tex": "prim_mtrl_mob_god_flame_ghost",
+   "vcount": 315
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_snakeman",
+ "skeleton_path": "/prim/skel/mob/qinshi/snakeman.bsk"
+}

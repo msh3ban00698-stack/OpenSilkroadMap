@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_earthghost_stand01",
+   "ban_path": "/prim/ani/mob/china/earthghost_stand01.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "earthghost_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_walk",
+   "ban_path": "/prim/ani/mob/china/earthghost_walk.ban",
+   "channels": 42,
+   "duration_ms": 800,
+   "keyframes": 16,
+   "name": "earthghost_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_run",
+   "ban_path": "/prim/ani/mob/china/earthghost_run.ban",
+   "channels": 42,
+   "duration_ms": 500,
+   "keyframes": 24,
+   "name": "earthghost_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_attack01",
+   "ban_path": "/prim/ani/mob/china/earthghost_attack01.ban",
+   "channels": 42,
+   "duration_ms": 2000,
+   "keyframes": 37,
+   "name": "earthghost_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_attack02",
+   "ban_path": "/prim/ani/mob/china/earthghost_attack02.ban",
+   "channels": 42,
+   "duration_ms": 1533,
+   "keyframes": 24,
+   "name": "earthghost_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_damage01",
+   "ban_path": "/prim/ani/mob/china/earthghost_damage01.ban",
+   "channels": 11,
+   "duration_ms": 233,
+   "keyframes": 8,
+   "name": "earthghost_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_damage02",
+   "ban_path": "/prim/ani/mob/china/earthghost_damage02.ban",
+   "channels": 42,
+   "duration_ms": 500,
+   "keyframes": 14,
+   "name": "earthghost_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_die",
+   "ban_path": "/prim/ani/mob/china/earthghost_die.ban",
+   "channels": 42,
+   "duration_ms": 2766,
+   "keyframes": 47,
+   "name": "earthghost_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_die_loop",
+   "ban_path": "/prim/ani/mob/china/earthghost_die_loop.ban",
+   "channels": 42,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "earthghost_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_down",
+   "ban_path": "/prim/ani/mob/china/earthghost_down.ban",
+   "channels": 42,
+   "duration_ms": 833,
+   "keyframes": 20,
+   "name": "earthghost_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_downwait",
+   "ban_path": "/prim/ani/mob/china/earthghost_downwait.ban",
+   "channels": 42,
+   "duration_ms": 2666,
+   "keyframes": 16,
+   "name": "earthghost_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_downdamage",
+   "ban_path": "/prim/ani/mob/china/earthghost_downdamage.ban",
+   "channels": 42,
+   "duration_ms": 600,
+   "keyframes": 17,
+   "name": "earthghost_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_wakeup",
+   "ban_path": "/prim/ani/mob/china/earthghost_wakeup.ban",
+   "channels": 42,
+   "duration_ms": 1333,
+   "keyframes": 25,
+   "name": "earthghost_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_downdie",
+   "ban_path": "/prim/ani/mob/china/earthghost_downdie.ban",
+   "channels": 42,
+   "duration_ms": 233,
+   "keyframes": 2,
+   "name": "earthghost_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthghost_attack03",
+   "ban_path": "/prim/ani/mob/china/earthghost_attack03.ban",
+   "channels": 42,
+   "duration_ms": 2700,
+   "keyframes": 60,
+   "name": "earthghost_attack03"
+  }
+ ],
+ "key": "res_mob_god_togui_togui",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/earthghost_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/god/togui.ddj",
+   "material": "EarthGhost",
+   "msh": "prim_mesh_mob_china_earthghost_part1",
+   "skin_records": 146,
+   "skinned": true,
+   "tcount": 184,
+   "tex": "prim_mtrl_mob_god_togui",
+   "vcount": 146
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/earthghost_part2_part1.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/god/togui.ddj",
+   "material": "EarthGhost",
+   "msh": "prim_mesh_mob_china_earthghost_part2_part1",
+   "skin_records": 215,
+   "skinned": true,
+   "tcount": 286,
+   "tex": "prim_mtrl_mob_god_togui",
+   "vcount": 215
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/earthghost_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui.ddj",
+   "material": "EarthGhost",
+   "msh": "prim_mesh_mob_china_earthghost_part2_part2",
+   "skin_records": 221,
+   "skinned": true,
+   "tcount": 316,
+   "tex": "prim_mtrl_mob_god_togui",
+   "vcount": 221
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_earthghost",
+ "skeleton_path": "/prim/skel/mob/china/earthghost.bsk"
+}

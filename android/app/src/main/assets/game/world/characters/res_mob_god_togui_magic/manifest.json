@@ -1,0 +1,133 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_stand01",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_stand01.ban",
+   "channels": 55,
+   "duration_ms": 2666,
+   "keyframes": 9,
+   "name": "earthking_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_stand02",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_stand02.ban",
+   "channels": 53,
+   "duration_ms": 3333,
+   "keyframes": 28,
+   "name": "earthking_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_walk",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_walk.ban",
+   "channels": 53,
+   "duration_ms": 2000,
+   "keyframes": 17,
+   "name": "earthking_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_run",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_run.ban",
+   "channels": 53,
+   "duration_ms": 666,
+   "keyframes": 10,
+   "name": "earthking_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_attack02",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_attack02.ban",
+   "channels": 53,
+   "duration_ms": 3000,
+   "keyframes": 46,
+   "name": "earthking_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_damage01",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_damage01.ban",
+   "channels": 6,
+   "duration_ms": 366,
+   "keyframes": 7,
+   "name": "earthking_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_damage02",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_damage02.ban",
+   "channels": 53,
+   "duration_ms": 833,
+   "keyframes": 13,
+   "name": "earthking_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_attack01",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_attack01.ban",
+   "channels": 53,
+   "duration_ms": 1866,
+   "keyframes": 37,
+   "name": "earthking_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_die",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_die.ban",
+   "channels": 53,
+   "duration_ms": 2000,
+   "keyframes": 23,
+   "name": "earthking_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_die_loop",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_die_loop.ban",
+   "channels": 53,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "earthking_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_earthking_earthking_attack03",
+   "ban_path": "/prim/ani/mob/china/earthking/earthking_attack03.ban",
+   "channels": 53,
+   "duration_ms": 2500,
+   "keyframes": 50,
+   "name": "earthking_attack03"
+  }
+ ],
+ "key": "res_mob_god_togui_magic",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/earthking_part1.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/god/togui_magic.ddj",
+   "material": "EarthKing",
+   "msh": "prim_mesh_mob_china_earthking_part1",
+   "skin_records": 797,
+   "skinned": true,
+   "tcount": 1134,
+   "tex": "prim_mtrl_mob_god_togui_magic",
+   "vcount": 797
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/earthking_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui_magic.ddj",
+   "material": "EarthKing",
+   "msh": "prim_mesh_mob_china_earthking_part2_part1",
+   "skin_records": 135,
+   "skinned": true,
+   "tcount": 181,
+   "tex": "prim_mtrl_mob_god_togui_magic",
+   "vcount": 135
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/earthking_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/togui_magic.ddj",
+   "material": "EarthKing",
+   "msh": "prim_mesh_mob_china_earthking_part2_part2",
+   "skin_records": 135,
+   "skinned": true,
+   "tcount": 181,
+   "tex": "prim_mtrl_mob_god_togui_magic",
+   "vcount": 135
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_earthking",
+ "skeleton_path": "/prim/skel/mob/china/earthking.bsk"
+}

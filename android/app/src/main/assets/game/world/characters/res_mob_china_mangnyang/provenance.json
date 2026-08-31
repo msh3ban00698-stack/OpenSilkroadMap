@@ -1,0 +1,27 @@
+{
+ "animations": [
+  "/prim/ani/mob/china/mangnyang_stand01.ban",
+  "/prim/ani/mob/china/mangnyang_walk.ban",
+  "/prim/ani/mob/china/mangnyang_attack01.ban",
+  "/prim/ani/mob/china/mangnyang_damage01.ban",
+  "/prim/ani/mob/china/mangnyang_damage02.ban",
+  "/prim/ani/mob/china/mangnyang_die.ban",
+  "/prim/ani/mob/china/mangnyang_run.ban",
+  "/prim/ani/mob/china/mangnyang_stand02.ban",
+  "/prim/ani/mob/china/mangnyang_attack02.ban",
+  "/prim/ani/mob/china/mangnyang_die_loop.ban",
+  "/prim/ani/mob/china/mangnyang_down.ban",
+  "/prim/ani/mob/china/mangnyang_downwait.ban",
+  "/prim/ani/mob/china/mangnyang_downdamage.ban",
+  "/prim/ani/mob/china/mangnyang_wakeup.ban",
+  "/prim/ani/mob/china/mangnyang_downdie.ban",
+  "/prim/ani/cos/p_seowon/p_seowon_pick.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/china/mangnyang.bmt",
+ "bsk": "/prim/skel/mob/china/mangnyang.bsk",
+ "bsr": "/res/mob/china/mangnyang.bsr",
+ "meshes": [
+  "/prim/mesh/mob/china/mangnyang_part1.bms",
+  "/prim/mesh/mob/china/mangnyang_part2.bms"
+ ]
+}

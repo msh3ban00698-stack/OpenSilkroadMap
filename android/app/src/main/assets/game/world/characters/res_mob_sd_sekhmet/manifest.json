@@ -1,0 +1,137 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_stand01",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_stand01.ban",
+   "channels": 85,
+   "duration_ms": 2666,
+   "keyframes": 7,
+   "name": "isis_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_walk",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_walk.ban",
+   "channels": 85,
+   "duration_ms": 1333,
+   "keyframes": 19,
+   "name": "isis_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack01",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack01.ban",
+   "channels": 87,
+   "duration_ms": 2866,
+   "keyframes": 41,
+   "name": "isis_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack02",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack02.ban",
+   "channels": 87,
+   "duration_ms": 2833,
+   "keyframes": 39,
+   "name": "isis_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_attack03",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_attack03.ban",
+   "channels": 85,
+   "duration_ms": 3200,
+   "keyframes": 44,
+   "name": "isis_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_isis_die",
+   "ban_path": "/prim/ani/mob/sd/isis/isis_die.ban",
+   "channels": 169,
+   "duration_ms": 1000,
+   "keyframes": 15,
+   "name": "isis_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_isis_sekhmet_attack05",
+   "ban_path": "/prim/ani/mob/sd/isis/sekhmet_attack05.ban",
+   "channels": 85,
+   "duration_ms": 3800,
+   "keyframes": 59,
+   "name": "sekhmet_attack05"
+  }
+ ],
+ "key": "res_mob_sd_sekhmet",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet02.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet01.ddj",
+   "material": "sekhmet01",
+   "msh": "prim_mesh_mob_sd_sekhmet02",
+   "skin_records": 291,
+   "skinned": true,
+   "tcount": 488,
+   "tex": "prim_mtrl_mob_sd_sekhmet01",
+   "vcount": 291
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet.ddj",
+   "material": "sekhmet",
+   "msh": "prim_mesh_mob_sd_sekhmet_part1",
+   "skin_records": 1021,
+   "skinned": true,
+   "tcount": 1454,
+   "tex": "prim_mtrl_mob_sd_sekhmet",
+   "vcount": 1021
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet.ddj",
+   "material": "sekhmet",
+   "msh": "prim_mesh_mob_sd_sekhmet_part2_part1",
+   "skin_records": 196,
+   "skinned": true,
+   "tcount": 240,
+   "tex": "prim_mtrl_mob_sd_sekhmet",
+   "vcount": 196
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet.ddj",
+   "material": "sekhmet",
+   "msh": "prim_mesh_mob_sd_sekhmet_part2_part2",
+   "skin_records": 196,
+   "skinned": true,
+   "tcount": 240,
+   "tex": "prim_mtrl_mob_sd_sekhmet",
+   "vcount": 196
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet01_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet.ddj",
+   "material": "sekhmet",
+   "msh": "prim_mesh_mob_sd_sekhmet01_part1",
+   "skin_records": 147,
+   "skinned": true,
+   "tcount": 157,
+   "tex": "prim_mtrl_mob_sd_sekhmet",
+   "vcount": 147
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sekhmet01_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/sekhmet.ddj",
+   "material": "sekhmet",
+   "msh": "prim_mesh_mob_sd_sekhmet01_part2",
+   "skin_records": 87,
+   "skinned": true,
+   "tcount": 91,
+   "tex": "prim_mtrl_mob_sd_sekhmet",
+   "vcount": 87
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_sekhmet",
+ "skeleton_path": "/prim/skel/mob/sd/sekhmet.bsk"
+}

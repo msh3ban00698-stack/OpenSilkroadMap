@@ -1,0 +1,28 @@
+{
+ "animations": [
+  "/prim/ani/mob/oasis/scorpion/scorpion_stand01.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_stand02.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_walk.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_run.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_attack01.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_attack02.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_attack03.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_damage01.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_damage02.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_die.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_die_loop.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_down.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_downwait.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_downup.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_downdamage.ban",
+  "/prim/ani/mob/oasis/scorpion/scorpion_downdie.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/oasis/scorpion.bmt",
+ "bsk": "/prim/skel/mob/oasis/scorpion.bsk",
+ "bsr": "/res/mob/oasis/scorpion.bsr",
+ "meshes": [
+  "/prim/mesh/mob/oasis/scorpion_part1.bms",
+  "/prim/mesh/mob/oasis/scorpion_part2_part1.bms",
+  "/prim/mesh/mob/oasis/scorpion_part2_part2.bms"
+ ]
+}

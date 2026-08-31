@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/rocmountainquest_oldwoman.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/arabia_najima.bmt",
+ "bsk": "/prim/skel/npc/common/rocmountainquest_oldwoman.bsk",
+ "bsr": "/res/npc/npc/arabia_najima.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/rocmountainquest_oldwoman02.bms",
+  "/prim/mesh/npc/common/rocmountainquest_oldwoman01_part1.bms",
+  "/prim/mesh/npc/common/rocmountainquest_oldwoman01_part2.bms"
+ ]
+}

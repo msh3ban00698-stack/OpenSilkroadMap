@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_potion.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/arabia_farmer.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_potion.bsk",
+ "bsr": "/res/npc/npc/arabia_farmer.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_potion_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_potion_part2.bms"
+ ]
+}

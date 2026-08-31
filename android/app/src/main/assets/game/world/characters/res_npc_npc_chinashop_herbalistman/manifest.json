@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinashop_herbalistman_basic",
+   "ban_path": "/prim/ani/npc/china/chinashop_herbalistman_basic.ban",
+   "channels": 37,
+   "duration_ms": 4000,
+   "keyframes": 9,
+   "name": "chinashop_herbalistman_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinashop_herbalistman_time",
+   "ban_path": "/prim/ani/npc/china/chinashop_herbalistman_time.ban",
+   "channels": 37,
+   "duration_ms": 4666,
+   "keyframes": 16,
+   "name": "chinashop_herbalistman_time"
+  }
+ ],
+ "key": "res_npc_npc_chinashop_herbalistman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_herbalistman_al_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_herbalistman_al.ddj",
+   "material": "ChinaShop_HerbalistMan_al_2s",
+   "msh": "prim_mesh_npc_china_chinashop_herbalistman_al_2s",
+   "skin_records": 27,
+   "skinned": true,
+   "tcount": 24,
+   "tex": "prim_mtrl_npc_china_chinashop_herbalistman_al",
+   "vcount": 27
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_herbalistman_yak.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_herbalistman.ddj",
+   "material": "ChinaShop_HerbalistMan",
+   "msh": "prim_mesh_npc_china_chinashop_herbalistman_yak",
+   "skin_records": 32,
+   "skinned": true,
+   "tcount": 28,
+   "tex": "prim_mtrl_npc_china_chinashop_herbalistman",
+   "vcount": 32
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_herbalistman_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_herbalistman.ddj",
+   "material": "ChinaShop_HerbalistMan",
+   "msh": "prim_mesh_npc_china_chinashop_herbalistman_part1",
+   "skin_records": 296,
+   "skinned": true,
+   "tcount": 378,
+   "tex": "prim_mtrl_npc_china_chinashop_herbalistman",
+   "vcount": 296
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_herbalistman_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_herbalistman.ddj",
+   "material": "ChinaShop_HerbalistMan",
+   "msh": "prim_mesh_npc_china_chinashop_herbalistman_part2",
+   "skin_records": 259,
+   "skinned": true,
+   "tcount": 356,
+   "tex": "prim_mtrl_npc_china_chinashop_herbalistman",
+   "vcount": 259
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinashop_herbalistman",
+ "skeleton_path": "/prim/skel/npc/china/chinashop_herbalistman.bsk"
+}

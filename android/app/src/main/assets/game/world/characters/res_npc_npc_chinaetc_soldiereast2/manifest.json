@@ -1,0 +1,89 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinaetc_soldierpalace_basic",
+   "ban_path": "/prim/ani/npc/china/chinaetc_soldierpalace_basic.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 5,
+   "name": "chinaetc_soldierpalace_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaetc_soldierpalace_time",
+   "ban_path": "/prim/ani/npc/china/chinaetc_soldierpalace_time.ban",
+   "channels": 35,
+   "duration_ms": 4666,
+   "keyframes": 14,
+   "name": "chinaetc_soldierpalace_time"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaetc_soldierpalace_time01",
+   "ban_path": "/prim/ani/npc/china/chinaetc_soldierpalace_time01.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 6,
+   "name": "chinaetc_soldierpalace_time01"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaetc_soldierpalace_time02",
+   "ban_path": "/prim/ani/npc/china/chinaetc_soldierpalace_time02.ban",
+   "channels": 35,
+   "duration_ms": 5333,
+   "keyframes": 14,
+   "name": "chinaetc_soldierpalace_time02"
+  }
+ ],
+ "key": "res_npc_npc_chinaetc_soldiereast2",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_soldiereast2_2s.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_soldiereast2.ddj",
+   "material": "ChinaEtc_SoldierEast2_2s",
+   "msh": "prim_mesh_npc_china_chinaetc_soldiereast2_2s",
+   "skin_records": 38,
+   "skinned": true,
+   "tcount": 36,
+   "tex": "prim_mtrl_npc_china_chinaetc_soldiereast2",
+   "vcount": 38
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_soldiereast2_al_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_soldiereast2_al.ddj",
+   "material": "ChinaEtc_SoldierEast2_al_2s",
+   "msh": "prim_mesh_npc_china_chinaetc_soldiereast2_al_2s",
+   "skin_records": 37,
+   "skinned": true,
+   "tcount": 36,
+   "tex": "prim_mtrl_npc_china_chinaetc_soldiereast2_al",
+   "vcount": 37
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_soldiereast2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_soldiereast2.ddj",
+   "material": "ChinaEtc_SoldierEast2",
+   "msh": "prim_mesh_npc_china_chinaetc_soldiereast2_part1",
+   "skin_records": 237,
+   "skinned": true,
+   "tcount": 310,
+   "tex": "prim_mtrl_npc_china_chinaetc_soldiereast2",
+   "vcount": 237
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_soldiereast2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_soldiereast2.ddj",
+   "material": "ChinaEtc_SoldierEast2",
+   "msh": "prim_mesh_npc_china_chinaetc_soldiereast2_part2",
+   "skin_records": 368,
+   "skinned": true,
+   "tcount": 471,
+   "tex": "prim_mtrl_npc_china_chinaetc_soldiereast2",
+   "vcount": 368
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinaetc_soldiereast2",
+ "skeleton_path": "/prim/skel/npc/china/chinaetc_soldiereast2.bsk"
+}

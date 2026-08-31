@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_m_area_berenice_stand01",
+   "ban_path": "/prim/ani/npc/sd/sd_m_area_berenice_stand01.ban",
+   "channels": 35,
+   "duration_ms": 5166,
+   "keyframes": 2,
+   "name": "sd_m_area_berenice_stand01"
+  }
+ ],
+ "key": "res_npc_sd_sd_m_area_berenice",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_berenice_2al.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_berenice.ddj",
+   "material": "SD_m_area_berenice_2al",
+   "msh": "prim_mesh_npc_sd_sd_m_area_berenice_2al",
+   "skin_records": 107,
+   "skinned": true,
+   "tcount": 150,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_berenice",
+   "vcount": 107
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_berenice_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_berenice.ddj",
+   "material": "SD_m_area_berenice",
+   "msh": "prim_mesh_npc_sd_sd_m_area_berenice_part1",
+   "skin_records": 479,
+   "skinned": true,
+   "tcount": 673,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_berenice",
+   "vcount": 479
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_berenice_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_m_area_berenice.ddj",
+   "material": "SD_m_area_berenice",
+   "msh": "prim_mesh_npc_sd_sd_m_area_berenice_part2",
+   "skin_records": 421,
+   "skinned": true,
+   "tcount": 575,
+   "tex": "prim_mtrl_npc_sd_sd_m_area_berenice",
+   "vcount": 421
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_m_area_berenice",
+ "skeleton_path": "/prim/skel/npc/sd/sd_m_area_berenice.bsk"
+}

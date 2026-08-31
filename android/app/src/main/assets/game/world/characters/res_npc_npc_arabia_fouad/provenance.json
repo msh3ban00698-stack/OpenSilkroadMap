@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_ahha_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/arabia_fouad.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_ahha.bsk",
+ "bsr": "/res/npc/npc/arabia_fouad.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_ahha_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_ahha_part2.bms",
+  "/prim/mesh/npc/sd/sd_m_area_ahha_rol.bms"
+ ]
+}

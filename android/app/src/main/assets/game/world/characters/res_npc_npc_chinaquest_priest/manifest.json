@@ -1,0 +1,61 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinaquest_priest_basic",
+   "ban_path": "/prim/ani/npc/china/chinaquest_priest_basic.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 17,
+   "name": "chinaquest_priest_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaquest_priest_time",
+   "ban_path": "/prim/ani/npc/china/chinaquest_priest_time.ban",
+   "channels": 35,
+   "duration_ms": 5000,
+   "keyframes": 16,
+   "name": "chinaquest_priest_time"
+  }
+ ],
+ "key": "res_npc_npc_chinaquest_priest",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaquest_priest_al.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinaquest_priest_al.ddj",
+   "material": "ChinaQuest_Priest_al",
+   "msh": "prim_mesh_npc_china_chinaquest_priest_al",
+   "skin_records": 25,
+   "skinned": true,
+   "tcount": 13,
+   "tex": "prim_mtrl_npc_china_chinaquest_priest_al",
+   "vcount": 25
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaquest_priest_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinaquest_priest.ddj",
+   "material": "ChinaQuest_Priest",
+   "msh": "prim_mesh_npc_china_chinaquest_priest_part1",
+   "skin_records": 280,
+   "skinned": true,
+   "tcount": 330,
+   "tex": "prim_mtrl_npc_china_chinaquest_priest",
+   "vcount": 280
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaquest_priest_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/china/chinaquest_priest.ddj",
+   "material": "ChinaQuest_Priest",
+   "msh": "prim_mesh_npc_china_chinaquest_priest_part2",
+   "skin_records": 360,
+   "skinned": true,
+   "tcount": 468,
+   "tex": "prim_mtrl_npc_china_chinaquest_priest",
+   "vcount": 360
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinaquest_priest",
+ "skeleton_path": "/prim/skel/npc/china/chinaquest_priest.bsk"
+}

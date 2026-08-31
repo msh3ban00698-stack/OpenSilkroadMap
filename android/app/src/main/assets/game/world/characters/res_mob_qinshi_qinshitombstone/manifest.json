@@ -1,0 +1,145 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_stand01",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_stand01.ban",
+   "channels": 36,
+   "duration_ms": 4000,
+   "keyframes": 7,
+   "name": "tombstone_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_stand02",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_stand02.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "tombstone_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_walk",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_walk.ban",
+   "channels": 36,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "tombstone_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_run",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_run.ban",
+   "channels": 36,
+   "duration_ms": 1000,
+   "keyframes": 7,
+   "name": "tombstone_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_attack01",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_attack01.ban",
+   "channels": 5,
+   "duration_ms": 2000,
+   "keyframes": 33,
+   "name": "tombstone_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_damage01",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_damage01.ban",
+   "channels": 5,
+   "duration_ms": 1066,
+   "keyframes": 5,
+   "name": "tombstone_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_damage02",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_damage02.ban",
+   "channels": 5,
+   "duration_ms": 1333,
+   "keyframes": 7,
+   "name": "tombstone_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_down",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_down.ban",
+   "channels": 5,
+   "duration_ms": 600,
+   "keyframes": 6,
+   "name": "tombstone_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_down_rm",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_down_rm.ban",
+   "channels": 5,
+   "duration_ms": 1000,
+   "keyframes": 9,
+   "name": "tombstone_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_down_damage",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_down_damage.ban",
+   "channels": 5,
+   "duration_ms": 1500,
+   "keyframes": 17,
+   "name": "tombstone_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_down_up",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_down_up.ban",
+   "channels": 5,
+   "duration_ms": 1666,
+   "keyframes": 9,
+   "name": "tombstone_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_down_die",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_down_die.ban",
+   "channels": 5,
+   "duration_ms": 333,
+   "keyframes": 4,
+   "name": "tombstone_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_attack02",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_attack02.ban",
+   "channels": 5,
+   "duration_ms": 2000,
+   "keyframes": 4,
+   "name": "tombstone_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tombstone_tombstone_attack03",
+   "ban_path": "/prim/ani/mob/china/tombstone/tombstone_attack03.ban",
+   "channels": 5,
+   "duration_ms": 2000,
+   "keyframes": 12,
+   "name": "tombstone_attack03"
+  }
+ ],
+ "key": "res_mob_qinshi_qinshitombstone",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/tombstone_body.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/qinshi/qinshitombstone.ddj",
+   "material": "tombstone",
+   "msh": "prim_mesh_mob_china_tombstone_body",
+   "skin_records": 201,
+   "skinned": true,
+   "tcount": 257,
+   "tex": "prim_mtrl_mob_qinshi_qinshitombstone",
+   "vcount": 201
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tombstone_head.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/qinshi/qinshitombstone.ddj",
+   "material": "tombstone",
+   "msh": "prim_mesh_mob_china_tombstone_head",
+   "skin_records": 163,
+   "skinned": true,
+   "tcount": 274,
+   "tex": "prim_mtrl_mob_qinshi_qinshitombstone",
+   "vcount": 163
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_tombstone",
+ "skeleton_path": "/prim/skel/mob/china/tombstone.bsk"
+}

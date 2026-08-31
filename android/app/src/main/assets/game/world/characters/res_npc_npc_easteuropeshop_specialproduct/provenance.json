@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropeshop_specialproduct.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropeshop_specialproduct.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropeshop_specialproduct.bsk",
+ "bsr": "/res/npc/npc/EastEuropeShop_SpecialProduct.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropeshop_specialproduct_2s.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_specialproduct_al.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_specialproduct_part1.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_specialproduct_part2.bms"
+ ]
+}

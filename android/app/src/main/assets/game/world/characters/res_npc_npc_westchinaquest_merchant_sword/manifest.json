@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinaquest_merchant_basic",
+   "ban_path": "/prim/ani/npc/china/chinaquest_merchant_basic.ban",
+   "channels": 41,
+   "duration_ms": 4000,
+   "keyframes": 20,
+   "name": "chinaquest_merchant_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaquest_merchant_time",
+   "ban_path": "/prim/ani/npc/china/chinaquest_merchant_time.ban",
+   "channels": 41,
+   "duration_ms": 8333,
+   "keyframes": 70,
+   "name": "chinaquest_merchant_time"
+  }
+ ],
+ "key": "res_npc_npc_westchinaquest_merchant_sword",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_merchant_sword_2s.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_merchant_sword.ddj",
+   "material": "WestChinaQuest_Merchant_sword_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_merchant_sword_2s",
+   "skin_records": 121,
+   "skinned": true,
+   "tcount": 122,
+   "tex": "prim_mtrl_npc_china_westchinaquest_merchant_sword",
+   "vcount": 121
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_merchant_sword_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_merchant_sword.ddj",
+   "material": "WestChinaQuest_Merchant_sword_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_merchant_sword_part1",
+   "skin_records": 487,
+   "skinned": true,
+   "tcount": 636,
+   "tex": "prim_mtrl_npc_china_westchinaquest_merchant_sword",
+   "vcount": 487
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_merchant_sword_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_merchant_sword.ddj",
+   "material": "WestChinaQuest_Merchant_sword_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_merchant_sword_part2",
+   "skin_records": 200,
+   "skinned": true,
+   "tcount": 234,
+   "tex": "prim_mtrl_npc_china_westchinaquest_merchant_sword",
+   "vcount": 200
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_merchant_sword_al_2s.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_merchant_sword_al.ddj",
+   "material": "WestChinaQuest_Merchant_sword_al_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_merchant_sword_al_2s",
+   "skin_records": 159,
+   "skinned": true,
+   "tcount": 140,
+   "tex": "prim_mtrl_npc_china_westchinaquest_merchant_sword_al",
+   "vcount": 159
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_westchinaquest_merchant_sword",
+ "skeleton_path": "/prim/skel/npc/china/westchinaquest_merchant_sword.bsk"
+}

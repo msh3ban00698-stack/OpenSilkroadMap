@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/sd_potion_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/sd_potion.bmt",
+ "bsk": "/prim/skel/npc/arabia/sd_potion.bsk",
+ "bsr": "/res/npc/npc/arabia_potion.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/sd_potion_part1.bms",
+  "/prim/mesh/npc/arabia/sd_potion_part2_part1.bms",
+  "/prim/mesh/npc/arabia/sd_potion_part2_part2_part1.bms",
+  "/prim/mesh/npc/arabia/sd_potion_part2_part2_part2.bms"
+ ]
+}

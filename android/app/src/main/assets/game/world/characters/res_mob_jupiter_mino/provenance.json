@@ -1,0 +1,26 @@
+{
+ "animations": [
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_stand01.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_walk.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_run.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack01.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack02.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack03.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_ready.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_wait.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack04_shot.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_attack05.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_die.ban",
+  "/prim/ani/mob/god/flame_cowking/flame_cowking_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/jupiter/mino.bmt",
+ "bsk": "/prim/skel/mob/god/flame_cowking.bsk",
+ "bsr": "/res/mob/Jupiter/mino.bsr",
+ "meshes": [
+  "/prim/mesh/mob/god/flame_cowking01.bms",
+  "/prim/mesh/mob/god/flame_cowking_weapon.bms",
+  "/prim/mesh/mob/god/flame_cowking_part1.bms",
+  "/prim/mesh/mob/god/flame_cowking_part2_part1.bms",
+  "/prim/mesh/mob/god/flame_cowking_part2_part2.bms"
+ ]
+}

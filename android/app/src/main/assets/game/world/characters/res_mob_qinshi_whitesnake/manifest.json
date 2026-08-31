@@ -1,0 +1,189 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_stand01.ban",
+   "channels": 90,
+   "duration_ms": 3333,
+   "keyframes": 11,
+   "name": "whitesnake_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack01.ban",
+   "channels": 90,
+   "duration_ms": 3333,
+   "keyframes": 34,
+   "name": "whitesnake_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack03.ban",
+   "channels": 90,
+   "duration_ms": 1333,
+   "keyframes": 15,
+   "name": "whitesnake_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack07",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack07.ban",
+   "channels": 90,
+   "duration_ms": 1333,
+   "keyframes": 17,
+   "name": "whitesnake_attack07"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack09",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack09.ban",
+   "channels": 90,
+   "duration_ms": 3333,
+   "keyframes": 30,
+   "name": "whitesnake_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack02.ban",
+   "channels": 90,
+   "duration_ms": 3333,
+   "keyframes": 34,
+   "name": "whitesnake_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack04.ban",
+   "channels": 90,
+   "duration_ms": 2300,
+   "keyframes": 22,
+   "name": "whitesnake_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack05",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack05.ban",
+   "channels": 90,
+   "duration_ms": 4333,
+   "keyframes": 51,
+   "name": "whitesnake_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack06",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack06.ban",
+   "channels": 90,
+   "duration_ms": 1333,
+   "keyframes": 17,
+   "name": "whitesnake_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack08",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack08.ban",
+   "channels": 90,
+   "duration_ms": 1333,
+   "keyframes": 17,
+   "name": "whitesnake_attack08"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_die",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_die.ban",
+   "channels": 90,
+   "duration_ms": 3266,
+   "keyframes": 32,
+   "name": "whitesnake_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_die_rm.ban",
+   "channels": 90,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "whitesnake_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_stand02",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_stand02.ban",
+   "channels": 90,
+   "duration_ms": 3333,
+   "keyframes": 14,
+   "name": "whitesnake_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack03_ready",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack03_ready.ban",
+   "channels": 90,
+   "duration_ms": 2000,
+   "keyframes": 16,
+   "name": "whitesnake_attack03_ready"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_whitesnake_whitesnake_attack03_wait",
+   "ban_path": "/prim/ani/mob/qinshi/whitesnake/whitesnake_attack03_wait.ban",
+   "channels": 90,
+   "duration_ms": 1000,
+   "keyframes": 9,
+   "name": "whitesnake_attack03_wait"
+  }
+ ],
+ "key": "res_mob_qinshi_whitesnake",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/whitesnake01.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/qinshi/whitesnake02.ddj",
+   "material": "whitesnake01",
+   "msh": "prim_mesh_mob_qinshi_whitesnake01",
+   "skin_records": 1393,
+   "skinned": true,
+   "tcount": 1663,
+   "tex": "prim_mtrl_mob_qinshi_whitesnake02",
+   "vcount": 1393
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/whitesnake_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/qinshi/whitesnake01.ddj",
+   "material": "whitesnake",
+   "msh": "prim_mesh_mob_qinshi_whitesnake_part2_part1",
+   "skin_records": 314,
+   "skinned": true,
+   "tcount": 372,
+   "tex": "prim_mtrl_mob_qinshi_whitesnake01",
+   "vcount": 314
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/whitesnake_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/qinshi/whitesnake01.ddj",
+   "material": "whitesnake",
+   "msh": "prim_mesh_mob_qinshi_whitesnake_part1",
+   "skin_records": 359,
+   "skinned": true,
+   "tcount": 416,
+   "tex": "prim_mtrl_mob_qinshi_whitesnake01",
+   "vcount": 359
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/whitesnake_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/qinshi/whitesnake01.ddj",
+   "material": "whitesnake",
+   "msh": "prim_mesh_mob_qinshi_whitesnake_part2_part2_part1",
+   "skin_records": 790,
+   "skinned": true,
+   "tcount": 1128,
+   "tex": "prim_mtrl_mob_qinshi_whitesnake01",
+   "vcount": 790
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/whitesnake_part2_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/qinshi/whitesnake01.ddj",
+   "material": "whitesnake",
+   "msh": "prim_mesh_mob_qinshi_whitesnake_part2_part2_part2",
+   "skin_records": 862,
+   "skinned": true,
+   "tcount": 1247,
+   "tex": "prim_mtrl_mob_qinshi_whitesnake01",
+   "vcount": 862
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_whitesnake",
+ "skeleton_path": "/prim/skel/mob/qinshi/whitesnake.bsk"
+}

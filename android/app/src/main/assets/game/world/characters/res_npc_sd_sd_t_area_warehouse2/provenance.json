@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_t_area_warehouse2_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_t_area_warehouse2.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_t_area_warehouse2.bsk",
+ "bsr": "/res/npc/sd/sd_t_area_warehouse2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_t_area_warehouse2_box.bms",
+  "/prim/mesh/npc/sd/sd_t_area_warehouse2_part1.bms",
+  "/prim/mesh/npc/sd/sd_t_area_warehouse2_part2.bms"
+ ]
+}

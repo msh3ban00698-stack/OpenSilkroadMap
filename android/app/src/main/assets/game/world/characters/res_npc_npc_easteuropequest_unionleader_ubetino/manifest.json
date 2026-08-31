@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_unionleader_ubetino",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_unionleader_ubetino.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "easteuropequest_unionleader_ubetino"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_unionleader_ubetino",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_2s.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_unionleader_ubetino.ddj",
+   "material": "EastEuropeQuest_UnionLeader_Ubetino_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_unionleader_ubetino_2s",
+   "skin_records": 202,
+   "skinned": true,
+   "tcount": 236,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_unionleader_ubetino",
+   "vcount": 202
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_unionleader_ubetino.ddj",
+   "material": "EastEuropeQuest_UnionLeader_Ubetino",
+   "msh": "prim_mesh_npc_europe_easteuropequest_unionleader_ubetino_part1",
+   "skin_records": 401,
+   "skinned": true,
+   "tcount": 495,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_unionleader_ubetino",
+   "vcount": 401
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_unionleader_ubetino_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_unionleader_ubetino.ddj",
+   "material": "EastEuropeQuest_UnionLeader_Ubetino",
+   "msh": "prim_mesh_npc_europe_easteuropequest_unionleader_ubetino_part2",
+   "skin_records": 343,
+   "skinned": true,
+   "tcount": 491,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_unionleader_ubetino",
+   "vcount": 343
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_unionleader_ubetino",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_unionleader_ubetino.bsk"
+}

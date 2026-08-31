@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_maneto_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_maneto.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_maneto.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_maneto.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_maneto_01.bms",
+  "/prim/mesh/npc/sd/sd_m_area_maneto_2al.bms",
+  "/prim/mesh/npc/sd/sd_m_area_maneto_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_maneto_part2_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_maneto_part2_part2.bms"
+ ]
+}

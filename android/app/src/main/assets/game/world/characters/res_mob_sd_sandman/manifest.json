@@ -1,0 +1,201 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_stand01",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_stand01.ban",
+   "channels": 66,
+   "duration_ms": 6000,
+   "keyframes": 55,
+   "name": "sandman_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_walk",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_walk.ban",
+   "channels": 66,
+   "duration_ms": 1866,
+   "keyframes": 24,
+   "name": "sandman_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_run",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_run.ban",
+   "channels": 66,
+   "duration_ms": 1200,
+   "keyframes": 36,
+   "name": "sandman_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_attack1",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_attack1.ban",
+   "channels": 66,
+   "duration_ms": 1000,
+   "keyframes": 19,
+   "name": "sandman_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_attack2",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_attack2.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 35,
+   "name": "sandman_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_attack3",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_attack3.ban",
+   "channels": 66,
+   "duration_ms": 2866,
+   "keyframes": 41,
+   "name": "sandman_attack3"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_attack4",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_attack4.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 38,
+   "name": "sandman_attack4"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_attack5",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_attack5.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 32,
+   "name": "sandman_attack5"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_damage1",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_damage1.ban",
+   "channels": 6,
+   "duration_ms": 500,
+   "keyframes": 6,
+   "name": "sandman_damage1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_down",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_down.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 39,
+   "name": "sandman_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_down_rm",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_down_rm.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 9,
+   "name": "sandman_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_down_damage",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_down_damage.ban",
+   "channels": 66,
+   "duration_ms": 500,
+   "keyframes": 14,
+   "name": "sandman_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_down_up",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_down_up.ban",
+   "channels": 66,
+   "duration_ms": 1833,
+   "keyframes": 14,
+   "name": "sandman_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_down_die",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_down_die.ban",
+   "channels": 66,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "sandman_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_sandman_sandman_die",
+   "ban_path": "/prim/ani/mob/sd/sandman/sandman_die.ban",
+   "channels": 66,
+   "duration_ms": 4333,
+   "keyframes": 38,
+   "name": "sandman_die"
+  }
+ ],
+ "key": "res_mob_sd_sandman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman01.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman11111.ddj",
+   "material": "sandman01",
+   "msh": "prim_mesh_mob_sd_sandman01",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 48,
+   "tex": "prim_mtrl_mob_sd_sandman11111",
+   "vcount": 40
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman11111.ddj",
+   "material": "sandman01",
+   "msh": "prim_mesh_mob_sd_sandman02",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 48,
+   "tex": "prim_mtrl_mob_sd_sandman11111",
+   "vcount": 40
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman.ddj",
+   "material": "sandman",
+   "msh": "prim_mesh_mob_sd_sandman_part1",
+   "skin_records": 1301,
+   "skinned": true,
+   "tcount": 1699,
+   "tex": "prim_mtrl_mob_sd_sandman",
+   "vcount": 1301
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman.ddj",
+   "material": "sandman",
+   "msh": "prim_mesh_mob_sd_sandman_part2_part1",
+   "skin_records": 178,
+   "skinned": true,
+   "tcount": 241,
+   "tex": "prim_mtrl_mob_sd_sandman",
+   "vcount": 178
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman.ddj",
+   "material": "sandman",
+   "msh": "prim_mesh_mob_sd_sandman_part2_part2_part1",
+   "skin_records": 178,
+   "skinned": true,
+   "tcount": 241,
+   "tex": "prim_mtrl_mob_sd_sandman",
+   "vcount": 178
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/sandman_part2_part2_part2.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/sd/sandman.ddj",
+   "material": "sandman",
+   "msh": "prim_mesh_mob_sd_sandman_part2_part2_part2",
+   "skin_records": 141,
+   "skinned": true,
+   "tcount": 187,
+   "tex": "prim_mtrl_mob_sd_sandman",
+   "vcount": 141
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_sandman",
+ "skeleton_path": "/prim/skel/mob/sd/sandman.bsk"
+}

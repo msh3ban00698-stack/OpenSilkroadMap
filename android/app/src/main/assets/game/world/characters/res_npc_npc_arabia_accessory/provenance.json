@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_accessory_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_accessory.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_accessory.bsk",
+ "bsr": "/res/npc/npc/arabia_accessory.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_accessory_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_accessory_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_accessory_part2_part2.bms"
+ ]
+}

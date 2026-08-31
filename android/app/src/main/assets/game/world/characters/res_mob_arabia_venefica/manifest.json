@@ -1,0 +1,229 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_stand01",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_stand01.ban",
+   "channels": 182,
+   "duration_ms": 6000,
+   "keyframes": 181,
+   "name": "venefica_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_walk",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_walk.ban",
+   "channels": 181,
+   "duration_ms": 2333,
+   "keyframes": 42,
+   "name": "venefica_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_stand02",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_stand02.ban",
+   "channels": 182,
+   "duration_ms": 4666,
+   "keyframes": 141,
+   "name": "venefica_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_run",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_run.ban",
+   "channels": 182,
+   "duration_ms": 1666,
+   "keyframes": 51,
+   "name": "venefica_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_attack01",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_attack01.ban",
+   "channels": 182,
+   "duration_ms": 4000,
+   "keyframes": 121,
+   "name": "venefica_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_attack02",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_attack02.ban",
+   "channels": 182,
+   "duration_ms": 3200,
+   "keyframes": 66,
+   "name": "venefica_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_attack03",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_attack03.ban",
+   "channels": 182,
+   "duration_ms": 3833,
+   "keyframes": 116,
+   "name": "venefica_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_attack05",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_attack05.ban",
+   "channels": 182,
+   "duration_ms": 3166,
+   "keyframes": 96,
+   "name": "venefica_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_attack09",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_attack09.ban",
+   "channels": 182,
+   "duration_ms": 3333,
+   "keyframes": 101,
+   "name": "venefica_attack09"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_die",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_die.ban",
+   "channels": 182,
+   "duration_ms": 4500,
+   "keyframes": 136,
+   "name": "venefica_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_venefica_venefica_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/venefica/venefica_die_rm.ban",
+   "channels": 182,
+   "duration_ms": 1000,
+   "keyframes": 2,
+   "name": "venefica_die_rm"
+  }
+ ],
+ "key": "res_mob_arabia_venefica",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_cape.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_cape",
+   "skin_records": 189,
+   "skinned": true,
+   "tcount": 262,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 189
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_hand.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_hand",
+   "skin_records": 368,
+   "skinned": true,
+   "tcount": 432,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 368
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_head.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_head",
+   "skin_records": 735,
+   "skinned": true,
+   "tcount": 1116,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 735
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_mask.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_mask",
+   "skin_records": 55,
+   "skinned": true,
+   "tcount": 78,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 55
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_body_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_body_part1",
+   "skin_records": 759,
+   "skinned": true,
+   "tcount": 903,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 759
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_body_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_body_part2",
+   "skin_records": 1124,
+   "skinned": true,
+   "tcount": 1511,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 1124
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_chair_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_02.ddj",
+   "material": "venefica_02",
+   "msh": "prim_mesh_mob_arabia_venefica_chair_part1",
+   "skin_records": 885,
+   "skinned": true,
+   "tcount": 774,
+   "tex": "prim_mtrl_mob_arabia_venefica_02",
+   "vcount": 885
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_chair_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_02.ddj",
+   "material": "venefica_02",
+   "msh": "prim_mesh_mob_arabia_venefica_chair_part2",
+   "skin_records": 877,
+   "skinned": true,
+   "tcount": 782,
+   "tex": "prim_mtrl_mob_arabia_venefica_02",
+   "vcount": 877
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_feather_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_feather_part1",
+   "skin_records": 226,
+   "skinned": true,
+   "tcount": 254,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 226
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_feather_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_01.ddj",
+   "material": "venefica_01",
+   "msh": "prim_mesh_mob_arabia_venefica_feather_part2",
+   "skin_records": 226,
+   "skinned": true,
+   "tcount": 254,
+   "tex": "prim_mtrl_mob_arabia_venefica_01",
+   "vcount": 226
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/venefica_weapon.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/venefica_02.ddj",
+   "material": "venefica_02",
+   "msh": "prim_mesh_mob_arabia_venefica_weapon",
+   "skin_records": 366,
+   "skinned": true,
+   "tcount": 506,
+   "tex": "prim_mtrl_mob_arabia_venefica_02",
+   "vcount": 366
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_venefica",
+ "skeleton_path": "/prim/skel/mob/arabia/venefica.bsk"
+}

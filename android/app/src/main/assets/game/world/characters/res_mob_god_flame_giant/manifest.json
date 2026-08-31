@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_stand01.ban",
+   "channels": 54,
+   "duration_ms": 2666,
+   "keyframes": 21,
+   "name": "tombsoldier_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_walk",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_walk.ban",
+   "channels": 54,
+   "duration_ms": 1666,
+   "keyframes": 23,
+   "name": "tombsoldier_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_attack01.ban",
+   "channels": 54,
+   "duration_ms": 2500,
+   "keyframes": 60,
+   "name": "tombsoldier_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_attack02.ban",
+   "channels": 54,
+   "duration_ms": 2333,
+   "keyframes": 56,
+   "name": "tombsoldier_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_attack03.ban",
+   "channels": 54,
+   "duration_ms": 3000,
+   "keyframes": 49,
+   "name": "tombsoldier_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_attack04.ban",
+   "channels": 54,
+   "duration_ms": 2766,
+   "keyframes": 63,
+   "name": "tombsoldier_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_damage01.ban",
+   "channels": 12,
+   "duration_ms": 400,
+   "keyframes": 8,
+   "name": "tombsoldier_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_die.ban",
+   "channels": 54,
+   "duration_ms": 2233,
+   "keyframes": 55,
+   "name": "tombsoldier_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_die_rm.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombsoldier_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_down",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_down.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 28,
+   "name": "tombsoldier_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_down_rm.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "tombsoldier_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_down_damage.ban",
+   "channels": 54,
+   "duration_ms": 500,
+   "keyframes": 14,
+   "name": "tombsoldier_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_down_up.ban",
+   "channels": 54,
+   "duration_ms": 1500,
+   "keyframes": 29,
+   "name": "tombsoldier_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_down_die.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombsoldier_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombsoldier_tombsoldier_run",
+   "ban_path": "/prim/ani/mob/qinshi/tombsoldier/tombsoldier_run.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 22,
+   "name": "tombsoldier_run"
+  }
+ ],
+ "key": "res_mob_god_flame_giant",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombsoldier_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/god/flame_giant.ddj",
+   "material": "tombsoldier",
+   "msh": "prim_mesh_mob_qinshi_tombsoldier_part1",
+   "skin_records": 602,
+   "skinned": true,
+   "tcount": 866,
+   "tex": "prim_mtrl_mob_god_flame_giant",
+   "vcount": 602
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombsoldier_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_giant.ddj",
+   "material": "tombsoldier",
+   "msh": "prim_mesh_mob_qinshi_tombsoldier_part2_part1",
+   "skin_records": 425,
+   "skinned": true,
+   "tcount": 495,
+   "tex": "prim_mtrl_mob_god_flame_giant",
+   "vcount": 425
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombsoldier_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_giant.ddj",
+   "material": "tombsoldier",
+   "msh": "prim_mesh_mob_qinshi_tombsoldier_part2_part2",
+   "skin_records": 436,
+   "skinned": true,
+   "tcount": 507,
+   "tex": "prim_mtrl_mob_god_flame_giant",
+   "vcount": 436
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_tombsoldier",
+ "skeleton_path": "/prim/skel/mob/qinshi/tombsoldier.bsk"
+}

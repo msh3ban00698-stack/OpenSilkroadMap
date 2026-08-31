@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_stand01",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_stand01.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 13,
+   "name": "anubis_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_die",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_die.ban",
+   "channels": 66,
+   "duration_ms": 1600,
+   "keyframes": 21,
+   "name": "anubis_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack01",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack01.ban",
+   "channels": 66,
+   "duration_ms": 1933,
+   "keyframes": 31,
+   "name": "anubis_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack03",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack03.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 37,
+   "name": "anubis_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack04",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack04.ban",
+   "channels": 66,
+   "duration_ms": 3000,
+   "keyframes": 56,
+   "name": "anubis_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack05",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack05.ban",
+   "channels": 66,
+   "duration_ms": 2000,
+   "keyframes": 24,
+   "name": "anubis_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack06",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack06.ban",
+   "channels": 66,
+   "duration_ms": 1000,
+   "keyframes": 18,
+   "name": "anubis_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_walk",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_walk.ban",
+   "channels": 66,
+   "duration_ms": 1333,
+   "keyframes": 9,
+   "name": "anubis_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_run",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_run.ban",
+   "channels": 66,
+   "duration_ms": 800,
+   "keyframes": 11,
+   "name": "anubis_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_attack02",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_attack02.ban",
+   "channels": 78,
+   "duration_ms": 1600,
+   "keyframes": 25,
+   "name": "anubis_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_anubis_anubis_die_rm",
+   "ban_path": "/prim/ani/mob/sd/anubis/anubis_die_rm.ban",
+   "channels": 66,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "anubis_die_rm"
+  }
+ ],
+ "key": "res_mob_sd_anubis",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis_shield.ddj",
+   "material": "anubis01",
+   "msh": "prim_mesh_mob_sd_anubis01",
+   "skin_records": 66,
+   "skinned": true,
+   "tcount": 80,
+   "tex": "prim_mtrl_mob_sd_anubis_shield",
+   "vcount": 66
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis02.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis_sword.ddj",
+   "material": "anubis02",
+   "msh": "prim_mesh_mob_sd_anubis02",
+   "skin_records": 272,
+   "skinned": true,
+   "tcount": 474,
+   "tex": "prim_mtrl_mob_sd_anubis_sword",
+   "vcount": 272
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis.ddj",
+   "material": "anubis",
+   "msh": "prim_mesh_mob_sd_anubis_part1",
+   "skin_records": 785,
+   "skinned": true,
+   "tcount": 948,
+   "tex": "prim_mtrl_mob_sd_anubis",
+   "vcount": 785
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis_part2_part1.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis.ddj",
+   "material": "anubis",
+   "msh": "prim_mesh_mob_sd_anubis_part2_part1",
+   "skin_records": 422,
+   "skinned": true,
+   "tcount": 558,
+   "tex": "prim_mtrl_mob_sd_anubis",
+   "vcount": 422
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis.ddj",
+   "material": "anubis",
+   "msh": "prim_mesh_mob_sd_anubis_part2_part2_part1",
+   "skin_records": 199,
+   "skinned": true,
+   "tcount": 256,
+   "tex": "prim_mtrl_mob_sd_anubis",
+   "vcount": 199
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/anubis_part2_part2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/sd/anubis.ddj",
+   "material": "anubis",
+   "msh": "prim_mesh_mob_sd_anubis_part2_part2_part2",
+   "skin_records": 199,
+   "skinned": true,
+   "tcount": 256,
+   "tex": "prim_mtrl_mob_sd_anubis",
+   "vcount": 199
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_anubis",
+ "skeleton_path": "/prim/skel/mob/sd/anubis.bsk"
+}

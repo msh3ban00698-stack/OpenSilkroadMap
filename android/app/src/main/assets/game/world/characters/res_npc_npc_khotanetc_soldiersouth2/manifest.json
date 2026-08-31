@@ -1,0 +1,81 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_khotan_khotanetc_soldier_basic",
+   "ban_path": "/prim/ani/npc/khotan/khotanetc_soldier_basic.ban",
+   "channels": 35,
+   "duration_ms": 4666,
+   "keyframes": 27,
+   "name": "khotanetc_soldier_basic"
+  },
+  {
+   "anim": "prim_ani_npc_khotan_khotanetc_soldier_basic2",
+   "ban_path": "/prim/ani/npc/khotan/khotanetc_soldier_basic2.ban",
+   "channels": 35,
+   "duration_ms": 5000,
+   "keyframes": 50,
+   "name": "khotanetc_soldier_basic2"
+  },
+  {
+   "anim": "prim_ani_npc_khotan_khotanetc_soldier_basic3",
+   "ban_path": "/prim/ani/npc/khotan/khotanetc_soldier_basic3.ban",
+   "channels": 35,
+   "duration_ms": 6166,
+   "keyframes": 61,
+   "name": "khotanetc_soldier_basic3"
+  }
+ ],
+ "key": "res_npc_npc_khotanetc_soldiersouth2",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanetc_soldierpalace2.ddj",
+   "material": "khotanEtc_SoldierPalace2_2s",
+   "msh": "prim_mesh_npc_khotan_khotanetc_soldierpalace2_2s",
+   "skin_records": 21,
+   "skinned": true,
+   "tcount": 24,
+   "tex": "prim_mtrl_npc_khotan_khotanetc_soldierpalace2",
+   "vcount": 21
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_al.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanetc_soldierpalace_al.ddj",
+   "material": "khotanEtc_SoldierPalace2_al",
+   "msh": "prim_mesh_npc_khotan_khotanetc_soldierpalace2_al",
+   "skin_records": 26,
+   "skinned": true,
+   "tcount": 18,
+   "tex": "prim_mtrl_npc_khotan_khotanetc_soldierpalace_al",
+   "vcount": 26
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanetc_soldierpalace2.ddj",
+   "material": "khotanEtc_SoldierPalace2",
+   "msh": "prim_mesh_npc_khotan_khotanetc_soldierpalace2_part1",
+   "skin_records": 375,
+   "skinned": true,
+   "tcount": 545,
+   "tex": "prim_mtrl_npc_khotan_khotanetc_soldierpalace2",
+   "vcount": 375
+  },
+  {
+   "bms_path": "/prim/mesh/npc/khotan/khotanetc_soldierpalace2_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/khotan/khotanetc_soldierpalace2.ddj",
+   "material": "khotanEtc_SoldierPalace2",
+   "msh": "prim_mesh_npc_khotan_khotanetc_soldierpalace2_part2",
+   "skin_records": 298,
+   "skinned": true,
+   "tcount": 393,
+   "tex": "prim_mtrl_npc_khotan_khotanetc_soldierpalace2",
+   "vcount": 298
+  }
+ ],
+ "skeleton": "prim_skel_npc_khotan_khotanetc_soldierpalace",
+ "skeleton_path": "/prim/skel/npc/khotan/khotanetc_soldierpalace.bsk"
+}

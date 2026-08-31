@@ -1,0 +1,27 @@
+{
+ "animations": [
+  "/prim/ani/mob/sd/selkis/selkis_stand01.ban",
+  "/prim/ani/mob/sd/selkis/selkis_walk.ban",
+  "/prim/ani/mob/sd/selkis/selkis_run.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack01.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack02.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack03.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack04.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack05.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack06.ban",
+  "/prim/ani/mob/sd/selkis/selkis_attack07.ban",
+  "/prim/ani/mob/sd/selkis/selkis_die.ban",
+  "/prim/ani/mob/sd/selkis/selkis_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/sd/selkis.bmt",
+ "bsk": "/prim/skel/mob/sd/selkis.bsk",
+ "bsr": "/res/mob/sd/selkis.bsr",
+ "meshes": [
+  "/prim/mesh/mob/sd/selkis02.bms",
+  "/prim/mesh/mob/sd/selkis03.bms",
+  "/prim/mesh/mob/sd/selkis_part1.bms",
+  "/prim/mesh/mob/sd/selkis_part2_part1.bms",
+  "/prim/mesh/mob/sd/selkis_part2_part2_part1.bms",
+  "/prim/mesh/mob/sd/selkis_part2_part2_part2.bms"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/asiaminor_flyship.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/asiaminor_flyship.bmt",
+ "bsk": "/prim/skel/npc/common/asiaminor_flyship.bsk",
+ "bsr": "/res/npc/npc/AsiaMinor_Flyship.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/asiaminor_flyship_2s.bms",
+  "/prim/mesh/npc/common/asiaminor_flyship_al.bms",
+  "/prim/mesh/npc/common/asiaminor_flyship_part1.bms",
+  "/prim/mesh/npc/common/asiaminor_flyship_part2.bms"
+ ]
+}

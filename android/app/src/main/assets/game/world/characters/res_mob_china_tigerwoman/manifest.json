@@ -1,0 +1,197 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_stand01",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_stand01.ban",
+   "channels": 68,
+   "duration_ms": 2666,
+   "keyframes": 45,
+   "name": "tigerwoman_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_stand02",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_stand02.ban",
+   "channels": 68,
+   "duration_ms": 5333,
+   "keyframes": 54,
+   "name": "tigerwoman_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_walk",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_walk.ban",
+   "channels": 68,
+   "duration_ms": 1733,
+   "keyframes": 38,
+   "name": "tigerwoman_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_run",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_run.ban",
+   "channels": 68,
+   "duration_ms": 900,
+   "keyframes": 21,
+   "name": "tigerwoman_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_attack01",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_attack01.ban",
+   "channels": 68,
+   "duration_ms": 2500,
+   "keyframes": 47,
+   "name": "tigerwoman_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_attack02",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_attack02.ban",
+   "channels": 69,
+   "duration_ms": 4000,
+   "keyframes": 50,
+   "name": "tigerwoman_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_attack03",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_attack03.ban",
+   "channels": 68,
+   "duration_ms": 5000,
+   "keyframes": 84,
+   "name": "tigerwoman_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_damage01",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_damage01.ban",
+   "channels": 68,
+   "duration_ms": 966,
+   "keyframes": 20,
+   "name": "tigerwoman_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_damage02",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_damage02.ban",
+   "channels": 68,
+   "duration_ms": 1866,
+   "keyframes": 30,
+   "name": "tigerwoman_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_help",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_help.ban",
+   "channels": 68,
+   "duration_ms": 3733,
+   "keyframes": 66,
+   "name": "tigerwoman_help"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_die",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_die.ban",
+   "channels": 68,
+   "duration_ms": 5533,
+   "keyframes": 115,
+   "name": "tigerwoman_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_die_loop",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_die_loop.ban",
+   "channels": 68,
+   "duration_ms": 333,
+   "keyframes": 3,
+   "name": "tigerwoman_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_tigerwoman_tigerwoman_find",
+   "ban_path": "/prim/ani/mob/china/tigerwoman/tigerwoman_find.ban",
+   "channels": 68,
+   "duration_ms": 3333,
+   "keyframes": 58,
+   "name": "tigerwoman_find"
+  }
+ ],
+ "key": "res_mob_china_tigerwoman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_2side.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman_2side",
+   "msh": "prim_mesh_mob_china_tigerwoman_2side",
+   "skin_records": 127,
+   "skinned": true,
+   "tcount": 138,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 127
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_wand.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman",
+   "msh": "prim_mesh_mob_china_tigerwoman_wand",
+   "skin_records": 38,
+   "skinned": true,
+   "tcount": 52,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 38
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_wand_2side.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman_2side",
+   "msh": "prim_mesh_mob_china_tigerwoman_wand_2side",
+   "skin_records": 126,
+   "skinned": true,
+   "tcount": 156,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 126
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_body_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman",
+   "msh": "prim_mesh_mob_china_tigerwoman_body_part1",
+   "skin_records": 152,
+   "skinned": true,
+   "tcount": 176,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 152
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_body_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman",
+   "msh": "prim_mesh_mob_china_tigerwoman_body_part2_part1",
+   "skin_records": 197,
+   "skinned": true,
+   "tcount": 247,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 197
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_body_part2_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman",
+   "msh": "prim_mesh_mob_china_tigerwoman_body_part2_part2_part1",
+   "skin_records": 197,
+   "skinned": true,
+   "tcount": 247,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 197
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/tigerwoman_body_part2_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/china/tigerwoman.ddj",
+   "material": "tigerwoman",
+   "msh": "prim_mesh_mob_china_tigerwoman_body_part2_part2_part2",
+   "skin_records": 650,
+   "skinned": true,
+   "tcount": 921,
+   "tex": "prim_mtrl_mob_china_tigerwoman",
+   "vcount": 650
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_tigerwoman",
+ "skeleton_path": "/prim/skel/mob/china/tigerwoman.bsk"
+}

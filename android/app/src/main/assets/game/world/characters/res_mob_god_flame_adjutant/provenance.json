@@ -1,0 +1,23 @@
+{
+ "animations": [
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_stand01.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_attack01.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_attack02.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_attack03.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_die.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_walk.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_run.ban",
+  "/prim/ani/mob/god/flame_adjutant/flame_adjutant_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/god/flame_adjutant.bmt",
+ "bsk": "/prim/skel/mob/god/flame_adjutant.bsk",
+ "bsr": "/res/mob/god/flame_adjutant.bsr",
+ "meshes": [
+  "/prim/mesh/mob/god/flame_adjutant00.bms",
+  "/prim/mesh/mob/god/flame_adjutant02.bms",
+  "/prim/mesh/mob/god/flame_adjutant03.bms",
+  "/prim/mesh/mob/god/flame_adjutant01_part1.bms",
+  "/prim/mesh/mob/god/flame_adjutant01_part2_part1.bms",
+  "/prim/mesh/mob/god/flame_adjutant01_part2_part2.bms"
+ ]
+}

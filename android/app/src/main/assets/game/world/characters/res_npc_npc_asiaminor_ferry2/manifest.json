@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_common_asiaminor_ferry2",
+   "ban_path": "/prim/ani/npc/common/asiaminor_ferry2.ban",
+   "channels": 35,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "asiaminor_ferry2"
+  }
+ ],
+ "key": "res_npc_npc_asiaminor_ferry2",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/common/asiaminor_ferry2_2s.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/npc/common/asiaminor_ferry2.ddj",
+   "material": "AsiaMinor_Ferry2_al",
+   "msh": "prim_mesh_npc_common_asiaminor_ferry2_2s",
+   "skin_records": 66,
+   "skinned": true,
+   "tcount": 56,
+   "tex": "prim_mtrl_npc_common_asiaminor_ferry2",
+   "vcount": 66
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/asiaminor_ferry2_we.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/common/asiaminor_ferry2.ddj",
+   "material": "AsiaMinor_Ferry2",
+   "msh": "prim_mesh_npc_common_asiaminor_ferry2_we",
+   "skin_records": 88,
+   "skinned": true,
+   "tcount": 106,
+   "tex": "prim_mtrl_npc_common_asiaminor_ferry2",
+   "vcount": 88
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/asiaminor_ferry2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/common/asiaminor_ferry2.ddj",
+   "material": "AsiaMinor_Ferry2",
+   "msh": "prim_mesh_npc_common_asiaminor_ferry2_part1",
+   "skin_records": 442,
+   "skinned": true,
+   "tcount": 659,
+   "tex": "prim_mtrl_npc_common_asiaminor_ferry2",
+   "vcount": 442
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/asiaminor_ferry2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/common/asiaminor_ferry2.ddj",
+   "material": "AsiaMinor_Ferry2",
+   "msh": "prim_mesh_npc_common_asiaminor_ferry2_part2",
+   "skin_records": 390,
+   "skinned": true,
+   "tcount": 489,
+   "tex": "prim_mtrl_npc_common_asiaminor_ferry2",
+   "vcount": 390
+  }
+ ],
+ "skeleton": "prim_skel_npc_common_asiaminor_ferry2",
+ "skeleton_path": "/prim/skel/npc/common/asiaminor_ferry2.bsk"
+}

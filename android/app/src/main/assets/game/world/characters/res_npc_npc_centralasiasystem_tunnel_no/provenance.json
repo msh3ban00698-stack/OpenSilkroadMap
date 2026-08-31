@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiasystem_tunnel_no.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiasystem_tunnel_no.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiasystem_tunnel_no.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaSystem_Tunnel_No.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiasystem_tunnel_no_2s.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_tunnel_no_al.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_tunnel_no_part1.bms",
+  "/prim/mesh/npc/casia/centralasiasystem_tunnel_no_part2.bms"
+ ]
+}

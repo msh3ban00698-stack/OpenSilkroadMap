@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_stand01.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 10,
+   "name": "snakeslave_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_stand02",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_stand02.ban",
+   "channels": 56,
+   "duration_ms": 5500,
+   "keyframes": 36,
+   "name": "snakeslave_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_walk",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_walk.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 15,
+   "name": "snakeslave_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_run",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_run.ban",
+   "channels": 56,
+   "duration_ms": 1333,
+   "keyframes": 15,
+   "name": "snakeslave_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_attack01.ban",
+   "channels": 56,
+   "duration_ms": 1333,
+   "keyframes": 34,
+   "name": "snakeslave_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_attack02.ban",
+   "channels": 56,
+   "duration_ms": 2166,
+   "keyframes": 54,
+   "name": "snakeslave_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_attack03",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_attack03.ban",
+   "channels": 56,
+   "duration_ms": 2500,
+   "keyframes": 39,
+   "name": "snakeslave_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_die.ban",
+   "channels": 56,
+   "duration_ms": 3033,
+   "keyframes": 62,
+   "name": "snakeslave_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_damage01.ban",
+   "channels": 7,
+   "duration_ms": 500,
+   "keyframes": 9,
+   "name": "snakeslave_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_die_rm.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakeslave_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_down",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_down.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 30,
+   "name": "snakeslave_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_down_rm.ban",
+   "channels": 56,
+   "duration_ms": 2000,
+   "keyframes": 8,
+   "name": "snakeslave_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_down_damage.ban",
+   "channels": 56,
+   "duration_ms": 1000,
+   "keyframes": 20,
+   "name": "snakeslave_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_down_up.ban",
+   "channels": 56,
+   "duration_ms": 1533,
+   "keyframes": 36,
+   "name": "snakeslave_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_snakeslave_snakeslave_down_die",
+   "ban_path": "/prim/ani/mob/qinshi/snakeslave/snakeslave_down_die.ban",
+   "channels": 56,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "snakeslave_down_die"
+  }
+ ],
+ "key": "res_mob_qinshi_snakeslave",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeslave_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakeslave.ddj",
+   "material": "snakeslave",
+   "msh": "prim_mesh_mob_qinshi_snakeslave_part1",
+   "skin_records": 582,
+   "skinned": true,
+   "tcount": 710,
+   "tex": "prim_mtrl_mob_qinshi_snakeslave",
+   "vcount": 582
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeslave_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakeslave.ddj",
+   "material": "snakeslave",
+   "msh": "prim_mesh_mob_qinshi_snakeslave_part2_part1",
+   "skin_records": 337,
+   "skinned": true,
+   "tcount": 454,
+   "tex": "prim_mtrl_mob_qinshi_snakeslave",
+   "vcount": 337
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/snakeslave_part2_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/qinshi/snakeslave.ddj",
+   "material": "snakeslave",
+   "msh": "prim_mesh_mob_qinshi_snakeslave_part2_part2",
+   "skin_records": 470,
+   "skinned": true,
+   "tcount": 618,
+   "tex": "prim_mtrl_mob_qinshi_snakeslave",
+   "vcount": 470
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_snakeslave",
+ "skeleton_path": "/prim/skel/mob/qinshi/snakeslave.bsk"
+}

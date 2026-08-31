@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/asiaminor_ferry2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/asiaminor_ferry2.bmt",
+ "bsk": "/prim/skel/npc/common/asiaminor_ferry2.bsk",
+ "bsr": "/res/npc/npc/AsiaMinor_Ferry2.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/asiaminor_ferry2_2s.bms",
+  "/prim/mesh/npc/common/asiaminor_ferry2_we.bms",
+  "/prim/mesh/npc/common/asiaminor_ferry2_part1.bms",
+  "/prim/mesh/npc/common/asiaminor_ferry2_part2.bms"
+ ]
+}

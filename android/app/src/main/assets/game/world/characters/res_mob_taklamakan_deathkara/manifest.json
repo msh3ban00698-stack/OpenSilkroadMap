@@ -1,0 +1,153 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_stand01",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_stand01.ban",
+   "channels": 33,
+   "duration_ms": 3333,
+   "keyframes": 12,
+   "name": "deathkara_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_walk",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_walk.ban",
+   "channels": 33,
+   "duration_ms": 2666,
+   "keyframes": 14,
+   "name": "deathkara_walk"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_run",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_run.ban",
+   "channels": 33,
+   "duration_ms": 1333,
+   "keyframes": 14,
+   "name": "deathkara_run"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_attack01",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_attack01.ban",
+   "channels": 33,
+   "duration_ms": 1500,
+   "keyframes": 34,
+   "name": "deathkara_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_attack02",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_attack02.ban",
+   "channels": 33,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "deathkara_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_attack03",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_attack03.ban",
+   "channels": 33,
+   "duration_ms": 2000,
+   "keyframes": 33,
+   "name": "deathkara_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_down",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_down.ban",
+   "channels": 33,
+   "duration_ms": 733,
+   "keyframes": 12,
+   "name": "deathkara_down"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_downwait",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_downwait.ban",
+   "channels": 33,
+   "duration_ms": 2666,
+   "keyframes": 13,
+   "name": "deathkara_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_downdamage",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_downdamage.ban",
+   "channels": 33,
+   "duration_ms": 533,
+   "keyframes": 11,
+   "name": "deathkara_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_downup",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_downup.ban",
+   "channels": 33,
+   "duration_ms": 866,
+   "keyframes": 16,
+   "name": "deathkara_downup"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_die",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_die.ban",
+   "channels": 33,
+   "duration_ms": 2333,
+   "keyframes": 61,
+   "name": "deathkara_die"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_die_rm",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_die_rm.ban",
+   "channels": 33,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "deathkara_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_downdie",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_downdie.ban",
+   "channels": 33,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "deathkara_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_damage01",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_damage01.ban",
+   "channels": 8,
+   "duration_ms": 400,
+   "keyframes": 4,
+   "name": "deathkara_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_taklamakan_deathkara_deathkara_damage02",
+   "ban_path": "/prim/ani/mob/taklamakan/deathkara/deathkara_damage02.ban",
+   "channels": 33,
+   "duration_ms": 1000,
+   "keyframes": 20,
+   "name": "deathkara_damage02"
+  }
+ ],
+ "key": "res_mob_taklamakan_deathkara",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/deathkara_part1.bms",
+   "bone_count": 15,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/deathkara.ddj",
+   "material": "deathkara",
+   "msh": "prim_mesh_mob_taklamakan_deathkara_part1",
+   "skin_records": 587,
+   "skinned": true,
+   "tcount": 758,
+   "tex": "prim_mtrl_mob_taklamakan_deathkara",
+   "vcount": 587
+  },
+  {
+   "bms_path": "/prim/mesh/mob/taklamakan/deathkara_part2.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/mob/taklamakan/deathkara.ddj",
+   "material": "deathkara",
+   "msh": "prim_mesh_mob_taklamakan_deathkara_part2",
+   "skin_records": 95,
+   "skinned": true,
+   "tcount": 120,
+   "tex": "prim_mtrl_mob_taklamakan_deathkara",
+   "vcount": 95
+  }
+ ],
+ "skeleton": "prim_skel_mob_taklamakan_deathkara",
+ "skeleton_path": "/prim/skel/mob/taklamakan/deathkara.bsk"
+}

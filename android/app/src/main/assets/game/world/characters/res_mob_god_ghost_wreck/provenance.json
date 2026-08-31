@@ -1,0 +1,19 @@
+{
+ "animations": [
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_stand01.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_walk.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_run.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_attack02.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_attack03.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_damage.ban",
+  "/prim/ani/mob/god/ghost_wreck/ghost_wreck_attack01.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/god/ghost_wreck.bmt",
+ "bsk": "/prim/skel/mob/god/ghost_wreck.bsk",
+ "bsr": "/res/mob/god/ghost_wreck.bsr",
+ "meshes": [
+  "/prim/mesh/mob/god/ghost_wreck01.bms",
+  "/prim/mesh/mob/god/ghost_wreck02.bms",
+  "/prim/mesh/mob/god/ghost_wreck03.bms"
+ ]
+}

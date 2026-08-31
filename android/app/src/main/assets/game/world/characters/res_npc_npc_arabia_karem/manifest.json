@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_common_rocmountainshop_villagechief01",
+   "ban_path": "/prim/ani/npc/common/rocmountainshop_villagechief01.ban",
+   "channels": 35,
+   "duration_ms": 2333,
+   "keyframes": 12,
+   "name": "rocmountainshop_villagechief01"
+  }
+ ],
+ "key": "res_npc_npc_arabia_karem",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/common/rocmountainshop_villagechief02.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/npc/common/arabia_karem.ddj",
+   "material": "RocMountainShop_VillageChief02",
+   "msh": "prim_mesh_npc_common_rocmountainshop_villagechief02",
+   "skin_records": 130,
+   "skinned": true,
+   "tcount": 192,
+   "tex": "prim_mtrl_npc_common_arabia_karem",
+   "vcount": 130
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/rocmountainshop_villagechief03.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/npc/common/arabia_karem_al.ddj",
+   "material": "RocMountainShop_VillageChief03",
+   "msh": "prim_mesh_npc_common_rocmountainshop_villagechief03",
+   "skin_records": 69,
+   "skinned": true,
+   "tcount": 66,
+   "tex": "prim_mtrl_npc_common_arabia_karem_al",
+   "vcount": 69
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/rocmountainshop_villagechief01_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/common/arabia_karem.ddj",
+   "material": "RocMountainShop_VillageChief01",
+   "msh": "prim_mesh_npc_common_rocmountainshop_villagechief01_part1",
+   "skin_records": 282,
+   "skinned": true,
+   "tcount": 386,
+   "tex": "prim_mtrl_npc_common_arabia_karem",
+   "vcount": 282
+  },
+  {
+   "bms_path": "/prim/mesh/npc/common/rocmountainshop_villagechief01_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/common/arabia_karem.ddj",
+   "material": "RocMountainShop_VillageChief01",
+   "msh": "prim_mesh_npc_common_rocmountainshop_villagechief01_part2",
+   "skin_records": 357,
+   "skinned": true,
+   "tcount": 380,
+   "tex": "prim_mtrl_npc_common_arabia_karem",
+   "vcount": 357
+  }
+ ],
+ "skeleton": "prim_skel_npc_common_rocmountainshop_villagechief",
+ "skeleton_path": "/prim/skel/npc/common/rocmountainshop_villagechief.bsk"
+}

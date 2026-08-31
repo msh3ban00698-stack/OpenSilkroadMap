@@ -1,0 +1,29 @@
+{
+ "animations": [
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_stand01.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_stand02.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_walk.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_run.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack01.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack02.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack03.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack04.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack05.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_attack06.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_die.ban",
+  "/prim/ani/mob/arabia/kidemonas/kidemonas_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/arabia/kidemonas.bmt",
+ "bsk": "/prim/skel/mob/arabia/kidemonas.bsk",
+ "bsr": "/res/mob/arabia/kidemonas.bsr",
+ "meshes": [
+  "/prim/mesh/mob/arabia/kidemonas1_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas1_part2_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas1_part2_part2.bms",
+  "/prim/mesh/mob/arabia/kidemonas_body01_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas_body01_part2_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas_body01_part2_part2_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas_body01_part2_part2_part2_part1.bms",
+  "/prim/mesh/mob/arabia/kidemonas_body01_part2_part2_part2_part2.bms"
+ ]
+}

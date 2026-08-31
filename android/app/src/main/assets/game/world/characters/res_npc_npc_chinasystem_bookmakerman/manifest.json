@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinasystem_bookmakerman_basic",
+   "ban_path": "/prim/ani/npc/china/chinasystem_bookmakerman_basic.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 12,
+   "name": "chinasystem_bookmakerman_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinasystem_bookmakerman_time",
+   "ban_path": "/prim/ani/npc/china/chinasystem_bookmakerman_time.ban",
+   "channels": 35,
+   "duration_ms": 6000,
+   "keyframes": 25,
+   "name": "chinasystem_bookmakerman_time"
+  }
+ ],
+ "key": "res_npc_npc_chinasystem_bookmakerman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_bookmakerman_2s.bms",
+   "bone_count": 4,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_bookmakerman .ddj",
+   "material": "ChinaSystem_BookmakerMan_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_bookmakerman_2s",
+   "skin_records": 43,
+   "skinned": true,
+   "tcount": 34,
+   "tex": "prim_mtrl_npc_china_chinasystem_bookmakerman_",
+   "vcount": 43
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_bookmakerman_al_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_bookmakerman_al.ddj",
+   "material": "ChinaSystem_BookmakerMan_al_2s",
+   "msh": "prim_mesh_npc_china_chinasystem_bookmakerman_al_2s",
+   "skin_records": 26,
+   "skinned": true,
+   "tcount": 18,
+   "tex": "prim_mtrl_npc_china_chinasystem_bookmakerman_al",
+   "vcount": 26
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_bookmakerman_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_bookmakerman .ddj",
+   "material": "ChinaSystem_BookmakerMan",
+   "msh": "prim_mesh_npc_china_chinasystem_bookmakerman_part2",
+   "skin_records": 165,
+   "skinned": true,
+   "tcount": 199,
+   "tex": "prim_mtrl_npc_china_chinasystem_bookmakerman_",
+   "vcount": 165
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinasystem_bookmakerman_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinasystem_bookmakerman .ddj",
+   "material": "ChinaSystem_BookmakerMan",
+   "msh": "prim_mesh_npc_china_chinasystem_bookmakerman_part1",
+   "skin_records": 429,
+   "skinned": true,
+   "tcount": 567,
+   "tex": "prim_mtrl_npc_china_chinasystem_bookmakerman_",
+   "vcount": 429
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinasystem_bookmakerman",
+ "skeleton_path": "/prim/skel/npc/china/chinasystem_bookmakerman.bsk"
+}

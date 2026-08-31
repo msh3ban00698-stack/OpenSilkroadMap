@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_muhammad_stand01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/arabia/arabia_muhammad.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_muhammad.bsk",
+ "bsr": "/res/npc/npc/arabia_muhammad.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_muhammad_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_muhammad_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_muhammad_part2_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_muhammad_part2_part2_part2_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_muhammad_part2_part2_part2_part2.bms"
+ ]
+}

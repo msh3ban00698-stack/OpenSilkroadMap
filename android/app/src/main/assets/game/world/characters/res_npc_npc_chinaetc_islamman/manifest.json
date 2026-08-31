@@ -1,0 +1,73 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinaetc_islamman_ani_basic",
+   "ban_path": "/prim/ani/npc/china/chinaetc_islamman_ani_basic.ban",
+   "channels": 42,
+   "duration_ms": 3333,
+   "keyframes": 10,
+   "name": "chinaetc_islamman_ani_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinaetc_islamman_ani_basic02",
+   "ban_path": "/prim/ani/npc/china/chinaetc_islamman_ani_basic02.ban",
+   "channels": 42,
+   "duration_ms": 5000,
+   "keyframes": 50,
+   "name": "chinaetc_islamman_ani_basic02"
+  }
+ ],
+ "key": "res_npc_npc_chinaetc_islamman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_islamman_2s.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_islamman.ddj",
+   "material": "ChinaEtc_IslamMan_2s",
+   "msh": "prim_mesh_npc_china_chinaetc_islamman_2s",
+   "skin_records": 27,
+   "skinned": true,
+   "tcount": 34,
+   "tex": "prim_mtrl_npc_china_chinaetc_islamman",
+   "vcount": 27
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_islamman_al_2s.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_islamman_al.ddj",
+   "material": "ChinaEtc_IslamMan_al_2s",
+   "msh": "prim_mesh_npc_china_chinaetc_islamman_al_2s",
+   "skin_records": 15,
+   "skinned": true,
+   "tcount": 9,
+   "tex": "prim_mtrl_npc_china_chinaetc_islamman_al",
+   "vcount": 15
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_islamman_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_islamman.ddj",
+   "material": "ChinaEtc_IslamMan",
+   "msh": "prim_mesh_npc_china_chinaetc_islamman_part1",
+   "skin_records": 290,
+   "skinned": true,
+   "tcount": 353,
+   "tex": "prim_mtrl_npc_china_chinaetc_islamman",
+   "vcount": 290
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinaetc_islamman_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/chinaetc_islamman.ddj",
+   "material": "ChinaEtc_IslamMan",
+   "msh": "prim_mesh_npc_china_chinaetc_islamman_part2",
+   "skin_records": 472,
+   "skinned": true,
+   "tcount": 633,
+   "tex": "prim_mtrl_npc_china_chinaetc_islamman",
+   "vcount": 472
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinaetc_islamman",
+ "skeleton_path": "/prim/skel/npc/china/chinaetc_islamman.bsk"
+}

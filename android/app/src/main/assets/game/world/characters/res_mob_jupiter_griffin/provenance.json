@@ -1,0 +1,24 @@
+{
+ "animations": [
+  "/prim/ani/mob/jupiter/griffin/griffin_stand01.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_walk.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_run.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_attack01.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_attack02.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_attack03.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_attack04.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_damage1.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_die.ban",
+  "/prim/ani/mob/jupiter/griffin/griffin_die_rm.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/jupiter/griffin.bmt",
+ "bsk": "/prim/skel/mob/jupiter/griffin.bsk",
+ "bsr": "/res/mob/Jupiter/griffin.bsr",
+ "meshes": [
+  "/prim/mesh/mob/jupiter/griffin/griffin_01.bms",
+  "/prim/mesh/mob/jupiter/griffin/griffin_02.bms",
+  "/prim/mesh/mob/jupiter/griffin/griffin_part1.bms",
+  "/prim/mesh/mob/jupiter/griffin/griffin_part2_part1.bms",
+  "/prim/mesh/mob/jupiter/griffin/griffin_part2_part2.bms"
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_arabia_sd_potion_stand01",
+   "ban_path": "/prim/ani/npc/arabia/sd_potion_stand01.ban",
+   "channels": 69,
+   "duration_ms": 13333,
+   "keyframes": 401,
+   "name": "sd_potion_stand01"
+  }
+ ],
+ "key": "res_npc_npc_arabia_potion",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/arabia/sd_potion_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/sd_potion.ddj",
+   "material": "SD_Potion",
+   "msh": "prim_mesh_npc_arabia_sd_potion_part1",
+   "skin_records": 1164,
+   "skinned": true,
+   "tcount": 1486,
+   "tex": "prim_mtrl_npc_arabia_sd_potion",
+   "vcount": 1164
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/sd_potion_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/arabia/sd_potion.ddj",
+   "material": "SD_Potion",
+   "msh": "prim_mesh_npc_arabia_sd_potion_part2_part1",
+   "skin_records": 544,
+   "skinned": true,
+   "tcount": 758,
+   "tex": "prim_mtrl_npc_arabia_sd_potion",
+   "vcount": 544
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/sd_potion_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/sd_potion.ddj",
+   "material": "SD_Potion",
+   "msh": "prim_mesh_npc_arabia_sd_potion_part2_part2_part1",
+   "skin_records": 392,
+   "skinned": true,
+   "tcount": 502,
+   "tex": "prim_mtrl_npc_arabia_sd_potion",
+   "vcount": 392
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/sd_potion_part2_part2_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/arabia/sd_potion.ddj",
+   "material": "SD_Potion",
+   "msh": "prim_mesh_npc_arabia_sd_potion_part2_part2_part2",
+   "skin_records": 682,
+   "skinned": true,
+   "tcount": 956,
+   "tex": "prim_mtrl_npc_arabia_sd_potion",
+   "vcount": 682
+  }
+ ],
+ "skeleton": "prim_skel_npc_arabia_sd_potion",
+ "skeleton_path": "/prim/skel/npc/arabia/sd_potion.bsk"
+}

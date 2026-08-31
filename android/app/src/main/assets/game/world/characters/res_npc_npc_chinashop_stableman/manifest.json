@@ -1,0 +1,109 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_chinashop_stableman_basic",
+   "ban_path": "/prim/ani/npc/china/chinashop_stableman_basic.ban",
+   "channels": 66,
+   "duration_ms": 5000,
+   "keyframes": 18,
+   "name": "chinashop_stableman_basic"
+  },
+  {
+   "anim": "prim_ani_npc_china_chinashop_stableman_basic02",
+   "ban_path": "/prim/ani/npc/china/chinashop_stableman_basic02.ban",
+   "channels": 66,
+   "duration_ms": 5666,
+   "keyframes": 69,
+   "name": "chinashop_stableman_basic02"
+  }
+ ],
+ "key": "res_npc_npc_chinashop_stableman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_horse_2s.bms",
+   "bone_count": 3,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman_horse.ddj",
+   "material": "ChinaShop_Stableman_horse_2s",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_horse_2s",
+   "skin_records": 30,
+   "skinned": true,
+   "tcount": 28,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman_horse",
+   "vcount": 30
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_horse_al_2s.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman_horse_al.ddj",
+   "material": "ChinaShop_Stableman_horse_al_2s",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_horse_al_2s",
+   "skin_records": 40,
+   "skinned": true,
+   "tcount": 32,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman_horse_al",
+   "vcount": 40
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_tong.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman.ddj",
+   "material": "ChinaShop_Stableman_tong",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_tong",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 53,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman",
+   "vcount": 80
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman.ddj",
+   "material": "ChinaShop_Stableman",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_part1",
+   "skin_records": 315,
+   "skinned": true,
+   "tcount": 447,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman",
+   "vcount": 315
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman.ddj",
+   "material": "ChinaShop_Stableman",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_part2",
+   "skin_records": 296,
+   "skinned": true,
+   "tcount": 358,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman",
+   "vcount": 296
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_horse_part1.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman_horse.ddj",
+   "material": "ChinaShop_Stableman_horse",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_horse_part1",
+   "skin_records": 170,
+   "skinned": true,
+   "tcount": 244,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman_horse",
+   "vcount": 170
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/chinashop_stableman_horse_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/npc/china/chinashop_stableman_horse.ddj",
+   "material": "ChinaShop_Stableman_horse",
+   "msh": "prim_mesh_npc_china_chinashop_stableman_horse_part2",
+   "skin_records": 294,
+   "skinned": true,
+   "tcount": 440,
+   "tex": "prim_mtrl_npc_china_chinashop_stableman_horse",
+   "vcount": 294
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_chinashop_stableman",
+ "skeleton_path": "/prim/skel/npc/china/chinashop_stableman.bsk"
+}

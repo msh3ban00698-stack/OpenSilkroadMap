@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/common/rocmountainquest_youngwoman2.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/common/arabia_malak.bmt",
+ "bsk": "/prim/skel/npc/common/rocmountainquest_youngwoman2.bsk",
+ "bsr": "/res/npc/npc/arabia_malak.bsr",
+ "meshes": [
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman202.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman203.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman204.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman201_part1.bms",
+  "/prim/mesh/npc/common/rocmountainquest_youngwoman201_part2.bms"
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_westchinaquest_oldman_time",
+   "ban_path": "/prim/ani/npc/china/westchinaquest_oldman_time.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 18,
+   "name": "westchinaquest_oldman_time"
+  },
+  {
+   "anim": "prim_ani_npc_china_westchinaquest_oldman_basic",
+   "ban_path": "/prim/ani/npc/china/westchinaquest_oldman_basic.ban",
+   "channels": 35,
+   "duration_ms": 3333,
+   "keyframes": 7,
+   "name": "westchinaquest_oldman_basic"
+  }
+ ],
+ "key": "res_npc_npc_westchinaquest_oldman",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_2s.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman.ddj",
+   "material": "WestChinaQuest_Oldman_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_2s",
+   "skin_records": 16,
+   "skinned": true,
+   "tcount": 10,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman",
+   "vcount": 16
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_al_2s.bms",
+   "bone_count": 7,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman_al.ddj",
+   "material": "WestChinaQuest_Oldman_al_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_al_2s",
+   "skin_records": 54,
+   "skinned": true,
+   "tcount": 64,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman_al",
+   "vcount": 54
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_al_2s_02.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman_al.ddj",
+   "material": "WestChinaQuest_Oldman_al_2s",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_al_2s_02",
+   "skin_records": 48,
+   "skinned": true,
+   "tcount": 36,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman_al",
+   "vcount": 48
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_tree.bms",
+   "bone_count": 0,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman.ddj",
+   "material": "WestChinaQuest_Oldman",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_tree",
+   "skin_records": 0,
+   "skinned": false,
+   "tcount": 128,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman",
+   "vcount": 220
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman.ddj",
+   "material": "WestChinaQuest_Oldman",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_part1",
+   "skin_records": 239,
+   "skinned": true,
+   "tcount": 290,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman",
+   "vcount": 239
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman.ddj",
+   "material": "WestChinaQuest_Oldman",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_part2_part1",
+   "skin_records": 176,
+   "skinned": true,
+   "tcount": 166,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman",
+   "vcount": 176
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/westchinaquest_oldman_part2_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/china/westchinaquest_oldman.ddj",
+   "material": "WestChinaQuest_Oldman",
+   "msh": "prim_mesh_npc_china_westchinaquest_oldman_part2_part2",
+   "skin_records": 213,
+   "skinned": true,
+   "tcount": 226,
+   "tex": "prim_mtrl_npc_china_westchinaquest_oldman",
+   "vcount": 213
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_westchinaquest_oldman",
+ "skeleton_path": "/prim/skel/npc/china/westchinaquest_oldman.bsk"
+}

@@ -1,0 +1,12 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_merchant_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_merchant.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_merchant.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_merchant.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_merchant_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_merchant_part2.bms"
+ ]
+}

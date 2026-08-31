@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropesystem_merchantunion.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropesystem_merchantunion.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropesystem_merchantunion.bsk",
+ "bsr": "/res/npc/npc/EastEuropeSystem_MerchantUnion.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropesystem_merchantunion_2s.bms",
+  "/prim/mesh/npc/europe/easteuropesystem_merchantunion_part1.bms",
+  "/prim/mesh/npc/europe/easteuropesystem_merchantunion_part2.bms"
+ ]
+}

@@ -1,0 +1,161 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_stand02",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_stand02.ban",
+   "channels": 76,
+   "duration_ms": 5666,
+   "keyframes": 66,
+   "name": "giant_demon_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_walk",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_walk.ban",
+   "channels": 76,
+   "duration_ms": 2000,
+   "keyframes": 33,
+   "name": "giant_demon_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_run",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_run.ban",
+   "channels": 76,
+   "duration_ms": 1333,
+   "keyframes": 25,
+   "name": "giant_demon_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack01",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack01.ban",
+   "channels": 76,
+   "duration_ms": 3000,
+   "keyframes": 43,
+   "name": "giant_demon_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack05",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack05.ban",
+   "channels": 76,
+   "duration_ms": 3500,
+   "keyframes": 60,
+   "name": "giant_demon_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack06",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack06.ban",
+   "channels": 76,
+   "duration_ms": 2000,
+   "keyframes": 29,
+   "name": "giant_demon_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack08",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack08.ban",
+   "channels": 76,
+   "duration_ms": 1200,
+   "keyframes": 19,
+   "name": "giant_demon_attack08"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_die",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_die.ban",
+   "channels": 76,
+   "duration_ms": 3333,
+   "keyframes": 51,
+   "name": "giant_demon_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_die_rm.ban",
+   "channels": 76,
+   "duration_ms": 500,
+   "keyframes": 2,
+   "name": "giant_demon_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack02",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack02.ban",
+   "channels": 76,
+   "duration_ms": 4000,
+   "keyframes": 55,
+   "name": "giant_demon_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_stand01",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_stand01.ban",
+   "channels": 76,
+   "duration_ms": 2000,
+   "keyframes": 17,
+   "name": "giant_demon_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack03",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack03.ban",
+   "channels": 76,
+   "duration_ms": 4500,
+   "keyframes": 56,
+   "name": "giant_demon_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_giant_demon_giant_demon_attack04",
+   "ban_path": "/prim/ani/mob/arabia/giant_demon/giant_demon_attack04.ban",
+   "channels": 76,
+   "duration_ms": 6000,
+   "keyframes": 84,
+   "name": "giant_demon_attack04"
+  }
+ ],
+ "key": "res_mob_arabia_giant_demon",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/giant_demon_01.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/giant_demon_01.ddj",
+   "material": "giant_demon_01",
+   "msh": "prim_mesh_mob_arabia_giant_demon_01",
+   "skin_records": 235,
+   "skinned": true,
+   "tcount": 368,
+   "tex": "prim_mtrl_mob_arabia_giant_demon_01",
+   "vcount": 235
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/giant_demon_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/giant_demon.ddj",
+   "material": "giant_demon",
+   "msh": "prim_mesh_mob_arabia_giant_demon_part1",
+   "skin_records": 1490,
+   "skinned": true,
+   "tcount": 2258,
+   "tex": "prim_mtrl_mob_arabia_giant_demon",
+   "vcount": 1490
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/giant_demon_part2_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/arabia/giant_demon.ddj",
+   "material": "giant_demon",
+   "msh": "prim_mesh_mob_arabia_giant_demon_part2_part1",
+   "skin_records": 768,
+   "skinned": true,
+   "tcount": 892,
+   "tex": "prim_mtrl_mob_arabia_giant_demon",
+   "vcount": 768
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/giant_demon_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/arabia/giant_demon.ddj",
+   "material": "giant_demon",
+   "msh": "prim_mesh_mob_arabia_giant_demon_part2_part2",
+   "skin_records": 995,
+   "skinned": true,
+   "tcount": 994,
+   "tex": "prim_mtrl_mob_arabia_giant_demon",
+   "vcount": 995
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_giant_demon",
+ "skeleton_path": "/prim/skel/mob/arabia/giant_demon.bsk"
+}

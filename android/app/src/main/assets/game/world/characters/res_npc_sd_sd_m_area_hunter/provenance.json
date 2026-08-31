@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_m_area_hunter_stand.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_m_area_hunter.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_m_area_hunter.bsk",
+ "bsr": "/res/npc/sd/sd_m_area_hunter.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_m_area_hunter_part1.bms",
+  "/prim/mesh/npc/sd/sd_m_area_hunter_part2.bms",
+  "/prim/mesh/npc/sd/sd_m_area_hunter_2al.bms"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "path": "/prim/skel/npc/qinshi/trasurebox.bsk",
+ "bone_count": 2,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bone01",
+   "parent": "",
+   "children": [
+    "Bone02"
+   ],
+   "rot_parent": [
+    -0.00465,
+    0.00517,
+    0.713506,
+    0.700615
+   ],
+   "tr_parent": [
+    0.00045,
+    0.0,
+    0.02036
+   ],
+   "bind_world_rot": [
+    -0.00465,
+    0.00517,
+    0.713506,
+    0.700615
+   ],
+   "bind_world_pos": [
+    0.00045,
+    0.0,
+    0.02036
+   ]
+  },
+  {
+   "name": "Bone02",
+   "parent": "Bone01",
+   "children": [],
+   "rot_parent": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "tr_parent": [
+    5.664896,
+    -2e-06,
+    1e-06
+   ],
+   "bind_world_rot": [
+    -0.00465,
+    0.00517,
+    0.713506,
+    0.700615
+   ],
+   "bind_world_pos": [
+    -0.10284,
+    5.663408,
+    -0.058271
+   ]
+  }
+ ]
+}

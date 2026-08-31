@@ -1,0 +1,63 @@
+{
+ "path": "/prim/skel/npc/npc/gacha_machine.bsk",
+ "bone_count": 2,
+ "quaternion_convention": "xyzw",
+ "bones": [
+  {
+   "name": "Bone01",
+   "parent": "",
+   "children": [
+    "Bone02"
+   ],
+   "rot_parent": [
+    -0.501172,
+    -0.498825,
+    0.498825,
+    0.501172
+   ],
+   "tr_parent": [
+    -0.055687,
+    0.037112,
+    -0.0
+   ],
+   "bind_world_rot": [
+    -0.501172,
+    -0.498825,
+    0.498825,
+    0.501172
+   ],
+   "bind_world_pos": [
+    -0.055687,
+    0.037112,
+    -0.0
+   ]
+  },
+  {
+   "name": "Bone02",
+   "parent": "Bone01",
+   "children": [],
+   "rot_parent": [
+    -0.0,
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "tr_parent": [
+    16.601721,
+    0.0,
+    -1e-06
+   ],
+   "bind_world_rot": [
+    -0.501172,
+    -0.498825,
+    0.498825,
+    0.501172
+   ],
+   "bind_world_pos": [
+    0.022254,
+    16.638651,
+    -0.0
+   ]
+  }
+ ]
+}

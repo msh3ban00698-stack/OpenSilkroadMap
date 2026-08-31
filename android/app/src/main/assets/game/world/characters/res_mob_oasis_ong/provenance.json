@@ -1,0 +1,29 @@
+{
+ "animations": [
+  "/prim/ani/mob/oasis/ong/ong_stand01.ban",
+  "/prim/ani/mob/oasis/ong/ong_stand02.ban",
+  "/prim/ani/mob/oasis/ong/ong_walk.ban",
+  "/prim/ani/mob/oasis/ong/ong_run.ban",
+  "/prim/ani/mob/oasis/ong/ong_attack01.ban",
+  "/prim/ani/mob/oasis/ong/ong_attack02.ban",
+  "/prim/ani/mob/oasis/ong/ong_damage01.ban",
+  "/prim/ani/mob/oasis/ong/ong_damage02.ban",
+  "/prim/ani/mob/oasis/ong/ong_die.ban",
+  "/prim/ani/mob/oasis/ong/ong_die_loop.ban",
+  "/prim/ani/mob/oasis/ong/ong_down.ban",
+  "/prim/ani/mob/oasis/ong/ong_downwait.ban",
+  "/prim/ani/mob/oasis/ong/ong_downdamage.ban",
+  "/prim/ani/mob/oasis/ong/ong_downup.ban",
+  "/prim/ani/mob/oasis/ong/ong_downdie.ban",
+  "/prim/ani/mob/oasis/ong/ong_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/oasis/ong.bmt",
+ "bsk": "/prim/skel/mob/oasis/ong.bsk",
+ "bsr": "/res/mob/oasis/ong.bsr",
+ "meshes": [
+  "/prim/mesh/mob/oasis/ong_2side.bms",
+  "/prim/mesh/mob/oasis/ong_body_part1.bms",
+  "/prim/mesh/mob/oasis/ong_body_part2_part1.bms",
+  "/prim/mesh/mob/oasis/ong_body_part2_part2.bms"
+ ]
+}

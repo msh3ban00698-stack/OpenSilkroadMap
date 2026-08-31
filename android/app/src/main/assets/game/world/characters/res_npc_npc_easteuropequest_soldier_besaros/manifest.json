@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_soldier_besaros",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_soldier_besaros.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 23,
+   "name": "easteuropequest_soldier_besaros"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_soldier_besaros",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_besaros_2s_01.bms",
+   "bone_count": 5,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_besaros.ddj",
+   "material": "EastEuropeQuest_Soldier_besaros_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_besaros_2s_01",
+   "skin_records": 145,
+   "skinned": true,
+   "tcount": 196,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_besaros",
+   "vcount": 145
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_besaros_2s_02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_besaros.ddj",
+   "material": "EastEuropeQuest_Soldier_besaros_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_besaros_2s_02",
+   "skin_records": 56,
+   "skinned": true,
+   "tcount": 66,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_besaros",
+   "vcount": 56
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_besaros_arm.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_besaros.ddj",
+   "material": "EastEuropeQuest_Soldier_besaros_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_besaros_arm",
+   "skin_records": 60,
+   "skinned": true,
+   "tcount": 80,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_besaros",
+   "vcount": 60
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_besaros_part1.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_besaros.ddj",
+   "material": "EastEuropeQuest_Soldier_besaros",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_besaros_part1",
+   "skin_records": 434,
+   "skinned": true,
+   "tcount": 588,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_besaros",
+   "vcount": 434
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_soldier_besaros_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_soldier_besaros.ddj",
+   "material": "EastEuropeQuest_Soldier_besaros",
+   "msh": "prim_mesh_npc_europe_easteuropequest_soldier_besaros_part2",
+   "skin_records": 374,
+   "skinned": true,
+   "tcount": 510,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_soldier_besaros",
+   "vcount": 374
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_soldier_besaros",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_soldier_besaros.bsk"
+}

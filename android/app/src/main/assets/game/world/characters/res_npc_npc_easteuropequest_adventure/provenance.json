@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_adventure.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_adventure.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_adventure.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Adventure.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_adventure_hr.bms",
+  "/prim/mesh/npc/europe/easteuropequest_adventure_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_adventure_part2.bms"
+ ]
+}

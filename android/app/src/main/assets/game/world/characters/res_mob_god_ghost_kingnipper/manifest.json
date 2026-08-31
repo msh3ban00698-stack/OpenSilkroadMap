@@ -1,0 +1,145 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_stand01",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_stand01.ban",
+   "channels": 58,
+   "duration_ms": 1333,
+   "keyframes": 27,
+   "name": "crab_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_walk",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_walk.ban",
+   "channels": 58,
+   "duration_ms": 1333,
+   "keyframes": 25,
+   "name": "crab_walk"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_run",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_run.ban",
+   "channels": 58,
+   "duration_ms": 533,
+   "keyframes": 23,
+   "name": "crab_run"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_damage01",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_damage01.ban",
+   "channels": 37,
+   "duration_ms": 600,
+   "keyframes": 14,
+   "name": "crab_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_die",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_die.ban",
+   "channels": 58,
+   "duration_ms": 2266,
+   "keyframes": 55,
+   "name": "crab_die"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_die_rm",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_die_rm.ban",
+   "channels": 58,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "crab_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_attack01",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_attack01.ban",
+   "channels": 58,
+   "duration_ms": 2066,
+   "keyframes": 55,
+   "name": "crab_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_attack02",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_attack02.ban",
+   "channels": 58,
+   "duration_ms": 3000,
+   "keyframes": 71,
+   "name": "crab_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_attack03",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_attack03.ban",
+   "channels": 58,
+   "duration_ms": 3000,
+   "keyframes": 82,
+   "name": "crab_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_downup",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_downup.ban",
+   "channels": 58,
+   "duration_ms": 1333,
+   "keyframes": 24,
+   "name": "crab_downup"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_down",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_down.ban",
+   "channels": 58,
+   "duration_ms": 1066,
+   "keyframes": 28,
+   "name": "crab_down"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_downrm",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_downrm.ban",
+   "channels": 58,
+   "duration_ms": 2000,
+   "keyframes": 7,
+   "name": "crab_downrm"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_downdamage",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_downdamage.ban",
+   "channels": 58,
+   "duration_ms": 400,
+   "keyframes": 9,
+   "name": "crab_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_asiam_crab_crab_downdie",
+   "ban_path": "/prim/ani/mob/asiam/crab/crab_downdie.ban",
+   "channels": 58,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "crab_downdie"
+  }
+ ],
+ "key": "res_mob_god_ghost_kingnipper",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/asiam/crab_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_kingnipper.ddj",
+   "material": "crab",
+   "msh": "prim_mesh_mob_asiam_crab_part1",
+   "skin_records": 319,
+   "skinned": true,
+   "tcount": 546,
+   "tex": "prim_mtrl_mob_god_ghost_kingnipper",
+   "vcount": 319
+  },
+  {
+   "bms_path": "/prim/mesh/mob/asiam/crab_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/god/ghost_kingnipper.ddj",
+   "material": "crab",
+   "msh": "prim_mesh_mob_asiam_crab_part2",
+   "skin_records": 352,
+   "skinned": true,
+   "tcount": 452,
+   "tex": "prim_mtrl_mob_god_ghost_kingnipper",
+   "vcount": 352
+  }
+ ],
+ "skeleton": "prim_skel_mob_asiam_crab",
+ "skeleton_path": "/prim/skel/mob/asiam/crab.bsk"
+}

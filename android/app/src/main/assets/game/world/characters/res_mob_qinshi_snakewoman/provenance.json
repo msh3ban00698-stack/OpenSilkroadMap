@@ -1,0 +1,27 @@
+{
+ "animations": [
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_stand01.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_walk.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack01.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_run.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack02.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_attack03.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_die.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_die_rm.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_down.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_damage.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_up.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_down_die.ban",
+  "/prim/ani/mob/qinshi/snakewoman/snakewoman_damage01.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/qinshi/snakewoman.bmt",
+ "bsk": "/prim/skel/mob/qinshi/snakewoman.bsk",
+ "bsr": "/res/mob/qinshi/SnakeWoman.bsr",
+ "meshes": [
+  "/prim/mesh/mob/qinshi/snakewoman01.bms",
+  "/prim/mesh/mob/qinshi/snakewoman02.bms",
+  "/prim/mesh/mob/qinshi/snakewoman_part1.bms",
+  "/prim/mesh/mob/qinshi/snakewoman_part2_part1.bms",
+  "/prim/mesh/mob/qinshi/snakewoman_part2_part2.bms"
+ ]
+}

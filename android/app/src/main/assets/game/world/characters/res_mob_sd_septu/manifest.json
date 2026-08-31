@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_stand01",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_stand01.ban",
+   "channels": 44,
+   "duration_ms": 2666,
+   "keyframes": 29,
+   "name": "septu_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_walk",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_walk.ban",
+   "channels": 44,
+   "duration_ms": 1333,
+   "keyframes": 11,
+   "name": "septu_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_run",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_run.ban",
+   "channels": 44,
+   "duration_ms": 1133,
+   "keyframes": 19,
+   "name": "septu_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_attack1",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_attack1.ban",
+   "channels": 44,
+   "duration_ms": 1000,
+   "keyframes": 23,
+   "name": "septu_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_attack2",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_attack2.ban",
+   "channels": 44,
+   "duration_ms": 3000,
+   "keyframes": 51,
+   "name": "septu_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_attack3",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_attack3.ban",
+   "channels": 44,
+   "duration_ms": 3000,
+   "keyframes": 47,
+   "name": "septu_attack3"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_attack4",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_attack4.ban",
+   "channels": 44,
+   "duration_ms": 2000,
+   "keyframes": 19,
+   "name": "septu_attack4"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_attack5",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_attack5.ban",
+   "channels": 44,
+   "duration_ms": 3000,
+   "keyframes": 49,
+   "name": "septu_attack5"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_die",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_die.ban",
+   "channels": 44,
+   "duration_ms": 3900,
+   "keyframes": 87,
+   "name": "septu_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_down",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_down.ban",
+   "channels": 44,
+   "duration_ms": 2000,
+   "keyframes": 36,
+   "name": "septu_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_damage1",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_damage1.ban",
+   "channels": 3,
+   "duration_ms": 1000,
+   "keyframes": 8,
+   "name": "septu_damage1"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_down_rm",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_down_rm.ban",
+   "channels": 44,
+   "duration_ms": 2000,
+   "keyframes": 21,
+   "name": "septu_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_down_damage",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_down_damage.ban",
+   "channels": 44,
+   "duration_ms": 2000,
+   "keyframes": 31,
+   "name": "septu_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_down_up",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_down_up.ban",
+   "channels": 44,
+   "duration_ms": 666,
+   "keyframes": 9,
+   "name": "septu_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_die_rm",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_die_rm.ban",
+   "channels": 44,
+   "duration_ms": 3900,
+   "keyframes": 5,
+   "name": "septu_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_septu_septu_down_die",
+   "ban_path": "/prim/ani/mob/sd/septu/septu_down_die.ban",
+   "channels": 44,
+   "duration_ms": 3333,
+   "keyframes": 2,
+   "name": "septu_down_die"
+  }
+ ],
+ "key": "res_mob_sd_septu",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/septu_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/sd/septu.ddj",
+   "material": "septu",
+   "msh": "prim_mesh_mob_sd_septu_part1",
+   "skin_records": 1262,
+   "skinned": true,
+   "tcount": 1580,
+   "tex": "prim_mtrl_mob_sd_septu",
+   "vcount": 1262
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/septu_part2_part1.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/sd/septu.ddj",
+   "material": "septu",
+   "msh": "prim_mesh_mob_sd_septu_part2_part1",
+   "skin_records": 193,
+   "skinned": true,
+   "tcount": 248,
+   "tex": "prim_mtrl_mob_sd_septu",
+   "vcount": 193
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/septu_part2_part2.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/sd/septu.ddj",
+   "material": "septu",
+   "msh": "prim_mesh_mob_sd_septu_part2_part2",
+   "skin_records": 492,
+   "skinned": true,
+   "tcount": 654,
+   "tex": "prim_mtrl_mob_sd_septu",
+   "vcount": 492
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_septu",
+ "skeleton_path": "/prim/skel/mob/sd/septu.bsk"
+}

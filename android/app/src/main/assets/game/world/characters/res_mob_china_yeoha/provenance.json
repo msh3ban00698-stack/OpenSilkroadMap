@@ -1,0 +1,27 @@
+{
+ "animations": [
+  "/prim/ani/mob/china/yeoha/yeoha_stand01.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_stand02.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_walk.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_run.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_attack01.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_attack02.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_damage01.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_damage02.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_die.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_die_loop.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_down.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_downwait.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_downdamage.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_wakeup.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_downdie.ban",
+  "/prim/ani/mob/china/yeoha/yeoha_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/china/yeoha.bmt",
+ "bsk": "/prim/skel/mob/china/yeoha.bsk",
+ "bsr": "/res/mob/china/yeoha.bsr",
+ "meshes": [
+  "/prim/mesh/mob/china/yeoha_part1.bms",
+  "/prim/mesh/mob/china/yeoha_part2.bms"
+ ]
+}

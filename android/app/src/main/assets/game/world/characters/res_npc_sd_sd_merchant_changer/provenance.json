@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/sd/sd_merchant_changer.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/sd_merchant_changer.bmt",
+ "bsk": "/prim/skel/npc/sd/sd_merchant_changer.bsk",
+ "bsr": "/res/npc/sd/sd_merchant_changer.bsr",
+ "meshes": [
+  "/prim/mesh/npc/sd/sd_merchant_changer_2al.bms",
+  "/prim/mesh/npc/sd/sd_merchant_changer_part1.bms",
+  "/prim/mesh/npc/sd/sd_merchant_changer_part2.bms"
+ ]
+}

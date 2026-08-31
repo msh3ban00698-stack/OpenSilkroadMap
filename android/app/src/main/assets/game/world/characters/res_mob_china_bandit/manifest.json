@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_stand01",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_stand01.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "bandit_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_stand02",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_stand02.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 18,
+   "name": "bandit_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_walk",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_walk.ban",
+   "channels": 34,
+   "duration_ms": 1333,
+   "keyframes": 15,
+   "name": "bandit_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_run",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_run.ban",
+   "channels": 34,
+   "duration_ms": 833,
+   "keyframes": 25,
+   "name": "bandit_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_attack01",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_attack01.ban",
+   "channels": 34,
+   "duration_ms": 1133,
+   "keyframes": 33,
+   "name": "bandit_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_attack02",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_attack02.ban",
+   "channels": 34,
+   "duration_ms": 1500,
+   "keyframes": 40,
+   "name": "bandit_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_damage01",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_damage01.ban",
+   "channels": 3,
+   "duration_ms": 366,
+   "keyframes": 5,
+   "name": "bandit_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_damage02",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_damage02.ban",
+   "channels": 34,
+   "duration_ms": 1666,
+   "keyframes": 24,
+   "name": "bandit_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_die",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_die.ban",
+   "channels": 34,
+   "duration_ms": 2666,
+   "keyframes": 52,
+   "name": "bandit_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_die_loop",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_die_loop.ban",
+   "channels": 34,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bandit_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_down",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_down.ban",
+   "channels": 34,
+   "duration_ms": 833,
+   "keyframes": 18,
+   "name": "bandit_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_downwait",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_downwait.ban",
+   "channels": 34,
+   "duration_ms": 2000,
+   "keyframes": 5,
+   "name": "bandit_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_downdamage",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_downdamage.ban",
+   "channels": 34,
+   "duration_ms": 833,
+   "keyframes": 14,
+   "name": "bandit_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_wakeup",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_wakeup.ban",
+   "channels": 34,
+   "duration_ms": 1333,
+   "keyframes": 18,
+   "name": "bandit_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_downdie",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_downdie.ban",
+   "channels": 34,
+   "duration_ms": 300,
+   "keyframes": 2,
+   "name": "bandit_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_china_bandit_bandit_attack03",
+   "ban_path": "/prim/ani/mob/china/bandit/bandit_attack03.ban",
+   "channels": 34,
+   "duration_ms": 1166,
+   "keyframes": 18,
+   "name": "bandit_attack03"
+  }
+ ],
+ "key": "res_mob_china_bandit",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/bandit_sword.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/china/bandit_sword.ddj",
+   "material": "Bandit1",
+   "msh": "prim_mesh_mob_china_bandit_sword",
+   "skin_records": 76,
+   "skinned": true,
+   "tcount": 134,
+   "tex": "prim_mtrl_mob_china_bandit_sword",
+   "vcount": 76
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/bandit_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/china/bandit.ddj",
+   "material": "Bandit",
+   "msh": "prim_mesh_mob_china_bandit_part1",
+   "skin_records": 214,
+   "skinned": true,
+   "tcount": 276,
+   "tex": "prim_mtrl_mob_china_bandit",
+   "vcount": 214
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/bandit_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/china/bandit.ddj",
+   "material": "Bandit",
+   "msh": "prim_mesh_mob_china_bandit_part2",
+   "skin_records": 556,
+   "skinned": true,
+   "tcount": 766,
+   "tex": "prim_mtrl_mob_china_bandit",
+   "vcount": 556
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_bandit",
+ "skeleton_path": "/prim/skel/mob/china/bandit.bsk"
+}

@@ -1,0 +1,61 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_china_blackrobberarcher_stand01",
+   "ban_path": "/prim/ani/npc/china/blackrobberarcher_stand01.ban",
+   "channels": 52,
+   "duration_ms": 3333,
+   "keyframes": 47,
+   "name": "blackrobberarcher_stand01"
+  },
+  {
+   "anim": "prim_ani_npc_china_blackrobberarcher_stand02",
+   "ban_path": "/prim/ani/npc/china/blackrobberarcher_stand02.ban",
+   "channels": 52,
+   "duration_ms": 3333,
+   "keyframes": 93,
+   "name": "blackrobberarcher_stand02"
+  }
+ ],
+ "key": "res_npc_npc_thiefden_thief_b",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/china/blackrobberarcher_body_part1.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/china/blackrobberarcher.ddj",
+   "material": "blackrobberarcher",
+   "msh": "prim_mesh_npc_china_blackrobberarcher_body_part1",
+   "skin_records": 307,
+   "skinned": true,
+   "tcount": 430,
+   "tex": "prim_mtrl_npc_china_blackrobberarcher",
+   "vcount": 307
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/blackrobberarcher_body_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/china/blackrobberarcher.ddj",
+   "material": "blackrobberarcher",
+   "msh": "prim_mesh_npc_china_blackrobberarcher_body_part2_part1",
+   "skin_records": 228,
+   "skinned": true,
+   "tcount": 300,
+   "tex": "prim_mtrl_npc_china_blackrobberarcher",
+   "vcount": 228
+  },
+  {
+   "bms_path": "/prim/mesh/npc/china/blackrobberarcher_body_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/china/blackrobberarcher.ddj",
+   "material": "blackrobberarcher",
+   "msh": "prim_mesh_npc_china_blackrobberarcher_body_part2_part2",
+   "skin_records": 461,
+   "skinned": true,
+   "tcount": 644,
+   "tex": "prim_mtrl_npc_china_blackrobberarcher",
+   "vcount": 461
+  }
+ ],
+ "skeleton": "prim_skel_npc_china_blackrobberarcher",
+ "skeleton_path": "/prim/skel/npc/china/blackrobberarcher.bsk"
+}

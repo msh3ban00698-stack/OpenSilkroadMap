@@ -1,0 +1,185 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_stand01",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_stand01.ban",
+   "channels": 57,
+   "duration_ms": 4000,
+   "keyframes": 90,
+   "name": "bastet_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_walk",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_walk.ban",
+   "channels": 57,
+   "duration_ms": 1600,
+   "keyframes": 21,
+   "name": "bastet_walk"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_run",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_run.ban",
+   "channels": 57,
+   "duration_ms": 666,
+   "keyframes": 28,
+   "name": "bastet_run"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_attack01",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_attack01.ban",
+   "channels": 57,
+   "duration_ms": 1533,
+   "keyframes": 41,
+   "name": "bastet_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_attack02",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_attack02.ban",
+   "channels": 57,
+   "duration_ms": 2566,
+   "keyframes": 46,
+   "name": "bastet_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_attack03",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_attack03.ban",
+   "channels": 57,
+   "duration_ms": 1900,
+   "keyframes": 34,
+   "name": "bastet_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_attack04",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_attack04.ban",
+   "channels": 57,
+   "duration_ms": 2933,
+   "keyframes": 51,
+   "name": "bastet_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_attack05",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_attack05.ban",
+   "channels": 57,
+   "duration_ms": 3666,
+   "keyframes": 65,
+   "name": "bastet_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_damage01",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_damage01.ban",
+   "channels": 7,
+   "duration_ms": 333,
+   "keyframes": 6,
+   "name": "bastet_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_die",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_die.ban",
+   "channels": 57,
+   "duration_ms": 1400,
+   "keyframes": 28,
+   "name": "bastet_die"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_die_rm",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_die_rm.ban",
+   "channels": 57,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bastet_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_down",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_down.ban",
+   "channels": 57,
+   "duration_ms": 866,
+   "keyframes": 22,
+   "name": "bastet_down"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_down_rm",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_down_rm.ban",
+   "channels": 57,
+   "duration_ms": 1000,
+   "keyframes": 12,
+   "name": "bastet_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_down_damage",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_down_damage.ban",
+   "channels": 57,
+   "duration_ms": 1000,
+   "keyframes": 16,
+   "name": "bastet_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_down_up",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_down_up.ban",
+   "channels": 57,
+   "duration_ms": 866,
+   "keyframes": 18,
+   "name": "bastet_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_sd_bastet_bastet_down_die",
+   "ban_path": "/prim/ani/mob/sd/bastet/bastet_down_die.ban",
+   "channels": 57,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bastet_down_die"
+  }
+ ],
+ "key": "res_mob_arabia_bastet_mad",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/sd/bastet02.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/arabia/bastet_mad_dagger.ddj",
+   "material": "bastet02",
+   "msh": "prim_mesh_mob_sd_bastet02",
+   "skin_records": 146,
+   "skinned": true,
+   "tcount": 260,
+   "tex": "prim_mtrl_mob_arabia_bastet_mad_dagger",
+   "vcount": 146
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/bastet_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/bastet_mad.ddj",
+   "material": "bastet",
+   "msh": "prim_mesh_mob_sd_bastet_part1",
+   "skin_records": 768,
+   "skinned": true,
+   "tcount": 1077,
+   "tex": "prim_mtrl_mob_arabia_bastet_mad",
+   "vcount": 768
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/bastet_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/arabia/bastet_mad.ddj",
+   "material": "bastet",
+   "msh": "prim_mesh_mob_sd_bastet_part2_part1",
+   "skin_records": 351,
+   "skinned": true,
+   "tcount": 518,
+   "tex": "prim_mtrl_mob_arabia_bastet_mad",
+   "vcount": 351
+  },
+  {
+   "bms_path": "/prim/mesh/mob/sd/bastet_part2_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/arabia/bastet_mad.ddj",
+   "material": "bastet",
+   "msh": "prim_mesh_mob_sd_bastet_part2_part2",
+   "skin_records": 310,
+   "skinned": true,
+   "tcount": 407,
+   "tex": "prim_mtrl_mob_arabia_bastet_mad",
+   "vcount": 310
+  }
+ ],
+ "skeleton": "prim_skel_mob_sd_bastet",
+ "skeleton_path": "/prim/skel/mob/sd/bastet.bsk"
+}

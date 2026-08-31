@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropesystem_portmanager",
+   "ban_path": "/prim/ani/npc/europe/easteuropesystem_portmanager.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "easteuropesystem_portmanager"
+  }
+ ],
+ "key": "res_npc_npc_easteuropesystem_portmanager",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropesystem_portmanager_2s.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropesystem_portmanager.ddj",
+   "material": "EastEuropeSystem_PortManager_2s",
+   "msh": "prim_mesh_npc_europe_easteuropesystem_portmanager_2s",
+   "skin_records": 202,
+   "skinned": true,
+   "tcount": 236,
+   "tex": "prim_mtrl_npc_europe_easteuropesystem_portmanager",
+   "vcount": 202
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropesystem_portmanager_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropesystem_portmanager.ddj",
+   "material": "EastEuropeSystem_PortManager",
+   "msh": "prim_mesh_npc_europe_easteuropesystem_portmanager_part1",
+   "skin_records": 401,
+   "skinned": true,
+   "tcount": 495,
+   "tex": "prim_mtrl_npc_europe_easteuropesystem_portmanager",
+   "vcount": 401
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropesystem_portmanager_part2.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropesystem_portmanager.ddj",
+   "material": "EastEuropeSystem_PortManager",
+   "msh": "prim_mesh_npc_europe_easteuropesystem_portmanager_part2",
+   "skin_records": 343,
+   "skinned": true,
+   "tcount": 491,
+   "tex": "prim_mtrl_npc_europe_easteuropesystem_portmanager",
+   "vcount": 343
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropesystem_portmanager",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropesystem_portmanager.bsk"
+}

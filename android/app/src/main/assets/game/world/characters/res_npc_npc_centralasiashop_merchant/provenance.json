@@ -1,0 +1,14 @@
+{
+ "animations": [
+  "/prim/ani/npc/casia/centralasiashop_merchant.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/casia/centralasiashop_merchant.bmt",
+ "bsk": "/prim/skel/npc/casia/centralasiashop_merchant.bsk",
+ "bsr": "/res/npc/npc/CentralAsiaShop_Merchant.bsr",
+ "meshes": [
+  "/prim/mesh/npc/casia/centralasiashop_merchant_2s.bms",
+  "/prim/mesh/npc/casia/centralasiashop_merchant_al.bms",
+  "/prim/mesh/npc/casia/centralasiashop_merchant_part1.bms",
+  "/prim/mesh/npc/casia/centralasiashop_merchant_part2.bms"
+ ]
+}

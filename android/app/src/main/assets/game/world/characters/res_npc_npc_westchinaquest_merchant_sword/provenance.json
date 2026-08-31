@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaquest_merchant_basic.ban",
+  "/prim/ani/npc/china/chinaquest_merchant_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/westchinaquest_merchant_sword.bmt",
+ "bsk": "/prim/skel/npc/china/westchinaquest_merchant_sword.bsk",
+ "bsr": "/res/npc/npc/westchinaquest_merchant_sword.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/westchinaquest_merchant_sword_2s.bms",
+  "/prim/mesh/npc/china/westchinaquest_merchant_sword_part1.bms",
+  "/prim/mesh/npc/china/westchinaquest_merchant_sword_part2.bms",
+  "/prim/mesh/npc/china/westchinaquest_merchant_sword_al_2s.bms"
+ ]
+}

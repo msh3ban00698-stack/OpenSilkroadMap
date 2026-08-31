@@ -1,0 +1,169 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_mangnyang_stand01",
+   "ban_path": "/prim/ani/mob/china/mangnyang_stand01.ban",
+   "channels": 25,
+   "duration_ms": 2000,
+   "keyframes": 126,
+   "name": "mangnyang_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_walk",
+   "ban_path": "/prim/ani/mob/china/mangnyang_walk.ban",
+   "channels": 25,
+   "duration_ms": 1200,
+   "keyframes": 46,
+   "name": "mangnyang_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_attack01",
+   "ban_path": "/prim/ani/mob/china/mangnyang_attack01.ban",
+   "channels": 25,
+   "duration_ms": 1666,
+   "keyframes": 33,
+   "name": "mangnyang_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_damage01",
+   "ban_path": "/prim/ani/mob/china/mangnyang_damage01.ban",
+   "channels": 4,
+   "duration_ms": 500,
+   "keyframes": 13,
+   "name": "mangnyang_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_damage02",
+   "ban_path": "/prim/ani/mob/china/mangnyang_damage02.ban",
+   "channels": 25,
+   "duration_ms": 700,
+   "keyframes": 12,
+   "name": "mangnyang_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_die",
+   "ban_path": "/prim/ani/mob/china/mangnyang_die.ban",
+   "channels": 25,
+   "duration_ms": 1833,
+   "keyframes": 47,
+   "name": "mangnyang_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_run",
+   "ban_path": "/prim/ani/mob/china/mangnyang_run.ban",
+   "channels": 25,
+   "duration_ms": 833,
+   "keyframes": 23,
+   "name": "mangnyang_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_stand02",
+   "ban_path": "/prim/ani/mob/china/mangnyang_stand02.ban",
+   "channels": 25,
+   "duration_ms": 2000,
+   "keyframes": 20,
+   "name": "mangnyang_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_attack02",
+   "ban_path": "/prim/ani/mob/china/mangnyang_attack02.ban",
+   "channels": 25,
+   "duration_ms": 2566,
+   "keyframes": 38,
+   "name": "mangnyang_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_die_loop",
+   "ban_path": "/prim/ani/mob/china/mangnyang_die_loop.ban",
+   "channels": 25,
+   "duration_ms": 166,
+   "keyframes": 2,
+   "name": "mangnyang_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_down",
+   "ban_path": "/prim/ani/mob/china/mangnyang_down.ban",
+   "channels": 25,
+   "duration_ms": 833,
+   "keyframes": 31,
+   "name": "mangnyang_down"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_downwait",
+   "ban_path": "/prim/ani/mob/china/mangnyang_downwait.ban",
+   "channels": 25,
+   "duration_ms": 2000,
+   "keyframes": 28,
+   "name": "mangnyang_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_downdamage",
+   "ban_path": "/prim/ani/mob/china/mangnyang_downdamage.ban",
+   "channels": 25,
+   "duration_ms": 1100,
+   "keyframes": 16,
+   "name": "mangnyang_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_wakeup",
+   "ban_path": "/prim/ani/mob/china/mangnyang_wakeup.ban",
+   "channels": 25,
+   "duration_ms": 1166,
+   "keyframes": 31,
+   "name": "mangnyang_wakeup"
+  },
+  {
+   "anim": "prim_ani_mob_china_mangnyang_downdie",
+   "ban_path": "/prim/ani/mob/china/mangnyang_downdie.ban",
+   "channels": 25,
+   "duration_ms": 300,
+   "keyframes": 2,
+   "name": "mangnyang_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mangyang_plunder1_mangyang_plunder1_attack03",
+   "ban_path": "/prim/ani/mob/arabia/mangyang_plunder1/mangyang_plunder1_attack03.ban",
+   "channels": 25,
+   "duration_ms": 2500,
+   "keyframes": 35,
+   "name": "mangyang_plunder1_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_mangyang_plunder1_mangyang_plunder1_attack04",
+   "ban_path": "/prim/ani/mob/arabia/mangyang_plunder1/mangyang_plunder1_attack04.ban",
+   "channels": 25,
+   "duration_ms": 3000,
+   "keyframes": 39,
+   "name": "mangyang_plunder1_attack04"
+  }
+ ],
+ "key": "res_mob_arabia_mangyang_plunder1",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/china/mangnyang_part1.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/arabia/mangyang_plunder1.ddj",
+   "material": "Mangnyang",
+   "msh": "prim_mesh_mob_china_mangnyang_part1",
+   "skin_records": 263,
+   "skinned": true,
+   "tcount": 277,
+   "tex": "prim_mtrl_mob_arabia_mangyang_plunder1",
+   "vcount": 263
+  },
+  {
+   "bms_path": "/prim/mesh/mob/china/mangnyang_part2.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/mob/arabia/mangyang_plunder1.ddj",
+   "material": "Mangnyang",
+   "msh": "prim_mesh_mob_china_mangnyang_part2",
+   "skin_records": 177,
+   "skinned": true,
+   "tcount": 200,
+   "tex": "prim_mtrl_mob_arabia_mangyang_plunder1",
+   "vcount": 177
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_mangnyang",
+ "skeleton_path": "/prim/skel/mob/china/mangnyang.bsk"
+}

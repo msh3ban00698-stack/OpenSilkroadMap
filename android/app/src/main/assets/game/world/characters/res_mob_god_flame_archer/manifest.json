@@ -1,0 +1,201 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_stand01",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_stand01.ban",
+   "channels": 70,
+   "duration_ms": 2666,
+   "keyframes": 14,
+   "name": "tombarcher_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_attack01",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_attack01.ban",
+   "channels": 70,
+   "duration_ms": 2000,
+   "keyframes": 25,
+   "name": "tombarcher_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_attack02",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_attack02.ban",
+   "channels": 70,
+   "duration_ms": 1200,
+   "keyframes": 25,
+   "name": "tombarcher_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_attack04",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_attack04.ban",
+   "channels": 70,
+   "duration_ms": 2600,
+   "keyframes": 51,
+   "name": "tombarcher_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_attack05",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_attack05.ban",
+   "channels": 70,
+   "duration_ms": 2933,
+   "keyframes": 44,
+   "name": "tombarcher_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_attack06",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_attack06.ban",
+   "channels": 70,
+   "duration_ms": 2000,
+   "keyframes": 38,
+   "name": "tombarcher_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_die",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_die.ban",
+   "channels": 70,
+   "duration_ms": 1266,
+   "keyframes": 27,
+   "name": "tombarcher_die"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_walk",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_walk.ban",
+   "channels": 70,
+   "duration_ms": 1333,
+   "keyframes": 11,
+   "name": "tombarcher_walk"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_run",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_run.ban",
+   "channels": 70,
+   "duration_ms": 733,
+   "keyframes": 11,
+   "name": "tombarcher_run"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_die_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_die_rm.ban",
+   "channels": 70,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "tombarcher_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_down",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_down.ban",
+   "channels": 70,
+   "duration_ms": 1000,
+   "keyframes": 21,
+   "name": "tombarcher_down"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_down_rm",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_down_rm.ban",
+   "channels": 70,
+   "duration_ms": 2000,
+   "keyframes": 6,
+   "name": "tombarcher_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_down_damage",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_down_damage.ban",
+   "channels": 70,
+   "duration_ms": 466,
+   "keyframes": 7,
+   "name": "tombarcher_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_down_up",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_down_up.ban",
+   "channels": 70,
+   "duration_ms": 1200,
+   "keyframes": 17,
+   "name": "tombarcher_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_qinshi_tombarcher_tombarcher_damage01",
+   "ban_path": "/prim/ani/mob/qinshi/tombarcher/tombarcher_damage01.ban",
+   "channels": 12,
+   "duration_ms": 333,
+   "keyframes": 4,
+   "name": "tombarcher_damage01"
+  }
+ ],
+ "key": "res_mob_god_flame_archer",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher01.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher01",
+   "skin_records": 100,
+   "skinned": true,
+   "tcount": 124,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 100
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher02.bms",
+   "bone_count": 6,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher02",
+   "skin_records": 120,
+   "skinned": true,
+   "tcount": 200,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 120
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher03.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher03",
+   "skin_records": 32,
+   "skinned": true,
+   "tcount": 24,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 32
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher_part1",
+   "skin_records": 690,
+   "skinned": true,
+   "tcount": 935,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 690
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher_part2_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher_part2_part1",
+   "skin_records": 252,
+   "skinned": true,
+   "tcount": 293,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 252
+  },
+  {
+   "bms_path": "/prim/mesh/mob/qinshi/tombarcher_part2_part2.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/god/flame_archer.ddj",
+   "material": "tombarcher",
+   "msh": "prim_mesh_mob_qinshi_tombarcher_part2_part2",
+   "skin_records": 176,
+   "skinned": true,
+   "tcount": 206,
+   "tex": "prim_mtrl_mob_god_flame_archer",
+   "vcount": 176
+  }
+ ],
+ "skeleton": "prim_skel_mob_qinshi_tombarcher",
+ "skeleton_path": "/prim/skel/mob/qinshi/tombarcher.bsk"
+}

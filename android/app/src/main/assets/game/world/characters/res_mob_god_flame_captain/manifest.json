@@ -1,0 +1,165 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_stand01",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_stand01.ban",
+   "channels": 85,
+   "duration_ms": 2666,
+   "keyframes": 39,
+   "name": "flame_captain_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_walk",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_walk.ban",
+   "channels": 85,
+   "duration_ms": 2666,
+   "keyframes": 39,
+   "name": "flame_captain_walk"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_run",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_run.ban",
+   "channels": 85,
+   "duration_ms": 2000,
+   "keyframes": 41,
+   "name": "flame_captain_run"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_attack1",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_attack1.ban",
+   "channels": 85,
+   "duration_ms": 2333,
+   "keyframes": 50,
+   "name": "flame_captain_attack1"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_attack2",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_attack2.ban",
+   "channels": 85,
+   "duration_ms": 2800,
+   "keyframes": 56,
+   "name": "flame_captain_attack2"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_attack3",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_attack3.ban",
+   "channels": 85,
+   "duration_ms": 3633,
+   "keyframes": 67,
+   "name": "flame_captain_attack3"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_die",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_die.ban",
+   "channels": 85,
+   "duration_ms": 2333,
+   "keyframes": 55,
+   "name": "flame_captain_die"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_die_rm",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_die_rm.ban",
+   "channels": 85,
+   "duration_ms": 33,
+   "keyframes": 2,
+   "name": "flame_captain_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_god_flame_captain_flame_captain_damage1",
+   "ban_path": "/prim/ani/mob/god/flame_captain/flame_captain_damage1.ban",
+   "channels": 12,
+   "duration_ms": 500,
+   "keyframes": 8,
+   "name": "flame_captain_damage1"
+  }
+ ],
+ "key": "res_mob_god_flame_captain",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain01.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain01.ddj",
+   "material": "flame_captain01",
+   "msh": "prim_mesh_mob_god_flame_captain01",
+   "skin_records": 418,
+   "skinned": true,
+   "tcount": 584,
+   "tex": "prim_mtrl_mob_god_flame_captain01",
+   "vcount": 418
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain02.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain02.ddj",
+   "material": "flame_captain02",
+   "msh": "prim_mesh_mob_god_flame_captain02",
+   "skin_records": 90,
+   "skinned": true,
+   "tcount": 96,
+   "tex": "prim_mtrl_mob_god_flame_captain02",
+   "vcount": 90
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain.ddj",
+   "material": "flame_captain",
+   "msh": "prim_mesh_mob_god_flame_captain_part1",
+   "skin_records": 984,
+   "skinned": true,
+   "tcount": 1321,
+   "tex": "prim_mtrl_mob_god_flame_captain",
+   "vcount": 984
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain.ddj",
+   "material": "flame_captain",
+   "msh": "prim_mesh_mob_god_flame_captain_part2_part1",
+   "skin_records": 419,
+   "skinned": true,
+   "tcount": 532,
+   "tex": "prim_mtrl_mob_god_flame_captain",
+   "vcount": 419
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain_part2_part2_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain.ddj",
+   "material": "flame_captain",
+   "msh": "prim_mesh_mob_god_flame_captain_part2_part2_part1",
+   "skin_records": 377,
+   "skinned": true,
+   "tcount": 483,
+   "tex": "prim_mtrl_mob_god_flame_captain",
+   "vcount": 377
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain_part2_part2_part2.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain.ddj",
+   "material": "flame_captain",
+   "msh": "prim_mesh_mob_god_flame_captain_part2_part2_part2",
+   "skin_records": 924,
+   "skinned": true,
+   "tcount": 1260,
+   "tex": "prim_mtrl_mob_god_flame_captain",
+   "vcount": 924
+  },
+  {
+   "bms_path": "/prim/mesh/mob/god/flame_captain03.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/god/flame_captain02.ddj",
+   "material": "flame_captain02",
+   "msh": "prim_mesh_mob_god_flame_captain03",
+   "skin_records": 90,
+   "skinned": true,
+   "tcount": 96,
+   "tex": "prim_mtrl_mob_god_flame_captain02",
+   "vcount": 90
+  }
+ ],
+ "skeleton": "prim_skel_mob_god_flame_captain",
+ "skeleton_path": "/prim/skel/mob/god/flame_captain.bsk"
+}

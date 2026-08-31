@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropeshop_stable",
+   "ban_path": "/prim/ani/npc/europe/easteuropeshop_stable.ban",
+   "channels": 34,
+   "duration_ms": 2333,
+   "keyframes": 14,
+   "name": "easteuropeshop_stable"
+  }
+ ],
+ "key": "res_npc_npc_easteuropeshop_stable",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropeshop_stable_2s.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropeshop_stable.ddj",
+   "material": "EastEuropeShop_Stable_2s",
+   "msh": "prim_mesh_npc_europe_easteuropeshop_stable_2s",
+   "skin_records": 114,
+   "skinned": true,
+   "tcount": 104,
+   "tex": "prim_mtrl_npc_europe_easteuropeshop_stable",
+   "vcount": 114
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropeshop_stable_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropeshop_stable.ddj",
+   "material": "EastEuropeShop_Stable",
+   "msh": "prim_mesh_npc_europe_easteuropeshop_stable_part1",
+   "skin_records": 480,
+   "skinned": true,
+   "tcount": 525,
+   "tex": "prim_mtrl_npc_europe_easteuropeshop_stable",
+   "vcount": 480
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropeshop_stable_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropeshop_stable.ddj",
+   "material": "EastEuropeShop_Stable",
+   "msh": "prim_mesh_npc_europe_easteuropeshop_stable_part2",
+   "skin_records": 384,
+   "skinned": true,
+   "tcount": 443,
+   "tex": "prim_mtrl_npc_europe_easteuropeshop_stable",
+   "vcount": 384
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropeshop_stable",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropeshop_stable.bsk"
+}

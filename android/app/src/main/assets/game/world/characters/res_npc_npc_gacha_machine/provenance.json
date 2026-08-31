@@ -1,0 +1,9 @@
+{
+ "animations": [],
+ "bmt": "/prim/mtrl/npc/npc/gacha_machine.bmt",
+ "bsk": "/prim/skel/npc/npc/gacha_machine.bsk",
+ "bsr": "/res/npc/npc/gacha_machine.bsr",
+ "meshes": [
+  "/prim/mesh/npc/npc/gacha_machine.bms"
+ ]
+}

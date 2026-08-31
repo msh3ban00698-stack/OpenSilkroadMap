@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropequest_commander_baltegru.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropequest_commander_baltegru.bsk",
+ "bsr": "/res/npc/npc/EastEuropeQuest_Commander_Baltegru.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_2s2.bms",
+  "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_2s_1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_arm.bms",
+  "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_part1.bms",
+  "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_part2.bms"
+ ]
+}

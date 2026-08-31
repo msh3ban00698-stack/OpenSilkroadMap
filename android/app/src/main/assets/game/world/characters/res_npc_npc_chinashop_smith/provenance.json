@@ -1,0 +1,16 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinashop_smith_basic.ban",
+  "/prim/ani/npc/china/chinashop_smith_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinashop_smith.bmt",
+ "bsk": "/prim/skel/npc/china/chinashop_smith.bsk",
+ "bsr": "/res/npc/npc/chinashop_smith.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinashop_smith_al_2s.bms",
+  "/prim/mesh/npc/china/chinashop_smith_hammer.bms",
+  "/prim/mesh/npc/china/chinashop_smith_tree.bms",
+  "/prim/mesh/npc/china/chinashop_smith_part1.bms",
+  "/prim/mesh/npc/china/chinashop_smith_part2.bms"
+ ]
+}

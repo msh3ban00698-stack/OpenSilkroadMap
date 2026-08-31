@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_etc_event_pandora_stand01",
+   "ban_path": "/prim/ani/etc/event_pandora_stand01.ban",
+   "channels": 4,
+   "duration_ms": 2666,
+   "keyframes": 5,
+   "name": "event_pandora_stand01"
+  },
+  {
+   "anim": "prim_ani_etc_event_pandora_attack01",
+   "ban_path": "/prim/ani/etc/event_pandora_attack01.ban",
+   "channels": 4,
+   "duration_ms": 1200,
+   "keyframes": 22,
+   "name": "event_pandora_attack01"
+  },
+  {
+   "anim": "prim_ani_etc_event_pandora_die",
+   "ban_path": "/prim/ani/etc/event_pandora_die.ban",
+   "channels": 4,
+   "duration_ms": 1666,
+   "keyframes": 37,
+   "name": "event_pandora_die"
+  },
+  {
+   "anim": "prim_ani_etc_event_pandora_die_rm",
+   "ban_path": "/prim/ani/etc/event_pandora_die_rm.ban",
+   "channels": 4,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "event_pandora_die_rm"
+  }
+ ],
+ "key": "res_etc_event_pandora",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/etc/event_pandora.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/etc/event_pandora.ddj",
+   "material": "event_pandora",
+   "msh": "prim_mesh_etc_event_pandora",
+   "skin_records": 439,
+   "skinned": true,
+   "tcount": 358,
+   "tex": "prim_mtrl_etc_event_pandora",
+   "vcount": 439
+  }
+ ],
+ "skeleton": "prim_skel_etc_event_pandora",
+ "skeleton_path": "/prim/skel/etc/event_pandora.bsk"
+}

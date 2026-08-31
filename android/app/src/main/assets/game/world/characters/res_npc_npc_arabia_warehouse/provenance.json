@@ -1,0 +1,13 @@
+{
+ "animations": [
+  "/prim/ani/npc/arabia/arabia_warehouse_stand_01.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/sd/arabia_warehouse.bmt",
+ "bsk": "/prim/skel/npc/arabia/arabia_warehouse.bsk",
+ "bsr": "/res/npc/npc/arabia_warehouse.bsr",
+ "meshes": [
+  "/prim/mesh/npc/arabia/arabia_warehouse_part1.bms",
+  "/prim/mesh/npc/arabia/arabia_warehouse_part2.bms",
+  "/prim/mesh/npc/arabia/arabia_warehouse_box.bms"
+ ]
+}

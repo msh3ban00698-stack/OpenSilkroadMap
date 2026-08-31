@@ -1,0 +1,177 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_stand01",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_stand01.ban",
+   "channels": 41,
+   "duration_ms": 4000,
+   "keyframes": 51,
+   "name": "bunwang_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_run",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_run.ban",
+   "channels": 41,
+   "duration_ms": 666,
+   "keyframes": 20,
+   "name": "bunwang_run"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_attack01",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_attack01.ban",
+   "channels": 41,
+   "duration_ms": 1966,
+   "keyframes": 48,
+   "name": "bunwang_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_attack02",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_attack02.ban",
+   "channels": 41,
+   "duration_ms": 1300,
+   "keyframes": 34,
+   "name": "bunwang_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_damage01",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_damage01.ban",
+   "channels": 41,
+   "duration_ms": 500,
+   "keyframes": 7,
+   "name": "bunwang_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_damage02",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_damage02.ban",
+   "channels": 41,
+   "duration_ms": 1000,
+   "keyframes": 20,
+   "name": "bunwang_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_die",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_die.ban",
+   "channels": 41,
+   "duration_ms": 3000,
+   "keyframes": 60,
+   "name": "bunwang_die"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_die_loop",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_die_loop.ban",
+   "channels": 41,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bunwang_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_down",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_down.ban",
+   "channels": 41,
+   "duration_ms": 900,
+   "keyframes": 21,
+   "name": "bunwang_down"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_down_rm",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_down_rm.ban",
+   "channels": 41,
+   "duration_ms": 1666,
+   "keyframes": 12,
+   "name": "bunwang_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_down_damage",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_down_damage.ban",
+   "channels": 41,
+   "duration_ms": 1000,
+   "keyframes": 27,
+   "name": "bunwang_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_down_up",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_down_up.ban",
+   "channels": 41,
+   "duration_ms": 433,
+   "keyframes": 7,
+   "name": "bunwang_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_down_die",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_down_die.ban",
+   "channels": 41,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "bunwang_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_walk",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_walk.ban",
+   "channels": 41,
+   "duration_ms": 1333,
+   "keyframes": 20,
+   "name": "bunwang_walk"
+  },
+  {
+   "anim": "prim_ani_mob_khotan_bunwang_bunwang_attack03",
+   "ban_path": "/prim/ani/mob/khotan/bunwang/bunwang_attack03.ban",
+   "channels": 41,
+   "duration_ms": 3066,
+   "keyframes": 38,
+   "name": "bunwang_attack03"
+  }
+ ],
+ "key": "res_mob_casia_monkey",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/khotan/bunwang01.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/casia/monkey.ddj",
+   "material": "bunwang",
+   "msh": "prim_mesh_mob_khotan_bunwang01",
+   "skin_records": 205,
+   "skinned": true,
+   "tcount": 274,
+   "tex": "prim_mtrl_mob_casia_monkey",
+   "vcount": 205
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/bunwang02.bms",
+   "bone_count": 12,
+   "ddj_path": "/prim/mtrl/mob/casia/monkey.ddj",
+   "material": "bunwang",
+   "msh": "prim_mesh_mob_khotan_bunwang02",
+   "skin_records": 279,
+   "skinned": true,
+   "tcount": 360,
+   "tex": "prim_mtrl_mob_casia_monkey",
+   "vcount": 279
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/bunwang03.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/casia/monkey.ddj",
+   "material": "bunwang_2side",
+   "msh": "prim_mesh_mob_khotan_bunwang03",
+   "skin_records": 144,
+   "skinned": true,
+   "tcount": 174,
+   "tex": "prim_mtrl_mob_casia_monkey",
+   "vcount": 144
+  },
+  {
+   "bms_path": "/prim/mesh/mob/khotan/bunwang_2side.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/casia/monkey.ddj",
+   "material": "bunwang_2side",
+   "msh": "prim_mesh_mob_khotan_bunwang_2side",
+   "skin_records": 102,
+   "skinned": true,
+   "tcount": 86,
+   "tex": "prim_mtrl_mob_casia_monkey",
+   "vcount": 102
+  }
+ ],
+ "skeleton": "prim_skel_mob_khotan_bunwang",
+ "skeleton_path": "/prim/skel/mob/khotan/bunwang.bsk"
+}

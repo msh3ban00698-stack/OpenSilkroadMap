@@ -1,0 +1,30 @@
+{
+ "animations": [
+  "/prim/ani/char/china/man/chinaman_standbattle.ban",
+  "/prim/ani/char/china/man/chinaman_fighter_standcity.ban",
+  "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",
+  "/prim/ani/char/china/man/chinaman_fighter_runforward_sword.ban",
+  "/prim/ani/char/china/man/chinaman_fighter_runforward.ban"
+ ],
+ "bsk": "/prim/skel/char/china/chinaman_skel.bsk",
+ "bsr": "/res/char/china/chinaman_fighter.bsr",
+ "meshes": [
+  "/prim/mesh/char/china/man/man_pelvis.bms",
+  "/prim/mesh/char/china/man/man_torso_lower.bms",
+  "/prim/mesh/char/china/man/man_torso_upper.bms",
+  "/prim/mesh/char/china/man/man_arm_upper.bms",
+  "/prim/mesh/char/china/man/man_arm_lower.bms",
+  "/prim/mesh/char/china/man/man_thigh.bms",
+  "/prim/mesh/char/china/man/man_calf.bms",
+  "/prim/mesh/char/china/man/chinaman_fighter_face.bms",
+  "/prim/mesh/char/china/man/chinaman_fighter_hair.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_aa.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_ba.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_fa.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_ha.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_la.bms",
+  "/prim/mesh/item/china/man_item/clothes_01_sa.bms",
+  "/prim/mesh/item/china/weapon/sword_01.bms"
+ ],
+ "note": "PARTIAL: BSR references europeman_skel (43 bones) not chinaman_skel; no static spawn"
+}

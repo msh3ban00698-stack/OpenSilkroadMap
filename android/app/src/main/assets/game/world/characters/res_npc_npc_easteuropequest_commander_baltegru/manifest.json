@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_europe_easteuropequest_commander_baltegru",
+   "ban_path": "/prim/ani/npc/europe/easteuropequest_commander_baltegru.ban",
+   "channels": 38,
+   "duration_ms": 2666,
+   "keyframes": 16,
+   "name": "easteuropequest_commander_baltegru"
+  }
+ ],
+ "key": "res_npc_npc_easteuropequest_commander_baltegru",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_2s2.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.ddj",
+   "material": "EastEuropeQuest_Commander_Baltegru_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_commander_baltegru_2s2",
+   "skin_records": 54,
+   "skinned": true,
+   "tcount": 68,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_commander_baltegru",
+   "vcount": 54
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_2s_1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.ddj",
+   "material": "EastEuropeQuest_Commander_Baltegru_2s",
+   "msh": "prim_mesh_npc_europe_easteuropequest_commander_baltegru_2s_1",
+   "skin_records": 269,
+   "skinned": true,
+   "tcount": 309,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_commander_baltegru",
+   "vcount": 269
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_arm.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.ddj",
+   "material": "EastEuropeQuest_Commander_Baltegru",
+   "msh": "prim_mesh_npc_europe_easteuropequest_commander_baltegru_arm",
+   "skin_records": 65,
+   "skinned": true,
+   "tcount": 76,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_commander_baltegru",
+   "vcount": 65
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.ddj",
+   "material": "EastEuropeQuest_Commander_Baltegru",
+   "msh": "prim_mesh_npc_europe_easteuropequest_commander_baltegru_part1",
+   "skin_records": 361,
+   "skinned": true,
+   "tcount": 527,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_commander_baltegru",
+   "vcount": 361
+  },
+  {
+   "bms_path": "/prim/mesh/npc/europe/easteuropequest_commander_baltegru_part2.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/npc/europe/easteuropequest_commander_baltegru.ddj",
+   "material": "EastEuropeQuest_Commander_Baltegru",
+   "msh": "prim_mesh_npc_europe_easteuropequest_commander_baltegru_part2",
+   "skin_records": 337,
+   "skinned": true,
+   "tcount": 463,
+   "tex": "prim_mtrl_npc_europe_easteuropequest_commander_baltegru",
+   "vcount": 337
+  }
+ ],
+ "skeleton": "prim_skel_npc_europe_easteuropequest_commander_baltegru",
+ "skeleton_path": "/prim/skel/npc/europe/easteuropequest_commander_baltegru.bsk"
+}

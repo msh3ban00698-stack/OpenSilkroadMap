@@ -1,0 +1,18 @@
+{
+ "animations": [
+  "/prim/ani/npc/china/chinaquest_villageheadman_basic.ban",
+  "/prim/ani/npc/china/westchinaquest_oldman_time.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/china/chinaquest_villageheadman.bmt",
+ "bsk": "/prim/skel/npc/china/chinaquest_villageheadman.bsk",
+ "bsr": "/res/npc/npc/chinaquest_villageheadman.bsr",
+ "meshes": [
+  "/prim/mesh/npc/china/chinaquest_villageheadman_2s.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_al_2s.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_al_2s_02.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_chair.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_part1.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_part2_part1.bms",
+  "/prim/mesh/npc/china/chinaquest_villageheadman_part2_part2.bms"
+ ]
+}

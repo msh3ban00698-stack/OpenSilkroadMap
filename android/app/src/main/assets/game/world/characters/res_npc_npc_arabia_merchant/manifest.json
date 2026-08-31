@@ -1,0 +1,41 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_m_area_merchant_stand",
+   "ban_path": "/prim/ani/npc/sd/sd_m_area_merchant_stand.ban",
+   "channels": 35,
+   "duration_ms": 10666,
+   "keyframes": 35,
+   "name": "sd_m_area_merchant_stand"
+  }
+ ],
+ "key": "res_npc_npc_arabia_merchant",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_merchant_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/sd/arabia_merchant.ddj",
+   "material": "SD_m_area_merchant",
+   "msh": "prim_mesh_npc_sd_sd_m_area_merchant_part1",
+   "skin_records": 911,
+   "skinned": true,
+   "tcount": 1336,
+   "tex": "prim_mtrl_npc_sd_arabia_merchant",
+   "vcount": 911
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_m_area_merchant_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/arabia_merchant.ddj",
+   "material": "SD_m_area_merchant",
+   "msh": "prim_mesh_npc_sd_sd_m_area_merchant_part2",
+   "skin_records": 413,
+   "skinned": true,
+   "tcount": 517,
+   "tex": "prim_mtrl_npc_sd_arabia_merchant",
+   "vcount": 413
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_m_area_merchant",
+ "skeleton_path": "/prim/skel/npc/sd/sd_m_area_merchant.bsk"
+}

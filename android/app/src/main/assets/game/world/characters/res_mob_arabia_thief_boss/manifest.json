@@ -1,0 +1,237 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack01",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack01.ban",
+   "channels": 100,
+   "duration_ms": 3000,
+   "keyframes": 46,
+   "name": "thief_boss_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack04",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack04.ban",
+   "channels": 100,
+   "duration_ms": 4000,
+   "keyframes": 54,
+   "name": "thief_boss_attack04"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack06",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack06.ban",
+   "channels": 100,
+   "duration_ms": 5000,
+   "keyframes": 47,
+   "name": "thief_boss_attack06"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack07",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack07.ban",
+   "channels": 100,
+   "duration_ms": 6000,
+   "keyframes": 111,
+   "name": "thief_boss_attack07"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_die",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_die.ban",
+   "channels": 100,
+   "duration_ms": 2666,
+   "keyframes": 50,
+   "name": "thief_boss_die"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_die_rm",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_die_rm.ban",
+   "channels": 100,
+   "duration_ms": 1000,
+   "keyframes": 2,
+   "name": "thief_boss_die_rm"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_stand01",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_stand01.ban",
+   "channels": 100,
+   "duration_ms": 1666,
+   "keyframes": 18,
+   "name": "thief_boss_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_stand02",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_stand02.ban",
+   "channels": 105,
+   "duration_ms": 6666,
+   "keyframes": 57,
+   "name": "thief_boss_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_walk",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_walk.ban",
+   "channels": 100,
+   "duration_ms": 1333,
+   "keyframes": 19,
+   "name": "thief_boss_walk"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_run",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_run.ban",
+   "channels": 100,
+   "duration_ms": 800,
+   "keyframes": 15,
+   "name": "thief_boss_run"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack03",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack03.ban",
+   "channels": 100,
+   "duration_ms": 2666,
+   "keyframes": 51,
+   "name": "thief_boss_attack03"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_attack05",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_attack05.ban",
+   "channels": 100,
+   "duration_ms": 2666,
+   "keyframes": 49,
+   "name": "thief_boss_attack05"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_shot",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_shot.ban",
+   "channels": 100,
+   "duration_ms": 2333,
+   "keyframes": 54,
+   "name": "thief_boss_shot"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_ready",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_ready.ban",
+   "channels": 100,
+   "duration_ms": 1000,
+   "keyframes": 16,
+   "name": "thief_boss_ready"
+  },
+  {
+   "anim": "prim_ani_mob_arabia_thief_boss_thief_boss_wait",
+   "ban_path": "/prim/ani/mob/arabia/thief_boss/thief_boss_wait.ban",
+   "channels": 100,
+   "duration_ms": 1000,
+   "keyframes": 17,
+   "name": "thief_boss_wait"
+  }
+ ],
+ "key": "res_mob_arabia_thief_boss",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_attach.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss_attach.ddj",
+   "material": "thief_boss_attach",
+   "msh": "prim_mesh_mob_arabia_thief_boss_attach",
+   "skin_records": 393,
+   "skinned": true,
+   "tcount": 504,
+   "tex": "prim_mtrl_mob_arabia_thief_boss_attach",
+   "vcount": 393
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_attach_l.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss_attach.ddj",
+   "material": "thief_boss_attach",
+   "msh": "prim_mesh_mob_arabia_thief_boss_attach_l",
+   "skin_records": 374,
+   "skinned": true,
+   "tcount": 580,
+   "tex": "prim_mtrl_mob_arabia_thief_boss_attach",
+   "vcount": 374
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_attach_r.bms",
+   "bone_count": 2,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss_attach.ddj",
+   "material": "thief_boss_attach",
+   "msh": "prim_mesh_mob_arabia_thief_boss_attach_r",
+   "skin_records": 374,
+   "skinned": true,
+   "tcount": 580,
+   "tex": "prim_mtrl_mob_arabia_thief_boss_attach",
+   "vcount": 374
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part1.bms",
+   "bone_count": 9,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part1",
+   "skin_records": 613,
+   "skinned": true,
+   "tcount": 838,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 613
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part2_part1",
+   "skin_records": 294,
+   "skinned": true,
+   "tcount": 396,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 294
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part2_part2_part1",
+   "skin_records": 355,
+   "skinned": true,
+   "tcount": 474,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 355
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part2_part2_part2_part1.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part2_part2_part2_part1",
+   "skin_records": 370,
+   "skinned": true,
+   "tcount": 487,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 370
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part2_part2_part2_part2_part1.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part2_part2_part2_part2_part1",
+   "skin_records": 1053,
+   "skinned": true,
+   "tcount": 1375,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 1053
+  },
+  {
+   "bms_path": "/prim/mesh/mob/arabia/thief_boss_part2_part2_part2_part2_part2.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/arabia/thief_boss.ddj",
+   "material": "thief_boss",
+   "msh": "prim_mesh_mob_arabia_thief_boss_part2_part2_part2_part2_part2",
+   "skin_records": 406,
+   "skinned": true,
+   "tcount": 503,
+   "tex": "prim_mtrl_mob_arabia_thief_boss",
+   "vcount": 406
+  }
+ ],
+ "skeleton": "prim_skel_mob_arabia_thief_boss",
+ "skeleton_path": "/prim/skel/mob/arabia/thief_boss.bsk"
+}

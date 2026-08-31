@@ -1,0 +1,53 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_arabia_arabia_special_stand01",
+   "ban_path": "/prim/ani/npc/arabia/arabia_special_stand01.ban",
+   "channels": 45,
+   "duration_ms": 8166,
+   "keyframes": 15,
+   "name": "arabia_special_stand01"
+  }
+ ],
+ "key": "res_npc_npc_arabia_special",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_special_01.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_special_01.ddj",
+   "material": "Arabia_Special_01",
+   "msh": "prim_mesh_npc_arabia_arabia_special_01",
+   "skin_records": 309,
+   "skinned": true,
+   "tcount": 422,
+   "tex": "prim_mtrl_npc_arabia_arabia_special_01",
+   "vcount": 309
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_special_part1.bms",
+   "bone_count": 18,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_special.ddj",
+   "material": "Arabia_Special",
+   "msh": "prim_mesh_npc_arabia_arabia_special_part1",
+   "skin_records": 252,
+   "skinned": true,
+   "tcount": 322,
+   "tex": "prim_mtrl_npc_arabia_arabia_special",
+   "vcount": 252
+  },
+  {
+   "bms_path": "/prim/mesh/npc/arabia/arabia_special_part2.bms",
+   "bone_count": 20,
+   "ddj_path": "/prim/mtrl/npc/arabia/arabia_special.ddj",
+   "material": "Arabia_Special",
+   "msh": "prim_mesh_npc_arabia_arabia_special_part2",
+   "skin_records": 911,
+   "skinned": true,
+   "tcount": 1248,
+   "tex": "prim_mtrl_npc_arabia_arabia_special",
+   "vcount": 911
+  }
+ ],
+ "skeleton": "prim_skel_npc_arabia_arabia_special",
+ "skeleton_path": "/prim/skel/npc/arabia/arabia_special.bsk"
+}

@@ -1,0 +1,185 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_stand01",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_stand01.ban",
+   "channels": 54,
+   "duration_ms": 1666,
+   "keyframes": 63,
+   "name": "ong_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_stand02",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_stand02.ban",
+   "channels": 54,
+   "duration_ms": 1666,
+   "keyframes": 63,
+   "name": "ong_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_walk",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_walk.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 35,
+   "name": "ong_walk"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_run",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_run.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 35,
+   "name": "ong_run"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_attack01",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_attack01.ban",
+   "channels": 54,
+   "duration_ms": 1833,
+   "keyframes": 53,
+   "name": "ong_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_attack02",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_attack02.ban",
+   "channels": 54,
+   "duration_ms": 1833,
+   "keyframes": 49,
+   "name": "ong_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_damage01",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_damage01.ban",
+   "channels": 6,
+   "duration_ms": 933,
+   "keyframes": 29,
+   "name": "ong_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_damage02",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_damage02.ban",
+   "channels": 54,
+   "duration_ms": 933,
+   "keyframes": 29,
+   "name": "ong_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_die",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_die.ban",
+   "channels": 54,
+   "duration_ms": 2466,
+   "keyframes": 82,
+   "name": "ong_die"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_die_loop",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_die_loop.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ong_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_down",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_down.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 53,
+   "name": "ong_down"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_downwait",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_downwait.ban",
+   "channels": 54,
+   "duration_ms": 2000,
+   "keyframes": 9,
+   "name": "ong_downwait"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_downdamage",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_downdamage.ban",
+   "channels": 54,
+   "duration_ms": 1200,
+   "keyframes": 34,
+   "name": "ong_downdamage"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_downup",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_downup.ban",
+   "channels": 54,
+   "duration_ms": 1000,
+   "keyframes": 50,
+   "name": "ong_downup"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_downdie",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_downdie.ban",
+   "channels": 54,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "ong_downdie"
+  },
+  {
+   "anim": "prim_ani_mob_oasis_ong_ong_attack03",
+   "ban_path": "/prim/ani/mob/oasis/ong/ong_attack03.ban",
+   "channels": 54,
+   "duration_ms": 2900,
+   "keyframes": 84,
+   "name": "ong_attack03"
+  }
+ ],
+ "key": "res_mob_oasis_ong",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/oasis/ong_2side.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/oasis/ong.ddj",
+   "material": "ong_2side",
+   "msh": "prim_mesh_mob_oasis_ong_2side",
+   "skin_records": 66,
+   "skinned": true,
+   "tcount": 56,
+   "tex": "prim_mtrl_mob_oasis_ong",
+   "vcount": 66
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/ong_body_part1.bms",
+   "bone_count": 16,
+   "ddj_path": "/prim/mtrl/mob/oasis/ong.ddj",
+   "material": "ong",
+   "msh": "prim_mesh_mob_oasis_ong_body_part1",
+   "skin_records": 76,
+   "skinned": true,
+   "tcount": 104,
+   "tex": "prim_mtrl_mob_oasis_ong",
+   "vcount": 76
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/ong_body_part2_part1.bms",
+   "bone_count": 14,
+   "ddj_path": "/prim/mtrl/mob/oasis/ong.ddj",
+   "material": "ong",
+   "msh": "prim_mesh_mob_oasis_ong_body_part2_part1",
+   "skin_records": 145,
+   "skinned": true,
+   "tcount": 214,
+   "tex": "prim_mtrl_mob_oasis_ong",
+   "vcount": 145
+  },
+  {
+   "bms_path": "/prim/mesh/mob/oasis/ong_body_part2_part2.bms",
+   "bone_count": 11,
+   "ddj_path": "/prim/mtrl/mob/oasis/ong.ddj",
+   "material": "ong",
+   "msh": "prim_mesh_mob_oasis_ong_body_part2_part2",
+   "skin_records": 165,
+   "skinned": true,
+   "tcount": 272,
+   "tex": "prim_mtrl_mob_oasis_ong",
+   "vcount": 165
+  }
+ ],
+ "skeleton": "prim_skel_mob_oasis_ong",
+ "skeleton_path": "/prim/skel/mob/oasis/ong.bsk"
+}

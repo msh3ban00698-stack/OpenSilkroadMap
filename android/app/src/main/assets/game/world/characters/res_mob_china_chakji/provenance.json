@@ -1,0 +1,28 @@
+{
+ "animations": [
+  "/prim/ani/mob/china/chakji/chakji_stand01.ban",
+  "/prim/ani/mob/china/chakji/chakji_walk.ban",
+  "/prim/ani/mob/china/chakji/chakji_run.ban",
+  "/prim/ani/mob/china/chakji/chakji_attack01.ban",
+  "/prim/ani/mob/china/chakji/chakji_attack02.ban",
+  "/prim/ani/mob/china/chakji/chakji_damage01.ban",
+  "/prim/ani/mob/china/chakji/chakji_damage02.ban",
+  "/prim/ani/mob/china/chakji/chakji_die.ban",
+  "/prim/ani/mob/china/chakji/chakji_die_loop.ban",
+  "/prim/ani/mob/china/chakji/chakji_down.ban",
+  "/prim/ani/mob/china/chakji/chakji_downwait.ban",
+  "/prim/ani/mob/china/chakji/chakji_downdamage.ban",
+  "/prim/ani/mob/china/chakji/chakji_wakeup.ban",
+  "/prim/ani/mob/china/chakji/chakji_downdie.ban",
+  "/prim/ani/mob/china/chakji/chakji_attack03.ban"
+ ],
+ "bmt": "/prim/mtrl/mob/china/chakji.bmt",
+ "bsk": "/prim/skel/mob/china/chakji.bsk",
+ "bsr": "/res/mob/china/chakji.bsr",
+ "meshes": [
+  "/prim/mesh/mob/china/chakji_weapon.bms",
+  "/prim/mesh/mob/china/chakji_part1.bms",
+  "/prim/mesh/mob/china/chakji_part2_part1.bms",
+  "/prim/mesh/mob/china/chakji_part2_part2.bms"
+ ]
+}

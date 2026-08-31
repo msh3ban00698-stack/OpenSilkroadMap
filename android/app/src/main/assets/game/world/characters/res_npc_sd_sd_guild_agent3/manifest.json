@@ -1,0 +1,77 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_npc_sd_sd_guild_agent3_stand",
+   "ban_path": "/prim/ani/npc/sd/sd_guild_agent3_stand.ban",
+   "channels": 35,
+   "duration_ms": 2666,
+   "keyframes": 9,
+   "name": "sd_guild_agent3_stand"
+  }
+ ],
+ "key": "res_npc_sd_sd_guild_agent3",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent3_book.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent3_s2.ddj",
+   "material": "SD_guild_agent3_s2",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent3_book",
+   "skin_records": 8,
+   "skinned": true,
+   "tcount": 4,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent3_s2",
+   "vcount": 8
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent3_s2.bms",
+   "bone_count": 8,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent3_s2.ddj",
+   "material": "SD_guild_agent3_s2",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent3_s2",
+   "skin_records": 243,
+   "skinned": true,
+   "tcount": 360,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent3_s2",
+   "vcount": 243
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent3_s3.bms",
+   "bone_count": 1,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent3_s3.ddj",
+   "material": "SD_guild_agent3_s3",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent3_s3",
+   "skin_records": 44,
+   "skinned": true,
+   "tcount": 52,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent3_s3",
+   "vcount": 44
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent3_s1_part1.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent3_s1.ddj",
+   "material": "SD_guild_agent3_s1",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent3_s1_part1",
+   "skin_records": 319,
+   "skinned": true,
+   "tcount": 448,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent3_s1",
+   "vcount": 319
+  },
+  {
+   "bms_path": "/prim/mesh/npc/sd/sd_guild_agent3_s1_part2.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/npc/sd/sd_guild_agent3_s1.ddj",
+   "material": "SD_guild_agent3_s1",
+   "msh": "prim_mesh_npc_sd_sd_guild_agent3_s1_part2",
+   "skin_records": 236,
+   "skinned": true,
+   "tcount": 272,
+   "tex": "prim_mtrl_npc_sd_sd_guild_agent3_s1",
+   "vcount": 236
+  }
+ ],
+ "skeleton": "prim_skel_npc_sd_sd_guild_agent3",
+ "skeleton_path": "/prim/skel/npc/sd/sd_guild_agent3.bsk"
+}

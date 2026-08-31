@@ -1,0 +1,85 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_stand01",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_stand01.ban",
+   "channels": 28,
+   "duration_ms": 6666,
+   "keyframes": 19,
+   "name": "hyeongcheon_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_walk",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_walk.ban",
+   "channels": 28,
+   "duration_ms": 2666,
+   "keyframes": 37,
+   "name": "hyeongcheon_walk"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_run",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_run.ban",
+   "channels": 28,
+   "duration_ms": 1333,
+   "keyframes": 46,
+   "name": "hyeongcheon_run"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_attack01",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_attack01.ban",
+   "channels": 28,
+   "duration_ms": 2666,
+   "keyframes": 29,
+   "name": "hyeongcheon_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_attack02",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_attack02.ban",
+   "channels": 28,
+   "duration_ms": 2666,
+   "keyframes": 33,
+   "name": "hyeongcheon_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_die",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_die.ban",
+   "channels": 28,
+   "duration_ms": 1866,
+   "keyframes": 27,
+   "name": "hyeongcheon_die"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_die_loop",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_die_loop.ban",
+   "channels": 28,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "hyeongcheon_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_china_hyeongcheon_hyeongcheon_attack03",
+   "ban_path": "/prim/ani/mob/china/hyeongcheon/hyeongcheon_attack03.ban",
+   "channels": 28,
+   "duration_ms": 3000,
+   "keyframes": 46,
+   "name": "hyeongcheon_attack03"
+  }
+ ],
+ "key": "res_mob_fortress_fw_hyeongcheon",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/fortress/fw_hyeongcheon.bms",
+   "bone_count": 17,
+   "ddj_path": "/prim/mtrl/mob/fortress/fw_hyeongcheon.ddj",
+   "material": "fw_hyeongcheon",
+   "msh": "prim_mesh_mob_fortress_fw_hyeongcheon",
+   "skin_records": 653,
+   "skinned": true,
+   "tcount": 743,
+   "tex": "prim_mtrl_mob_fortress_fw_hyeongcheon",
+   "vcount": 653
+  }
+ ],
+ "skeleton": "prim_skel_mob_china_hyeongcheon",
+ "skeleton_path": "/prim/skel/mob/china/hyeongcheon.bsk"
+}

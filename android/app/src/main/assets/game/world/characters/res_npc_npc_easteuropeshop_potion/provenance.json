@@ -1,0 +1,15 @@
+{
+ "animations": [
+  "/prim/ani/npc/europe/easteuropeshop_potion.ban"
+ ],
+ "bmt": "/prim/mtrl/npc/europe/easteuropeshop_potion.bmt",
+ "bsk": "/prim/skel/npc/europe/easteuropeshop_potion.bsk",
+ "bsr": "/res/npc/npc/EastEuropeShop_Potion.bsr",
+ "meshes": [
+  "/prim/mesh/npc/europe/easteuropeshop_potion_h.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_potion_2s_part1.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_potion_2s_part2.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_potion_part1.bms",
+  "/prim/mesh/npc/europe/easteuropeshop_potion_part2.bms"
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "anims": [
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_stand01",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_stand01.ban",
+   "channels": 39,
+   "duration_ms": 6666,
+   "keyframes": 41,
+   "name": "yeti_stand01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_stand02",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_stand02.ban",
+   "channels": 39,
+   "duration_ms": 3500,
+   "keyframes": 80,
+   "name": "yeti_stand02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_walk",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_walk.ban",
+   "channels": 39,
+   "duration_ms": 2000,
+   "keyframes": 32,
+   "name": "yeti_walk"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_run",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_run.ban",
+   "channels": 39,
+   "duration_ms": 1333,
+   "keyframes": 44,
+   "name": "yeti_run"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_attack01",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_attack01.ban",
+   "channels": 39,
+   "duration_ms": 2833,
+   "keyframes": 66,
+   "name": "yeti_attack01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_attack02",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_attack02.ban",
+   "channels": 39,
+   "duration_ms": 2800,
+   "keyframes": 67,
+   "name": "yeti_attack02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_damage01",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_damage01.ban",
+   "channels": 8,
+   "duration_ms": 633,
+   "keyframes": 11,
+   "name": "yeti_damage01"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_damage02",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_damage02.ban",
+   "channels": 39,
+   "duration_ms": 1266,
+   "keyframes": 36,
+   "name": "yeti_damage02"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_die",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_die.ban",
+   "channels": 39,
+   "duration_ms": 5866,
+   "keyframes": 124,
+   "name": "yeti_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_die_loop",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_die_loop.ban",
+   "channels": 39,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "yeti_die_loop"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_down",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_down.ban",
+   "channels": 39,
+   "duration_ms": 866,
+   "keyframes": 27,
+   "name": "yeti_down"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_down_rm",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_down_rm.ban",
+   "channels": 79,
+   "duration_ms": 1866,
+   "keyframes": 31,
+   "name": "yeti_down_rm"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_down_damage",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_down_damage.ban",
+   "channels": 79,
+   "duration_ms": 533,
+   "keyframes": 16,
+   "name": "yeti_down_damage"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_down_up",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_down_up.ban",
+   "channels": 39,
+   "duration_ms": 1266,
+   "keyframes": 26,
+   "name": "yeti_down_up"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_down_die",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_down_die.ban",
+   "channels": 39,
+   "duration_ms": 333,
+   "keyframes": 2,
+   "name": "yeti_down_die"
+  },
+  {
+   "anim": "prim_ani_mob_karakoram_yeti_yeti_attack03",
+   "ban_path": "/prim/ani/mob/karakoram/yeti/yeti_attack03.ban",
+   "channels": 39,
+   "duration_ms": 3166,
+   "keyframes": 56,
+   "name": "yeti_attack03"
+  }
+ ],
+ "key": "res_mob_karakoram_yeti",
+ "meshes": [
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/yeti_part1.bms",
+   "bone_count": 10,
+   "ddj_path": "/prim/mtrl/mob/karakoram/yeti.ddj",
+   "material": "yeti",
+   "msh": "prim_mesh_mob_karakoram_yeti_part1",
+   "skin_records": 179,
+   "skinned": true,
+   "tcount": 220,
+   "tex": "prim_mtrl_mob_karakoram_yeti",
+   "vcount": 179
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/yeti_part2_part1.bms",
+   "bone_count": 19,
+   "ddj_path": "/prim/mtrl/mob/karakoram/yeti.ddj",
+   "material": "yeti",
+   "msh": "prim_mesh_mob_karakoram_yeti_part2_part1",
+   "skin_records": 383,
+   "skinned": true,
+   "tcount": 411,
+   "tex": "prim_mtrl_mob_karakoram_yeti",
+   "vcount": 383
+  },
+  {
+   "bms_path": "/prim/mesh/mob/karakoram/yeti_part2_part2.bms",
+   "bone_count": 13,
+   "ddj_path": "/prim/mtrl/mob/karakoram/yeti.ddj",
+   "material": "yeti",
+   "msh": "prim_mesh_mob_karakoram_yeti_part2_part2",
+   "skin_records": 274,
+   "skinned": true,
+   "tcount": 404,
+   "tex": "prim_mtrl_mob_karakoram_yeti",
+   "vcount": 274
+  }
+ ],
+ "skeleton": "prim_skel_mob_karakoram_yeti",
+ "skeleton_path": "/prim/skel/mob/karakoram/yeti.bsk"
+}
