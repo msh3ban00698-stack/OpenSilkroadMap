@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.world.CharacterCatalog;
+import com.opensilkroadmap.app.world.CharacterEntity;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
@@ -37,6 +38,15 @@ import java.util.Map;
  * no models, materials, normals, or textures are invented. Missing terrain
  * fails closed; no other region is substituted.
  *
+ * <p>Phase 24 adds the PLAYER foundation on top: the player identity
+ * ({@link PlayerIdentity}) resolves from the committed {@code "player"} manifest
+ * + skeleton chain; the player spawn stays UNKNOWN (no verified start table in
+ * source) and fails closed — no invented position; a {@link PlayerController}
+ * binds the native joystick input to the player entity's proven IDLE/WALK/RUN
+ * clips; the shared {@link InputController} is drained by the renderer (pan /
+ * zoom) and the controller (move). The camera follows the player only once a
+ * verified spawn has placed it.
+ *
  * <p>This native activity is now the app launcher (see
  * {@code AndroidManifest.xml}); the legacy {@code MainActivity} WebView entry has
  * been retired to a redirect. The runtime is driven by a fixed-timestep
@@ -49,6 +59,9 @@ public final class GameActivity extends Activity {
   private static final String WORLD_INDEX_ASSET = "game/world/world_index.tsv";
   private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
+  private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
+  private static final String PLAYER_SKELETON_ASSET =
+      "game/world/characters/shared/skel/prim_skel_char_china_chinaman_skel.json";
 
   private NativeWorldRenderer world;
   private WorldTerrainSet terrain;
@@ -57,6 +70,7 @@ public final class GameActivity extends Activity {
   private CharacterCatalog characterCatalog;
   private Map<String, CharacterMeshIndex> characterModels =
       new HashMap<String, CharacterMeshIndex>();
+  private PlayerController playerController;
 
   private final GameClock clock = new GameClock();
   private final GameLoop loop = new GameLoop();
@@ -71,6 +85,17 @@ public final class GameActivity extends Activity {
       double dt = clock.tick(System.nanoTime());
       loop.advance(dt);
       world.advanceAnimations(dt);
+      if (playerController != null) {
+        playerController.update(dt);
+        boolean placed = playerController.placed();
+        world.setPlayer(playerController.entity(),
+            playerController.state().heading(), placed);
+        double[] target = playerController.cameraTarget();
+        if (target != null) {
+          world.setCamera((float) target[0], (float) target[1],
+              world.pixelsPerUnit());
+        }
+      }
       world.postInvalidateOnAnimation();
       world.postOnAnimation(this);
     }
@@ -104,6 +129,7 @@ public final class GameActivity extends Activity {
       world.setCharacters(characterCatalog, characterModels);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
+    wirePlayer();
     root.addView(world, new FrameLayout.LayoutParams(
         FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
 
@@ -209,6 +235,13 @@ public final class GameActivity extends Activity {
             .append(" catalog rows, ").append(characterModels.size())
             .append(" models loaded (idle anim)\n");
       }
+      if (playerController != null) {
+        sb.append("player identity ").append(
+                playerController.identityResolved() ? "resolved" : "unresolved")
+            .append(" · spawn ")
+            .append(playerController.placed() ? "placed" : "UNKNOWN (fail-closed)")
+            .append('\n');
+      }
       if (data != null) {
         sb.append(data.summary()).append('\n');
       }
@@ -236,6 +269,45 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   CharacterCatalog characterCatalog() {
     return characterCatalog;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  PlayerController playerController() {
+    return playerController;
+  }
+
+  /**
+   * Wires the Phase 24 player foundation. The spawn is UNKNOWN by evidence (no
+   * verified start table in the supplied source/data) so the controller fails
+   * closed: the player entity is attached but invisible until a verified spawn
+   * is placed.
+   */
+  private void wirePlayer() {
+    PlayerIdentity identity = loadPlayerIdentity();
+    CharacterMeshIndex playerModel =
+        CharacterMeshIndex.load(getAssets(), CharacterCatalog.PLAYER_KEY);
+    PlayerState playerState =
+        new PlayerState(CharacterCatalog.PLAYER_KEY, "Player");
+    playerController = new PlayerController(
+        world.input(), playerState,
+        playerModel == null ? null : new CharacterEntity(playerModel),
+        identity,
+        PlayerSpawn.unknown(
+            "no verified spawn table in supplied source/data; npcpos is NPC-only"),
+        PlayerMovementConfig.unknownSpeed());
+    world.setPlayer(playerController.entity(), 0f, false);
+  }
+
+  private PlayerIdentity loadPlayerIdentity() {
+    try {
+      return PlayerIdentity.resolve(
+          new InputStreamReader(
+              getAssets().open(PLAYER_MANIFEST_ASSET), StandardCharsets.UTF_8),
+          new InputStreamReader(
+              getAssets().open(PLAYER_SKELETON_ASSET), StandardCharsets.UTF_8));
+    } catch (IOException e) {
+      return PlayerIdentity.unresolved("player manifest/skeleton unavailable");
+    }
   }
 
   /** Package-private for the instrumented test (same package). */

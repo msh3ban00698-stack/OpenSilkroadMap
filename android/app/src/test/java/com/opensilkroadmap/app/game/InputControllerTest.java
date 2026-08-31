@@ -61,4 +61,48 @@ public class InputControllerTest {
     assertEquals(0f, in.moveX(), 1e-6);
     assertEquals(0f, in.moveY(), 1e-6);
   }
+
+  @Test
+  public void joystickInsideDeadZoneZerosMove() {
+    InputController in = new InputController();
+    in.joystick(0.1f * 100f, 0f, 100f);
+    assertEquals(0f, in.moveX(), 1e-6);
+    assertEquals(0f, in.moveY(), 1e-6);
+  }
+
+  @Test
+  public void joystickAtRadiusNormalizesDirection() {
+    InputController in = new InputController();
+    in.joystick(100f, 0f, 100f);
+    assertEquals(1f, in.moveX(), 1e-6);
+    assertEquals(0f, in.moveY(), 1e-6);
+    in.joystick(0f, -100f, 100f);
+    assertEquals(0f, in.moveX(), 1e-6);
+    assertEquals(-1f, in.moveY(), 1e-6);
+  }
+
+  @Test
+  public void joystickBeyondRadiusClampsMagnitude() {
+    InputController in = new InputController();
+    in.joystick(250f, 0f, 100f);
+    assertEquals(1f, in.moveX(), 1e-6);
+    assertEquals(0f, in.moveY(), 1e-6);
+  }
+
+  @Test
+  public void joystickInsideRadiusIsAnalog() {
+    InputController in = new InputController();
+    in.joystick(50f, 0f, 100f);
+    assertEquals(0.5f, in.moveX(), 1e-6);
+    assertEquals(0f, in.moveY(), 1e-6);
+  }
+
+  @Test
+  public void joystickDiagonalNormalizesComponents() {
+    InputController in = new InputController();
+    double c = Math.sqrt(0.5);
+    in.joystick((float) (100f * c), (float) (100f * c), 100f);
+    assertEquals((float) c, in.moveX(), 1e-4);
+    assertEquals((float) c, in.moveY(), 1e-4);
+  }
 }

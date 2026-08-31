@@ -15,6 +15,9 @@ package com.opensilkroadmap.app.game;
  * the game-state consumer, not invented in the input layer.
  */
 public final class InputController {
+  /** Joystick dead zone as a fraction of the joystick radius. */
+  public static final float JOYSTICK_DEAD_ZONE = 0.15f;
+
   private float panX;
   private float panY;
   private float zoom = 1f;
@@ -38,6 +41,27 @@ public final class InputController {
   public void setMove(float x, float y) {
     moveX = clampUnit(x);
     moveY = clampUnit(y);
+  }
+
+  /**
+   * Maps a joystick drag (pixels from the touch origin) to a normalized move
+   * intent. The direction is normalized; the magnitude is analog up to the
+   * radius (beyond it clamps to 1). Drags inside the dead zone zero the move.
+   * Generic structural math — no authentic VSRO joystick curve is claimed.
+   */
+  public void joystick(float dxPixels, float dyPixels, float radiusPixels) {
+    float r = radiusPixels > 0f ? radiusPixels : 1f;
+    float nx = dxPixels / r;
+    float ny = dyPixels / r;
+    float len = (float) Math.sqrt(nx * nx + ny * ny);
+    if (len <= JOYSTICK_DEAD_ZONE) {
+      moveX = 0f;
+      moveY = 0f;
+      return;
+    }
+    float mag = Math.min(1f, len);
+    moveX = clampUnit((nx / len) * mag);
+    moveY = clampUnit((ny / len) * mag);
   }
 
   /** Drains and resets the accumulated pan (view pixels, x axis). */

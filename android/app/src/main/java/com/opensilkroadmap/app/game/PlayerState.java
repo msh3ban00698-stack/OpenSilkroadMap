@@ -18,6 +18,7 @@ public final class PlayerState extends Entity {
   private long gold;
   private String className = "";
   private boolean dead;
+  private float heading;
 
   public PlayerState(String id, String name) {
     super(id, name);
@@ -89,5 +90,18 @@ public final class PlayerState extends Entity {
 
   public boolean isAlive() {
     return !dead && hp > 0;
+  }
+
+  /**
+   * Facing heading in radians, set by the movement controller from the input
+   * direction. The value is only meaningful while a direction is held; default
+   * 0 faces world +Z (the zero-angle of the proven placement rotation).
+   */
+  public float heading() {
+    return heading;
+  }
+
+  public void setHeading(float radians) {
+    this.heading = radians;
   }
 }

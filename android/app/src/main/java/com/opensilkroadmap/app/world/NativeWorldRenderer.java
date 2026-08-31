@@ -61,6 +61,11 @@ public class NativeWorldRenderer extends View {
   private float worldMinH;
   private float worldMaxH;
 
+  /** The player entity, drawn separately from spawned NPCs (Phase 24). */
+  private CharacterEntity playerEntity;
+  private float playerHeading;
+  private boolean playerVisible;
+
   private float camX;
   private float camZ;
   private float pixelsPerUnit = 0.5f;
@@ -88,6 +93,11 @@ public class NativeWorldRenderer extends View {
   private float lastTouchY;
   private boolean panning;
   private float pinchStartDistance;
+
+  private boolean joystickActive;
+  private float joystickOriginX;
+  private float joystickOriginY;
+  private static final float JOYSTICK_RADIUS_DP = 56f;
 
   public NativeWorldRenderer(Context context) {
     this(context, null);
@@ -152,6 +162,29 @@ public class NativeWorldRenderer extends View {
     characterEntities.clear();
     shaderCache.clear();
     invalidate();
+  }
+
+  /**
+   * Attaches the player entity. The player is drawn at its own world position
+   * rotated by its facing heading (the PROVEN placement rotation). Visible only
+   * after a verified spawn was placed (fail-closed: no invented position).
+   */
+  public void setPlayer(CharacterEntity player, float headingRadians,
+                        boolean visible) {
+    this.playerEntity = player;
+    this.playerHeading = headingRadians;
+    this.playerVisible = visible;
+    invalidate();
+  }
+
+  /** The shared input accumulator (joystick move axis + pan/zoom). */
+  public InputController input() {
+    return input;
+  }
+
+  /** Current pixels-per-world-unit zoom, for frame-consistent camera updates. */
+  public float pixelsPerUnit() {
+    return pixelsPerUnit;
   }
 
   /**
@@ -235,18 +268,33 @@ public class NativeWorldRenderer extends View {
   public boolean onTouchEvent(MotionEvent event) {
     switch (event.getActionMasked()) {
       case MotionEvent.ACTION_DOWN:
-        lastTouchX = event.getX();
-        lastTouchY = event.getY();
-        panning = true;
+        // Left half = movement joystick; right half = drag pan.
+        if (event.getX() < getWidth() / 2f) {
+          joystickActive = true;
+          joystickOriginX = event.getX();
+          joystickOriginY = event.getY();
+          input.joystick(0f, 0f, joystickRadiusPx());
+        } else {
+          lastTouchX = event.getX();
+          lastTouchY = event.getY();
+          panning = true;
+        }
         return true;
       case MotionEvent.ACTION_POINTER_DOWN:
         if (event.getPointerCount() == 2) {
+          joystickActive = false;
+          input.joystick(0f, 0f, joystickRadiusPx());
           panning = false;
           pinchStartDistance = distance(event);
         }
         return true;
       case MotionEvent.ACTION_MOVE:
-        if (event.getPointerCount() >= 2 && pinchStartDistance > 0f) {
+        if (joystickActive && event.getPointerCount() == 1) {
+          input.joystick(
+              event.getX() - joystickOriginX,
+              event.getY() - joystickOriginY,
+              joystickRadiusPx());
+        } else if (event.getPointerCount() >= 2 && pinchStartDistance > 0f) {
           float d = distance(event);
           if (d > 0f) {
             input.pinchZoom(d / pinchStartDistance);
@@ -261,17 +309,25 @@ public class NativeWorldRenderer extends View {
         }
         return true;
       case MotionEvent.ACTION_POINTER_UP:
+        joystickActive = false;
+        input.joystick(0f, 0f, joystickRadiusPx());
         panning = false;
         pinchStartDistance = 0f;
         return true;
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_CANCEL:
+        joystickActive = false;
+        input.joystick(0f, 0f, joystickRadiusPx());
         panning = false;
         pinchStartDistance = 0f;
         return true;
       default:
         return super.onTouchEvent(event);
     }
+  }
+
+  private float joystickRadiusPx() {
+    return JOYSTICK_RADIUS_DP * getResources().getDisplayMetrics().density;
   }
 
   private static float distance(MotionEvent e) {
@@ -311,6 +367,7 @@ public class NativeWorldRenderer extends View {
     drawNpcMarkers(canvas);
     drawMeshObjects(canvas);
     drawCharacters(canvas);
+    drawPlayer(canvas);
   }
 
   private void drawSector(Canvas canvas, WorldTerrainSet.Sector s, Path quad) {
@@ -478,6 +535,43 @@ public class NativeWorldRenderer extends View {
       return;
     }
     characterEntities.keySet().retainAll(visible);
+  }
+
+  /**
+   * Draws the player entity (Phase 24) at its own world position, rotated by
+   * its facing heading using the PROVEN placement rotation. Skipped until a
+   * verified spawn has placed the player (fail-closed: never a fabricated
+   * position). Uses the same skin/pose path as spawned NPCs.
+   */
+  private void drawPlayer(Canvas canvas) {
+    if (!playerVisible || playerEntity == null || world == null) {
+      return;
+    }
+    CharacterMeshIndex model = playerEntity.index();
+    Pose pose = playerEntity.pose();
+    if (pose == null) {
+      pose = characterPose;
+    }
+    float wx = playerEntity.worldX();
+    float wz = playerEntity.worldZ();
+    float cos = (float) Math.cos(playerHeading);
+    float sin = (float) Math.sin(playerHeading);
+    for (CharacterMeshIndex.Part part : model.parts()) {
+      float[] positions = part.bindPositions;
+      if (part.skinned && pose != null) {
+        try {
+          positions = CharacterRenderer.skin(
+              model.skeleton(), pose,
+              (StaticMeshAsset.SkinnedMesh) part.mesh);
+        } catch (IOException e) {
+          positions = part.bindPositions;
+        }
+      } else if (!part.skinned) {
+        positions = part.mesh.positions;
+      }
+      drawTexturedTriangles(canvas, positions, part.mesh.uvs, part.mesh.indices,
+          part.mesh.triangleCount, part.texture, wx, wz, cos, sin);
+    }
   }
 
   /**

@@ -189,6 +189,9 @@ public final class CharacterMeshIndex {
     }
     Map<String, Object> root = animJsonCache.get(slug);
     if (root == null) {
+      if (assets == null) {
+        throw new IOException("animation-only index has no asset manager: " + animName);
+      }
       String path = CHARACTERS_ROOT + SHARED + "anim/" + slug + ".json";
       String text = readAll(
           new InputStreamReader(assets.open(path), StandardCharsets.UTF_8));
@@ -352,6 +355,38 @@ public final class CharacterMeshIndex {
     }
 
     return new CharacterMeshIndex(assets, key, skeleton, parts, anims, animSlugByName);
+  }
+
+  /**
+   * Pure-JVM animation-only index over a committed manifest + skeleton (no mesh
+   * parts or textures). Builds the real animation state machine (IDLE/WALK/RUN
+   * via {@link AnimStateResolver}) and the real skeleton so pose sampling works;
+   * mesh skinning/rendering is unreachable (no parts). Intended for the player,
+   * whose FULL model chain is PARTIAL (see {@link #load} fail-closed) while the
+   * animation chain is fully committed. Android-free, so tests can drive the
+   * player animator without an {@link AssetManager}.
+   */
+  public static CharacterMeshIndex animationsOnlyIndex(
+      String key, Reader manifestReader, Reader skeletonReader) throws IOException {
+    Map<String, Object> manifest = (Map<String, Object>)
+        new JsonParser(readAll(manifestReader)).parse();
+    Skeleton skeleton = parseSkeleton(skeletonReader);
+    List<?> animList = (List<?>) manifest.get("anims");
+    List<Anim> anims = new ArrayList<Anim>();
+    Map<String, String> slugByName = new HashMap<String, String>();
+    if (animList != null) {
+      for (Object ao : animList) {
+        Map<String, Object> a = (Map<String, Object>) ao;
+        String name = asString(a.get("name"));
+        String animSlug = asString(a.get("anim"));
+        slugByName.put(name, animSlug);
+        anims.add(new Anim(asString(a.get("ban_path")), name,
+            asInt(a.get("duration_ms")), asInt(a.get("keyframes")),
+            asInt(a.get("channels")), animSlug));
+      }
+    }
+    return new CharacterMeshIndex(null, key, skeleton,
+        Collections.<Part>emptyList(), anims, slugByName);
   }
 
   /**
