@@ -1,6 +1,6 @@
 # Android Game Implementation Status (native game core)
 
-Date: 2026-08-31 (updated for Phase 22)
+Date: 2026-08-31 (updated for Phase 27)
 Scope: Status of the Android-native systems (Phase 9 Part B + Phase 22 native
 runtime migration). All behavior is Android-free Java (runs under `./gradlew test`)
 with thin native Views; every value is traceable to verified real source or marked
@@ -9,6 +9,21 @@ UNKNOWN.
 Phase 22 (2026-08-31): removed the Capacitor/WebView runtime. `GameActivity` is
 now the launcher; the retired wrapper is preserved under `legacy/capacitor/`. See
 `WEB_RUNTIME_AUDIT.md` and `PHASE_22_REPORT.md`.
+
+Phase 27 (2026-08-31): exhaustive source recovery for the **real player
+runtime** (spawn / input / movement / camera) against the full original corpus
+(server DB backups, PK2 archives, client settings). Every domain resolves to
+caller-supplied or client-code-defined behavior, so the fail-closed runtime is
+unchanged — nothing is invented. Proven chains recorded in
+`scripts/testdata/formats/phase27_source_evidence.json` (builder
+`scripts/build_phase27_evidence.py`): `_AddNewChar` start region/pos is
+caller-supplied (only hint: `-- set @StartRegionID=25000`; region 25000 =
+RN_CH_JANGAN proven via `regioncode.txt`), key bindings exist only as binary
+`SROptionSet.dat`, camera has FREE/THIRD_PERSON/QUARTER_VIEW modes with
+client-code parameters, movement has only debug `/fast`/`/setspeed`.
+`Phase27SourceEvidenceTest` (5 tests) asserts these. Bounded real-JUnit
+verification: **139 PASS / 0 FAIL**. See `PHASE_27_REPORT.md` and
+`PHASE_26_REPORT.md` (runtime: `CharacterWorld`, evidence-based, fail-closed).
 
 ---
 
@@ -72,8 +87,11 @@ Package `com.opensilkroadmap.app.game`, `android/app/src/main/java/` + tests.
   Android-free core), `scripts/build_region_catalog.py` run + `test_sro_pipeline`
   (no-hardcode rule), `verify_phase8_manifest_rules.py`, full Deno/Python/web
   regression matrix (all green), `deno task build` exit 0.
-- NOT EXECUTED: all JVM (`./gradlew test`) and instrumented
-  (`./gradlew connectedAndroidTest`) tests — no JDK/Android SDK/emulator in this
+- EXECUTED here (pure-JVM JUnit harness, real JUnit 4.13.2, JDK present): the
+  world/game runtime suite — **139 PASS / 0 FAIL** as of Phase 27 (harness
+  `/tmp/opencode/ph26build/phase26_build_and_run.sh`, see Phase 26/27 reports).
+- NOT EXECUTED: Gradle wrapper (`./gradlew test`) and instrumented
+  (`./gradlew connectedAndroidTest`) runs — no Android SDK/emulator in this
   environment. No fake execution is claimed.
 
 ## 4. What is NOT implemented (unchanged)

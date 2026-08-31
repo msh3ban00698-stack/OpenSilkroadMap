@@ -1,0 +1,115 @@
+{
+ "camera": {
+  "conclusion": "Three camera modes exist (FREE, THIRD_PERSON, QUARTER_VIEW) per ifoption_camera.txt, plus a camera-data debug window (time / region / position / rotation) and client debug commands /zoom, /camera, /setfov. Numeric camera parameters (distance, FOV, angle limits, follow offset) are client-code defined: UNKNOWN (fail-closed).",
+  "data_debug_fields": [
+   "GDR_ST_CAMERA_TIME",
+   "GDR_ST_CAMERA_REGION",
+   "GDR_ST_CAMERA_POSITION",
+   "GDR_ST_CAMERA_ROTATION"
+  ],
+  "data_debug_wnd": "/resinfo/ifcameradatawnd.txt",
+  "debug_commands_camera": [
+   "110 : \"/zoom\"",
+   "114 : \"/camera\"",
+   "500 : \"/setfov %d\""
+  ],
+  "mode_text_keys": [
+   "UIIT_STT_SIGHT_QUARTER_VIEW_DESC",
+   "UIIT_STT_SIGHT_THIRD_PERSON_DESC",
+   "UIIT_STT_SIGHT_FREE_DESC"
+  ],
+  "option_window": "/resinfo/ifoption_camera.txt"
+ },
+ "input": {
+  "conclusion": "The client defines an input-options window (shortcut-key user rule), a key-option slot widget, and a per-user binary OptionSet holding key->action pairs. The default key-to-action mapping and its action identifiers live in client code; the option data alone cannot be mapped to runtime semantics. Runtime keyboard input semantics: UNKNOWN (fail-closed).",
+  "debug_commands_input": [
+   "3 : \"/Pos %s\"",
+   "4 : \"/GetPos\"",
+   "111 : \"/fast\"",
+   "600 : \"/setspeed %d\""
+  ],
+  "key_option_slot_widget": "/resinfo/ifkeyoptionslot.txt",
+  "option_window": "/resinfo/ifoption_input.txt",
+  "option_window_text_keys": [
+   "UIIT_STT_SHORTENKEY_USER_RULE",
+   "UIIT_STT_MOUSE"
+  ],
+  "optionset_binary": {
+   "full_hex": "0d0000000f270000000100000000000200000000000300000000000400000000000500000000000600000000000700000000000800000000000900000000000a00000000000b00000000000c00000000000d00000002020e00000012120f0000000000f501000004f601000002f701000000050000f8010000000400006500000001016600000002026700000002026800000000006900000001016a00000001016b00000001016c00000001016d00000001016e00000001016f0000000101700000000101710000000202720000006f6f73000000000059020000015a020000025b020000000500005c02000000040000e903000007000000ea03000007000000eb03000007000000ec03000000ed03000000ee03000000d107000000d207000001d307000001d407000001d507000001d607000001d707000001d807000001d907000001da07000001db07000001dc07000001dd07000001de07000001df07000000e007000001e107000001e207000000e307000001e407000001e507000001e607000001e707000001e807000001e907000001ea07000001eb07000001ec07000000b90b000043000000ba0b000049000000bb0b000053000000bc0b000041000000bd0b000050000000be0b000051000000bf0b000055000000c00b00004d000000c10b000009000000c30b000048000000c40b00005a000000c50b000058000000c60b00004e000000c70b000047000000c80b00002d000000c90b000024000000ca0b000021000000cb0b00002e000000cc0b000023000000cd0b000022000000cf0b000052000000d00b000054000000d10b000057000000d20b000045000000d30b000059000000d50b000000000000d60b000000000000d70b000000000000d80b000000000000d90b00004c000000da0b000000000000db0b0000000000001d0c000000",
+   "interpretation": "Client per-user OptionSet (SROptionSet.dat). A repeating binary record pattern (4-byte little-endian id/value fields) is visible, including key-identifier fields in the 0x0bxx range. The exact record layout and the action-id semantics require the client executable and are NOT derivable from this data.",
+   "size_bytes": 681
+  }
+ },
+ "movement": {
+  "conclusion": "Only client-side debug commands /fast and /setspeed exist; they are developer diagnostics, not runtime movement parameters. Phase 26 negative proof stands: no speed table in the archives, no baked root motion. Walk/run speed: UNKNOWN (fail-closed).",
+  "debug_commands_movement": [
+   "111 : \"/fast\"",
+   "135 : \"/ms\"",
+   "600 : \"/setspeed %d\""
+  ]
+ },
+ "phase": "phase27",
+ "spawn": {
+  "char_table_columns": [
+   "LatestRegion",
+   "PosX",
+   "PosY",
+   "PosZ",
+   "AppointedTeleport"
+  ],
+  "conclusion": "_AddNewChar receives @StartRegionID and @StartPos_X/Y/Z from the caller (GameServer/GameWorld logic, C++, not present in this corpus) and writes them into _Char.LatestRegion/PosX/PosY/PosZ. The database defines NO default start position; the only server-side hint is the developer comment '-- set @StartRegionID=25000'. The client reference table regioncode.txt maps region 25000 to RN_CH_JANGAN, so the example implies 'start in Jangan', but the exact runtime start region and position remain UNKNOWN from this corpus. No spawn/start coordinate table exists anywhere in the PK2 archives, the DB backups, or the package-server configs.",
+  "creation_proc": "_AddNewChar",
+  "new_char_defaults_from_insert": {
+   "cur_level": "1",
+   "hp": "200",
+   "hwan_level": "1",
+   "intellect": "20",
+   "inventory_size": "109",
+   "job_lvl_hunter": "1",
+   "job_lvl_robber": "1",
+   "job_lvl_trader": "1",
+   "max_level": "1",
+   "mp": "200",
+   "remain_gold": "50000000",
+   "remain_skill_point": "1000000",
+   "remain_stat_point": "0",
+   "strength": "20",
+   "world_id": "1"
+  },
+  "proc_signature_params_proven": [
+   "@UserJID",
+   "@RefCharID",
+   "@CharName",
+   "@CharScale",
+   "@StartRegionID",
+   "@StartPos_X",
+   "@StartPos_Y",
+   "@StartPos_Z",
+   "@DefaultTeleport"
+  ],
+  "region_25000_character_gen": {
+   "first_row_code": "COS_GUARD_CH_BOW_01_002",
+   "first_row_columns": 105,
+   "first_row_refid": "20000",
+   "interpretation": "_RefCharGen-style per-region character generation table shipped to the client; defines entities present in the region, NOT the player spawn point.",
+   "lines": 3736,
+   "path": "/server_dep/silkroad/textdata/characterdata_25000.txt"
+  },
+  "shard_backup": {
+   "char_insert_values": "@StartRegionID, @StartPos_X, @StartPos_Y, @StartPos_Z, @DefaultTeleport, 109,      GetDate(), 1, 1, 50000000, 0, 1000000, 200,200, 1, 1, 1, 1, 1)         SET @N",
+   "markers_found": {
+    "--set @StartRegionID=25000": 4,
+    "@StartRegionID, @StartPos_X, @StartPos_Y, @StartPos_Z, @DefaultTeleport, 109,": 4,
+    "INSERT INTO _Char (RefObjID, CharName16, Scale, Strength, Intellect, LatestRegion,PosX, PosY, PosZ, AppointedTeleport, InventorySize": 4
+   },
+   "region_example_comment": "server-side comment inside _AddNewChar: '-- set @StartRegionID=25000' (region id is caller-supplied, the commented line is the developer's example, not a default)"
+  },
+  "start_position": "UNKNOWN (fail-closed)",
+  "start_region_25000": {
+   "caption_bytes": "\uc7a5\uc548",
+   "code": "RN_CH_JANGAN",
+   "region_id": 25000,
+   "source": "/server_dep/silkroad/textdata/regioncode.txt"
+  }
+ }
+}
