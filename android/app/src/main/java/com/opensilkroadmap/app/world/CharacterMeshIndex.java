@@ -355,79 +355,29 @@ public final class CharacterMeshIndex {
   }
 
   /**
-   * Computes the bind-pose skinned position of every vertex:
-   * {@code sum_i (w_i / sum(w)) * (R_i * v + t_i)} with the bone's bind world
-   * rotation/translation. Fail-closed when a mesh bone is absent from the
-   * skeleton (Phase 18 proved mesh bones are always a subset).
+   * Bind-pose positions of every vertex of a skinned part.
+   *
+   * <p>PROVEN (Phase 19 Part I semantics): the committed skinned meshes store
+   * vertices in CHARACTER BIND POSE. Evidence: bandit part2 spans feet
+   * {@code Y~0.02} to head {@code Y~14.67}, matching the skeleton's bind world
+   * (toe {@code y~0.019}, neck {@code y~12.0}); the raw fingertips are at the
+   * skeleton's bind hand/finger world positions; the raw mesh AABB is symmetric
+   * about the spine while the skeleton is mirrored (L=+X, R=-X). A linear-blend
+   * skin deforms a rest vertex as {@code sum w_i * A_i * B_i^-1 * v} (bind world
+   * {@code A} composed with inverse-bind {@code B^-1}, which the BSK stores as
+   * {@code rot_local/tr_local} and which equals the conjugate/inverse of the
+   * committed {@code bind_world_rot/pos} — verified numerically). At the bind
+   * pose {@code A == B}, so the bind-pose position is the identity: the stored
+   * rest vertex. Mesh-bone validation is retained fail-closed.
    */
   public static float[] skinnedBindPositions(
       StaticMeshAsset.SkinnedMesh mesh, Skeleton skeleton) throws IOException {
-    int[] boneMap = new int[mesh.boneNames.length];
-    for (int k = 0; k < boneMap.length; k++) {
-      int idx = skeleton.boneIndex(mesh.boneNames[k]);
-      if (idx < 0) {
-        throw new IOException("mesh bone '" + mesh.boneNames[k]
-            + "' not in skeleton");
+    for (String n : mesh.boneNames) {
+      if (skeleton.boneIndex(n) < 0) {
+        throw new IOException("mesh bone '" + n + "' not in skeleton");
       }
-      boneMap[k] = idx;
     }
-    int n = mesh.vertexCount;
-    float[] out = new float[n * 3];
-    float[] rot = new float[3];
-    float[] p = new float[3];
-    for (int i = 0; i < n; i++) {
-      p[0] = mesh.positions[i * 3];
-      p[1] = mesh.positions[i * 3 + 1];
-      p[2] = mesh.positions[i * 3 + 2];
-      int b1 = mesh.bone1[i];
-      int w1 = mesh.weight1[i];
-      int b2 = mesh.bone2[i];
-      int w2 = mesh.weight2[i];
-      int sum = w1 + w2;
-      float ox = 0f;
-      float oy = 0f;
-      float oz = 0f;
-      if (b1 < boneMap.length && sum > 0) {
-        Bone bone = skeleton.bone(boneMap[b1]);
-        rotate(p, bone.bindWorldRot, rot);
-        float f = (float) w1 / (float) sum;
-        ox += f * (rot[0] + bone.bindWorldPos[0]);
-        oy += f * (rot[1] + bone.bindWorldPos[1]);
-        oz += f * (rot[2] + bone.bindWorldPos[2]);
-      }
-      if (b2 < boneMap.length && w2 > 0) {
-        Bone bone = skeleton.bone(boneMap[b2]);
-        rotate(p, bone.bindWorldRot, rot);
-        float f = (float) w2 / (float) sum;
-        ox += f * (rot[0] + bone.bindWorldPos[0]);
-        oy += f * (rot[1] + bone.bindWorldPos[1]);
-        oz += f * (rot[2] + bone.bindWorldPos[2]);
-      }
-      out[i * 3] = ox;
-      out[i * 3 + 1] = oy;
-      out[i * 3 + 2] = oz;
-    }
-    return out;
-  }
-
-  /** Rotates a vector by a unit quaternion [x,y,z,w] (xyzw convention). */
-  private static void rotate(float[] v, float[] q, float[] out) {
-    float x = q[0];
-    float y = q[1];
-    float z = q[2];
-    float w = q[3];
-    float vx = v[0];
-    float vy = v[1];
-    float vz = v[2];
-    float cx = y * vz - z * vy;
-    float cy = z * vx - x * vz;
-    float cz = x * vy - y * vx;
-    float dx = y * cz - z * cy;
-    float dy = z * cx - x * cz;
-    float dz = x * cy - y * cx;
-    out[0] = vx + 2f * w * cx + 2f * dx;
-    out[1] = vy + 2f * w * cy + 2f * dy;
-    out[2] = vz + 2f * w * cz + 2f * dz;
+    return mesh.positions.clone();
   }
 
   public static Skeleton parseSkeleton(Reader in) throws IOException {

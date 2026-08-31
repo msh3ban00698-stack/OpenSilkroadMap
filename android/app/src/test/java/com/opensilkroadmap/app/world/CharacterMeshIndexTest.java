@@ -122,30 +122,20 @@ public class CharacterMeshIndexTest {
   }
 
   @Test
-  public void swordSkinnedPositionsMatchSingleBoneTransform() throws IOException {
+  public void swordBindPositionsAreRestVertices() throws IOException {
     CharacterMeshIndex.Skeleton skel = loadSkeleton();
     StaticMeshAsset.SkinnedMesh sword =
         StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_sword.msh"));
     float[] out = CharacterMeshIndex.skinnedBindPositions(sword, skel);
     assertEquals(76 * 3, out.length);
-    CharacterMeshIndex.Bone bone =
-        skel.bone(skel.boneIndex(sword.boneNames[0]));
-    float[] rot = new float[3];
-    for (int i = 0; i < sword.vertexCount; i++) {
-      rotate(
-          new float[] {
-            sword.positions[i * 3], sword.positions[i * 3 + 1], sword.positions[i * 3 + 2]
-          },
-          bone.bindWorldRot, rot);
-      // Single influence: expected = R*v + t for the mapped bone.
-      assertEquals(rot[0] + bone.bindWorldPos[0], out[i * 3], 1e-3f);
-      assertEquals(rot[1] + bone.bindWorldPos[1], out[i * 3 + 1], 1e-3f);
-      assertEquals(rot[2] + bone.bindWorldPos[2], out[i * 3 + 2], 1e-3f);
+    // Rest vertices are stored in character bind pose; bind pose = identity.
+    for (int i = 0; i < out.length; i++) {
+      assertEquals(sword.positions[i], out[i], 1e-3f);
     }
   }
 
   @Test
-  public void skinnedBindPositionsFiniteAndPlausible() throws IOException {
+  public void part1BindPositionsAreRestVerticesAndSymmetric() throws IOException {
     CharacterMeshIndex.Skeleton skel = loadSkeleton();
     StaticMeshAsset.SkinnedMesh part1 =
         StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_part1.msh"));
@@ -156,14 +146,28 @@ public class CharacterMeshIndexTest {
     float maxY = Float.NEGATIVE_INFINITY;
     for (int i = 0; i < out.length; i++) {
       assertTrue("finite value", Float.isFinite(out[i]));
+      assertEquals(part1.positions[i], out[i], 1e-3f);
     }
     for (int i = 0; i < part1.vertexCount; i++) {
       minX = Math.min(minX, out[i * 3]);
       maxX = Math.max(maxX, out[i * 3]);
       maxY = Math.max(maxY, out[i * 3 + 1]);
     }
-    assertTrue("maxY within body+arm extent", maxY > 15f && maxY < 25f);
+    // Real arm mesh: symmetric about the spine at shoulder height.
+    assertTrue("maxY at arm slab", maxY > 12f && maxY < 13f);
     assertTrue("left/right symmetric arms", Math.abs(minX + maxX) < 0.5f);
+  }
+
+  @Test
+  public void skinAtBindPoseReproducesRestVertices() throws IOException {
+    CharacterMeshIndex.Skeleton skel = loadSkeleton();
+    StaticMeshAsset.SkinnedMesh part1 =
+        StaticMeshAsset.parseSkinned(readAsset("shared/mesh/prim_mesh_mob_china_bandit_part1.msh"));
+    float[] out = CharacterRenderer.skin(skel, Pose.bind(skel), part1);
+    assertEquals(214 * 3, out.length);
+    for (int i = 0; i < out.length; i++) {
+      assertEquals(part1.positions[i], out[i], 1e-3f);
+    }
   }
 
   @Test
@@ -175,24 +179,5 @@ public class CharacterMeshIndexTest {
     } catch (IOException expected) {
       assertTrue(expected.getMessage().contains("MSH version"));
     }
-  }
-
-  private static void rotate(float[] v, float[] q, float[] out) {
-    float x = q[0];
-    float y = q[1];
-    float z = q[2];
-    float w = q[3];
-    float vx = v[0];
-    float vy = v[1];
-    float vz = v[2];
-    float cx = y * vz - z * vy;
-    float cy = z * vx - x * vz;
-    float cz = x * vy - y * vx;
-    float dx = y * cz - z * cy;
-    float dy = z * cx - x * cz;
-    float dz = x * cy - y * cx;
-    out[0] = vx + 2f * w * cx + 2f * dx;
-    out[1] = vy + 2f * w * cy + 2f * dy;
-    out[2] = vz + 2f * w * cz + 2f * dz;
   }
 }

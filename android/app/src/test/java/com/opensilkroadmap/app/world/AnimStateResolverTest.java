@@ -82,4 +82,56 @@ public class AnimStateResolverTest {
     assertFalse(m.containsKey(AnimState.WALK));
     assertEquals("mob_run", m.get(AnimState.RUN).name);
   }
+
+  @Test
+  public void embeddedKeywordDoesNotFabricateStates() {
+    // Real false positives in the committed data: "die" inside "soldier" and
+    // "run" inside "trunk"/"union" must not resolve DEATH/RUN.
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("soldierearthghost_stand02", 2000),
+        clip("deserttrunkz_stand01", 2000),
+        clip("hunterunion_stand01", 2000));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals(1, m.size());
+    assertTrue(m.containsKey(AnimState.IDLE));
+    assertFalse(m.containsKey(AnimState.DEATH));
+    assertFalse(m.containsKey(AnimState.RUN));
+  }
+
+  @Test
+  public void wordStartMatchesPlayerClipPrefixes() {
+    // Player clips: "standbattle"/"standcity"/"walkforward"/"runforward_sword".
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("chinaman_fighter_standcity", 2333),
+        clip("chinaman_fighter_walkforward", 1166),
+        clip("chinaman_fighter_runforward_sword", 666),
+        clip("chinaman_fighter_attack01", 1000));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals("chinaman_fighter_standcity", m.get(AnimState.IDLE).name);
+    assertEquals("chinaman_fighter_walkforward", m.get(AnimState.WALK).name);
+    assertEquals("chinaman_fighter_runforward_sword", m.get(AnimState.RUN).name);
+    assertEquals("chinaman_fighter_attack01", m.get(AnimState.ATTACK).name);
+  }
+
+  @Test
+  public void deathPrefersRealDieClipOverShadowedWord() {
+    // "tombsoldier" embeds "die", but the real "_die" clip must win.
+    List<IdleAnimResolver.Clip> clips = Arrays.asList(
+        clip("tombsoldier_stand01", 2000),
+        clip("tombsoldier_die", 2666));
+    Map<AnimState, IdleAnimResolver.Clip> m = AnimStateResolver.resolve(clips);
+    assertEquals("tombsoldier_die", m.get(AnimState.DEATH).name);
+  }
+
+  @Test
+  public void keywordMatchWordStartSemantics() {
+    assertTrue(AnimStateResolver.keywordMatch("bandit_stand01", "stand"));
+    assertTrue(AnimStateResolver.keywordMatch("chinaman_fighter_walkforward", "walk"));
+    assertTrue(AnimStateResolver.keywordMatch("chinaman_standbattle", "stand"));
+    assertTrue(AnimStateResolver.keywordMatch("mob_die", "die"));
+    assertFalse(AnimStateResolver.keywordMatch("soldier_stand01", "die"));
+    assertFalse(AnimStateResolver.keywordMatch("deserttrunkz_stand01", "run"));
+    assertFalse(AnimStateResolver.keywordMatch("hunterunion", "run"));
+    assertFalse(AnimStateResolver.keywordMatch("stand", "standoff"));
+  }
 }

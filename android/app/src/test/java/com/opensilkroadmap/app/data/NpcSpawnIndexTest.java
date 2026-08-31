@@ -60,7 +60,7 @@ public class NpcSpawnIndexTest {
 
   @Test
   public void realNpcPosTableMatchesVerifiedCounts() throws IOException {
-    NpcSpawnIndex idx = NpcSpawnIndex.parse(new InputStreamReader(open("npcpos.tsv"), StandardCharsets.UTF_8));
+    NpcSpawnIndex idx = NpcSpawnIndex.parse(open("npcpos.tsv"));
     assertEquals(18457, idx.totalCount());
     assertEquals(14800, idx.worldCount());
     assertEquals(3657, idx.dungeonCount());

@@ -3,14 +3,17 @@ package com.opensilkroadmap.app.world;
 import java.io.IOException;
 
 /**
- * Pose-driven character skinning (Phase 19, compile-only target).
+ * Pose-driven character skinning.
  *
  * <p>Chains a {@link Pose} through the {@link CharacterMeshIndex.Skeleton}
  * into per-bone world transforms (mirroring {@code scripts/skeleton.py}
  * {@code bind_world}/{@code chain_world}), then deforms each skinned vertex as
- * {@code sum_i (w_i / sum(w)) * (R_i * v + t_i)}. At the bind pose this is
- * numerically identical to {@link CharacterMeshIndex#skinnedBindPositions},
- * which Phase 19 proved reproduces the stored rest vertices.
+ * {@code sum_i (w_i / sum(w)) * A_i * B_i^-1 * v_rest}: animated bone world
+ * {@code A_i} composed with the inverse bind world {@code B_i^-1}
+ * (Phase 19 Part I PROVEN semantics; the BSK {@code rot_local/tr_local} equals
+ * the inverse of the committed {@code bind_world_rot/pos}). Rest vertices are
+ * stored in character bind pose, so at the bind pose {@code A == B} and the
+ * skin reproduces the stored rest vertices exactly (identity).
  *
  * <p>Quaternion convention is [x,y,z,w] (proven Phase 18/19). Weights are
  * normalized by their vertex sum because Phase 18 proved the raw two-influence
@@ -90,8 +93,18 @@ public final class CharacterRenderer {
 
   /**
    * Deforms every mesh vertex at the given pose. Returns a flat
-   * {@code [n*3]} positions array (character-local). Fail-closed on a mesh
-   * bone absent from the skeleton.
+   * {@code [n*3]} positions array (character-local).
+   *
+   * <p>Linear-blend skin with PROVEN (Phase 19 Part I) semantics: rest
+   * vertices are stored in character bind pose, so each influence contributes
+   * {@code A_i * B_i^-1 * v_rest} where {@code A_i} is the animated bone world
+   * transform (chained from the pose's local transforms) and {@code B_i} is the
+   * bone bind world transform. {@code B_i^-1} is the conjugate/inverse of the
+   * committed {@code bind_world_rot/pos} (numerically equal to the BSK
+   * {@code rot_local/tr_local}). At the bind pose {@code A == B}, so the pose
+   * reproduces the stored rest vertices exactly.
+   *
+   * <p>Fail-closed on a mesh bone absent from the skeleton.
    */
   public static float[] skin(CharacterMeshIndex.Skeleton s, Pose pose,
                              StaticMeshAsset.SkinnedMesh mesh) throws IOException {
@@ -108,11 +121,22 @@ public final class CharacterRenderer {
     float[][] worldPos = new float[s.boneCount][];
     chainWorld(s, pose, worldRot, worldPos);
 
-    int n = mesh.vertexCount;
-    float[] out = new float[n * 3];
+    int n = s.boneCount;
+    float[][] invRot = new float[n][];
+    float[][] invPos = new float[n][];
+    for (int i = 0; i < n; i++) {
+      float[] q = s.bone(i).bindWorldRot;
+      invRot[i] = new float[]{-q[0], -q[1], -q[2], q[3]};
+      float[] rt = rotate(s.bone(i).bindWorldPos, invRot[i]);
+      invPos[i] = new float[]{-rt[0], -rt[1], -rt[2]};
+    }
+
+    int vn = mesh.vertexCount;
+    float[] out = new float[vn * 3];
     float[] v = new float[3];
     float[] r = new float[3];
-    for (int i = 0; i < n; i++) {
+    float[] p1 = new float[3];
+    for (int i = 0; i < vn; i++) {
       v[0] = mesh.positions[i * 3];
       v[1] = mesh.positions[i * 3 + 1];
       v[2] = mesh.positions[i * 3 + 2];
@@ -125,18 +149,28 @@ public final class CharacterRenderer {
       float oy = 0f;
       float oz = 0f;
       if (b1 < boneMap.length && sum > 0) {
-        r = rotate(v, worldRot[boneMap[b1]]);
+        int bi = boneMap[b1];
+        r = rotate(v, invRot[bi]);
+        p1[0] = r[0] + invPos[bi][0];
+        p1[1] = r[1] + invPos[bi][1];
+        p1[2] = r[2] + invPos[bi][2];
+        r = rotate(p1, worldRot[bi]);
         float f = (float) w1 / (float) sum;
-        ox += f * (r[0] + worldPos[boneMap[b1]][0]);
-        oy += f * (r[1] + worldPos[boneMap[b1]][1]);
-        oz += f * (r[2] + worldPos[boneMap[b1]][2]);
+        ox += f * (r[0] + worldPos[bi][0]);
+        oy += f * (r[1] + worldPos[bi][1]);
+        oz += f * (r[2] + worldPos[bi][2]);
       }
       if (b2 < boneMap.length && w2 > 0) {
-        r = rotate(v, worldRot[boneMap[b2]]);
+        int bi = boneMap[b2];
+        r = rotate(v, invRot[bi]);
+        p1[0] = r[0] + invPos[bi][0];
+        p1[1] = r[1] + invPos[bi][1];
+        p1[2] = r[2] + invPos[bi][2];
+        r = rotate(p1, worldRot[bi]);
         float f = (float) w2 / (float) sum;
-        ox += f * (r[0] + worldPos[boneMap[b2]][0]);
-        oy += f * (r[1] + worldPos[boneMap[b2]][1]);
-        oz += f * (r[2] + worldPos[boneMap[b2]][2]);
+        ox += f * (r[0] + worldPos[bi][0]);
+        oy += f * (r[1] + worldPos[bi][1]);
+        oz += f * (r[2] + worldPos[bi][2]);
       }
       out[i * 3] = ox;
       out[i * 3 + 1] = oy;

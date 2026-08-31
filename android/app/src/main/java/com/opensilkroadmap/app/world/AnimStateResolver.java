@@ -11,15 +11,20 @@ import java.util.Map;
  * the state is not present in the source.
  *
  * <p>Keyword rules (from the real {@code .ban} naming exported to the shared
- * store):
+ * store). A keyword matches only at a word start ({@code [a-z0-9]} run after a
+ * non-word delimiter or the string start), never as a substring: the data
+ * shows {@code die} inside {@code soldier} and {@code run} inside
+ * {@code trunk}/{@code union} would otherwise fabricate states, and
+ * {@code standbattle}/{@code walkforward}/{@code runforward} (player clips)
+ * must still match:
  * <ul>
- *   <li>{@link AnimState#IDLE} — name contains {@code stand}</li>
- *   <li>{@link AnimState#WALK} — name contains {@code walk}</li>
- *   <li>{@link AnimState#RUN} — name contains {@code run}</li>
- *   <li>{@link AnimState#ATTACK} — name contains {@code attack}</li>
- *   <li>{@link AnimState#DAMAGE} — name contains {@code damage} and not
+ *   <li>{@link AnimState#IDLE} — word starting with {@code stand}</li>
+ *   <li>{@link AnimState#WALK} — word starting with {@code walk}</li>
+ *   <li>{@link AnimState#RUN} — word starting with {@code run}</li>
+ *   <li>{@link AnimState#ATTACK} — word starting with {@code attack}</li>
+ *   <li>{@link AnimState#DAMAGE} — word starting with {@code damage} and not
  *       {@code down} (excludes the down-state damage variant)</li>
- *   <li>{@link AnimState#DEATH} — name contains {@code die} and not
+ *   <li>{@link AnimState#DEATH} — word starting with {@code die} and not
  *       {@code down} and not {@code loop} (excludes down-death and the
  *       post-death loop)</li>
  * </ul>
@@ -58,7 +63,7 @@ public final class AnimStateResolver {
         continue;
       }
       String lower = n.toLowerCase();
-      if (!lower.contains(keyword)) {
+      if (!keywordMatch(lower, keyword)) {
         continue;
       }
       if (excludeDown && lower.contains("down")) {
@@ -70,5 +75,30 @@ public final class AnimStateResolver {
       out.put(state, c);
       return;
     }
+  }
+
+  /**
+   * True when {@code lower} contains {@code keyword} starting a word:
+   * the character before the match is not {@code [a-z0-9]} (or it is the
+   * string start). Proven by the committed clip names: {@code stand01},
+   * {@code walkforward}, {@code standbattle} match; {@code soldier},
+   * {@code trunkz}, {@code hunterunion} do not.
+   */
+  static boolean keywordMatch(String lower, String keyword) {
+    int n = lower.length();
+    int k = keyword.length();
+    for (int i = 0; i + k <= n; i++) {
+      if (i > 0 && isWordChar(lower.charAt(i - 1))) {
+        continue;
+      }
+      if (lower.regionMatches(i, keyword, 0, k)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static boolean isWordChar(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
   }
 }

@@ -1,154 +1,218 @@
-# PHASE 23 REPORT — Character Animation States + Independent NPC Entities (Increment 2)
+# PHASE 23 REPORT — Data-Driven Character Runtime (Task Phase: F, A–E)
 
-Branch: `260831-feat-phase23-character-animation` · Baseline: Phase 23 increment 1 `600c6c0b9868ba554b13b6c54043c82a5285ea62`
+Branch: `260831-feat-phase23-character-animation` · Baseline: Phase 23 increment 2 `9331def425a8b83c728aa56a73b96d9c6f30f2ce`
 Date: 2026-08-31
 
-Increment 1 (committed) added per-character idle clip playback
-(`AnimationPlayer` + `IdleAnimResolver`). This increment expands the native
-character runtime into a **data-driven animation-state machine with one
-independent animator per spawned character**, plus a structural enumeration
-test over all committed character manifests.
-
-Nothing is invented: every animation state is derived from the REAL committed
-clip names (`stand`/`walk`/`run`/`attack`/`damage`/`die`), and every duration is
-the REAL `.ban` duration committed in each manifest.
+This task phase continues the verified increment-2 checkpoint on the same
+branch. It fixes a skinning defect and locks the character/NPC runtime to the
+REAL committed data with bounded, runnable tests. Nothing is invented: every
+state, duration, refid, spawn count, and classification below is read from the
+committed assets under `android/app/src/main/assets/game/world/characters/` and
+`android/app/src/main/assets/game/textdata/npcpos.tsv`.
 
 ---
 
-## Status vocabulary
+## 1. Scope, baseline, and deliverables
 
-- **PROVEN** — resolved from committed/original data and verified by a run test.
-- **COMPILE-ONLY** — Java compiles against Android stubs; no device execution.
-- **KNOWN ISSUE** — reproducible defect, documented with evidence.
-- **NOT EXECUTED** — not run in this environment (no Gradle/Android SDK/device).
+Baseline (verified before this phase): commit `9331def4`, pushed,
+local==remote==HEAD, clean tree, 42 JVM tests green (increment 2) with one
+pre-existing red test (`CharacterMeshIndexTest#skinnedBindPositions…`).
+
+Deliverables of this phase:
+
+| Task | Deliverable |
+|---|---|
+| F | Fix animated/bind skinning to the PROVEN inverse-bind semantics (`A·B⁻¹`) |
+| A | Word-start state resolution (bug fix) + real-clip data-driven runtime tests |
+| B | Structural chain tests: refid → key → manifest → shared → runtime state |
+| C | Player identity trace (evidence only; no wiring) |
+| D | NPC → spawn linkage over real `index.tsv` + `npcpos.tsv` |
+| E | Movement/combat evidence report (proven subset only) |
+
+## 2. Verification methodology
+
+Pure-JVM harness under `/tmp/opencode/phase23/`: custom `JUnitRunner` + real
+`org.junit.Assert` (`junitreal`), Android stubs (`AssetManager`/`Bitmap`/
+`BitmapFactory`), JDK 17 (`/usr/bin/javac`, `/usr/bin/java`). Every run is from
+`/workspace/android/app` with bounded timeouts. 69 tests PASS, 0 FAIL (see §9).
+
+## 3. TASK F — inverse-bind skinning (IMPLEMENTED PROVEN)
+
+Root cause of the pre-existing red test: the Java port never applied the
+inverse-bind step. Raw skinned meshes ARE stored in bind pose, and the proven
+LB-skin formula (Phase 19 Part I, `scripts/bms_to_asset.py` line 210) is
+`sum w_i * A_i * B_i⁻¹ * v_rest` where `B_i⁻¹` is the inverse of the committed
+`bind_world_rot/pos` (numerically EXACTLY the BSK `rot_local/tr_local`,
+verified on Bip01/Pelvis/LUpperArm/RFinger21/LToe0/Head/RHand against
+`scripts/testdata/formats/bsk_samples/bandit.bsk`).
+
+Changes:
+- `CharacterMeshIndex.skinnedBindPositions` now validates mesh bones
+  fail-closed against the skeleton, then returns the stored rest vertices
+  (`mesh.positions.clone()`): at the bind pose the transform is identity.
+- `CharacterRenderer.skin` now composes `A_i · B_i⁻¹` (conjugate quaternion +
+  `-R⁻¹·t`), with the 255-sentinel weight handling preserved.
+- The flawed tests (`swordSkinnedPositionsMatchSingleBoneTransform` used the
+  old tautological formula) were replaced by rest-vertex assertions; a new
+  `skinAtBindPoseReproducesRestVertices` proves the FULL renderer path equals
+  the raw committed part1 vertices (`214·3` positions, tol `1e-3`).
+
+Evidence: raw bandit bounds (sword X=[-13.40,-8.53]; part1 X=[-11.53,11.53]
+symmetric Y=[10.86,12.68]; part2 X=[-4.60,4.60] Y=[0.02,14.67]) are reproduced
+identically by both paths.
+
+## 4. TASK A — word-start resolution + real-clip runtime tests (IMPLEMENTED PROVEN)
+
+### 4.1 Bug found by data: substring keyword false positives
+The increment-2 `AnimStateResolver` matched keywords with `contains()`. Against
+the real clip names this fabricated states:
+- `die` inside `soldier`/`bonesoldier`/`tombsoldier` → a spurious DEATH state on
+  52 characters (e.g. `soldierearthghost_stand02` resolved DEATH);
+- `run` inside `trunk`/`union` → a spurious RUN state on
+  `res_mob_oasis_deserttrunkz` and `res_npc_npc_easteuropesystem_hunterunion`;
+- shadowing: `res_mob_qinshi_tombsoldier` and `res_mob_god_flame_giant`
+  resolved DEATH to `tombsoldier_stand01` INSTEAD of their real `tombsoldier_die`.
+
+### 4.2 Fix (word-start matching)
+A keyword now matches only at a word start: the preceding character is not
+`[a-z0-9]` (or it is the string start), via `AnimStateResolver.keywordMatch`.
+Real player clips keep matching (`standbattle`, `standcity`, `walkforward`,
+`runforward_sword`) while `soldier`/`trunkz`/`union` no longer do. Enumerated
+totals are unchanged (473 manifests / 3,689 clips / 1 zero-anim / 309 idle),
+proving the fix removes ONLY spurious states.
+
+### 4.3 Real-clip runtime tests (`CharacterRuntimeDataTest`, 5 tests)
+- `res_mob_china_bandit` resolves all six states with REAL names/durations
+  (`bandit_stand01` 2000, `bandit_walk` 1333, `bandit_run` 833,
+  `bandit_attack01` 1133, `bandit_damage01` 366, `bandit_die` 2666).
+- `res_npc_npc_arabia_smith` is idle-only (`arabia_smith_stand01` 12500);
+  `res_mob_arabia_mustafa` has 5 states (no damage); the `player` manifest
+  resolves IDLE/WALK/RUN only.
+- Corpus-wide: for every resolved state across all 473 manifests, the clip name
+  word-starts its keyword.
+- Two `CharacterAnimator` instances from the SAME bandit model advance
+  independent clocks (2.5 s idle wraps to 500 ms in one; the other stays 0).
+- Bandit `ATTACK` returns to idle using the real 1133 ms duration.
+
+## 5. TASK B — structural chain + classification (IMPLEMENTED PROVEN)
+
+`CharacterChainTest` (6 tests) locks the full chain over real data:
+- `CharacterCatalog` parses 1,094 `index.tsv` rows; `keyFor` maps
+  14926→`res_mob_asiam_crab`, 43905→`res_mob_arabia_karkadann`,
+  19553→`res_artifact_guild_pulley_gate_pulley`, 36033→
+  `res_dun_property_com_property_recall`, 36031→`res_quest_ins_quest_teleport`;
+  unknown refid → null.
+- Row/status audit: 1,078 PROVEN / 15 UNKNOWN / 1 PARTIAL rows; 472 distinct
+  PROVEN keys (the 473rd manifest is `player`, never spawned).
+- Every PROVEN key has a manifest and every referenced shared file exists
+  (skeleton/mesh/texture/animation); the `player` manifest's 38 refs commit.
+- PARTIAL + UNKNOWN keys have NO manifest (fail-closed, not runtime-loadable).
+- Classification evidence:
+  - `res_mob_arabia_karkadann` (refid 43905) PARTIAL: conversion failed, only
+    its shared skeleton `prim_skel_mob_arabia_karkadann.json` + one mesh are
+    committed; zero committed anim clips → cannot animate → PARTIAL.
+  - 3 UNKNOWN artifacts (gate pulley / property recall / quest teleport): no
+    `.bsk`, zero committed assets, not characters.
+
+## 6. TASK C — player identity trace (INVESTIGATED UNKNOWN / PARTIAL)
+
+`PlayerModelTest` (3 tests) proves what IS known at file level:
+- `player/manifest.json` is committed with 5 anims + 16 skinned meshes; all 38
+  referenced shared files exist.
+- The committed `chinaman_skel` parses to 38 bones (`xyzw`, root `Bip01`);
+  resolved states are IDLE/WALK/RUN only (no combat/death clips in the manifest).
+
+NOT wired (evidence only):
+- PARTIAL model identity: the original `chinaman_fighter.bsr` references
+  `europeman_skel` (43 bones), not the committed `chinaman_skel`.
+- UNKNOWN player spawn: `npcpos` is NPC-only; no static player spawn exists
+  anywhere in the archives. The player is never spawned by the runtime.
+
+## 7. TASK D — NPC → spawn linkage (IMPLEMENTED PROVEN)
+
+`NpcCharacterLinkageTest` (2 tests) proves the bounded data-driven split the
+renderer uses (`NativeWorldRenderer`: refid → catalog key → loaded model; a
+null model stays a marker, never drawn):
+- 14,800 world spawns split as **10,147 renderable** (refid → PROVEN key with a
+  committed manifest) and **4,653 skipped**.
+- Every renderable key is a distinct PROVEN character; every skipped spawn's
+  refid is UNKNOWN, PARTIAL (karkadann 43905), or absent from the index
+  (80 refids, e.g. 1934/1936/2098).
+- Spot checks: karkadann world spawns 11 (skipped), pulley 19553 = 1 (skipped),
+  property_recall 36033 = 52 (skipped), crab 14926 = 65 (renderable).
+
+## 8. TASK E — movement/combat evidence (BLOCKED BY MISSING SOURCE)
+
+Movement and combat semantics are NOT provable from the available original
+source (compiled EXEs/DLLs only; unopened SQL `.Bak`; no `CharacterData`/
+`SkillData` parsed into runtime tables). `PHASE_21_SOURCE_PARITY_AUDIT` lists
+attack/move speed as F — MISSING (no source values). The ONLY implemented
+subset is the animation-state machine driven by real clip names/durations
+(§4); the real WALK/RUN clip durations (e.g. bandit walk 1333 ms / run 833 ms)
+are the only timing anchors available and are NOT treated as movement speeds.
+No movement speed, no combat timing/damage, no AI is implemented or invented.
+
+## 9. JVM test matrix (all PASS, JDK 17, bounded timeouts)
+
+| Test class | Count |
+|---|---|
+| `AnimationPlayerTest` | 10 |
+| `IdleAnimResolverTest` | 5 |
+| `AnimStateResolverTest` | 10 |
+| `CharacterAnimatorTest` | 8 |
+| `CharacterRuntimeDataTest` (TASK A) | 5 |
+| `CharacterManifestEnumerationTest` | 3 |
+| `CharacterMeshIndexTest` (incl. new bind-pose/inverse-bind) | 7 |
+| `CharacterMeshIndexMultiTest` | 3 |
+| `CharacterChainTest` (TASK B) | 6 |
+| `PlayerModelTest` (TASK C) | 3 |
+| `NpcCharacterLinkageTest` (TASK D) | 2 |
+| `CharacterCatalogTest` | 3 |
+| `NpcSpawnIndexTest` | 4 |
+| **TOTAL** | **69** |
+
+Regression fixes included: the pre-existing red bind-pose test now passes; the
+pre-existing `NpcSpawnIndexTest` compile error (double `Reader` wrap at line 63)
+was corrected.
+
+## 10. NOT EXECUTED
+
+- Android APK build, `./gradlew test`, instrumented/device tests: no Android
+  SDK/Gradle/emulator in this environment.
+- Android-bound classes (`NativeWorldRenderer`, `CharacterEntity`,
+  `GameActivity`) compiled against Android stubs only; no device claim.
+
+## 11. Blockers / unknowns
+
+- No Android toolchain → APK/device verification NOT EXECUTED.
+- Original gameplay source baseline unavailable → movement/combat semantics
+  remain UNKNOWN (TASK E); nothing invented.
+- 3 UNKNOWN artifact keys + PARTIAL karkadann keep their fail-closed
+  classification until the original `.Bak`/data is parsed.
+- Player identity/spawn UNKNOWN; `europeman_skel` vs `chinaman_skel` mismatch
+  documented as PARTIAL.
+
+## 12. Next steps
+
+- Parse original `CharacterData`/`SkillData` `.txt` (or the SQL `.Bak`) into
+  runtime tables to prove movement/combat values before implementing them.
+- Resolve karkadann's mesh conversion failure to promote it from PARTIAL.
+- APK build + instrumented verification once an Android SDK is available.
 
 ---
 
-## 1. Animation-state architecture (PROVEN)
+## Classification matrix (5-way)
 
-New pure-JVM components (no Android dependencies), each with passing JVM tests:
-
-| Class | Responsibility |
+| Item | Classification |
 |---|---|
-| `world/AnimState` | The six proven states: `IDLE`, `WALK`, `RUN`, `ATTACK`, `DAMAGE`, `DEATH`, each classified looping vs one-shot. |
-| `world/AnimStateResolver` | Maps a character's committed clip list to states by REAL name keywords (case-insensitive): `stand`→IDLE, `walk`→WALK, `run`→RUN, `attack`→ATTACK, `damage` excluding `down`→DAMAGE, `die` excluding `down`/`loop`→DEATH. Missing states are simply absent (fail-closed). |
-| `world/CharacterAnimator` | Per-entity state machine bound to one `AnimationPlayer` clock. Starts in IDLE; missing states fall back to IDLE (or bind pose); one-shot `ATTACK`/`DAMAGE` return to IDLE on completion; `DEATH` is terminal; same-state transitions do not restart the clip. |
-| `world/CharacterEntity` | One placed character: loaded `CharacterMeshIndex` + its own `CharacterAnimator` + world position + `pose()` sampling. |
-
-`CharacterMeshIndex` gains:
-- `buildAnimator()` — resolves a fresh independent animator per call.
-- `parseManifestClips(Reader)` — Android-free manifest→clip parsing (enables the JVM enumeration test).
-- `parseManifestAssetPaths(Reader)` — Android-free manifest→referenced shared-file paths (skeleton/mesh/texture/animation).
-
-`IdleAnimResolver.resolve` now delegates to `AnimStateResolver` so there is a
-single source of truth for the `stand`→IDLE rule (behavior identical; its tests
-pass unchanged).
-
-## 2. Independent per-NPC animation (Android, COMPILE-ONLY)
-
-`NativeWorldRenderer` was refactored from a per-`key` clock to a **per-spawn
-instance** clock:
-
-- Removed the per-key `AnimationPlayer` map and cached per-key pose map.
-- Added `Map<NpcSpawnIndex.Spawn, CharacterEntity>` keyed by spawn identity
-  (stable across frames because `NpcSpawnIndex.inWindow` returns references to
-  the same `Spawn` objects).
-- `advanceAnimations(dt)` advances every entity's independent clock once per
-  frame; `drawCharacters` samples each entity's active pose per draw.
-- Stale entities (spawns that left the visible sector window) are pruned each
-  draw (`pruneEntities`).
-- `setCharacterPose` remains as a global fallback; animated poses take
-  precedence; a character with no resolved clip renders at the bind pose.
-
-This means two NPCs of the same model key now animate with independent states
-and clocks. The renderer remains device-side only (no game logic).
-
-## 3. Pre-existing blocker fixed: skinned-mesh 255 sentinel (PROVEN)
-
-`StaticMeshAsset.parseSkinned` rejected every committed skinned character mesh:
-the original SRO mesh data uses `bone = 255` as the "no influence" sentinel for
-the second bone slot, and the strict bounds check treated it as an invalid bone.
-Because of this, `CharacterMeshIndex.load` returned null for **every skinned
-character** — the character runtime could not load any character.
-
-Fix (verified against real bytes): treat bone index `255` as no-influence and
-zero its weight; the bounds check now allows the sentinel. Downstream skinning
-already guarded `boneIndex < boneNames.length`, so no other change was needed.
-
-Evidence: the three committed bandit meshes all carry `bone2=255` sentinels
-(`bone1=[0]`, `bone2=[255]`, `w2=0` for the sword; part1/part2 contain mixed
-`255` in `bone2`). After the fix, `CharacterMeshIndexTest#meshesThreeRealParts`
-(76/134/1, 214/276/18, 556/766/17 — the proven Phase 20 counts) and
-`swordSkinnedPositionsMatchSingleBoneTransform` PASS.
-
-## 4. Structural enumeration of all committed manifests (PROVEN)
-
-`CharacterManifestEnumerationTest` parses every committed manifest and asserts
-the measured ground truth (all values read from the committed store):
-
-| Metric | Value |
-|---|---|
-| Manifest-bearing model dirs | 473 |
-| Total animation entries across manifests | 3,689 |
-| Manifests with zero animations | 1 |
-| Manifests resolving an IDLE/stand state | 309 |
-| Manifests referencing a missing shared file | 0 |
-| Clips with empty name or non-positive duration | 0 |
-
-The test also verifies every shared file referenced by every manifest
-(`skel/*.json`, `mesh/*.msh`, `tex/*.png`, `anim/*.json`) exists.
-
-## 5. Verification evidence (all run in JVM, JDK 17)
-
-Test runner: custom `JUnitRunner` + real `org.junit.Assert` under
-`/tmp/opencode/phase23/` (the project `org.junit` stubs are compile-only).
-
-| Test class | Result |
-|---|---|
-| `AnimationPlayerTest` (incl. new `clear()`/`isFinished()` cases) | PASS (10) |
-| `IdleAnimResolverTest` | PASS (5) |
-| `AnimStateResolverTest` | PASS (6) |
-| `CharacterAnimatorTest` | PASS (8) |
-| `CharacterManifestEnumerationTest` | PASS (3) |
-| `CharacterMeshIndexMultiTest` | PASS (3) |
-| `CharacterMeshIndexTest` (skeleton/parse/bind-single-bone) | PASS (5) |
-| `CharacterMeshIndexTest#skinnedBindPositionsFiniteAndPlausible` | **FAIL** (KNOWN ISSUE) |
-| `Verify.java` harness (increment 1 regression) | ALL_PASS |
-
-Android-side classes (`CharacterEntity`, `CharacterMeshIndex`, `NativeWorldRenderer`)
-compile against Android stubs; device execution NOT EXECUTED.
-
-## 6. Known issue: bind-pose skinning mismatch on real assets (pre-existing)
-
-`CharacterMeshIndexTest#skinnedBindPositionsFiniteAndPlausible` FAILS. This is a
-**pre-existing** Phase 18/19 defect (that phase was committed "compile-only");
-it is not caused by this increment and is not an animation-state defect.
-
-Evidence (measured from committed `prim_skel_mob_china_bandit.json` +
-`prim_mesh_mob_china_bandit_part1.msh`):
-- Raw part1 local positions are symmetric: `minX=-11.53`, `maxX=+11.53`.
-- After `skinnedBindPositions`, output is `minX=0.43`, `maxX=23.43` — all
-  positive X, so the arm-symmetry assertion fails.
-- A right-fingertip vertex (raw `X=-11.53`, influenced 100% by
-  `Bip01 R Finger21`, whose bind world pos is `X=-10.74`) maps to bind
-  `X=+0.66`; the left fingertip maps to `X=+22.14`.
-
-The `R_bind * v + t_bind` mapping therefore does not reproduce the bind pose for
-the real mesh data (the raw mesh appears to already be in bind pose; applying
-the bind rotation over-rotates it). Impact: bind-pose and animated skinned
-characters would render incorrectly. Resolution requires a dedicated
-investigation of the original `BSK` bind-matrix semantics (inverse/rest-pose
-handling) — tracked as a follow-up, NOT resolved here.
-
-## 7. Status matrix
-
-| Item | Status |
-|---|---|
-| Animation states from real clip names/durations | PROVEN (tests) |
-| Per-NPC independent animators | COMPILE-ONLY (renderer) |
-| State fallback rules (idle fallback, one-shot return, terminal death) | PROVEN (tests) |
-| Skinned-mesh 255-sentinel parse | PROVEN (tests) |
-| Full-manifest structural enumeration | PROVEN (tests) |
-| Bind-pose skinning on real assets | KNOWN ISSUE (pre-existing) |
-| APK / instrumented / device run | NOT EXECUTED |
-| Player spawn, movement, combat | NOT STARTED (UNKNOWN until source-proven) |
+| Inverse-bind skinning (`CharacterRenderer.skin`, `skinnedBindPositions`) | IMPLEMENTED PROVEN |
+| Word-start state resolution + real-clip runtime tests | IMPLEMENTED PROVEN |
+| refid→key→manifest→shared→runtime chain + classification | IMPLEMENTED PROVEN |
+| NPC→spawn linkage (renderable/skipped split) | IMPLEMENTED PROVEN |
+| Player model file-level chain | IMPLEMENTED PARTIAL |
+| Player identity (BSR→skeleton mismatch) | INVESTIGATED UNKNOWN |
+| Player spawn coordinates | INVESTIGATED UNKNOWN |
+| karkadann runtime model (no manifest/anims) | INVESTIGATED PARTIAL |
+| 3 UNKNOWN artifact keys | INVESTIGATED UNKNOWN |
+| Movement speed / combat timing / damage / AI | BLOCKED BY MISSING SOURCE |
+| APK build / instrumented / device run | NOT EXECUTED |
