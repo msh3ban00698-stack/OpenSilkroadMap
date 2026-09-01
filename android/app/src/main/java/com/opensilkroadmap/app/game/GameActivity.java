@@ -12,6 +12,7 @@ import com.opensilkroadmap.app.data.OptionalTeleportTable;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportBuildingTable;
 import com.opensilkroadmap.app.data.TeleportDataTable;
+import com.opensilkroadmap.app.data.TeleportDestinationMap;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.data.TsvTable;
 import com.opensilkroadmap.app.data.WorldDataIndex;
@@ -89,6 +90,7 @@ public final class GameActivity extends Activity {
   private SpawnZoneIndex spawnZones;
   private TeleportGateIndex teleportGates;
   private OptionalTeleportIndex optionalTeleports;
+  private TeleportDestinationMap teleportDestinations;
   private WorldMapInstanceIndex instances;
   private WorldDataIndex worldData;
   private MeshObjectIndex meshObjects;
@@ -137,6 +139,8 @@ public final class GameActivity extends Activity {
     spawnZones = loadSpawnZones(npc);
     teleportGates = loadTeleportGates();
     optionalTeleports = loadOptionalTeleports();
+    teleportDestinations = (teleportGates != null && optionalTeleports != null)
+        ? new TeleportDestinationMap(teleportGates, optionalTeleports) : null;
     instances = loadInstances();
     worldData = loadWorldData();
 
@@ -155,6 +159,7 @@ public final class GameActivity extends Activity {
     if (terrain != null) {
       world.setWorld(terrain);
       world.setNpcSpawns(npc);
+      world.setTeleportDestinations(teleportDestinations);
       world.setMeshObjects(meshObjects);
       world.setCharacters(characterCatalog, characterModels);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
@@ -280,6 +285,21 @@ public final class GameActivity extends Activity {
             .append(" client-only of ").append(optionalTeleports.worldCount())
             .append(" world destinations\n");
       }
+      if (teleportDestinations != null) {
+        sb.append("teleport map ").append(teleportDestinations.resolvedEntryCount())
+            .append(" resolved of ").append(teleportDestinations.entryCount())
+            .append(" (gates ").append(teleportDestinations.gateCount())
+            .append(" · destinations ").append(teleportDestinations.destinationCount())
+            .append(") · ").append(teleportDestinations.zones().size())
+            .append(" server zones");
+        List<TeleportDestinationMap.Entry> jangan =
+            teleportDestinations.inWindow(168, 168, 97, 97);
+        if (!jangan.isEmpty()) {
+          sb.append(" · Jangan sector → ").append(jangan.size())
+              .append(" points");
+        }
+        sb.append('\n');
+      }
       if (instances != null) {
         sb.append("instances ").append(instances.regionResolvedCount())
             .append('/').append(instances.instanceCount())
@@ -359,6 +379,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   OptionalTeleportIndex optionalTeleports() {
     return optionalTeleports;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  TeleportDestinationMap teleportDestinations() {
+    return teleportDestinations;
   }
 
   /** Package-private for the instrumented test (same package). */

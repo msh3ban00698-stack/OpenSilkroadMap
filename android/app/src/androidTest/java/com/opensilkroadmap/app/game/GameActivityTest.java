@@ -9,6 +9,7 @@ import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
+import com.opensilkroadmap.app.data.TeleportDestinationMap;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.data.WorldDataIndex;
 import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
@@ -240,6 +241,34 @@ public class GameActivityTest {
             assertEquals("GROUP_FORTRESS_DONWHANG", dw.group);
             assertNull(worldData.byWorldId(99999));
             assertNull(worldData.byCode("INS_NOPE"));
+          });
+    }
+  }
+
+  @Test
+  public void resolvesTeleportDestinationMapFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            TeleportDestinationMap map = activity.teleportDestinations();
+            assertNotNull("teleport destination map must load", map);
+            assertEquals(290, map.entryCount());
+            assertEquals(246, map.gateCount());
+            assertEquals(44, map.destinationCount());
+            assertEquals(179, map.resolvedEntryCount());
+            assertEquals(111, map.unresolvedEntryCount());
+            assertEquals(12, map.zones().size());
+            assertEquals(29, map.inZone("1001").size());
+            assertEquals(4, map.inWindow(168, 168, 97, 97).size());
+            assertEquals(20, map.inWindow(156, 182, 89, 102).size());
+            TeleportDestinationMap.Entry gateCh = map.entry(0);
+            assertEquals("GATE_CH", gateCh.gateCode);
+            assertEquals(25000, gateCh.regionId);
+            assertEquals(168, gateCh.sectorX());
+            assertEquals(97, gateCh.sectorY());
+            assertEquals("1001", gateCh.serverZone());
+            assertEquals("STORE_CH_GATE", gateCh.storeCode);
           });
     }
   }

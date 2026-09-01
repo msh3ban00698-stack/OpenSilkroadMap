@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.data.TeleportDestinationMap;
 import com.opensilkroadmap.app.game.Camera2D;
 import com.opensilkroadmap.app.game.InputController;
 
@@ -49,6 +50,7 @@ import java.util.Map;
 public class NativeWorldRenderer extends View {
   private WorldTerrainSet world;
   private NpcSpawnIndex npc;
+  private TeleportDestinationMap teleports;
   private MeshObjectIndex meshObjects;
   private CharacterCatalog characterCatalog;
   private Map<String, CharacterMeshIndex> characterModels =
@@ -79,6 +81,8 @@ public class NativeWorldRenderer extends View {
   private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
   private final Paint wirePaint = new Paint();
   private final Paint markerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+  private final Paint gatePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+  private final Paint destinationPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
   private final Paint objectPaint = new Paint();
   private final Path triPath = new Path();
@@ -109,6 +113,8 @@ public class NativeWorldRenderer extends View {
     wirePaint.setStrokeWidth(1f);
     wirePaint.setColor(0xFF202020);
     markerPaint.setColor(0xFFFFC107);
+    gatePaint.setColor(0xFF4DD0E1);
+    destinationPaint.setColor(0xFF66BB6A);
   }
 
   /** Installs the multi-sector world and derives camera bounds + height range. */
@@ -129,6 +135,18 @@ public class NativeWorldRenderer extends View {
   /** Attaches the verified NPC placement index (optional diagnostic overlay). */
   public void setNpcSpawns(NpcSpawnIndex npc) {
     this.npc = npc;
+    invalidate();
+  }
+
+  /**
+   * Attaches the verified teleport destination map (optional diagnostic
+   * overlay). Draws each teleport gate point (cyan) and optional teleport
+   * destination (green) whose placement sector falls inside the loaded world
+   * window; fail-closed entries (instance / unlisted region ids) are never
+   * drawn.
+   */
+  public void setTeleportDestinations(TeleportDestinationMap teleports) {
+    this.teleports = teleports;
     invalidate();
   }
 
@@ -365,6 +383,7 @@ public class NativeWorldRenderer extends View {
       drawSector(canvas, s, quad);
     }
     drawNpcMarkers(canvas);
+    drawTeleportMarkers(canvas);
     drawMeshObjects(canvas);
     drawCharacters(canvas);
     drawPlayer(canvas);
@@ -426,6 +445,35 @@ public class NativeWorldRenderer extends View {
       float wx = sp.worldX(refSx);
       float wz = sp.worldZ(refSy);
       canvas.drawCircle(vx(wx, wz), vy(wx, wz), r, markerPaint);
+    }
+  }
+
+  private void drawTeleportMarkers(Canvas canvas) {
+    if (teleports == null || world == null) {
+      return;
+    }
+    int sx0 = Integer.MAX_VALUE;
+    int sy0 = Integer.MAX_VALUE;
+    int sx1 = Integer.MIN_VALUE;
+    int sy1 = Integer.MIN_VALUE;
+    for (WorldTerrainSet.Sector s : world.sectors()) {
+      sx0 = Math.min(sx0, s.sx);
+      sy0 = Math.min(sy0, s.sy);
+      sx1 = Math.max(sx1, s.sx);
+      sy1 = Math.max(sy1, s.sy);
+    }
+    if (sx0 > sx1 || sy0 > sy1) {
+      return;
+    }
+    int refSx = sx0;
+    int refSy = sy0;
+    float r = 3f * getResources().getDisplayMetrics().density;
+    List<TeleportDestinationMap.Entry> entries = teleports.inWindow(sx0, sx1, sy0, sy1);
+    for (TeleportDestinationMap.Entry e : entries) {
+      float wx = e.worldX(refSx);
+      float wz = e.worldZ(refSy);
+      Paint paint = e.kind == TeleportDestinationMap.Kind.GATE ? gatePaint : destinationPaint;
+      canvas.drawCircle(vx(wx, wz), vy(wx, wz), r, paint);
     }
   }
 
