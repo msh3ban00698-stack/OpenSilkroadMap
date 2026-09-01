@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
+import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
@@ -165,6 +166,28 @@ public class GameActivityTest {
             assertEquals("RN_CH_JANGAN", jangan.nameCode());
             assertEquals("STORE_CH_GATE", jangan.storeCode);
             assertEquals("SN_NPC_CH_GATE", jangan.npcCode);
+          });
+    }
+  }
+
+  @Test
+  public void resolvesInstancesFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            WorldMapInstanceIndex instances = activity.instances();
+            assertNotNull("instance index must load", instances);
+            assertEquals(23, instances.instanceCount());
+            assertEquals(23, instances.regionResolvedCount());
+            WorldMapInstanceIndex.Instance town =
+                instances.resolve("Worldmap_THIEFTOWN");
+            assertNotNull(town);
+            assertEquals("도적마을", town.name);
+            assertEquals(182, town.cellX);
+            assertEquals(96, town.cellY);
+            assertEquals("ThiefTown", town.regionName());
+            assertEquals(null, instances.resolve("Worldmap_NOPE"));
           });
     }
   }
