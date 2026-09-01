@@ -1,28 +1,38 @@
-"""SRO Map.pk2 object-placement (.o2) decoder (Phase 17, proven layout).
+"""SRO Map.pk2 object-placement decoders: .o2 (30-byte) and .o (28-byte).
 
-File layout (proven from live archives, Phase 17 forensics):
+Both extensions share the same magic "JMXVMAPO1001" and the same group-stream
+framing; they differ only in record width. .o2 carries an extra zero u16
+(unknown3) that .o omits.
 
-  - 12-byte magic  "JMXVMAPO1001"
+Shared file layout (proven from live archives, Phase 17 forensics):
+
+  - 12-byte magic  "JMXVMAPO1001"   (a minority of .o files are empty and use
+                                     "JMXVMAPO1000" with a zero payload)
   - u32 @12        == 0 (always observed)
-  - group stream from offset 16: repeated  [u16 count][count x 30-byte record]
+  - group stream from offset 16: repeated  [u16 count][count x record]
     The "variable header" observed in Phase 15 is simply leading zero-count
     groups (pure zero padding); starting the walker at offset 16 yields the
     same instances as starting at the first non-zero byte for every file in a
     4,348-file census (all consume exactly, result-equivalent).
 
-  - 30-byte instance record (little-endian):
+  - instance record (little-endian):
       u32 @0   nameI            (index into navmesh/object.ifo -> .bsr path)
       f32 @4   x                (sector-local coordinate, tail sector)
       f32 @8   y                (height; ~ terrain height for planted objects)
       f32 @12  z                (sector-local coordinate, tail sector)
       u16 @16  unknown0         (0x0000 or 0xFFFF observed; semantics UNKNOWN)
       f32 @18  theta            (Y-axis rotation, radians; 0.0 or real values)
-      u16 @22  unknown1         (varies per record; scale? UNKNOWN)
+      u16 @22  unknown1         (varies per record; packed grid? UNKNOWN)
       u16 @24  unknown2         (0 observed)
-      u16 @26  unknown3         (0 observed)
-      u16 @28  tail             (tx = tail & 0xFF, tz = tail >> 8; the sector
-                                 that x/z are LOCAL to; = object's own sector
-                                 for non-boundary objects)
+      u16 @26  unknown3         (.o2 only; 0 observed)
+      u16 @26  tail             (.o only)
+      u16 @28  tail             (.o2 only)
+
+    tail encodings differ between the two extensions:
+      .o2 tail = absolute packed sector (tx = tail & 0xFF, tz = tail >> 8);
+                equals the file's own sector for non-boundary objects.
+      .o  tail = relative offset from the file's own sector: 0 = own sector,
+                1 = +x neighbour, 256 = +z neighbour (observed values only).
 
 Positions are LOCAL to sector (tx, tz). World coords follow the proven formula
 world = (tail - ref) * 1920 + local (see world_terrain.local_to_world).
@@ -35,7 +45,13 @@ from dataclasses import dataclass
 
 O2_MAGIC = b"JMXVMAPO1001"
 O2_HEADER = 16          # magic(12) + u32(4)
-O2_RECORD = 30          # bytes per instance record
+O2_RECORD = 30          # bytes per .o2 instance record
+
+#: .o uses the same magic but a 28-byte record (no unknown3).
+O_MAGIC = b"JMXVMAPO1001"
+#: .o empty placeholder magic (zero payload).
+O_EMPTY_MAGIC = b"JMXVMAPO1000"
+O_RECORD = 28           # bytes per .o instance record
 
 #: object.ifo magic line observed in Data.pk2/navmesh/object.ifo
 IFO_MAGIC = b"JMXVOBJI1000"
@@ -79,10 +95,8 @@ class Placement:
         )
 
 
-def parse_o2(blob: bytes) -> list[Placement]:
-    """Parse an .o2 blob into proven Placement instances (walker from offset 16)."""
-    if not blob.startswith(O2_MAGIC):
-        raise O2FormatError("not a .o2 blob (bad magic)")
+def _parse_placements(blob: bytes, record_size: int) -> list[Placement]:
+    """Shared group-stream walker (offset 16) for .o2 and .o records."""
     out: list[Placement] = []
     pos = O2_HEADER
     n = len(blob)
@@ -91,18 +105,22 @@ def parse_o2(blob: bytes) -> list[Placement]:
             break
         cnt = struct.unpack_from("<H", blob, pos)[0]
         pos += 2
-        if pos + cnt * O2_RECORD > n:
+        if pos + cnt * record_size > n:
             # malformed tail group: stop (documented, not silently corrupt)
             break
         for _ in range(cnt):
-            rec = blob[pos : pos + O2_RECORD]
+            rec = blob[pos : pos + record_size]
             nameI, x, y, z = struct.unpack_from("<Ifff", rec, 0)
             u0 = struct.unpack_from("<H", rec, 16)[0]
             theta = struct.unpack_from("<f", rec, 18)[0]
             u1 = struct.unpack_from("<H", rec, 22)[0]
             u2 = struct.unpack_from("<H", rec, 24)[0]
-            u3 = struct.unpack_from("<H", rec, 26)[0]
-            tail = struct.unpack_from("<H", rec, 28)[0]
+            if record_size >= O2_RECORD:
+                u3 = struct.unpack_from("<H", rec, 26)[0]
+                tail = struct.unpack_from("<H", rec, 28)[0]
+            else:
+                u3 = 0
+                tail = struct.unpack_from("<H", rec, 26)[0]
             out.append(
                 Placement(
                     nameI=int(nameI),
@@ -118,8 +136,26 @@ def parse_o2(blob: bytes) -> list[Placement]:
                     unknown3=int(u3),
                 )
             )
-            pos += O2_RECORD
+            pos += record_size
     return out
+
+
+def parse_o2(blob: bytes) -> list[Placement]:
+    """Parse an .o2 blob into proven Placement instances (30-byte records)."""
+    if not blob.startswith(O2_MAGIC):
+        raise O2FormatError("not a .o2 blob (bad magic)")
+    return _parse_placements(blob, O2_RECORD)
+
+
+def parse_o(blob: bytes) -> list[Placement]:
+    """Parse an .o blob into proven Placement instances (28-byte records).
+
+    .o shares the JMXVMAPO1001 magic and framing with .o2 but omits the
+    always-zero unknown3 u16, so its tail lands at offset 26 instead of 28.
+    """
+    if not blob.startswith(O_MAGIC):
+        raise O2FormatError("not a .o blob (bad magic)")
+    return _parse_placements(blob, O_RECORD)
 
 
 def parse_object_ifo_map(text: str) -> dict[int, str]:

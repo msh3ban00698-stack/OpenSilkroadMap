@@ -1,0 +1,193 @@
+{
+ "phase": "phase29-source-parity",
+ "pk2_archives": {
+  "Data.pk2": {
+   "present": true,
+   "size": 3351891968,
+   "cached": true,
+   "file_count": 66051,
+   "payload_bytes": 3339113205
+  },
+  "Map.pk2": {
+   "present": true,
+   "size": 1268441088,
+   "cached": true,
+   "file_count": 19171,
+   "payload_bytes": 1265850962
+  },
+  "Media.pk2": {
+   "present": true,
+   "size": 823066624,
+   "cached": true,
+   "file_count": 29591,
+   "payload_bytes": 819003922
+  },
+  "Music.pk2": {
+   "present": true,
+   "size": 76488704,
+   "cached": true,
+   "file_count": 50,
+   "payload_bytes": 76475511
+  },
+  "Particles.pk2": {
+   "present": true,
+   "size": 178126848,
+   "cached": true,
+   "file_count": 4768,
+   "payload_bytes": 177456277
+  }
+ },
+ "containers": [
+  {
+   "archive": "ClientPatcher.rar",
+   "size": 4870,
+   "entry_count": 1,
+   "cached": true,
+   "realized_as": null
+  },
+  {
+   "archive": "Database.7z",
+   "size": 6951722,
+   "entry_count": 4,
+   "cached": true,
+   "realized_as": "sql-backup"
+  },
+  {
+   "archive": "Event-HAPPY-Working-Files-vsro-193.7z",
+   "size": 6957,
+   "entry_count": 2,
+   "cached": true,
+   "realized_as": "filesystem/server"
+  },
+  {
+   "archive": "GSPatcher.rar",
+   "size": 5281,
+   "entry_count": 1,
+   "cached": true,
+   "realized_as": null
+  },
+  {
+   "archive": "VSRO-R Client.7z",
+   "size": 195170460,
+   "entry_count": 120,
+   "cached": true,
+   "realized_as": null
+  },
+  {
+   "archive": "VSRO-R Proxy v1005.rar",
+   "size": 448117,
+   "entry_count": 21,
+   "cached": true,
+   "realized_as": "filesystem/proxy"
+  },
+  {
+   "archive": "Vietnam-R v193 Package Server.7z",
+   "size": 10994403,
+   "entry_count": 1045,
+   "cached": true,
+   "realized_as": "filesystem/server"
+  }
+ ],
+ "reconciliation": {
+  "PARTIAL": 37583,
+  "PROVEN": 83216,
+  "DEAD": 21,
+  "STUB": 17,
+  "TEXT": 1,
+  "UNKNOWN": 2,
+  "MISSING": 1
+ },
+ "known_missing": [
+  {
+   "name": "RecMsg.dat",
+   "reason": "client-side receive-message table; string 'RecMsg.dat' present in GameClient.exe (Game.cpp startup, loaded via CreateFile); absent from all archives/containers/SQL backups"
+  }
+ ],
+ "by_source": {
+  "pk2": 119631,
+  "filesystem": 1084,
+  "sql-backup": 4,
+  "container": 121
+ },
+ "by_system": {
+  "rendering": 59915,
+  "ui": 21629,
+  "map": 19224,
+  "minimap": 7737,
+  "navigation": 6072,
+  "effects": 4792,
+  "server-logic": 863,
+  "data-tables": 165,
+  "server-data": 138,
+  "region-data": 103,
+  "audio": 50,
+  "unknown": 48,
+  "server-binary": 40,
+  "networking": 29,
+  "configuration": 19,
+  "client-binary": 12,
+  "database": 4
+ },
+ "by_domain": {
+  "item": 19196,
+  "map": 18932,
+  "ui": 5289,
+  "skill": 4244,
+  "monster": 2905,
+  "npc": 2773,
+  "trade": 2131,
+  "pet": 1703,
+  "guild": 1681,
+  "quest": 1674,
+  "char": 1470,
+  "event": 1463,
+  "thief": 1271,
+  "text": 1196,
+  "hunter": 955,
+  "shop": 761,
+  "fortress": 650,
+  "gold": 533,
+  "archemy": 429,
+  "battle": 335,
+  "union": 318,
+  "effect": 278,
+  "anim": 275,
+  "equip": 246,
+  "silk": 230,
+  "server": 204,
+  "exp": 194,
+  "buff": 175,
+  "summon": 175,
+  "drop": 153,
+  "arena": 150,
+  "character": 119,
+  "animation": 118,
+  "alchemy": 115,
+  "combat": 112,
+  "party": 111,
+  "level": 110,
+  "job": 101,
+  "chat": 99,
+  "teleport": 88,
+  "msg": 52,
+  "login": 30,
+  "inventory": 29,
+  "rank": 25,
+  "config": 19,
+  "debuff": 16,
+  "transport": 10,
+  "notice": 10,
+  "region": 8,
+  "network": 7,
+  "client": 6,
+  "proxy": 3,
+  "local": 2,
+  "academy": 1
+ },
+ "totals": {
+  "indexed_files": 120840,
+  "total_bytes": 6784331114,
+  "extracted_files": 35497,
+  "indexed_only_files": 85343
+ }
+}

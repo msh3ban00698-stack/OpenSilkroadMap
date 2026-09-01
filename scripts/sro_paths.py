@@ -78,6 +78,54 @@ def textdata_dir(source_dir):
     return os.path.join(source_dir, TEXTDATA_REL)
 
 
+def resolve_ext_dir(env_var, cli_value=None, label=""):
+    """Resolve an external (non-committed) data directory from env or CLI."""
+    raw = cli_value or os.environ.get(env_var)
+    if not raw:
+        raise PipelineConfigError(
+            "{0} directory is required. Set {1} or pass it as an argument.".format(
+                label, env_var
+            )
+        )
+    return os.path.abspath(raw)
+
+
+def resolve_db_dir(cli_value=None):
+    return resolve_ext_dir("SRO_DB_DIR", cli_value, "Database")
+
+
+def resolve_extract_dir(cli_value=None):
+    return resolve_ext_dir("SRO_EXTRACT_DIR", cli_value, "Extract")
+
+
+def resolve_pkg_dir(cli_value=None):
+    return resolve_ext_dir("SRO_PKG_DIR", cli_value, "Package")
+
+
+def resolve_client_extract_dir(cli_value=None):
+    return resolve_ext_dir("SRO_CLIENT_EXTRACT_DIR", cli_value, "Client extract")
+
+
+def resolve_client_bin_dir(cli_value=None):
+    return resolve_ext_dir("SRO_CLIENT_BIN_DIR", cli_value, "Client binaries")
+
+
+def resolve_client_install_dir(cli_value=None):
+    return resolve_ext_dir("SRO_CLIENT_INSTALL_DIR", cli_value, "Client install")
+
+
+def resolve_pk2_mate_dir(cli_value=None):
+    return resolve_ext_dir("SRO_PK2_MATE_DIR", cli_value, "pk2_mate")
+
+
+def resolve_work_dir(cli_value=None):
+    return resolve_ext_dir("SRO_WORK_DIR", cli_value, "Work")
+
+
+def resolve_full_extract_dir(cli_value=None):
+    return resolve_ext_dir("SRO_FULL_EXTRACT_DIR", cli_value, "Full extract")
+
+
 def pk2_archive(pk2_dir, name):
     direct = os.path.join(pk2_dir, name)
     nested = os.path.join(pk2_dir, "pk2", name)

@@ -1,0 +1,170 @@
+{
+ "phase": "phase29-source-parity",
+ "by_system": {
+  "audio": {
+   "count": 50,
+   "bytes": 76475511
+  },
+  "client-binary": {
+   "count": 2,
+   "bytes": 193
+  },
+  "configuration": {
+   "count": 12,
+   "bytes": 1256087
+  },
+  "data-tables": {
+   "count": 165,
+   "bytes": 114208765
+  },
+  "database": {
+   "count": 4,
+   "bytes": 122757120
+  },
+  "effects": {
+   "count": 4792,
+   "bytes": 177806423
+  },
+  "map": {
+   "count": 19224,
+   "bytes": 1270016926
+  },
+  "minimap": {
+   "count": 7737,
+   "bytes": 322894068
+  },
+  "navigation": {
+   "count": 6072,
+   "bytes": 850129638
+  },
+  "networking": {
+   "count": 29,
+   "bytes": 2437354
+  },
+  "region-data": {
+   "count": 103,
+   "bytes": 137814
+  },
+  "rendering": {
+   "count": 59915,
+   "bytes": 2484146781
+  },
+  "server-binary": {
+   "count": 40,
+   "bytes": 47048192
+  },
+  "server-data": {
+   "count": 138,
+   "bytes": 89978129
+  },
+  "server-logic": {
+   "count": 863,
+   "bytes": 3451690
+  },
+  "ui": {
+   "count": 21629,
+   "bytes": 371875740
+  },
+  "unknown": {
+   "count": 47,
+   "bytes": 10346025
+  }
+ },
+ "by_system_source": {
+  "audio|pk2": {
+   "count": 50,
+   "bytes": 76475511
+  },
+  "client-binary|container": {
+   "count": 10,
+   "bytes": 16295470
+  },
+  "client-binary|filesystem": {
+   "count": 2,
+   "bytes": 193
+  },
+  "configuration|container": {
+   "count": 7,
+   "bytes": 2564
+  },
+  "configuration|filesystem": {
+   "count": 12,
+   "bytes": 1256087
+  },
+  "data-tables|pk2": {
+   "count": 165,
+   "bytes": 114208765
+  },
+  "database|sql-backup": {
+   "count": 4,
+   "bytes": 122757120
+  },
+  "effects|pk2": {
+   "count": 4792,
+   "bytes": 177806423
+  },
+  "map|pk2": {
+   "count": 19224,
+   "bytes": 1270016926
+  },
+  "minimap|pk2": {
+   "count": 7737,
+   "bytes": 322894068
+  },
+  "navigation|pk2": {
+   "count": 6072,
+   "bytes": 850129638
+  },
+  "networking|filesystem": {
+   "count": 29,
+   "bytes": 2437354
+  },
+  "region-data|container": {
+   "count": 103,
+   "bytes": 137814
+  },
+  "rendering|pk2": {
+   "count": 59915,
+   "bytes": 2484146781
+  },
+  "server-binary|filesystem": {
+   "count": 40,
+   "bytes": 47048192
+  },
+  "server-data|filesystem": {
+   "count": 138,
+   "bytes": 89978129
+  },
+  "server-logic|filesystem": {
+   "count": 863,
+   "bytes": 3451690
+  },
+  "ui|pk2": {
+   "count": 21629,
+   "bytes": 371875740
+  },
+  "unknown|container": {
+   "count": 1,
+   "bytes": 823066624
+  },
+  "unknown|pk2": {
+   "count": 47,
+   "bytes": 10346025
+  }
+ },
+ "totals": {
+  "indexed_files": 120840,
+  "total_bytes": 6784331114,
+  "extracted_files": 35497,
+  "indexed_only_files": 85343
+ },
+ "reconciliation": {
+  "PARTIAL": 37583,
+  "PROVEN": 83216,
+  "DEAD": 21,
+  "STUB": 17,
+  "TEXT": 1,
+  "UNKNOWN": 2,
+  "MISSING": 1
+ }
+}

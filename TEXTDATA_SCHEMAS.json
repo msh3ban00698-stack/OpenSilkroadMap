@@ -1,2625 +1,5333 @@
 {
- "characterdata.tsv": {
-  "columns": 1,
-  "columns_detail": [
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "str": 9
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "index",
-  "records": 9,
-  "source_path": "/server_dep/silkroad/textdata/characterdata.txt"
+ "abusefilter.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1509,
+  "columns": [
+   "#ALLOW_ID_TABLE",
+   "0x0030",
+   "0x0039",
+   "",
+   "",
+   "",
+   "#ALLOW_ID_TABLE",
+   "0x0030",
+   "0x0039",
+   "",
+   "",
+   "",
+   "#ALLOW_ID_TABLE",
+   "0x0030",
+   "0x0039",
+   "",
+   "",
+   "",
+   "#ALLOW_ID_TABLE",
+   "0x0028",
+   "0x0029",
+   "",
+   "",
+   "",
+   "#ALLOW_ID_TABLE",
+   "0x0030",
+   "0x0039",
+   "",
+   "",
+   "",
+   "#ALLOW_ID_TABLE",
+   "0x0030",
+   "0x0039",
+   "",
+   "",
+   ""
+  ]
  },
- "gameworldconfigdata.tsv": {
-  "columns": 5,
-  "columns_detail": [
-   {
-    "dominant": "str",
-    "evidence": "GROUP_* codes",
-    "name": "group_code",
-    "types": {
-     "str": 1027
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "REF_* codes",
-    "name": "ref_code",
-    "types": {
-     "str": 1027
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "STRING/INT-like type tag",
-    "name": "data_type",
-    "types": {
-     "str": 1027
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "config key",
-    "name": "key",
-    "types": {
-     "int": 546,
-     "str": 481
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "config value",
-    "name": "value",
-    "types": {
-     "empty": 1027
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 1027,
-  "source_path": "/server_dep/silkroad/textdata/gameworldconfigdata.txt"
+ "actionwnddata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 25,
+  "columns": [
+   "1000",
+   "1",
+   "앉기서기",
+   "UIIT_CTL_TOG_SIT_STAND_TT",
+   "icon\\action\\icon_cha_sit.ddj",
+   "1",
+   "0"
+  ]
  },
- "gameworlddata.tsv": {
-  "columns": 7,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 115
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "world code e.g. INS_DEFAULT",
-    "name": "code",
-    "types": {
-     "str": 115
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 115
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "int": 115
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 115
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "str": 115
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "empty": 115
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 115,
-  "source_path": "/server_dep/silkroad/textdata/gameworlddata.txt"
+ "atstructeffect.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1460,
+  "columns": [
+   "//유니코드로 저장!!!     경로는 소문자!!!",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "always=0"
+  ]
  },
- "itemdata.tsv": {
-  "columns": 1,
-  "columns_detail": [
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "str": 9
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "index",
-  "records": 9,
-  "source_path": "/server_dep/silkroad/textdata/itemdata.txt"
+ "characterdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 8,
+  "columns": [
+   "CharacterData_5000.txt"
+  ]
  },
- "leveldata.tsv": {
-  "columns": 10,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "1..150 ascending",
-    "name": "level",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 150
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "empty": 150
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 150,
-  "source_path": "/server_dep/silkroad/textdata/leveldata.txt"
+ "characterdata_10000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2281,
+  "columns": [
+   "1",
+   "5850",
+   "MOB_EU_MOVOI_CLON",
+   "???",
+   "MOB_EU_MOVOI",
+   "SN_MOB_EU_MOVOI_CLON",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "1",
+   "1",
+   "5000",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "15",
+   "45",
+   "100",
+   "0",
+   "7",
+   "0",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "1",
+   "2",
+   "54",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "9",
+   "8",
+   "1",
+   "1",
+   "27",
+   "0",
+   "27",
+   "2",
+   "24",
+   "336860180",
+   "3",
+   "3000",
+   "3598",
+   "3599",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "levelgold.tsv": {
-  "columns": 3,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "1..140 ascending",
-    "name": "level",
-    "types": {
-     "int": 140
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 140
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 140
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 140,
-  "source_path": "/server_dep/silkroad/textdata/levelgold.txt"
+ "characterdata_15000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 493,
+  "columns": [
+   "1",
+   "10000",
+   "COS_GUILD_CH_SOLDIER4_057",
+   "???? lv 57",
+   "COS_GUILD_CH_SOLDIER4_001",
+   "SN_COS_GUILD_CH_SOLDIER4",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "3",
+   "5",
+   "5000",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "91",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "20",
+   "50",
+   "100",
+   "0",
+   "4",
+   "0",
+   "xxx",
+   "xxx",
+   "cos\\guild_ch_soldier4_scroll.ddj",
+   "xxx",
+   "xxx",
+   "57",
+   "0",
+   "12327",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "325",
+   "727",
+   "57",
+   "57",
+   "134",
+   "0",
+   "134",
+   "2",
+   "10328",
+   "336860180",
+   "3",
+   "3000",
+   "6313",
+   "6453",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "npcpos.tsv": {
-  "columns": 5,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "joins characterdata_*.txt col1 for 1180/1180 distinct ids",
-    "name": "character_refid",
-    "types": {
-     "int": 18457
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins regioncode.txt col1 for 1800/1855 distinct codes; unpack_region gives sector",
-    "name": "region_code",
-    "types": {
-     "int": 18457
-    }
-   },
-   {
-    "dominant": "float",
-    "evidence": "sector-local x, [0, 1920) for world rows (Phase 13 verified)",
-    "name": "local_x",
-    "types": {
-     "float": 18230,
-     "int": 227
-    }
-   },
-   {
-    "dominant": "float",
-    "evidence": "height axis; ~0 across records",
-    "name": "height_y",
-    "types": {
-     "float": 16020,
-     "int": 2437
-    }
-   },
-   {
-    "dominant": "float",
-    "evidence": "sector-local z, [0, 1920) for world rows (Phase 13 verified)",
-    "name": "local_z",
-    "types": {
-     "float": 18182,
-     "int": 275
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 18457,
-  "source_path": "/server_dep/silkroad/textdata/npcpos.txt"
+ "characterdata_20000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4855,
+  "columns": [
+   "1",
+   "15000",
+   "MOB_TQ_QINSHITRAP3",
+   "????(?)",
+   "xxx",
+   "SN_MOB_TQ_QINSHITRAP3",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "1",
+   "1",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "230",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "8",
+   "0",
+   "mob\\qinshi\\QinshiTrap.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "85",
+   "2",
+   "14791",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "951",
+   "1522",
+   "85",
+   "85",
+   "162",
+   "0",
+   "162",
+   "2",
+   "1",
+   "0",
+   "0",
+   "0",
+   "12303",
+   "29701",
+   "29702",
+   "30263",
+   "30264",
+   "30265",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "questdata.tsv": {
-  "columns": 12,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 1004
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "Q* string codes",
-    "name": "quest_code",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "int": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "str": 1004
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "empty": 1004
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 1004,
-  "source_path": "/server_dep/silkroad/textdata/questdata.txt"
+ "characterdata_25000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3735,
+  "columns": [
+   "1",
+   "20000",
+   "COS_GUARD_CH_BOW_01_002",
+   "?? ? ???(??) lv 2",
+   "COS_GUARD_CH_BOW_01_001",
+   "SN_COS_GUARD_CH_BOW_01_001",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "4",
+   "4",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "4",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "20",
+   "51",
+   "100",
+   "0",
+   "4",
+   "0",
+   "cos\\ch_guard_bow.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "2",
+   "0",
+   "1016",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "13",
+   "21",
+   "2",
+   "2",
+   "29",
+   "0",
+   "29",
+   "2",
+   "0",
+   "336860180",
+   "3",
+   "3000",
+   "21691",
+   "21831",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "8",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "refoptionalteleport.tsv": {
-  "columns": 20,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "str": 44
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "str": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "str": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "str": 44
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "int": 44
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "str": 44
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col19",
-    "types": {
-     "empty": 44
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 44,
-  "source_path": "/server_dep/silkroad/textdata/refoptionalteleport.txt"
+ "characterdata_30000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 177,
+  "columns": [
+   "1",
+   "26663",
+   "MOB_EV_THIEF",
+   "??",
+   "xxx",
+   "SN_MOB_EV_THIEF",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "1",
+   "1",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "55",
+   "250",
+   "0",
+   "6",
+   "0",
+   "mob\\china\\bandit.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "1",
+   "2",
+   "11",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "7",
+   "10",
+   "1",
+   "1",
+   "27",
+   "0",
+   "27",
+   "2",
+   "0",
+   "336860180",
+   "3",
+   "3000",
+   "31251",
+   "31252",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "refquestrewarditems.tsv": {
-  "columns": 13,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "QNO_* codes, subset of refqusetreward.col1",
-    "name": "quest_code",
-    "types": {
-     "str": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "ITEM_* codes; 316/318 present in itemdata_*.txt col2",
-    "name": "item_code",
-    "types": {
-     "str": 373
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "str": 373
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "str": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 373
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "empty": 373
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 373,
-  "source_path": "/server_dep/silkroad/textdata/refquestrewarditems.txt"
+ "characterdata_35000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3,
+  "columns": [
+   "1",
+   "34040",
+   "NPC_CH_EVENT_EASTEREGG",
+   "??? ??",
+   "xxx",
+   "SN_NPC_CH_EVENT_EASTEREGG",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "2",
+   "0",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "npc\\npc\\NPC_CH_EVENT_EASTEREGG.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "336860180",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "refqusetreward.tsv": {
-  "columns": 26,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "QNO_* codes; refquestrewarditems.col1 is a subset",
-    "name": "quest_code",
-    "types": {
-     "str": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "str": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col19",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col20",
-    "types": {
-     "str": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col21",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col22",
-    "types": {
-     "str": 995
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col23",
-    "types": {
-     "int": 995
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col24",
-    "types": {
-     "str": 995
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col25",
-    "types": {
-     "empty": 995
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 995,
-  "source_path": "/server_dep/silkroad/textdata/refqusetreward.txt"
+ "characterdata_40000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 519,
+  "columns": [
+   "1",
+   "36030",
+   "NPC_OPEN_MARKET_JUEL",
+   "?? ?? ?? ?",
+   "xxx",
+   "SN_NPC_OPEN_MARKET_JUEL",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "2",
+   "0",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "NPC\\NPC\\open_market_juel.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "336860180",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "refshop.tsv": {
-  "columns": 13,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins refshopgoods.col1 (both value 15 in committed set)",
-    "name": "shop_id",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "MALL_* / STORE_* codes",
-    "name": "shop_code",
-    "types": {
-     "str": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "str": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "str": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "str": 78
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 78
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "str": 78
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "empty": 78
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 78,
-  "source_path": "/server_dep/silkroad/textdata/refshop.txt"
+ "characterdata_45000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2571,
+  "columns": [
+   "1",
+   "41341",
+   "MOB_JUPITER_TEMPLE_PROTECTION",
+   "?? ???",
+   "xxx",
+   "SN_MOB_JUPITER_TEMPLE_PROTECTION",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "2",
+   "1",
+   "1",
+   "5000",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "495",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "30",
+   "100",
+   "80",
+   "0",
+   "16",
+   "0",
+   "mob\\Jupiter\\immotal.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "111",
+   "2",
+   "45096",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "2367",
+   "3578",
+   "111",
+   "111",
+   "188",
+   "0",
+   "188",
+   "2",
+   "12927",
+   "336860180",
+   "2",
+   "3000",
+   "33099",
+   "33100",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "refshopgoods.tsv": {
-  "columns": 14,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins refshop.col1",
-    "name": "shop_id",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "joins refshoptab.txt col3",
-    "name": "category_code",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "PACKAGE_ITEM_* codes",
-    "name": "item_code",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 2282
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "str": 2282
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "empty": 2282
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 2282,
-  "source_path": "/server_dep/silkroad/textdata/refshopgoods.txt"
+ "characterdata_5000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1699,
+  "columns": [
+   "1",
+   "1907",
+   "CHAR_CH_MAN_ADVENTURER",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0",
+   "1",
+   "1",
+   "1",
+   "0",
+   "0",
+   "1000000000",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "6341",
+   "0",
+   "8000",
+   "0",
+   "18000",
+   "16",
+   "50",
+   "100",
+   "0",
+   "4",
+   "0",
+   "char\\china\\chinaman_adventurer.bsr",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "1",
+   "1",
+   "0",
+   "0",
+   "45",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "336860180",
+   "3",
+   "3000",
+   "1",
+   "2",
+   "40",
+   "70",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
  },
- "regioncode.tsv": {
-  "columns": 4,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 3294
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "int region code",
-    "name": "region_id",
-    "types": {
-     "int": 3294
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "string; source value 'xxx' placeholder",
-    "name": "name",
-    "types": {
-     "str": 3294
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "string; source value 'xxx' placeholder",
-    "name": "name2",
-    "types": {
-     "str": 3294
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 3294,
-  "source_path": "/server_dep/silkroad/textdata/regioncode.txt"
+ "charactervisualchange.txt": {
+  "encoding": "utf-16-le",
+  "rows": 371,
+  "columns": [
+   "1",
+   "1",
+   "장비(ROBE-HELM)",
+   "1",
+   "1",
+   "16843824",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0x0801",
+   "0x0000",
+   "0",
+   "250",
+   "0",
+   "xxx",
+   "xxx",
+   "xxx"
+  ]
  },
- "skilldata.tsv": {
-  "columns": 1,
-  "columns_detail": [
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "str": 7
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "index",
-  "records": 7,
-  "source_path": "/server_dep/silkroad/textdata/skilldata.txt"
+ "collectionbook_item.txt": {
+  "encoding": "utf-16-le",
+  "rows": 31,
+  "columns": [
+   "1",
+   "ITEM_TALISMAN_TOGUI_RED_TEARS",
+   "붉은 눈물",
+   "THEME_GOD_TOGUI_RED_BLOOD",
+   "1",
+   "1",
+   "SN_ITEM_TALISMAN_TOGUI_RED_TEARS_TT_DESC_STORY",
+   "icon\\item\\etc\\talisman_togui_red_te.ddj"
+  ]
  },
- "teleportbuilding.tsv": {
-  "columns": 59,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins teleportdata.col3",
-    "name": "gate_id",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "STORE_* / *_GATE codes",
-    "name": "building_code",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col19",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col20",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col21",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col22",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col23",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col24",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col25",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col26",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col27",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col28",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col29",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col30",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col31",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col32",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col33",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col34",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col35",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col36",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col37",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col38",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col39",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col40",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col41",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col42",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col43",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col44",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col45",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col46",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col47",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col48",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col49",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col50",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col51",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col52",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col53",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col54",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col55",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col56",
-    "types": {
-     "str": 106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col57",
-    "types": {
-     "int": 106
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col58",
-    "types": {
-     "empty": 106
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 106,
-  "source_path": "/server_dep/silkroad/textdata/teleportbuilding.txt"
+ "collectionbook_theme.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3,
+  "columns": [
+   "1",
+   "1",
+   "THEME_GOD_TOGUI_RED_BLOOD",
+   "토귀마을 - 붉은피의 환영",
+   "SN_THEME_GOD_TOGUI_RED_BLOOD",
+   "SN_THEME_GOD_TOGUI_RED_BLOOD_TT_DESC",
+   "8"
+  ]
  },
- "teleportdata.tsv": {
-  "columns": 14,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "GATE_* codes",
-    "name": "gate_code",
-    "types": {
-     "str": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins teleportbuilding.col1 for 101/135 ids",
-    "name": "gate_id",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "SN_ZONE_* codes",
-    "name": "zone_code",
-    "types": {
-     "int": 2,
-     "str": 244
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "int zone id",
-    "name": "zone_id",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 246
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "empty": 246
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 246,
-  "source_path": "/server_dep/silkroad/textdata/teleportdata.txt"
+ "dg.txt": {
+  "encoding": "utf-16-le",
+  "rows": 139,
+  "columns": [
+   "1",
+   "28",
+   "42"
+  ]
  },
- "teleportlink.tsv": {
-  "columns": 23,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col3",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col19",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col20",
-    "types": {
-     "int": 351
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col21",
-    "types": {
-     "empty": 47,
-     "int": 304
-    }
-   },
-   {
-    "dominant": "empty",
-    "evidence": "semantics not verified",
-    "name": "col22",
-    "types": {
-     "empty": 351
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 351,
-  "source_path": "/server_dep/silkroad/textdata/teleportlink.txt"
+ "effectenvsnd.txt": {
+  "encoding": "cp949",
+  "rows": 1064,
+  "columns": [
+   "<1>",
+   "ThiefTown",
+   "",
+   "",
+   "",
+   ""
+  ]
  },
- "worldmap_instanceinfo.tsv": {
-  "columns": 11,
-  "columns_detail": [
-   {
-    "dominant": "str",
-    "evidence": "Worldmap_* codes",
-    "name": "code",
-    "types": {
-     "str": 23
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "Korean name",
-    "name": "name",
-    "types": {
-     "str": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins regions.tsv cell x (23/23 matched)",
-    "name": "region_cell_x",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "joins regions.tsv cell y (23/23 matched)",
-    "name": "region_cell_y",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 23
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "int": 23
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 23,
-  "source_path": "/server_dep/silkroad/textdata/worldmap_instanceinfo.txt"
+ "effectsound.txt": {
+  "encoding": "utf-8",
+  "rows": 6529,
+  "columns": [
+   "",
+   "UI",
+   "SND_COS_SUMMON",
+   "-",
+   "-",
+   "-",
+   "-",
+   "0",
+   "skill\\",
+   "csk_heal_ready_a.wav",
+   "60"
+  ]
  },
- "worldmap_localinfo.tsv": {
-  "columns": 22,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col0",
-    "types": {
-     "int": 1116
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "int zone id",
-    "name": "zone_id",
-    "types": {
-     "int": 1116
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col2",
-    "types": {
-     "int": 1116
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "SN_ZONE_* codes",
-    "name": "zone_code",
-    "types": {
-     "str": 1116
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "Korean name",
-    "name": "name",
-    "types": {
-     "str": 1116
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "Korean description",
-    "name": "description",
-    "types": {
-     "str": 1116
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "str": 1116
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "empty": 9,
-     "int": 1107
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "empty": 8,
-     "int": 1108
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "empty": 10,
-     "int": 1106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col10",
-    "types": {
-     "empty": 10,
-     "int": 1106
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col11",
-    "types": {
-     "empty": 11,
-     "int": 1105
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "empty": 11,
-     "int": 1105
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "empty": 9,
-     "int": 1107
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "empty": 9,
-     "int": 1107
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "empty": 20,
-     "int": 1096
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "empty": 20,
-     "int": 1096
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "empty": 20,
-     "int": 1096
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "empty": 19,
-     "int": 1097
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col19",
-    "types": {
-     "empty": 19,
-     "int": 1097
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col20",
-    "types": {
-     "empty": 25,
-     "int": 1091
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col21",
-    "types": {
-     "empty": 191,
-     "str": 925
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 1116,
-  "source_path": "/server_dep/silkroad/textdata/worldmap_localinfo.txt"
+ "erasablemastery.txt": {
+  "encoding": "utf-16-le",
+  "rows": 6,
+  "columns": [
+   "1828",
+   "257"
+  ]
  },
- "worldmap_mapinfo.tsv": {
-  "columns": 23,
-  "columns_detail": [
-   {
-    "dominant": "int",
-    "evidence": "int map id",
-    "name": "map_id",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col1",
-    "types": {
-     "int": 32,
-     "str": 25
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "Korean name",
-    "name": "name",
-    "types": {
-     "str": 57
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "backslash path to interface .ddj texture",
-    "name": "texture_ddj_path",
-    "types": {
-     "int": 25,
-     "str": 32
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col4",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col5",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col6",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col7",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col8",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col9",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "region cell x (166 for Jangan)",
-    "name": "cell_x",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "region cell y (99 for Jangan)",
-    "name": "cell_y",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col12",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col13",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col14",
-    "types": {
-     "float": 19,
-     "int": 38
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col15",
-    "types": {
-     "int": 32,
-     "str": 25
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col16",
-    "types": {
-     "int": 57
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col17",
-    "types": {
-     "int": 32,
-     "str": 25
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "semantics not verified",
-    "name": "col18",
-    "types": {
-     "int": 25,
-     "str": 32
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "UIIT_* string reference",
-    "name": "ui_text_ref",
-    "types": {
-     "int": 25,
-     "str": 32
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col20",
-    "types": {
-     "int": 56,
-     "str": 1
-    }
-   },
-   {
-    "dominant": "str",
-    "evidence": "'4x4' style grid descriptor",
-    "name": "grid_size",
-    "types": {
-     "empty": 1,
-     "int": 25,
-     "str": 31
-    }
-   },
-   {
-    "dominant": "int",
-    "evidence": "semantics not verified",
-    "name": "col22",
-    "types": {
-     "empty": 21,
-     "float": 6,
-     "int": 28
-    }
-   }
-  ],
-  "comment_prefixes": [
-   "#",
-   "//"
-  ],
-  "delimiter": "tab",
-  "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
-  "kind": "table",
-  "records": 57,
-  "source_path": "/server_dep/silkroad/textdata/worldmap_mapinfo.txt"
+ "erasableskill.txt": {
+  "encoding": "utf-16-le",
+  "rows": 204,
+  "columns": [
+   "1828",
+   "3"
+  ]
+ },
+ "eventdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "eventguidedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 55,
+  "columns": [
+   "1",
+   "레벨 도달",
+   "xxx",
+   "1",
+   "2",
+   "0",
+   "50008"
+  ]
+ },
+ "eventword.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "eventzonedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 473,
+  "columns": [
+   "1",
+   "1",
+   "GATE_DUNGEON_DH_IN",
+   "TELEPORT",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "GATE_DUNGEON_DH_IN",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "fmncategorytreedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 78,
+  "columns": [
+   "1",
+   "WK_CH_WEAPON",
+   "UIIT_CTL_WK_CH_WEAPON",
+   "xxx",
+   "0",
+   "0"
+  ]
+ },
+ "fmntidgroupmapdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 159,
+  "columns": [
+   "1",
+   "1",
+   "3",
+   "1",
+   "6",
+   "2"
+  ]
+ },
+ "force_addobject.txt": {
+  "encoding": "utf-16-le",
+  "rows": 66,
+  "columns": [
+   "1",
+   "res\\artifact\\guild\\flag\\fortress_flag.bsr",
+   "71",
+   "68",
+   "691",
+   "133",
+   "1907",
+   "0",
+   "0",
+   "0",
+   "FORTRESS_JANGAN",
+   "// 장안요새남문 좌"
+  ]
+ },
+ "gachaitemset.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3344,
+  "columns": [
+   "1",
+   "1",
+   "4014",
+   "3000",
+   "1",
+   "1",
+   "0",
+   "1",
+   "[BIIV]<M:str,1,3><M:int,1,3><O:3>",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "gachanpcmap.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": [
+   "1",
+   "9251",
+   "1",
+   "2"
+  ]
+ },
+ "gameguidedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1415,
+  "columns": [
+   "1",
+   "1000",
+   "플레이가이드",
+   "0",
+   "5",
+   "SRO_GGW_PG_MSG",
+   "SRO_GGW_MENU_PG_MSG"
+  ]
+ },
+ "gameworldconfigdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1027,
+  "columns": [
+   "GROUP_FORTRESS_JANGAN",
+   "REF_SIEGE_FORTRESS",
+   "STRING",
+   "FORTRESS_JANGAN",
+   ""
+  ]
+ },
+ "gameworlddata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 115,
+  "columns": [
+   "1",
+   "INS_DEFAULT",
+   "0",
+   "1",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "groupworld_config_forclient.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3,
+  "columns": [
+   "1",
+   "TIMEDJOB_COOL_TIME_FORCLIENT",
+   "300"
+  ]
+ },
+ "hwanleveldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 256,
+  "columns": [
+   "0",
+   "xxx",
+   "xxx",
+   ""
+  ]
+ },
+ "item_grouping.txt": {
+  "encoding": "utf-16-le",
+  "rows": 328,
+  "columns": [
+   "#section",
+   "GROUPING_TID",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "itemdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 8,
+  "columns": [
+   "ItemData_5000.txt"
+  ]
+ },
+ "itemdata_10000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2319,
+  "columns": [
+   "1",
+   "5000",
+   "ITEM_CH_W_HEAVY_05_HA_C_RARE",
+   "5? ?? ?? [?] (?)",
+   "ITEM_CH_M_HEAVY_05_HA_C_RARE",
+   "SN_ITEM_CH_HEAVY_05_HA_C_RARE",
+   "SN_ITEM_CH_HEAVY_05_HA_C_RARE_TT_DESC",
+   "0",
+   "0",
+   "3",
+   "1",
+   "3",
+   "1",
+   "180000",
+   "0",
+   "2",
+   "1",
+   "1",
+   "1",
+   "255",
+   "3",
+   "1",
+   "1",
+   "1",
+   "0",
+   "0",
+   "272000",
+   "1861",
+   "2792",
+   "0",
+   "2500",
+   "95200",
+   "1",
+   "35",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "item\\china\\woman_item\\heavy_05_ha.bsr",
+   "item\\etc\\drop_ch_equip_rare.bsr",
+   "item\\china\\woman_item\\heavy_05_ha.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "0",
+   "0",
+   "0",
+   "15",
+   "0",
+   "71",
+   "87",
+   "35.6",
+   "43.5",
+   "1.5",
+   "19",
+   "23",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "46.6",
+   "57",
+   "2",
+   "0",
+   "0",
+   "0",
+   "104",
+   "127",
+   "136",
+   "167",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "?? ??? ?? ?? ?",
+   "9",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_15000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4481,
+  "columns": [
+   "1",
+   "10365",
+   "ITEM_COS_P_RABBIT_SCROLL",
+   "?? ?????",
+   "xxx",
+   "SN_ITEM_COS_P_RABBIT_SCROLL",
+   "SN_ITEM_COS_P_RABBIT_SCROLL_TT_DESC",
+   "1",
+   "0",
+   "3",
+   "2",
+   "1",
+   "2",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "223",
+   "0",
+   "1",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "5",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_ch_acc.bsr",
+   "cos\\item_cos_p_rabbit_scroll.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "2",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "4320",
+   "COS_P_RABBIT",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "CashRank:2",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_20000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 72,
+  "columns": [
+   "1",
+   "19559",
+   "ITEM_COS_C_RUDOLPH",
+   "??? ?????",
+   "xxx",
+   "SN_ITEM_COS_C_RUDOLPH",
+   "SN_ITEM_COS_C_RUDOLPH_TT_DESC",
+   "0",
+   "0",
+   "3",
+   "3",
+   "3",
+   "2",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "255",
+   "1",
+   "1",
+   "0",
+   "0",
+   "1",
+   "1",
+   "3600",
+   "0",
+   "0",
+   "0",
+   "50",
+   "1000",
+   "1",
+   "5",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_scroll.bsr",
+   "cos\\item_cos_c_rudolph.ddj",
+   "xxx",
+   "xxx",
+   "50",
+   "2",
+   "0",
+   "0",
+   "5",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "COS_C_RUDOLPH",
+   "0",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_25000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 997,
+  "columns": [
+   "1",
+   "22712",
+   "ITEM_MALL_PET_GROWTH_POTION",
+   "??? ??",
+   "xxx",
+   "SN_ITEM_MALL_PET_GROWTH_POTION",
+   "SN_ITEM_MALL_PET_GROWTH_POTION_TT_DESC",
+   "1",
+   "0",
+   "3",
+   "3",
+   "13",
+   "15",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "255",
+   "0",
+   "1",
+   "0",
+   "0",
+   "129",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "5",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_mall_scroll.bsr",
+   "item\\etc\\mall_pet_growth_potion.ddj",
+   "xxx",
+   "xxx",
+   "10",
+   "2",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1800",
+   "????(?)",
+   "1",
+   "[PSU1:SKILL_MALL_PET_GROWTH_POTION_01,0]",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "1",
+   "CashRank:2",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_30000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 866,
+  "columns": [
+   "1",
+   "25000",
+   "ITEM_ETC_ARCHEMY_MAGICSTONE_APE_02",
+   "???? ???",
+   "xxx",
+   "SN_ITEM_ETC_ARCHEMY_MAGICSTONE_APE_02",
+   "SN_ITEM_ETC_ARCHEMY_MAGICSTONE_APE_TT_DESC",
+   "0",
+   "0",
+   "3",
+   "3",
+   "11",
+   "7",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "255",
+   "3",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_archemy.bsr",
+   "item\\etc\\archemy_magicstone_ape.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "2",
+   "0",
+   "0",
+   "2",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "2",
+   "MATTR_APE",
+   "0",
+   "? 0, 0, 0, 0",
+   "0",
+   "? 0, 0, 0, 0",
+   "100",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_35000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 110,
+  "columns": [
+   "1",
+   "33814",
+   "ITEM_MALL_AVATAR_M_CARNIVAL_HAT_2",
+   "????? (?)",
+   "xxx",
+   "SN_ITEM_MALL_AVATAR_M_CARNIVAL_HAT",
+   "SN_ITEM_MALL_AVATAR_M_CARNIVAL_HAT_TT_DESC",
+   "1",
+   "0",
+   "3",
+   "1",
+   "13",
+   "1",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "255",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "item\\Avatar\\avatar_m_carnival_hat_2.bsr",
+   "item\\etc\\drop_ch_eventbox.bsr",
+   "item\\Avatar\\mall_avatar_m_carnival_hat_2.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "1",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "513",
+   "[?,??]",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "2",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_40000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2466,
+  "columns": [
+   "1",
+   "35563",
+   "ITEM_MALL_CHANGE_NAME",
+   "???? ???",
+   "xxx",
+   "SN_ITEM_MALL_CHANGE_NAME",
+   "SN_ITEM_MALL_CHANGE_NAME_TT_DESC",
+   "1",
+   "0",
+   "3",
+   "3",
+   "12",
+   "6",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "1",
+   "1",
+   "255",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_mall_scroll.bsr",
+   "item\\etc\\mall_change_name.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "2",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_45000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2174,
+  "columns": [
+   "1",
+   "40000",
+   "ITEM_CH_W_LIGHT_15_HA_A_RARE",
+   "15? ?? ??? [?] (??)",
+   "ITEM_CH_M_LIGHT_15_HA_A_RARE",
+   "SN_ITEM_CH_LIGHT_15_HA_A_RARE",
+   "SN_ITEM_CH_LIGHT_15_HA_A_RARE_TT_DESC",
+   "0",
+   "0",
+   "3",
+   "1",
+   "2",
+   "1",
+   "180000",
+   "0",
+   "2",
+   "1",
+   "1",
+   "1",
+   "255",
+   "3",
+   "1",
+   "1",
+   "1",
+   "0",
+   "0",
+   "8111000",
+   "8724",
+   "13085",
+   "0",
+   "9000",
+   "2838850",
+   "1",
+   "101",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "item\\common\\woman_item\\light_15_ha.bsr",
+   "item\\etc\\drop_ch_equip_rare.bsr",
+   "item\\common\\woman_item\\light_15_ha.ddj",
+   "xxx",
+   "xxx",
+   "1",
+   "0",
+   "0",
+   "0",
+   "43",
+   "0",
+   "105",
+   "128",
+   "566",
+   "596.8",
+   "15.6",
+   "17",
+   "65",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "950.8",
+   "1002.6",
+   "26.2",
+   "0",
+   "0",
+   "0",
+   "637",
+   "663",
+   "1071",
+   "1114",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "ITEM_CH_W_LIGHT_15_HA_A_RARE",
+   "1",
+   "ITEM_CH_W_LIGHT_15_HA_B_RARE",
+   "1",
+   "ITEM_CH_W_LIGHT_15_HA_C_RARE",
+   "1",
+   "ITEM_ETC_ARCHEMY_ENHANCER_AR_13_S",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "?? ??? ?? ?? ?",
+   "9",
+   "0",
+   ""
+  ]
+ },
+ "itemdata_5000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3225,
+  "columns": [
+   "1",
+   "1",
+   "ITEM_ETC_GOLD_01",
+   "??(?)",
+   "xxx",
+   "SN_ITEM_ETC_GOLD",
+   "SN_ITEM_ETC_GOLD_TT_DESC",
+   "0",
+   "0",
+   "3",
+   "3",
+   "5",
+   "0",
+   "180000",
+   "3",
+   "0",
+   "1",
+   "0",
+   "0",
+   "255",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "100",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "item\\etc\\drop_ch_money_small.bsr",
+   "item\\etc\\etc_gold.ddj",
+   "xxx",
+   "xxx",
+   "0",
+   "2",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "??? ??? ?(param1??)",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "itemeffect.txt": {
+  "encoding": "utf-16-le",
+  "rows": 266,
+  "columns": [
+   "#section",
+   "itemcodename",
+   "",
+   ""
+  ]
+ },
+ "learnablemastery.txt": {
+  "encoding": "utf-16-le",
+  "rows": 13,
+  "columns": [
+   "1831",
+   "257"
+  ]
+ },
+ "learnableskill.txt": {
+  "encoding": "utf-16-le",
+  "rows": 204,
+  "columns": [
+   "1831",
+   "3"
+  ]
+ },
+ "leveldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 150,
+  "columns": [
+   "1",
+   "118",
+   "1",
+   "0",
+   "0",
+   "24",
+   "70875",
+   "70875",
+   "70875",
+   ""
+  ]
+ },
+ "levelgold.txt": {
+  "encoding": "utf-16-le",
+  "rows": 139,
+  "columns": [
+   "1",
+   "28",
+   "59"
+  ]
+ },
+ "magicoption.txt": {
+  "encoding": "utf-16-le",
+  "rows": 515,
+  "columns": [
+   "1",
+   "1",
+   "MATTR_DEC_MAXDUR",
+   "-@",
+   "1",
+   "0.5",
+   "0",
+   "1685418593",
+   "7",
+   "5",
+   "20",
+   "1949133172",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1685418593",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "weapon",
+   "1",
+   "armor",
+   "1",
+   "shield",
+   "1",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   ""
+  ]
+ },
+ "magicoptionassign.txt": {
+  "encoding": "utf-16-le",
+  "rows": 74,
+  "columns": [
+   "1",
+   "0",
+   "6",
+   "2",
+   "MATTR_STR",
+   "MATTR_INT",
+   "MATTR_ATHANASIA",
+   "MATTR_SOLID",
+   "MATTR_LUCK",
+   "MATTR_DUR",
+   "MATTR_HR",
+   "MATTR_EVADE_BLOCK",
+   "MATTR_REPAIR",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   ""
+  ]
+ },
+ "magicoptionassignfortradeequip.txt": {
+  "encoding": "utf-16-le",
+  "rows": 19,
+  "columns": [
+   "1",
+   "3",
+   "2",
+   "1",
+   "MATTR_TRADE_STR",
+   "MATTR_TRADE_STR_2",
+   "MATTR_TRADE_STR_3",
+   "MATTR_TRADE_INT",
+   "MATTR_TRADE_INT_2",
+   "MATTR_TRADE_INT_3",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "mallitemmenulistdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 17,
+  "columns": [
+   "#section",
+   "ITEMMALL_MENU_LIST"
+  ]
+ },
+ "maxtradescaledata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 5,
+  "columns": [
+   "0"
+  ]
+ },
+ "messagetipdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 174,
+  "columns": [
+   "1",
+   "1",
+   "SRO_MSGTIP_01"
+  ]
+ },
+ "npcchat.txt": {
+  "encoding": "utf-16-le",
+  "rows": 500,
+  "columns": [
+   "1",
+   "NPC_CH_SMITH",
+   "SN_NPC_CH_SMITH_BS",
+   "SN_NPC_CH_SMITH_PS"
+  ]
+ },
+ "npcpos.txt": {
+  "encoding": "utf-16-le",
+  "rows": 18456,
+  "columns": [
+   "2023",
+   "25257",
+   "659.74",
+   "0",
+   "981.13"
+  ]
+ },
+ "optimize_clothes.txt": {
+  "encoding": "utf-16-le",
+  "rows": 11,
+  "columns": [
+   "//이벤트 코드네임",
+   "리전X",
+   "리전Y",
+   "아군 의상",
+   "동맹 의상",
+   "적군 의상",
+   "강제성 여부"
+  ]
+ },
+ "questcontentsdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1488,
+  "columns": [
+   "QEVENT_GUIDE",
+   "EventGuide(서버전용)",
+   "3",
+   "xxx",
+   "0",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0",
+   "xxx",
+   "xxx",
+   "0",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "questdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1004,
+  "columns": [
+   "1",
+   "1",
+   "QEVENT_GUIDE",
+   "0",
+   "EventGuide(????)",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   ""
+  ]
+ },
+ "refabilitybyitemoptleveldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 156,
+  "columns": [
+   "1",
+   "1",
+   "24405",
+   "0",
+   ""
+  ]
+ },
+ "refaccesspermissionofshop.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refalchemy_mk_materialgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1425,
+  "columns": [
+   "1",
+   "MGROUP_MK_FORTRESS_AGGRESSIVE_FLAG_01",
+   "ITEM_ETC_MK_BATTLE_MARLBE",
+   "1"
+  ]
+ },
+ "refalchemy_mk_recipedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 138,
+  "columns": [
+   "1",
+   "1",
+   "MK_RC_SOCKET_STONE_GOLD_A",
+   "??? ??? ??? ???",
+   "SN_MK_RC_SOCKET_STONE_GOLD_A",
+   "SN_ITEM_ETC_SOCKET_STONE_GOLD_A",
+   "item\\etc\\socket_stone_gold.ddj",
+   "1",
+   "1",
+   "20",
+   "1",
+   "1",
+   "1",
+   "0",
+   "3",
+   "MGROUP_MK_SOCKET_STONE_GOLD_A_01",
+   "2",
+   "MGROUP_MK_SOCKET_STONE_GOLD_A_02",
+   "1",
+   "xxx",
+   "-1",
+   "RGROUP_MK_SOCKET_STONE_GOLD_A",
+   "1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx"
+  ]
+ },
+ "refalchemy_mk_recipeshopdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 71,
+  "columns": [
+   "NPC_CH_ACCESSORY",
+   "5",
+   "MK_RC_SOCKET_STONE_ER_A",
+   "1",
+   "5",
+   "10000",
+   "SN_MK_RC_SOCKET_STONE_ER_A",
+   "UIIT_STT_ALCHEMY"
+  ]
+ },
+ "refalchemy_mk_resultgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 974,
+  "columns": [
+   "1",
+   "RGROUP_MK_SOCKET_STONE_GOLD_A",
+   "ITEM_ETC_SOCKET_STONE_GOLD_A",
+   "1",
+   "1"
+  ]
+ },
+ "refalchemy_mk_tooltip.txt": {
+  "encoding": "utf-16-le",
+  "rows": 138,
+  "columns": [
+   "1",
+   "MK_RC_SOCKET_STONE_GOLD_A",
+   "??? ??? ??? ???",
+   "SN_ITEM_ETC_ARCHEMY_ELEMENT_01",
+   "5",
+   "SN_ITEM_ETC_ARCHEMY_ELEMENT_02",
+   "10",
+   "SN_ITEM_ETC_ARCHEMY_ELEMENT_03",
+   "20",
+   "SN_ITEM_ETC_MK_MATERIAL_01",
+   "2",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "1",
+   "ITEM_ETC_SOCKET_STONE_GOLD_A",
+   "1",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "refalchemy_mk_ui.txt": {
+  "encoding": "utf-16-le",
+  "rows": 8,
+  "columns": [
+   "1",
+   "1",
+   "UIIT_STT_ALCHEMY"
+  ]
+ },
+ "refconditiontobuyscrapitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refconditiontosellpackageitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refconditiontosellscrapitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refeventreward.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refeventrewarditems.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refgachatreeforclientuidata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 64,
+  "columns": [
+   "1",
+   "3",
+   "1",
+   "1",
+   "1",
+   "200",
+   "UIIT_CTL_WK_CH_ARMOR",
+   "221",
+   "UIIT_CTL_WK_CH_ARMOR_CLOTHES_1",
+   "11"
+  ]
+ },
+ "refmagicoptbyitemoptleveldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 430,
+  "columns": [
+   "2",
+   "355",
+   "16",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "refmagicoptgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 179,
+  "columns": [
+   "1",
+   "1",
+   "1",
+   "MAGIC_NOR_ROCSET_001",
+   "357",
+   "10",
+   "6",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "refmappingshopgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 88,
+  "columns": [
+   "1",
+   "15",
+   "GROUP_MALL",
+   "MALL_ARCHEMY",
+   ""
+  ]
+ },
+ "refmappingshopwithtab.txt": {
+  "encoding": "utf-16-le",
+  "rows": 92,
+  "columns": [
+   "1",
+   "15",
+   "MALL_ARCHEMY",
+   "MALL_ARCHEMY_GROUP1",
+   ""
+  ]
+ },
+ "refoptionalteleport.txt": {
+  "encoding": "utf-16-le",
+  "rows": 44,
+  "columns": [
+   "1",
+   "1",
+   "Constantinople",
+   "SN_ZONE_22004",
+   "26959",
+   "1030",
+   "80",
+   "512",
+   "1",
+   "-1",
+   "1",
+   "0",
+   "0",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   ""
+  ]
+ },
+ "refpackageitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1699,
+  "columns": [
+   "1",
+   "15",
+   "1",
+   "PACKAGE_ITEM_CH_SWORD_01_A",
+   "0",
+   "EXPAND_TERM_ALL",
+   "SN_ITEM_CH_SWORD_01_A",
+   "SN_ITEM_CH_SWORD_01_A_TT_DESC",
+   "item\\china\\weapon\\sword_01.ddj",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   ""
+  ]
+ },
+ "refpricepolicyofitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2829,
+  "columns": [
+   "1",
+   "15",
+   "PACKAGE_ITEM_CH_BLADE_01_A",
+   "1",
+   "0",
+   "890",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "refquestrewarditems.txt": {
+  "encoding": "utf-16-le",
+  "rows": 373,
+  "columns": [
+   "6",
+   "QNO_CH_POTION_1",
+   "0",
+   "ITEM_ETC_HP_POTION_01",
+   "xxx",
+   "xxx",
+   "0",
+   "28",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "refqusetreward.txt": {
+  "encoding": "utf-16-le",
+  "rows": 995,
+  "columns": [
+   "3",
+   "QNO_CH_SMITH_1",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "205",
+   "270",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "0",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   "0",
+   "xxx",
+   ""
+  ]
+ },
+ "refrentitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refrewardpolicytobuyscrapitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refrewardpolicytosellpackageitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refrewardpolicytosellscrapitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refscrapofpackageitem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1699,
+  "columns": [
+   "1",
+   "15",
+   "PACKAGE_ITEM_CH_W_TRADE_THIEF_04",
+   "ITEM_CH_W_TRADE_THIEF_04",
+   "0",
+   "0",
+   "0",
+   "1",
+   "4294967520",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "4",
+   ""
+  ]
+ },
+ "refservereventid.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3,
+  "columns": [
+   "30001"
+  ]
+ },
+ "refsetitemgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 42,
+  "columns": [
+   "1",
+   "1",
+   "ITEMSET_ROC_CH_M_RED_LIGHTNING",
+   "??????(??-?)",
+   "SN_ITEMSET_ROC_RED_LIGHTNING",
+   "xxx",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "refshop.txt": {
+  "encoding": "utf-16-le",
+  "rows": 78,
+  "columns": [
+   "1",
+   "15",
+   "965",
+   "MALL_CONSUME",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   ""
+  ]
+ },
+ "refshopgoods.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2282,
+  "columns": [
+   "1",
+   "15",
+   "MALL_ARCHEMY_ASTRAL",
+   "PACKAGE_ITEM_ETC_ARCHEMY_MAGICSTONE_ASTRAL_01",
+   "0",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   ""
+  ]
+ },
+ "refshopgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 89,
+  "columns": [
+   "1",
+   "15",
+   "977",
+   "GROUP_MALL_CONSUME",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   "-1",
+   "xxx",
+   ""
+  ]
+ },
+ "refshopitemstockperiod.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "refshoptab.txt": {
+  "encoding": "utf-16-le",
+  "rows": 207,
+  "columns": [
+   "1",
+   "15",
+   "2397",
+   "MALL_CONSUME_SPECIAL",
+   "MALL_CONSUME_GROUP1",
+   "UIIT_STT_SILKMALL_SPECIAL",
+   ""
+  ]
+ },
+ "refshoptabgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 91,
+  "columns": [
+   "1",
+   "15",
+   "1056",
+   "MALL_CONSUME_GROUP1",
+   "UIIT_STT_SILKMALL_CONSUMPTION",
+   ""
+  ]
+ },
+ "refsiegeblessbuff.txt": {
+  "encoding": "utf-16-le",
+  "rows": 14,
+  "columns": [
+   "1",
+   "1",
+   "1",
+   "32088",
+   "700000",
+   "1800",
+   ""
+  ]
+ },
+ "refsiegedungeon.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4,
+  "columns": [
+   "1",
+   "1",
+   "61",
+   "2",
+   "600000",
+   "3000",
+   ""
+  ]
+ },
+ "refskillbyitemoptleveldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 220,
+  "columns": [
+   "89",
+   "31141",
+   ""
+  ]
+ },
+ "reftreatitemofshop.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "regioncode.txt": {
+  "encoding": "latin-1",
+  "rows": 3293,
+  "columns": [
+   "1",
+   "23964",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "shopdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 56,
+  "columns": [
+   "1",
+   "1",
+   "MALL_CONSUME",
+   "xxx",
+   "0",
+   "-268435455",
+   "642",
+   "643",
+   "644",
+   "645",
+   "646",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "shopgroupdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 64,
+  "columns": [
+   "1",
+   "1",
+   "MALL_CONSUME_GROUP1",
+   "UIIT_STT_SILKMALL_CONSUMPTION",
+   ""
+  ]
+ },
+ "shopitemdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1391,
+  "columns": [
+   "1",
+   "579",
+   "71",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ]
+ },
+ "shopitemstockquantity.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "shoptabdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 160,
+  "columns": [
+   "1",
+   "579",
+   "STORE_CH_SMITH_TAB1",
+   "8",
+   "SN_TAB_WEAPON"
+  ]
+ },
+ "siegefortress.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4,
+  "columns": [
+   "1",
+   "1",
+   "FORTRESS_JANGAN",
+   "????",
+   "SN_FORTRESS_JANGAN",
+   "GATE_CH",
+   "0",
+   "300",
+   "30",
+   "25",
+   "63",
+   "1000000",
+   "etc\\fort_jangan.ddj",
+   "NPC_CH_FORTRESS_OFFICIAL",
+   ""
+  ]
+ },
+ "siegefortressbattlerank.txt": {
+  "encoding": "utf-16-le",
+  "rows": 6,
+  "columns": [
+   "1",
+   "1",
+   "???",
+   "45",
+   "21234",
+   "etc\\rank_assault_soilder.ddj",
+   ""
+  ]
+ },
+ "siegefortressguard.txt": {
+  "encoding": "utf-16-le",
+  "rows": 5040,
+  "columns": [
+   "1",
+   "1",
+   "19210",
+   ""
+  ]
+ },
+ "siegefortressitemforge.txt": {
+  "encoding": "utf-16-le",
+  "rows": 38,
+  "columns": [
+   "1",
+   "1",
+   "10588",
+   "1500000",
+   "6819",
+   "450",
+   ""
+  ]
+ },
+ "siegefortressreward.txt": {
+  "encoding": "utf-16-le",
+  "rows": 5,
+  "columns": [
+   "//",
+   "요새 코드네임 GUST참고",
+   "마을 입장 메시지에 요새전 점령 길드 이름 표시 (regioncode 참조)",
+   "월드맵에 길드문장 띄우는 좌표",
+   "",
+   "",
+   ""
+  ]
+ },
+ "siegestructupgradedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 70,
+  "columns": [
+   "1",
+   "STRUCTURE_BIG_GATE_JA_01",
+   "STRUCTURE_BIG_GATE_JA_01",
+   "STRUCTURE_BIG_GATE_JA_02",
+   "xxx",
+   "xxx",
+   "xxx",
+   ""
+  ]
+ },
+ "skilldata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 6,
+  "columns": [
+   "SkillData_5000.txt"
+  ]
+ },
+ "skilldata_10000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4958,
+  "columns": [
+   "1",
+   "5000",
+   "0",
+   "HSKILL_SPEAR_PHYSICAL_0992",
+   "0992 ?? ??",
+   "xxx",
+   "40",
+   "100",
+   "2",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1166",
+   "1749",
+   "1749",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "25",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "4",
+   "5",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "80",
+   "80",
+   "0",
+   "6386804",
+   "5",
+   "106",
+   "6091",
+   "7023",
+   "0",
+   "28003",
+   "2",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_10000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 138431,
+  "columns": [
+   "â°\"0\"0JÇªü"
+  ]
+ },
+ "skilldata_15000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4943,
+  "columns": [
+   "1",
+   "10000",
+   "638",
+   "SKILL_EU_WIZARD_SPIRITP_EARTH_A_26",
+   "???:?? ???",
+   "SKILL_EU_WIZARD_SPIRITP_EARTH_A",
+   "0",
+   "26",
+   "0",
+   "0",
+   "99999999",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "514",
+   "0",
+   "104",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "15337",
+   "1",
+   "0",
+   "0",
+   "255",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "skill\\europe\\wizard_spiritp_earth_a.ddj",
+   "SN_SKILL_EU_WIZARD_SPIRITP_EARTH_A",
+   "xxx",
+   "SN_SKILL_EU_WIZARD_SPIRITP_EARTH_A_TT_DESC",
+   "SN_SKILL_EU_WIZARD_SPIRITP_EARTH_A_STUDY",
+   "0",
+   "78",
+   "4",
+   "1936028790",
+   "1161904468",
+   "104",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_15000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 133847,
+  "columns": [
+   "â°\"0\"0FÇªü"
+  ]
+ },
+ "skilldata_20000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 5000,
+  "columns": [
+   "1",
+   "15000",
+   "0",
+   "TSKILL_EU_WARRIOR_TWOHANDA_RISING_A_1271",
+   "1271 ?? ????(???)",
+   "xxx",
+   "8936",
+   "128",
+   "2",
+   "0",
+   "0",
+   "0",
+   "752",
+   "1081",
+   "1833",
+   "2750",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "18",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "8",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "20",
+   "80",
+   "0",
+   "6386804",
+   "5",
+   "220",
+   "15165",
+   "17509",
+   "0",
+   "28003",
+   "2",
+   "1",
+   "27503",
+   "128",
+   "50",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_20000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 109280,
+  "columns": [
+   "â°\"0\"0FÌªü"
+  ]
+ },
+ "skilldata_25000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4992,
+  "columns": [
+   "1",
+   "20000",
+   "0",
+   "GSKILL_EU_WIZARD_FIREA_POINT_A_111",
+   "?????? lv 111",
+   "xxx",
+   "10238",
+   "111",
+   "2",
+   "0",
+   "0",
+   "166",
+   "834",
+   "1500",
+   "2500",
+   "2500",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "150",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "11",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "50",
+   "80",
+   "1",
+   "6386804",
+   "10",
+   "540",
+   "12568",
+   "14730",
+   "0",
+   "28003",
+   "2",
+   "1",
+   "25205",
+   "242",
+   "20",
+   "111",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_25000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 114190,
+  "columns": [
+   "â°\"0\"0GÇªü"
+  ]
+ },
+ "skilldata_30000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4998,
+  "columns": [
+   "1",
+   "25000",
+   "0",
+   "CSKILL_COS_GUARD_EU_BOW_02_ATTACK01_091",
+   "?? ?? ???(??) ??1",
+   "xxx",
+   "24910",
+   "91",
+   "2",
+   "0",
+   "0",
+   "0",
+   "1050",
+   "950",
+   "2500",
+   "2500",
+   "400",
+   "0",
+   "0",
+   "1",
+   "0",
+   "150",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "255",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "100",
+   "80",
+   "1",
+   "6386804",
+   "6",
+   "152",
+   "4469",
+   "5150",
+   "0",
+   "28003",
+   "2",
+   "1",
+   "25697",
+   "150",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_30000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 115539,
+  "columns": [
+   "â°\"0\"0GÌªü"
+  ]
+ },
+ "skilldata_35000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4891,
+  "columns": [
+   "1",
+   "30000",
+   "845",
+   "SKILL_MALL_PET_SKILL_FIRE_134",
+   "?-????_134",
+   "SKILL_MALL_PET_SKILL_FIRE",
+   "0",
+   "134",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1000",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "255",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "item\\etc\\mall_pet_skill_fire.ddj",
+   "SN_SKILL_MALL_PET_SKILL_FIRE",
+   "xxx",
+   "SN_SKILL_MALL_PET_SKILL_FIRE_TT_DESC",
+   "xxx",
+   "0",
+   "0",
+   "3",
+   "1685418593",
+   "1800000",
+   "6386804",
+   "8",
+   "0",
+   "0",
+   "0",
+   "0",
+   "25205",
+   "288",
+   "25",
+   "134",
+   "6582901",
+   "20",
+   "20",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_35000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 130863,
+  "columns": [
+   "â°\"0\"0HÇªü"
+  ]
+ },
+ "skilldata_5000.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4988,
+  "columns": [
+   "1",
+   "1",
+   "172",
+   "SKILL_PUNCH_01",
+   "????",
+   "SKILL_PUNCH",
+   "0",
+   "1",
+   "2",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1500",
+   "1500",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "1",
+   "1",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "1",
+   "255",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "255",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx",
+   "0",
+   "0",
+   "0",
+   "6386804",
+   "5",
+   "150",
+   "0",
+   "0",
+   "150",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "skilldata_5000enc.txt": {
+  "encoding": "latin-1",
+  "rows": 120967,
+  "columns": [
+   "â°\"0\"0F ªý"
+  ]
+ },
+ "skilldata_virtual.txt": {
+  "encoding": "utf-16-le",
+  "rows": 0,
+  "columns": []
+ },
+ "skilldataenc.txt": {
+  "encoding": "utf-16-le",
+  "rows": 6,
+  "columns": [
+   "SkillData_5000ENC.txt"
+  ]
+ },
+ "skilleffect.txt": {
+  "encoding": "utf-16-le",
+  "rows": 10941,
+  "columns": [
+   "#section",
+   "characterInfo",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "skillgroup.txt": {
+  "encoding": "utf-16-le",
+  "rows": 144,
+  "columns": [
+   "1",
+   "필살검",
+   "257",
+   "비천검법101",
+   "0",
+   "UIIT_STT_MASTERY_GROUP_VI_0",
+   "skillgroup\\china\\pack_sword_smash.ddj"
+  ]
+ },
+ "skillmasterydata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 51,
+  "columns": [
+   "1",
+   "캐릭터",
+   "xxx",
+   "0",
+   "xxx",
+   "",
+   "255",
+   "2",
+   "0",
+   "0",
+   "0",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "specialnpcdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 12,
+  "columns": [
+   "2010",
+   "NPC_CH_SPECIAL"
+  ]
+ },
+ "teleportbuilding.txt": {
+  "encoding": "utf-16-le",
+  "rows": 106,
+  "columns": [
+   "1",
+   "2094",
+   "STORE_CH_GATE",
+   "????",
+   "xxx",
+   "SN_NPC_CH_GATE",
+   "xxx",
+   "0",
+   "0",
+   "4",
+   "1",
+   "1",
+   "0",
+   "0",
+   "3",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "0",
+   "-1",
+   "25000",
+   "0",
+   "1254",
+   "-6",
+   "1374",
+   "0",
+   "0",
+   "100",
+   "25",
+   "10",
+   "0",
+   "xxx",
+   "xxx",
+   "xxx",
+   "FORTRESS_JANGAN",
+   "xxx",
+   "1",
+   ""
+  ]
+ },
+ "teleportdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 246,
+  "columns": [
+   "1",
+   "1",
+   "GATE_CH",
+   "2094",
+   "SN_ZONE_22001",
+   "25000",
+   "969",
+   "0",
+   "1369",
+   "150",
+   "1",
+   "0",
+   "1",
+   ""
+  ]
+ },
+ "teleportlink.txt": {
+  "encoding": "utf-16-le",
+  "rows": 351,
+  "columns": [
+   "1",
+   "1",
+   "2",
+   "0",
+   "0",
+   "0",
+   "0",
+   "2",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   ""
+  ]
+ },
+ "testsml.txt": {
+  "encoding": "utf-16-le",
+  "rows": 14,
+  "columns": [
+   "<sml>"
+  ]
+ },
+ "textdata_equip&skill.txt": {
+  "encoding": "utf-16-le",
+  "rows": 8791,
+  "columns": [
+   "1",
+   "SN_ITEM_CH_SWORD_01_A_DEF",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Copper Sword"
+  ]
+ },
+ "textdata_object.txt": {
+  "encoding": "utf-16-le",
+  "rows": 9021,
+  "columns": [
+   "1",
+   "SN_MOB_THIEF_NPC",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Thief"
+  ]
+ },
+ "textdataname.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1,
+  "columns": [
+   "TextData_Equip&Skill.txt"
+  ]
+ },
+ "textevent.txt": {
+  "encoding": "utf-16-le",
+  "rows": 245,
+  "columns": [
+   "1",
+   "SN_QEV_CH_EVENT_KISAENG_070919",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Capture the Flag",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "texthelp.txt": {
+  "encoding": "utf-16-le",
+  "rows": 471,
+  "columns": [
+   "1",
+   "SRO_GGW_PG_GROWTH",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "<sml2><strong>1. Character Development</strong><br><br>To grow your character in the online world of silkroad, You have to advance your level. You can advance your level by hunting monsters. They can be hunted on open fields or dungeons out of villages or a castles. To hunt monsters effectively, you have to manage your HP(stamina) and MP(magic power). If your HP is 0, then your character will die. If your MP is insufficient, then you can't use magical or qigong skills. So you have to manage your HP and MP properly before going to hunt monsters.<br><br><strong>Level Up</strong><br>If you hunt a monster, you gain \"Level Experience\". and if you gain a certain amount of level experience, you achieve a \"Level Up\". If you achieve a level up, you can increase HP and MP through stat points, equip higher level weapons and defensive tools, and learn more powerful skills.<br><br><strong>Auto Attack</strong><br>To hunt a monster, place your mouse cursor over the monster, turning it to a sword icon. Double-click on it at this moment, then your character will automatically attack the monster. Unless you type anything or act differently, your attack against the monster will continue. And you can auto-attack if you use [ctrl + select] even without double-clicking on it.<br><br><strong>Recovery</strong><br>You have to restore HP and MP during combat if you are going to run out of them soon. If you are not in the state of fighting, they will be restored a bit automatically. If you are sitting on an open field using [sit] key, You can restore a little bit more. And you can also restore them with a \"recovery item\" which you can buy.<br><br><br><strong>Abnormal State</strong><br>Some monsters can cast the spell of \"abnormal state\" on you. when you're caught in this spell, you can see through the [character's state window] in the upper left of your screen.<br><br><strong>* Abnormal States</strong><br><strong>1) Frozen</strong> - If you are frozen, you can't move or use skills for some time. But if your character has a [tolerance] to the freezing attack, the time of being frozen is reduced.<br><strong>2) Frostbitten</strong> - If you are frostbitten, your movement is slowed over time. But if your character has a [tolerance] to the frostbite attack, the time of being frostbitten is reduced.<br><strong>3) Electrically Shocked</strong> - If you are electrically shocked, your dodge is reduced over time. But if your character has a [tolerance] to the electrical shock attack, the time of being shocked is reduced.<br><strong>4) Poisoned</strong> - If you are poisoned, you're given continuous damage over time. But if your character has a [tolerance] to the poisoning attack, the time of being poisoned is reduced.<br><strong>5) Zombie</strong> - If you become a zombie and try to heal yourself, you'll be damaged over time instead of healed. But if your character has a [tolerance] to the zombie attack, the time of being a zombie is reduced.<br><br><strong>2. To Cure The Abnormal State</strong><br>The character in the abnormal state has to heal himself quickly by using a \"abnormal state healing item\" or \"abnormal state recovery magic\". You have to use the appropriate medicine by checking the syMPtoms of the abnormal state. For exaMPle, if you've been damaged with 30 seconds of abnormal state but if you use just 10 seconds effective recovery item then you will be under the abnormal state during the rest 20 seconds.</sml2>",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "textquest.txt": {
+  "encoding": "utf-16-le",
+  "rows": 2,
+  "columns": [
+   "TextQuest_OtherString.txt"
+  ]
+ },
+ "textquest_otherstring.txt": {
+  "encoding": "utf-16-le",
+  "rows": 3020,
+  "columns": [
+   "1",
+   "SN_PAYCON_QTUTORIAL_CH",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "<sml2><font color=\"255,44,15,1\">The Chinese tutorial contact is General Sonhyeon<br>General Sonhyeon is in front of the military camp near the west gate of Jangan.<br><br>First, you will be sent to Protector Trader Mrs Jang.<br>Second, you will undertake a request by Grocery Trader Jinjin<br>Third, buy a HP recovery herb from Herbalist Yangyun.<br>Last, you will hunt 30 Mangyangs<br><br>The tutorial will then end after your return to the General.<br></font></sml2>",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "textquest_queststring.txt": {
+  "encoding": "utf-16-le",
+  "rows": 8699,
+  "columns": [
+   "1",
+   "SN_TALK_COMMON_OK",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "OK",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "textquest_speech&name.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4739,
+  "columns": [
+   "1",
+   "SN_NPC_CH_SMITH_BS",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Don't be hesitant to come here to get weapon in Jangan. There are various kinds of weapon other than what I have made myself. Well, if you are available, I am good to have a drink with you, Ah-ha-ha-ha."
+  ]
+ },
+ "texttooltipdata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 14,
+  "columns": [
+   "1",
+   "SKILL_MALL_PRE_APRU_4W_01",
+   "0",
+   "xxx",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "textuisystem.txt": {
+  "encoding": "utf-16-le",
+  "rows": 5180,
+  "columns": [
+   "1",
+   "UIC_STT_FONTNAME",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Arial"
+  ]
+ },
+ "textzonename.txt": {
+  "encoding": "utf-16-le",
+  "rows": 4249,
+  "columns": [
+   "1",
+   "24999",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Jangan"
+  ]
+ },
+ "tradeconflict_joblevel.txt": {
+  "encoding": "utf-16-le",
+  "rows": 139,
+  "columns": [
+   "1",
+   "59",
+   "0"
+  ]
+ },
+ "tradeconflict_promotion.txt": {
+  "encoding": "utf-16-le",
+  "rows": 6,
+  "columns": [
+   "1",
+   "1",
+   "1000000",
+   "xxx",
+   "xxx",
+   "xxx",
+   "xxx"
+  ]
+ },
+ "usableresobjiddata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 103,
+  "columns": [
+   "1",
+   "1907"
+  ]
+ },
+ "worldmap_instanceinfo.txt": {
+  "encoding": "utf-16-le",
+  "rows": 22,
+  "columns": [
+   "Worldmap_THIEFTOWN",
+   "도적마을",
+   "182",
+   "96",
+   "182",
+   "96",
+   "169",
+   "97",
+   "165",
+   "-37",
+   "876"
+  ]
+ },
+ "worldmap_localinfo.txt": {
+  "encoding": "utf-16-le",
+  "rows": 1117,
+  "columns": [
+   "1",
+   "11001",
+   "1",
+   "SN_ZONE_11001",
+   "장안",
+   "대장간",
+   "로컬 장안맵",
+   "0",
+   "1",
+   "-1",
+   "-1",
+   "413",
+   "459",
+   "0",
+   "0",
+   "255",
+   "255",
+   "255",
+   "0",
+   "0",
+   "1",
+   "xxx"
+  ]
+ },
+ "worldmap_mapinfo.txt": {
+  "encoding": "utf-16-le",
+  "rows": 59,
+  "columns": [
+   "#section",
+   "WLocalmap",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ "worldmapguidedata.txt": {
+  "encoding": "utf-16-le",
+  "rows": 985,
+  "columns": [
+   "#section",
+   " MAP_MANAGER",
+   "",
+   "0",
+   "",
+   "",
+   ""
+  ]
+ },
+ "worldmapguidedata_region.txt": {
+  "encoding": "utf-16-le",
+  "rows": 352,
+  "columns": [
+   "MOB_DH_BUGGHOST_CLON",
+   "128x127,128x126"
+  ]
  }
 }

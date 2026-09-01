@@ -1,0 +1,1583 @@
+{
+ "client_executable": {
+  "animation_classes": [
+   "CAniMixer",
+   "CPrimAnimation",
+   "CRTAnimation",
+   "CCObjAnimation"
+  ],
+  "binary": "GameClient.exe (11,845,632 bytes, PE/MZ) + edxSilkroadDll5.dll + GFXFileManager.dll",
+  "camera_classes": [
+   "CCameraSlid",
+   "CCameraWorking",
+   "SC_CameraShake",
+   "SC_CameraSetState",
+   "SC_CameraCreate",
+   "SC_CameraTeleport",
+   "SC_CameraInsert",
+   "CFrustum"
+  ],
+  "camera_config_path": "config\\cameradata.txt",
+  "input_classes": [
+   "CIFOption_Input",
+   "CIFEInputChatBox"
+  ],
+  "movement_debug_string": "g_GDataMgr.GetCharacterData(...)->m_nSpeed2 == 0",
+  "movement_member": "m_nSpeed2",
+  "network": {
+   "msg_id_format": "MSGID:0x%X",
+   "net_engine_pools": [
+    "NetEngine::SessionPool",
+    "NetEngine::ActiveSocketPool",
+    "NetEngine::PassiveSocketPool"
+   ],
+   "rec_msg_dat": "RecMsg.dat"
+  },
+  "present": true,
+  "source_paths": [
+   "D:\\Project\\SilkroadOnline\\TOOLS & PLUGINS\\SimpleViewer\\objengine\\AniMixer.cpp",
+   "D:\\Project\\SilkroadOnline\\TOOLS & PLUGINS\\SimpleViewer\\objengine\\PrimAnimation.cpp",
+   "D:\\Project\\SilkroadOnline\\TOOLS & PLUGINS\\SimpleViewer\\objengine\\RStateMgr.cpp",
+   "D:\\vss-od\\Silkroad\\Client\\client\\GInterfaceSend.cpp",
+   "D:\\vss-od\\Silkroad\\Client\\client\\InterfaceNetSender.cpp",
+   "d:\\vss-od\\silkroad\\client\\client\\MsgStreamBuffer.h"
+  ]
+ },
+ "communication": {
+  "cs_message_classes_absent": true,
+  "msgid_format": "MSGID:0x%X",
+  "note": "SC_* (server->client) message handler classes are recoverable via RTTI; CS_* (client->server) classes are absent, and the exact opcode->field layout lives in RecMsg.dat/SendMsg.dat (MISSING from the corpus)",
+  "present": true,
+  "rec_msg_dat": "RecMsg.dat",
+  "sc_message_class_count": 51,
+  "sc_message_classes": [
+   "SC_AniToNameDel",
+   "SC_CameraCreate",
+   "SC_CameraInsert",
+   "SC_CameraSetState",
+   "SC_CameraShake",
+   "SC_CameraTeleport",
+   "SC_ChatNotice",
+   "SC_ChatPlayer",
+   "SC_DecoEftAdd",
+   "SC_DecoEftClear",
+   "SC_DecoSkillTarget",
+   "SC_DecoSkillTargetFire",
+   "SC_EffectCreate",
+   "SC_EffectRelease",
+   "SC_End",
+   "SC_Fade",
+   "SC_Lighting",
+   "SC_NonCharacterCreate",
+   "SC_ObjectAniToIndex",
+   "SC_ObjectAniToName",
+   "SC_ObjectCreate",
+   "SC_ObjectCreateIndex",
+   "SC_ObjectEquipSet",
+   "SC_ObjectEquipSetIndex",
+   "SC_ObjectMotionState",
+   "SC_ObjectMoveTo",
+   "SC_ObjectOptionSet",
+   "SC_ObjectRelease",
+   "SC_ObjectTurn",
+   "SC_Ride",
+   "SC_SetBGM",
+   "SC_SetWorldTime",
+   "SC_SoundPlay",
+   "SC_Start",
+   "SC_StaticCreate",
+   "SC_StaticCreateEx",
+   "SC_StaticRelease",
+   "SC_SubTitle",
+   "SC_Teleport",
+   "SC_TextBoxAdd",
+   "SC_TextBoxAniAdd",
+   "SC_TextBoxAniCreate",
+   "SC_TextBoxAniCreateEx",
+   "SC_TextBoxAniDelAll",
+   "SC_TextBoxAniRelease",
+   "SC_TextBoxCreate",
+   "SC_TextBoxCreateEx",
+   "SC_TextBoxDel",
+   "SC_TextBoxDelAll",
+   "SC_TextBoxRelease",
+   "SC_ViewSightRanger"
+  ],
+  "wait_my_char_data": "MSGID:0x%04X Wait My Char Data !!!"
+ },
+ "conclusions": {
+  "authority": "server-authoritative: movement/combat timing live in server DB (KO_RecoverTime, DamagePortion) + proxy (MALICIOUS_OPCODE filter, action delays)",
+  "camera": "modes PROVEN (Phase 27) + cameradata.txt presets PROVEN; preset column semantics UNKNOWN",
+  "input": "debug command map PROVEN (config/command.txt); full key->action mapping still UNKNOWN (SROptionSet.dat binary)",
+  "message_layer": "MsgID-keyed ProcessMessage() dispatch PROVEN on both client and server (MsgPool, m_MsgList, INVALID_MSG_* header checks); opcode->message/class mapping NOT recoverable (RecMsg.dat/SendMsg.dat MISSING)",
+  "motion_state": "19 MOTIONSTATE_* server labels PROVEN; mapping to client animation (SC_ObjectAniToName/Index) NOT proven (no shared enum in corpus)",
+  "movement": "Speed1/Speed2/Scale DB columns PROVEN (_InsertRefChar); position system (RegionID + region cell + PosX/Y/Z) PROVEN at symbol level; world-units conversion + speed formula UNKNOWN",
+  "network": "server architecture + protocol version (188) + gateway port (15779) PROVEN; gameplay opcode->message semantics UNKNOWN (RecMsg.dat/SendMsg.dat MISSING)",
+  "player_spawn": "caller of _AddNewChar is SR_ShardManager.exe (PROVEN ODBC call format); StartRegionID/StartPos_X/Y/Z are caller-supplied params whose values are NOT in the corpus (UNKNOWN); server pipeline CGame::EnterWorld -> CGObj::EnterWorld -> ResolveCellAndHeight -> MoveTo -> ActivatePC PROVEN at symbol level; concrete start values UNKNOWN so spawn is NOT fully proven",
+  "server_corpus": "the full VSRO-R v193 server package (8 server EXEs, SR_GameRefData textdata, server.cfg) is now recovered as a static-forensic source; previously listed as absent",
+  "skill_semantics": "_RefSkill.basic_code PROVEN; full skill column semantics still UNKNOWN (skilldata_*.txt unparsed)",
+  "start_position": "_AddNewChar StartRegionID/StartPos are caller-supplied (SR_ShardManager.exe); instance-world start-position data files are MISSING and config is Lua-driven (LuaSetInstanceWorldConfig); concrete start values UNKNOWN",
+  "world_unit_conversion": "region<->worldmap<->coordinate structure PROVEN (RefRegion.txt 21-col, worldmap_mapinfo.txt bounds); numeric world-unit scale UNKNOWN"
+ },
+ "config": {
+  "cameradata": {
+   "default_marker_line": "-1",
+   "path": "/config/cameradata.txt",
+   "preset_count": 2,
+   "preset_rows": [
+    {
+     "params": [
+      "107",
+      "1205",
+      "80",
+      "396",
+      "30",
+      "10",
+      "0",
+      "50"
+     ],
+     "region": "79"
+    },
+    {
+     "params": [
+      "105",
+      "1466",
+      "79",
+      "1488",
+      "30",
+      "10",
+      "270",
+      "50"
+     ],
+     "region": "77"
+    }
+   ]
+  },
+  "command": {
+   "commands": [
+    {
+     "command": "/PlayerCount",
+     "id": 0
+    },
+    {
+     "command": "/Debug",
+     "id": 1
+    },
+    {
+     "command": "/MsgClear",
+     "id": 2
+    },
+    {
+     "command": "/Pos %s",
+     "id": 3
+    },
+    {
+     "command": "/GetPos",
+     "id": 4
+    },
+    {
+     "command": "/null",
+     "id": 5
+    },
+    {
+     "command": "/power %d",
+     "id": 99
+    },
+    {
+     "command": "/timeoff",
+     "id": 100
+    },
+    {
+     "command": "/timeon",
+     "id": 101
+    },
+    {
+     "command": "/time %d",
+     "id": 102
+    },
+    {
+     "command": "/day",
+     "id": 103
+    },
+    {
+     "command": "/night",
+     "id": 104
+    },
+    {
+     "command": "/rain %d",
+     "id": 105
+    },
+    {
+     "command": "/snow %d",
+     "id": 106
+    },
+    {
+     "command": "/clear",
+     "id": 107
+    },
+    {
+     "command": "/+",
+     "id": 108
+    },
+    {
+     "command": "/-",
+     "id": 109
+    },
+    {
+     "command": "/zoom",
+     "id": 110
+    },
+    {
+     "command": "/fast",
+     "id": 111
+    },
+    {
+     "command": "/showme",
+     "id": 112
+    },
+    {
+     "command": "/hideme",
+     "id": 113
+    },
+    {
+     "command": "/camera",
+     "id": 114
+    },
+    {
+     "command": "/uioff",
+     "id": 115
+    },
+    {
+     "command": "/uion",
+     "id": 116
+    },
+    {
+     "command": "/frame",
+     "id": 117
+    },
+    {
+     "command": "/colon",
+     "id": 118
+    },
+    {
+     "command": "/coloff",
+     "id": 119
+    },
+    {
+     "command": "/cwclear",
+     "id": 130
+    },
+    {
+     "command": "/cwpop",
+     "id": 131
+    },
+    {
+     "command": "/cwgo",
+     "id": 132
+    },
+    {
+     "command": "/cwstop",
+     "id": 133
+    },
+    {
+     "command": "/cwsave",
+     "id": 134
+    },
+    {
+     "command": "/ms",
+     "id": 135
+    },
+    {
+     "command": "/cs %d",
+     "id": 136
+    },
+    {
+     "command": "/id",
+     "id": 137
+    },
+    {
+     "command": "/wire",
+     "id": 150
+    },
+    {
+     "command": "/ground",
+     "id": 151
+    },
+    {
+     "command": "/sky",
+     "id": 152
+    },
+    {
+     "command": "/mobj",
+     "id": 153
+    },
+    {
+     "command": "/char",
+     "id": 154
+    },
+    {
+     "command": "/lod",
+     "id": 155
+    },
+    {
+     "command": "/Item %d",
+     "id": 400
+    },
+    {
+     "command": "/setfov %d",
+     "id": 500
+    },
+    {
+     "command": "/setspeed %d",
+     "id": 600
+    },
+    {
+     "command": "/equip %d",
+     "id": 601
+    },
+    {
+     "command": "/makeobj %d",
+     "id": 602
+    },
+    {
+     "command": "/snd %s",
+     "id": 603
+    }
+   ],
+   "count": 47
+  },
+  "define": {
+   "count": 29,
+   "flags": [
+    "WHISPER_BLOCKING_SYSTEM",
+    "ITEM_MALL_ADD_TABS",
+    "HISTORY_FOR_BUYING_SILK",
+    "RENEWAL_SHOP_SYSTEM",
+    "EUROPE_SYSTEM",
+    "RESTORE_SOLDITEM_INSHOP",
+    "APPLY_MENTOR_SYSTEM",
+    "APPLY_AVATAR_SYSTEM",
+    "IMAGE_BASED_USER_VALIDATION",
+    "PET_SKILL_ITEM",
+    "APPLY_SIEGE_FORTRESS_SYSTEM",
+    "AVATAR_SPECIAL_ITEM",
+    "APPLY_UI_4TH",
+    "GACHA_SECOND_VER",
+    "UI_UPDATE_2009_FIRST",
+    "APPLY_EXCHANGE_UPDATE_1TH",
+    "NEW_ITEMMALL",
+    "TRIJOB_SYSTEM_IMPROVEMENT",
+    "CHATTING_BLOCKING_SYSTEM",
+    "SIEGE_FORTRESS_SYSTEM_IMPROVEMENT_1",
+    "RENEWAL_NEWBIE_SUPPORT",
+    "ADD_HELPWND_EXTEND",
+    "DEV_ADD_PARTY_INVITE_BLOCK_LIST",
+    "EXTEND_QUICK_SLOT",
+    "TRADE_CONFLICT_SYSTEM",
+    "ADD_TRADE_EQUIP_INVENTORY",
+    "IMPROVE_TRADE_CONFLICT_SYSTEM_PART2",
+    "APPLY_MAKE_ITEM_BY_USE_RECIPE",
+    "FIX_FOR_PET_PICKUP_METHOD"
+   ]
+  },
+  "option": {
+   "Map": "0",
+   "StartCharacter": "1907",
+   "StartWeapon": "0",
+   "intro_name": [
+    "script\\intro\\constantinoplefw.txt"
+   ],
+   "start_process": [
+    "CPSLoadingMission",
+    "CPSVersionCheck"
+   ]
+  }
+ },
+ "coordinate_system": {
+  "navmesh_block_cell_symbols": [
+   "CurBlockID",
+   "DestBlockID",
+   "CurPosRegionID",
+   "CurPosRegionX",
+   "CurPosRegionZ"
+  ],
+  "present": true,
+  "refregion": {
+   "column_count": 21,
+   "header_row": [
+    "\ufeff-32767",
+    "0",
+    "0",
+    "West_China",
+    "???? ??",
+    "1",
+    "1005",
+    "-1",
+    "0",
+    "0",
+    "xxx",
+    "NULL",
+    "NULL",
+    "NULL"
+   ],
+   "proven_columns": {
+    "col0": "region id (signed; -32767 sentinel seen)",
+    "col1_col2": "worldmap grid X / Y",
+    "col3_col4": "region name / localized name",
+    "col6": "mapping/zone id"
+   },
+   "row_count": 2461,
+   "sample_kingsvalley": [
+    "18488",
+    "56",
+    "72",
+    "KingsValley",
+    "KingsValley",
+    "1",
+    "4002",
+    "-1",
+    "0",
+    "0",
+    "xxx",
+    "NULL",
+    "NULL",
+    "NULL"
+   ]
+  },
+  "regioncode": {
+   "encoding": "CP949 (Korean)",
+   "row_count": 1390,
+   "sample_rows": [
+    "1\t23964\txxx\txxx",
+    "1\t24220\txxx\txxx",
+    "1\t23196\txxx\txxx",
+    "1\t23452\txxx\txxx",
+    "1\t23708\txxx\txxx"
+   ]
+  },
+  "world_unit_conversion": "UNKNOWN: no numeric scale constant recovered mapping float world coords (MoveTo %f,%f,%f) to region/worldmap integer bounds; transforms live in compiled client/server code",
+  "worldmap_mapinfo": {
+   "header": "//Map ID\tType 0:Wmap, 1:Local\t//Name(Skip)\tAddr\tTexture Size_x\tTexture Size_y\tPic Area_x\tPic Area_y\tDraw x\tDraw y\t\ub9ac\uc83c left\ttop\tright\tbottom\t\uc88c\ud45c LT _ x\t\uc88c\ud45c LT _y\t\uc88c\ud45c RB_x\t\uc88c\ud45c RB_y\t\uc694\uc0c8\uc6d4\ub4dcID\t\ub85c\uceec \uc774\ub984 \uc2a4\ud2b8\ub9c1 \ucf54\ub4dc\t\uc804\uccb4\ub9f5\ubc84\ud2bc\ud0c0\uc785(1:\ubcf4\uc784,0:\uc548\ubcf4\uc784)\t\ud55c \ub9ac\uc83c \ud06c\uae30\t",
+   "proven_columns": {
+    "coord_bounds": "LT_x/LT_y/RB_x/RB_y (worldmap cell bounds)",
+    "fortress_world_id": "fortress instance world id",
+    "map_id": "0=world, 1+=local town",
+    "region_bounds": "left/top/right/bottom (region id range)",
+    "type": "0:Wmap, 1:Local"
+   },
+   "row_count": 59,
+   "sample_jangan": "1\t1\t\uc7a5\uc548\tinterface\\worldmap\\map\\map_jangan.ddj\t1024\t1024\t1024\t768\t1024\t768\t166\t99\t170\t96\t96\t96\t96\t96\txxx\tUIIT_STT_JANGAN\t1\txxx\t",
+   "sample_world": "0\t0\t\uc6d4\ub4dc\ub9f5\tinterface\\worldmap\\map\\map_world_\t128\t128\t128\t128\t4224\t1408\t46\t113\t177\t70\t0\t192\t192\t0\txxx\tUIIT_PAG_WORLDMAP\t0\t4x4\t"
+  }
+ },
+ "message_layer": {
+  "client_dispatch_serialization": [
+   "MsgStreamBuffer.h",
+   "NetEngine::MsgPool",
+   "m_nCurrentReadMsg",
+   "MSG_ID = %X",
+   "_OnMsgReceivedBeforeHandshake()",
+   "RecMsg.dat"
+  ],
+  "gameserver_dispatch_serialization": [
+   "CGame::ProcessMessage() MsgID : %x",
+   "Unhandled Game SR_MSG: 0x%x [data size: %d]",
+   "IGObj::AllocMsgForPeer",
+   "[MsgID: 0x%X >> Count: %d]",
+   "DumpMsgPool",
+   "INVALID_MSG_HEADER",
+   "INVALID_MSGSIZE",
+   "NO_MSGTARGET",
+   "IP:%s %s:0x%04X (0x%04X) (MsgType:%d), %d - %d",
+   "_OnMsgReceivedBeforeHandshake() - Handshake"
+  ],
+  "opcode_message_mapping": "NOT recoverable: opcode->message/class mapping lives in RecMsg.dat (client) and SendMsg.dat (server), both MISSING from the corpus; only opcode echo strings (0x%04X) and handler class names survive",
+  "present": true,
+  "shardmanager_dispatch_serialization": [
+   "Unhandled msg detected from server! msg_id 0x%x",
+   "CMainProcess::OnSR_RELAY_MSG_SM_TO_GS",
+   "FRAMEWORKMSG_START_PLAYTIME_INGAME_NOTIFY"
+  ]
+ },
+ "movement_speed": {
+  "characterdata_proven_anchors": {
+   "col1": "refid (joins npcpos col0; Phase 13 verified)",
+   "col2": "code name (CHAR_CH_MAN_* / COS_GUARD_* )",
+   "col52": "model path (backslash .bsr; Phase 28 verified)"
+  },
+  "guard_sample": [
+   [
+    "COS_GUARD_CH_BOW_01_002",
+    "20",
+    "51"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_003",
+    "20",
+    "51"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_004",
+    "20",
+    "51"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_005",
+    "20",
+    "51"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_006",
+    "20",
+    "52"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_007",
+    "20",
+    "52"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_008",
+    "20",
+    "52"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_009",
+    "20",
+    "52"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_010",
+    "20",
+    "53"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_011",
+    "20",
+    "53"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_012",
+    "20",
+    "53"
+   ],
+   [
+    "COS_GUARD_CH_BOW_01_013",
+    "20",
+    "53"
+   ]
+  ],
+  "note": "raw positional values only; world-units-per-second conversion and DB column identity remain UNKNOWN",
+  "player_templates": [
+   {
+    "code": "CHAR_CH_MAN_ADVENTURER",
+    "model": "char\\china\\chinaman_adventurer.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1907"
+   },
+   {
+    "code": "CHAR_CH_MAN_BOGY",
+    "model": "char\\china\\chinaman_bogy.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1908"
+   },
+   {
+    "code": "CHAR_CH_MAN_FIGHTER",
+    "model": "char\\china\\chinaman_fighter.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1909"
+   },
+   {
+    "code": "CHAR_CH_MAN_MERCHANT",
+    "model": "char\\china\\chinaman_merchant.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1910"
+   },
+   {
+    "code": "CHAR_CH_MAN_MONK",
+    "model": "char\\china\\chinaman_monk.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1911"
+   },
+   {
+    "code": "CHAR_CH_MAN_MONKEY",
+    "model": "char\\china\\chinaman_monkey.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1912"
+   },
+   {
+    "code": "CHAR_CH_MAN_NECROMANCER",
+    "model": "char\\china\\chinaman_necromancer.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1913"
+   },
+   {
+    "code": "CHAR_CH_MAN_NOBLEBOY",
+    "model": "char\\china\\chinaman_nobleboy.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1914"
+   },
+   {
+    "code": "CHAR_CH_MAN_PERFORMER",
+    "model": "char\\china\\chinaman_performer.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1915"
+   },
+   {
+    "code": "CHAR_CH_MAN_PRIEST",
+    "model": "char\\china\\chinaman_priest.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1916"
+   },
+   {
+    "code": "CHAR_CH_MAN_SCHOLAR",
+    "model": "char\\china\\chinaman_scholar.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1917"
+   },
+   {
+    "code": "CHAR_CH_MAN_TATTOO",
+    "model": "char\\china\\chinaman_tattoo.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1918"
+   },
+   {
+    "code": "CHAR_CH_MAN_WARRIOR",
+    "model": "char\\china\\chinaman_warrior.bsr",
+    "positional_col46": "16",
+    "positional_col47": "50",
+    "positional_col48": "100",
+    "refid": "1919"
+   }
+  ],
+  "positional_triplet": {
+   "cols_46_47_48": "16 / 50 / 100 for all 13 CHAR_CH_MAN templates",
+   "status": "INFERRED as Speed1/Speed2/Scale, NOT proven: the textdata loader column order is not in the available sources; values recorded raw only"
+  },
+  "proven_db_columns": [
+   "Speed1",
+   "Speed2",
+   "Scale"
+  ]
+ },
+ "offsets": {
+  "change_char_screen_offset": "008763C9",
+  "chat_colors": {
+   "academy": "FFDBADF8",
+   "global": "FFFFFF00",
+   "guild": "FFFFB541",
+   "normal": "FF64C7FF",
+   "notice": "FFFFAEC3",
+   "party": "FF9AFFD0",
+   "union": "FFC2F573",
+   "whisper": "FF9FFFFE"
+  },
+  "max_char_game_offset": "00874D07",
+  "max_level_offsets": "006B5BF8,008C1162",
+  "present": true
+ },
+ "phase": "phase29",
+ "proxy": {
+  "action_delays": {
+   "exchange_req": "10",
+   "global_chat": "5",
+   "stall": "10"
+  },
+  "binary_type": "VSROProxy.exe is a .NET admin/anti-cheat tool (C# async handlers, Newtonsoft.Json.dll, MegaApiClient.dll); it is not the core game proxy",
+  "client": {
+   "gateway_port": "15779",
+   "host_ip": "127.0.0.1",
+   "locale": "22",
+   "version": "188"
+  },
+  "malicious_opcode_filtering": "True",
+  "malicious_opcodes": {
+   "count": 38,
+   "opcodes": [
+    "0x0000",
+    "0x7777",
+    "0x631D",
+    "0x1005",
+    "0x200a",
+    "0xa003",
+    "0x1001",
+    "0x1002",
+    "0x1003",
+    "0x1004",
+    "0x1006",
+    "0x1007",
+    "0x2311",
+    "0x2206",
+    "0x2209",
+    "0x220a",
+    "0x220e",
+    "0x220f",
+    "0x6003",
+    "0x6006",
+    "0x6105",
+    "0x620D",
+    "0x6300",
+    "0x6110",
+    "0x6207",
+    "0x6308",
+    "0x6312",
+    "0x6303",
+    "0x6905",
+    "0x6912",
+    "0x6315",
+    "0x6902",
+    "0xa006",
+    "0xa008",
+    "0xa306",
+    "0xa208",
+    "0xa200",
+    "0xa203"
+   ],
+   "path": "/tmp/opencode/extract/proxy/Features/MALICIOUS_OPCODES.txt",
+   "present": true
+  },
+  "present": true,
+  "server_ports": {
+   "agent_private": "1338",
+   "agent_public": "5002",
+   "download_public": "15881",
+   "gateway_private": "1337",
+   "gateway_public": "5001"
+  },
+  "shard_name": "SRO Truong An"
+ },
+ "server_db_schema": {
+  "has_knockdown": true,
+  "has_ko_recover_time": true,
+  "param_order": [
+   [
+    "Service",
+    "int"
+   ],
+   [
+    "CodeName128",
+    "varchar(129)"
+   ],
+   [
+    "ObjName128",
+    "varchar(129)"
+   ],
+   [
+    "OrgObjCodeName128",
+    "varchar(129)"
+   ],
+   [
+    "NameStrID128",
+    "varchar(129)"
+   ],
+   [
+    "DescStrID128",
+    "varchar(129)"
+   ],
+   [
+    "CashItem",
+    "tinyint"
+   ],
+   [
+    "Bionic",
+    "tinyint"
+   ],
+   [
+    "TypeID1",
+    "int"
+   ],
+   [
+    "TypeID2",
+    "int"
+   ],
+   [
+    "TypeID3",
+    "int"
+   ],
+   [
+    "TypeID4",
+    "int"
+   ],
+   [
+    "DecayTime",
+    "int"
+   ],
+   [
+    "Country",
+    "tinyint"
+   ],
+   [
+    "Rarity",
+    "tinyint"
+   ],
+   [
+    "CanTrade",
+    "tinyint"
+   ],
+   [
+    "CanSell",
+    "tinyint"
+   ],
+   [
+    "CanBuy",
+    "tinyint"
+   ],
+   [
+    "CanBorrow",
+    "tinyint"
+   ],
+   [
+    "CanDrop",
+    "tinyint"
+   ],
+   [
+    "CanPick",
+    "tinyint"
+   ],
+   [
+    "CanRepair",
+    "tinyint"
+   ],
+   [
+    "CanRevive",
+    "tinyint"
+   ],
+   [
+    "CanUse",
+    "tinyint"
+   ],
+   [
+    "CanThrow",
+    "tinyint"
+   ],
+   [
+    "Price",
+    "int"
+   ],
+   [
+    "CostRepair",
+    "int"
+   ],
+   [
+    "CostRevive",
+    "int"
+   ],
+   [
+    "CostBorrow",
+    "int"
+   ],
+   [
+    "KeepingFee",
+    "int"
+   ],
+   [
+    "SellPrice",
+    "int"
+   ],
+   [
+    "ReqLevelType1",
+    "int"
+   ],
+   [
+    "ReqLevel1",
+    "tinyint"
+   ],
+   [
+    "ReqLevelType2",
+    "int"
+   ],
+   [
+    "ReqLevel2",
+    "tinyint"
+   ],
+   [
+    "ReqLevelType3",
+    "int"
+   ],
+   [
+    "ReqLevel3",
+    "tinyint"
+   ],
+   [
+    "ReqLevelType4",
+    "int"
+   ],
+   [
+    "ReqLevel4",
+    "tinyint"
+   ],
+   [
+    "MaxContain",
+    "int"
+   ],
+   [
+    "RegionID",
+    "int"
+   ],
+   [
+    "Dir",
+    "smallint"
+   ],
+   [
+    "OffsetX",
+    "smallint"
+   ],
+   [
+    "OffsetY",
+    "smallint"
+   ],
+   [
+    "OffsetZ",
+    "smallint"
+   ],
+   [
+    "Speed1",
+    "smallint"
+   ],
+   [
+    "Speed2",
+    "smallint"
+   ],
+   [
+    "Scale",
+    "int"
+   ],
+   [
+    "BCHeight",
+    "smallint"
+   ],
+   [
+    "BCRadius",
+    "smallint"
+   ],
+   [
+    "EventName128",
+    "varchar(129)"
+   ],
+   [
+    "AssocFileObj128",
+    "varchar(129)"
+   ],
+   [
+    "AssocFileDrop128",
+    "varchar(129)"
+   ],
+   [
+    "AssocFileIcon128",
+    "varchar(129)"
+   ],
+   [
+    "AssocFile1_128",
+    "varchar(129)"
+   ],
+   [
+    "AssocFile2_128",
+    "varchar(129)"
+   ],
+   [
+    "Lvl",
+    "tinyint"
+   ],
+   [
+    "CharGender",
+    "tinyint"
+   ],
+   [
+    "MaxHP",
+    "int"
+   ],
+   [
+    "MaxMP",
+    "int"
+   ],
+   [
+    "ResistFrozen",
+    "int"
+   ],
+   [
+    "ResistFrostbite",
+    "int"
+   ],
+   [
+    "ResistBurn",
+    "int"
+   ],
+   [
+    "ResistEShock",
+    "int"
+   ],
+   [
+    "ResistPoison",
+    "int"
+   ],
+   [
+    "ResistZombie",
+    "int"
+   ],
+   [
+    "ResistSleep",
+    "int"
+   ],
+   [
+    "ResistRoot",
+    "int"
+   ],
+   [
+    "ResistSlow",
+    "int"
+   ],
+   [
+    "ResistFear",
+    "int"
+   ],
+   [
+    "ResistMyopia",
+    "int"
+   ],
+   [
+    "ResistBlood",
+    "int"
+   ],
+   [
+    "ResistStone",
+    "int"
+   ],
+   [
+    "ResistDark",
+    "int"
+   ],
+   [
+    "ResistStun",
+    "int"
+   ],
+   [
+    "ResistDisea",
+    "int"
+   ],
+   [
+    "ResistChaos",
+    "int"
+   ],
+   [
+    "ResistCsePD",
+    "int"
+   ],
+   [
+    "ResistCseSTR",
+    "int"
+   ],
+   [
+    "ResistCseINT",
+    "int"
+   ],
+   [
+    "ResistCseHP",
+    "int"
+   ],
+   [
+    "ResistCseMP",
+    "int"
+   ],
+   [
+    "Resist24",
+    "int"
+   ],
+   [
+    "ResistBomb",
+    "int"
+   ],
+   [
+    "Resist26",
+    "int"
+   ],
+   [
+    "Resist27",
+    "int"
+   ],
+   [
+    "Resist28",
+    "int"
+   ],
+   [
+    "Resist29",
+    "int"
+   ],
+   [
+    "Resist30",
+    "int"
+   ],
+   [
+    "Resist31",
+    "int"
+   ],
+   [
+    "Resist32",
+    "int"
+   ],
+   [
+    "InventorySize",
+    "tinyint"
+   ],
+   [
+    "CanStore_TID1",
+    "tinyint"
+   ],
+   [
+    "CanStore_TID2",
+    "tinyint"
+   ],
+   [
+    "CanStore_TID3",
+    "tinyint"
+   ],
+   [
+    "CanStore_TID4",
+    "tinyint"
+   ],
+   [
+    "CanBeVehicle",
+    "tinyint"
+   ],
+   [
+    "CanControl",
+    "tinyint"
+   ],
+   [
+    "DamagePortion",
+    "tinyint"
+   ],
+   [
+    "MaxPasqenger",
+    "smallint"
+   ],
+   [
+    "AssocTacticsName",
+    "varchar(128)"
+   ],
+   [
+    "PD",
+    "int"
+   ],
+   [
+    "MD",
+    "int"
+   ],
+   [
+    "PAR",
+    "int"
+   ],
+   [
+    "MAR",
+    "int"
+   ],
+   [
+    "ER",
+    "int"
+   ],
+   [
+    "BR",
+    "int"
+   ],
+   [
+    "HR",
+    "int"
+   ],
+   [
+    "CHR",
+    "int"
+   ],
+   [
+    "ExpToGive",
+    "int"
+   ],
+   [
+    "CreepType",
+    "int"
+   ],
+   [
+    "Knockdown",
+    "tinyint"
+   ],
+   [
+    "KO_RecoverTime",
+    "int"
+   ],
+   [
+    "DefaultSkill_1",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_2",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_3",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_4",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_5",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_6",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_7",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_8",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_9",
+    "varchar(129)"
+   ],
+   [
+    "DefaultSkill_10",
+    "varchar(129)"
+   ],
+   [
+    "AssignedItem1",
+    "varchar(129)"
+   ],
+   [
+    "DropProb1",
+    "real"
+   ],
+   [
+    "AssignedItem2",
+    "varchar(129)"
+   ],
+   [
+    "DropPob2",
+    "real"
+   ],
+   [
+    "AssignedItem3",
+    "varchar(129)"
+   ],
+   [
+    "DropProb3",
+    "real"
+   ],
+   [
+    "AssignedItem4",
+    "varchar(129)"
+   ],
+   [
+    "DropProb4",
+    "real"
+   ],
+   [
+    "AssignedItem5",
+    "varchar(129)"
+   ],
+   [
+    "DropProb5",
+    "real"
+   ],
+   [
+    "TextureType",
+    "tinyint"
+   ],
+   [
+    "Except_1",
+    "int"
+   ],
+   [
+    "Except_2",
+    "int"
+   ],
+   [
+    "Except_3",
+    "int"
+   ],
+   [
+    "Except_4",
+    "int"
+   ],
+   [
+    "Except_5",
+    "int"
+   ],
+   [
+    "Except_6",
+    "int"
+   ],
+   [
+    "Except_7",
+    "int"
+   ],
+   [
+    "Except_8",
+    "int"
+   ],
+   [
+    "Except_9",
+    "int"
+   ],
+   [
+    "Except_10",
+    "int"
+   ]
+  ],
+  "present": true,
+  "procedure": "_InsertRefChar",
+  "refobjchar_columns": [
+   "ID",
+   "Lvl",
+   "CharGender",
+   "MaxHP",
+   "MaxMP",
+   "InventorySize",
+   "CanStore_TID1..4",
+   "CanBeVehicle",
+   "CanControl",
+   "DamagePortion",
+   "MaxPassenger",
+   "AssocTacticsName",
+   "PD",
+   "MD",
+   "PAR",
+   "MAR",
+   "ER",
+   "BR",
+   "HR",
+   "CHR",
+   "ExpToGive",
+   "CreepType",
+   "Knockdown",
+   "KO_RecoverTime",
+   "DefaultSkill_1..10",
+   "TextureType",
+   "Except_1..10"
+  ],
+  "speed1_param_index": 45,
+  "speed2_param_index": 46
+ },
+ "server_package": {
+  "game_servers": [
+   {
+    "name": "SR_GameServer.exe",
+    "pdb": "D:\\WORK2005\\BinOut\\SR_GameServer.pdb",
+    "size": 9576448,
+    "timestamp_hex": "0x4EB7450B"
+   },
+   {
+    "name": "SR_ShardManager.exe",
+    "pdb": "D:\\WORK2005\\BinOut\\SR_ShardManager.pdb",
+    "size": 5062656,
+    "timestamp_hex": "0x4EB748D7"
+   },
+   {
+    "name": "GatewayServer.exe",
+    "pdb": "D:\\WORK2005\\JMX_CommonServers\\GatewayServer\\GatewayServer___Win32_Release_SR_VIETNAM\\GatewayServer.pdb",
+    "size": 1028096,
+    "timestamp_hex": "0x491246DC"
+   },
+   {
+    "name": "AgentServer.exe",
+    "pdb": "D:\\WORK2005\\BinOut\\AgentServer.pdb",
+    "size": 929792,
+    "timestamp_hex": "0x4D8BC57E"
+   },
+   {
+    "name": "GlobalManager.exe",
+    "pdb": "D:\\WORK2005\\BinOut\\GlobalManager.pdb",
+    "size": 1417216,
+    "timestamp_hex": "0x4D3D93C1"
+   },
+   {
+    "name": "MachineManager.exe",
+    "pdb": "D:\\WORK2005\\JMX_CommonServers\\MachineManager\\MachineManager___Win32_Release_SR_VIETNAM\\MachineManager.pdb",
+    "size": 864256,
+    "timestamp_hex": "0x49124711"
+   },
+   {
+    "name": "DownloadServer.exe",
+    "pdb": "D:\\WORK2005\\JMX_CommonServers\\DownloadServer\\DownloadServer___Win32_Release_SR_VIETNAM\\DownloadServer.pdb",
+    "size": 864256,
+    "timestamp_hex": "0x491246C7"
+   },
+   {
+    "name": "FarmManager.exe",
+    "pdb": "D:\\WORK2005\\BinOut\\FarmManager.pdb",
+    "size": 901120,
+    "timestamp_hex": "0x4D3D9142"
+   }
+  ],
+  "has_refdata": true,
+  "has_server_cfg": true,
+  "map_files": [
+   "Map1.CS3",
+   "Map2.CS3"
+  ],
+  "present": true,
+  "root": "/tmp/opencode/extract/server",
+  "support_dlls": [
+   "GFXFileManager.dll",
+   "dbghelp.dll",
+   "ggauth.dll",
+   "XTrap4Server.dll",
+   "ImageTrans.dll",
+   "CommonGuiControl.dll",
+   "MailSender.dll",
+   "VerData.dll",
+   "ServerFrameworkRes.dll"
+  ]
+ },
+ "server_refdata": {
+  "characterdata_files_missing": [
+   "CharacterData_40000.txt"
+  ],
+  "characterdata_files_present": [
+   "CharacterData_10000.txt",
+   "CharacterData_15000.txt",
+   "CharacterData_20000.txt",
+   "CharacterData_25000.txt",
+   "CharacterData_30000.txt",
+   "CharacterData_35000.txt",
+   "CharacterData_45000.txt",
+   "CharacterData_5000.txt"
+  ],
+  "characterdata_stub_files": [
+   "CharacterData_5000.txt",
+   "CharacterData_10000.txt",
+   "CharacterData_15000.txt",
+   "CharacterData_20000.txt",
+   "CharacterData_25000.txt",
+   "CharacterData_30000.txt",
+   "CharacterData_35000.txt",
+   "CharacterData_40000.txt",
+   "CharacterData_45000.txt"
+  ],
+  "has_gameworldconfigdata": true,
+  "has_gameworlddata": true,
+  "has_itemdata": true,
+  "has_refinstanceworldregion": false,
+  "has_refinstanceworldstartpos": false,
+  "has_refregion": true,
+  "has_skilldata": true,
+  "present": true
+ },
+ "server_strings": {
+  "character_loader": [
+   "[CRefCharGen::AddEntry]",
+   "CRefCharGenData",
+   "CRefInstanceWorldStartPos",
+   "_REFCHARGEN"
+  ],
+  "motion_state_count": 19,
+  "motion_states": [
+   "MOTIONSTATE_CHANGEMOTION",
+   "MOTIONSTATE_COUNTERATTACK",
+   "MOTIONSTATE_FROZEN",
+   "MOTIONSTATE_HIT",
+   "MOTIONSTATE_JUMP",
+   "MOTIONSTATE_KNOCKDOWN",
+   "MOTIONSTATE_PAO",
+   "MOTIONSTATE_REQ_HELP",
+   "MOTIONSTATE_RIDE",
+   "MOTIONSTATE_RUN",
+   "MOTIONSTATE_SIT",
+   "MOTIONSTATE_SKILL",
+   "MOTIONSTATE_SKILL_ACTIONOFF",
+   "MOTIONSTATE_SKILL_KNOCKBACK",
+   "MOTIONSTATE_SKILL_PROTECTIONWALL",
+   "MOTIONSTATE_STAND",
+   "MOTIONSTATE_STUN",
+   "MOTIONSTATE_SWIM",
+   "MOTIONSTATE_WALK"
+  ],
+  "navmesh_terrain": [
+   "CRTNavMeshTerrain",
+   "CRgnTerrain",
+   "regioninfo.txt",
+   "NavMesh_new"
+  ],
+  "note": "symbols only: enum/class/message names prove vocabulary, not transition or numeric semantics",
+  "position_system": [
+   "Pos_RegionID",
+   "DestPos_RegionID",
+   "MoveTo: [%d, (%f, %f, %f)]",
+   "MoveToTown",
+   "MoveToPlayer: %s [WorldID(%d), RegionID(%d), (%f, %f, %f)]",
+   "LastUpdateTick"
+  ],
+  "present": true,
+  "ref_classes": [
+   "CRefCharGenData",
+   "CRefDataManager",
+   "CRefInstanceWorldRegion",
+   "CRefInstanceWorldStartPos",
+   "CRefObjChar",
+   "CRefObjCommon",
+   "CRefObjItem",
+   "CRefRegion"
+  ],
+  "server_speed_symbols": [
+   "PCSpeedRatio",
+   "RefreshMoveSpeed()",
+   "SetMoveMode()",
+   "MoveToPlayer",
+   "MoveToNPC",
+   "Recall Charactor"
+  ],
+  "spawn_flow": [
+   "CGame::EnterWorld() => CGObj::EnterWorld()",
+   "ResolveCellAndHeight()",
+   "ActivatePC()",
+   "CGObj::EnterWorld Failed!!! at MoveTo()",
+   "HandlerOnEnterWorld_%s(%d)",
+   "SR_READY_TO_PLAY"
+  ],
+  "sql_references": [
+   "UPDATE _CHAR SET REFOBJID = %d, SCALE = %d WHERE CHARID = %d",
+   "UPDATE _Char SET RemainGold = %I64d WHERE CharID = %d",
+   "pRefSpawnChar == REFDATA_MGR.GetRefObj(%d)"
+  ]
+ },
+ "spawn_chain": {
+  "_addnewchar_call_format": "{?=CALL _AddNewChar (%d, %d,'%s',%d,%d,%f,%f,%f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)}",
+  "_addnewchar_caller": "SR_ShardManager.exe",
+  "_addnewchar_start_params_are_caller_supplied": true,
+  "char_last_position_select": "select LatestRegion, PosX, PosY, PosZ from _Char with(NOLOCK) where CharName16 = '%s'",
+  "instance_world_config_via_lua": "LuaSetInstanceWorldConfig",
+  "instance_world_npc_ref": "Not Exits RefGameWorldNPC Data !!! InstanceWorldCodeName = %s!!",
+  "instance_world_position_update": "{?=CALL _CharInstanceWorldDataUpdate(%d,%d,%d,%d, '%s',%d,%d,%d,%d,%d,%d,'%s')",
+  "instance_world_startpos_datafile_missing": true,
+  "present": true,
+  "spawn_message_to_client": "SC_ObjectCreate / SC_ObjectCreateIndex (client RTTI) \u2014 exact packet layout not proven",
+  "start_pos_source": "CRefInstanceWorldStartPos / CRefInstanceWorldRegion reference classes exist in SR_ShardManager.exe; the underlying source file/values are NOT in the corpus"
+ }
+}

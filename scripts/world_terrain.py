@@ -31,6 +31,7 @@ Coordinate system (verified):
 
 from __future__ import annotations
 
+import re
 import struct
 from io import BytesIO
 
@@ -58,6 +59,19 @@ GRID_STEP = 20.0         # world units between grid heights
 MINIMAP_PX_PER_SECTOR = 256
 
 STANDARD_M_SIZE = 12 + M_BLOCKS * M_BLOCK_BYTES  # 92,712
+
+TILE2D_MAGIC = "JMXV2DTI1001"  # tile2d.ifo first line (not a byte magic)
+T_MAGIC_BYTES = 12             # .t magic length
+STANDARD_T_SIZE = 140436        # 12 + 140424 (verified across 4,987 files)
+T_BODY_SIZE = STANDARD_T_SIZE - T_MAGIC_BYTES  # 140424
+T_EMPTY_U16 = (0x0000, 0xFFFF)  # "no tile" markers observed in .t u16 cells
+
+# .bmt material record layout (verified on Data.pk2 /compound/*.bmt):
+#   magic + u32 count, then per entry: u32 name_len, padded name, 72 bytes of
+#   material floats (18x f32), u32 ddj_len, padded ddj path, 7-byte tail.
+BMT_MAGIC_LEN = 12
+BMT_PROPS_BYTES = 0x48  # 72 = 18 floats (ambient/diffuse/specular/emissive RGBA + extras)
+BMT_TAIL_BYTES = 7      # f32 (1.0) + 3 unknown bytes
 
 
 class WorldFormatError(ValueError):
@@ -163,16 +177,27 @@ def parse_bsr(bd):
     return mpath, bms
 
 
-def parse_bmt(mt):
-    """Return {matname: ddjpath} for a .bmt blob."""
-    if mt[:12] != BMT_MAGIC:
-        return {}
-    p = 12
+def _strip_padded(raw):
+    """Strip a null-padded .bmt string field down to its terminator."""
+    return raw.split(b"\x00", 1)[0].decode("ascii", "replace")
+
+
+def parse_bmt_entries(mt):
+    """Parse a .bmt blob into a list of structured material records.
+
+    Each record is {"name", "ddj", "props", "tail"} where props are the 18
+    decoded float32 material properties and tail is the raw 7-byte trailer.
+    Raises WorldFormatError on a magic/size mismatch; stops (never overruns)
+    on a truncated trailing entry.
+    """
+    if mt[:BMT_MAGIC_LEN] != BMT_MAGIC:
+        raise WorldFormatError("not a .bmt blob")
+    p = BMT_MAGIC_LEN
     if p + 4 > len(mt):
-        return {}
+        raise WorldFormatError(".bmt too short for count")
     mc = struct.unpack_from("<I", mt, p)[0]
     p += 4
-    out = {}
+    out = []
     for _ in range(mc):
         if p + 4 > len(mt):
             break
@@ -180,18 +205,89 @@ def parse_bmt(mt):
         p += 4
         if p + nn > len(mt):
             break
-        name = mt[p : p + nn].decode("ascii", "replace")
-        p += nn + 0x48
+        name = _strip_padded(mt[p : p + nn])
+        p += nn
+        if p + BMT_PROPS_BYTES > len(mt):
+            break
+        props = list(struct.unpack_from("<%df" % (BMT_PROPS_BYTES // 4), mt, p))
+        p += BMT_PROPS_BYTES
         if p + 4 > len(mt):
             break
         dn = struct.unpack_from("<I", mt, p)[0]
         p += 4
         if p + dn > len(mt):
             break
-        ddj = mt[p : p + dn].decode("ascii", "replace")
-        p += dn + 7
-        out[name] = ddj
+        ddj = _strip_padded(mt[p : p + dn])
+        p += dn
+        if p + BMT_TAIL_BYTES > len(mt):
+            break
+        tail = mt[p : p + BMT_TAIL_BYTES]
+        p += BMT_TAIL_BYTES
+        out.append({"name": name, "ddj": ddj, "props": props, "tail": tail})
     return out
+
+
+def parse_bmt(mt):
+    """Return {matname: ddjpath} for a .bmt blob (compatibility wrapper)."""
+    return {r["name"]: r["ddj"] for r in parse_bmt_entries(mt)}
+
+
+def parse_tile2d_ifo(text):
+    """Parse Map.pk2 /tile2d.ifo into a list of tile index entries.
+
+    Each entry: {"id", "flag", "class", "texture", "sectors"} where sectors is
+    a list of (x, y) world-sector pairs named after the tile. Raises
+    WorldFormatError when the header line/count is missing.
+    """
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != TILE2D_MAGIC:
+        raise WorldFormatError("not a tile2d.ifo index")
+    out = []
+    for ln in lines[2:]:
+        m = re.match(r'^(\d+)\s+0x([0-9a-fA-F]+)\s+"([^"]*)"\s+"([^"]*)"(.*)$', ln)
+        if not m:
+            continue
+        sectors = [(int(x), int(y)) for x, y in re.findall(r"\{(\d+),(\d+)\}", m.group(5))]
+        out.append({
+            "id": int(m.group(1)),
+            "flag": int(m.group(2), 16),
+            "class": m.group(3),
+            "texture": m.group(4),
+            "sectors": sectors,
+        })
+    return out
+
+
+def tile2d_index(text):
+    """Return {tile_id: entry} for tile2d.ifo (lookup form)."""
+    return {e["id"]: e for e in parse_tile2d_ifo(text)}
+
+
+def parse_t(blob, tile_index=None):
+    """Validate a Map.pk2 {Y}/{X}.t blob and report proven structural facts.
+
+    The .t grid layout is not yet proven (UNKNOWN); this decoder only asserts
+    the verified header and size and, when a tile2d index is supplied, the set
+    of tile IDs referenced by the blob's u16 cells. Raises WorldFormatError on
+    a magic mismatch.
+    """
+    if blob[:T_MAGIC_BYTES] != T_MAGIC:
+        raise WorldFormatError("not a .t blob")
+    body = blob[T_MAGIC_BYTES:]
+    info = {"magic": T_MAGIC.decode("ascii"), "size": len(blob), "body_size": len(body)}
+    if tile_index is not None:
+        ids = set()
+        empty = 0
+        for i in range(0, len(body) - 1, 2):
+            v = struct.unpack_from("<H", body, i)[0]
+            if v in tile_index:
+                ids.add(v)
+            elif v in T_EMPTY_U16:
+                empty += 1
+        info["tile_ids"] = sorted(ids)
+        info["tile_count"] = len(ids)
+        info["empty_cells"] = empty
+    return info
 
 
 def parse_bms_build(bd):

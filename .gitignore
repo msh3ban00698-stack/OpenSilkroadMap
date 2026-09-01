@@ -4,6 +4,7 @@ __pycache__
 .vs
 dist
 game_source
+.source_index/
 map/public/assets/*
 !map/public/assets/icons
 !map/public/assets/img

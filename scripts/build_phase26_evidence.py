@@ -28,9 +28,11 @@ sys.path.insert(0, os.path.join(BASE, "scripts"))
 import animation_pose as AP  # noqa: E402
 import bsr_decoder  # noqa: E402
 import pk2_table  # noqa: E402
+import sro_paths  # noqa: E402
 
-DATA_PK2 = "/tmp/opencode/pk2raw/Data.pk2"
-MEDIA_PK2 = "/tmp/opencode/pk2raw/Media.pk2"
+PK2_DIR = sro_paths.resolve_pk2_dir()
+DATA_PK2 = os.path.join(PK2_DIR, "Data.pk2")
+MEDIA_PK2 = os.path.join(PK2_DIR, "Media.pk2")
 
 LOCOMOTION_CLIPS = [
     "/prim/ani/char/china/man/chinaman_fighter_walkforward.ban",

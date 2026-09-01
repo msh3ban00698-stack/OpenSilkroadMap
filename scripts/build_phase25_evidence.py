@@ -23,9 +23,11 @@ import bms_decoder as BMS  # noqa: E402
 import bsr_decoder  # noqa: E402
 import bsk_decoder  # noqa: E402
 import pk2_table  # noqa: E402
+import sro_paths  # noqa: E402
 
-DATA_PK2 = "/tmp/opencode/pk2raw/Data.pk2"
-MEDIA_PK2 = "/tmp/opencode/pk2raw/Media.pk2"
+PK2_DIR = sro_paths.resolve_pk2_dir()
+DATA_PK2 = os.path.join(PK2_DIR, "Data.pk2")
+MEDIA_PK2 = os.path.join(PK2_DIR, "Media.pk2")
 
 CHINA_CHAR_BSR_PREFIX = "/res/char/china/"
 CHARACTER_SKELETONS = {

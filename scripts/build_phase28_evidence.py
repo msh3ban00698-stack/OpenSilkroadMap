@@ -34,9 +34,11 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "scripts"))
 
 import pk2_table  # noqa: E402
+import sro_paths  # noqa: E402
 
-DATA_PK2 = "/tmp/opencode/pk2raw/Data.pk2"
-MEDIA_PK2 = "/tmp/opencode/pk2raw/Media.pk2"
+PK2_DIR = sro_paths.resolve_pk2_dir()
+DATA_PK2 = os.path.join(PK2_DIR, "Data.pk2")
+MEDIA_PK2 = os.path.join(PK2_DIR, "Media.pk2")
 REPO = BASE
 BANDIT_ANIMS = os.path.join(
     REPO, "android/app/src/main/assets/game/world/characters/bandit/anims.tsv")

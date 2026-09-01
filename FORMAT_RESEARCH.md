@@ -152,9 +152,55 @@ so the vertex/triangle layout is **UNKNOWN**.
 which is the triangle count, the record semantics (type-marker/flag meaning), the
 f32 vertex/triangle layout, and the header field meanings. `907 * 256 ≈ 232,192`
 vs 232,418 is NOT the file structure (the grid is 9,216×8 = 73,728 B at
-120,876–194,604; `907`/`1801` do not divide the body). Decoder: **none**.
+120,876–194,604; `907`/`1801` do not divide the body). Structural parser:
+`scripts/jmx_nvm.py` (deterministic: verifies magic, locates the largest const-u0
+8-byte-record grid run, parses sample records, counts trailing −20.0 fill words,
+and reports header extent f32 in [0,1920]); tests `scripts/test_jmx_parsers.py`.
 Evidence fixture: `scripts/testdata/formats/nvm_grid.json`; tests:
 `scripts/test_phase13_nvm.py`.
+
+### Phase 29 refinement (25-sample survey, this batch)
+
+A 25-file size-stratified survey (`/tmp/opencode/nvm_samples/s00..s24`,
+read from `Data.pk2 /navmesh/`) disproves the assumption that every `.nvm`
+grid is `96×96` = 9,216 records. The `find_largest_const_u0_run` heuristic in
+`jmx_nvm.py` therefore returns **false positives** on a large fraction of
+files: on 25 samples the "grid" it reports ranges from 5 to 9,311 records and,
+for roughly half the files, lands at a small trailing run rather than the real
+cell array. Two distinct header layouts are visible in the first bytes after
+the magic:
+
+- **Simple layout** (`nv_1f29`, `nv_198c`, `nv_2527`, `nv_5240`, `nv_18be`,
+  `nv_6367`, `nv_74ea`): `u16 0, u16 N, u16 0, u16 M` then extent floats
+  (`1920.0` etc.). `N`/`M` are small counts (e.g. `nv_198c` 1801/907;
+  `nv_5240` 150/80).
+- **Complex layout** (`nv_6df6`, `nv_664a`, `nv_1bc1`, `nv_6a64`, `nv_179d`,
+  …): the header bytes 12+ immediately decode as f32 3D coordinates
+  (e.g. `nv_1bc1` `1794.08, -2.67, -3.45, -40.07`), consistent with a
+  vertex/triangle block rather than a simple count header.
+
+The cell record shape also differs: simple files carry `(0, flag∈{0,1},
+0x0117=279|0x010F=271, value)`, while complex files carry `(0|4, 0, 0, value)`
+with small value integers. The grid dimensions/offset are NOT proven to be
+recoverable from a single header field, so `.nvm` stays PARTIAL and the
+locator heuristic is documented as unreliable (it identifies a candidate
+const-zero run, not a proven grid). No semantics are asserted.
+
+### `.ddj` header — **PROVEN 20-byte wrapper + embedded DDS**
+
+`scripts/jmx_ddj.py` proves the exact `.ddj` container header (verified against
+samples 2 KB – 2.9 MB and a 23-file sample):
+
+| offset | size | field | evidence |
+|---|---|---|---|
+| 0 | 12 | `JMXVDDJ 1000` | magic + version, all files |
+| 12 | 4 | u32 `data_size` | == `file_size − 12` across every sample |
+| 16 | 4 | u32 `level` | constant `3`; semantics UNKNOWN |
+| 20 | .. | embedded DDS | `DDS ` magic + 124-byte header + data |
+
+The embedded DDS pixel format is either uncompressed RGB (16/24/32 bpp, no
+fourcc) or `DXT3` fourcc. No DXT1/DXT5 observed in the sampled set. Tests:
+`scripts/test_jmx_parsers.py`.
 
 ---
 
@@ -387,8 +433,70 @@ compile-only with a bind-pose fallback.
 
 ## 6. Cross-cutting findings
 
-- All six formats are little-endian (LE) and share the `JMXV` magic family
-  (`JMXVDDJ`, `JMXVBAN`, `JMXVBMS`, `JMXVNVM`, `JMXVEFF`, `JMXVBSK`, `JMXVRES`).
+### The `JMXV` shared-container convention (PROVEN)
+
+Every Joymax binary asset in the corpus begins with the 4-byte signature
+`JMXV` (hex `4A 4D 58 56`), followed by an 8-byte format identifier that
+disambiguates the container. The 8-byte identifier is a 3–4 character ASCII
+tag plus a version string, and it is unique per format. 21 distinct 12-byte
+magics are observed on real archive samples (all little-endian):
+
+| 12-byte magic | extension | format | decode status |
+|---|---|---|---|
+| `JMXVBAN 0102` | `.ban` | animation | PROVEN (full layout; 2 `0101` anomalies) |
+| `JMXVBMS 0110` | `.bms` | static mesh | PARTIAL (skinning tail UNKNOWN) |
+| `JMXVBMT 0102` | `.bmt` | material | PROVEN (full layout, Phase 18) |
+| `JMXVBSK 0101` | `.bsk` | skeleton | PROVEN (full layout) |
+| `JMXVCPD 0101` | `.cpd` | compound manifest | PROVEN (full layout, Phase 21) |
+| `JMXVDDJ 1000` | `.ddj` | texture (DDS) | PROVEN (20-byte wrapper) |
+| `JMXVDOF 0101` | `.dof` | dungeon object | PARTIAL (8-u32 section table + .bsr/RN_ strings; per-section records UNKNOWN) |
+| `JMXVEFF xxxx` | `.efp` | particle effect | PARTIAL (version tree only) |
+| `JMXVIMG11000` | `.dat` (fonts) | font glyph image | PARTIAL (magic + u16 fields) |
+| `JMXVMAPM1000` | `.m` | terrain height grid | PROVEN (97×97 grid) |
+| `JMXVMAPO1000` | `.o` (empty) | empty object overlay | PROVEN (zero payload, 7 files) |
+| `JMXVMAPO1001` | `.o`, `.o2` | object overlay | PROVEN (28/30-byte records) |
+| `JMXVMAPT1001` | `.t` | map tile | PARTIAL (header/size/tile2d refs; grid layout UNKNOWN) |
+| `JMXVMFO 1000` | `.mfo` | map info | UNKNOWN (magic only) |
+| `JMXVNVM 1000` | `.nvm` | navmesh | PARTIAL (cell semantics UNKNOWN) |
+| `JMXVOBJI1000` | `.ifo` | object index | PROVEN (nameI index) |
+| `JMXVRES 0109` | `.bsr` | mesh resource | PROVEN (path groups; `0108`×3, `0107`×1) |
+| `JMXV2DTI1001` | `.ifo` (tile2d) | 2D tile info | PROVEN (719-entry index, Phase 18) |
+| `JMXVCAMR1002` | `.ifo` (config) | camera | PARTIAL (magic + f32 stream; field assignment UNKNOWN) |
+| `JMXVENVI1003` | `.ifo` (environment) | environment | PARTIAL (magic + u32 header + length-prefixed names + f32 colours) |
+| `JMXVOBJL1000` | `.ifo` (layerobjectlist) | object list | PROVEN (text: magic, count, 9-field entries) |
+
+Beyond the shared 12-byte magic, the formats do **NOT** share a common
+sub-structure: `.ddj` puts a `u32 data_size` + `u32 level` at offset 12,
+`.bms` puts a `u32 header_size` + six section offsets, `.bsk` a `u32
+bone_count`, `.bsr` an 8×u32 table, `.nvm` a variable count/extent header,
+`.ban` 8 reserved bytes + a name length. The shared convention is therefore
+**only** the `JMXV` signature + format identifier; everything after is
+format-specific.
+
+### The polymorphic `.ifo` extension (NEW — this batch)
+
+The `.ifo` extension is NOT a single format. Reading the 12 `.ifo` files
+across `Data.pk2`/`Map.pk2` reveals **five distinct JMX magics** plus one
+plain-text file:
+
+| file | size | magic | family |
+|---|---|---|---|
+| `object.ifo` (both archives) | 231,665 | `JMXVOBJI1000` | object index (PROVEN, Phase 17) |
+| `objectstring.ifo` (both archives) | 55,207 / 40,444 | `JMXVOBJI1000` | object string index |
+| `objext.ifo` (both archives) | 41 | `JMXVOBJI1000` | object extension index |
+| `tile2d.ifo` (both archives) | 36,629 | `JMXV2DTI1001` | 2D tile info (PROVEN, Phase 18: 719 entries `id → flag(0x00–0x0c) → class → .ddj → {x,y}`) |
+| `config.ifo` | 111 | `JMXVCAMR1002` | camera config (UNKNOWN) |
+| `environment.ifo` | 76,000 | `JMXVENVI1003` | environment (UNKNOWN) |
+| `layerobjectlist.ifo` | 219,890 | `JMXVOBJL1000` | object list (UNKNOWN) |
+| `tile3d.ifo` | 2 | `0\n` (ASCII) | plain text, not JMX |
+
+`JMXVCAMR1002`, `JMXVENVI1003`, and `JMXVOBJL1000` are new magic tags not
+previously catalogued. `JMXV2DTI1001` (`tile2d.ifo`) is now decoded (719-entry
+text index; see Phase 18). The remaining three are magic-confirmed but
+otherwise undecoded (UNKNOWN). This explains why the `.ifo` extension must not
+be blanket-classified: the extension is a container-family shorthand, and the
+magic is the authoritative discriminator.
+
 - `.ban`/`.bms`/`.nvm`/`.efp`/`.bsk` bodies all embed short ASCII strings
   (animation names, `BoneNN` bone names, emitter command tokens) that can aid
   future field identification.
@@ -457,6 +565,34 @@ world = (tail_sector - reference_sector) * 1920 + local   # PROVEN
 
 Verified on `/90/156.o2`: 32 instances = 4 distinct raw records duplicated by
 the author (820 ×16, 574 ×9, 820 ×4 tail (157,90), 820 ×3 tail (156,91)).
+
+### `.o` — object overlay, 28-byte records (`JMXVMAPO1001`) — **PROVEN**
+
+`.o` files share the `JMXVMAPO1001` magic and group framing with `.o2`, but use
+a **28-byte record** (they drop the always-zero `unknown3` u16, so `tail` lands
+at offset 26 instead of 28). A 352-file stratified sample plus a full 4,484-file
+walk confirm the group-stream walker consumes every `JMXVMAPO1001` `.o` file
+exactly; `max nameI == 3306`, matching `object.ifo`'s 3307-entry index (0..3306).
+
+```
+header:  magic[12] "JMXVMAPO1001"  u32 @12 == 0
+record (28 B each, after offset 16):
+   0  u32   nameI          index into /navmesh/object.ifo
+   4  f32   x  y  z        position LOCAL to the tail sector
+  16  u16   unknown0       0xFFFF for boundary-sector records
+  18  f32   theta          yaw (radians)
+  22  u16   unknown1       varies (packed grid; UNKNOWN)
+  24  u16   unknown2       (0)
+  26  u16   tail           RELATIVE: 0 = own sector, 1 = +x, 256 = +z
+```
+
+Verified on `/100/100.o`: 58 instances, `nameI` counts
+`{1489: 39, 669: 11, 1488: 7, 1748: 1}`, all `nameI` resolve in `object.ifo`.
+The `tail` field is **relative** (0 = own sector), unlike `.o2`'s absolute
+packed-sector tail; 1,154 of 76,951 records cross a boundary (tail 1 or 256).
+`.o` and `.o2` for the same sector carry different instance sets (`.o2` roughly
+doubles `.o`), so they are distinct passes, not duplicates. Seven `.o` files are
+228-byte `JMXVMAPO1000` empty placeholders with a zero payload.
 
 ### `object.ifo` — nameI → `.bsr` index (`JMXVOBJI1000`) — **PROVEN**
 
@@ -529,3 +665,244 @@ Deliverables: `scripts/o2_decoder.py` (+12 tests), `scripts/bms_to_asset.py`
 (+12 tests), `scripts/build_object_manifest.py` (+8 tests, byte-identical
 rebuild), committed assets under `android/app/src/main/assets/game/world/objects/`
 (6 `.msh` + 6 `.png` + `models.tsv` + `placements.tsv`).
+
+## 9. `.dat` heterogeneous families (reclassified — evidence-first)
+
+`.dat` is NOT one format. A deterministic classifier
+(`scripts/dat_families.py`, tests `scripts/test_dat_families.py`) splits every
+`.dat` record into concrete families by leading bytes, never by filename.
+
+### Corpus (88 `.dat` records, 73,247,057 bytes)
+
+| Family | Count | Status | Source |
+|---|---|---|---|
+| `ainavdata` | 26 | PARTIAL | `Data.pk2 /navmesh/ainavdata_3276{9..87}.dat` |
+| `bmp` | 48 | PROVEN | `Media.pk2 /launcher/*` + `/launcher_europe/*` |
+| `jmxvimg` | 3 | PROVEN | `Media.pk2 /fonts/{0,i,y}.dat` |
+| `palette` | 1 | PROVEN | `Media.pk2 /silk.dat` |
+| `hex-token` | 2 | PROVEN | `Silkload.dat` (client + `.7z`) |
+| `config` | 7 | PARTIAL | client `Setting/*.dat` |
+| `plugin` | 1 | PROVEN | `Map.pk2 /plugin.dat` |
+
+### `ainavdata` (AI navigation data) — PARTIAL (header + vertex section proven; edge records UNKNOWN)
+
+Header (24 bytes), proven from real bytes across all 26 files:
+
+- byte 0 = version `0x01`.
+- u32 LE @1..4 = `vertex_section_offset`: the **absolute file offset** of the
+  trailing vertex/sub-section (NOT a byte count). At that offset every file
+  repeats its `region_id` + `type` as a sub-header (verified for all 26).
+- u16 LE @5..6 = `region_id` = `0x8000 | numeric_id`; `numeric_id` == the id in
+  the filename (32768..32794). e.g. `ainavdata_32787.dat` carries `0x8013`.
+- byte 7 = `type` (varies: `0x01,0x05,0x0d,0x13,0x14,0x16,0x17,0x1d,0x20,
+  0x23,0x29,0x2d,0x45,0x57,0x59,0x97`).
+- u32 @8..11 = 0.
+- u16 BE @14..15 = `count_a` (secondary count, semantics UNKNOWN).
+- u16 BE @16..17 = `0x0000` (simple files) or `0x0100`/`0x0800` (complex files)
+  — UNKNOWN.
+- u16 BE @18..19 = `count_b` = vertex count (matches the count in the trailing
+  sub-section).
+- bytes 20..23 = 0 for simple files; byte 20 is occasionally `0x01`/`0x02`
+  (small LE u32) — UNKNOWN.
+
+Body (offset 24 .. `vertex_section_offset`-1): edge/cell connectivity data as
+big-endian u16 values. The leading records carry a `0x00`/`0x01` type byte and
+later records use `0x02`/`0x03` (a two-section structure, first section length
+≈ `count_a`); exact record length and semantics are NOT yet proven.
+
+Trailing sub-section (offset `vertex_section_offset` .. EOF), proven:
+
+- u16 LE `region_id` (repeats header), u8 `type` (repeats header).
+- u32 BE `count` (= header `count_b`).
+- 3 padding bytes `0x00`.
+- `count` × 12 bytes of vertex positions as f32 LE triplets `(x, y, z)`.
+  For region navmesh (`type 0x01`) `y == 0.0` (2D X-Z grid; height resolved from
+  terrain at runtime). For dungeon navmesh (`type 0x97`) `y` is a real height
+  (3D).
+- 1 trailing zero float (4 bytes `0x00`).
+
+Simple vs complex: for 11 of 26 files the sub-section is exactly
+`7 + 3 + count_b*12 + 4` bytes (sub-header + pad + vertices + trailing zero).
+The other 15 files append extra edge/link data after the vertex array (not yet
+decoded); these are the larger / multi-type regions and dungeons.
+
+`SR_GameServer.exe` references confirm the loader: strings `AINavData*.*`,
+`Failed To Load AI_NAVIGATION Data File! [%s]`,
+`AI_NAVIGATION Data [%s] Loaded`, `AINavData Version is not match!!!`,
+`AINavData_%d.DAT`, and path `DATA\navmesh`. `GameClient.exe` carries
+`RTNavMeshTerrain.cpp`, `NavMesh`, `Navigation`.
+
+### `jmxvimg` (font glyph image) — PROVEN magic, UNKNOWN header semantics
+
+`Media.pk2 /fonts/{0,i,y}.dat` each begin `JMXVIMG11000`. Header carries two
+u16-like fields (at 12 and 14) followed by BGRA pixel data. The 12-byte magic is
+proven; the header field semantics (dimensions/stride) are explicitly UNKNOWN.
+
+### `palette`, `hex-token`, `bmp`, `config`, `plugin`
+
+- `palette`: `/silk.dat` = 768 B = 256 × RGB, classic 16-color VGA head.
+- `hex-token`: `Silkload.dat` = ASCII hex string, no newline (170 B).
+- `bmp`: launcher UI assets misnamed `.dat`, all `BM` (e.g. `bg_1.dat` 700×419).
+- `config`: client settings, u32-count-prefixed binary records; field layout
+  per-file UNKNOWN. Includes the tiny `SRExtQSOption.dat` (11 B, count 2) and
+  `SRExtQSOption2.dat` (6 B, count 1) whose per-record layout is indeterminate
+  from so few bytes.
+- `plugin`: `/plugin.dat` (46 B) = plugin loader manifest — u32 LE count, then
+  per entry a 16-byte identifier (GUID/hash, semantics UNKNOWN) + u16 LE name
+  length + null-terminated name. The single entry is `bsnetEx.dll`.
+
+### `.dat` UNKNOWN residue
+
+None. All 88 `.dat` records now classify into a concrete family; the previous
+UNKNOWN residue (`/plugin.dat`, `SRExtQSOption{,.2}.dat`) is now `plugin`
+(PROVEN) and `config` (PARTIAL) respectively.
+
+Deliverables: `scripts/dat_families.py`, `scripts/test_dat_families.py`
+(12 tests), `scripts/reclassify_dat.py` (targeted `.dat` reclassification
+applied to `SOURCE_CORPUS_MANIFEST.json` / `SOURCE_CORPUS_STATS.json` /
+`SOURCE_SYSTEM_INVENTORY.json`).
+
+## 10. SQL `.Bak` backups — MTF wrapper confirmed
+
+All four `*.Bak` files (`SRO_CERTIFICATION`, `SRO_VT_ACCOUNT`,
+`SRO_VT_SHARD`, `SRO_VT_SHARDLOG`) begin with the 4-byte magic `TAPE`
+(`54 41 50 45`), the Microsoft Tape Format (MTF) signature that wraps SQL
+Server backup streams. Proven from the first 4 bytes of each file; the MTF
+container internals (backup set descriptors, media headers, database page
+stream) are NOT decoded — table names were instead recovered by a read-only
+strings scan (`SQL_DATABASE_SCHEMA.json`: `account` 71, `shard` 487,
+`shardlog` 14, `certification` 0 tables). See `CLIENT_SQL_EVIDENCE.json` for
+the consolidated client-archive + RecMsg/SendMsg + SQL schema evidence.
+
+## 11. `.bmt` materials, `tile2d.ifo` index, and `.t` tile maps (Phase 18)
+
+### `.bmt` material (`JMXVBMT 0102`) — **FULL LAYOUT PROVEN**
+
+All 4,269 `Data.pk2` `.bmt` files (16,328 entries) parse byte-exactly with a
+single layout; no exceptions:
+
+| Offset | Size | Field |
+|---|---|---|
+| 0 | 12 | magic `JMXVBMT 0102` |
+| 12 | 4 | `u32` material count |
+| then per entry: | | |
+| +0 | 4 | `u32` name length (null-padded to 4-byte-ish boundary) |
+| +4 | len | null-padded ASCII material name |
+| +len | 72 | 18 × `f32` material props (ambient/diffuse/specular/emissive RGBA + extras) |
+| +72 | 4 | `u32` ddj length (null-padded) |
+| +4 | len | null-padded ASCII `.ddj` texture path |
+| +len | 7 | tail = `f32 1.0` + 3 bytes (semantics UNKNOWN; census: `180000`/`200800`/`000001`/`000000` dominant) |
+
+The name/ddj length fields carry **null padding** (e.g. `electus_m_xmas` =
+14 chars stored in an 18-byte field). The previous `parse_bmt` returned the
+padded bytes verbatim, which broke `.endswith(".ddj")` lookups; Phase 18 fixes
+this (`_strip_padded`) while preserving the dict interface.
+
+Decoded props for `electus_m_xmas` = `[0.588,0.588,0.588,1.0, 0.588,0.588,0.588,1.0,
+0.9,0.9,0.9,1.0, 0,0,0,1.0, 0,0]` — three RGBA sets (diffuse gray ~0.588,
+specular ~0.9, emissive black) plus two trailing floats (0.0), i.e. a standard
+fixed-function material block.
+
+### `tile2d.ifo` 2D tile index (`JMXV2DTI1001`) — **PROVEN**
+
+`Map.pk2 /tile2d.ifo` (and `Data.pk2 /navmesh/tile2d.ifo`) is a text index
+(magic line `JMXV2DTI1001`, line 2 = count `719`), one entry per line:
+
+```
+ID 0xFLAG "CLASS" "texture.ddj" {x,y} {x,y} ...
+```
+
+719 entries, `id` 0..718, `flag` ∈ `{0,1,3,6,7,9,10,11,12}`, `class` is a
+region/material group name (e.g. `CJfild`, `Arabia`, `East Eurpoe`), `texture`
+is a `tile2d/*.ddj` path, and the optional `{x,y}` pairs are world-sector
+coordinates naming where the tile appears. `tile3d.ifo` is a 2-byte plain-text
+`0\n` (no 3D index).
+
+### `.t` map tile (`JMXVMAPT1001`) — **PARTIAL (header/size/tile refs proven; grid UNKNOWN)**
+
+4,989 files (Map.pk2 4,988 + Media.pk2 1). Proven facts:
+
+- 12-byte magic `JMXVMAPT1001`; standard size `140,436` = `12 + 140,424`
+  (4,987 files byte-identical in size).
+- Body is a dense 8-bit stream dominated by `0x00` (40%) and `0xFF` (44%).
+- As `u16` cells, ~40% are tile IDs within `tile2d.ifo` range 0..718
+  (cross-referenced via `parse_t`), the rest `0xFFFF`/`0x0000` "empty" markers
+  plus RGB565-looking color values (e.g. `0x9CD3`, `0xE73C`, `0x5555`).
+- Anomalies: `/88/83_13.t` (92,712 B) is actually `.m` terrain (`JMXVMAPM1000`)
+  misnamed `.t`; `Media.pk2 /SV.T` is 1,024 B.
+
+**Unresolved**: the exact grid dimensions. The body `140,424 = 2³·3·5851`
+(5851 prime) resists every clean grid factorization (no 96/97/128/256/512
+stride fits). The trailing 2,992 bytes are a repeating
+`ff ff ff ff 00 00 00 00` alternation. No authoritative `.t` loader exists in
+the decompiled `com.opensilkroadmap.app.world` classes (they only handle the
+`.hg` height grid). The `.t` grid layout and per-cell semantics remain UNKNOWN;
+`parse_t` therefore only asserts the header/size and the tile-ID
+cross-reference, never the cell grid.
+
+Deliverables: `scripts/world_terrain.py` (`parse_bmt_entries`,
+`parse_bmt`, `parse_tile2d_ifo`, `tile2d_index`, `parse_t`),
+`scripts/test_phase18_t_bmt.py` (13 tests), reclassification of `.bmt` → PROVEN
+and `.t` → PARTIAL via `scripts/reclassify_jmx.py`.
+
+## 12. The polymorphic `.ifo` tail + non-JMX residue (Phase 21)
+
+This batch closes the `.ifo` family and every remaining non-JMX UNKNOWN format
+that has a provable header. Three new decoders landed: `scripts/ifo_decoder.py`
+(`.ifo`), `scripts/reclassify_ifo.py`, and `scripts/misc_decoder.py` +
+`scripts/reclassify_misc.py` (`.rd`/`.2dt`/`.mfo`/`.msf`/`.bak`/`.dll`/`.exe`/
+`.pk2`/extension-less icon).
+
+### `.ifo` new magics
+
+| magic | file | status | evidence |
+|---|---|---|---|
+| `JMXVOBJL1000` | `layerobjectlist.ifo` | **PROVEN** | text: line 0 magic, line 1 decimal count `3334`, then 3,334 lines × 9 space-separated fields `{id_hex} {type} {sx} {sy} {x_hex} {y_hex} {z_hex} {theta_hex} {flag}`; top 16 bits of `id` == `(sy<<8)|sx`; x/y/z/theta are float32 hex bit-patterns; `type`∈1..11, `flag`∈{0,1}. Count matches exactly. |
+| `JMXVCAMR1002` | `config.ifo` | PARTIAL | magic + stream of float32 camera params; pos/target/up/fov assignment UNKNOWN. |
+| `JMXVENVI1003` | `environment.ifo` | PARTIAL | magic + u32 header + length-prefixed name (`Env7`) + f32 colour/lighting values. |
+| `JMXV2DTI1001` | `tile2d.ifo` | PROVEN | (Phase 18) 719-entry text index. |
+| `JMXVOBJI1000` | `object*.ifo`/`objext.ifo` | PROVEN | (Phase 17) object/string/extension index. |
+| `0\n` | `tile3d.ifo` | TEXT | 2-byte plain text, not JMX. |
+
+`reclassify_ifo.py` reads the leading 12 magic bytes per `.ifo` (the extension
+is polymorphic) and applied PROVEN to the 9 `OBJI`/`2DTI`/`OBJL` files, PARTIAL
+to `CAMR`/`ENVI`, and TEXT to `tile3d.ifo`.
+
+### Non-JMX residue
+
+| extension | count | status | format | evidence |
+|---|---|---|---|---|
+| `.rd` | 103 | PROVEN | `bmp-region-thumbnail` | all 103 `VSRO-R Client` region files are standard Windows BMP: `BM`, file size 1334, data offset 1078, 16×16, 8 bpp indexed (identical header across all). |
+| `.dll` / `.exe` | 35 / 19 | PROVEN | `pe-executable` | `MZ` + `PE\0\0` at `e_lfanew` (42/44 extracted samples verified; the 12 container-only records are PE by construction). |
+| `.pk2` | 1 | PROVEN | `pk2-archive` | nested `Media.pk2` inside `VSRO-R Client.7z` (`JoyM` header). |
+| `(none)` icon | 1 | PROVEN | `jmx-texture` | `/icon/action/cos_cmd_inventory` is a misnamed `.ddj` (`JMXVDDJ 1000`, 32×32 DDS) — parsed by `jmx_ddj.parse_ddj`. |
+| `.2dt` | 51 | PARTIAL | `cnif-ui-layout` | u32 field + `CNIF` magic + null-terminated window name (e.g. `BattleArenaRankWnd`); body is a serialized UI control tree embedding `.ddj` texture and `UIIT_` string tokens (UNKNOWN). `guild_r.2dt` is a multi-`CNIF` aggregate (first `CNIF` at offset 4,884). |
+| `.mfo` | 2 | PARTIAL | `jmx-mfo-mapinfo` | `JMXVMFO 1000` + u16 width + u16 height (256×128); trailing sparse data grid (740 nonzero bytes, ~252 u32 cells) UNKNOWN. |
+| `.msf` | 2 | PARTIAL | `sound-effect-script` | u32 count=1 + u32 fields + length-prefixed `ambient` name + `.efp` path refs (`system\summer_oura.efp`) + f32 triples. |
+| `.bak` | 4 | PARTIAL | `mtf-sql-backup` | `TAPE` MTF magic (section 10); container internals not decoded. |
+| `.crb` | 18 | PARTIAL | `crest-16x16-grid` | 256-byte fixed grid (16×16 bytes) of small integer tile/terrain codes; per-cell semantics UNKNOWN. |
+| `.scc` vssver2 | 2 | DEAD | `vss-source-control` | Microsoft Visual SourceSafe version-file (`34 12 01 00` magic) + `$/project` path string + null-terminated file-name list; source-control metadata, not game data. |
+
+**Left UNKNOWN (no provable structure):** `.cs3` ×2 (`Map1.CS3`,
+`Map2.CS3`, 13,000 B each, byte entropy 5.77 with all 256 byte values present —
+consistent with encryption/compression). The two files are identical except for
+2 bytes at offset 12,604–12,605 (map index), which is consistent with a shared
+encrypted/compressed payload whose only plaintext difference is the map
+identifier; without the server's decryption routine the payload cannot be
+parsed.
+
+### Final reconciliation (120,840 indexed files)
+
+| status | count |
+|---|---|
+| PROVEN | 83,216 |
+| PARTIAL | 37,583 |
+| UNKNOWN | 2 |
+| TEXT | 1 |
+| STUB | 17 |
+| DEAD | 21 |
+| MISSING | 1 |
+
+Deliverables: `scripts/ifo_decoder.py`, `scripts/misc_decoder.py`,
+`scripts/test_phase21_ifo.py` (5 tests), `scripts/test_phase21_misc.py`
+(8 tests), `scripts/reclassify_ifo.py`, `scripts/reclassify_misc.py`.

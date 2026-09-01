@@ -1,0 +1,184 @@
+{
+ "client_archive": {
+  "archive": "vsro_pkg/VSRO-R Client/VSRO-R Client.7z",
+  "extracted_files": 119,
+  "extracted_bytes": 16412831,
+  "skipped": "Media.pk2 (823,066,624 bytes) — duplicate of already-extracted pk2raw/Media.pk2",
+  "categories": {
+   "binaries": [
+    "GFXFileManager.dll",
+    "GameClient.exe",
+    "Launcher.exe",
+    "MuitClient.exe",
+    "Uptodate.exe",
+    "dbghelp.dll",
+    "edxSilkroadDll5.dll",
+    "msvcp60.dll"
+   ],
+   "rd_bitmaps": 103,
+   "settings": [
+    "Setting/SRChattingBlockingList.dat",
+    "Setting/SRExtQSOption.dat",
+    "Setting/SRExtQSOption2.dat",
+    "Setting/SROptionSet.dat",
+    "Setting/gmwpfort.dat",
+    "Setting/wndpos.dat",
+    "Silkload.dat",
+    "silkcfg.dat"
+   ]
+  },
+  "rd_format": "16x16 8bpp Windows BMP (BM magic) — region minimap icons, not region data",
+  "gameclient_recmsg_ref": {
+   "file": "GameClient.exe",
+   "offset": 10428884,
+   "context": "Game.cpp startup, loaded via CreateFile(%s); 'File Not Find.' on absence",
+   "build_path_leak": "D:\\vss-od\\Silkroad\\Client\\client\\Game.cpp",
+   "debug_fmt": "MSGID:0x%X,R(%d),W(%d),T(%d)"
+  }
+ },
+ "recmsg_sendmsg": {
+  "RecMsg.dat": {
+   "verdict": "MISSING",
+   "evidence": "string 'RecMsg.dat' in GameClient.exe (client-side receive-message table)",
+   "reconstructable": "no authoritative source contains it; would require reverse-engineering client opcode dispatch"
+  },
+  "SendMsg.dat": {
+   "verdict": "NOT_AUTHORITATIVE",
+   "evidence": "no binary references 'SendMsg.dat'; only 'SendMsg' appears as C++ method names in SR_GameServer.exe (SendMsgToPeer, SendMsgToAllGameWorldUser, ...)",
+   "reclassified_from": "MISSING (prior assumption of client+server dispatch reference was incorrect)"
+  }
+ },
+ "sql_backups": {
+  "dir": "/tmp/opencode/vsro_db",
+  "databases": {
+   "certification": {
+    "file": "SRO_CERTIFICATION.Bak",
+    "size": 3957248,
+    "candidate_tables": 0
+   },
+   "account": {
+    "file": "SRO_VT_ACCOUNT.Bak",
+    "size": 21592576,
+    "candidate_tables": 71
+   },
+   "shard": {
+    "file": "SRO_VT_SHARD.Bak",
+    "size": 93501952,
+    "candidate_tables": 487
+   },
+   "shardlog": {
+    "file": "SRO_VT_SHARDLOG.Bak",
+    "size": 3705344,
+    "candidate_tables": 14
+   }
+  },
+  "curated_subsystems": {
+   "training_camp_mentor": [
+    "_TrainingCamp",
+    "_TrainingCampMember",
+    "_TrainingCampHonorRank",
+    "_TrainingCampBuffStatus",
+    "_TrainingCampSubMentorHonorPoint"
+   ],
+   "trijob": [
+    "_CharTrijob",
+    "_OldTrijob",
+    "_TrijobRanking4WEB",
+    "_TrijobRewards"
+   ],
+   "consignment_trade": [
+    "_ConsignmentTrade_Progress_RuntimeLog",
+    "_UpdateProcessState_ConsignmentTrade_CONSI",
+    "_UpdateProcessState_ConsignmentTrade_CONSIGNMENT_INFO",
+    "_UpdateProcessState_ConsignmentTrade_CONSIGNMENT_STATE_ONLY",
+    "_UpdateProcessState_ConsignmentTrade_PATH_PATROL_INFO",
+    "_Insert_ConsignmentTrade_RewardCharLog",
+    "_Delete_ConsignmentTrade_Invest_Rewareded"
+   ],
+   "flea_market": [
+    "_FleaMarketNetwork"
+   ],
+   "robber_trader": [
+    "_RobberActivity",
+    "_TraderContribution",
+    "_RefRanking_RobberActivity",
+    "_RefRanking_RobberContribution",
+    "_Tab_RefRanking_TraderContribution"
+   ],
+   "siege_fortress": [
+    "_SiegeFortress",
+    "_SiegeFortressBattleRecord",
+    "_SiegeFortressRequest",
+    "_SiegeFortressStoneState",
+    "_SiegeFortressObject",
+    "_SiegeFortressStruct",
+    "_RefSiegeFortress",
+    "_RefSiegeFortressBattleRank",
+    "_RefSiegeFortressGuard",
+    "_RefSiegeFortressItemForge",
+    "_RefSiegeStructUpgrade"
+   ],
+   "guild_war": [
+    "_GuildWar",
+    "_AlliedClans",
+    "_Guild__AlliedClans",
+    "_GuildChest",
+    "_GuildMember"
+   ],
+   "friend": [
+    "_Friend",
+    "_FriendGroup"
+   ],
+   "instance_world": [
+    "_RefInstance_World_Region",
+    "_RefInstance_World_Start_Pos",
+    "_RefGame_World",
+    "_CharInstanceWorldData",
+    "_FlagWorld_EventParticipants"
+   ],
+   "avatar_cos": [
+    "_StaticAvatar",
+    "_InventoryForAvatar",
+    "_CharCOS",
+    "_InvCOS"
+   ],
+   "chest_storage": [
+    "_Chest",
+    "_ChestInfo",
+    "_GuildChest",
+    "_CharStorage"
+   ],
+   "item_pool_market": [
+    "_ItemPool",
+    "_ItemQuotation",
+    "_LatestItemSerial"
+   ],
+   "timed_job_pet": [
+    "_TimedJob",
+    "_TimedJobForPet"
+   ],
+   "silk_consumption": [
+    "_ConsumeSilkByGameServerD"
+   ],
+   "drop_system": [
+    "_RefDropClassSel_Alchemy_Tablet",
+    "_RefDropClassSel_Ammo",
+    "_RefDropClassSel_Cure",
+    "_RefDropClassSel_Equip",
+    "_RefDropClassSel_RareEquip",
+    "_RefDropClassSel_Recover",
+    "_RefDropClassSel_Reinforce",
+    "_RefDropClassSel_Scroll",
+    "_RefDropGold",
+    "_RefDropItemAssign",
+    "_RefDropOptLvlSel",
+    "_RefCustomizingReservedItemDropForMonster"
+   ],
+   "trade_conflict": [
+    "_CheckTradeConflict_UnregisterUserJob",
+    "_QueryStatics_TradeConflictJobStatus"
+   ]
+  },
+  "note": "candidate table names from read-only strings scan; exact names may carry 1-3 trailing metadata bytes"
+ }
+}

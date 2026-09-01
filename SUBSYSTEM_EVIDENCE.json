@@ -1,0 +1,751 @@
+{
+ "lua_census": {
+  "files": 839,
+  "bytes": 1519637,
+  "unique_mobs": 647,
+  "unique_items": 707,
+  "unique_npcs": 207,
+  "unique_npc_names": 205,
+  "mission_types": [
+   "MISSION_TYPE_CATCH_MONSTER",
+   "MISSION_TYPE_CHANGE_ITEM",
+   "MISSION_TYPE_DELIVER_ITEM",
+   "MISSION_TYPE_DIALOG",
+   "MISSION_TYPE_DIFFERENT_QUEST_CLEAR",
+   "MISSION_TYPE_ESCORT_NPC",
+   "MISSION_TYPE_GATHER_ITEM_FROM_FIELD",
+   "MISSION_TYPE_GATHER_ITEM_FROM_MONSTER",
+   "MISSION_TYPE_GATHER_ITEM_FROM_NPC",
+   "MISSION_TYPE_KILL_MONSTER",
+   "MISSION_TYPE_KILL_PLAYER",
+   "MISSION_TYPE_TALISMANCOLLECTION",
+   "MISSION_TYPE_TIME_CHECK"
+  ],
+  "lua_api_functions": {
+   "LuaGetQuestID": 854,
+   "LuaSetStartCodition": 830,
+   "LuaSetStartMethod": 830,
+   "LuaInsertMissionOrCompleteNpc": 830,
+   "LuaQuestInsertNpc": 830,
+   "LuaSetMissionDataSize": 829,
+   "LuaInsertQuest": 820,
+   "LuaSetAchievementLimit": 750,
+   "LuaSetMissionCompleteNum": 634,
+   "LuaSetAchievedItem": 534,
+   "LuaSetAchievedSkillPont": 532,
+   "LuaSetCollectionItemMissionData": 354,
+   "LuaInsertDependancyQuests": 346,
+   "LuaSetMissionData_EX": 241,
+   "LuaSetDivideType": 218,
+   "LuaSetRaceStartCodition": 156,
+   "LuaSetJobTypeStartCondition": 139,
+   "LuaSetMissionData": 126,
+   "LuaInsertQuestFunctionStringList": 108,
+   "LuaSetFlagRewardInProgress": 100,
+   "LuaSetDeliverMissionData": 84,
+   "LuaSetDialLogMissionData": 79,
+   "LuaSetDifferentString": 77,
+   "LuaSetDeliverMissionData_EX": 65,
+   "LuaQuestShowMenuCommon": 61,
+   "LuaSetRealTime": 52,
+   "LuaEventInQuireSameItem": 40,
+   "LuaSetAchievedPoint": 36,
+   "LuaInsertMissionCompleteNpcList": 36,
+   "LuaGetQuestCurPage": 33,
+   "LuaInsertMissionNPC": 28,
+   "LuaSetCurPage": 24,
+   "LuaShowMenu": 24,
+   "LuaInQuireSameItem": 24,
+   "LuaGObjAppearedInSight": 23,
+   "LuaTerminateQuestMenu": 22,
+   "LuaQuestAddItem_EXT": 21,
+   "LuaGetQuestStatus": 16,
+   "LuaGetCountEmptyInventory": 12,
+   "LuaTerminateMenu": 12,
+   "LuaQuestSetDeleteHandler": 12,
+   "LuaDelItemEXT": 12,
+   "LuaQuestSetStartHandler": 12,
+   "LuaSetKillPlayerMissionData": 9,
+   "LuaSetPayStep": 9,
+   "LuaGetQuestMenuResponse": 9,
+   "LuaSendQuestEventMessage": 9,
+   "LuaCheckQuestAchieveCondition": 8,
+   "LuaPrepareQuestData": 8,
+   "LuaQuestStart": 8,
+   "LuabSetPayQuest": 8,
+   "LuaSaveLocalQuestNow": 7,
+   "LuaInsertEvent": 6,
+   "LuaInsertNpc": 6,
+   "LuaInsertFunctionStringList": 6,
+   "LuaDelItem_EXT": 6,
+   "LuaAddItem_EXT": 6,
+   "LuaNpcHandlerNum": 6,
+   "LuaGetCurPage": 6,
+   "LuaGetEventMenuResponse": 6,
+   "LuaGetCurRegionID": 6,
+   "LuaCmpCodeName": 6,
+   "LuaSetTalismanMissionData": 4,
+   "LuaSetHwanLevel": 4,
+   "LuaRanged_rand_f": 3,
+   "LuaSetDisableQuest": 3,
+   "LuaGetStep": 3,
+   "LuaSetCollectionItemMissionData_EX": 2,
+   "LuaInsertDependancyQuestsOneClear": 2,
+   "LuaSetDayOrNight": 2,
+   "LuaStartDayLimit": 2,
+   "LuaSetLimitTimeStartCondition": 2,
+   "LuaEventGetJob": 1,
+   "LuaSetQuestCurPage": 1,
+   "LuaSaveQuestNow": 1,
+   "LuaQuestGiveEventPoint_EXP_Gold": 1,
+   "LuaEnablePayQuestItem": 1
+  }
+ },
+ "textdata_table_count": 159,
+ "format_verification_count": 52,
+ "format_families": {
+  "c-source": [
+   ".c"
+  ],
+  "cnif-table": [
+   ".2dt"
+  ],
+  "dds-texture": [
+   ".tmp"
+  ],
+  "jmx-animation-ban": [
+   ".ban"
+  ],
+  "jmx-dungeon-object-dof": [
+   ".dof"
+  ],
+  "jmx-effect-efp": [
+   ".efp"
+  ],
+  "jmx-font-img": [
+   ".dat"
+  ],
+  "jmx-map-info-mfo": [
+   ".mfo"
+  ],
+  "jmx-map-model": [
+   ".m",
+   ".t"
+  ],
+  "jmx-map-object": [
+   ".o",
+   ".o2"
+  ],
+  "jmx-material-bmt": [
+   ".bmt"
+  ],
+  "jmx-mesh-bsr": [
+   ".bsr"
+  ],
+  "jmx-navmesh-nvm": [
+   ".nvm"
+  ],
+  "jmx-object-info-ifo": [
+   ".ifo"
+  ],
+  "jmx-skeleton-bms": [
+   ".bms"
+  ],
+  "jmx-skin-bsk": [
+   ".bsk"
+  ],
+  "jmx-strings-cpd": [
+   ".cpd"
+  ],
+  "jmx-texture-ddj": [
+   "(none)",
+   ".ddj"
+  ],
+  "ogg-audio": [
+   ".ogg"
+  ],
+  "shader-source": [
+   ".psh",
+   ".vsh"
+  ],
+  "soundfont-sfk": [
+   ".sfk"
+  ],
+  "text": [
+   ".txt"
+  ],
+  "tga-texture": [
+   ".tga"
+  ],
+  "utf16-text": [
+   ".txt"
+  ],
+  "wav-audio": [
+   ".wav"
+  ]
+ },
+ "subsystems": {
+  "item": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "itemdata_10000.txt",
+      "itemdata_15000.txt",
+      "itemdata_20000.txt",
+      "itemdata_25000.txt",
+      "itemdata_30000.txt",
+      "itemdata_35000.txt",
+      "itemdata_40000.txt",
+      "itemdata_45000.txt",
+      "itemdata_5000.txt",
+      "itemeffect.txt",
+      "item_grouping.txt",
+      "magicoption.txt",
+      "magicoptionassign.txt",
+      "magicoptionassignfortradeequip.txt",
+      "refsetitemgroup.txt",
+      "refpackageitem.txt",
+      "refscrapofpackageitem.txt",
+      "refpricepolicyofitem.txt"
+     ]
+    },
+    {
+     "kind": "lua",
+     "note": "quest scripts reference items",
+     "unique_item_refs": 707
+    }
+   ]
+  },
+  "character_monster_npc": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "characterdata_10000.txt",
+      "characterdata_15000.txt",
+      "characterdata_20000.txt",
+      "characterdata_25000.txt",
+      "characterdata_30000.txt",
+      "characterdata_35000.txt",
+      "characterdata_40000.txt",
+      "characterdata_45000.txt",
+      "characterdata_5000.txt",
+      "npcchat.txt",
+      "npcpos.txt",
+      "specialnpcdata.txt",
+      "charactervisualchange.txt",
+      "textdata_object.txt"
+     ]
+    },
+    {
+     "kind": "lua",
+     "unique_mobs": 647,
+     "unique_npcs": 207,
+     "unique_npc_names": 205
+    }
+   ]
+  },
+  "skill": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "skilldata.txt",
+      "skilldata_10000.txt",
+      "skilldata_10000enc.txt",
+      "skilldata_15000.txt",
+      "skilldata_15000enc.txt",
+      "skilldata_20000.txt",
+      "skilldata_20000enc.txt",
+      "skilldata_25000.txt",
+      "skilldata_25000enc.txt",
+      "skilldata_30000.txt",
+      "skilldata_30000enc.txt",
+      "skilldata_35000.txt",
+      "skilldata_35000enc.txt",
+      "skilldata_5000.txt",
+      "skilldata_5000enc.txt",
+      "skilldata_virtual.txt",
+      "skilldataenc.txt",
+      "skilleffect.txt",
+      "skillgroup.txt",
+      "skillmasterydata.txt",
+      "learnableskill.txt",
+      "erasableskill.txt",
+      "learnablemastery.txt",
+      "erasablemastery.txt"
+     ]
+    }
+   ]
+  },
+  "quest": {
+   "evidence": [
+    {
+     "kind": "lua",
+     "files": 839,
+     "mission_types": [
+      "MISSION_TYPE_CATCH_MONSTER",
+      "MISSION_TYPE_CHANGE_ITEM",
+      "MISSION_TYPE_DELIVER_ITEM",
+      "MISSION_TYPE_DIALOG",
+      "MISSION_TYPE_DIFFERENT_QUEST_CLEAR",
+      "MISSION_TYPE_ESCORT_NPC",
+      "MISSION_TYPE_GATHER_ITEM_FROM_FIELD",
+      "MISSION_TYPE_GATHER_ITEM_FROM_MONSTER",
+      "MISSION_TYPE_GATHER_ITEM_FROM_NPC",
+      "MISSION_TYPE_KILL_MONSTER",
+      "MISSION_TYPE_KILL_PLAYER",
+      "MISSION_TYPE_TALISMANCOLLECTION",
+      "MISSION_TYPE_TIME_CHECK"
+     ]
+    },
+    {
+     "kind": "textdata",
+     "tables": [
+      "questdata.txt",
+      "questcontentsdata.txt",
+      "refquestrewarditems.txt",
+      "refqusetreward.txt",
+      "textquest.txt",
+      "textquest_otherstring.txt",
+      "textquest_queststring.txt",
+      "textquest_speech&name.txt"
+     ]
+    }
+   ]
+  },
+  "event": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "eventdata.txt",
+      "eventguidedata.txt",
+      "eventzonedata.txt",
+      "textevent.txt",
+      "refeventreward.txt",
+      "refeventrewarditems.txt",
+      "refservereventid.txt"
+     ]
+    }
+   ]
+  },
+  "shop_mall": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "refalchemy_mk_recipeshopdata.txt",
+      "shopdata.txt",
+      "shopitemdata.txt",
+      "shoptabdata.txt",
+      "shopgroupdata.txt",
+      "refshop.txt",
+      "refshopgoods.txt",
+      "refshopgroup.txt",
+      "refshopitemstockperiod.txt",
+      "refshoptab.txt",
+      "refshoptabgroup.txt",
+      "refshopgoods.txt",
+      "refshopgroup.txt",
+      "refshoptab.txt",
+      "refshoptabgroup.txt",
+      "refshoptabgroup.txt",
+      "refmappingshopgroup.txt",
+      "refmappingshopwithtab.txt",
+      "mallitemmenulistdata.txt"
+     ]
+    }
+   ]
+  },
+  "teleport": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "teleportdata.txt",
+      "teleportlink.txt",
+      "teleportbuilding.txt",
+      "refoptionalteleport.txt"
+     ]
+    }
+   ]
+  },
+  "region_zone_worldmap": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "regioncode.txt",
+      "textzonename.txt",
+      "worldmap_instanceinfo.txt",
+      "worldmap_localinfo.txt",
+      "worldmap_mapinfo.txt",
+      "worldmapguidedata.txt",
+      "worldmapguidedata_region.txt"
+     ]
+    },
+    {
+     "kind": "textfile",
+     "files": [
+      "/RegionInfo.txt",
+      "/dungeon/Dungeoninfo.txt",
+      "/shader/regioninfo.txt",
+      "/camera_path.txt",
+      "/layerobjdef.txt"
+     ],
+     "note": "verified readable text (targeted pk2_mate extraction)"
+    }
+   ]
+  },
+  "siege_fortress": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "siegefortress.txt",
+      "siegefortressbattlerank.txt",
+      "siegefortressguard.txt",
+      "siegefortressitemforge.txt",
+      "siegefortressreward.txt",
+      "siegestructupgradedata.txt",
+      "refsiegedungeon.txt",
+      "refsiegeblessbuff.txt",
+      "gameworldconfigdata.txt"
+     ]
+    }
+   ]
+  },
+  "alchemy_magic_option": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "refalchemy_mk_materialgroup.txt",
+      "refalchemy_mk_recipedata.txt",
+      "refalchemy_mk_recipeshopdata.txt",
+      "refalchemy_mk_resultgroup.txt",
+      "refalchemy_mk_tooltip.txt",
+      "refalchemy_mk_ui.txt",
+      "magicoption.txt",
+      "magicoptionassign.txt",
+      "magicoptionassignfortradeequip.txt",
+      "magicoptionassign.txt",
+      "magicoptionassignfortradeequip.txt",
+      "refmagicoptbyitemoptleveldata.txt",
+      "refmagicoptgroup.txt"
+     ]
+    }
+   ]
+  },
+  "gacha_collection": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "gachaitemset.txt",
+      "refgachatreeforclientuidata.txt",
+      "collectionbook_item.txt",
+      "collectionbook_theme.txt"
+     ]
+    }
+   ]
+  },
+  "effect_sound": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "effectsound.txt",
+      "effectenvsnd.txt",
+      "atstructeffect.txt"
+     ]
+    },
+    {
+     "kind": "format",
+     "formats": [
+      "jmx-effect-efp"
+     ]
+    }
+   ]
+  },
+  "ui_text": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "textuisystem.txt",
+      "textdata_equip&skill.txt",
+      "textdata_object.txt",
+      "texthelp.txt",
+      "messagetipdata.txt",
+      "texttooltipdata.txt"
+     ]
+    }
+   ]
+  },
+  "level_job_trade": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "hwanleveldata.txt",
+      "leveldata.txt",
+      "refabilitybyitemoptleveldata.txt",
+      "refmagicoptbyitemoptleveldata.txt",
+      "refskillbyitemoptleveldata.txt",
+      "levelgold.txt",
+      "hwanleveldata.txt",
+      "tradeconflict_joblevel.txt",
+      "tradeconflict_promotion.txt",
+      "fmncategorytreedata.txt"
+     ]
+    }
+   ]
+  },
+  "abuse_filter": {
+   "evidence": [
+    {
+     "kind": "textdata",
+     "tables": [
+      "abusefilter.txt"
+     ]
+    }
+   ]
+  },
+  "training-camp-mentor": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_TrainingCamp",
+      "_TrainingCampMember",
+      "_TrainingCampHonorRank",
+      "_TrainingCampBuffStatus",
+      "_TrainingCampSubMentorHonorPoint"
+     ]
+    }
+   ]
+  },
+  "trijob": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_CharTrijob",
+      "_OldTrijob",
+      "_TrijobRanking4WEB",
+      "_TrijobRewards"
+     ]
+    }
+   ]
+  },
+  "consignment-trade": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_ConsignmentTrade_Progress_RuntimeLog",
+      "_UpdateProcessState_ConsignmentTrade_CONSI",
+      "_UpdateProcessState_ConsignmentTrade_CONSIGNMENT_INFO",
+      "_UpdateProcessState_ConsignmentTrade_CONSIGNMENT_STATE_ONLY",
+      "_UpdateProcessState_ConsignmentTrade_PATH_PATROL_INFO",
+      "_Insert_ConsignmentTrade_RewardCharLog",
+      "_Delete_ConsignmentTrade_Invest_Rewareded"
+     ]
+    }
+   ]
+  },
+  "flea-market": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_FleaMarketNetwork"
+     ]
+    }
+   ]
+  },
+  "robber-trader": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_RobberActivity",
+      "_TraderContribution",
+      "_RefRanking_RobberActivity",
+      "_RefRanking_RobberContribution",
+      "_Tab_RefRanking_TraderContribution"
+     ]
+    }
+   ]
+  },
+  "siege-fortress": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_SiegeFortress",
+      "_SiegeFortressBattleRecord",
+      "_SiegeFortressRequest",
+      "_SiegeFortressStoneState",
+      "_SiegeFortressObject",
+      "_SiegeFortressStruct",
+      "_RefSiegeFortress",
+      "_RefSiegeFortressBattleRank",
+      "_RefSiegeFortressGuard",
+      "_RefSiegeFortressItemForge",
+      "_RefSiegeStructUpgrade"
+     ]
+    }
+   ]
+  },
+  "guild-war": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_GuildWar",
+      "_AlliedClans",
+      "_Guild__AlliedClans",
+      "_GuildChest",
+      "_GuildMember"
+     ]
+    }
+   ]
+  },
+  "friend": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_Friend",
+      "_FriendGroup"
+     ]
+    }
+   ]
+  },
+  "instance-world": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_RefInstance_World_Region",
+      "_RefInstance_World_Start_Pos",
+      "_RefGame_World",
+      "_CharInstanceWorldData",
+      "_FlagWorld_EventParticipants"
+     ]
+    }
+   ]
+  },
+  "avatar-cos": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_StaticAvatar",
+      "_InventoryForAvatar",
+      "_CharCOS",
+      "_InvCOS"
+     ]
+    }
+   ]
+  },
+  "chest-storage": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_Chest",
+      "_ChestInfo",
+      "_GuildChest",
+      "_CharStorage"
+     ]
+    }
+   ]
+  },
+  "item-pool-market": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_ItemPool",
+      "_ItemQuotation",
+      "_LatestItemSerial"
+     ]
+    }
+   ]
+  },
+  "timed-job-pet": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_TimedJob",
+      "_TimedJobForPet"
+     ]
+    }
+   ]
+  },
+  "silk-consumption": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_ConsumeSilkByGameServerD"
+     ]
+    }
+   ]
+  },
+  "drop-system": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_RefDropClassSel_Alchemy_Tablet",
+      "_RefDropClassSel_Ammo",
+      "_RefDropClassSel_Cure",
+      "_RefDropClassSel_Equip",
+      "_RefDropClassSel_RareEquip",
+      "_RefDropClassSel_Recover",
+      "_RefDropClassSel_Reinforce",
+      "_RefDropClassSel_Scroll",
+      "_RefDropGold",
+      "_RefDropItemAssign",
+      "_RefDropOptLvlSel",
+      "_RefCustomizingReservedItemDropForMonster"
+     ]
+    }
+   ]
+  },
+  "trade-conflict": {
+   "evidence": [
+    {
+     "kind": "database-table",
+     "database": "SRO_VT_SHARD",
+     "tables": [
+      "_CheckTradeConflict_UnregisterUserJob",
+      "_QueryStatics_TradeConflictJobStatus"
+     ]
+    }
+   ]
+  }
+ }
+}

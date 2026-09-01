@@ -51,13 +51,13 @@ per-entry counters are UNKNOWN (not needed for nameI -> bsr resolution).
 
 VERIFIED on the web-era pipeline (reused, cross-checked):
 - `.bsr` magic `JMXVRES 0109`; material path + list of `.bms` paths.
-- `.bmt` magic `JMXVBMT 0102`; material-name -> `.ddj` texture path.
+- `.bmt` magic `JMXVBMT 0102`; material-name -> `.ddj` texture path. **Phase 18
+  PROVES the full layout** (`world_terrain.parse_bmt_entries`): magic + `u32`
+  count; per entry `u32 name_len` + null-padded name + 72 B (18×f32 props) +
+  `u32 ddj_len` + null-padded `.ddj` path + 7 B tail (`f32 1.0` + 3 B). All
+  4,269 files / 16,328 entries parse byte-exactly.
 - `.bms` magic `JMXVBMS 0110`; `(pos, uv)` vertices (stride 44 or 52) + `u16`
   triangle indices; vertex type field at byte 12 + 4*13.
-
-Not re-validated against new extracts in Phase 10 -> status: VERIFIED (web-era)
-/ UNKNOWN (phase-10 recheck pending). Used only for object collision/rendering,
-which is out of scope for the terrain pipeline.
 
 ## 5. Textures — `.ddj`
 
@@ -80,11 +80,14 @@ grid for direct Android parsing.
 Committed: 23 real sector grids under
 `android/app/src/main/assets/game/world/` (see `world_index.tsv`).
 
-## 7. Formats inventoried but not yet parsed
+## 7. Formats inventoried (Phase 18 status)
 
-- `Map.pk2 /{Y}/{X}.o` (4,491 files) — terrain overlay / zone stamps.
-  Payload semantics **UNKNOWN**.
-- `Map.pk2 /{Y}/{X}.t` (4,988 files) — tile/zone records. Payload semantics
-  **UNKNOWN**.
-- `Map.pk2 mapinfo.mfo`, `layerobjdef.txt`, `layerobjectlist.ifo`,
-  `tile2d.ifo`, `tile3d.ifo` — world metadata. **UNKNOWN**.
+- `Map.pk2 /{Y}/{X}.o` (4,491 files) — terrain overlay / zone stamps. **PROVEN**
+  (`o2_decoder.parse_o`, 28-byte records, relative tail).
+- `Map.pk2 /{Y}/{X}.t` (4,988 files) — tile/zone records. **PARTIAL**
+  (`world_terrain.parse_t`): magic + size `140,436` + tile-ID cross-reference to
+  `tile2d.ifo` proven; grid layout **UNKNOWN** (body `140,424 = 2³·3·5851`).
+- `Map.pk2 /tile2d.ifo` (`JMXV2DTI1001`, 719 entries) — **PROVEN**
+  (`world_terrain.parse_tile2d_ifo`): `id → flag → class → .ddj → {x,y}` sectors.
+- `Map.pk2 mapinfo.mfo` (`JMXVMFO 1000`), `layerobjdef.txt`,
+  `layerobjectlist.ifo` (`JMXVOBJL1000`), `tile3d.ifo` (`0\n` text) — **UNKNOWN**.

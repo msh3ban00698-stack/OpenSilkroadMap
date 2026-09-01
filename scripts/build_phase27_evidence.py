@@ -24,10 +24,11 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "scripts"))
 
 import pk2_table  # noqa: E402
+import sro_paths  # noqa: E402
 
-SHARD_BAK = "/tmp/opencode/vsro_db/SRO_VT_SHARD.Bak"
-MEDIA_PK2 = "/tmp/opencode/pk2raw/Media.pk2"
-CLIENT_OPTIONSET = "/tmp/opencode/vsro_client/Setting/SROptionSet.dat"
+SHARD_BAK = os.path.join(sro_paths.resolve_db_dir(), "SRO_VT_SHARD.Bak")
+MEDIA_PK2 = os.path.join(sro_paths.resolve_pk2_dir(), "Media.pk2")
+CLIENT_OPTIONSET = os.path.join(sro_paths.resolve_client_install_dir(), "Setting", "SROptionSet.dat")
 
 SHARD_MARKERS = [
     b"--set @StartRegionID=25000",

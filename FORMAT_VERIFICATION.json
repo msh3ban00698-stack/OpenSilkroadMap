@@ -1,0 +1,428 @@
+{
+ "Data.pk2:.ban": {
+  "archive": "Data.pk2",
+  "ext": ".ban",
+  "path": "/prim/ani/bldg/china/cj_ferry/cj_ferry_boat_old.ban",
+  "size": 171,
+  "magic_hex": "4a4d585642414e203031303200000000",
+  "format": "jmx-animation-ban"
+ },
+ "Data.pk2:.bms": {
+  "archive": "Data.pk2",
+  "ext": ".bms",
+  "path": "/prim/mesh/bldg/arabia/Bagh_Petra/Bagh_Petra_fire.BMS",
+  "size": 302,
+  "magic_hex": "4a4d5856424d53203031313070000000",
+  "format": "jmx-skeleton-bms"
+ },
+ "Data.pk2:.bmt": {
+  "archive": "Data.pk2",
+  "ext": ".bmt",
+  "path": "/prim/mtrl/dun/jupiter/piety/piety_e01_door.bmt",
+  "size": 105,
+  "magic_hex": "4a4d5856424d54203031303201000000",
+  "format": "jmx-material-bmt"
+ },
+ "Data.pk2:.bsk": {
+  "archive": "Data.pk2",
+  "ext": ".bsk",
+  "path": "/prim/skel/bldg/china/cj_ferry/cj_ferry_boat_old.bsk",
+  "size": 127,
+  "magic_hex": "4a4d585642534b203031303101000000",
+  "format": "jmx-skin-bsk"
+ },
+ "Data.pk2:.bsr": {
+  "archive": "Data.pk2",
+  "ext": ".bsr",
+  "path": "/res/bldg/common/empty.bsr",
+  "size": 221,
+  "magic_hex": "4a4d58565245532030313039b5000000",
+  "format": "jmx-mesh-bsr"
+ },
+ "Data.pk2:.c": {
+  "archive": "Data.pk2",
+  "ext": ".c",
+  "path": "/shader/vstech_p11.c",
+  "size": 271,
+  "magic_hex": "23696e636c7564652022767370302e63",
+  "format": "c-source"
+ },
+ "Data.pk2:.cpd": {
+  "archive": "Data.pk2",
+  "ext": ".cpd",
+  "path": "/compound/particle/st_sand_01.cpd",
+  "size": 148,
+  "magic_hex": "4a4d5856435044203031303142000000",
+  "format": "jmx-strings-cpd"
+ },
+ "Data.pk2:.dat": {
+  "archive": "Data.pk2",
+  "ext": ".dat",
+  "path": "/navmesh/ainavdata_32787.dat",
+  "size": 3519,
+  "magic_hex": "01610c0000138001000000000000001c",
+  "format": "unknown-magic"
+ },
+ "Data.pk2:.ddj": {
+  "archive": "Data.pk2",
+  "ext": ".ddj",
+  "path": "/prim/mtrl/dun/asiam/r2_cv/ent/st_egyptent_b01.ddj",
+  "size": 660,
+  "magic_hex": "4a4d585644444a203130303088020000",
+  "format": "jmx-texture-ddj"
+ },
+ "Data.pk2:.dof": {
+  "archive": "Data.pk2",
+  "ext": ".dof",
+  "path": "/dungeon/jupiter/piety/piety_boss_uno.dof",
+  "size": 614,
+  "magic_hex": "4a4d5856444f46203031303174000000",
+  "format": "jmx-dungeon-object-dof"
+ },
+ "Data.pk2:.ifo": {
+  "archive": "Data.pk2",
+  "ext": ".ifo",
+  "path": "/navmesh/objext.ifo",
+  "size": 41,
+  "magic_hex": "4a4d58564f424a49313030300a310a30",
+  "format": "jmx-object-info-ifo"
+ },
+ "Data.pk2:.ini": {
+  "archive": "Data.pk2",
+  "ext": ".ini",
+  "path": "/prim/mtrl/item/desktop.ini",
+  "size": 396,
+  "magic_hex": "5b4c6f63616c697a656446696c654e61",
+  "format": "unknown-magic"
+ },
+ "Data.pk2:.mfo": {
+  "archive": "Data.pk2",
+  "ext": ".mfo",
+  "path": "/navmesh/mapinfo.mfo",
+  "size": 8216,
+  "magic_hex": "4a4d58564d464f203130303000018000",
+  "format": "jmx-map-info-mfo"
+ },
+ "Data.pk2:.msf": {
+  "archive": "Data.pk2",
+  "ext": ".msf",
+  "path": "/res/etc/Obt/01.msf",
+  "size": 121,
+  "magic_hex": "0100000002000000ffffffff07000000",
+  "format": "unknown-magic"
+ },
+ "Data.pk2:.nvm": {
+  "archive": "Data.pk2",
+  "ext": ".nvm",
+  "path": "/navmesh/nv_1f29.nvm",
+  "size": 74643,
+  "magic_hex": "4a4d58564e564d203130303000000100",
+  "format": "jmx-navmesh-nvm"
+ },
+ "Data.pk2:.psh": {
+  "archive": "Data.pk2",
+  "ext": ".psh",
+  "path": "/shader/skyps10.psh",
+  "size": 196,
+  "magic_hex": "3b20536b7920506978656c2053686164",
+  "format": "shader-source"
+ },
+ "Data.pk2:.scc": {
+  "archive": "Data.pk2",
+  "ext": ".scc",
+  "path": "/prim/ani/cos/c_rudolph/vssver2.scc",
+  "size": 298,
+  "magic_hex": "34120100c931567480350847b955350b",
+  "format": "unknown-magic"
+ },
+ "Data.pk2:.sfk": {
+  "archive": "Data.pk2",
+  "ext": ".sfk",
+  "path": "/prim/snd/arabia/snake/ATTACK3.sfk",
+  "size": 796,
+  "magic_hex": "5346504b01000000400000003141f17d",
+  "format": "soundfont-sfk"
+ },
+ "Data.pk2:.tga": {
+  "archive": "Data.pk2",
+  "ext": ".tga",
+  "path": "/prim/lightmap/bldg/oasis/hotang/castle/oas_hot_c1_pool_wall05 lightingmap.tga",
+  "size": 34293,
+  "magic_hex": "00000a00000000000000000080008000",
+  "format": "unknown-magic"
+ },
+ "Data.pk2:.tmp": {
+  "archive": "Data.pk2",
+  "ext": ".tmp",
+  "path": "/prim/mtrl/artifact/ruins/tent/rock_mt_box_01.ddj.tmp",
+  "size": 87528,
+  "magic_hex": "444453207c0000000710020000020000",
+  "format": "dds-texture"
+ },
+ "Data.pk2:.vsh": {
+  "archive": "Data.pk2",
+  "ext": ".vsh",
+  "path": "/shader/bumpwaves.vsh",
+  "size": 487,
+  "magic_hex": "76732e312e310d0a0d0a64636c5f706f",
+  "format": "shader-source"
+ },
+ "Data.pk2:.wav": {
+  "archive": "Data.pk2",
+  "ext": ".wav",
+  "path": "/prim/snd/player/black.wav",
+  "size": 44,
+  "magic_hex": "524946462400000057415645666d7420",
+  "format": "wav-audio"
+ },
+ "Data.pk2:/RegionInfo.txt": {
+  "archive": "Data.pk2",
+  "ext": ".txt",
+  "path": "/RegionInfo.txt",
+  "size": 58974,
+  "magic_hex": "23544f574e095468696566546f776e09",
+  "format": "text",
+  "encoding": "utf-8",
+  "readable": true
+ },
+ "Data.pk2:/dungeon/Dungeoninfo.txt": {
+  "archive": "Data.pk2",
+  "ext": ".txt",
+  "path": "/dungeon/Dungeoninfo.txt",
+  "size": 1071,
+  "magic_hex": "310931092244756e67656f6e5c776368",
+  "format": "text",
+  "encoding": "utf-8",
+  "readable": true
+ },
+ "Data.pk2:/shader/regioninfo.txt": {
+  "archive": "Data.pk2",
+  "ext": ".txt",
+  "path": "/shader/regioninfo.txt",
+  "size": 27364,
+  "magic_hex": "0909090909090d0a0909090909090d0a",
+  "format": "text",
+  "encoding": "cp949",
+  "readable": true
+ },
+ "Map.pk2:.dat": {
+  "archive": "Map.pk2",
+  "ext": ".dat",
+  "path": "/plugin.dat",
+  "size": 46,
+  "magic_hex": "01000000d107554fb7c1c24c968f4a04",
+  "format": "unknown-magic"
+ },
+ "Map.pk2:.ddj": {
+  "archive": "Map.pk2",
+  "ext": ".ddj",
+  "path": "/weather/white.ddj",
+  "size": 164,
+  "magic_hex": "4a4d585644444a203130303098000000",
+  "format": "jmx-texture-ddj"
+ },
+ "Map.pk2:.ifo": {
+  "archive": "Map.pk2",
+  "ext": ".ifo",
+  "path": "/tile3d.ifo",
+  "size": 2,
+  "magic_hex": "300a",
+  "format": "unknown-magic"
+ },
+ "Map.pk2:.m": {
+  "archive": "Map.pk2",
+  "ext": ".m",
+  "path": "/100/100.m",
+  "size": 92712,
+  "magic_hex": "4a4d58564d41504d3130303000000000",
+  "format": "jmx-map-model"
+ },
+ "Map.pk2:.mfo": {
+  "archive": "Map.pk2",
+  "ext": ".mfo",
+  "path": "/mapinfo.mfo",
+  "size": 8216,
+  "magic_hex": "4a4d58564d464f203130303000018000",
+  "format": "jmx-map-info-mfo"
+ },
+ "Map.pk2:.o": {
+  "archive": "Map.pk2",
+  "ext": ".o",
+  "path": "/0/0.o",
+  "size": 228,
+  "magic_hex": "4a4d58564d41504f3130303000000000",
+  "format": "jmx-map-object"
+ },
+ "Map.pk2:.o2": {
+  "archive": "Map.pk2",
+  "ext": ".o2",
+  "path": "/100/104.o2",
+  "size": 300,
+  "magic_hex": "4a4d58564d41504f3130303100000000",
+  "format": "jmx-map-object"
+ },
+ "Map.pk2:.t": {
+  "archive": "Map.pk2",
+  "ext": ".t",
+  "path": "/88/83_13.t",
+  "size": 92712,
+  "magic_hex": "4a4d58564d41504d3130303000000000",
+  "format": "jmx-map-model"
+ },
+ "Map.pk2:.tga": {
+  "archive": "Map.pk2",
+  "ext": ".tga",
+  "path": "/tile2d/c_grass_fld_09.tga",
+  "size": 1048594,
+  "magic_hex": "00000200000000000000000000020002",
+  "format": "tga-texture"
+ },
+ "Map.pk2:/camera_path.txt": {
+  "archive": "Map.pk2",
+  "ext": ".txt",
+  "path": "/camera_path.txt",
+  "size": 265,
+  "magic_hex": "746573740d0a2037382c203730090936",
+  "format": "text",
+  "encoding": "utf-8",
+  "readable": true
+ },
+ "Map.pk2:/layerobjdef.txt": {
+  "archive": "Map.pk2",
+  "ext": ".txt",
+  "path": "/layerobjdef.txt",
+  "size": 273,
+  "magic_hex": "31330d0a312030203020224241534943",
+  "format": "text",
+  "encoding": "cp949",
+  "readable": true
+ },
+ "Media.pk2:(none)": {
+  "archive": "Media.pk2",
+  "ext": "(none)",
+  "path": "/icon/action/cos_cmd_inventory",
+  "size": 2196,
+  "magic_hex": "4a4d585644444a203130303088080000",
+  "format": "jmx-texture-ddj"
+ },
+ "Media.pk2:.2dt": {
+  "archive": "Media.pk2",
+  "ext": ".2dt",
+  "path": "/res_ui/nifeventword.2dt",
+  "size": 2932,
+  "magic_hex": "03000000434e49464576656e74576f72",
+  "format": "cnif-table"
+ },
+ "Media.pk2:.dat": {
+  "archive": "Media.pk2",
+  "ext": ".dat",
+  "path": "/fonts/i.dat",
+  "size": 88,
+  "magic_hex": "4a4d5856494d47313130303006000c00",
+  "format": "jmx-font-img"
+ },
+ "Media.pk2:.ddj": {
+  "archive": "Media.pk2",
+  "ext": ".ddj",
+  "path": "/interface/exchange/exc_sub_window_line.ddj",
+  "size": 180,
+  "magic_hex": "4a4d585644444a2031303030a8000000",
+  "format": "jmx-texture-ddj"
+ },
+ "Media.pk2:.scc": {
+  "archive": "Media.pk2",
+  "ext": ".scc",
+  "path": "/icon/skillmastery/vssver.scc",
+  "size": 48,
+  "magic_hex": "3412010055bf8f0bf3fb944395e37d05",
+  "format": "unknown-magic"
+ },
+ "Media.pk2:.t": {
+  "archive": "Media.pk2",
+  "ext": ".t",
+  "path": "/SV.T",
+  "size": 1024,
+  "magic_hex": "0800000092796d6c6901b1dc00000000",
+  "format": "unknown-magic"
+ },
+ "Media.pk2:.tga": {
+  "archive": "Media.pk2",
+  "ext": ".tga",
+  "path": "/icon/item/etc/qsp_all_potion_1_01.tga",
+  "size": 4114,
+  "magic_hex": "00000200000000000000000020002000",
+  "format": "tga-texture"
+ },
+ "Media.pk2:.txt": {
+  "archive": "Media.pk2",
+  "ext": ".txt",
+  "path": "/server_dep/silkroad/textdata/eventdata.txt",
+  "size": 2,
+  "magic_hex": "fffe",
+  "format": "utf16-text"
+ },
+ "Music.pk2:.ogg": {
+  "archive": "Music.pk2",
+  "ext": ".ogg",
+  "path": "/donwhang_town.ogg",
+  "size": 381829,
+  "magic_hex": "4f676753000200000000000000000830",
+  "format": "ogg-audio"
+ },
+ "Particles.pk2:.ban": {
+  "archive": "Particles.pk2",
+  "ext": ".ban",
+  "path": "/animations/firework_02.ban",
+  "size": 133,
+  "magic_hex": "4a4d585642414e203031303200000000",
+  "format": "jmx-animation-ban"
+ },
+ "Particles.pk2:.bms": {
+  "archive": "Particles.pk2",
+  "ext": ".bms",
+  "path": "/meshes/piece_glass.bms",
+  "size": 296,
+  "magic_hex": "4a4d5856424d5320303131306a000000",
+  "format": "jmx-skeleton-bms"
+ },
+ "Particles.pk2:.bsk": {
+  "archive": "Particles.pk2",
+  "ext": ".bsk",
+  "path": "/animations/levelupbon.bsk",
+  "size": 4929,
+  "magic_hex": "4a4d585642534b203031303123000000",
+  "format": "jmx-skin-bsk"
+ },
+ "Particles.pk2:.c": {
+  "archive": "Particles.pk2",
+  "ext": ".c",
+  "path": "/shader/vstech_p11.c",
+  "size": 271,
+  "magic_hex": "23696e636c7564652022767370302e63",
+  "format": "c-source"
+ },
+ "Particles.pk2:.db": {
+  "archive": "Particles.pk2",
+  "ext": ".db",
+  "path": "/textures/thumbs.db",
+  "size": 23264254,
+  "magic_hex": "8b0300001d0000007465787475726573",
+  "format": "unknown-magic"
+ },
+ "Particles.pk2:.ddj": {
+  "archive": "Particles.pk2",
+  "ext": ".ddj",
+  "path": "/textures/fire16.ddj",
+  "size": 404,
+  "magic_hex": "4a4d585644444a203130303088010000",
+  "format": "jmx-texture-ddj"
+ },
+ "Particles.pk2:.efp": {
+  "archive": "Particles.pk2",
+  "ext": ".efp",
+  "path": "/skill/china/lightning_bobeop_a.efp",
+  "size": 1149,
+  "magic_hex": "4a4d5856454646203030313167000000",
+  "format": "jmx-effect-efp"
+ }
+}
