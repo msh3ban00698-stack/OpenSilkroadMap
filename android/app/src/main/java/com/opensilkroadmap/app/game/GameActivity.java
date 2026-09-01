@@ -14,6 +14,8 @@ import com.opensilkroadmap.app.data.TeleportBuildingTable;
 import com.opensilkroadmap.app.data.TeleportDataTable;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.data.TsvTable;
+import com.opensilkroadmap.app.data.WorldDataIndex;
+import com.opensilkroadmap.app.data.WorldGameTable;
 import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
 import com.opensilkroadmap.app.data.WorldMapInstanceTable;
 import com.opensilkroadmap.app.world.CharacterCatalog;
@@ -74,6 +76,7 @@ public final class GameActivity extends Activity {
   private static final String TELEPORT_DATA_ASSET = "game/textdata/teleportdata.tsv";
   private static final String TELEPORT_BUILDING_ASSET = "game/textdata/teleportbuilding.tsv";
   private static final String WORLDMAP_INSTANCE_ASSET = "game/textdata/worldmap_instanceinfo.tsv";
+  private static final String WORLD_DATA_ASSET = "game/textdata/gameworlddata.tsv";
   private static final String OPTIONAL_TELEPORT_ASSET = "game/textdata/refoptionalteleport.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
   private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
@@ -87,6 +90,7 @@ public final class GameActivity extends Activity {
   private TeleportGateIndex teleportGates;
   private OptionalTeleportIndex optionalTeleports;
   private WorldMapInstanceIndex instances;
+  private WorldDataIndex worldData;
   private MeshObjectIndex meshObjects;
   private CharacterCatalog characterCatalog;
   private Map<String, CharacterMeshIndex> characterModels =
@@ -134,6 +138,7 @@ public final class GameActivity extends Activity {
     teleportGates = loadTeleportGates();
     optionalTeleports = loadOptionalTeleports();
     instances = loadInstances();
+    worldData = loadWorldData();
 
     WorldRegion region = selectRegion(index, regions);
     terrain = loadRegionTerrain(index, region);
@@ -162,7 +167,7 @@ public final class GameActivity extends Activity {
     overlay.setTextSize(13f);
     overlay.setTextColor(Color.rgb(230, 230, 235));
     overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, terrain, npc, spawnZones, teleportGates, optionalTeleports, instances, data, meshObjects));
+    overlay.setText(describe(region, terrain, npc, spawnZones, teleportGates, optionalTeleports, instances, worldData, data, meshObjects));
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -241,6 +246,7 @@ public final class GameActivity extends Activity {
       TeleportGateIndex teleportGates,
       OptionalTeleportIndex optionalTeleports,
       WorldMapInstanceIndex instances,
+      WorldDataIndex worldData,
       GameDataCatalog data,
       MeshObjectIndex meshObjects) {
     StringBuilder sb = new StringBuilder();
@@ -278,6 +284,17 @@ public final class GameActivity extends Activity {
         sb.append("instances ").append(instances.regionResolvedCount())
             .append('/').append(instances.instanceCount())
             .append(" anchored to region cells\n");
+      }
+      if (worldData != null) {
+        sb.append("world catalog ").append(worldData.worldCount())
+            .append(" instance worlds · ").append(worldData.groupCount())
+            .append(" groups");
+        WorldDataIndex.World jangan = worldData.byWorldId(2);
+        if (jangan != null && jangan.hasGroup()) {
+          sb.append(" · WorldID 2 → ").append(jangan.code)
+              .append(" / ").append(jangan.group);
+        }
+        sb.append('\n');
       }
       if (meshObjects != null) {
         sb.append("objects ").append(meshObjects.instanceCount())
@@ -347,6 +364,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   WorldMapInstanceIndex instances() {
     return instances;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  WorldDataIndex worldData() {
+    return worldData;
   }
 
   /**
@@ -459,6 +481,16 @@ public final class GameActivity extends Activity {
       RegionCatalog regions = RegionCatalog.parse(new InputStreamReader(
           getAssets().open("game/regions.tsv"), StandardCharsets.UTF_8));
       return new WorldMapInstanceIndex(table, regions);
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private WorldDataIndex loadWorldData() {
+    try {
+      return new WorldDataIndex(new WorldGameTable(TsvTable.parse(
+          "gameworlddata.tsv",
+          new InputStreamReader(getAssets().open(WORLD_DATA_ASSET), StandardCharsets.UTF_8))));
     } catch (IOException e) {
       return null;
     }

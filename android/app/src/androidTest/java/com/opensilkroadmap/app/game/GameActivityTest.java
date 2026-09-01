@@ -2,12 +2,15 @@ package com.opensilkroadmap.app.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
+import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
+import com.opensilkroadmap.app.data.WorldDataIndex;
 import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
@@ -214,6 +217,29 @@ public class GameActivityTest {
             assertEquals(97, changan.sectorY());
             assertEquals("1001", changan.serverZone());
             assertEquals("RN_CH_JANGAN", changan.nameCode());
+          });
+    }
+  }
+
+  @Test
+  public void resolvesWorldCatalogFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            WorldDataIndex worldData = activity.worldData();
+            assertNotNull("world catalog must load", worldData);
+            assertEquals(115, worldData.worldCount());
+            assertEquals(74, worldData.groupCount());
+            WorldDataIndex.World jangan = worldData.byWorldId(2);
+            assertNotNull("WorldID 2 must resolve", jangan);
+            assertEquals("INS_FORT_JA", jangan.code);
+            assertEquals("GROUP_FORTRESS_JANGAN", jangan.group);
+            WorldDataIndex.World dw = worldData.byCode("INS_FORT_DW");
+            assertNotNull("code lookup must resolve", dw);
+            assertEquals("GROUP_FORTRESS_DONWHANG", dw.group);
+            assertNull(worldData.byWorldId(99999));
+            assertNull(worldData.byCode("INS_NOPE"));
           });
     }
   }
