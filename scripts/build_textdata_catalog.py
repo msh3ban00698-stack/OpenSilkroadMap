@@ -48,11 +48,16 @@ def decode(raw: bytes):
         return raw[2:].decode("utf-16-le"), "utf-16-le"
     if raw[:3] == b"\xef\xbb\xbf":
         return raw[3:].decode("utf-8"), "utf-8-sig"
-    for enc in ("cp949", "utf-8"):
-        try:
-            return raw.decode(enc), enc
-        except UnicodeDecodeError:
-            continue
+    try:
+        return raw.decode("cp949"), "cp949"
+    except UnicodeDecodeError:
+        replaced = raw.decode("cp949", errors="replace")
+        if replaced.count("\ufffd") <= max(2, len(raw) // 10000):
+            return replaced, "cp949"
+    try:
+        return raw.decode("utf-8"), "utf-8"
+    except UnicodeDecodeError:
+        pass
     return raw.decode("latin-1"), "latin-1"
 
 

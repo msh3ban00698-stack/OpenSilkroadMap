@@ -3716,7 +3716,7 @@
   "columns": []
  },
  "regioncode.txt": {
-  "encoding": "latin-1",
+  "encoding": "cp949",
   "rows": 3293,
   "columns": [
    "1",

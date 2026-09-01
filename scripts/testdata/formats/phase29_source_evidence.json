@@ -404,7 +404,7 @@
   "present": true,
   "refregion": {
    "column_count": 21,
-   "header_row": [
+   "first_row": [
     "\ufeff-32767",
     "0",
     "0",
@@ -420,11 +420,16 @@
     "NULL",
     "NULL"
    ],
+   "has_header_row": false,
+   "packing_formula": "region == (sector_y << 8) | sector_x",
+   "packing_mismatches": 0,
+   "packing_verified_world_rows": 2444,
    "proven_columns": {
-    "col0": "region id (signed; -32767 sentinel seen)",
-    "col1_col2": "worldmap grid X / Y",
-    "col3_col4": "region name / localized name",
-    "col6": "mapping/zone id"
+    "col0": "packed region id; equals (col2 << 8) | col1 (verified)",
+    "col1_col2": "sector X / sector Y; region == (sector_y << 8) | sector_x",
+    "col3_col4": "server region name / localized name (col4 is a literal '????' placeholder)",
+    "col5": "flag (2363 x 1, 81 x 0)",
+    "col6": "zone id (13 distinct zone ids)"
    },
    "row_count": 2461,
    "sample_kingsvalley": [

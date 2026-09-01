@@ -521,19 +521,37 @@ def coordinate_facts():
     refregion = None
     if os.path.exists(os.path.join(rd, "RefRegion.txt")):
         lines = [ln for ln in read_utf16("RefRegion.txt").splitlines() if ln.strip()]
-        header = lines[0].split("\t")
+        first = lines[0].split("\t")
+        world_rows = 0
+        pack_bad = 0
+        for ln in lines:
+            c = ln.split("\t")
+            try:
+                rid, x, y = int(c[0]), int(c[1]), int(c[2])
+            except (ValueError, IndexError):
+                continue
+            if rid < 0:
+                continue
+            world_rows += 1
+            if rid != (y << 8) | x:
+                pack_bad += 1
         sample = next((ln.split("\t") for ln in lines
                        if ln.split("\t")[3] == "KingsValley"), None)
         refregion = {
             "row_count": len(lines),
-            "column_count": len(header),
-            "header_row": header[:14],
+            "column_count": len(first),
+            "has_header_row": False,
+            "first_row": first[:14],
             "proven_columns": {
-                "col0": "region id (signed; -32767 sentinel seen)",
-                "col1_col2": "worldmap grid X / Y",
-                "col3_col4": "region name / localized name",
-                "col6": "mapping/zone id",
+                "col0": "packed region id; equals (col2 << 8) | col1 (verified)",
+                "col1_col2": "sector X / sector Y; region == (sector_y << 8) | sector_x",
+                "col3_col4": "server region name / localized name (col4 is a literal '????' placeholder)",
+                "col5": "flag (2363 x 1, 81 x 0)",
+                "col6": "zone id (13 distinct zone ids)",
             },
+            "packing_formula": "region == (sector_y << 8) | sector_x",
+            "packing_verified_world_rows": world_rows,
+            "packing_mismatches": pack_bad,
             "sample_kingsvalley": sample[:14] if sample else None,
         }
 
