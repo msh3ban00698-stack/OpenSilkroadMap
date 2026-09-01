@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
@@ -135,6 +136,33 @@ public class GameActivityTest {
             assertEquals(762, zones.spawnsInZone("1001").size());
             assertEquals("1001", zones.zoneIdOfRegion(25000));
             assertEquals(null, zones.zoneIdOfRegion(-32760));
+          });
+    }
+  }
+
+  @Test
+  public void resolvesTeleportGatesFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            TeleportGateIndex gates = activity.teleportGates();
+            assertNotNull("teleport gate index must load", gates);
+            assertEquals(246, gates.gateCount());
+            assertEquals(144, gates.worldCount());
+            assertEquals(102, gates.instanceCount());
+            assertEquals(104, gates.resolvedWorldCount());
+            assertEquals(35, gates.clientOnlyWorldCount());
+            assertEquals(5, gates.unresolvedWorldCount());
+            assertEquals(12, gates.zones().size());
+            assertEquals(25, gates.gatesInZone("1001").size());
+            TeleportGateIndex.Gate jangan = gates.gate(0);
+            assertEquals("GATE_CH", jangan.gateCode);
+            assertEquals(25000, jangan.zoneId);
+            assertEquals(168, jangan.sectorX());
+            assertEquals(97, jangan.sectorY());
+            assertEquals("1001", jangan.serverZone());
+            assertEquals("RN_CH_JANGAN", jangan.nameCode());
           });
     }
   }
