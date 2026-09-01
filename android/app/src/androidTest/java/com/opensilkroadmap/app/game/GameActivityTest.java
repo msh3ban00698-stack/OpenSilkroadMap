@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.opensilkroadmap.app.data.OptionalTeleportIndex;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
@@ -188,6 +189,31 @@ public class GameActivityTest {
             assertEquals(96, town.cellY);
             assertEquals("ThiefTown", town.regionName());
             assertEquals(null, instances.resolve("Worldmap_NOPE"));
+          });
+    }
+  }
+
+  @Test
+  public void resolvesOptionalTeleportsFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            OptionalTeleportIndex idx = activity.optionalTeleports();
+            assertNotNull("optional teleport index must load", idx);
+            assertEquals(44, idx.destinationCount());
+            assertEquals(40, idx.worldCount());
+            assertEquals(4, idx.instanceCount());
+            assertEquals(35, idx.resolvedWorldCount());
+            assertEquals(5, idx.clientOnlyWorldCount());
+            OptionalTeleportIndex.Destination changan =
+                idx.destination(25);
+            assertEquals("Chang'an", changan.nameLabel);
+            assertEquals(25000, changan.regionId);
+            assertEquals(168, changan.sectorX());
+            assertEquals(97, changan.sectorY());
+            assertEquals("1001", changan.serverZone());
+            assertEquals("RN_CH_JANGAN", changan.nameCode());
           });
     }
   }

@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.data.OptionalTeleportIndex;
+import com.opensilkroadmap.app.data.OptionalTeleportTable;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportBuildingTable;
 import com.opensilkroadmap.app.data.TeleportDataTable;
@@ -72,6 +74,7 @@ public final class GameActivity extends Activity {
   private static final String TELEPORT_DATA_ASSET = "game/textdata/teleportdata.tsv";
   private static final String TELEPORT_BUILDING_ASSET = "game/textdata/teleportbuilding.tsv";
   private static final String WORLDMAP_INSTANCE_ASSET = "game/textdata/worldmap_instanceinfo.tsv";
+  private static final String OPTIONAL_TELEPORT_ASSET = "game/textdata/refoptionalteleport.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
   private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
   private static final String PLAYER_SKELETON_ASSET =
@@ -82,6 +85,7 @@ public final class GameActivity extends Activity {
   private NpcSpawnIndex npc;
   private SpawnZoneIndex spawnZones;
   private TeleportGateIndex teleportGates;
+  private OptionalTeleportIndex optionalTeleports;
   private WorldMapInstanceIndex instances;
   private MeshObjectIndex meshObjects;
   private CharacterCatalog characterCatalog;
@@ -128,6 +132,7 @@ public final class GameActivity extends Activity {
     npc = loadNpcSpawns();
     spawnZones = loadSpawnZones(npc);
     teleportGates = loadTeleportGates();
+    optionalTeleports = loadOptionalTeleports();
     instances = loadInstances();
 
     WorldRegion region = selectRegion(index, regions);
@@ -157,7 +162,7 @@ public final class GameActivity extends Activity {
     overlay.setTextSize(13f);
     overlay.setTextColor(Color.rgb(230, 230, 235));
     overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, terrain, npc, spawnZones, teleportGates, instances, data, meshObjects));
+    overlay.setText(describe(region, terrain, npc, spawnZones, teleportGates, optionalTeleports, instances, data, meshObjects));
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -234,6 +239,7 @@ public final class GameActivity extends Activity {
       NpcSpawnIndex npc,
       SpawnZoneIndex spawnZones,
       TeleportGateIndex teleportGates,
+      OptionalTeleportIndex optionalTeleports,
       WorldMapInstanceIndex instances,
       GameDataCatalog data,
       MeshObjectIndex meshObjects) {
@@ -261,6 +267,12 @@ public final class GameActivity extends Activity {
             .append(" UNKNOWN · ").append(teleportGates.clientOnlyWorldCount())
             .append(" client-only · ").append(teleportGates.zones().size())
             .append(" zones\n");
+      }
+      if (optionalTeleports != null) {
+        sb.append("optional teleports ").append(optionalTeleports.resolvedWorldCount())
+            .append(" resolved / ").append(optionalTeleports.clientOnlyWorldCount())
+            .append(" client-only of ").append(optionalTeleports.worldCount())
+            .append(" world destinations\n");
       }
       if (instances != null) {
         sb.append("instances ").append(instances.regionResolvedCount())
@@ -325,6 +337,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   TeleportGateIndex teleportGates() {
     return teleportGates;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  OptionalTeleportIndex optionalTeleports() {
+    return optionalTeleports;
   }
 
   /** Package-private for the instrumented test (same package). */
@@ -442,6 +459,21 @@ public final class GameActivity extends Activity {
       RegionCatalog regions = RegionCatalog.parse(new InputStreamReader(
           getAssets().open("game/regions.tsv"), StandardCharsets.UTF_8));
       return new WorldMapInstanceIndex(table, regions);
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private OptionalTeleportIndex loadOptionalTeleports() {
+    try {
+      OptionalTeleportTable table = new OptionalTeleportTable(TsvTable.parse(
+          "refoptionalteleport.tsv",
+          new InputStreamReader(getAssets().open(OPTIONAL_TELEPORT_ASSET), StandardCharsets.UTF_8)));
+      TsvTable regionCode = TsvTable.parse("regioncode.tsv",
+          new InputStreamReader(getAssets().open(REGION_CODE_ASSET), StandardCharsets.UTF_8));
+      RegionZoneCatalog server =
+          RegionZoneCatalog.load(() -> getAssets().open(REGION_ZONE_ASSET));
+      return new OptionalTeleportIndex(table, RegionResolver.load(regionCode, server));
     } catch (IOException e) {
       return null;
     }
