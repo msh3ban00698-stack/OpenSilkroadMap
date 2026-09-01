@@ -13,12 +13,14 @@ import java.util.Set;
  * Teleport gate placement index over the committed {@code teleportdata.tsv}.
  *
  * <p>Composes {@link TeleportDataTable} with {@link RegionResolver} (client RN_*
- * name + server region→zone catalog, both committed and provenance-pinned).
- * Every gate's {@code zone_id} is a packed region code for the destination
- * sector; world gates (zone_id ≥ 0) resolve to sector + server zone + client
- * name, and their local x/z (within [0, 1920) for world rows) project to world
- * coordinates with the proven formula. Instance gates (zone_id &lt; 0) and any
- * unresolvable zone_id stay UNKNOWN and fail closed — never invented.
+ * name + server region→zone catalog, both committed and provenance-pinned) and
+ * {@link TeleportBuildingTable} (gate_id → STORE_* / SN_NPC_* codes, 101 / 135
+ * joined). Every gate's {@code zone_id} is a packed region code for the
+ * destination sector; world gates (zone_id ≥ 0) resolve to sector + server
+ * zone + client name, and their local x/z (within [0, 1920) for world rows)
+ * project to world coordinates with the proven formula. Instance gates
+ * (zone_id &lt; 0) and any unresolvable zone_id stay UNKNOWN and fail closed —
+ * never invented.
  *
  * <p>Proven coverage on the committed tables: 246 gates total, 144 world /
  * 102 instance; 104 world gates are server-attributed (97 distinct zone_ids →
@@ -42,9 +44,12 @@ public final class TeleportGateIndex {
     public final float localZ;
     public final boolean isWorld;
     public final RegionResolver.Entry region;
+    public final String storeCode;
+    public final String npcCode;
 
     Gate(int row, String gateCode, int gateId, String zoneCode, int zoneId,
-         float localX, float heightY, float localZ, RegionResolver.Entry region) {
+         float localX, float heightY, float localZ, RegionResolver.Entry region,
+         String storeCode, String npcCode) {
       this.row = row;
       this.gateCode = gateCode;
       this.gateId = gateId;
@@ -54,6 +59,8 @@ public final class TeleportGateIndex {
       this.heightY = heightY;
       this.localZ = localZ;
       this.region = region;
+      this.storeCode = storeCode;
+      this.npcCode = npcCode;
       this.isWorld = zoneId >= 0;
     }
 
@@ -102,11 +109,18 @@ public final class TeleportGateIndex {
 
   private final List<Gate> gates;
   private final Map<String, List<Gate>> byZone;
+  private final TeleportBuildingTable buildings;
   private final int instanceCount;
   private final int clientOnlyCount;
   private final int unresolvedWorldCount;
 
   public TeleportGateIndex(TeleportDataTable table, RegionResolver resolver) {
+    this(table, resolver, new TeleportBuildingTable(TsvTable.empty("teleportbuilding.tsv")));
+  }
+
+  public TeleportGateIndex(TeleportDataTable table, RegionResolver resolver,
+                           TeleportBuildingTable buildings) {
+    this.buildings = buildings;
     List<Gate> all = new ArrayList<Gate>();
     Map<String, List<Gate>> byZone = new LinkedHashMap<String, List<Gate>>();
     int instances = 0;
@@ -115,6 +129,8 @@ public final class TeleportGateIndex {
     for (int i = 0; i < table.gateCount(); i++) {
       int zoneId = table.zoneId(i);
       RegionResolver.Entry entry = resolver.resolve(zoneId);
+      String store = buildings.storeCode(table.gateId(i));
+      String npc = buildings.npcCode(table.gateId(i));
       if (zoneId < 0) {
         instances++;
       } else if (entry == null) {
@@ -127,13 +143,13 @@ public final class TeleportGateIndex {
         }
         list.add(new Gate(i, table.gateCode(i), table.gateId(i),
             table.zoneCode(i), zoneId, table.localX(i), table.heightY(i),
-            table.localZ(i), entry));
+            table.localZ(i), entry, store, npc));
       } else {
         clientOnly++;
       }
       all.add(new Gate(i, table.gateCode(i), table.gateId(i),
           table.zoneCode(i), zoneId, table.localX(i), table.heightY(i),
-          table.localZ(i), entry));
+          table.localZ(i), entry, store, npc));
     }
     Map<String, List<Gate>> frozen = new LinkedHashMap<String, List<Gate>>();
     for (Map.Entry<String, List<Gate>> e : byZone.entrySet()) {
@@ -175,6 +191,11 @@ public final class TeleportGateIndex {
 
   public Gate gate(int i) {
     return gates.get(i);
+  }
+
+  /** The joined teleport building table (store / NPC codes). */
+  public TeleportBuildingTable buildings() {
+    return buildings;
   }
 
   /** Distinct server zone ids among world gates (empty when none). */

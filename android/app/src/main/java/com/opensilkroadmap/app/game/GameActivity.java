@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
+import com.opensilkroadmap.app.data.TeleportBuildingTable;
 import com.opensilkroadmap.app.data.TeleportDataTable;
 import com.opensilkroadmap.app.data.TeleportGateIndex;
 import com.opensilkroadmap.app.data.TsvTable;
@@ -67,6 +68,7 @@ public final class GameActivity extends Activity {
   private static final String REGION_ZONE_ASSET = "game/world/region_zone.tsv";
   private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
   private static final String TELEPORT_DATA_ASSET = "game/textdata/teleportdata.tsv";
+  private static final String TELEPORT_BUILDING_ASSET = "game/textdata/teleportbuilding.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
   private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
   private static final String PLAYER_SKELETON_ASSET =
@@ -403,11 +405,14 @@ public final class GameActivity extends Activity {
       TeleportDataTable teleport = new TeleportDataTable(TsvTable.parse(
           "teleportdata.tsv",
           new InputStreamReader(getAssets().open(TELEPORT_DATA_ASSET), StandardCharsets.UTF_8)));
+      TeleportBuildingTable buildings = new TeleportBuildingTable(TsvTable.parse(
+          "teleportbuilding.tsv",
+          new InputStreamReader(getAssets().open(TELEPORT_BUILDING_ASSET), StandardCharsets.UTF_8)));
       TsvTable regionCode = TsvTable.parse("regioncode.tsv",
           new InputStreamReader(getAssets().open(REGION_CODE_ASSET), StandardCharsets.UTF_8));
       RegionZoneCatalog server =
           RegionZoneCatalog.load(() -> getAssets().open(REGION_ZONE_ASSET));
-      return new TeleportGateIndex(teleport, RegionResolver.load(regionCode, server));
+      return new TeleportGateIndex(teleport, RegionResolver.load(regionCode, server), buildings);
     } catch (IOException e) {
       return null;
     }

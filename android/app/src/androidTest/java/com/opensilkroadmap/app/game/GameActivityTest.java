@@ -163,6 +163,8 @@ public class GameActivityTest {
             assertEquals(97, jangan.sectorY());
             assertEquals("1001", jangan.serverZone());
             assertEquals("RN_CH_JANGAN", jangan.nameCode());
+            assertEquals("STORE_CH_GATE", jangan.storeCode);
+            assertEquals("SN_NPC_CH_GATE", jangan.npcCode);
           });
     }
   }

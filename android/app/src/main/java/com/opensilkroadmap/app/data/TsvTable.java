@@ -61,6 +61,10 @@ public final class TsvTable {
     throw new IOException(assetName + " not found via default paths");
   }
 
+  public static TsvTable empty(String name) {
+    return new TsvTable(name, Collections.<String[]>emptyList());
+  }
+
   public String name() {
     return name;
   }

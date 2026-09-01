@@ -36,7 +36,7 @@ public class TeleportGateIndexTest {
 
   private TeleportGateIndex load() throws IOException {
     return new TeleportGateIndex(TeleportDataTable.load(),
-        RegionResolver.loadDefault());
+        RegionResolver.loadDefault(), TeleportBuildingTable.loadDefault());
   }
 
   @Test
@@ -89,6 +89,31 @@ public class TeleportGateIndexTest {
         gate.worldX(168), 0.001f);
     assertEquals("world z relative to own sector", 1369.0f,
         gate.worldZ(97), 0.001f);
+  }
+
+  @Test
+  public void buildingJoinGivesStoreAndNpcCodes() throws IOException {
+    TeleportGateIndex idx = load();
+    assertEquals("106 teleport buildings", 106, idx.buildings().buildingCount());
+    int joined = 0;
+    java.util.HashSet<Integer> seen = new java.util.HashSet<Integer>();
+    for (int i = 0; i < idx.gateCount(); i++) {
+      int gateId = idx.gate(i).gateId;
+      if (seen.add(gateId) && idx.buildings().storeCode(gateId) != null) {
+        joined++;
+      }
+    }
+    assertEquals("101 / 135 distinct gate ids join the building table",
+        101, joined);
+    TeleportGateIndex.Gate gate = idx.gate(0);
+    assertEquals("GATE_CH building store code", "STORE_CH_GATE", gate.storeCode);
+    assertEquals("GATE_CH building npc code", "SN_NPC_CH_GATE", gate.npcCode);
+    assertEquals("STORE_WC_GATE belongs to gate 2095", "STORE_WC_GATE",
+        idx.buildings().storeCode(2095));
+    assertEquals("SN_NPC_WC_GATE belongs to gate 2095", "SN_NPC_WC_GATE",
+        idx.buildings().npcCode(2095));
+    assertNull("unknown gate id fails closed", idx.buildings().storeCode(-1));
+    assertNull("unknown gate id fails closed", idx.buildings().npcCode(999999));
   }
 
   @Test
