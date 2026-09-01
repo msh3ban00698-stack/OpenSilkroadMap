@@ -112,6 +112,11 @@ public final class NpcSpawnIndex {
     return world.size();
   }
 
+  /** World spawn at the given index (indexes 0 .. worldCount()-1). */
+  public Spawn worldSpawn(int i) {
+    return world.get(i);
+  }
+
   public int dungeonCount() {
     return dungeonCount;
   }

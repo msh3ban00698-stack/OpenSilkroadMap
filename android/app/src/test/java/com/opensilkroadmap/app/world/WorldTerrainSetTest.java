@@ -55,7 +55,7 @@ public class WorldTerrainSetTest {
     assertEquals(2, set.sectorCount());
     assertEquals(0f, set.minX(), 1e-6f);
     assertEquals(0f, set.minZ(), 1e-6f);
-    assertEquals(1920f, set.maxX(), 1e-6f); // 97 * 20
+    assertEquals(1920f, set.maxX(), 1e-6f); // (97 - 1) * 20 sector span
     assertEquals(3840f, set.maxZ(), 1e-6f); // 2 sectors * 1920
     assertEquals(1920f, set.width(), 1e-6f);
     assertEquals(3840f, set.height(), 1e-6f);

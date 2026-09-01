@@ -36,7 +36,7 @@ public final class WorldTerrainSet {
     }
 
     public float extent() {
-      return grid.size() * grid.step();
+      return (grid.size() - 1) * grid.step();
     }
   }
 

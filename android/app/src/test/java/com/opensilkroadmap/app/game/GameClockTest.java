@@ -16,7 +16,9 @@ public class GameClockTest {
 
   @Test
   public void tickReturnsElapsedSeconds() {
-    GameClock clock = new GameClock();
+    // Max delta raised above 0.5 so the clamp (default 0.1) cannot mask the
+    // elapsed-seconds return value.
+    GameClock clock = new GameClock(1.0);
     clock.tick(NS);
     assertEquals(0.5, clock.tick((long) (1.5 * NS)), 1e-9);
   }

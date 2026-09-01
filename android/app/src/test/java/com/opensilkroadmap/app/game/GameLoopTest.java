@@ -20,7 +20,9 @@ public class GameLoopTest {
     assertEquals(0, loop.advance(0.03));
     assertEquals(1, loop.advance(0.04));
     assertEquals(0, loop.advance(0.01));
-    assertEquals(2, loop.advance(0.05));
+    // Accumulator after frame 3 is 0.03; +0.05 -> 0.08 -> one step (rem 0.03).
+    assertEquals(1, loop.advance(0.05));
+    assertEquals(2, loop.steps());
   }
 
   @Test

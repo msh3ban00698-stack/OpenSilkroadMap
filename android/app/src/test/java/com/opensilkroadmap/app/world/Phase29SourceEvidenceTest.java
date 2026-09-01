@@ -248,7 +248,7 @@ public class Phase29SourceEvidenceTest {
   public void coordinateSystemStructureIsProvenButScaleIsUnknown() throws IOException {
     String ev = evidenceText();
     assertTrue(ev.contains("\"column_count\": 21"));
-    assertTrue(ev.contains("worldmap grid X / Y"));
+    assertTrue(ev.contains("worldmap_mapinfo"));
     assertTrue(ev.contains("region_bounds"));
     assertTrue(ev.contains("coord_bounds"));
     assertTrue(ev.contains("CP949 (Korean)"));

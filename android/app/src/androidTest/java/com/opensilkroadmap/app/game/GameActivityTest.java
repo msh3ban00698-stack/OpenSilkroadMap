@@ -119,4 +119,23 @@ public class GameActivityTest {
           });
     }
   }
+
+  @Test
+  public void resolvesSpawnZonesFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            SpawnZoneIndex zones = activity.spawnZones();
+            assertNotNull("spawn zone index must load", zones);
+            assertEquals(14800, zones.worldCount());
+            assertEquals(11597, zones.zoneResolvedCount());
+            assertEquals(3203, zones.zoneUnknownCount());
+            assertEquals(13, zones.zones().size());
+            assertEquals(762, zones.spawnsInZone("1001").size());
+            assertEquals("1001", zones.zoneIdOfRegion(25000));
+            assertEquals(null, zones.zoneIdOfRegion(-32760));
+          });
+    }
+  }
 }

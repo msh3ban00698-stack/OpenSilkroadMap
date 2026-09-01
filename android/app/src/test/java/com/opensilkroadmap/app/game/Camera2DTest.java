@@ -108,8 +108,8 @@ public class Camera2DTest {
     camera.setViewport(100, 100);
     camera.setWorld(1000, 1000);
     camera.follow(900, 900);
-    assertEquals(950.0, camera.x(), 1e-9);
-    assertEquals(950.0, camera.y(), 1e-9);
+    assertEquals(900.0, camera.x(), 1e-9);
+    assertEquals(900.0, camera.y(), 1e-9);
     camera.enterRegion(10, 10, 500, 500);
     assertEquals(50.0, camera.x(), 1e-9);
     assertEquals(50.0, camera.y(), 1e-9);

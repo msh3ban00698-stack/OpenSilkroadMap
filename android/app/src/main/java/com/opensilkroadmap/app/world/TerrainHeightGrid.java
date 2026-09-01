@@ -21,7 +21,8 @@ import java.nio.ByteOrder;
  * are clamped to the nearest edge, never extrapolated.
  */
 public final class TerrainHeightGrid {
-  public static final int MAGIC = 0x47534856; // 'VSHG'
+  /** 'VSHG' as read little-endian from the on-disk 4 magic bytes. */
+  public static final int MAGIC = 0x47485356;
   public static final int VERSION = 1;
   public static final int HEADER_BYTES = 12;
   public static final float SECTOR_WORLD = 1920.0f;

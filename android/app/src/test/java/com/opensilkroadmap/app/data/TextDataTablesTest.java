@@ -18,36 +18,59 @@ public class TextDataTablesTest {
   public void npcposLoadsAllRealSpawns() throws Exception {
     NpcPosTable npc = NpcPosTable.load();
     assertEquals(18457, npc.spawnCount());
-    assertEquals(2023, npc.spawnId(0));
-    assertEquals(25257, npc.characterRefId(0));
-    assertEquals(659.74f, npc.coord0(0), 0.001f);
-    assertEquals(0f, npc.coord1(0), 0.001f);
-    assertEquals(981.13f, npc.coord2(0), 0.001f);
+    assertEquals(2023, npc.characterRefId(0));
+    assertEquals(25257, npc.regionCode(0));
+    assertEquals(659.74f, npc.localX(0), 0.001f);
+    assertEquals(0f, npc.heightY(0), 0.001f);
+    assertEquals(981.13f, npc.localZ(0), 0.001f);
   }
 
   @Test
-  public void npcposSpawnIdsAreUniqueAndAscending() throws Exception {
+  public void npcposCharacterRefIdsRepeatAcrossSpawns() throws Exception {
+    // Phase 13 corrected col0 = character_refid (joins characterdata_*.txt
+    // col1, 1180/1180 distinct across all 18,457 spawn rows). A spawn-id column
+    // does not exist; the old Phase 12 spawnId interpretation was disproven.
     NpcPosTable npc = NpcPosTable.load();
-    Set<Integer> seen = new HashSet<>();
-    int prev = -1;
+    Set<Integer> refids = new HashSet<>();
     for (int i = 0; i < npc.spawnCount(); i++) {
-      int id = npc.spawnId(i);
-      assertTrue("duplicate spawn id " + id, seen.add(id));
-      assertTrue("spawn ids not ascending", id > prev);
-      prev = id;
+      refids.add(npc.characterRefId(i));
     }
+    assertTrue("character refids repeat across spawns (1180 distinct)",
+        refids.size() == 1180);
   }
 
   @Test
-  public void npcposHeightAxisIsApproximatelyZero() throws Exception {
+  public void npcposRegionCodesPackBySectorFormula() throws Exception {
     NpcPosTable npc = NpcPosTable.load();
-    int nearZero = 0;
+    int world = 0;
+    int instances = 0;
     for (int i = 0; i < npc.spawnCount(); i++) {
-      if (Math.abs(npc.coord1(i)) < 0.01f) {
-        nearZero++;
+      int region = npc.regionCode(i);
+      if (region < 0) {
+        instances++;
+      } else {
+        world++;
+        int[] s = com.opensilkroadmap.app.world.WorldCoordinates.unpackRegion(region);
+        assertEquals(region, com.opensilkroadmap.app.world.WorldCoordinates.packRegion(s[0], s[1]));
       }
     }
-    assertTrue("expected most coords on the height axis near zero", nearZero > npc.spawnCount() / 2);
+    assertEquals(14800, world);
+    assertEquals(3657, instances);
+  }
+
+  @Test
+  public void npcposHeightYIsMostlyNonZero() throws Exception {
+    // Real data: height_y (col3) is an elevation, not ~0; only 537/18,457
+    // rows are exactly zero. The Phase 12 "~0 across records" claim is
+    // disproven by the committed table.
+    NpcPosTable npc = NpcPosTable.load();
+    int exactZero = 0;
+    for (int i = 0; i < npc.spawnCount(); i++) {
+      if (Math.abs(npc.heightY(i)) < 0.01f) {
+        exactZero++;
+      }
+    }
+    assertEquals("537 exact-zero height rows", 537, exactZero);
   }
 
   @Test

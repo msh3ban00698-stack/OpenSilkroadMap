@@ -7,11 +7,15 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
+import com.opensilkroadmap.app.data.SpawnZoneIndex;
+import com.opensilkroadmap.app.data.TsvTable;
 import com.opensilkroadmap.app.world.CharacterCatalog;
 import com.opensilkroadmap.app.world.CharacterEntity;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
 import com.opensilkroadmap.app.world.MeshObjectIndex;
 import com.opensilkroadmap.app.world.NativeWorldRenderer;
+import com.opensilkroadmap.app.world.RegionResolver;
+import com.opensilkroadmap.app.world.RegionZoneCatalog;
 import com.opensilkroadmap.app.world.TerrainHeightGrid;
 import com.opensilkroadmap.app.world.WorldRegion;
 import com.opensilkroadmap.app.world.WorldTerrainIndex;
@@ -57,6 +61,8 @@ public final class GameActivity extends Activity {
 
   private static final String WORLD_REGIONS_ASSET = "game/world/world_regions.tsv";
   private static final String WORLD_INDEX_ASSET = "game/world/world_index.tsv";
+  private static final String REGION_CODE_ASSET = "game/textdata/regioncode.tsv";
+  private static final String REGION_ZONE_ASSET = "game/world/region_zone.tsv";
   private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
   private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
@@ -66,6 +72,7 @@ public final class GameActivity extends Activity {
   private NativeWorldRenderer world;
   private WorldTerrainSet terrain;
   private NpcSpawnIndex npc;
+  private SpawnZoneIndex spawnZones;
   private MeshObjectIndex meshObjects;
   private CharacterCatalog characterCatalog;
   private Map<String, CharacterMeshIndex> characterModels =
@@ -109,6 +116,7 @@ public final class GameActivity extends Activity {
     WorldTerrainIndex index = loadTerrainIndex();
     List<WorldRegion> regions = loadWorldRegions();
     npc = loadNpcSpawns();
+    spawnZones = loadSpawnZones(npc);
 
     WorldRegion region = selectRegion(index, regions);
     terrain = loadRegionTerrain(index, region);
@@ -137,7 +145,7 @@ public final class GameActivity extends Activity {
     overlay.setTextSize(13f);
     overlay.setTextColor(Color.rgb(230, 230, 235));
     overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, terrain, npc, data, meshObjects));
+    overlay.setText(describe(region, terrain, npc, spawnZones, data, meshObjects));
     FrameLayout.LayoutParams labelParams =
         new FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -212,6 +220,7 @@ public final class GameActivity extends Activity {
       WorldRegion region,
       WorldTerrainSet terrain,
       NpcSpawnIndex npc,
+      SpawnZoneIndex spawnZones,
       GameDataCatalog data,
       MeshObjectIndex meshObjects) {
     StringBuilder sb = new StringBuilder();
@@ -225,6 +234,12 @@ public final class GameActivity extends Activity {
         sb.append("npc in window ").append(inWindow)
             .append(" (world ").append(npc.worldCount())
             .append(" / dungeon ").append(npc.dungeonCount()).append(")\n");
+      }
+      if (spawnZones != null) {
+        sb.append("spawn zones ").append(spawnZones.zoneResolvedCount())
+            .append(" resolved / ").append(spawnZones.zoneUnknownCount())
+            .append(" UNKNOWN · ").append(spawnZones.zones().size())
+            .append(" server zones\n");
       }
       if (meshObjects != null) {
         sb.append("objects ").append(meshObjects.instanceCount())
@@ -274,6 +289,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   PlayerController playerController() {
     return playerController;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  SpawnZoneIndex spawnZones() {
+    return spawnZones;
   }
 
   /**
@@ -340,6 +360,21 @@ public final class GameActivity extends Activity {
     try {
       return NpcSpawnIndex.parse(
           new InputStreamReader(getAssets().open(NPC_POS_ASSET), StandardCharsets.UTF_8));
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private SpawnZoneIndex loadSpawnZones(NpcSpawnIndex npc) {
+    if (npc == null) {
+      return null;
+    }
+    try {
+      TsvTable regionCode = TsvTable.parse("regioncode.tsv",
+          new InputStreamReader(getAssets().open(REGION_CODE_ASSET), StandardCharsets.UTF_8));
+      RegionZoneCatalog server =
+          RegionZoneCatalog.load(() -> getAssets().open(REGION_ZONE_ASSET));
+      return new SpawnZoneIndex(npc, RegionResolver.load(regionCode, server));
     } catch (IOException e) {
       return null;
     }
