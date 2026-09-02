@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import com.opensilkroadmap.app.data.MerchantShopSpawns;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportDestinationMap;
@@ -269,6 +270,30 @@ public class GameActivityTest {
             assertEquals(97, gateCh.sectorY());
             assertEquals("1001", gateCh.serverZone());
             assertEquals("STORE_CH_GATE", gateCh.storeCode);
+          });
+    }
+  }
+
+  @Test
+  public void resolvesMerchantShopSpawnsFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            MerchantShopSpawns merchants = activity.merchantShops();
+            assertNotNull("merchant shop spawns must load", merchants);
+            assertEquals(52, merchants.merchantCount());
+            assertEquals(51, merchants.placedCount());
+            assertEquals(1, merchants.spawnlessCount());
+            assertEquals(0, merchants.inWindow(156, 156, 89, 90).size());
+            assertEquals(7, merchants.inWindow(168, 168, 97, 97).size());
+            assertEquals(12, merchants.inWindow(156, 182, 89, 102).size());
+            MerchantShopSpawns.Entry smith = merchants.placed(0);
+            assertEquals(2003, smith.merchantRefId());
+            assertEquals("STORE_CH_SMITH", smith.storeCode());
+            assertEquals(966, smith.serverStoreId());
+            assertEquals(168, smith.sectorX());
+            assertEquals(97, smith.sectorY());
           });
     }
   }

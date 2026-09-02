@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.opensilkroadmap.app.data.MerchantShopSpawns;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
 import com.opensilkroadmap.app.data.OptionalTeleportTable;
+import com.opensilkroadmap.app.data.ShopDataTable;
+import com.opensilkroadmap.app.data.ShopMerchantIndex;
+import com.opensilkroadmap.app.data.ShopTabDataTable;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportBuildingTable;
 import com.opensilkroadmap.app.data.TeleportDataTable;
@@ -74,6 +78,10 @@ public final class GameActivity extends Activity {
   private static final String REGION_CODE_ASSET = "game/textdata/regioncode.tsv";
   private static final String REGION_ZONE_ASSET = "game/world/region_zone.tsv";
   private static final String NPC_POS_ASSET = "game/textdata/npcpos.tsv";
+  private static final String SHOP_DATA_ASSET = "game/textdata/shopdata.tsv";
+  private static final String SHOP_TAB_DATA_ASSET = "game/textdata/shoptabdata.tsv";
+  private static final String REFSHOP_ASSET = "game/textdata/refshop.tsv";
+  private static final String REFSHOP_GOODS_ASSET = "game/textdata/refshopgoods.tsv";
   private static final String TELEPORT_DATA_ASSET = "game/textdata/teleportdata.tsv";
   private static final String TELEPORT_BUILDING_ASSET = "game/textdata/teleportbuilding.tsv";
   private static final String WORLDMAP_INSTANCE_ASSET = "game/textdata/worldmap_instanceinfo.tsv";
@@ -91,6 +99,7 @@ public final class GameActivity extends Activity {
   private TeleportGateIndex teleportGates;
   private OptionalTeleportIndex optionalTeleports;
   private TeleportDestinationMap teleportDestinations;
+  private MerchantShopSpawns merchantShops;
   private WorldMapInstanceIndex instances;
   private WorldDataIndex worldData;
   private MeshObjectIndex meshObjects;
@@ -137,6 +146,7 @@ public final class GameActivity extends Activity {
     List<WorldRegion> regions = loadWorldRegions();
     npc = loadNpcSpawns();
     spawnZones = loadSpawnZones(npc);
+    merchantShops = loadMerchantShops(npc);
     teleportGates = loadTeleportGates();
     optionalTeleports = loadOptionalTeleports();
     teleportDestinations = (teleportGates != null && optionalTeleports != null)
@@ -160,6 +170,7 @@ public final class GameActivity extends Activity {
       world.setWorld(terrain);
       world.setNpcSpawns(npc);
       world.setTeleportDestinations(teleportDestinations);
+      world.setMerchantShops(merchantShops);
       world.setMeshObjects(meshObjects);
       world.setCharacters(characterCatalog, characterModels);
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
@@ -300,6 +311,19 @@ public final class GameActivity extends Activity {
         }
         sb.append('\n');
       }
+      if (merchantShops != null) {
+        sb.append("merchant shops ").append(merchantShops.placedCount())
+            .append(" placed of ").append(merchantShops.merchantCount())
+            .append(" NPC stores · ").append(merchantShops.spawnlessCount())
+            .append(" spawnless (no npcpos)");
+        List<MerchantShopSpawns.Entry> jangan =
+            merchantShops.inWindow(168, 168, 97, 97);
+        if (!jangan.isEmpty()) {
+          sb.append(" · Jangan sector → ").append(jangan.size())
+              .append(" stores");
+        }
+        sb.append('\n');
+      }
       if (instances != null) {
         sb.append("instances ").append(instances.regionResolvedCount())
             .append('/').append(instances.instanceCount())
@@ -384,6 +408,11 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   TeleportDestinationMap teleportDestinations() {
     return teleportDestinations;
+  }
+
+  /** Package-private for the instrumented test (same package). */
+  MerchantShopSpawns merchantShops() {
+    return merchantShops;
   }
 
   /** Package-private for the instrumented test (same package). */
@@ -475,6 +504,30 @@ public final class GameActivity extends Activity {
       RegionZoneCatalog server =
           RegionZoneCatalog.load(() -> getAssets().open(REGION_ZONE_ASSET));
       return new SpawnZoneIndex(npc, RegionResolver.load(regionCode, server));
+    } catch (IOException e) {
+      return null;
+    }
+  }
+
+  private MerchantShopSpawns loadMerchantShops(NpcSpawnIndex npc) {
+    if (npc == null) {
+      return null;
+    }
+    try {
+      ShopDataTable shop = new ShopDataTable(TsvTable.parse(
+          "shopdata.tsv",
+          new InputStreamReader(getAssets().open(SHOP_DATA_ASSET), StandardCharsets.UTF_8)));
+      ShopTabDataTable tabs = new ShopTabDataTable(TsvTable.parse(
+          "shoptabdata.tsv",
+          new InputStreamReader(getAssets().open(SHOP_TAB_DATA_ASSET), StandardCharsets.UTF_8)));
+      TsvTable refshop = TsvTable.parse(
+          "refshop.tsv",
+          new InputStreamReader(getAssets().open(REFSHOP_ASSET), StandardCharsets.UTF_8));
+      TsvTable refshopGoods = TsvTable.parse(
+          "refshopgoods.tsv",
+          new InputStreamReader(getAssets().open(REFSHOP_GOODS_ASSET), StandardCharsets.UTF_8));
+      ShopMerchantIndex shops = ShopMerchantIndex.build(shop, tabs, refshop, refshopGoods);
+      return new MerchantShopSpawns(shops, npc);
     } catch (IOException e) {
       return null;
     }
