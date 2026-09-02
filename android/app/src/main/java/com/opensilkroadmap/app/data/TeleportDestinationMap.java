@@ -34,6 +34,12 @@ import java.util.Set;
  *       ({@code regioncode.tsv} + {@code region_zone.tsv}); instance rows and
  *       region ids in neither table fail closed with -1 sector / null zone /
  *       NaN world coordinates.</li>
+ *   <li>optional unique-once {@code SN_ZONE_*} labels from
+ *       {@code worldmap_localinfo.tsv} ({@link WorldmapLocalinfoIndex}): 353
+ *       unique-once codes, of which 29/246 gates and 32/44 destinations join.
+ *       Duplicate/missing SN_ZONE codes stay {@code localinfo == null}. The
+ *       existing {@code label} (client localized name / destination text) is
+ *       never replaced. {@code teleportlink.tsv} is not consumed.</li>
  * </ul>
  *
  * <p>Proven coverage on the committed tables: 290 entries total (246 gates /
@@ -68,11 +74,20 @@ public final class TeleportDestinationMap {
     public final RegionResolver.Entry region;
     public final String storeCode;
     public final String npcCode;
+    public final WorldmapLocalinfoIndex.Label localinfo;
 
     Entry(Kind kind, int sourceRow, String label, String gateCode, int gateId,
           int sourceIndex, String zoneCode, int regionId, float localX,
           float heightY, float localZ, RegionResolver.Entry region,
           String storeCode, String npcCode) {
+      this(kind, sourceRow, label, gateCode, gateId, sourceIndex, zoneCode,
+          regionId, localX, heightY, localZ, region, storeCode, npcCode, null);
+    }
+
+    Entry(Kind kind, int sourceRow, String label, String gateCode, int gateId,
+          int sourceIndex, String zoneCode, int regionId, float localX,
+          float heightY, float localZ, RegionResolver.Entry region,
+          String storeCode, String npcCode, WorldmapLocalinfoIndex.Label localinfo) {
       this.kind = kind;
       this.sourceRow = sourceRow;
       this.label = label;
@@ -88,6 +103,7 @@ public final class TeleportDestinationMap {
       this.region = region;
       this.storeCode = storeCode;
       this.npcCode = npcCode;
+      this.localinfo = localinfo;
     }
 
     /** Sector x of the placement, or -1 when the region_id is unresolvable. */
@@ -140,14 +156,21 @@ public final class TeleportDestinationMap {
   private final OptionalTeleportIndex destinations;
   private final int gateCount;
   private final int resolvedCount;
+  private final int labeledCount;
 
   public TeleportDestinationMap(TeleportGateIndex gates, OptionalTeleportIndex destinations) {
+    this(gates, destinations, null);
+  }
+
+  public TeleportDestinationMap(TeleportGateIndex gates, OptionalTeleportIndex destinations,
+                                WorldmapLocalinfoIndex localinfo) {
     this.gates = gates;
     this.destinations = destinations;
     List<Entry> all = new ArrayList<Entry>();
     Map<String, List<Entry>> byZone = new LinkedHashMap<String, List<Entry>>();
     Set<String> zoneSet = new LinkedHashSet<String>();
     int resolved = 0;
+    int labeled = 0;
     for (int i = 0; i < gates.gateCount(); i++) {
       TeleportGateIndex.Gate g = gates.gate(i);
       String label = g.localizedName();
@@ -157,9 +180,11 @@ public final class TeleportDestinationMap {
       if (label == null) {
         label = g.gateCode;
       }
+      WorldmapLocalinfoIndex.Label loc =
+          localinfo == null ? null : localinfo.resolve(g.zoneCode);
       Entry e = new Entry(Kind.GATE, g.row, label, g.gateCode, g.gateId, -1,
           g.zoneCode, g.zoneId, g.localX, g.heightY, g.localZ, g.region,
-          g.storeCode, g.npcCode);
+          g.storeCode, g.npcCode, loc);
       all.add(e);
       if (g.region != null && g.region.zoneId != null) {
         zoneSet.add(g.region.zoneId);
@@ -168,13 +193,18 @@ public final class TeleportDestinationMap {
       if (g.region != null) {
         resolved++;
       }
+      if (loc != null) {
+        labeled++;
+      }
     }
     this.gateCount = all.size();
     for (int i = 0; i < destinations.destinationCount(); i++) {
       OptionalTeleportIndex.Destination d = destinations.destination(i);
+      WorldmapLocalinfoIndex.Label loc =
+          localinfo == null ? null : localinfo.resolve(d.zoneCode);
       Entry e = new Entry(Kind.OPTIONAL_DESTINATION, d.row, d.nameLabel, null,
           -1, d.index, d.zoneCode, d.regionId, d.localX, d.heightY, d.localZ,
-          d.region, null, null);
+          d.region, null, null, loc);
       all.add(e);
       if (d.region != null && d.region.zoneId != null) {
         zoneSet.add(d.region.zoneId);
@@ -182,6 +212,9 @@ public final class TeleportDestinationMap {
       }
       if (d.region != null) {
         resolved++;
+      }
+      if (loc != null) {
+        labeled++;
       }
     }
     Map<String, List<Entry>> frozen = new LinkedHashMap<String, List<Entry>>();
@@ -192,6 +225,7 @@ public final class TeleportDestinationMap {
     this.byZone = Collections.unmodifiableMap(frozen);
     this.zones = Collections.unmodifiableSet(zoneSet);
     this.resolvedCount = resolved;
+    this.labeledCount = labeled;
   }
 
   private static void addZone(Map<String, List<Entry>> byZone, String zoneId, Entry e) {
@@ -225,6 +259,11 @@ public final class TeleportDestinationMap {
   /** Entries with no placement (instance rows / unlisted region ids). */
   public int unresolvedEntryCount() {
     return entries.size() - resolvedCount;
+  }
+
+  /** Entries whose SN_ZONE_* uniquely joins worldmap_localinfo (0 without attach). */
+  public int labeledEntryCount() {
+    return labeledCount;
   }
 
   public Entry entry(int i) {

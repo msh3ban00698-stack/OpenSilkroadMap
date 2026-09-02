@@ -270,6 +270,11 @@ public class GameActivityTest {
             assertEquals(97, gateCh.sectorY());
             assertEquals("1001", gateCh.serverZone());
             assertEquals("STORE_CH_GATE", gateCh.storeCode);
+            assertEquals(61, map.labeledEntryCount());
+            assertEquals("장안", gateCh.label);
+            assertNotNull(gateCh.localinfo);
+            assertEquals("중국", gateCh.localinfo.name);
+            assertEquals("장 안", gateCh.localinfo.description);
           });
     }
   }

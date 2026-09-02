@@ -25,6 +25,7 @@ import com.opensilkroadmap.app.data.WorldDataIndex;
 import com.opensilkroadmap.app.data.WorldGameTable;
 import com.opensilkroadmap.app.data.WorldMapInstanceIndex;
 import com.opensilkroadmap.app.data.WorldMapInstanceTable;
+import com.opensilkroadmap.app.data.WorldmapLocalinfoIndex;
 import com.opensilkroadmap.app.world.CharacterCatalog;
 import com.opensilkroadmap.app.world.CharacterEntity;
 import com.opensilkroadmap.app.world.CharacterMeshIndex;
@@ -92,6 +93,7 @@ public final class GameActivity extends Activity {
   private static final String WORLDMAP_INSTANCE_ASSET = "game/textdata/worldmap_instanceinfo.tsv";
   private static final String WORLD_DATA_ASSET = "game/textdata/gameworlddata.tsv";
   private static final String OPTIONAL_TELEPORT_ASSET = "game/textdata/refoptionalteleport.tsv";
+  private static final String WORLDMAP_LOCALINFO_ASSET = "game/textdata/worldmap_localinfo.tsv";
   private static final String CHARACTER_INDEX_ASSET = "game/world/characters/index.tsv";
   private static final String PLAYER_MANIFEST_ASSET = "game/world/characters/player/manifest.json";
   private static final String PLAYER_SKELETON_ASSET =
@@ -154,8 +156,7 @@ public final class GameActivity extends Activity {
     merchantShops = loadMerchantShops(npc);
     teleportGates = loadTeleportGates();
     optionalTeleports = loadOptionalTeleports();
-    teleportDestinations = (teleportGates != null && optionalTeleports != null)
-        ? new TeleportDestinationMap(teleportGates, optionalTeleports) : null;
+    teleportDestinations = loadTeleportDestinations(teleportGates, optionalTeleports);
     instances = loadInstances();
     worldData = loadWorldData();
 
@@ -307,12 +308,19 @@ public final class GameActivity extends Activity {
             .append(" (gates ").append(teleportDestinations.gateCount())
             .append(" · destinations ").append(teleportDestinations.destinationCount())
             .append(") · ").append(teleportDestinations.zones().size())
-            .append(" server zones");
+            .append(" server zones · ")
+            .append(teleportDestinations.labeledEntryCount())
+            .append(" SN_ZONE labeled");
         List<TeleportDestinationMap.Entry> jangan =
             teleportDestinations.inWindow(168, 168, 97, 97);
         if (!jangan.isEmpty()) {
           sb.append(" · Jangan sector → ").append(jangan.size())
               .append(" points");
+        }
+        TeleportDestinationMap.Entry gateCh = teleportDestinations.entry(0);
+        if (gateCh.localinfo != null) {
+          sb.append(" · GATE_CH=").append(gateCh.localinfo.name)
+              .append('/').append(gateCh.localinfo.description);
         }
         sb.append('\n');
       }
@@ -571,6 +579,23 @@ public final class GameActivity extends Activity {
     } catch (IOException e) {
       return null;
     }
+  }
+
+  private TeleportDestinationMap loadTeleportDestinations(
+      TeleportGateIndex gates, OptionalTeleportIndex destinations) {
+    if (gates == null || destinations == null) {
+      return null;
+    }
+    WorldmapLocalinfoIndex localinfo = null;
+    try {
+      localinfo = new WorldmapLocalinfoIndex(TsvTable.parse(
+          "worldmap_localinfo.tsv",
+          new InputStreamReader(getAssets().open(WORLDMAP_LOCALINFO_ASSET),
+              StandardCharsets.UTF_8)));
+    } catch (IOException ignored) {
+      localinfo = null;
+    }
+    return new TeleportDestinationMap(gates, destinations, localinfo);
   }
 
   private TeleportGateIndex loadTeleportGates() {

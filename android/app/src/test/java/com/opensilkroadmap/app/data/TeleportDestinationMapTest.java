@@ -207,4 +207,52 @@ public class TeleportDestinationMapTest {
     assertEquals("no gate attributed to zone 22219", 0,
         map.inZone("22219").size());
   }
+
+  @Test
+  public void twoArgConstructorLeavesLocalinfoNull() throws IOException {
+    TeleportDestinationMap map = load();
+    assertEquals("no localinfo without attach", 0, map.labeledEntryCount());
+    assertNull("GATE_CH localinfo stays null", map.entry(0).localinfo);
+    assertEquals("existing GATE_CH label unchanged", "장안", map.entry(0).label);
+    TeleportDestinationMap.Entry changan = map.entry(map.gateCount() + 25);
+    assertEquals("Chang'an", changan.label);
+    assertNull(changan.localinfo);
+  }
+
+  @Test
+  public void uniqueOnceLocalinfoAttachesWithoutReplacingLabel() throws IOException {
+    TeleportDestinationMap map = new TeleportDestinationMap(
+        new TeleportGateIndex(TeleportDataTable.load(),
+            RegionResolver.loadDefault(), TeleportBuildingTable.loadDefault()),
+        new OptionalTeleportIndex(OptionalTeleportTable.load(),
+            RegionResolver.loadDefault()),
+        WorldmapLocalinfoIndex.loadDefault());
+    assertEquals("290 entries unchanged", 290, map.entryCount());
+    assertEquals("61 unique-once SN_ZONE labels", 61, map.labeledEntryCount());
+    TeleportDestinationMap.Entry gateCh = map.entry(0);
+    assertEquals("existing GATE_CH label unchanged", "장안", gateCh.label);
+    assertEquals("SN_ZONE_22001", gateCh.zoneCode);
+    assertNotNull(gateCh.localinfo);
+    assertEquals("중국", gateCh.localinfo.name);
+    assertEquals("장 안", gateCh.localinfo.description);
+    assertEquals(22001, gateCh.localinfo.zoneId);
+
+    TeleportDestinationMap.Entry changan = null;
+    for (int i = 0; i < map.entryCount(); i++) {
+      TeleportDestinationMap.Entry e = map.entry(i);
+      if (e.kind == TeleportDestinationMap.Kind.OPTIONAL_DESTINATION
+          && e.sourceIndex == 26) {
+        changan = e;
+        break;
+      }
+    }
+    assertNotNull(changan);
+    assertEquals("Chang'an label unchanged", "Chang'an", changan.label);
+    assertNotNull(changan.localinfo);
+    assertEquals("중국", changan.localinfo.name);
+    assertEquals("장 안", changan.localinfo.description);
+
+    TeleportDestinationMap.Entry instanceGate = map.entry(8);
+    assertNull("unmatched SN_ZONE stays unlabeled", instanceGate.localinfo);
+  }
 }

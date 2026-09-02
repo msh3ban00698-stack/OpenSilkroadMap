@@ -32,6 +32,7 @@ SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
 
 import region_resolver as rr  # noqa: E402
+from worldmap_localinfo import load_unique_labels, resolve  # noqa: E402
 
 ASSETS = Path(__file__).resolve().parent.parent / "android/app/src/main/assets/game"
 TEXTDATA = ASSETS / "textdata"
@@ -257,6 +258,44 @@ class TeleportDestinationMapParityTests(unittest.TestCase):
                   for e in win}
         self.assertIn("GATE_CH", labels)
         self.assertIn("Chang'an", labels)
+
+
+class UniqueOnceLocalinfoAttachTests(unittest.TestCase):
+    """Optional unique-once SN_ZONE labels; existing map labels stay unchanged."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.gates = _gates()
+        cls.dests = _destinations()
+        cls.labels = load_unique_labels(TEXTDATA / "worldmap_localinfo.tsv")
+
+    def test_two_arg_map_has_no_localinfo(self):
+        self.assertEqual(self.gates[0]["gate_code"], "GATE_CH")
+        self.assertNotIn("localinfo", self.gates[0])
+        self.assertEqual(self.dests[25]["name_label"], "Chang'an")
+
+    def test_unique_once_attach_does_not_replace_labels(self):
+        labeled_gates = 0
+        for g in self.gates:
+            lab = resolve(self.labels, g["zone_code"])
+            if lab is not None:
+                labeled_gates += 1
+                g["localinfo"] = lab
+        labeled_dests = 0
+        for d in self.dests:
+            lab = resolve(self.labels, d["zone_code"])
+            if lab is not None:
+                labeled_dests += 1
+                d["localinfo"] = lab
+        self.assertEqual(29, labeled_gates)
+        self.assertEqual(32, labeled_dests)
+        self.assertEqual(61, labeled_gates + labeled_dests)
+        self.assertEqual(self.gates[0]["gate_code"], "GATE_CH")
+        self.assertEqual(self.gates[0]["localinfo"]["name"], "중국")
+        self.assertEqual(self.gates[0]["localinfo"]["description"], "장 안")
+        self.assertEqual(self.dests[25]["name_label"], "Chang'an")
+        self.assertEqual(self.dests[25]["localinfo"]["name"], "중국")
+        self.assertIsNone(resolve(self.labels, self.gates[8]["zone_code"]))
 
 
 if __name__ == "__main__":
