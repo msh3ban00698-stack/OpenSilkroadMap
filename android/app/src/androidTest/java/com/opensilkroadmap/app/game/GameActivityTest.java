@@ -297,6 +297,11 @@ public class GameActivityTest {
             assertEquals(51, merchants.identifiedCount());
             assertEquals("NPC_CH_SMITH", smith.characterCode());
             assertEquals("npc\\npc\\chinashop_smith.bsr", smith.modelPath());
+            assertEquals(1233, merchants.stockIdentifiedCount());
+            assertEquals("ITEM_CH_SWORD_01_A",
+                smith.merchant.tabs.get(0).stock.get(0).itemCode());
+            assertEquals("item\\china\\weapon\\sword_01.ddj",
+                smith.merchant.tabs.get(0).stock.get(0).iconPath());
           });
     }
   }

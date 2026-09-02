@@ -193,6 +193,19 @@ public final class MerchantShopSpawns {
     return identifiedCount;
   }
 
+  /**
+   * Placed-merchant stock rows whose PACKAGE_ code resolved to an ITEM_*
+   * identity (codes/icons only). STORE_AM_SPECIAL / 7568 is not placed and
+   * has empty stock, so this equals the NPC-store total (1233).
+   */
+  public int stockIdentifiedCount() {
+    int n = 0;
+    for (Entry e : entries) {
+      n += e.merchant.identifiedStockCount();
+    }
+    return n;
+  }
+
   /** Placed store at the given index (0 .. placedCount()-1). */
   public Entry placed(int i) {
     return entries.get(i);

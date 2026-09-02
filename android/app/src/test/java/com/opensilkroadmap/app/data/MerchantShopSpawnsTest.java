@@ -62,6 +62,26 @@ public class MerchantShopSpawnsTest {
   }
 
   @Test
+  public void placedSmithStockCarriesPackageIdentity() throws IOException {
+    MerchantShopSpawns map = load();
+    assertEquals(1233, map.stockIdentifiedCount());
+    MerchantShopSpawns.Entry smith = map.placed(0);
+    assertEquals(19, smith.merchant.stockSize());
+    ShopMerchantIndex.StockItem sword = smith.merchant.tabs.get(0).stock.get(0);
+    assertEquals("ITEM_CH_SWORD_01_A", sword.itemCode());
+    assertEquals("item\\china\\weapon\\sword_01.ddj", sword.iconPath());
+    ShopMerchantIndex.Merchant trader = null;
+    for (MerchantShopSpawns.Entry e : map.entries()) {
+      if ("STORE_CH_TRADER".equals(e.storeCode())) {
+        trader = e.merchant;
+      }
+    }
+    assertNotNull(trader);
+    assertEquals(0, trader.stockSize());
+    assertEquals(0, trader.identifiedStockCount());
+  }
+
+  @Test
   public void everyPlacedMerchantCarriesNpcIdentity() throws IOException {
     MerchantShopSpawns map = load();
     assertEquals("51 placed merchants identified", 51, map.identifiedCount());

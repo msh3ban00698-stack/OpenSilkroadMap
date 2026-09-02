@@ -106,6 +106,35 @@ class CommittedMerchantSpawnTests(unittest.TestCase):
         self.assertNotIn(7568, [p[0] for p in placed])
         self.assertEqual(identity[7568][0], "NPC_AM_SPECIAL")
 
+    def test_placed_smith_stock_carries_package_identity(self):
+        identity = {}
+        path = TEXTDATA / "item_package_identity.tsv"
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                cols = line.rstrip("\n").split("\t")
+                if len(cols) >= 4 and cols[0].startswith("ITEM_"):
+                    identity[cols[0]] = (int(cols[1]), cols[2], cols[3])
+        from shop_merchant_evidence import build
+        ev = build()
+        resolved = 0
+        for m in ev["merchants"]:
+            for t in m["tabs"]:
+                for s in t["stock"]:
+                    code = s["item_code"][len("PACKAGE_"):]
+                    self.assertIn(code, identity, s["item_code"])
+                    _iid, model, icon = identity[code]
+                    self.assertTrue(icon.lower().endswith(".ddj"), icon)
+                    self.assertTrue(model.lower().endswith(".bsr") or model == "xxx",
+                                    model)
+                    resolved += 1
+        self.assertEqual(resolved, 1233)
+        smith = [m for m in ev["merchants"] if m["store_code"] == "STORE_CH_SMITH"][0]
+        first = smith["tabs"][0]["stock"][0]
+        self.assertEqual(first["item_code"], "PACKAGE_ITEM_CH_SWORD_01_A")
+        sword = identity["ITEM_CH_SWORD_01_A"]
+        self.assertEqual(sword[0], 71)
+        self.assertEqual(sword[2], r"item\china\weapon\sword_01.ddj")
+
     def test_jangan_windows_match(self):
         placed, _ = self._placed()
 

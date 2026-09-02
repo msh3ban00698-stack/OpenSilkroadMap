@@ -129,6 +129,74 @@ public class ShopMerchantBindingTest {
   }
 
   @Test
+  public void merchantStockCarriesPackageIdentity() throws Exception {
+    ShopMerchantIndex index = ShopMerchantIndex.loadDefault();
+    int resolved = 0;
+    for (ShopMerchantIndex.Merchant m : index.merchants()) {
+      assertEquals(m.stockSize(), m.identifiedStockCount());
+      for (ShopMerchantIndex.Tab t : m.tabs) {
+        for (ShopMerchantIndex.StockItem s : t.stock) {
+          assertNotNull("package " + s.packageCode, s.identity);
+          assertTrue(s.itemCode().startsWith("ITEM_"));
+          assertTrue(s.iconPath().toLowerCase().endsWith(".ddj"));
+          assertTrue(s.modelPath().toLowerCase().endsWith(".bsr")
+              || "xxx".equals(s.modelPath()));
+          resolved++;
+        }
+      }
+    }
+    assertEquals(1233, resolved);
+    assertEquals(1233, index.identifiedStockCount());
+  }
+
+  @Test
+  public void smithStockIdentityIsCodesAndIconsOnly() throws Exception {
+    ShopMerchantIndex index = ShopMerchantIndex.loadDefault();
+    ShopMerchantIndex.Merchant smith = index.merchantForRefId(2003);
+    assertEquals(19, smith.stockSize());
+    assertEquals(19, smith.identifiedStockCount());
+    ShopMerchantIndex.StockItem sword = smith.tabs.get(0).stock.get(0);
+    assertEquals("PACKAGE_ITEM_CH_SWORD_01_A", sword.packageCode);
+    assertEquals("ITEM_CH_SWORD_01_A", sword.itemCode());
+    assertEquals(71, sword.itemId());
+    assertEquals("item\\china\\weapon\\sword_01.bsr", sword.modelPath());
+    assertEquals("item\\china\\weapon\\sword_01.ddj", sword.iconPath());
+    ShopMerchantIndex.StockItem blade = null;
+    for (ShopMerchantIndex.StockItem s : smith.tabs.get(0).stock) {
+      if ("PACKAGE_ITEM_CH_BLADE_01_A".equals(s.packageCode)) {
+        blade = s;
+      }
+    }
+    assertNotNull(blade);
+    assertEquals("ITEM_CH_BLADE_01_A", blade.itemCode());
+    assertEquals(107, blade.itemId());
+    ShopMerchantIndex.StockItem arrow = smith.tabs.get(2).stock.get(0);
+    assertEquals("PACKAGE_ITEM_ETC_AMMO_ARROW_01", arrow.packageCode);
+    assertEquals("ITEM_ETC_AMMO_ARROW_01", arrow.itemCode());
+    assertEquals("xxx", arrow.modelPath());
+    assertEquals("item\\etc\\ammo_arrow_01.ddj", arrow.iconPath());
+  }
+
+  @Test
+  public void fourArgBuildLeavesStockIdentityNull() throws Exception {
+    ShopMerchantIndex index = ShopMerchantIndex.build(
+        ShopDataTable.loadDefault(),
+        ShopTabDataTable.loadDefault(),
+        TsvTable.loadDefault("refshop.tsv"),
+        TsvTable.loadDefault("refshopgoods.tsv"));
+    ShopMerchantIndex.Merchant smith = index.merchantForRefId(2003);
+    assertEquals(19, smith.stockSize());
+    assertEquals(0, smith.identifiedStockCount());
+    assertEquals(0, index.identifiedStockCount());
+    ShopMerchantIndex.StockItem sword = smith.tabs.get(0).stock.get(0);
+    assertEquals("PACKAGE_ITEM_CH_SWORD_01_A", sword.packageCode);
+    assertNull(sword.identity);
+    assertNull(sword.itemCode());
+    assertNull(sword.iconPath());
+    assertNull(sword.modelPath());
+  }
+
+  @Test
   public void goodsOrderIsUniqueWithinEachTab() throws Exception {
     ShopMerchantIndex index = ShopMerchantIndex.loadDefault();
     for (ShopMerchantIndex.Merchant m : index.merchants()) {

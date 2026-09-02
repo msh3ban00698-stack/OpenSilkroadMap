@@ -24,6 +24,13 @@ import java.util.Set;
  *     col4 (per-tab unique order; unique within every tab, 164/164)
  * </ol>
  *
+ * <p>When an {@link ItemPackageIndex} is attached, each stock row also carries
+ * the proven ITEM_* code, item id, .bsr model path (or {@code xxx}), and .ddj
+ * icon path from live itemdata. Unknown package codes fail closed with a null
+ * identity; names, prices, quantities and SN_* language keys are never
+ * invented. {@code loadDefault()} attaches the committed
+ * {@code item_package_identity.tsv} (1233/1233 merchant stock rows, 784 unique).
+ *
  * <p>Proven on the committed set: 57 shopdata stores, 52 NPC-run (positive
  * merchant_refid), every store_code exists in refshop.tsv (57/57), every
  * merchant tab id resolves in shoptabdata.tsv, and 51/52 merchant RefCharIds
@@ -38,10 +45,37 @@ public final class ShopMerchantIndex {
   public static final class StockItem {
     public final String packageCode;
     public final int order;
+    public final ItemPackageIndex.Identity identity;
 
     public StockItem(String packageCode, int order) {
+      this(packageCode, order, null);
+    }
+
+    public StockItem(String packageCode, int order,
+                     ItemPackageIndex.Identity identity) {
       this.packageCode = packageCode;
       this.order = order;
+      this.identity = identity;
+    }
+
+    /** ITEM_* code after PACKAGE_ strip, or {@code null} (fail-closed). */
+    public String itemCode() {
+      return identity == null ? null : identity.itemCode;
+    }
+
+    /** itemdata col1 id, or {@code 0} when identity is absent. */
+    public int itemId() {
+      return identity == null ? 0 : identity.itemId;
+    }
+
+    /** itemdata col52 model path (.bsr or xxx), or {@code null}. */
+    public String modelPath() {
+      return identity == null ? null : identity.modelPath;
+    }
+
+    /** itemdata col54 icon path (.ddj), or {@code null}. */
+    public String iconPath() {
+      return identity == null ? null : identity.iconPath;
     }
   }
 
@@ -89,6 +123,19 @@ public final class ShopMerchantIndex {
       }
       return n;
     }
+
+    /** Stock rows whose PACKAGE_ code resolved in the item package index. */
+    public int identifiedStockCount() {
+      int n = 0;
+      for (Tab t : tabs) {
+        for (StockItem s : t.stock) {
+          if (s.identity != null) {
+            n++;
+          }
+        }
+      }
+      return n;
+    }
   }
 
   private final List<Merchant> merchants;
@@ -110,6 +157,18 @@ public final class ShopMerchantIndex {
   public static ShopMerchantIndex build(
       ShopDataTable shop, ShopTabDataTable tabs, TsvTable refshop,
       TsvTable refshopGoods) {
+    return build(shop, tabs, refshop, refshopGoods, null);
+  }
+
+  /**
+   * Same binding as {@link #build(ShopDataTable, ShopTabDataTable, TsvTable, TsvTable)}
+   * with optional {@link ItemPackageIndex}. Unknown package codes stay
+   * identity-null (fail-closed); names, prices, quantities and SN_* are not
+   * attached.
+   */
+  public static ShopMerchantIndex build(
+      ShopDataTable shop, ShopTabDataTable tabs, TsvTable refshop,
+      TsvTable refshopGoods, ItemPackageIndex packages) {
     Map<Integer, String> tabIdToCode = new HashMap<Integer, String>();
     Map<Integer, Integer> tabIdToGroup = new HashMap<Integer, Integer>();
     Map<Integer, String> tabIdToSn = new HashMap<Integer, String>();
@@ -140,7 +199,9 @@ public final class ShopMerchantIndex {
         list = new ArrayList<StockItem>();
         stockByTab.put(tabCode, list);
       }
-      list.add(new StockItem(code, order));
+      ItemPackageIndex.Identity id =
+          packages == null ? null : packages.resolvePackage(code);
+      list.add(new StockItem(code, order, id));
     }
     List<Merchant> out = new ArrayList<Merchant>();
     for (int r = 0; r < shop.shopCount(); r++) {
@@ -182,7 +243,8 @@ public final class ShopMerchantIndex {
         ShopDataTable.loadDefault(),
         ShopTabDataTable.loadDefault(),
         TsvTable.loadDefault("refshop.tsv"),
-        TsvTable.loadDefault("refshopgoods.tsv"));
+        TsvTable.loadDefault("refshopgoods.tsv"),
+        ItemPackageIndex.loadDefault());
   }
 
   public List<Merchant> merchants() {
@@ -203,5 +265,14 @@ public final class ShopMerchantIndex {
 
   public Set<Integer> merchantRefIds() {
     return refIds;
+  }
+
+  /** Merchant stock rows whose PACKAGE_ code resolved to an ITEM_* identity. */
+  public int identifiedStockCount() {
+    int n = 0;
+    for (Merchant m : merchants) {
+      n += m.identifiedStockCount();
+    }
+    return n;
   }
 }
