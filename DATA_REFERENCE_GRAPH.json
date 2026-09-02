@@ -987,32 +987,32 @@
    "columns_detail": [
     {
      "dominant": "int",
-     "evidence": "semantics not verified",
-     "name": "col0",
+     "evidence": "constant 1 across committed set",
+     "name": "service_flag",
      "types": {
       "int": 78
      }
     },
     {
      "dominant": "int",
-     "evidence": "joins refshopgoods.col1 (both value 15 in committed set)",
-     "name": "shop_id",
+     "evidence": "constant 15; NOT a shop id (earlier label corrected)",
+     "name": "country_flag",
      "types": {
       "int": 78
      }
     },
     {
      "dominant": "int",
-     "evidence": "semantics not verified",
-     "name": "col2",
+     "evidence": "unique numeric store id (965..3040)",
+     "name": "store_id",
      "types": {
       "int": 78
      }
     },
     {
      "dominant": "str",
-     "evidence": "MALL_* / STORE_* codes",
-     "name": "shop_code",
+     "evidence": "MALL_* / STORE_* codes; shopdata.tsv col2 is a 57/57 subset",
+     "name": "store_code",
      "types": {
       "str": 78
      }
@@ -1105,24 +1105,24 @@
    "columns_detail": [
     {
      "dominant": "int",
-     "evidence": "semantics not verified",
-     "name": "col0",
+     "evidence": "constant 1 across committed set",
+     "name": "service_flag",
      "types": {
       "int": 2282
      }
     },
     {
      "dominant": "int",
-     "evidence": "joins refshop.col1",
-     "name": "shop_id",
+     "evidence": "constant 15; NOT a shop id (earlier label corrected)",
+     "name": "country_flag",
      "types": {
       "int": 2282
      }
     },
     {
      "dominant": "str",
-     "evidence": "joins refshoptab.txt col3",
-     "name": "category_code",
+     "evidence": "STORE_*_TABn / MALL_* codes; joins refshoptab.txt col3 (164/164)",
+     "name": "shop_tab_code",
      "types": {
       "str": 2282
      }
@@ -1137,8 +1137,8 @@
     },
     {
      "dominant": "int",
-     "evidence": "semantics not verified",
-     "name": "col4",
+     "evidence": "unique within every tab (164/164); not necessarily a contiguous run",
+     "name": "order_index",
      "types": {
       "int": 2282
      }
@@ -1271,6 +1271,218 @@
    "kind": "table",
    "records": 3294,
    "source_path": "/server_dep/silkroad/textdata/regioncode.txt"
+  },
+  "shopdata.tsv": {
+   "columns": 18,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "constant 1 across committed set",
+     "name": "service_flag",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "client store key; unique 1..61 with gaps",
+     "name": "store_id",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "MALL_* / STORE_* codes; 57/57 present in refshop.tsv col3",
+     "name": "store_code",
+     "types": {
+      "str": 57
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col3",
+     "types": {
+      "str": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col4",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "NPC RefCharID when > 0 (52 rows); negative 0xF0000001..6 MALL sentinel (5 rows); joins npcpos.tsv col0 for 51/52",
+     "name": "merchant_refid",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_1",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_2",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_3",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_4",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_5",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab id (0 = padding); joins shoptabdata.tsv col1",
+     "name": "store_tab_id_6",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col12",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col13",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col14",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "semantics not verified",
+     "name": "col15",
+     "types": {
+      "int": 57
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col16",
+     "types": {
+      "str": 57
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "semantics not verified",
+     "name": "col17",
+     "types": {
+      "str": 57
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 57,
+   "source_path": "/server_dep/silkroad/textdata/shopdata.txt"
+  },
+  "shoptabdata.tsv": {
+   "columns": 5,
+   "columns_detail": [
+    {
+     "dominant": "int",
+     "evidence": "constant 1 across committed set",
+     "name": "service_flag",
+     "types": {
+      "int": 161
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "unique positive tab id (161); shopdata.tsv col6..11 join here",
+     "name": "tab_id",
+     "types": {
+      "int": 161
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "STORE_*_TABn / MALL_* codes; NPC-store values equal refshopgoods.tsv col2 codes",
+     "name": "tab_code",
+     "types": {
+      "str": 161
+     }
+    },
+    {
+     "dominant": "int",
+     "evidence": "tab-group id; joins shopgroupdata.txt col1 (not committed)",
+     "name": "tab_group_id",
+     "types": {
+      "int": 161
+     }
+    },
+    {
+     "dominant": "str",
+     "evidence": "SN_TAB_* string key (unresolved language key in committed set)",
+     "name": "sn_tab_code",
+     "types": {
+      "str": 161
+     }
+    }
+   ],
+   "comment_prefixes": [
+    "#",
+    "//"
+   ],
+   "delimiter": "tab",
+   "encoding": "utf-8 (normalized from UTF-16LE/cp949 source)",
+   "kind": "table",
+   "records": 161,
+   "source_path": "/server_dep/silkroad/textdata/shoptabdata.txt"
   },
   "skilldata.tsv": {
    "columns": 1,
@@ -2707,28 +2919,12 @@
   },
   {
    "from": {
-    "column": 1,
-    "dataset": "refshopgoods.tsv",
-    "name": "shop_id"
-   },
-   "matched": 1,
-   "note": "committed set holds a single shop id (15)",
-   "status": "VERIFIED",
-   "to": {
-    "column": 1,
-    "dataset": "refshop.tsv",
-    "name": "shop_id"
-   },
-   "total": 1
-  },
-  {
-   "from": {
     "column": 2,
     "dataset": "refshopgoods.tsv",
-    "name": "category_code"
+    "name": "shop_tab_code"
    },
    "matched": 164,
-   "note": "every refshopgoods category code exists in refshoptab.txt col3",
+   "note": "every refshopgoods shop_tab_code exists in refshoptab.txt col3",
    "status": "VERIFIED",
    "to": {
     "column": 3,
@@ -2736,6 +2932,54 @@
     "name": "tab code"
    },
    "total": 164
+  },
+  {
+   "from": {
+    "column": 2,
+    "dataset": "shopdata.tsv",
+    "name": "store_code"
+   },
+   "matched": 57,
+   "note": "all 57 client store codes exist in the server refshop store list",
+   "status": "VERIFIED",
+   "to": {
+    "column": 3,
+    "dataset": "refshop.tsv",
+    "name": "store_code"
+   },
+   "total": 57
+  },
+  {
+   "from": {
+    "column": 5,
+    "dataset": "shopdata.tsv",
+    "name": "merchant_refid"
+   },
+   "matched": 51,
+   "note": "52 NPC-run store rows; 51 spawn in npcpos; STORE_AM_SPECIAL (7568) has no npcpos placement",
+   "status": "PARTIAL",
+   "to": {
+    "column": 0,
+    "dataset": "npcpos.tsv",
+    "name": "character_refid"
+   },
+   "total": 52
+  },
+  {
+   "from": {
+    "column": 6,
+    "dataset": "shopdata.tsv",
+    "name": "store_tab_id_1"
+   },
+   "matched": 152,
+   "note": "every distinct tab id referenced by shop rows (NPC + MALL) resolves in shoptabdata col1",
+   "status": "VERIFIED",
+   "to": {
+    "column": 1,
+    "dataset": "shoptabdata.tsv",
+    "name": "tab_id"
+   },
+   "total": 152
   },
   {
    "from": {

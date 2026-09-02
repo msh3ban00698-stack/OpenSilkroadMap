@@ -1,4 +1,5 @@
-"""Declarative schema catalog + reference graph for the 21 Phase 12 datasets.
+"""Declarative schema catalog + reference graph for the committed textdata
+datasets.
 
 Each dataset is a UTF-8 TSV asset committed under
 android/app/src/main/assets/game/textdata/, derived from the real
@@ -53,13 +54,36 @@ VERIFIED_NAMES = {
         3: ("item_code", "ITEM_* codes; 316/318 present in itemdata_*.txt col2"),
     },
     "refshop.tsv": {
-        1: ("shop_id", "joins refshopgoods.col1 (both value 15 in committed set)"),
-        3: ("shop_code", "MALL_* / STORE_* codes"),
+        0: ("service_flag", "constant 1 across committed set"),
+        1: ("country_flag", "constant 15; NOT a shop id (earlier label corrected)"),
+        2: ("store_id", "unique numeric store id (965..3040)"),
+        3: ("store_code", "MALL_* / STORE_* codes; shopdata.tsv col2 is a 57/57 subset"),
     },
     "refshopgoods.tsv": {
-        1: ("shop_id", "joins refshop.col1"),
-        2: ("category_code", "joins refshoptab.txt col3"),
+        0: ("service_flag", "constant 1 across committed set"),
+        1: ("country_flag", "constant 15; NOT a shop id (earlier label corrected)"),
+        2: ("shop_tab_code", "STORE_*_TABn / MALL_* codes; joins refshoptab.txt col3 (164/164)"),
         3: ("item_code", "PACKAGE_ITEM_* codes"),
+        4: ("order_index", "unique within every tab (164/164); not necessarily a contiguous run"),
+    },
+    "shopdata.tsv": {
+        0: ("service_flag", "constant 1 across committed set"),
+        1: ("store_id", "client store key; unique 1..61 with gaps"),
+        2: ("store_code", "MALL_* / STORE_* codes; 57/57 present in refshop.tsv col3"),
+        5: ("merchant_refid", "NPC RefCharID when > 0 (52 rows); negative 0xF0000001..6 MALL sentinel (5 rows); joins npcpos.tsv col0 for 51/52"),
+        6: ("store_tab_id_1", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+        7: ("store_tab_id_2", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+        8: ("store_tab_id_3", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+        9: ("store_tab_id_4", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+        10: ("store_tab_id_5", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+        11: ("store_tab_id_6", "tab id (0 = padding); joins shoptabdata.tsv col1"),
+    },
+    "shoptabdata.tsv": {
+        0: ("service_flag", "constant 1 across committed set"),
+        1: ("tab_id", "unique positive tab id (161); shopdata.tsv col6..11 join here"),
+        2: ("tab_code", "STORE_*_TABn / MALL_* codes; NPC-store values equal refshopgoods.tsv col2 codes"),
+        3: ("tab_group_id", "tab-group id; joins shopgroupdata.txt col1 (not committed)"),
+        4: ("sn_tab_code", "SN_TAB_* string key (unresolved language key in committed set)"),
     },
     "regioncode.tsv": {
         1: ("region_id", "int region code"),
@@ -224,15 +248,27 @@ def build_reference_graph(datasets):
         "status": "PARTIAL",
     })
     edges.append({
-        "from": {"dataset": "refshopgoods.tsv", "column": 1, "name": "shop_id"},
-        "to": {"dataset": "refshop.tsv", "column": 1, "name": "shop_id"},
-        "matched": 1, "total": 1, "note": "committed set holds a single shop id (15)",
+        "from": {"dataset": "refshopgoods.tsv", "column": 2, "name": "shop_tab_code"},
+        "to": {"dataset": "refshoptab.txt", "column": 3, "name": "tab code"},
+        "matched": 164, "total": 164, "note": "every refshopgoods shop_tab_code exists in refshoptab.txt col3",
         "status": "VERIFIED",
     })
     edges.append({
-        "from": {"dataset": "refshopgoods.tsv", "column": 2, "name": "category_code"},
-        "to": {"dataset": "refshoptab.txt", "column": 3, "name": "tab code"},
-        "matched": 164, "total": 164, "note": "every refshopgoods category code exists in refshoptab.txt col3",
+        "from": {"dataset": "shopdata.tsv", "column": 2, "name": "store_code"},
+        "to": {"dataset": "refshop.tsv", "column": 3, "name": "store_code"},
+        "matched": 57, "total": 57, "note": "all 57 client store codes exist in the server refshop store list",
+        "status": "VERIFIED",
+    })
+    edges.append({
+        "from": {"dataset": "shopdata.tsv", "column": 5, "name": "merchant_refid"},
+        "to": {"dataset": "npcpos.tsv", "column": 0, "name": "character_refid"},
+        "matched": 51, "total": 52, "note": "52 NPC-run store rows; 51 spawn in npcpos; STORE_AM_SPECIAL (7568) has no npcpos placement",
+        "status": "PARTIAL",
+    })
+    edges.append({
+        "from": {"dataset": "shopdata.tsv", "column": 6, "name": "store_tab_id_1"},
+        "to": {"dataset": "shoptabdata.tsv", "column": 1, "name": "tab_id"},
+        "matched": 152, "total": 152, "note": "every distinct tab id referenced by shop rows (NPC + MALL) resolves in shoptabdata col1",
         "status": "VERIFIED",
     })
     edges.append({

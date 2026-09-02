@@ -1,6 +1,6 @@
 {
  "description": "Proven references between Android runtime assets (Phase 13 Part N). Only edges reproduced from real data are present; status VERIFIED means the reference was reproduced from committed/live bytes, PARTIAL means the structure is proven but a downstream field is UNKNOWN.",
- "textdata_edges": 9,
+ "textdata_edges": 11,
  "asset_edges": 17,
  "phase19_bandit_edges": 27,
  "edges": [
@@ -72,20 +72,7 @@
   {
    "from": {
     "kind": "refshopgoods.tsv",
-    "role": "shop_id"
-   },
-   "to": {
-    "kind": "refshop.tsv",
-    "role": "shop_id"
-   },
-   "relationship": "column join",
-   "status": "VERIFIED",
-   "evidence": "1/1 matched; committed set holds a single shop id (15)"
-  },
-  {
-   "from": {
-    "kind": "refshopgoods.tsv",
-    "role": "category_code"
+    "role": "shop_tab_code"
    },
    "to": {
     "kind": "refshoptab.txt",
@@ -93,7 +80,46 @@
    },
    "relationship": "column join",
    "status": "VERIFIED",
-   "evidence": "164/164 matched; every refshopgoods category code exists in refshoptab.txt col3"
+   "evidence": "164/164 matched; every refshopgoods shop_tab_code exists in refshoptab.txt col3"
+  },
+  {
+   "from": {
+    "kind": "shopdata.tsv",
+    "role": "store_code"
+   },
+   "to": {
+    "kind": "refshop.tsv",
+    "role": "store_code"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "57/57 matched; all 57 client store codes exist in the server refshop store list"
+  },
+  {
+   "from": {
+    "kind": "shopdata.tsv",
+    "role": "merchant_refid"
+   },
+   "to": {
+    "kind": "npcpos.tsv",
+    "role": "character_refid"
+   },
+   "relationship": "column join",
+   "status": "PARTIAL",
+   "evidence": "51/52 matched; 52 NPC-run store rows; 51 spawn in npcpos; STORE_AM_SPECIAL (7568) has no npcpos placement"
+  },
+  {
+   "from": {
+    "kind": "shopdata.tsv",
+    "role": "store_tab_id_1"
+   },
+   "to": {
+    "kind": "shoptabdata.tsv",
+    "role": "tab_id"
+   },
+   "relationship": "column join",
+   "status": "VERIFIED",
+   "evidence": "152/152 matched; every distinct tab id referenced by shop rows (NPC + MALL) resolves in shoptabdata col1"
   },
   {
    "from": {
