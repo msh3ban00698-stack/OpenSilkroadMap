@@ -17,11 +17,18 @@ import java.util.Map;
  * world spawn (STORE_AM_SPECIAL / 7568) is never given invented coordinates and
  * is counted separately as spawnless.
  *
+ * <p>When a {@link CharacterIdentityIndex} is attached, each placed merchant
+ * also carries the proven characterdata code ({@code NPC_*}) and .bsr model
+ * path for its RefCharID. Unknown refids fail closed with a null identity;
+ * identity is never invented. STORE_AM_SPECIAL / 7568 still resolves in the
+ * identity index (NPC_AM_SPECIAL) but is not placed.
+ *
  * <p>Proven coverage on the committed tables (Phase 30): 52 NPC-run stores,
  * 51/52 merchant RefCharIDs have exactly one world spawn each; only
  * STORE_AM_SPECIAL (7568) has none. Store → merchant RefCharID → store tab →
  * item stock binding is provenance from {@link ShopMerchantIndex}; geometry is
- * provenance from {@link NpcSpawnIndex}.
+ * provenance from {@link NpcSpawnIndex}; character code / model path is
+ * provenance from {@link CharacterIdentityIndex}.
  *
  * <p>No Android dependencies; pure JVM.
  */
@@ -31,10 +38,17 @@ public final class MerchantShopSpawns {
   public static final class Entry {
     public final ShopMerchantIndex.Merchant merchant;
     public final NpcSpawnIndex.Spawn spawn;
+    public final CharacterIdentityIndex.Identity identity;
 
     public Entry(ShopMerchantIndex.Merchant merchant, NpcSpawnIndex.Spawn spawn) {
+      this(merchant, spawn, null);
+    }
+
+    public Entry(ShopMerchantIndex.Merchant merchant, NpcSpawnIndex.Spawn spawn,
+                 CharacterIdentityIndex.Identity identity) {
       this.merchant = merchant;
       this.spawn = spawn;
+      this.identity = identity;
     }
 
     /** The merchant RefCharID the store is bound to. */
@@ -81,11 +95,22 @@ public final class MerchantShopSpawns {
     public float worldZ(int refSy) {
       return spawn.worldZ(refSy);
     }
+
+    /** Proven characterdata code ({@code NPC_*}), or null (fail-closed). */
+    public String characterCode() {
+      return identity == null ? null : identity.code;
+    }
+
+    /** Proven characterdata .bsr model path, or null (fail-closed). */
+    public String modelPath() {
+      return identity == null ? null : identity.modelPath;
+    }
   }
 
   private final List<Entry> entries;
   private final int merchantCount;
   private final int spawnlessCount;
+  private final int identifiedCount;
 
   /**
    * Composes the shop index and the spawn index. A store is placed only when
@@ -94,6 +119,16 @@ public final class MerchantShopSpawns {
    * closed and are not given coordinates.
    */
   public MerchantShopSpawns(ShopMerchantIndex shops, NpcSpawnIndex npc) {
+    this(shops, npc, null);
+  }
+
+  /**
+   * Composes shop + spawn + optional character identity. Identity is attached
+   * only when the index resolves the merchant RefCharID; unknown refids stay
+   * null and are never invented.
+   */
+  public MerchantShopSpawns(ShopMerchantIndex shops, NpcSpawnIndex npc,
+                            CharacterIdentityIndex identity) {
     Map<Integer, List<NpcSpawnIndex.Spawn>> byRef =
         new HashMap<Integer, List<NpcSpawnIndex.Spawn>>();
     for (int i = 0; i < npc.worldCount(); i++) {
@@ -107,22 +142,30 @@ public final class MerchantShopSpawns {
     }
     List<Entry> out = new ArrayList<Entry>();
     int spawnless = 0;
+    int identified = 0;
     for (ShopMerchantIndex.Merchant m : shops.merchants()) {
       List<NpcSpawnIndex.Spawn> list = byRef.get(m.merchantRefId);
       if (list == null || list.size() != 1) {
         spawnless++;
         continue;
       }
-      out.add(new Entry(m, list.get(0)));
+      CharacterIdentityIndex.Identity id =
+          identity == null ? null : identity.resolve(m.merchantRefId);
+      if (id != null) {
+        identified++;
+      }
+      out.add(new Entry(m, list.get(0), id));
     }
     this.entries = Collections.unmodifiableList(out);
     this.merchantCount = shops.merchantCount();
     this.spawnlessCount = spawnless;
+    this.identifiedCount = identified;
   }
 
   public static MerchantShopSpawns loadDefault() throws IOException {
     return new MerchantShopSpawns(
-        ShopMerchantIndex.loadDefault(), NpcSpawnIndex.loadDefault());
+        ShopMerchantIndex.loadDefault(), NpcSpawnIndex.loadDefault(),
+        CharacterIdentityIndex.loadDefault());
   }
 
   /** Placed merchant stores in the ShopMerchantIndex (shopdata) file order. */
@@ -143,6 +186,11 @@ public final class MerchantShopSpawns {
   /** NPC-run stores with no (single) world spawn; never given coordinates. */
   public int spawnlessCount() {
     return spawnlessCount;
+  }
+
+  /** Placed merchants whose RefCharID resolved in the identity index. */
+  public int identifiedCount() {
+    return identifiedCount;
   }
 
   /** Placed store at the given index (0 .. placedCount()-1). */

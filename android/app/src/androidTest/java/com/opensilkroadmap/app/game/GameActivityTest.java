@@ -294,6 +294,9 @@ public class GameActivityTest {
             assertEquals(966, smith.serverStoreId());
             assertEquals(168, smith.sectorX());
             assertEquals(97, smith.sectorY());
+            assertEquals(51, merchants.identifiedCount());
+            assertEquals("NPC_CH_SMITH", smith.characterCode());
+            assertEquals("npc\\npc\\chinashop_smith.bsr", smith.modelPath());
           });
     }
   }

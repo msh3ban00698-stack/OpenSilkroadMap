@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.opensilkroadmap.app.data.CharacterIdentityIndex;
 import com.opensilkroadmap.app.data.MerchantShopSpawns;
 import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
@@ -82,6 +83,7 @@ public final class GameActivity extends Activity {
   private static final String SHOP_TAB_DATA_ASSET = "game/textdata/shoptabdata.tsv";
   private static final String REFSHOP_ASSET = "game/textdata/refshop.tsv";
   private static final String REFSHOP_GOODS_ASSET = "game/textdata/refshopgoods.tsv";
+  private static final String CHARACTER_IDENTITY_ASSET = "game/textdata/character_identity.tsv";
   private static final String TELEPORT_DATA_ASSET = "game/textdata/teleportdata.tsv";
   private static final String TELEPORT_BUILDING_ASSET = "game/textdata/teleportbuilding.tsv";
   private static final String WORLDMAP_INSTANCE_ASSET = "game/textdata/worldmap_instanceinfo.tsv";
@@ -315,12 +317,19 @@ public final class GameActivity extends Activity {
         sb.append("merchant shops ").append(merchantShops.placedCount())
             .append(" placed of ").append(merchantShops.merchantCount())
             .append(" NPC stores · ").append(merchantShops.spawnlessCount())
-            .append(" spawnless (no npcpos)");
+            .append(" spawnless (no npcpos) · ")
+            .append(merchantShops.identifiedCount())
+            .append(" identified");
         List<MerchantShopSpawns.Entry> jangan =
             merchantShops.inWindow(168, 168, 97, 97);
         if (!jangan.isEmpty()) {
           sb.append(" · Jangan sector → ").append(jangan.size())
               .append(" stores");
+        }
+        MerchantShopSpawns.Entry smith = merchantShops.placed(0);
+        if (smith.characterCode() != null) {
+          sb.append(" · ").append(smith.storeCode()).append('=')
+              .append(smith.characterCode());
         }
         sb.append('\n');
       }
@@ -527,7 +536,16 @@ public final class GameActivity extends Activity {
           "refshopgoods.tsv",
           new InputStreamReader(getAssets().open(REFSHOP_GOODS_ASSET), StandardCharsets.UTF_8));
       ShopMerchantIndex shops = ShopMerchantIndex.build(shop, tabs, refshop, refshopGoods);
-      return new MerchantShopSpawns(shops, npc);
+      CharacterIdentityIndex identity = null;
+      try {
+        identity = new CharacterIdentityIndex(TsvTable.parse(
+            "character_identity.tsv",
+            new InputStreamReader(getAssets().open(CHARACTER_IDENTITY_ASSET),
+                StandardCharsets.UTF_8)));
+      } catch (IOException ignored) {
+        identity = null;
+      }
+      return new MerchantShopSpawns(shops, npc, identity);
     } catch (IOException e) {
       return null;
     }

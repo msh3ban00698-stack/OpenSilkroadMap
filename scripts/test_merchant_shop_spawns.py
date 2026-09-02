@@ -87,6 +87,25 @@ class CommittedMerchantSpawnTests(unittest.TestCase):
         self.assertAlmostEqual(x + (sx - 168) * SECTOR_WORLD, x, places=2)
         self.assertAlmostEqual(z + (sy - 97) * SECTOR_WORLD, z, places=2)
 
+    def test_placed_merchants_carry_npc_identity(self):
+        identity = {}
+        path = TEXTDATA / "character_identity.tsv"
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                cols = line.rstrip("\n").split("\t")
+                if len(cols) >= 3 and cols[0].isdigit():
+                    identity[int(cols[0])] = (cols[1], cols[2])
+        placed, _ = self._placed()
+        self.assertEqual(len(placed), 51)
+        for refid, _code, _spawn in placed:
+            self.assertIn(refid, identity)
+            npc_code, model = identity[refid]
+            self.assertTrue(npc_code.startswith("NPC_"), npc_code)
+            self.assertTrue(model.lower().endswith(".bsr"), model)
+        self.assertEqual(identity[2003][0], "NPC_CH_SMITH")
+        self.assertNotIn(7568, [p[0] for p in placed])
+        self.assertEqual(identity[7568][0], "NPC_AM_SPECIAL")
+
     def test_jangan_windows_match(self):
         placed, _ = self._placed()
 

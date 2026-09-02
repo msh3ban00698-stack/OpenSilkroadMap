@@ -57,6 +57,19 @@ public class MerchantShopSpawnsTest {
         smith.worldX(168), 0.001f);
     assertEquals("world z relative to own sector", 1406.7f,
         smith.worldZ(97), 0.001f);
+    assertEquals("NPC_CH_SMITH", smith.characterCode());
+    assertEquals("npc\\npc\\chinashop_smith.bsr", smith.modelPath());
+  }
+
+  @Test
+  public void everyPlacedMerchantCarriesNpcIdentity() throws IOException {
+    MerchantShopSpawns map = load();
+    assertEquals("51 placed merchants identified", 51, map.identifiedCount());
+    for (MerchantShopSpawns.Entry e : map.entries()) {
+      assertNotNull(e.identity);
+      assertTrue(e.characterCode().startsWith("NPC_"));
+      assertTrue(e.modelPath().toLowerCase().endsWith(".bsr"));
+    }
   }
 
   @Test
