@@ -1,11 +1,7 @@
 package com.opensilkroadmap.app.game;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 import com.opensilkroadmap.app.data.CharacterIdentityIndex;
 import com.opensilkroadmap.app.data.ItemPackageIndex;
 import com.opensilkroadmap.app.data.MerchantShopSpawns;
@@ -148,7 +144,6 @@ public final class GameActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    GameDataCatalog data = loadDataCatalog();
     WorldTerrainIndex index = loadTerrainIndex();
     List<WorldRegion> regions = loadWorldRegions();
     npc = loadNpcSpawns();
@@ -168,9 +163,6 @@ public final class GameActivity extends Activity {
     characterCatalog = loadCharacterCatalog();
     characterModels = loadCharacterModels(region, npc);
 
-    FrameLayout root = new FrameLayout(this);
-    root.setBackgroundColor(Color.rgb(16, 16, 20));
-
     world = new NativeWorldRenderer(this);
     if (terrain != null) {
       world.setWorld(terrain);
@@ -182,21 +174,7 @@ public final class GameActivity extends Activity {
       world.setCamera(terrain.width() / 2f, terrain.height() / 2f, 0.5f);
     }
     wirePlayer();
-    root.addView(world, new FrameLayout.LayoutParams(
-        FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-
-    TextView overlay = new TextView(this);
-    overlay.setTextSize(13f);
-    overlay.setTextColor(Color.rgb(230, 230, 235));
-    overlay.setPadding(dp(16), dp(16), dp(16), dp(16));
-    overlay.setText(describe(region, terrain, npc, spawnZones, teleportGates, optionalTeleports, instances, worldData, data, meshObjects));
-    FrameLayout.LayoutParams labelParams =
-        new FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-    labelParams.gravity = Gravity.TOP | Gravity.START;
-    root.addView(overlay, labelParams);
-
-    setContentView(root);
+    setContentView(world);
     start();
   }
 
@@ -258,147 +236,6 @@ public final class GameActivity extends Activity {
     } catch (IOException e) {
       return null;
     }
-  }
-
-  private String describe(
-      WorldRegion region,
-      WorldTerrainSet terrain,
-      NpcSpawnIndex npc,
-      SpawnZoneIndex spawnZones,
-      TeleportGateIndex teleportGates,
-      OptionalTeleportIndex optionalTeleports,
-      WorldMapInstanceIndex instances,
-      WorldDataIndex worldData,
-      GameDataCatalog data,
-      MeshObjectIndex meshObjects) {
-    StringBuilder sb = new StringBuilder();
-    if (terrain != null && region != null) {
-      sb.append(region.name).append(" (").append(region.type).append(")\n");
-      sb.append("sectors ").append(terrain.sectorCount())
-          .append(" · world ").append((int) terrain.width())
-          .append('x').append((int) terrain.height()).append(" units\n");
-      if (npc != null) {
-        int inWindow = npc.inWindow(region.sx0, region.sx1, region.sy0, region.sy1).size();
-        sb.append("npc in window ").append(inWindow)
-            .append(" (world ").append(npc.worldCount())
-            .append(" / dungeon ").append(npc.dungeonCount())
-            .append(" · ").append(npc.identifiedWorldCount())
-            .append(" identified)\n");
-      }
-      if (spawnZones != null) {
-        sb.append("spawn zones ").append(spawnZones.zoneResolvedCount())
-            .append(" resolved / ").append(spawnZones.zoneUnknownCount())
-            .append(" UNKNOWN · ").append(spawnZones.zones().size())
-            .append(" server zones\n");
-      }
-      if (teleportGates != null) {
-        sb.append("teleport gates ").append(teleportGates.resolvedWorldCount())
-            .append(" resolved / ").append(teleportGates.unresolvedWorldCount())
-            .append(" UNKNOWN · ").append(teleportGates.clientOnlyWorldCount())
-            .append(" client-only · ").append(teleportGates.zones().size())
-            .append(" zones\n");
-      }
-      if (optionalTeleports != null) {
-        sb.append("optional teleports ").append(optionalTeleports.resolvedWorldCount())
-            .append(" resolved / ").append(optionalTeleports.clientOnlyWorldCount())
-            .append(" client-only of ").append(optionalTeleports.worldCount())
-            .append(" world destinations\n");
-      }
-      if (teleportDestinations != null) {
-        sb.append("teleport map ").append(teleportDestinations.resolvedEntryCount())
-            .append(" resolved of ").append(teleportDestinations.entryCount())
-            .append(" (gates ").append(teleportDestinations.gateCount())
-            .append(" · destinations ").append(teleportDestinations.destinationCount())
-            .append(") · ").append(teleportDestinations.zones().size())
-            .append(" server zones · ")
-            .append(teleportDestinations.labeledEntryCount())
-            .append(" SN_ZONE labeled");
-        List<TeleportDestinationMap.Entry> jangan =
-            teleportDestinations.inWindow(168, 168, 97, 97);
-        if (!jangan.isEmpty()) {
-          sb.append(" · Jangan sector → ").append(jangan.size())
-              .append(" points");
-        }
-        TeleportDestinationMap.Entry gateCh = teleportDestinations.entry(0);
-        if (gateCh.localinfo != null) {
-          sb.append(" · GATE_CH=").append(gateCh.localinfo.name)
-              .append('/').append(gateCh.localinfo.description);
-        }
-        sb.append('\n');
-      }
-      if (merchantShops != null) {
-        sb.append("merchant shops ").append(merchantShops.placedCount())
-            .append(" placed of ").append(merchantShops.merchantCount())
-            .append(" NPC stores · ").append(merchantShops.spawnlessCount())
-            .append(" spawnless (no npcpos) · ")
-            .append(merchantShops.identifiedCount())
-            .append(" identified · ")
-            .append(merchantShops.stockIdentifiedCount())
-            .append(" stock identified");
-        List<MerchantShopSpawns.Entry> jangan =
-            merchantShops.inWindow(168, 168, 97, 97);
-        if (!jangan.isEmpty()) {
-          sb.append(" · Jangan sector → ").append(jangan.size())
-              .append(" stores");
-        }
-        MerchantShopSpawns.Entry smith = merchantShops.placed(0);
-        if (smith.characterCode() != null) {
-          sb.append(" · ").append(smith.storeCode()).append('=')
-              .append(smith.characterCode());
-        }
-        if (!smith.merchant.tabs.isEmpty()
-            && !smith.merchant.tabs.get(0).stock.isEmpty()) {
-          String itemCode = smith.merchant.tabs.get(0).stock.get(0).itemCode();
-          if (itemCode != null) {
-            sb.append(" · ").append(itemCode);
-          }
-        }
-        sb.append('\n');
-      }
-      if (instances != null) {
-        sb.append("instances ").append(instances.regionResolvedCount())
-            .append('/').append(instances.instanceCount())
-            .append(" anchored to region cells\n");
-      }
-      if (worldData != null) {
-        sb.append("world catalog ").append(worldData.worldCount())
-            .append(" instance worlds · ").append(worldData.groupCount())
-            .append(" groups");
-        WorldDataIndex.World jangan = worldData.byWorldId(2);
-        if (jangan != null && jangan.hasGroup()) {
-          sb.append(" · WorldID 2 → ").append(jangan.code)
-              .append(" / ").append(jangan.group);
-        }
-        sb.append('\n');
-      }
-      if (meshObjects != null) {
-        sb.append("objects ").append(meshObjects.instanceCount())
-            .append(" placements, real BMS mesh parts\n");
-      }
-      if (characterCatalog != null) {
-        sb.append("characters ").append(characterCatalog.count())
-            .append(" catalog rows, ").append(characterModels.size())
-            .append(" models loaded (idle anim)\n");
-      }
-      if (playerController != null) {
-        sb.append("player identity ").append(
-                playerController.identityResolved() ? "resolved" : "unresolved")
-            .append(" · spawn ")
-            .append(playerController.placed() ? "placed" : "UNKNOWN (fail-closed)")
-            .append('\n');
-      }
-      if (data != null) {
-        sb.append(data.summary()).append('\n');
-      }
-      sb.append("REAL TERRAIN + NPC PLACEMENT + OBJECT MESH");
-    } else {
-      sb.append("TERRAIN ASSET MISSING (verified .hg absent)\n");
-      sb.append("no real terrain loaded; no region substituted");
-      if (data != null) {
-        sb.append('\n').append(data.summary());
-      }
-    }
-    return sb.toString();
   }
 
   /** Package-private for the instrumented test (same package). */
@@ -498,10 +335,6 @@ public final class GameActivity extends Activity {
   /** Package-private for the instrumented test (same package). */
   Map<String, CharacterMeshIndex> characterModels() {
     return characterModels;
-  }
-
-  private int dp(int value) {
-    return Math.round(value * getResources().getDisplayMetrics().density);
   }
 
   private WorldTerrainIndex loadTerrainIndex() {
@@ -698,18 +531,5 @@ public final class GameActivity extends Activity {
       }
     }
     return models;
-  }
-
-  private GameDataCatalog loadDataCatalog() {
-    try {
-      return GameDataCatalog.loadFrom(
-          new InputStreamReader(getAssets().open("game/textdata/npcpos.tsv"), StandardCharsets.UTF_8),
-          new InputStreamReader(getAssets().open("game/textdata/leveldata.tsv"), StandardCharsets.UTF_8),
-          new InputStreamReader(getAssets().open("game/textdata/teleportdata.tsv"), StandardCharsets.UTF_8),
-          new InputStreamReader(
-              getAssets().open("game/textdata/worldmap_instanceinfo.tsv"), StandardCharsets.UTF_8));
-    } catch (IOException e) {
-      return null;
-    }
   }
 }
