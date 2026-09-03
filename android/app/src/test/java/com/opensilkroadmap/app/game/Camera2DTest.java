@@ -103,6 +103,37 @@ public class Camera2DTest {
   }
 
   @Test
+  public void coverScaleFillsLandscapeViewportWithoutSideLetterbox() {
+    // Jangan_Field committed set: 1x2 sectors = 1920 x 3840 world units.
+    // Landscape phone ~2340 x 1080: hardcoded 0.5 ppu paints the world only
+    // 960px wide and leaves black side margins. Cover scale fills width.
+    double viewW = 2340.0;
+    double viewH = 1080.0;
+    double worldW = 1920.0;
+    double worldH = 3840.0;
+    double letterbox = 0.5;
+    assertEquals(960.0, worldW * letterbox, 1e-9);
+    double cover = Camera2D.coverScale(viewW, viewH, worldW, worldH);
+    assertEquals(viewW / worldW, cover, 1e-9);
+    assertEquals(viewW, worldW * cover, 1e-9);
+    Camera2D camera = new Camera2D();
+    camera.setViewport(viewW, viewH);
+    camera.setWorld(worldW, worldH);
+    camera.setScale(cover);
+    camera.follow(worldW / 2.0, worldH / 2.0);
+    double[] left = camera.worldToView(0, worldH / 2.0);
+    double[] right = camera.worldToView(worldW, worldH / 2.0);
+    assertEquals(0.0, left[0], 1e-6);
+    assertEquals(viewW, right[0], 1e-6);
+  }
+
+  @Test
+  public void coverScaleRejectsNonPositiveExtents() {
+    assertEquals(1.0, Camera2D.coverScale(0, 1080, 1920, 3840), 1e-9);
+    assertEquals(1.0, Camera2D.coverScale(2340, 1080, 0, 3840), 1e-9);
+  }
+
+  @Test
   public void enterRegionAdoptsBoundsAndSnapsCenter() {
     Camera2D camera = new Camera2D();
     camera.setViewport(100, 100);

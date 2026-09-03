@@ -44,6 +44,18 @@ public final class Camera2D {
     clamp();
   }
 
+  /**
+   * Pixels-per-world-unit that covers the viewport (no letterbox). Uses the
+   * larger of width/height ratios so the world fills the surface; the taller
+   * or wider axis is cropped rather than padded.
+   */
+  public static double coverScale(double viewW, double viewH, double worldW, double worldH) {
+    if (viewW <= 0 || viewH <= 0 || worldW <= 0 || worldH <= 0) {
+      return 1.0;
+    }
+    return Math.max(viewW / worldW, viewH / worldH);
+  }
+
   public double scale() {
     return scale;
   }

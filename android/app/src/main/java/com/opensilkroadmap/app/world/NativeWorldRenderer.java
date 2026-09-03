@@ -391,6 +391,11 @@ public class NativeWorldRenderer extends View {
       return;
     }
     camera.setViewport(getWidth(), getHeight());
+    float cover = (float) Camera2D.coverScale(
+        getWidth(), getHeight(), world.width(), world.height());
+    if (pixelsPerUnit < cover) {
+      pixelsPerUnit = cover;
+    }
     camera.setScale(pixelsPerUnit);
     camera.follow(camX, camZ);
     canvas.drawColor(0xFF101010);
