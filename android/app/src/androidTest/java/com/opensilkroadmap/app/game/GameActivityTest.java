@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.opensilkroadmap.app.data.MerchantShopSpawns;
+import com.opensilkroadmap.app.data.NpcSpawnIndex;
 import com.opensilkroadmap.app.data.OptionalTeleportIndex;
 import com.opensilkroadmap.app.data.SpawnZoneIndex;
 import com.opensilkroadmap.app.data.TeleportDestinationMap;
@@ -124,6 +125,32 @@ public class GameActivityTest {
             assertEquals(866.25f, grid.min(), 0.1f);
             assertEquals(2687.02f, grid.max(), 0.1f);
             assertTrue(grid.min() < grid.max());
+          });
+    }
+  }
+
+  @Test
+  public void resolvesNpcSpawnIdentityFromCommittedAssets() {
+    try (ActivityScenario<GameActivity> scenario =
+        ActivityScenario.launch(GameActivity.class)) {
+      scenario.onActivity(
+          activity -> {
+            NpcSpawnIndex npc = activity.npcSpawns();
+            assertNotNull("npc spawn index must load", npc);
+            assertEquals(14800, npc.worldCount());
+            assertEquals(3657, npc.dungeonCount());
+            assertEquals(14800, npc.identifiedWorldCount());
+            assertEquals(21, npc.inWindow(168, 168, 97, 97).size());
+            NpcSpawnIndex.Spawn smith = null;
+            for (NpcSpawnIndex.Spawn s : npc.inWindow(168, 168, 97, 97)) {
+              if (s.characterRefId == 2003) {
+                smith = s;
+                break;
+              }
+            }
+            assertNotNull(smith);
+            assertEquals("NPC_CH_SMITH", smith.characterCode());
+            assertEquals("npc\\npc\\chinashop_smith.bsr", smith.modelPath());
           });
     }
   }

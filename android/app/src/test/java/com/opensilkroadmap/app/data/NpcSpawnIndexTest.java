@@ -34,6 +34,8 @@ public class NpcSpawnIndexTest {
     assertEquals(2, idx.worldCount());
     assertEquals(1, idx.dungeonCount());
     assertEquals(3, idx.totalCount());
+    assertEquals(0, idx.identifiedWorldCount());
+    assertEquals(null, idx.worldSpawn(0).identity);
   }
 
   @Test
@@ -64,6 +66,7 @@ public class NpcSpawnIndexTest {
     assertEquals(18457, idx.totalCount());
     assertEquals(14800, idx.worldCount());
     assertEquals(3657, idx.dungeonCount());
+    assertEquals(0, idx.identifiedWorldCount());
     assertEquals(3, idx.inWindow(156, 156, 90, 90).size());
     assertEquals(0, idx.inWindow(156, 156, 89, 89).size());
   }

@@ -281,7 +281,9 @@ public final class GameActivity extends Activity {
         int inWindow = npc.inWindow(region.sx0, region.sx1, region.sy0, region.sy1).size();
         sb.append("npc in window ").append(inWindow)
             .append(" (world ").append(npc.worldCount())
-            .append(" / dungeon ").append(npc.dungeonCount()).append(")\n");
+            .append(" / dungeon ").append(npc.dungeonCount())
+            .append(" · ").append(npc.identifiedWorldCount())
+            .append(" identified)\n");
       }
       if (spawnZones != null) {
         sb.append("spawn zones ").append(spawnZones.zoneResolvedCount())
@@ -420,6 +422,11 @@ public final class GameActivity extends Activity {
   }
 
   /** Package-private for the instrumented test (same package). */
+  NpcSpawnIndex npcSpawns() {
+    return npc;
+  }
+
+  /** Package-private for the instrumented test (same package). */
   SpawnZoneIndex spawnZones() {
     return spawnZones;
   }
@@ -516,8 +523,18 @@ public final class GameActivity extends Activity {
 
   private NpcSpawnIndex loadNpcSpawns() {
     try {
-      return NpcSpawnIndex.parse(
+      TsvTable table = TsvTable.parse("npcpos.tsv",
           new InputStreamReader(getAssets().open(NPC_POS_ASSET), StandardCharsets.UTF_8));
+      CharacterIdentityIndex identity = null;
+      try {
+        identity = new CharacterIdentityIndex(TsvTable.parse(
+            "character_identity.tsv",
+            new InputStreamReader(getAssets().open(CHARACTER_IDENTITY_ASSET),
+                StandardCharsets.UTF_8)));
+      } catch (IOException ignored) {
+        identity = null;
+      }
+      return new NpcSpawnIndex(table, identity);
     } catch (IOException e) {
       return null;
     }

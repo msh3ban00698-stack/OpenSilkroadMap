@@ -19,7 +19,12 @@ import java.util.List;
  *
  * <p>This index exposes world spawns (with world coordinates computed by the
  * proven formula) and lets callers query the spawns that fall inside a sector
- * window. No Android dependencies; pure JVM.
+ * window. Optional {@link CharacterIdentityIndex} attach is fail-closed:
+ * {@code parse} and {@code loadGeometry} stay identity-null; {@code loadDefault}
+ * joins {@code character_identity.tsv} on npcpos col0 (1180/1180 distinct
+ * refids, 14800/14800 world rows). Unknown refids and a missing identity
+ * asset leave {@code identity == null}. SN_* names, stats, and meshes are
+ * not invented. No Android dependencies; pure JVM.
  */
 public final class NpcSpawnIndex {
 
@@ -33,10 +38,19 @@ public final class NpcSpawnIndex {
     public final float heightY;
     public final float localZ;
     public final boolean isWorld;
+    public final CharacterIdentityIndex.Identity identity;
 
     public Spawn(
         int characterRefId, int regionCode, int sectorX, int sectorY,
         float localX, float heightY, float localZ, boolean isWorld) {
+      this(characterRefId, regionCode, sectorX, sectorY, localX, heightY,
+          localZ, isWorld, null);
+    }
+
+    public Spawn(
+        int characterRefId, int regionCode, int sectorX, int sectorY,
+        float localX, float heightY, float localZ, boolean isWorld,
+        CharacterIdentityIndex.Identity identity) {
       this.characterRefId = characterRefId;
       this.regionCode = regionCode;
       this.sectorX = sectorX;
@@ -45,6 +59,17 @@ public final class NpcSpawnIndex {
       this.heightY = heightY;
       this.localZ = localZ;
       this.isWorld = isWorld;
+      this.identity = identity;
+    }
+
+    /** Proven characterdata code ({@code NPC_*}/{@code MOB_*}/{@code STRUCTURE_*}), or null. */
+    public String characterCode() {
+      return identity == null ? null : identity.code;
+    }
+
+    /** Proven characterdata .bsr model path (or {@code xxx}), or null. */
+    public String modelPath() {
+      return identity == null ? null : identity.modelPath;
     }
 
     /** World x relative to a reference sector via the proven formula. */
@@ -60,13 +85,18 @@ public final class NpcSpawnIndex {
 
   private final List<Spawn> world;
   private final int dungeonCount;
+  private final int identifiedWorldCount;
 
   public NpcSpawnIndex(List<Spawn> all) {
     List<Spawn> w = new ArrayList<Spawn>();
     int d = 0;
+    int identified = 0;
     for (Spawn s : all) {
       if (s.isWorld) {
         w.add(s);
+        if (s.identity != null) {
+          identified++;
+        }
       } else {
         d++;
       }
@@ -77,17 +107,39 @@ public final class NpcSpawnIndex {
                 : Integer.compare(a.characterRefId, b.characterRefId));
     this.world = Collections.unmodifiableList(w);
     this.dungeonCount = d;
+    this.identifiedWorldCount = identified;
+  }
+
+  public NpcSpawnIndex(TsvTable table, CharacterIdentityIndex identity) {
+    this(fromTable(table, identity));
   }
 
   public static NpcSpawnIndex parse(Reader reader) throws IOException {
-    return new NpcSpawnIndex(fromTable(TsvTable.parse("npcpos.tsv", reader)));
+    return new NpcSpawnIndex(fromTable(TsvTable.parse("npcpos.tsv", reader), null));
   }
 
+  /** Geometry-only load; identity stays null even when the asset exists. */
+  public static NpcSpawnIndex loadGeometry() throws IOException {
+    return new NpcSpawnIndex(fromTable(TsvTable.loadDefault("npcpos.tsv"), null));
+  }
+
+  /**
+   * Loads npcpos plus optional character identity. A missing identity asset
+   * fails closed (geometry still loads; codes/paths stay null).
+   */
   public static NpcSpawnIndex loadDefault() throws IOException {
-    return new NpcSpawnIndex(fromTable(TsvTable.loadDefault("npcpos.tsv")));
+    TsvTable table = TsvTable.loadDefault("npcpos.tsv");
+    CharacterIdentityIndex identity = null;
+    try {
+      identity = CharacterIdentityIndex.loadDefault();
+    } catch (IOException ignored) {
+      identity = null;
+    }
+    return new NpcSpawnIndex(fromTable(table, identity));
   }
 
-  private static List<Spawn> fromTable(TsvTable table) {
+  private static List<Spawn> fromTable(TsvTable table,
+                                       CharacterIdentityIndex identity) {
     List<Spawn> out = new ArrayList<Spawn>();
     for (String[] row : table.rows()) {
       int refId = TsvTable.intAt(row, 0);
@@ -103,7 +155,9 @@ public final class NpcSpawnIndex {
         sx = s[0];
         sy = s[1];
       }
-      out.add(new Spawn(refId, region, sx, sy, x, h, z, isWorld));
+      CharacterIdentityIndex.Identity id =
+          identity == null ? null : identity.resolve(refId);
+      out.add(new Spawn(refId, region, sx, sy, x, h, z, isWorld, id));
     }
     return out;
   }
@@ -123,6 +177,11 @@ public final class NpcSpawnIndex {
 
   public int totalCount() {
     return world.size() + dungeonCount;
+  }
+
+  /** World spawns whose npcpos col0 uniquely joined character_identity.tsv. */
+  public int identifiedWorldCount() {
+    return identifiedWorldCount;
   }
 
   /** World spawns whose sector lies inside the given inclusive sector window. */
